@@ -37,6 +37,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b534d172_05b890ec",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-28T09:07:22Z",
+      "side": 1,
+      "message": "please handle lint warning",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 102
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a5a747_9347b2af",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-28T09:07:22Z",
+      "side": 1,
+      "message": "toHandle could be the better name.\n\nSince this is only for marshaling in order to send it via IPC,\n\n1. Could we have C2HandleFence based on C2Handle?\n\n2. Also could we have type() from C2HandleFence?",
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff09766_e9295688",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-28T09:07:22Z",
+      "side": 1,
+      "message": "Is it better to utilize type() here if we have the interface in C2Fence.",
+      "range": {
+        "startLine": 883,
+        "startChar": 16,
+        "endLine": 883,
+        "endChar": 20
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db9fbaf9_a6666bdc",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
         "patchSetId": 3
@@ -77,6 +140,75 @@
         "startChar": 12,
         "endLine": 904,
         "endChar": 17
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffc6bf1_13984cf9",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-28T09:07:22Z",
+      "side": 1,
+      "message": "Is there any reason for this being here instead of C2Fence?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9b5c1c_875debd4",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-28T09:07:22Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c55e56_5da2bee5",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-28T09:07:22Z",
+      "side": 1,
+      "message": "Could we add this method(toHandle()) in Impl? and we could call it.",
+      "range": {
+        "startLine": 90,
+        "startChar": 19,
+        "endLine": 90,
+        "endChar": 25
       },
       "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
