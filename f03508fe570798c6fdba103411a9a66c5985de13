@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "629812cf_5ebb1c32",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-28T11:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9948ea1_7c40e82b",
+      "range": {
+        "startLine": 404,
+        "startChar": 20,
+        "endLine": 404,
+        "endChar": 41
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "659238a5_f3527284",
@@ -131,6 +155,30 @@
       "writtenOn": "2022-04-25T20:14:29Z",
       "side": 1,
       "message": "remove this argument and add getCLL as a member method (similar to getVuiParams)",
+      "range": {
+        "startLine": 443,
+        "startChar": 19,
+        "endLine": 443,
+        "endChar": 39
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57efeede_6159bc59",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-28T11:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "659238a5_f3527284",
       "range": {
         "startLine": 443,
         "startChar": 19,
@@ -211,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb765ce0_073baf58",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-28T11:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19eef0d0_47ce8349",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 5
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89062086_9e58ca30",
@@ -271,6 +343,24 @@
       "writtenOn": "2022-04-25T20:14:29Z",
       "side": 1,
       "message": "move this after getVuiParams() on line 1145",
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd5bd83_1b8fa7d4",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-28T11:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665204bb_8f6c0756",
       "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -417,6 +507,24 @@
       "writtenOn": "2022-04-25T20:14:29Z",
       "side": 1,
       "message": "move after setVuiParams()",
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7370cb39_d1b52f63",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-28T11:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c4a60cb_1d50e3b9",
       "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
