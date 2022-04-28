@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8a6966_80ec0360",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "is this needed?",
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7efbeb_4d06c9cf",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "these will fit in a single line each",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 52
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99896e7e_3b7754be",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "remove as we don\u0027t need to call configUpdate() for these",
+      "range": {
+        "startLine": 646,
+        "startChar": 73,
+        "endLine": 647,
+        "endChar": 73
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7c1efe_5366a2b2",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "instead of writing to HDRStaticInfo which is from VideoAPI.h can we directly write to a structure of type  C2StreamHdrStaticInfo::output?\n\ni.e.  C2StreamHdrStaticInfo::output hdrStaticInfo;\n\ngetMDCV(\u0026hdrStaticInfo);\n\ngetCLL(\u0026hdrStaticInfo);\n\n\ngetMDCV and getCLL will need to handle required multiplications by 0.0002.\n\nif both didn\u0027t return an error then call mIntf-\u003econfig()?\n\nwith this we will get rid of the additional conversions and dependency of VideoAPI.h",
+      "range": {
+        "startLine": 648,
+        "startChar": 4,
+        "endLine": 648,
+        "endChar": 37
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6394e41c_cd6762ed",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "nit: please avoid unnecessary {} blocks",
+      "range": {
+        "startLine": 668,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 5
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a59824_518872f9",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "C2StreamHdrStaticMetadataInfo instead",
+      "range": {
+        "startLine": 673,
+        "startChar": 8,
+        "endLine": 673,
+        "endChar": 29
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea499a4b_ffda7389",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "should we be using hdrStaticInfoLocal instead?",
+      "range": {
+        "startLine": 674,
+        "startChar": 42,
+        "endLine": 674,
+        "endChar": 68
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb370346_beb3f23b",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "this isn\u0027t needed",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 48
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226a8d5a_c015a4ab",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "please avoid unnecessary changes.",
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4212303_79c2d3e4",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "remove not needed",
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

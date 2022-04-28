@@ -402,6 +402,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "819c0f46_81ee9590",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T22:55:41Z",
+      "side": 1,
+      "message": "the plugin currently builds with old path.\nwhy is this change necessary now?\n\ndo you see build issues if you don\u0027t change this?",
+      "parentUuid": "c0fe48ae_955fb902",
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df52b5c0_72b7e440",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 5
