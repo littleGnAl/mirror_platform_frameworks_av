@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6562e689_c573e6c9",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-28T19:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b534d172_05b890ec",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 102
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7a5a747_9347b2af",
@@ -92,6 +116,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ec5584_93934b3d",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-28T19:18:16Z",
+      "side": 1,
+      "message": "1. Suppose C2HandleFence is a fence which just carries a handle. The C2HandleFence could meet our current requirements.\nBut C2HandleFence is more like a handle rather a fence, it\u0027s hard to implement fence operations (wait/ready/...), client always needs to convert it to actually fence to operate on it. I think it\u0027s good to have a complete C2Fence based on sync fence.\n\n2. The main problem is that adding new enums will fail ABI checking (adding non-virtual methods looks fine), although I don\u0027t think it really breaks ABI.\nAs of now we wouldn\u0027t like to make multiple changes to update vndk ABI.\nAlso it\u0027s good to expose fewer APIs, as it\u0027s difficult take public APIs back.",
+      "parentUuid": "b7a5a747_9347b2af",
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff09766_e9295688",
@@ -105,6 +147,30 @@
       "writtenOn": "2022-04-28T09:07:22Z",
       "side": 1,
       "message": "Is it better to utilize type() here if we have the interface in C2Fence.",
+      "range": {
+        "startLine": 883,
+        "startChar": 16,
+        "endLine": 883,
+        "endChar": 20
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1458dea_15a8cc0b",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-28T19:18:16Z",
+      "side": 1,
+      "message": "Exactly it\u0027s better to utilize type() here.\n\nAs explained in C2Buffer.h, we wouldn\u0027t like to expose new enums, so it\u0027s a compromise and kind of a workaround to just check isHW() and then convert it to android::fence.\n\nAdded a TODO in the code comment.",
+      "parentUuid": "aff09766_e9295688",
       "range": {
         "startLine": 883,
         "startChar": 16,
@@ -185,6 +251,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1103311b_23b01ad3",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-28T19:18:16Z",
+      "side": 1,
+      "message": "As explained in reply in C2Buffer.h, wouldn\u0027t like to expose new enums.",
+      "parentUuid": "5ffc6bf1_13984cf9",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a9b5c1c_875debd4",
@@ -208,6 +298,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e833bac6_8838fa69",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-28T19:18:16Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "8a9b5c1c_875debd4",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5c55e56_5da2bee5",
@@ -221,6 +335,30 @@
       "writtenOn": "2022-04-28T09:07:22Z",
       "side": 1,
       "message": "Could we add this method(toHandle()) in Impl? and we could call it.",
+      "range": {
+        "startLine": 90,
+        "startChar": 19,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6a8bb8_de2261da",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-28T19:18:16Z",
+      "side": 1,
+      "message": "If we add Impl::toHandle(), during unmarshalling C2FenceFactory still needs to check fecne type of the handle, then choose a Impl to unmarshal the handle. In that case, both C2FenceFactory and Impl need to understand the handle internal.",
+      "parentUuid": "b5c55e56_5da2bee5",
       "range": {
         "startLine": 90,
         "startChar": 19,
