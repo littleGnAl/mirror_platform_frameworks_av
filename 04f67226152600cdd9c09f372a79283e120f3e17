@@ -16,6 +16,24 @@
       "message": "does this mean that it\u0027s an unknown HDR format or it\u0027s unknown whether it\u0027s HDR or SDR either?",
       "revId": "04f67226152600cdd9c09f372a79283e120f3e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1dad5c_dee83492",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1671,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2022-04-29T03:11:17Z",
+      "side": 1,
+      "message": "it seems to be for \"unset\" case.\nI think it should be declared for default value handling",
+      "parentUuid": "e16632ed_af897425",
+      "revId": "04f67226152600cdd9c09f372a79283e120f3e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
