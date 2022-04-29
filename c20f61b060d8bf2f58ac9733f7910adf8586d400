@@ -16,6 +16,109 @@
       "message": "Wonsik, what do you think of these changes?",
       "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2c4642_945d0650",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-29T22:14:30Z",
+      "side": 1,
+      "message": "KEY_PRIORITY (https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/include/media/stagefright/MediaCodecConstants.h;drc\u003d3ca4227de203b76725aca2d8522173eb6e3a4a1a;l\u003d822)",
+      "range": {
+        "startLine": 548,
+        "startChar": 26,
+        "endLine": 548,
+        "endChar": 36
+      },
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d44ab8_6ed42bee",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-29T22:14:30Z",
+      "side": 1,
+      "message": "why this condition?",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a51a95_816778fe",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-29T22:14:30Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f3600f_2b5a31f9",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/MediaDefs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-29T22:14:30Z",
+      "side": 1,
+      "message": "these are not constants defined in MediaFormat.java: please remove these lines",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2f33e7_af8b976d",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/MediaDefs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-29T22:14:30Z",
+      "side": 1,
+      "message": "please just use anonymous enum:\n\n  enum {\n      PRIORITY_REALTIME \u003d 0,\n      PRIORITY_NONREALTIME \u003d 1,\n  };",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 1
+      },
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
