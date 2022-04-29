@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d0d4da_7e0942c1",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-29T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e8a6966_80ec0360",
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb7efbeb_4d06c9cf",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-28T22:55:41Z",
       "side": 1,
       "message": "these will fit in a single line each",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 52
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b428009e_b6258056",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-29T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7efbeb_4d06c9cf",
       "range": {
         "startLine": 415,
         "startChar": 0,
@@ -100,6 +142,30 @@
       "writtenOn": "2022-04-28T22:55:41Z",
       "side": 1,
       "message": "nit: please avoid unnecessary {} blocks",
+      "range": {
+        "startLine": 668,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 5
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e553d10c_40d53ca2",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-29T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6394e41c_cd6762ed",
       "range": {
         "startLine": 668,
         "startChar": 0,
@@ -192,6 +258,24 @@
       "writtenOn": "2022-04-28T22:55:41Z",
       "side": 1,
       "message": "please avoid unnecessary changes.",
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca2435f_fa9de62d",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-29T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "226a8d5a_c015a4ab",
       "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
