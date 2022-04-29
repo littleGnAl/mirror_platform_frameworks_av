@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd6290f_d342835a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-04-29T05:32:25Z",
+      "side": 1,
+      "message": "I guess you meant \u0027should\u0027?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "e79e1009913b8ff3c1e046b682c14b7af9e9a0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42905d0_66815cb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-04-29T05:32:25Z",
+      "side": 1,
+      "message": "Please remove or replace with \u0027atest\u0027?",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "e79e1009913b8ff3c1e046b682c14b7af9e9a0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c6610d_7a682246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-04-29T05:32:25Z",
+      "side": 1,
+      "message": "From my local flash and testing, this patch is required to enable enc stat and to pass CTS.",
+      "revId": "e79e1009913b8ff3c1e046b682c14b7af9e9a0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
