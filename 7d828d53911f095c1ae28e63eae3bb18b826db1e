@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "befc8288_2e4a2a2c",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-05-02T21:19:40Z",
+      "side": 1,
+      "message": "is this allocation done just to get the bufferSize ? looks like this realloc will alloc buffer twice. \n::Allocate and ::AllocateEmpty, isnt that unnecessary ?\nAny ideas to avoid ?",
+      "range": {
+        "startLine": 1211,
+        "startChar": 12,
+        "endLine": 1212,
+        "endChar": 79
+      },
+      "revId": "7d828d53911f095c1ae28e63eae3bb18b826db1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
