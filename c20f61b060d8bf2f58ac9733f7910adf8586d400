@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb3ccb7_2dcdda4f",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-05-03T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2c4642_945d0650",
+      "range": {
+        "startLine": 548,
+        "startChar": 26,
+        "endLine": 548,
+        "endChar": 36
+      },
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27d44ab8_6ed42bee",
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84ef3e82_2f47d09a",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-05-03T09:07:18Z",
+      "side": 1,
+      "message": "frameworks/av/media/libmediaplayerservice/StagefrightMetadataRetriever.cpp\n        int64_t frameTimeUs \u003d thumbnail ? -1 : 0;\nThis is for image case, thumbnail frameTimeUs is -1.",
+      "parentUuid": "27d44ab8_6ed42bee",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28a51a95_816778fe",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
@@ -71,6 +113,24 @@
       "writtenOn": "2022-04-29T22:14:30Z",
       "side": 1,
       "message": "ditto",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1a162f_b980c8d2",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-05-03T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28a51a95_816778fe",
       "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -98,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc8e2f8_6b7d705e",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/MediaDefs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-05-03T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f3600f_2b5a31f9",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db2f33e7_af8b976d",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-04-29T22:14:30Z",
       "side": 1,
       "message": "please just use anonymous enum:\n\n  enum {\n      PRIORITY_REALTIME \u003d 0,\n      PRIORITY_NONREALTIME \u003d 1,\n  };",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 1
+      },
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0394ce_a6e8de29",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/MediaDefs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-05-03T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2f33e7_af8b976d",
       "range": {
         "startLine": 104,
         "startChar": 1,
