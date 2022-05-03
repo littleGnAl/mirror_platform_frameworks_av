@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f1a0fd9_b815b509",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2022-05-03T11:45:51Z",
+      "side": 1,
+      "message": "To me it sounds like we probably want a very explicit signal instead of the magic -1, if we do want all thumbnail cases to be non-realtime? What are your thoughts Wonsik?",
+      "parentUuid": "84ef3e82_2f47d09a",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28a51a95_816778fe",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
