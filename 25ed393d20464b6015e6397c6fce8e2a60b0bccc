@@ -22,6 +22,30 @@
       },
       "revId": "25ed393d20464b6015e6397c6fce8e2a60b0bccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7813e0a0_dfc51b06",
+        "filename": "media/codec2/components/vpx/C2SoftVpxDec.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-04T18:45:20Z",
+      "side": 1,
+      "message": "Ray,\nC2 plugins use HAL_PIXEL_FORMAT everywhere (during allocation later).\nUsing HAL_PIXEL_FORMAT_* in some places and AHARDWAREBUFFER_FORMAT* in some places leads to confusion.\n\nThis was the reason I was proposing we send it as uint32_t (datatype of format in AHardwareBuffer_Desc is unint32_t).\n\nSo please confirm if I can go ahead and add a typecast and continue to send HAL_PIXEL_FORMAT* like currently done in patchset 13.",
+      "parentUuid": "995f8930_5dc973ec",
+      "range": {
+        "startLine": 223,
+        "startChar": 37,
+        "endLine": 223,
+        "endChar": 68
+      },
+      "revId": "25ed393d20464b6015e6397c6fce8e2a60b0bccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

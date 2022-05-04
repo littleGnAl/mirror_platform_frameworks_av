@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4090da00_a84a57ed",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-04T18:45:20Z",
+      "side": 1,
+      "message": "now that we have a isHalPixelFormatSupported() function, the check is moved inside that. (from three checks to it is now being done in one place).",
+      "parentUuid": "b2c1c93d_c6dfc783",
+      "range": {
+        "startLine": 778,
+        "startChar": 7,
+        "endLine": 778,
+        "endChar": 27
+      },
+      "revId": "e48e632d3068bcd9af862dad4d7a6654dad9d881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeddc7ac_346ad3f9",
@@ -54,6 +78,54 @@
       "writtenOn": "2022-05-04T18:33:12Z",
       "side": 1,
       "message": "I thought this was changing to AHardwareXXX",
+      "range": {
+        "startLine": 123,
+        "startChar": 31,
+        "endLine": 123,
+        "endChar": 46
+      },
+      "revId": "e48e632d3068bcd9af862dad4d7a6654dad9d881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5987f25_8b8e6a18",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-04T18:45:20Z",
+      "side": 1,
+      "message": "Discussion in\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2064687/comments/0aa3fdf1_ac8ac426",
+      "parentUuid": "eeddc7ac_346ad3f9",
+      "range": {
+        "startLine": 123,
+        "startChar": 31,
+        "endLine": 123,
+        "endChar": 46
+      },
+      "revId": "e48e632d3068bcd9af862dad4d7a6654dad9d881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa9ac4d_e1d76e50",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-04T18:45:20Z",
+      "side": 1,
+      "message": "as mentioned in the comment earlier, this is",
+      "parentUuid": "eeddc7ac_346ad3f9",
       "range": {
         "startLine": 123,
         "startChar": 31,
