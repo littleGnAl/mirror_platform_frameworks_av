@@ -22,6 +22,30 @@
       },
       "revId": "1c959e8fbfb0fa5428b98269cd90925a225cf9b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcec5188_89d65d01",
+        "filename": "media/codec2/components/base/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-04T18:55:44Z",
+      "side": 1,
+      "message": "libarect_headers is not marked vendor_available: true and if header_libs is to be used here, then i will upload that and then put these two in a topic branch.",
+      "parentUuid": "922be836_068c93a6",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "1c959e8fbfb0fa5428b98269cd90925a225cf9b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
