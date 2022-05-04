@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "922be836_068c93a6",
+        "filename": "media/codec2/components/base/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-04T18:33:12Z",
+      "side": 1,
+      "message": "header_libs: [ \"libarect_headers\"]\n\nit seems that we\u0027re including this library solely for the headers...\nactually seems that the library doesn\u0027t have any code; it\u0027s just\nthe include file.\n\nstill -- header_libs:[] is the better construct here.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "1c959e8fbfb0fa5428b98269cd90925a225cf9b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

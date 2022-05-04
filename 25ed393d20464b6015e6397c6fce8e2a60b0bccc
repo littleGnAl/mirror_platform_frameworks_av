@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995f8930_5dc973ec",
+        "filename": "media/codec2/components/vpx/C2SoftVpxDec.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-04T18:33:12Z",
+      "side": 1,
+      "message": "should we be using AHARDWAREBUFFER_FORMAT_YCbCr_P010 instead of HAL_*",
+      "range": {
+        "startLine": 223,
+        "startChar": 37,
+        "endLine": 223,
+        "endChar": 68
+      },
+      "revId": "25ed393d20464b6015e6397c6fce8e2a60b0bccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

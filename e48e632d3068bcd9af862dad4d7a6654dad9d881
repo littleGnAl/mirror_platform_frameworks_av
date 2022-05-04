@@ -16,6 +16,52 @@
       "message": "Wonsik, Ray,\nCan you please take another look at this?\nThanks.",
       "revId": "e48e632d3068bcd9af862dad4d7a6654dad9d881",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c1c93d_c6dfc783",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-04T18:33:12Z",
+      "side": 1,
+      "message": "this was disabled with a TODO(b/229387180)\n\nb/229387180 is still open, so i\u0027m wondering what changed that allows us to\nenable this.",
+      "range": {
+        "startLine": 778,
+        "startChar": 7,
+        "endLine": 778,
+        "endChar": 27
+      },
+      "revId": "e48e632d3068bcd9af862dad4d7a6654dad9d881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeddc7ac_346ad3f9",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-04T18:33:12Z",
+      "side": 1,
+      "message": "I thought this was changing to AHardwareXXX",
+      "range": {
+        "startLine": 123,
+        "startChar": 31,
+        "endLine": 123,
+        "endChar": 46
+      },
+      "revId": "e48e632d3068bcd9af862dad4d7a6654dad9d881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
