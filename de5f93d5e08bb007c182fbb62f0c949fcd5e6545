@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f646c492_12a67bd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-04T22:47:39Z",
+      "side": 1,
+      "message": "Since the CL that temporarily disabled P010 in s/w codecs hasn\u0027t been cherry-picked to internal branches, should I revert that first in aosp/master and then do this?\nP010 must not be listed as supported format on devices where P010 allocation doesn\u0027t work. So this needs to be cherry-picked to T in some form.",
+      "revId": "de5f93d5e08bb007c182fbb62f0c949fcd5e6545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

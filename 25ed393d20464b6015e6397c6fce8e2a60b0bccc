@@ -46,6 +46,30 @@
       },
       "revId": "25ed393d20464b6015e6397c6fce8e2a60b0bccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1331519_2267098b",
+        "filename": "media/codec2/components/vpx/C2SoftVpxDec.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-04T22:47:39Z",
+      "side": 1,
+      "message": "Patchset 21 does the required typecasts.",
+      "parentUuid": "7813e0a0_dfc51b06",
+      "range": {
+        "startLine": 223,
+        "startChar": 37,
+        "endLine": 223,
+        "endChar": 68
+      },
+      "revId": "25ed393d20464b6015e6397c6fce8e2a60b0bccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
