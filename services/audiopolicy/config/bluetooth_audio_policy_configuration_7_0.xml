@@ -15,7 +15,7 @@
             <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                      samplingRates="8000 16000 24000 32000 44100 48000"
                      channelMasks="AUDIO_CHANNEL_OUT_MONO AUDIO_CHANNEL_OUT_STEREO"/>
-            <profile name="" format="AUDIO_FORMAT_PCM_24_BIT_PACKED"
+            <profile name="" format="AUDIO_FORMAT_PCM_8_24_BIT"
                      samplingRates="8000 16000 24000 32000 44100 48000"
                      channelMasks="AUDIO_CHANNEL_OUT_MONO AUDIO_CHANNEL_OUT_STEREO"/>
             <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
@@ -26,7 +26,7 @@
             <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                      samplingRates="8000 16000 24000 32000 44100 48000"
                      channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
-            <profile name="" format="AUDIO_FORMAT_PCM_24_BIT_PACKED"
+            <profile name="" format="AUDIO_FORMAT_PCM_8_24_BIT"
                      samplingRates="8000 16000 24000 32000 44100 48000"
                      channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
             <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
