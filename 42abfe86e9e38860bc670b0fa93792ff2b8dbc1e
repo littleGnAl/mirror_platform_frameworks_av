@@ -16,6 +16,52 @@
       "message": "PTAL",
       "revId": "42abfe86e9e38860bc670b0fa93792ff2b8dbc1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e3af1b_da279608",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-05-05T18:01:30Z",
+      "side": 1,
+      "message": "The API description says \" C2Buffer object to be copied; nullptr if not known\". So does that mean that it will allocate the exact size of \"buffer\" ? or does it meant to say it will create a copy of buffer ?",
+      "range": {
+        "startLine": 810,
+        "startChar": 8,
+        "endLine": 810,
+        "endChar": 47
+      },
+      "revId": "42abfe86e9e38860bc670b0fa93792ff2b8dbc1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6abcd5_eae4245a",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-05-05T18:01:30Z",
+      "side": 1,
+      "message": "Getting a bit confused. So for a case view-\u003eimg (ToMediaImage \u003d true); if plane.bitDepth \u003d 10, plane.rightShift \u003d 6 and imgBitdepth \u003d 10, then this condition will cause it to fail right ? that to me is same bit depth copy and should that fail?",
+      "range": {
+        "startLine": 122,
+        "startChar": 12,
+        "endLine": 122,
+        "endChar": 40
+      },
+      "revId": "42abfe86e9e38860bc670b0fa93792ff2b8dbc1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
