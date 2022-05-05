@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74bcd90b_f5dc1d7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-05T17:23:40Z",
+      "side": 1,
+      "message": "include Bug: xxx to match the original CL\nso that this is also logged with that bug\n(and people can see that it was suppressed and then re-enabled).",
+      "range": {
+        "startLine": 12,
+        "startChar": 59,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "f5896688127ae2d996a0d794423de80f64ce5f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
