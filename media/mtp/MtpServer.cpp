@@ -453,7 +453,8 @@ bool MtpServer::handleRequest() {
     if (response != MTP_RESPONSE_OK)
       ALOGW("[MTP] got response 0x%X in command %s (%x)", response,
             MtpDebug::getOperationCodeName(operation), operation);
-    if (response == MTP_RESPONSE_TRANSACTION_CANCELLED)
+    if (response == MTP_RESPONSE_TRANSACTION_CANCELLED ||
+        response == MTP_RESPONSE_TRANSACTION_EP_SHUTDOWN)
         return false;
     mResponse.setResponseCode(response);
     return true;
@@ -461,7 +462,6 @@ bool MtpServer::handleRequest() {
 
 MtpResponseCode MtpServer::doGetDeviceInfo() {
     MtpStringBuffer   string;
-
     MtpObjectFormatList* playbackFormats = mDatabase->getSupportedPlaybackFormats();
     MtpObjectFormatList* captureFormats = mDatabase->getSupportedCaptureFormats();
     MtpDevicePropertyList* deviceProperties = mDatabase->getSupportedDeviceProperties();
@@ -835,6 +835,8 @@ MtpResponseCode MtpServer::doGetObject() {
         ALOGE("Mtp send file got error %s", strerror(errno));
         if (errno == ECANCELED) {
             result = MTP_RESPONSE_TRANSACTION_CANCELLED;
+        } else if (errno == ESHUTDOWN){
+            result = MTP_RESPONSE_TRANSACTION_EP_SHUTDOWN;
         } else {
             result = MTP_RESPONSE_GENERAL_ERROR;
         }
@@ -1288,6 +1290,9 @@ MtpResponseCode MtpServer::doSendObject() {
         unlink(mSendObjectFilePath);
         if (isCanceled)
             result = MTP_RESPONSE_TRANSACTION_CANCELLED;
+        else if (errno == ESHUTDOWN){
+            result = MTP_RESPONSE_TRANSACTION_EP_SHUTDOWN;
+        }
         else
             result = MTP_RESPONSE_GENERAL_ERROR;
     }
