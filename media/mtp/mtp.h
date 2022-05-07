@@ -443,6 +443,8 @@
 #define MTP_RESPONSE_SESSION_ALREADY_OPEN                       0x201E
 #define MTP_RESPONSE_TRANSACTION_CANCELLED                      0x201F
 #define MTP_RESPONSE_SPECIFICATION_OF_DESTINATION_UNSUPPORTED   0x2020
+// ADD Endpoint Shutdown Response
+#define MTP_RESPONSE_TRANSACTION_EP_SHUTDOWN                    0xA001
 #define MTP_RESPONSE_INVALID_OBJECT_PROP_CODE                   0xA801
 #define MTP_RESPONSE_INVALID_OBJECT_PROP_FORMAT                 0xA802
 #define MTP_RESPONSE_INVALID_OBJECT_PROP_VALUE                  0xA803
@@ -453,6 +455,7 @@
 #define MTP_RESPONSE_SPECIFICATION_BY_DEPTH_UNSUPPORTED         0xA808
 #define MTP_RESPONSE_OBJECT_TOO_LARGE                           0xA809
 #define MTP_RESPONSE_OBJECT_PROP_NOT_SUPPORTED                  0xA80A
+
 
 // MTP Event Codes
 #define MTP_EVENT_UNDEFINED                         0x4000
