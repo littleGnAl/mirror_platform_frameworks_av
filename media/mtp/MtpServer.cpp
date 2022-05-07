@@ -208,6 +208,9 @@ void MtpServer::run() {
         }
 
         if (handleRequest()) {
+            if (mResponse.getResponseCode() == MTP_RESPONSE_GENERAL_ERROR
+                && errno == ESHUTDOWN)
+                break;
             if (!dataIn && mData.hasData()) {
                 mData.setOperationCode(operation);
                 mData.setTransactionID(transaction);
@@ -461,7 +464,7 @@ bool MtpServer::handleRequest() {
 
 MtpResponseCode MtpServer::doGetDeviceInfo() {
     MtpStringBuffer   string;
-
+    
     MtpObjectFormatList* playbackFormats = mDatabase->getSupportedPlaybackFormats();
     MtpObjectFormatList* captureFormats = mDatabase->getSupportedCaptureFormats();
     MtpDevicePropertyList* deviceProperties = mDatabase->getSupportedDeviceProperties();
