@@ -136,7 +136,7 @@ public:
      *                      indicated by count.
      *      PERMISSION_DENIED could not get AudioFlinger interface
      *      NO_INIT         effect library failed to initialize
-     *      BAD_VALUE       invalid audio session or descriptor pointers
+     *      BAD_VALUE       invalid audio session, or invalid descriptor or count pointers
      *
      * Returned value
      *   *descriptor updated with descriptors of pre processings enabled by default
@@ -160,6 +160,7 @@ public:
      *      NO_ERROR        successful operation.
      *      PERMISSION_DENIED could not get AudioFlinger interface
      *                        or caller lacks required permissions.
+     *      BAD_VALUE       invalid pointer to id
      * Returned value
      *   *id:  The new unique system-wide effect id.
      */
@@ -194,7 +195,7 @@ public:
      *      PERMISSION_DENIED could not get AudioFlinger interface
      *                        or caller lacks required permissions.
      *      NO_INIT         effect library failed to initialize.
-     *      BAD_VALUE       invalid source, type uuid or implementation uuid.
+     *      BAD_VALUE       invalid source, type uuid or implementation uuid, or id pointer
      *      NAME_NOT_FOUND  no effect with this uuid or type found.
      *
      * Returned value
@@ -233,7 +234,7 @@ public:
      *      PERMISSION_DENIED could not get AudioFlinger interface
      *                        or caller lacks required permissions.
      *      NO_INIT         effect library failed to initialize.
-     *      BAD_VALUE       invalid type uuid or implementation uuid.
+     *      BAD_VALUE       invalid type uuid or implementation uuid, or id pointer
      *      NAME_NOT_FOUND  no effect with this uuid or type found.
      *
      * Returned value
@@ -283,7 +284,8 @@ public:
         EVENT_CONTROL_STATUS_CHANGED = 0,
         EVENT_ENABLE_STATUS_CHANGED = 1,
         EVENT_PARAMETER_CHANGED = 2,
-        EVENT_ERROR = 3
+        EVENT_ERROR = 3,
+        EVENT_FRAMES_PROCESSED = 4,
     };
 
     /* Callback function notifying client application of a change in effect engine state or
@@ -389,7 +391,8 @@ public:
                             audio_session_t sessionId = AUDIO_SESSION_OUTPUT_MIX,
                             audio_io_handle_t io = AUDIO_IO_HANDLE_NONE,
                             const AudioDeviceTypeAddr& device = {},
-                            bool probe = false);
+                            bool probe = false,
+                            bool notifyFramesProcessed = false);
     /*
      * Same as above but with type and uuid specified by character strings.
      */
@@ -401,7 +404,8 @@ public:
                             audio_session_t sessionId = AUDIO_SESSION_OUTPUT_MIX,
                             audio_io_handle_t io = AUDIO_IO_HANDLE_NONE,
                             const AudioDeviceTypeAddr& device = {},
-                            bool probe = false);
+                            bool probe = false,
+                            bool notifyFramesProcessed = false);
 
     /* Result of constructing the AudioEffect. This must be checked
      * before using any AudioEffect API.
@@ -452,7 +456,7 @@ public:
      * Returned status (from utils/Errors.h) can be:
      *  - NO_ERROR: successful operation.
      *  - INVALID_OPERATION: the application does not have control of the effect engine.
-     *  - BAD_VALUE: invalid parameter identifier or value.
+     *  - BAD_VALUE: invalid parameter structure pointer, or invalid identifier or value.
      *  - DEAD_OBJECT: the effect engine has been deleted.
      */
      virtual status_t   setParameter(effect_param_t *param);
@@ -497,7 +501,7 @@ public:
      * Returned status (from utils/Errors.h) can be:
      *  - NO_ERROR: successful operation.
      *  - INVALID_OPERATION: the AudioEffect was not successfully initialized.
-     *  - BAD_VALUE: invalid parameter identifier.
+     *  - BAD_VALUE: invalid parameter structure pointer, or invalid parameter identifier.
      *  - DEAD_OBJECT: the effect engine has been deleted.
      */
      virtual status_t   getParameter(effect_param_t *param);
@@ -552,6 +556,7 @@ protected:
      virtual void commandExecuted(int32_t cmdCode,
                                   const std::vector<uint8_t>& cmdData,
                                   const std::vector<uint8_t>& replyData);
+     virtual void framesProcessed(int32_t frames);
 
 private:
 
@@ -587,6 +592,14 @@ private:
             }
             return binder::Status::ok();
         }
+        binder::Status framesProcessed(int32_t frames) override {
+            sp<AudioEffect> effect = mEffect.promote();
+            if (effect != 0) {
+                effect->framesProcessed(frames);
+            }
+            return binder::Status::ok();
+        }
+
 
         // IBinder::DeathRecipient
         virtual void binderDied(const wp<IBinder>& /*who*/) {

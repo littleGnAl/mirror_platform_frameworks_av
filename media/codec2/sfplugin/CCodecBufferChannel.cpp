@@ -15,8 +15,11 @@
  */
 
 //#define LOG_NDEBUG 0
+#include <utils/Errors.h>
 #define LOG_TAG "CCodecBufferChannel"
+#define ATRACE_TAG  ATRACE_TAG_VIDEO
 #include <utils/Log.h>
+#include <utils/Trace.h>
 
 #include <algorithm>
 #include <atomic>
@@ -44,9 +47,9 @@
 #include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AUtils.h>
 #include <media/stagefright/foundation/hexdump.h>
-#include <media/stagefright/MediaCodec.h>
 #include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/SkipCutBuffer.h>
+#include <media/stagefright/SurfaceUtils.h>
 #include <media/MediaCodecBuffer.h>
 #include <mediadrm/ICrypto.h>
 #include <system/window.h>
@@ -327,6 +330,8 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
     }
     c2_status_t err = C2_OK;
     if (!items.empty()) {
+        ScopedTrace trace(ATRACE_TAG, android::base::StringPrintf(
+                "CCodecBufferChannel::queue(%s@ts=%lld)", mName, (long long)timeUs).c_str());
         {
             Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
             PipelineWatcher::Clock::time_point now = PipelineWatcher::Clock::now();
@@ -923,6 +928,11 @@ status_t CCodecBufferChannel::renderOutputBuffer(
                 };
                 hdr.validTypes |= HdrMetadata::CTA861_3;
                 hdr.cta8613 = cta861_meta;
+            }
+
+            // does not have valid info
+            if (!(hdr.validTypes & (HdrMetadata::SMPTE2086 | HdrMetadata::CTA861_3))) {
+                hdrStaticInfo.reset();
             }
         }
         if (hdrDynamicInfo
@@ -1892,7 +1902,7 @@ bool CCodecBufferChannel::handleWork(
 
     int32_t flags = 0;
     if (worklet->output.flags & C2FrameData::FLAG_END_OF_STREAM) {
-        flags |= MediaCodec::BUFFER_FLAG_EOS;
+        flags |= BUFFER_FLAG_END_OF_STREAM;
         ALOGV("[%s] onWorkDone: output EOS", mName);
     }
 
@@ -1909,6 +1919,8 @@ bool CCodecBufferChannel::handleWork(
         // When using input surface we need to restore the original input timestamp.
         timestamp = work->input.ordinal.customOrdinal;
     }
+    ScopedTrace trace(ATRACE_TAG, android::base::StringPrintf(
+            "CCodecBufferChannel::onWorkDone(%s@ts=%lld)", mName, timestamp.peekll()).c_str());
     ALOGV("[%s] onWorkDone: input %lld, codec %lld => output %lld => %lld",
           mName,
           work->input.ordinal.customOrdinal.peekll(),
@@ -1930,7 +1942,7 @@ bool CCodecBufferChannel::handleWork(
         sp<MediaCodecBuffer> outBuffer;
         if (output->buffers && output->buffers->registerCsd(initData, &index, &outBuffer) == OK) {
             outBuffer->meta()->setInt64("timeUs", timestamp.peek());
-            outBuffer->meta()->setInt32("flags", MediaCodec::BUFFER_FLAG_CODECCONFIG);
+            outBuffer->meta()->setInt32("flags", BUFFER_FLAG_CODEC_CONFIG);
             ALOGV("[%s] onWorkDone: csd index = %zu [%p]", mName, index, outBuffer.get());
 
             output.unlock();
@@ -1966,7 +1978,7 @@ bool CCodecBufferChannel::handleWork(
             switch (info->coreIndex().coreIndex()) {
                 case C2StreamPictureTypeMaskInfo::CORE_INDEX:
                     if (((C2StreamPictureTypeMaskInfo *)info.get())->value & C2Config::SYNC_FRAME) {
-                        flags |= MediaCodec::BUFFER_FLAG_SYNCFRAME;
+                        flags |= BUFFER_FLAG_KEY_FRAME;
                     }
                     break;
                 default:
@@ -2086,12 +2098,13 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface) {
 }
 
 PipelineWatcher::Clock::duration CCodecBufferChannel::elapsed() {
-    // When client pushed EOS, we want all the work to be done quickly.
     // Otherwise, component may have stalled work due to input starvation up to
     // the sum of the delay in the pipeline.
+    // TODO(b/231253301): When client pushed EOS, the pipeline could have less
+    //                    number of frames.
     size_t n = 0;
-    if (!mInputMetEos) {
-        size_t outputDelay = mOutput.lock()->outputDelay;
+    size_t outputDelay = mOutput.lock()->outputDelay;
+    {
         Mutexed<Input>::Locked input(mInput);
         n = input->inputDelay + input->pipelineDelay + outputDelay;
     }
@@ -2168,6 +2181,15 @@ status_t toStatusT(c2_status_t c2s, c2_operation_t c2op) {
     default:
         return -static_cast<status_t>(c2s);
     }
+}
+
+status_t CCodecBufferChannel::pushBlankBufferToOutputSurface() {
+  Mutexed<OutputSurface>::Locked output(mOutputSurface);
+  sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(output->surface.get());
+  if (nativeWindow == nullptr) {
+      return INVALID_OPERATION;
+  }
+  return pushBlankBuffersToNativeWindow(nativeWindow.get());
 }
 
 }  // namespace android

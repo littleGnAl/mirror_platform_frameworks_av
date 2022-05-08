@@ -1418,9 +1418,14 @@ status_t MediaCodec::init(const AString &name) {
     if (mIsVideo) {
         // video codec needs dedicated looper
         if (mCodecLooper == NULL) {
+            status_t err = OK;
             mCodecLooper = new ALooper;
             mCodecLooper->setName("CodecLooper");
-            mCodecLooper->start(false, false, ANDROID_PRIORITY_AUDIO);
+            err = mCodecLooper->start(false, false, ANDROID_PRIORITY_AUDIO);
+            if (OK != err) {
+                ALOGE("Codec Looper failed to start");
+                return err;
+            }
         }
 
         mCodecLooper->registerHandler(mCodec);
@@ -1521,6 +1526,9 @@ status_t MediaCodec::configure(
         uint32_t flags) {
     sp<AMessage> msg = new AMessage(kWhatConfigure, this);
 
+    // TODO: validity check log-session-id: it should be a 32-hex-digit.
+    format->findString("log-session-id", &mLogSessionId);
+
     if (mMetricsHandle != 0) {
         int32_t profile = 0;
         if (format->findInt32("profile", &profile)) {
@@ -1532,11 +1540,11 @@ status_t MediaCodec::configure(
         }
         mediametrics_setInt32(mMetricsHandle, kCodecEncoder,
                               (flags & CONFIGURE_FLAG_ENCODE) ? 1 : 0);
+
+        mediametrics_setCString(mMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
     }
 
     if (mIsVideo) {
-        // TODO: validity check log-session-id: it should be a 32-hex-digit.
-        format->findString("log-session-id", &mLogSessionId);
         format->findInt32("width", &mVideoWidth);
         format->findInt32("height", &mVideoHeight);
         if (!format->findInt32("rotation-degrees", &mRotationDegrees)) {
@@ -1544,7 +1552,6 @@ status_t MediaCodec::configure(
         }
 
         if (mMetricsHandle != 0) {
-            mediametrics_setCString(mMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
             mediametrics_setInt32(mMetricsHandle, kCodecWidth, mVideoWidth);
             mediametrics_setInt32(mMetricsHandle, kCodecHeight, mVideoHeight);
             mediametrics_setInt32(mMetricsHandle, kCodecRotation, mRotationDegrees);
@@ -3002,8 +3009,9 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     CHECK(msg->findInt32("err", &err));
                     CHECK(msg->findInt32("actionCode", &actionCode));
 
-                    ALOGE("Codec reported err %#x, actionCode %d, while in state %d/%s",
-                            err, actionCode, mState, stateString(mState).c_str());
+                    ALOGE("Codec reported err %#x/%s, actionCode %d, while in state %d/%s",
+                                              err, StrMediaError(err).c_str(), actionCode,
+                                              mState, stateString(mState).c_str());
                     if (err == DEAD_OBJECT) {
                         mFlags |= kFlagSawMediaServerDie;
                         mFlags &= ~kFlagIsComponentAllocated;
@@ -3059,10 +3067,8 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         case STOPPING:
                         {
                             if (mFlags & kFlagSawMediaServerDie) {
-                                bool postPendingReplies = true;
                                 if (mState == RELEASING && !mReplyID) {
                                     ALOGD("Releasing asynchronously, so nothing to reply here.");
-                                    postPendingReplies = false;
                                 }
                                 // MediaServer died, there definitely won't
                                 // be a shutdown complete notification after
@@ -3075,8 +3081,11 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 if (mState == RELEASING) {
                                     mComponentName.clear();
                                 }
-                                if (postPendingReplies) {
+                                if (mReplyID) {
                                     postPendingRepliesAndDeferredMessages(origin + ":dead");
+                                } else {
+                                    ALOGD("no pending replies: %s:dead following %s",
+                                          origin.c_str(), mLastReplyOrigin.c_str());
                                 }
                                 sendErrorResponse = false;
                             } else if (!mReplyID) {
@@ -4643,7 +4652,6 @@ status_t MediaCodec::queueCSDInputBuffer(size_t bufferIndex) {
     mCSD.erase(mCSD.begin());
     std::shared_ptr<C2Buffer> c2Buffer;
     sp<hardware::HidlMemory> memory;
-    size_t offset = 0;
 
     if (mFlags & kFlagUseBlockModel) {
         if (hasCryptoOrDescrambler()) {
@@ -4664,7 +4672,6 @@ status_t MediaCodec::queueCSDInputBuffer(size_t bufferIndex) {
             memcpy(mem->unsecurePointer(), csd->data(), csd->size());
             ssize_t heapOffset;
             memory = hardware::fromHeap(mem->getMemory(&heapOffset, nullptr));
-            offset += heapOffset;
         } else {
             std::shared_ptr<C2LinearBlock> block =
                 FetchLinearBlock(csd->size(), {std::string{mComponentName.c_str()}});
