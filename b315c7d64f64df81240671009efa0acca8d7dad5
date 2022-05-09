@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a27467_c5d457aa",
+        "filename": "media/mtp/mtp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1330244
+      },
+      "writtenOn": "2022-05-09T12:56:21Z",
+      "side": 1,
+      "message": "I don\u0027t find this definition in MTP spec v1.1 (P.262, Appendix F.1 Response Summary Table, https://www.usb.org/document-library/media-transfer-protocol-v11-spec-and-mtp-v11-adopters-agreement).\nCould you specify the source of definition?",
+      "revId": "b315c7d64f64df81240671009efa0acca8d7dad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
