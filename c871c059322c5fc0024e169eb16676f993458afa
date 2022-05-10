@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f58bb2_93d99fdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-05-10T21:12:41Z",
+      "side": 1,
+      "message": "I know this is probably just a draft, but a few quick notes.\n\nIn general, we\u0027ll need some kind of design doc to explain what these certifications are going to be doing, before we can reasonably review this.",
+      "revId": "c871c059322c5fc0024e169eb16676f993458afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa56141_0fae582c",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-05-10T21:12:41Z",
+      "side": 1,
+      "message": "there\u0027s no guarantee a working camera provider will have any device IDs. This is particularly the case for camera providers for external devices, like USB webcams.",
+      "revId": "c871c059322c5fc0024e169eb16676f993458afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5bc893f_f548ee12",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-05-10T21:12:41Z",
+      "side": 1,
+      "message": "What happens if apexservice is not available? This needs to be resilient to that at boot time, especially.",
+      "revId": "c871c059322c5fc0024e169eb16676f993458afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
