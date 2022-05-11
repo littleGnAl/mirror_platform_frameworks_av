@@ -181,7 +181,7 @@ void highpass_50Hz_at_12k8(
         L_tmp2 = fxp_mac_16by16(x0,  8106, L_tmp2);
 
 
-        L_tmp1 = ((L_tmp1 >> 14) + L_tmp2) << 2;
+        L_tmp1 = ((int64_t)(L_tmp1 >> 14) + L_tmp2) << 2;
 
         y2_hi = y1_hi;
         y2_lo = y1_lo;
