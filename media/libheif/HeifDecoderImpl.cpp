@@ -25,7 +25,6 @@
 #include <binder/IMemory.h>
 #include <binder/MemoryDealer.h>
 #include <drm/drm_framework_common.h>
-#include <log/log.h>
 #include <media/mediametadataretriever.h>
 #include <media/stagefright/MediaSource.h>
 #include <media/stagefright/foundation/ADebug.h>
@@ -422,13 +421,7 @@ bool HeifDecoderImpl::reinit(HeifFrameInfo* frameInfo) {
 
         initFrameInfo(&mSequenceInfo, videoFrame);
 
-        const char* frameCount = mRetriever->extractMetadata(METADATA_KEY_VIDEO_FRAME_COUNT);
-        if (frameCount == nullptr) {
-            android_errorWriteWithInfoLog(0x534e4554, "215002587", -1, NULL, 0);
-            ALOGD("No valid sequence information in metadata");
-            return false;
-        }
-        mSequenceLength = atoi(frameCount);
+        mSequenceLength = atoi(mRetriever->extractMetadata(METADATA_KEY_VIDEO_FRAME_COUNT));
 
         if (defaultInfo == nullptr) {
             defaultInfo = &mSequenceInfo;
