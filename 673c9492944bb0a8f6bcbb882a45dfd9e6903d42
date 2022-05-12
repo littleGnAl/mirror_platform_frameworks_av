@@ -106,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c281ea8_96878983",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-05-12T18:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99896e7e_3b7754be",
+      "range": {
+        "startLine": 646,
+        "startChar": 73,
+        "endLine": 647,
+        "endChar": 73
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc7c1efe_5366a2b2",
@@ -119,6 +143,30 @@
       "writtenOn": "2022-04-28T22:55:41Z",
       "side": 1,
       "message": "instead of writing to HDRStaticInfo which is from VideoAPI.h can we directly write to a structure of type  C2StreamHdrStaticInfo::output?\n\ni.e.  C2StreamHdrStaticInfo::output hdrStaticInfo;\n\ngetMDCV(\u0026hdrStaticInfo);\n\ngetCLL(\u0026hdrStaticInfo);\n\n\ngetMDCV and getCLL will need to handle required multiplications by 0.0002.\n\nif both didn\u0027t return an error then call mIntf-\u003econfig()?\n\nwith this we will get rid of the additional conversions and dependency of VideoAPI.h",
+      "range": {
+        "startLine": 648,
+        "startChar": 4,
+        "endLine": 648,
+        "endChar": 37
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a43584_678d93cb",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-05-12T18:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc7c1efe_5366a2b2",
       "range": {
         "startLine": 648,
         "startChar": 4,
@@ -199,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f712e5f5_5c7e40c4",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-05-12T18:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a59824_518872f9",
+      "range": {
+        "startLine": 673,
+        "startChar": 8,
+        "endLine": 673,
+        "endChar": 29
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea499a4b_ffda7389",
@@ -222,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba68343_0cfa6023",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-05-12T18:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea499a4b_ffda7389",
+      "range": {
+        "startLine": 674,
+        "startChar": 42,
+        "endLine": 674,
+        "endChar": 68
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb370346_beb3f23b",
@@ -235,6 +331,30 @@
       "writtenOn": "2022-04-28T22:55:41Z",
       "side": 1,
       "message": "this isn\u0027t needed",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 48
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff051f49_5a94262e",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-05-12T18:40:00Z",
+      "side": 1,
+      "message": "the Round trip test is failing in decoding with this change. Should we remove the change..?",
+      "parentUuid": "fb370346_beb3f23b",
       "range": {
         "startLine": 690,
         "startChar": 0,
@@ -293,6 +413,24 @@
       "writtenOn": "2022-04-28T22:55:41Z",
       "side": 1,
       "message": "remove not needed",
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "868d50f9_3fb994ac",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-05-12T18:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4212303_79c2d3e4",
       "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
