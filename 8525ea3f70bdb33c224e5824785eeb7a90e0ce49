@@ -154,6 +154,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "119136e2_d9eea9a8",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "I would recommend not adding a handle() public method here as it is not meant to be used by clients and implementations - and is only used for marshaling and that seems android specific. You can add an android-native-handle getter in the android implementation of _C2FenceFactory.\n\nnit: Also note that the term \u0027native handle\u0027 in this file does not mean an android native handle - but an opaque handle.\n\nAlso note that handle() is the correct terminology as this returns a pointer to the actual opaque handle (which is a pointer, and not a cloned handle)",
+      "parentUuid": "6d39cb3c_e6634dc8",
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aff09766_e9295688",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
         "patchSetId": 3

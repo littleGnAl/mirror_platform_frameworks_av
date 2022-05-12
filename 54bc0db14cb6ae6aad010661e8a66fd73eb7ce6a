@@ -16,6 +16,52 @@
       "message": "WIP. Change has not been validated yet.",
       "revId": "54bc0db14cb6ae6aad010661e8a66fd73eb7ce6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2315697b_8cc3c865",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "who is the intended user of this method? This seems to be an internal user, so it should not be exposed in the public API.",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 66
+      },
+      "revId": "54bc0db14cb6ae6aad010661e8a66fd73eb7ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa5ae90_ec71e81a",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "this seems to be duplicate code...",
+      "range": {
+        "startLine": 879,
+        "startChar": 4,
+        "endLine": 882,
+        "endChar": 40
+      },
+      "revId": "54bc0db14cb6ae6aad010661e8a66fd73eb7ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

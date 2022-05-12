@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e70523a_04b71ebf",
+        "filename": "media/codec2/hidl/1.0/utils/types.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "another option is to do the native handle marshalling just here and not expose it on C2FenceFactory.\n\nnote that we only support marshaling sync fence, that could be detected by isHW and fenceFd() so that may simplify this entire CL...",
+      "range": {
+        "startLine": 763,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 29
+      },
+      "revId": "261e8a9a837a49fc6f9ea01f9e9a381d6bfd7668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19efc1e1_5bc21d8c",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "Thanks. For now isHW on android specifically meant that this check is adequate as gralloc also requires a hw sync. But it\u0027s true that in some future HW we may have multiple types of HW fences.",
+      "range": {
+        "startLine": 885,
+        "startChar": 4,
+        "endLine": 886,
+        "endChar": 66
+      },
+      "revId": "261e8a9a837a49fc6f9ea01f9e9a381d6bfd7668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6273b045_385e8275",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "android is already implied in this file. I think this is called a SYNC_FENCE",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "261e8a9a837a49fc6f9ea01f9e9a381d6bfd7668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d048f560_45a7fa7a",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "SyncFenceImpl?",
+      "range": {
+        "startLine": 195,
+        "startChar": 23,
+        "endLine": 195,
+        "endChar": 39
+      },
+      "revId": "261e8a9a837a49fc6f9ea01f9e9a381d6bfd7668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f81c805_c5626bed",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "I think here it\u0027s better to clamp here to the supported range, so timeoutMs could become INT_MAX.",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 31
+      },
+      "revId": "261e8a9a837a49fc6f9ea01f9e9a381d6bfd7668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176b9ecc_ca7f2882",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:02:19Z",
+      "side": 1,
+      "message": "\u003c 0 || \u003e1 ?\n\nThis implementation seems to intermingle implementation details from multiple classes.\n\nI recommend doing something akin to C2HandleIon::IsValid...\n\n// document somewhere in C2FenceImpl that the type is the first (or last) int in\nthe native handle\n\n// sparsely validate native handle to get type (assumes a valid native handle)\n// NOTE: while we can spend more checks validating native handles they are not\n// fool proof\n\n C2FenceFactory::GetTypeFromNativeHandle(handle) {\n   if (nh \u0026\u0026 nh-\u003enumFds \u003e\u003d 0 \u0026\u0026 nh-\u003enumFds \u003c MAX_FENCE_FDS \u0026\u0026 nh-\u003enumInts \u003e 0) {\n     return nh-\u003edata[nh-\u003enumFds];\n   }\n   return INVALID_FENCE;\n }\n\nthen\n\n switch(type) {\n   case SYNC_FENCE:\n     return SyncFenceImpl::CreateFromNativeHandle(handle);\n    \n...\n\nwithout a convention on where the type is, this would need to be some sort of:\n\n if (SyncFenceImpl::IsValidHandle(handle)) {\n   return \n SyncFenceImpl::CreateFromNativeHandle...\n } else { ...\n \nwhich is not optimal.",
+      "range": {
+        "startLine": 263,
+        "startChar": 19,
+        "endLine": 263,
+        "endChar": 42
+      },
+      "revId": "261e8a9a837a49fc6f9ea01f9e9a381d6bfd7668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
