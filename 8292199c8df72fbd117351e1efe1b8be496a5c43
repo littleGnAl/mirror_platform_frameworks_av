@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a477d34a_13d24831",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4117,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-05-12T03:35:40Z",
+      "side": 1,
+      "message": "Is it possible that connectToSurface succeeded and mCodec-\u003esetSurface is failed? (I assume it\u0027s unlikely though)\nIn this scenario, do we need any failure rollback action?\n\nMaybe, I\u0027m overthinking.",
+      "range": {
+        "startLine": 4112,
+        "startChar": 0,
+        "endLine": 4117,
+        "endChar": 21
+      },
+      "revId": "8292199c8df72fbd117351e1efe1b8be496a5c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
