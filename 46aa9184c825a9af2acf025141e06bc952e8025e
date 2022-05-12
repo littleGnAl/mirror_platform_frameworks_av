@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faca95b3_a255805a",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2022-05-12T11:14:54Z",
+      "side": 1,
+      "message": "Hi Ray, a NULL check for \u0027mDecoder\u0027 is added in FrameDecoder::extractInternal() and all the changes made to fuzzer are removed.",
+      "parentUuid": "ed5531b1_92d9b7d7",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "46aa9184c825a9af2acf025141e06bc952e8025e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b92926c_bca56f8a",
