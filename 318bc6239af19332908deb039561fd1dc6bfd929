@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72dab96_0241c13f",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-12T21:58:02Z",
+      "side": 1,
+      "message": "remove BT.2020",
+      "range": {
+        "startLine": 206,
+        "startChar": 18,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "318bc6239af19332908deb039561fd1dc6bfd929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd1b3b69_02c8f783",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-12T21:58:02Z",
+      "side": 1,
+      "message": "mHdrStaticInfo",
+      "range": {
+        "startLine": 377,
+        "startChar": 51,
+        "endLine": 377,
+        "endChar": 67
+      },
+      "revId": "318bc6239af19332908deb039561fd1dc6bfd929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82f88d1_7cc33c94",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-12T21:58:02Z",
+      "side": 1,
+      "message": "C2StreamHdrStaticMetadataInfo and C2StreamHdrStaticInfo are same.\nSo no need for two structures and copying from one to another.\n\ndeclare\n C2StreamHdrStaticMetadataInfo::output HdrStaticMetadataInfo;\n \npass it to getMDCV and getCLL and remove line 662 to 674",
+      "revId": "318bc6239af19332908deb039561fd1dc6bfd929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

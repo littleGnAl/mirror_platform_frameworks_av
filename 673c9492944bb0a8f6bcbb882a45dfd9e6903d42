@@ -367,6 +367,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43ac0005_8ec5809b",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-12T21:58:02Z",
+      "side": 1,
+      "message": "Was patchset 8 working?\nNeed to check why configUpdate() is necessary to signal hdr static info where as it wasn\u0027t needed for color aspects.",
+      "parentUuid": "ff051f49_5a94262e",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 48
+      },
+      "revId": "673c9492944bb0a8f6bcbb882a45dfd9e6903d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "226a8d5a_c015a4ab",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 8
