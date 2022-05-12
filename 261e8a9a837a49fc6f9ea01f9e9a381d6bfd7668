@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3ea8ec2_88d80eda",
+        "filename": "media/codec2/hidl/1.0/utils/types.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T00:03:46Z",
+      "side": 1,
+      "message": "for backward compatibility it is critical that null fence returns nullptr here.",
+      "range": {
+        "startLine": 764,
+        "startChar": 23,
+        "endLine": 764,
+        "endChar": 33
+      },
+      "revId": "261e8a9a837a49fc6f9ea01f9e9a381d6bfd7668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e70523a_04b71ebf",
         "filename": "media/codec2/hidl/1.0/utils/types.cpp",
         "patchSetId": 6
