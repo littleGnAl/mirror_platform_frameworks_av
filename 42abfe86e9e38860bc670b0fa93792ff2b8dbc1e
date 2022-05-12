@@ -62,6 +62,30 @@
       },
       "revId": "42abfe86e9e38860bc670b0fa93792ff2b8dbc1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c783381_6e2bef74",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-12T22:44:51Z",
+      "side": 1,
+      "message": "I seem to agree. The missing info is that images don\u0027t have right shifts (they are implied to be allocated - depth), but we recognize the following configurations: depth \u003d 8, allocated \u003d 8 and depth \u003d 10, allocated \u003d 16.\n\nwill we also have to adjust img-\u003emBitDepthAllocated?\n\nThis seems to become:\n\n if (ToMediaImage \u0026\u0026 plane.rightShift \u003d\u003d 8 \u0026\u0026 img-\u003emBitDepthAllocated \u003d\u003d 16 \u0026\u0026 img-\u003emBitDepth \u003d\u003d 8) {\n   imgRow +\u003d 1;\n   viewRow +\u003d 1;\n   img-\u003emBitDepthAllocated \u003d 8;\n }\n\nwe may not need to catch/handle the invalid cases that are not in use at the moment here.",
+      "parentUuid": "6b6abcd5_eae4245a",
+      "range": {
+        "startLine": 122,
+        "startChar": 12,
+        "endLine": 122,
+        "endChar": 40
+      },
+      "revId": "42abfe86e9e38860bc670b0fa93792ff2b8dbc1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
