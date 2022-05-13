@@ -39,6 +39,23 @@
       "message": "I think it is better to fix  SwAudioOutputDescriptor::open() to use the default values for is_streaming has_video ...",
       "revId": "1da938275de9034c6f1c650db65ac6db09141402",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db216bf_c2376b49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-05-13T09:59:03Z",
+      "side": 1,
+      "message": "Lets merge this CL as is and we will fix the audio policy manager code internally",
+      "revId": "1da938275de9034c6f1c650db65ac6db09141402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
