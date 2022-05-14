@@ -18,6 +18,8 @@
 #ifndef MEDIA_CODEC_CONSTANTS_H_
 #define MEDIA_CODEC_CONSTANTS_H_
 
+// NOLINTBEGIN(misc-definitions-in-headers)
+
 namespace {
 
 // from MediaCodecInfo.java
@@ -887,5 +889,7 @@ constexpr char PARAMETER_KEY_TUNNEL_PEEK[] =  "tunnel-peek";
 constexpr char PARAMETER_KEY_VIDEO_BITRATE[] = "video-bitrate";
 
 }
+
+// NOLINTEND(misc-definitions-in-headers)
 
 #endif  // MEDIA_CODEC_CONSTANTS_H_
