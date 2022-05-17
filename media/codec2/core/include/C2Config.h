@@ -277,6 +277,8 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     // encoding statistics, average block qp of a frame
     kParamIndexAverageBlockQuantization, // int32
+    // encoding statistics, block stat of a frame
+    kParamIndexBlockStatistics, // int32
 };
 
 }
@@ -2500,6 +2502,29 @@ C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
 typedef C2StreamParam<C2Info, C2SimpleValueStruct<int32_t>, kParamIndexAverageBlockQuantization>
         C2AndroidStreamAverageBlockQuantizationInfo;
 constexpr char C2_PARAMKEY_AVERAGE_QP[] = "coded.average-qp";
+
+/**
+ * Sum of blocks exported from video encoder.
+ */
+struct C2BlockStatisticsStruct {
+    int32_t skip;
+    int32_t intra;
+    int32_t zeroMV;
+
+    inline C2BlockStatisticsStruct();
+
+    inline C2BlockStatisticsStruct(int32_t skip_, int32_t intra_, int32_t zeroMV_)
+        : skip(skip_), intra(intra_), zeroMV(zeroMV_) { }
+
+    DEFINE_AND_DESCRIBE_C2STRUCT(BlockStatistics)
+    C2FIELD(skip, "skip")
+    C2FIELD(intra, "intra")
+    C2FIELD(zeroMV, "zeroMV")
+};
+
+typedef C2StreamParam<C2Info, C2BlockStatisticsStruct, kParamIndexBlockStatistics>
+        C2StreamBlockStatisticsInfo;
+constexpr char C2_PARAMKEY_BLOCK_STAT[] = "coded.block-stat";
 
 /// @}
 

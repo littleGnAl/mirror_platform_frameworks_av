@@ -1473,13 +1473,19 @@ void CCodec::configure(const sp<AMessage> &msg) {
             && (config->mDomain & Config::IS_VIDEO)
             && msg->findInt32(KEY_VIDEO_ENCODING_STATISTICS_LEVEL, &encodingStatisticsLevel)) {
             // Higher level include all the enc stats belong to lower level.
+            std::vector<C2Param::Index> indices {
+                kParamIndexAverageBlockQuantization,
+                kParamIndexPictureType
+            };
             switch (encodingStatisticsLevel) {
-                // case VIDEO_ENCODING_STATISTICS_LEVEL_2: // reserved for the future level 2
+                // case VIDEO_ENCODING_STATISTICS_LEVEL_3: // reserved for the future level 3
                                                            // with more enc stat kinds
-                // Future extended encoding statistics for the level 2 should be added here
+                // Future extended encoding statistics for the level 3 should be added here
+                case VIDEO_ENCODING_STATISTICS_LEVEL_2:
+                    indices.push_back(kParamIndexBlockStatistics);
+                    [[fallthrough]];
                 case VIDEO_ENCODING_STATISTICS_LEVEL_1:
-                    config->subscribeToConfigUpdate(comp,
-                        {kParamIndexAverageBlockQuantization, kParamIndexPictureType});
+                    config->subscribeToConfigUpdate(comp, indices);
                     break;
                 case VIDEO_ENCODING_STATISTICS_LEVEL_NONE:
                     break;

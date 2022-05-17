@@ -981,6 +981,13 @@ void CCodecConfig::initializeStandardParams() {
             return C2Value();
         }));
 
+    add(ConfigMapper(KEY_VIDEO_BLOCK_STAT_SKIP, C2_PARAMKEY_BLOCK_STAT, "skip")
+        .limitTo(D::ENCODER & D::VIDEO & D::READ));
+    add(ConfigMapper(KEY_VIDEO_BLOCK_STAT_INTRA, C2_PARAMKEY_BLOCK_STAT, "intra")
+        .limitTo(D::ENCODER & D::VIDEO & D::READ));
+    add(ConfigMapper(KEY_VIDEO_BLOCK_STAT_ZERO_MV, C2_PARAMKEY_BLOCK_STAT, "zeroMV")
+        .limitTo(D::ENCODER & D::VIDEO & D::READ));
+
     /* still to do
        not yet used by MediaCodec, but defined as MediaFormat
     KEY_AUDIO_SESSION_ID // we use "audio-hw-sync"
@@ -1094,6 +1101,8 @@ status_t CCodecConfig::initialize(
                               C2_PARAMKEY_AVERAGE_QP);
                 addLocalParam(new C2StreamPictureTypeMaskInfo::output(0u, 0),
                               C2_PARAMKEY_PICTURE_TYPE);
+                addLocalParam(new C2StreamBlockStatisticsInfo::output(0u, 0, 0, 0),
+                              C2_PARAMKEY_BLOCK_STAT);
             }
         }
     }

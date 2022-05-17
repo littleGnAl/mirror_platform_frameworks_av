@@ -754,6 +754,7 @@ constexpr int32_t PICTURE_TYPE_P = 2;
 constexpr int32_t PICTURE_TYPE_B = 3;
 constexpr int32_t PICTURE_TYPE_UNKNOWN = 0;
 
+constexpr int32_t VIDEO_ENCODING_STATISTICS_LEVEL_2 = 2;
 constexpr int32_t VIDEO_ENCODING_STATISTICS_LEVEL_1 = 1;
 constexpr int32_t VIDEO_ENCODING_STATISTICS_LEVEL_NONE = 0;
 
@@ -834,6 +835,9 @@ constexpr char KEY_TILE_WIDTH[] = "tile-width";
 constexpr char KEY_TRACK_ID[] = "track-id";
 constexpr char KEY_VIDEO_ENCODING_STATISTICS_LEVEL[] = "video-encoding-statistics-level";
 constexpr char KEY_VIDEO_QP_AVERAGE[] = "video-qp-average";
+constexpr char KEY_VIDEO_BLOCK_STAT_SKIP[] = "video-block-stat-skip";
+constexpr char KEY_VIDEO_BLOCK_STAT_INTRA[] = "video-block-stat-intra";
+constexpr char KEY_VIDEO_BLOCK_STAT_ZERO_MV[] = "video-block-stat-zero-mv";
 constexpr char KEY_VIDEO_QP_B_MAX[] = "video-qp-b-max";
 constexpr char KEY_VIDEO_QP_B_MIN[] = "video-qp-b-min";
 constexpr char KEY_VIDEO_QP_I_MAX[] = "video-qp-i-max";
