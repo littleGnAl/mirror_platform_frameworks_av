@@ -60,6 +60,26 @@ cc_test {
 }
 
 cc_test {
+    name: "SpatializerTest",
+    vendor: true,
+    gtest: true,
+    test_suites: ["device-tests"],
+    srcs: [
+        "SpatializerTest.cpp",
+        "EffectTestHelper.cpp",
+    ],
+    static_libs: [
+        "libaudioutils",
+    ],
+    shared_libs: [
+        "liblog",
+    ],
+    header_libs: [
+        "libhardware_headers",
+    ],
+}
+
+cc_test {
     name: "lvmtest",
     host_supported: false,
     proprietary: true,
