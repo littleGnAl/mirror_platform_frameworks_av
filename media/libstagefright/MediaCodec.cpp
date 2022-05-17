@@ -4099,26 +4099,29 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 break;
             }
 
-            if (asyncNotify != nullptr) {
-                if (mSurface != NULL) {
-                    if (!mReleaseSurface) {
-                        uint64_t usage = 0;
-                        if (mSurface->getConsumerUsage(&usage) != OK) {
-                            usage = 0;
-                        }
-                        mReleaseSurface.reset(new ReleaseSurface(usage));
+            bool forceSync = false;
+            if (asyncNotify != nullptr && mSurface != NULL) {
+                if (!mReleaseSurface) {
+                    uint64_t usage = 0;
+                    if (mSurface->getConsumerUsage(&usage) != OK) {
+                        usage = 0;
                     }
-                    if (mSurface != mReleaseSurface->getSurface()) {
-                        status_t err = connectToSurface(mReleaseSurface->getSurface());
-                        ALOGW_IF(err != OK, "error connecting to release surface: err = %d", err);
-                        if (err == OK && !(mFlags & kFlagUsesSoftwareRenderer)) {
-                            err = mCodec->setSurface(mReleaseSurface->getSurface());
-                            ALOGW_IF(err != OK, "error setting release surface: err = %d", err);
-                        }
-                        if (err == OK) {
-                            (void)disconnectFromSurface();
-                            mSurface = mReleaseSurface->getSurface();
-                        }
+                    mReleaseSurface.reset(new ReleaseSurface(usage));
+                }
+                if (mSurface != mReleaseSurface->getSurface()) {
+                    status_t err = connectToSurface(mReleaseSurface->getSurface());
+                    ALOGW_IF(err != OK, "error connecting to release surface: err = %d", err);
+                    if (err == OK && !(mFlags & kFlagUsesSoftwareRenderer)) {
+                        err = mCodec->setSurface(mReleaseSurface->getSurface());
+                        ALOGW_IF(err != OK, "error setting release surface: err = %d", err);
+                    }
+                    if (err == OK) {
+                        (void)disconnectFromSurface();
+                        mSurface = mReleaseSurface->getSurface();
+                    } else {
+                        // We were not able to switch the surface, so force
+                        // synchronous release.
+                        forceSync = true;
                     }
                 }
             }
@@ -4142,8 +4145,10 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             }
 
             if (asyncNotify != nullptr) {
-                mResourceManagerProxy->markClientForPendingRemoval();
-                postPendingRepliesAndDeferredMessages("kWhatRelease:async");
+                if (!forceSync) {
+                    mResourceManagerProxy->markClientForPendingRemoval();
+                    postPendingRepliesAndDeferredMessages("kWhatRelease:async");
+                }
                 asyncNotifyPost.clear();
                 mAsyncReleaseCompleteNotification = asyncNotify;
             }
@@ -4652,7 +4657,6 @@ status_t MediaCodec::queueCSDInputBuffer(size_t bufferIndex) {
     mCSD.erase(mCSD.begin());
     std::shared_ptr<C2Buffer> c2Buffer;
     sp<hardware::HidlMemory> memory;
-    size_t offset = 0;
 
     if (mFlags & kFlagUseBlockModel) {
         if (hasCryptoOrDescrambler()) {
@@ -4673,7 +4677,6 @@ status_t MediaCodec::queueCSDInputBuffer(size_t bufferIndex) {
             memcpy(mem->unsecurePointer(), csd->data(), csd->size());
             ssize_t heapOffset;
             memory = hardware::fromHeap(mem->getMemory(&heapOffset, nullptr));
-            offset += heapOffset;
         } else {
             std::shared_ptr<C2LinearBlock> block =
                 FetchLinearBlock(csd->size(), {std::string{mComponentName.c_str()}});

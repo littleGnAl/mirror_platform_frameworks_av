@@ -20,6 +20,8 @@
 #include <log/log.h>
 #include <utils/NativeHandle.h>
 
+#include <android-base/properties.h>
+
 #include <C2Component.h>
 #include <C2Param.h>
 #include <util/C2InterfaceHelper.h>
@@ -324,7 +326,8 @@ CCodecConfig::CCodecConfig()
     : mInputFormat(new AMessage),
       mOutputFormat(new AMessage),
       mUsingSurface(false),
-      mTunneled(false) { }
+      mTunneled(false),
+      mPushBlankBuffersOnStop(false) { }
 
 void CCodecConfig::initializeStandardParams() {
     typedef Domain D;
@@ -957,11 +960,25 @@ void CCodecConfig::initializeStandardParams() {
         .limitTo(D::ENCODER & D::VIDEO & D::READ));
 
     add(ConfigMapper(KEY_PICTURE_TYPE, C2_PARAMKEY_PICTURE_TYPE, "value")
-        .limitTo(D::ENCODER & D::VIDEO & D::READ));
+        .limitTo(D::ENCODER & D::VIDEO & D::READ)
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t sdk;
+            C2Config::picture_type_t c2;
+            if (v.get(&sdk) && C2Mapper::map(sdk, &c2)) {
+                return C2Value(c2);
+            }
+            return C2Value();
+        }, [](C2Value v) -> C2Value {
+            C2Config::picture_type_t c2;
+            int32_t sdk = PICTURE_TYPE_UNKNOWN;
+            using C2ValueType=typename _c2_reduce_enum_to_underlying_type<decltype(c2)>::type;
+            if (v.get((C2ValueType*)&c2) && C2Mapper::map(c2, &sdk)) {
+                return sdk;
+            }
+            return C2Value();
+        }));
 
     /* still to do
-    constexpr char KEY_PUSH_BLANK_BUFFERS_ON_STOP[] = "push-blank-buffers-on-shutdown";
-
        not yet used by MediaCodec, but defined as MediaFormat
     KEY_AUDIO_SESSION_ID // we use "audio-hw-sync"
     KEY_OUTPUT_REORDER_DEPTH
@@ -1068,6 +1085,13 @@ status_t CCodecConfig::initialize(
                     C2_PARAMKEY_SURFACE_SCALING_MODE);
         } else {
             addLocalParam(new C2StreamColorAspectsInfo::input(0u), C2_PARAMKEY_COLOR_ASPECTS);
+
+            if (domain.value == C2Component::DOMAIN_VIDEO) {
+                addLocalParam(new C2AndroidStreamAverageBlockQuantizationInfo::output(0u, 0),
+                              C2_PARAMKEY_AVERAGE_QP);
+                addLocalParam(new C2StreamPictureTypeMaskInfo::output(0u, 0),
+                              C2_PARAMKEY_PICTURE_TYPE);
+            }
         }
     }
 
@@ -1109,15 +1133,21 @@ status_t CCodecConfig::subscribeToConfigUpdate(
         const std::shared_ptr<Codec2Client::Configurable> &configurable,
         const std::vector<C2Param::Index> &indices,
         c2_blocking_t blocking) {
+    static const int32_t kProductFirstApiLevel =
+        base::GetIntProperty<int32_t>("ro.product.first_api_level", 0);
+    static const int32_t kBoardApiLevel =
+        base::GetIntProperty<int32_t>("ro.board.first_api_level", 0);
+    static const int32_t kFirstApiLevel =
+        (kBoardApiLevel != 0) ? kBoardApiLevel : kProductFirstApiLevel;
     mSubscribedIndices.insert(indices.begin(), indices.end());
-    // TODO: enable this when components no longer crash on this config
-    if (mSubscribedIndices.size() != mSubscribedIndicesSize && false) {
-        std::vector<uint32_t> indices;
+    if (mSubscribedIndices.size() != mSubscribedIndicesSize
+            && kFirstApiLevel >= __ANDROID_API_T__) {
+        std::vector<uint32_t> indicesVector;
         for (C2Param::Index ix : mSubscribedIndices) {
-            indices.push_back(ix);
+            indicesVector.push_back(ix);
         }
         std::unique_ptr<C2SubscribedParamIndicesTuning> subscribeTuning =
-            C2SubscribedParamIndicesTuning::AllocUnique(indices);
+            C2SubscribedParamIndicesTuning::AllocUnique(indicesVector);
         std::vector<std::unique_ptr<C2SettingResult>> results;
         c2_status_t c2Err = configurable->config({ subscribeTuning.get() }, blocking, &results);
         if (c2Err != C2_OK && c2Err != C2_BAD_INDEX) {

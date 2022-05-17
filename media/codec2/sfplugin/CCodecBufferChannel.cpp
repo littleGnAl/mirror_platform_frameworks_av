@@ -15,6 +15,7 @@
  */
 
 //#define LOG_NDEBUG 0
+#include <utils/Errors.h>
 #define LOG_TAG "CCodecBufferChannel"
 #define ATRACE_TAG  ATRACE_TAG_VIDEO
 #include <utils/Log.h>
@@ -48,6 +49,7 @@
 #include <media/stagefright/foundation/hexdump.h>
 #include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/SkipCutBuffer.h>
+#include <media/stagefright/SurfaceUtils.h>
 #include <media/MediaCodecBuffer.h>
 #include <mediadrm/ICrypto.h>
 #include <system/window.h>
@@ -2096,12 +2098,13 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface) {
 }
 
 PipelineWatcher::Clock::duration CCodecBufferChannel::elapsed() {
-    // When client pushed EOS, we want all the work to be done quickly.
     // Otherwise, component may have stalled work due to input starvation up to
     // the sum of the delay in the pipeline.
+    // TODO(b/231253301): When client pushed EOS, the pipeline could have less
+    //                    number of frames.
     size_t n = 0;
-    if (!mInputMetEos) {
-        size_t outputDelay = mOutput.lock()->outputDelay;
+    size_t outputDelay = mOutput.lock()->outputDelay;
+    {
         Mutexed<Input>::Locked input(mInput);
         n = input->inputDelay + input->pipelineDelay + outputDelay;
     }
@@ -2178,6 +2181,15 @@ status_t toStatusT(c2_status_t c2s, c2_operation_t c2op) {
     default:
         return -static_cast<status_t>(c2s);
     }
+}
+
+status_t CCodecBufferChannel::pushBlankBufferToOutputSurface() {
+  Mutexed<OutputSurface>::Locked output(mOutputSurface);
+  sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(output->surface.get());
+  if (nativeWindow == nullptr) {
+      return INVALID_OPERATION;
+  }
+  return pushBlankBuffersToNativeWindow(nativeWindow.get());
 }
 
 }  // namespace android
