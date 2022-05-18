@@ -1784,6 +1784,7 @@ void CCodec::start() {
         if (config->mInputSurface) {
             err2 = config->mInputSurface->start();
             config->mInputSurfaceDataspace = config->mInputSurface->getDataspace();
+            ALOGI("input surface initial dataspace: 0x%x", config->mInputSurfaceDataspace);
         }
         buffersBoundToCodec = config->mBuffersBoundToCodec;
     }

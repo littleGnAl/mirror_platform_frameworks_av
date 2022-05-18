@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "CCodecConfig"
 #include <cutils/properties.h>
 #include <log/log.h>
@@ -1199,6 +1199,7 @@ bool CCodecConfig::updateConfiguration(
             && mInputSurfaceDataspace != mInputSurface->getDataspace()) {
         changed = true;
         mInputSurfaceDataspace = mInputSurface->getDataspace();
+        ALOGI("input surface changed dataspace: 0x%x", mInputSurfaceDataspace);
     }
 
     ALOGV("updated configuration has %zu params (%s)", mCurrentConfig.size(),
@@ -1491,6 +1492,8 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
                 msg->setInt32(KEY_COLOR_TRANSFER, transfer);
             }
             msg->setInt32("android._dataspace", dataspace);
+            ALOGI("color space set from input surface: dataspace=0x%x range=%d standard=%d transfer=%d",
+                  dataspace, range, standard, transfer);
         }
 
         // HDR static info

@@ -4528,7 +4528,7 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
     }
     mOutputFormat = format;
     mapFormat(mComponentName, format, nullptr, true);
-    ALOGV("[%s] output format changed to: %s",
+    ALOGI("[%s] output format changed to: %s",
             mComponentName.c_str(), mOutputFormat->debugString(4).c_str());
 
     if (mSoftRenderer == NULL &&
