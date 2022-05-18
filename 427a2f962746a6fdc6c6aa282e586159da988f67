@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b26d9a_0665f854",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-18T00:42:26Z",
+      "side": 1,
+      "message": "I was wondering about it. We do similar for many other keys though... E.g. \"smpte2086.red.x\", \"cta861.max-fall\" just above.\n\nI don\u0027t think we need to protect hdr format from the app.",
+      "parentUuid": "9bdc6748_25c4cc7d",
+      "range": {
+        "startLine": 516,
+        "startChar": 21,
+        "endLine": 516,
+        "endChar": 43
+      },
+      "revId": "427a2f962746a6fdc6c6aa282e586159da988f67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a6a27f2_bffaa7db",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-28T18:11:49Z",
       "side": 1,
       "message": "is it always true? I thought there were some SDR profiles",
+      "range": {
+        "startLine": 549,
+        "startChar": 30,
+        "endLine": 549,
+        "endChar": 33
+      },
+      "revId": "427a2f962746a6fdc6c6aa282e586159da988f67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42164fd_079698a4",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-18T00:42:26Z",
+      "side": 1,
+      "message": "My understanding is that they are always SDR. The backward compatibility profiles may be SDR - but those will get routed to AVC/HEVC decoder, not the DV decoder.",
+      "parentUuid": "6a6a27f2_bffaa7db",
       "range": {
         "startLine": 549,
         "startChar": 30,
