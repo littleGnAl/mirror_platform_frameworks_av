@@ -34,6 +34,24 @@
       "parentUuid": "e16632ed_af897425",
       "revId": "04f67226152600cdd9c09f372a79283e120f3e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f18606d_66711340",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1671,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-18T00:37:18Z",
+      "side": 1,
+      "message": "It means that it is unknown whether it is HDR or SDR.",
+      "parentUuid": "dd1dad5c_dee83492",
+      "revId": "04f67226152600cdd9c09f372a79283e120f3e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
