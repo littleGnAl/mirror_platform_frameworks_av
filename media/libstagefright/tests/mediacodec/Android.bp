@@ -28,6 +28,7 @@ package {
 cc_test {
     name: "mediacodecTest",
     gtest: true,
+    isolated: true,
 
     srcs: [
         "MediaCodecTest.cpp",
