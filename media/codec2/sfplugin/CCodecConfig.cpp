@@ -612,10 +612,28 @@ void CCodecConfig::initializeStandardParams() {
     add(ConfigMapper("csd-0",           C2_PARAMKEY_INIT_DATA,       "value")
         .limitTo(D::OUTPUT & D::READ));
 
+    // deprecated
     add(ConfigMapper(KEY_HDR10_PLUS_INFO, C2_PARAMKEY_INPUT_HDR10_PLUS_INFO, "value")
         .limitTo(D::VIDEO & D::PARAM & D::INPUT));
 
+    // deprecated
     add(ConfigMapper(KEY_HDR10_PLUS_INFO, C2_PARAMKEY_OUTPUT_HDR10_PLUS_INFO, "value")
+        .limitTo(D::VIDEO & D::OUTPUT));
+
+    add(ConfigMapper(KEY_HDR10_PLUS_INFO, C2_PARAMKEY_INPUT_HDR_DYNAMIC_INFO, "type")
+        .limitTo(D::VIDEO & D::PARAM & D::INPUT)
+        .withMapper([](C2Value) -> C2Value {
+            return C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40;
+        }));
+    add(ConfigMapper(KEY_HDR10_PLUS_INFO, C2_PARAMKEY_INPUT_HDR_DYNAMIC_INFO, "data")
+        .limitTo(D::VIDEO & D::PARAM & D::INPUT));
+
+    add(ConfigMapper(KEY_HDR10_PLUS_INFO, C2_PARAMKEY_OUTPUT_HDR_DYNAMIC_INFO, "type")
+        .limitTo(D::VIDEO & D::OUTPUT)
+        .withMapper([](C2Value) -> C2Value {
+            return C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40;
+        }));
+    add(ConfigMapper(KEY_HDR10_PLUS_INFO, C2_PARAMKEY_OUTPUT_HDR_DYNAMIC_INFO, "data")
         .limitTo(D::VIDEO & D::OUTPUT));
 
     add(ConfigMapper(C2_PARAMKEY_TEMPORAL_LAYERING, C2_PARAMKEY_TEMPORAL_LAYERING, "")
