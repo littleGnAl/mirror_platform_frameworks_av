@@ -46,3 +46,16 @@ cc_benchmark {
         "libhardware_headers",
     ],
 }
+
+cc_benchmark {
+    name: "spatializer_benchmark",
+    vendor: true,
+    srcs: ["spatializer_benchmark.cpp"],
+    shared_libs: [
+        "libaudioutils",
+        "liblog",
+    ],
+    header_libs: [
+        "libhardware_headers",
+    ],
+}
