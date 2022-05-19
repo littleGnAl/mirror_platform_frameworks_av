@@ -64,6 +64,35 @@ struct C2SoftGav1Dec : public SimpleC2Component {
   bool mSignalledOutputEos;
   bool mSignalledError;
 
+  C2StreamHdrStaticMetadataInfo::output mHdrStaticMetadataInfo;
+
+  struct HDRDynamicInfo {
+    std::vector<uint8_t> payload;
+
+    HDRDynamicInfo() { payload.clear(); }
+
+    void setItuT35(const Libgav1ObuMetadataItutT35 *itut_t35) {
+      payload.clear();
+      size_t payloadSize = itut_t35->payload_size;
+      if (payloadSize > 0) {
+        payload.push_back(itut_t35->country_code);
+        if (itut_t35->country_code == 0xFF) {
+          payload.push_back(itut_t35->country_code_extension_byte);
+        }
+
+        payload.insert(payload.end(), itut_t35->payload_bytes,
+                       itut_t35->payload_bytes + itut_t35->payload_size);
+      }
+    }
+
+    ~HDRDynamicInfo() { payload.clear(); }
+
+    bool operator==(const HDRDynamicInfo &o) {
+      return payload.size() == o.payload.size() &&
+             (memcmp(payload.data(), o.payload.data(), payload.size()) == 0);
+    }
+  } mHdrDynamicInfo;
+
   // Color aspects. These are ISO values and are meant to detect changes in aspects to avoid
   // converting them to C2 values for each frame
   struct VuiColorAspects {
@@ -89,6 +118,10 @@ struct C2SoftGav1Dec : public SimpleC2Component {
   struct timeval mTimeEnd;    // Time at the end of decode()
 
   bool initDecoder();
+  void getHDRStaticParams(const libgav1::DecoderBuffer *buffer,
+                  const std::unique_ptr<C2Work> &work);
+  void getHDR10PlusInfoData(const libgav1::DecoderBuffer *buffer,
+                  const std::unique_ptr<C2Work> &work);
   void getVuiParams(const libgav1::DecoderBuffer *buffer);
   void destroyDecoder();
   void finishWork(uint64_t index, const std::unique_ptr<C2Work>& work,
