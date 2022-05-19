@@ -33,6 +33,24 @@
       "message": "https://clang.llvm.org/extra/clang-tidy/checks/misc-definitions-in-headers.html#misc-definitions-in-headers is the description for this particular warning. It\u0027s particularly concerning because it can lead to potential ODR violations in some cases.\n\nThat said, can you share specific instances here where this diagnostic is being issued for this file? Maybe they would prefer to update those instances to be inline (or change how they are declaring/defining those constants instead).",
       "revId": "2ce6e0e460e31d390823863b8c87c32c874f0fe9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef11ad9_139a6867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-05-19T19:12:46Z",
+      "side": 1,
+      "message": "This misc-definitions-in-headers warning seems useful enough\nthat it should not be disable globally.\nHowever, it also issues warnings to C/C++ code\nthat define constexpr or simple const values in .h files.\nIronically, it does not complain about macros. \n\n  make tidy-frameworks-av-media_subset\n\nwill produce about 442 or 443 warnings in MediaCodecConstatns.h.\nAll of them are constexpr with simple integer or string values.\nSo unless some funny code taking address of those constexpr,\nor really hacking on different definitions,\nit should be okay to ignore warning on those constexpr.",
+      "parentUuid": "68313c5f_e0c9d5cb",
+      "revId": "2ce6e0e460e31d390823863b8c87c32c874f0fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
