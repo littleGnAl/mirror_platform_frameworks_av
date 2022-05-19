@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f2117d9_da65a7d1",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-05-19T22:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2315697b_8cc3c865",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 66
+      },
+      "revId": "54bc0db14cb6ae6aad010661e8a66fd73eb7ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa5ae90_ec71e81a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-12T00:02:19Z",
       "side": 1,
       "message": "this seems to be duplicate code...",
+      "range": {
+        "startLine": 879,
+        "startChar": 4,
+        "endLine": 882,
+        "endChar": 40
+      },
+      "revId": "54bc0db14cb6ae6aad010661e8a66fd73eb7ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f30968_a6894296",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-05-19T22:30:46Z",
+      "side": 1,
+      "message": "c2fence.fd() returns a dupped fd which has to be closed.\nIf failed to create fence on the fd (sp\u003cFence\u003e::make(fenceFd) returning null, ideally it wouldn\u0027t happen unless insufficient memory), client can still close fenceFd to avoid fd leak.\nIn the context of this file, allocation failures are not checked, but no harm to check it.\n\nNo action was token.",
+      "parentUuid": "0fa5ae90_ec71e81a",
       "range": {
         "startLine": 879,
         "startChar": 4,

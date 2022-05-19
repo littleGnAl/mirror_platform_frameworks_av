@@ -170,6 +170,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca89a9a_cd30647d",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-05-19T22:30:46Z",
+      "side": 1,
+      "message": "removed C2Fence::handle(),\nadded\n1. C2Fence::Impl::createNativeHandle()\n2. static C2Fence::Impl::GetTypeFromNativeHandle(fence)\n3. _C2FenceFactory::CreateNativeHandle(fence) // public to android frameworks\n\nGetTypeFromNativeHandle is moved to Impl so that only Impl and its subclasses are aware of native handle details.",
+      "parentUuid": "119136e2_d9eea9a8",
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff09766_e9295688",
