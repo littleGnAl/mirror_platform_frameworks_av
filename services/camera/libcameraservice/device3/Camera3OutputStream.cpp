@@ -754,6 +754,13 @@ status_t Camera3OutputStream::getBufferLockedCommon(ANativeWindowBuffer** anb, i
 }
 
 void Camera3OutputStream::checkRemovedBuffersLocked(bool notifyBufferManager) {
+    if (mSwitchedToOffline) {
+        // Buffer caches can no longer be updated once we start operating in offline
+        // mode.
+        ALOGV("%s: Camera3 output stream switched to offline mode", __FUNCTION__);
+        return;
+    }
+
     std::vector<sp<GraphicBuffer>> removedBuffers;
     status_t res = mConsumer->getAndFlushRemovedBuffers(&removedBuffers);
     if (res == OK) {
@@ -964,6 +971,10 @@ void Camera3OutputStream::BufferProducerListener::onBuffersDiscarded(
 
     if (buffers.size() > 0) {
         Mutex::Autolock l(stream->mLock);
+        if (stream->mSwitchedToOffline) {
+            ALOGV("%s: Parent camera3 output stream switched to offline mode", __FUNCTION__);
+            return;
+        }
         stream->onBuffersRemovedLocked(buffers);
         if (stream->mUseBufferManager) {
             stream->mBufferManager->onBuffersRemoved(stream->getId(),
@@ -1183,6 +1194,11 @@ void Camera3OutputStream::returnPrefetchedBuffersLocked() {
     if (batchedBuffers.size() > 0) {
         mConsumer->cancelBuffers(batchedBuffers);
     }
+}
+
+void Camera3OutputStream::switchToOffline() {
+    Mutex::Autolock l(mLock);
+    mSwitchedToOffline = true;
 }
 
 }; // namespace camera3

@@ -100,6 +100,11 @@ class Camera3FakeStream :
 
     virtual status_t setBatchSize(size_t batchSize) override;
 
+    /**
+     * Enable offline mode
+     */
+    virtual void switchToOffline() override {}
+
   protected:
 
     /**

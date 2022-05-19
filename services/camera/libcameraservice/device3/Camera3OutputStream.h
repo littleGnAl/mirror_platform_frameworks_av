@@ -224,6 +224,11 @@ class Camera3OutputStream :
     virtual status_t setBatchSize(size_t batchSize = 1) override;
 
     /**
+     * Enable offline mode
+     */
+    virtual void switchToOffline() override;
+
+    /**
      * Apply ZSL related consumer usage quirk.
      */
     static void applyZSLUsageQuirk(int format, uint64_t *consumerUsage /*inout*/);
@@ -370,6 +375,7 @@ class Camera3OutputStream :
 
     int mImageDumpMask = 0;
 
+    bool mSwitchedToOffline = false;
 }; // class Camera3OutputStream
 
 } // namespace camera3

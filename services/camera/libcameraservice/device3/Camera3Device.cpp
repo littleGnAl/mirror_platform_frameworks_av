@@ -6410,6 +6410,7 @@ status_t Camera3Device::switchToOffline(
                         __FUNCTION__, id);
                 return BAD_VALUE;
             }
+            stream->switchToOffline();
         }
     }
 

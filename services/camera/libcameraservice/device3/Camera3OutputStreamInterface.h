@@ -108,6 +108,11 @@ class Camera3OutputStreamInterface : public virtual Camera3StreamInterface {
      * instead.
      */
     virtual status_t setBatchSize(size_t batchSize = 1) = 0;
+
+    /**
+     * Enable offline mode
+     */
+    virtual void switchToOffline() = 0;
 };
 
 // Helper class to organize a synchronized mapping of stream IDs to stream instances
