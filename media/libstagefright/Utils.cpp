@@ -126,14 +126,9 @@ static void convertMetaDataToMessageColorAspects(const MetaDataBase *meta, sp<AM
     }
 }
 
+// This function is mainly used to identify if a profile can be mapped to HDR10 or HDR10+
+// This doesn't return true for color-transfer set to HLG.
 static bool isHdr(const sp<AMessage> &format) {
-    // if CSD specifies HDR transfer(s), we assume HDR. Otherwise, if it specifies non-HDR
-    // transfers, we must assume non-HDR. This is because CSD trumps any color-transfer key
-    // in the format.
-    int32_t isHdr;
-    if (format->findInt32("android._is-hdr", &isHdr)) {
-        return isHdr;
-    }
 
     // if user/container supplied HDR static info without transfer set, assume true
     if ((format->contains("hdr-static-info") || format->contains("hdr10-plus-info"))
@@ -143,8 +138,7 @@ static bool isHdr(const sp<AMessage> &format) {
     // otherwise, verify that an HDR transfer function is set
     int32_t transfer;
     if (format->findInt32("color-transfer", &transfer)) {
-        return transfer == ColorUtils::kColorTransferST2084
-                || transfer == ColorUtils::kColorTransferHLG;
+        return transfer == ColorUtils::kColorTransferST2084;
     }
     return false;
 }
@@ -420,7 +414,11 @@ static void parseHevcProfileLevelFromHvcc(const uint8_t *ptr, size_t size, sp<AM
 
     // bump to HDR profile
     if (isHdr(format) && codecProfile == HEVCProfileMain10) {
-        codecProfile = HEVCProfileMain10HDR10;
+        if (format->contains("hdr10-plus-info")) {
+            codecProfile = HEVCProfileMain10HDR10Plus;
+        } else {
+            codecProfile = HEVCProfileMain10HDR10;
+        }
     }
 
     format->setInt32("profile", codecProfile);
@@ -615,16 +613,25 @@ static void parseVp9ProfileLevelFromCsd(const sp<ABuffer> &csd, sp<AMessage> &fo
                         { 3, VP9Profile3 },
                     };
 
-                    const static ALookup<int32_t, int32_t> toHdr {
+                    const static ALookup<int32_t, int32_t> toHdr10 {
                         { VP9Profile2, VP9Profile2HDR },
                         { VP9Profile3, VP9Profile3HDR },
+                    };
+
+                    const static ALookup<int32_t, int32_t> toHdr10Plus {
+                        { VP9Profile2, VP9Profile2HDR10Plus },
+                        { VP9Profile3, VP9Profile3HDR10Plus },
                     };
 
                     int32_t profile;
                     if (profiles.map(data[0], &profile)) {
                         // convert to HDR profile
                         if (isHdr(format)) {
-                            toHdr.lookup(profile, &profile);
+                            if (format->contains("hdr10-plus-info")) {
+                                toHdr10Plus.lookup(profile, &profile);
+                            } else {
+                                toHdr10.lookup(profile, &profile);
+                            }
                         }
 
                         format->setInt32("profile", profile);
