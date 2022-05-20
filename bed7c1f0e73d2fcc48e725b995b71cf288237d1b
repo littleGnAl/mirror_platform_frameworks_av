@@ -34,6 +34,52 @@
       "parentUuid": "80ec8eff_406c8484",
       "revId": "bed7c1f0e73d2fcc48e725b995b71cf288237d1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e2ab9f_dbfbab92",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-05-20T16:30:37Z",
+      "side": 1,
+      "message": "nit: Please remove the new empty line above the if.",
+      "range": {
+        "startLine": 1972,
+        "startChar": 12,
+        "endLine": 1972,
+        "endChar": 14
+      },
+      "revId": "bed7c1f0e73d2fcc48e725b995b71cf288237d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed01ceea_86382d4e",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2529,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-05-20T16:30:37Z",
+      "side": 1,
+      "message": "Super-nit: I know this is brought from the previous code but we might simplify this a little bit while we touch this code. For example, we can extract a variable:\n\nssize_t bytes_to_read \u003d sizeof(flacInfo) - flacOffset;\n\nwhich you can replace in three places.",
+      "range": {
+        "startLine": 2529,
+        "startChar": 27,
+        "endLine": 2529,
+        "endChar": 56
+      },
+      "revId": "bed7c1f0e73d2fcc48e725b995b71cf288237d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
