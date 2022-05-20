@@ -46,6 +46,30 @@
       },
       "revId": "2709cf7fd320bd6b7c55452afb2716c32b4bf12c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97137a46_4189beca",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-20T21:23:42Z",
+      "side": 1,
+      "message": "so can\u0027t add my suggested line at this time.\nwe probably need to make that property:  android._is-hdr be more general than\njust hevc.... or get rid of it completely.",
+      "parentUuid": "e270b41e_d7adcfaa",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "2709cf7fd320bd6b7c55452afb2716c32b4bf12c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
