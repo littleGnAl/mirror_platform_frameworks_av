@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1e387b_bda40109",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-20T21:11:20Z",
+      "side": 1,
+      "message": "would it be fair to include:\n\nif (!format-\u003efind(\"android._is-hdr\"), \u0026ishdr) return false;\n\nmeaning if we don\u0027t have that property set, it can\u0027t be HDR10/HDR10+?\n\nnote this is checking the inverse of what we had before -- basically \"can\nwe quickly dismiss this because all HDR10/HDR10+ have that flag set\"",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "2709cf7fd320bd6b7c55452afb2716c32b4bf12c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
