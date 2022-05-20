@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a739ad_a84dc51d",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-20T00:41:25Z",
+      "side": 0,
+      "message": "android._is-hdr is set to true for HEVC clips with color-transfer set to HLG or PQ.\n\nFor color-transfer HLG, this function is not expected to return true.\n\nEven otherwise, this check is not really needed as wherever this is set to true, color-transfer parsed from SPS is also saved in format and that color-transfer is checked on line 140.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 5
+      },
+      "revId": "1bacdc7076950a31685b0edf6a4849f851705145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
