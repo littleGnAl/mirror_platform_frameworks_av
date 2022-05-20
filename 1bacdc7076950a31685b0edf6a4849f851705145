@@ -22,6 +22,53 @@
       },
       "revId": "1bacdc7076950a31685b0edf6a4849f851705145",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf21e09_dbd1b004",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-20T02:12:07Z",
+      "side": 0,
+      "message": "seems better to keep this here and correct where we set it on\nline 1347. if we\u0027ve gone to the trouble to mark it as hdr, we should carry that\nresult through.\n\ni would think that a change around line 1347 is more appropriate.\n\nNote that frameworks/av/media/libmediatranscoding/transcoder/NdkCommon.cpp\nis another place that looks at the _is-hdr flag, so we need to be sure that\nthe set + get in this file and the get in that file are properly in sync.",
+      "parentUuid": "a9a739ad_a84dc51d",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 5
+      },
+      "revId": "1bacdc7076950a31685b0edf6a4849f851705145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0245c5_22ec0dd4",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-20T02:12:07Z",
+      "side": 0,
+      "message": "seems the better fix is to not set _is-hdr here (or only under a tighter\nset of conditions) instead of ignoring it on line 134",
+      "range": {
+        "startLine": 1347,
+        "startChar": 22,
+        "endLine": 1347,
+        "endChar": 76
+      },
+      "revId": "1bacdc7076950a31685b0edf6a4849f851705145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
