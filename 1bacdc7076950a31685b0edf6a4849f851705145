@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "705fc4ce_32657b8f",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-20T03:25:48Z",
+      "side": 0,
+      "message": "Ray,\nHLG color-transfer is also considered HDR technology.\nhttps://source.android.com/devices/tech/display/hdr#technologies\n\nWhat is needed in Utils.cpp is a way to know if a Main10 profile can be bumped to an Main10Hdr10 or Main10Hdr10Plus. This function doesn\u0027t need to know if a file is an HLG as profiles will not be bumped up for HLG cases.\n\nReasons I removed android._is-hdr from this function is\n- it was set to true for HLG as well (your suggestion is to not set it for HLG, but not sure if that interpretation is correct as HLG also is an HDR tech)\n- Wherever this is being set, color-transfer is also appropriately populated. So there is no reason to depend on is-hdr here, i.e. android._is-hdr is redundant.\n- It is currently being set only for HEVC codec when bitstream contains color-transfer is SPS. It is not set when color-transfer is signaled in container, and it is not set for other codecs. So effectively this is a subset and that case where it is set, color-transfer is updated. So it is enough to look at color-transfer which we anyway need to check.\n\nComing to transcoder, VideoIsHdr() is used to signal the transcoder to convert from HDR to SDR which will need to convert both all HDR (HLG/HDR10/HDR10+) profiles to SDR profile and that one needs to continue to do handle HLG.\n\nIn order to avoid any confusion, I have renamed this function as isHdr10or10Plus().",
+      "parentUuid": "5cf21e09_dbd1b004",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 5
+      },
+      "revId": "1bacdc7076950a31685b0edf6a4849f851705145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f0245c5_22ec0dd4",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 2
