@@ -22,6 +22,30 @@
       },
       "revId": "2709cf7fd320bd6b7c55452afb2716c32b4bf12c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e270b41e_d7adcfaa",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-20T21:18:25Z",
+      "side": 1,
+      "message": "android._is-hdr is currently set only in the case of HEVC and that too only when the bitstream has color-transfer in SPS.\nFor all other cases (i.e. codecs other than HEVC and HEVC where color-transfer is signaled in container and not in SPS) this key isn\u0027t set.\n\nSo we can\u0027t conclude \"if that property isn\u0027t set, it can\u0027t be HDR10/HDR10+\".",
+      "parentUuid": "2f1e387b_bda40109",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "2709cf7fd320bd6b7c55452afb2716c32b4bf12c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
