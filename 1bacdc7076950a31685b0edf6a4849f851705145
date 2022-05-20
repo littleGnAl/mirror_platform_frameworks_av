@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a1c18f_d35701bb",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-20T21:11:26Z",
+      "side": 0,
+      "message": "Marking this as resolved as CL has code-review +2.",
+      "parentUuid": "705fc4ce_32657b8f",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 5
+      },
+      "revId": "1bacdc7076950a31685b0edf6a4849f851705145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f0245c5_22ec0dd4",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-05-20T02:12:07Z",
       "side": 0,
       "message": "seems the better fix is to not set _is-hdr here (or only under a tighter\nset of conditions) instead of ignoring it on line 134",
+      "range": {
+        "startLine": 1347,
+        "startChar": 22,
+        "endLine": 1347,
+        "endChar": 76
+      },
+      "revId": "1bacdc7076950a31685b0edf6a4849f851705145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd6cf3a_3516d96d",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-20T21:11:26Z",
+      "side": 0,
+      "message": "Marking this as resolved as CL has code-review +2.",
+      "parentUuid": "4f0245c5_22ec0dd4",
       "range": {
         "startLine": 1347,
         "startChar": 22,

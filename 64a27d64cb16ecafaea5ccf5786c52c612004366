@@ -16,6 +16,24 @@
       "message": "Santiago,\nCan you please take a look if this change looks fine?\n\nPlease note, this still doesn\u0027t handle cases where extractor doesn\u0027t return \"hdr-static-info\" and \"hdr10-plus-info\" or cases where color-transfer/hdr metadata is not set in the container but is signalled in the bitstream.\n\nMain goal in this CL is to ensure HLG clips aren\u0027t signalled as HDR10 clips.",
       "revId": "64a27d64cb16ecafaea5ccf5786c52c612004366",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8fcfda_b67d5d53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-20T21:11:26Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has code-review +2.",
+      "parentUuid": "318b6ab4_a251ddfd",
+      "revId": "64a27d64cb16ecafaea5ccf5786c52c612004366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
