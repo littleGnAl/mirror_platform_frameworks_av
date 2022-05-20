@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f06fd75_6ee9eca4",
+        "filename": "media/codec2/hidl/1.0/utils/types.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-05-20T21:49:58Z",
+      "side": 1,
+      "message": "can you please add an\n\n else if (!s.ready()) {\n    // TODO: we should wait for unmarshallable fences but this may not be the best \n place for it. For now all fences used here are marshallable.\n }\n\n?",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 767,
+        "endChar": 4
+      },
+      "revId": "dd8796a5311b6d35b40dfb70c7a956f498e07608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3885ba7b_9ff11c3d",
         "filename": "media/codec2/vndk/C2Fence.cpp",
         "patchSetId": 7
