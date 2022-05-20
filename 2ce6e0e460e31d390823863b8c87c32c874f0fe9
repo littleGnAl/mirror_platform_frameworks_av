@@ -51,6 +51,24 @@
       "parentUuid": "68313c5f_e0c9d5cb",
       "revId": "2ce6e0e460e31d390823863b8c87c32c874f0fe9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c63e5056_58fca92e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-05-20T18:08:42Z",
+      "side": 1,
+      "message": "Is there a preferred way for headers to actually define reusable constants that this diagnostic won\u0027t complain about? Without that, I can\u0027t see keeping this diagnostic on at all (even if it provides value about other definitions). The false positives here are staggering to me. FWIW, the document I mentioned says \"internal linkage variable definitions are ignored for now.\" to keep the false positive rate down. https://cs.android.com/android-llvm/toolchain/llvm-project/+/master:clang-tools-extra/test/clang-tidy/misc-definitions-in-headers.hpp;l\u003d179 even has the specific case of using constexpr like here. Why does this trigger diagnostics in this case?",
+      "parentUuid": "fef11ad9_139a6867",
+      "revId": "2ce6e0e460e31d390823863b8c87c32c874f0fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
