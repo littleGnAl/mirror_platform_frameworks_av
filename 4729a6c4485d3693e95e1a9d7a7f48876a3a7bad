@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1d606f_ab207a39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-05-20T15:47:09Z",
+      "side": 1,
+      "message": "Thanks! Happy to +2 once Ray is happy with this change.",
+      "revId": "4729a6c4485d3693e95e1a9d7a7f48876a3a7bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cec4127_98d8182b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-05-20T15:47:09Z",
+      "side": 1,
+      "message": "Can we format as function documentation? So we\u0027d write something like:\n```\n/**\n * Returns true if, and only if, the given format corresponds to HDR10 or HDR10+.\n */\n```\nThe HLG part can probably be ommited considering HLG !\u003d HDR10(+).",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "4729a6c4485d3693e95e1a9d7a7f48876a3a7bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
