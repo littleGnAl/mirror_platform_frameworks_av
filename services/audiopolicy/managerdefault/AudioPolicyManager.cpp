@@ -2798,6 +2798,15 @@ status_t AudioPolicyManager::setVolumeIndexForAttributes(const audio_attributes_
     audio_devices_t curSrcDevice = Volume::getDeviceForVolume(curSrcDevices);
     resetDeviceTypes(curSrcDevices, curSrcDevice);
 
+    // when in call, do not update earpiece volume when device is not earpiece
+    if(isInCall() &&
+        (curSrcDevice == AUDIO_DEVICE_OUT_EARPIECE) &&
+        (device != curSrcDevice) &&
+        (vs == toVolumeSource(AUDIO_STREAM_VOICE_CALL))) {
+        ALOGE("%s: device %x do not match curSrcDevice %d when in call",__func__, device, curSrcDevice);
+        return BAD_VALUE;
+    }
+
     // update volume on all outputs and streams matching the following:
     // - The requested stream (or a stream matching for volume control) is active on the output
     // - The device (or devices) selected by the engine for this stream includes
