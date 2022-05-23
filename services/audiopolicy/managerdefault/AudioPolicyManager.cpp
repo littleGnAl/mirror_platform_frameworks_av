@@ -6832,6 +6832,24 @@ status_t AudioPolicyManager::checkAndSetVolume(IVolumeCurves &curves,
 
     if (outputDesc == mPrimaryOutput && (isVoiceVolSrc || isBtScoVolSrc)) {
         float voiceVolume;
+        DeviceTypeSet voiceDevices;
+        audio_devices_t curDevice;
+
+        // when in call, do not update the voice volume when device do not match active device
+        if (isVoiceVolSrc) {
+            voiceDevices = mEngine->getOutputDevicesForAttributes(
+                    attributes_initializer(AUDIO_USAGE_VOICE_COMMUNICATION), nullptr, false).types();
+        }
+        if (isBtScoVolSrc) {
+            voiceDevices = mEngine->getOutputDevicesForAttributes(
+                    attributes_initializer(AUDIO_USAGE_BLUETOOTH_SCO), nullptr, false).types();
+        }
+        curDevice = Volume::getDeviceForVolume(deviceTypes);
+        if (voiceDevices.find(curDevice) == voiceDevices.end()) {
+            ALOGD("%s: the device %x do not match active device in call", __func__, curDevice);
+            return INVALID_OPERATION;
+        }
+
         // Force voice volume to max or mute for Bluetooth SCO as other attenuations are managed by the headset
         if (isVoiceVolSrc) {
             voiceVolume = (float)index/(float)curves.getVolumeIndexMax();
