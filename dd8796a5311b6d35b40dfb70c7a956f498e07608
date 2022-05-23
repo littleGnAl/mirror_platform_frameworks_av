@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beda71a9_e4364d4b",
+        "filename": "media/codec2/hidl/1.0/utils/types.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-05-23T05:01:45Z",
+      "side": 1,
+      "message": "Thanks for adding it and uploading a new patch set.",
+      "parentUuid": "0f06fd75_6ee9eca4",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 767,
+        "endChar": 4
+      },
+      "revId": "dd8796a5311b6d35b40dfb70c7a956f498e07608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3885ba7b_9ff11c3d",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e491d027_0630c199",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-05-23T05:01:45Z",
+      "side": 1,
+      "message": "Thanks for making the change and uploading a new patch set.",
+      "parentUuid": "3885ba7b_9ff11c3d",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 283,
+        "endChar": 8
+      },
+      "revId": "dd8796a5311b6d35b40dfb70c7a956f498e07608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9667b25c_b54c42b0",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-05-20T21:42:54Z",
       "side": 1,
       "message": "this may be excessive. Someone could send an invalid native handle to the codec process and this would kill that codec process resulting in a local denial of service.\n\nRecommend logging with ALOGW and returning a null fence.",
+      "range": {
+        "startLine": 290,
+        "startChar": 12,
+        "endLine": 290,
+        "endChar": 23
+      },
+      "revId": "dd8796a5311b6d35b40dfb70c7a956f498e07608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a482252b_276451f4",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-05-23T05:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9667b25c_b54c42b0",
       "range": {
         "startLine": 290,
         "startChar": 12,
