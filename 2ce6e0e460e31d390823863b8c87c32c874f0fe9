@@ -69,6 +69,24 @@
       "parentUuid": "fef11ad9_139a6867",
       "revId": "2ce6e0e460e31d390823863b8c87c32c874f0fe9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd41ca1_85884197",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-05-23T19:47:51Z",
+      "side": 1,
+      "message": "The test case in misc-definitions-in-headers.hpp works because that\nconstexpr is not in a namespace.\nMediaCodecConstants.h got the warnings for all its constexpr in\nan anonymous namespace.\n\nThe documentation of misc-definitions-in-headers said that\nalthough with low risk of ODR violation, it will not give\nwarnings to constexpr in header files.\nSo we may claim that the implementation should also not give\nwarnings in MediaCodecConstants.h.\n\nThis tidy check also gives warnings for function definitions in headers,\nand find quite a few error-prone places in AOSP.\nSo, it is useful to enable it globally.\n\nUntil it is changed to allow constexpr in anonymous namespaces,\nthe few android header files with this case can either suppress this\ncheck with NOLINTBEGIN/NOLINTEND, or remove anonymous namespaces.",
+      "parentUuid": "c63e5056_58fca92e",
+      "revId": "2ce6e0e460e31d390823863b8c87c32c874f0fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
