@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92b8201_baa41d47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-05-23T19:48:01Z",
+      "side": 1,
+      "message": "Verified below pointed change with following setups:\n1.\tFence enabled playback with both vendor and QSSI binaries updated.\n2.\tFence disabled:\na.\tUpdated just QSSI binaries, and verified basic decoding\nb.\tUpdated just vendor binaries, and verified basic decoding\nc.\tUpdated both QSSI and vendor binaries, and verified basic decoding.\n",
+      "revId": "c66fe0cf72769fa34ea5d6ea0d7fe5b1105497b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
