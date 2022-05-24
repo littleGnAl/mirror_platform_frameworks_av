@@ -156,6 +156,11 @@ bool addSupportedProfileLevels(
     // TODO: directly check this from the component interface
     supports10Bit = (supportsHdr || supportsHdr10Plus);
 
+    // If the device doesn't support HDR display, then no codec on the device
+    // can advertise support for HDR profiles.
+    bool hasHDRDisplay =
+            android::base::GetBoolProperty("ro.surface_flinger.has_HDR_display", true);
+
     bool added = false;
 
     for (C2Value::Primitive profile : profileQuery[0].values.values) {
@@ -181,8 +186,8 @@ bool addSupportedProfileLevels(
         if (mapper && mapper->mapProfile(pl.profile, &sdkProfile)
                 && mapper->mapLevel(pl.level, &sdkLevel)) {
             caps->addProfileLevel((uint32_t)sdkProfile, (uint32_t)sdkLevel);
-            // also list HDR profiles if component supports HDR
-            if (supportsHdr) {
+            // also list HDR profiles if component supports HDR and device has HDR display
+            if (supportsHdr && hasHDRDisplay) {
                 auto hdrMapper = C2Mapper::GetHdrProfileLevelMapper(trait.mediaType);
                 if (hdrMapper && hdrMapper->mapProfile(pl.profile, &sdkProfile)) {
                     caps->addProfileLevel((uint32_t)sdkProfile, (uint32_t)sdkLevel);
