@@ -34,6 +34,29 @@
       "parentUuid": "94d6a845_23e5e09f",
       "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1f62bb_aee6bb97",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-05-24T18:19:30Z",
+      "side": 1,
+      "message": "why do we need such a specific case?\n It should be OK to update the volume for a device that is currently not used for the call without affecting the current volume on earpiece",
+      "range": {
+        "startLine": 2801,
+        "startChar": 0,
+        "endLine": 2801,
+        "endChar": 78
+      },
+      "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
