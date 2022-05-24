@@ -4905,9 +4905,11 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     sp<MediaCodecBuffer> buffer = info->mData;
 
     if (c2Buffer || memory) {
-        sp<AMessage> tunings;
+        sp<AMessage> tunings = NULL;
         CHECK(msg->findMessage("tunings", &tunings));
-        onSetParameters(tunings);
+        if (tunings != NULL) {
+            onSetParameters(tunings);
+        }
 
         status_t err = OK;
         if (c2Buffer) {
