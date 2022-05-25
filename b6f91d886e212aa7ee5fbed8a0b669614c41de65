@@ -34,6 +34,24 @@
       "parentUuid": "aa4ffcfa_bf8be438",
       "revId": "b6f91d886e212aa7ee5fbed8a0b669614c41de65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d491a8f2_510bacb0",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-25T21:24:05Z",
+      "side": 1,
+      "message": "Will update to use SurfaceFlingerProperties.\nw.r.t. default, wouldn\u0027t it be better to treat default as true for backward compatibility (i.e., when this flag isn\u0027t set it will behave same as before)?\n\nConsider following two cases,\n1. if a device doesn\u0027t support HDR display and this flag is not set the tests will fail and in that case fix would be to set the flag.\n\n2. if a device supports HDR display but this flag isn\u0027t set none of the tests will catch this as HDR support is not mandatory.",
+      "parentUuid": "47fcd4d5_d738656b",
+      "revId": "b6f91d886e212aa7ee5fbed8a0b669614c41de65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
