@@ -52,6 +52,24 @@
       "parentUuid": "47fcd4d5_d738656b",
       "revId": "b6f91d886e212aa7ee5fbed8a0b669614c41de65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3779ccc7_0c874918",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-25T22:52:02Z",
+      "side": 1,
+      "message": "Updated to use SurfaceFlingerProperties::has_HDR_display().\n\nNeed to decide on the default value.",
+      "parentUuid": "d491a8f2_510bacb0",
+      "revId": "b6f91d886e212aa7ee5fbed8a0b669614c41de65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
