@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4ffcfa_bf8be438",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-05-25T20:18:53Z",
+      "side": 1,
+      "message": "can we use SurfaceFlingerProperties::has_HDR_display() from SurfaceFlingerProperties.sysprop.h? (per https://cs.android.com/android/platform/superproject/+/master:frameworks/native/services/surfaceflinger/sysprop/Android.bp;drc\u003d3306e497c5b6c85164713032de0c789d5a118f89;l\u003d11)\n\nIs it intended that it defaults to true?",
+      "revId": "b6f91d886e212aa7ee5fbed8a0b669614c41de65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
