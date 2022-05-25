@@ -57,6 +57,30 @@
       },
       "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3d9f85_f56a31a5",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2022-05-25T02:00:59Z",
+      "side": 1,
+      "message": "setVolumeIndexForAttributes will call checkAndSetVolume to update vloume, checkAndSetVolume will always update voice volume for all devices, if current call use earpice, the voice volume also update when update a device ununsed.\n\nbecause the function have no devicetype param, and the function alway update earpiece voice volume.\nmpClientInterface-\u003esetVoiceVolume(voiceVolume, delayMs);",
+      "parentUuid": "5f1f62bb_aee6bb97",
+      "range": {
+        "startLine": 2801,
+        "startChar": 0,
+        "endLine": 2801,
+        "endChar": 78
+      },
+      "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
