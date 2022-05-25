@@ -81,6 +81,30 @@
       },
       "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45a537b_dceb12be",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-05-25T14:05:51Z",
+      "side": 1,
+      "message": "I think this should be fixed at a lower level.\nI don\u0027t like to have device specific rules here.",
+      "parentUuid": "ac3d9f85_f56a31a5",
+      "range": {
+        "startLine": 2801,
+        "startChar": 0,
+        "endLine": 2801,
+        "endChar": 78
+      },
+      "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
