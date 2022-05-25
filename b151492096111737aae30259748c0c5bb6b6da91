@@ -16,6 +16,24 @@
       "message": "The previous change have same mistake, we update it now.\nCan you help to review again when you are free? Thanks a lot.",
       "revId": "b151492096111737aae30259748c0c5bb6b6da91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64eb820d_4d56a8aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-05-25T16:52:37Z",
+      "side": 1,
+      "message": "With the internal changes, the callback data object is reference counted, so it should not be possible for the object to be destroyed yet mCallbackData to be non-null.\n\nIf you think there is a bug in this implementation, please raise a partner-visible issue describing the issue in the internal code.",
+      "parentUuid": "29e9166f_75a20ebf",
+      "revId": "b151492096111737aae30259748c0c5bb6b6da91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
