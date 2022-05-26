@@ -35,6 +35,12 @@ constexpr uint16_t kNeutralUVBitDepth10 = 512;
 bool isAtLeastT() {
     char deviceCodeName[PROP_VALUE_MAX];
     __system_property_get("ro.build.version.codename", deviceCodeName);
+
+    int32_t boardApiLevel = property_get_int32("ro.board.first_api_level", 0);
+    if (boardApiLevel > 0 && boardApiLevel < __ANDROID_API_T__) {
+        return false;
+    }
+
     return android_get_device_api_level() >= __ANDROID_API_T__ ||
            !strcmp(deviceCodeName, "Tiramisu");
 }
