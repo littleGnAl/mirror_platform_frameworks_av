@@ -105,6 +105,30 @@
       },
       "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eef162c_2778d104",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2022-05-26T02:06:25Z",
+      "side": 1,
+      "message": "Yes， it is specific rules for apps wrong invoke function.\n\nnow, we reproduce on the fllowing two scenes\n1. Weixin/QQ/Whatsapp playback voice message using speaker, and then answer call use earpice quickly. the earpiece volume will be change by speaker.\nReproced rate: 50%, it is easy to reproduced.\n\n2. user feedback, the earpiece voice volume changed by 0x4000000(TypeC headset device)\nSo maybe user use TypeC headset before.\nthe case reproduce only once.\n\nIt is always repduced when answer a call using earpice default.\nSo maybe it should be resolved by other apps, but i thinks it is better for system framework resolve the case.",
+      "parentUuid": "d45a537b_dceb12be",
+      "range": {
+        "startLine": 2801,
+        "startChar": 0,
+        "endLine": 2801,
+        "endChar": 78
+      },
+      "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
