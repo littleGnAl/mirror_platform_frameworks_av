@@ -20,6 +20,7 @@
 #include <utils/Log.h>
 
 #include <android/hardware_buffer.h>
+#include <android-base/properties.h>
 #include <cutils/properties.h>
 #include <media/hardware/HardwareAPI.h>
 #include <system/graphics.h>
@@ -37,9 +38,20 @@ bool isAtLeastT() {
            !strcmp(deviceCodeName, "Tiramisu");
 }
 
+bool isFirstApiAtLeastT() {
+    static const int32_t kProductFirstApiLevel =
+        base::GetIntProperty<int32_t>("ro.product.first_api_level", 0);
+    static const int32_t kBoardFirstApiLevel =
+        base::GetIntProperty<int32_t>("ro.board.first_api_level", 0);
+    static const int32_t kFirstApiLevel =
+        (kBoardFirstApiLevel != 0) ? kBoardFirstApiLevel : kProductFirstApiLevel;
+    return kFirstApiLevel >= __ANDROID_API_T__;
+}
+
 bool isHalPixelFormatSupported(AHardwareBuffer_Format format) {
-    // HAL_PIXEL_FORMAT_YCBCR_P010 was added in Android T, return false for older versions
-    if (format == (AHardwareBuffer_Format)HAL_PIXEL_FORMAT_YCBCR_P010 && !isAtLeastT()) {
+    // HAL_PIXEL_FORMAT_YCBCR_P010 is not correctly supported in few devices upgrading to T.
+    // Limit P010 support to devices launching with Android T
+    if (format == (AHardwareBuffer_Format)HAL_PIXEL_FORMAT_YCBCR_P010 && !isFirstApiAtLeastT()) {
         return false;
     }
 
