@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6562fef4_88d5a8bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2022-05-26T02:15:58Z",
+      "side": 1,
+      "message": "com.tencent.tmgp.sgame exit exception.\nuser feedback, so we think the issue caused by ~AudioTrack when setVolume.\nform feedback data, the change should be ok.\nplease help to review, thanks.\n\npid: 5064, tid: 5101, name: Binder:5064_4  \u003e\u003e\u003e com.tencent.tmgp.sgame \u003c\u003c\u003c\nuid: 10281\nsignal 11 (SIGSEGV), code 0 (SI_USER), fault addr --------\nbacktrace:\n      #00 pc 0000000000097ddc  /system/lib64/libaudioclient.so (android::AudioTrack::setVolume(float, float)+696) (BuildId: 40fda03468a993a0655ef5abda23adc5)\n      #01 pc 00000000000bb1c0  /system/lib64/libaudioclient.so (android::TrackPlayerBase::playerSetVolume()+96) (BuildId: 40fda03468a993a0655ef5abda23adc5)\n      #02 pc 00000000000ba164  /system/lib64/libaudioclient.so (android::PlayerBase::setVolume(float)+148) (BuildId: 40fda03468a993a0655ef5abda23adc5)\n      #03 pc 00000000000461dc  /system/lib64/libaudioclient.so (android::media::BnPlayer::onTransact(unsigned int, android::Parcel const\u0026, android::Parcel*, unsigned int)+668) (BuildId: 40fda03468a993a0655ef5abda23adc5)\n\n03-14 18:23:54.446 10276 20693 21074 D AudioTrack: stop(30891): prior state:STATE_ACTIVE\n03-14 18:23:54.446 10276 20693 20712 D cent.tmgp.sgam: PlayerBase::setVolume() from IPlayer\n03-14 18:23:54.446 10276 20693 21074 D AudioTrack: stop(30891): called with 96 frames delivered\n03-14 18:23:54.447 10276 20693 25266 D cent.tmgp.sgam: PlayerBase::stop() from IPlayer\n03-14 18:23:54.447 10276 20693 25266 D AudioTrack: stop(sessionID\u003d222025)\n03-14 18:23:54.447 10276 20693 21074 D AudioTrack: ~AudioTrack(sessionID\u003d222025)",
+      "revId": "3e285ff280146527c442fb9842cb889a8f65b9ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
