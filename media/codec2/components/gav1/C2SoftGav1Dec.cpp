@@ -190,7 +190,7 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
               .build());
 
     std::vector<uint32_t> pixelFormats = {HAL_PIXEL_FORMAT_YCBCR_420_888};
-    if (isAtLeastT() &&
+    if (isFirstApiAtLeastT() &&
         isHalPixelFormatSupported((AHardwareBuffer_Format)HAL_PIXEL_FORMAT_YCBCR_P010)) {
         pixelFormats.push_back(HAL_PIXEL_FORMAT_YCBCR_P010);
     }
