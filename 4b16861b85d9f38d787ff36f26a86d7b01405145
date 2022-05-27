@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f157a7e_5824d16b",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-27T23:27:50Z",
+      "side": 1,
+      "message": "some sts tests include Codec2BufferUtils.h and since they don\u0027t depend on libnativewindow_headers and libarect_headers, build fails.\n\nUnfortunately those repositories are not in aosp. So can\u0027t update them to include these two as dependencies. Need to see how to fix the dependency.\n\nPatchset 16 which used uint32_t instead of an enum was able to build correctly.\nAdding an enum, requires adding \u003candroid/hardware_buffer.h\u003e and this leads to current issue in treehugger.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "4b16861b85d9f38d787ff36f26a86d7b01405145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
