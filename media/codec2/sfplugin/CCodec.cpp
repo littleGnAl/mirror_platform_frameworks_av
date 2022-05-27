@@ -496,12 +496,16 @@ public:
 void RevertOutputFormatIfNeeded(
         const sp<AMessage> &oldFormat, sp<AMessage> &currentFormat) {
     // We used to not report changes to these keys to the client.
+    // Few keys that change at frame level are also ignored so that
+    // unnecessary output format change signals are avoided
     const static std::set<std::string> sIgnoredKeys({
             KEY_BIT_RATE,
             KEY_FRAME_RATE,
             KEY_MAX_BIT_RATE,
             KEY_MAX_WIDTH,
             KEY_MAX_HEIGHT,
+            KEY_VIDEO_QP_AVERAGE, // changes at frame level
+            KEY_PICTURE_TYPE,   // changes at frame level
             "csd-0",
             "csd-1",
             "csd-2",
