@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5d6814_30f2468e",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-27T22:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04c84f2_86176e92",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 194,
+        "endChar": 8
+      },
+      "revId": "2a8d3c8d17cdfafd4f241f49dcc0c73385628a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec262661_cc078cc4",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-27T21:26:04Z",
       "side": 1,
       "message": "nit: indent",
+      "revId": "2a8d3c8d17cdfafd4f241f49dcc0c73385628a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d043bfd_27310a81",
+        "filename": "media/codec2/components/vpx/C2SoftVpxDec.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-27T22:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec262661_cc078cc4",
       "revId": "2a8d3c8d17cdfafd4f241f49dcc0c73385628a5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
