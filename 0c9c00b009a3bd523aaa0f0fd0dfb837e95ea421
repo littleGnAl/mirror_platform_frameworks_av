@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27bae12_5a154d3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-27T17:09:40Z",
+      "side": 1,
+      "message": "As discussed with Wonsik,\nChanges in these are expected to trigger OUTPUT_FORMAT_CHANGED so these can\u0027t be ignored.\n\nAs these are supposed to be present only when statistics feature is enabled, right fix is to ensure this don\u0027t show up in format when statistics isn\u0027t enabled.\nabandoning this CL now.",
+      "revId": "0c9c00b009a3bd523aaa0f0fd0dfb837e95ea421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
