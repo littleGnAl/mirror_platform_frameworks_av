@@ -16,6 +16,29 @@
       "message": "Ray, Wonsik,\nCan you please take another look at this?\nThis is needed in tm-dev and in mainline branch that will build T modules.",
       "revId": "0c28ae9f2bbe39a3aa55d02abeb9a61ce9ad3db3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547891a2_65e25724",
+        "filename": "media/codec2/components/base/Android.bp",
+        "patchSetId": 25
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-27T16:38:43Z",
+      "side": 1,
+      "message": "i expect this needs to move to header_libs too",
+      "range": {
+        "startLine": 77,
+        "startChar": 6,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "0c28ae9f2bbe39a3aa55d02abeb9a61ce9ad3db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

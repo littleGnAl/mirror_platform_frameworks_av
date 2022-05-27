@@ -46,6 +46,30 @@
       },
       "revId": "1c959e8fbfb0fa5428b98269cd90925a225cf9b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da4cfd1_217bd7d3",
+        "filename": "media/codec2/components/base/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-27T16:38:43Z",
+      "side": 1,
+      "message": "let\u0027s do it correctly -- set up the mod to libarect_headers so it\u0027s marked \nas being available.",
+      "parentUuid": "fcec5188_89d65d01",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "1c959e8fbfb0fa5428b98269cd90925a225cf9b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
