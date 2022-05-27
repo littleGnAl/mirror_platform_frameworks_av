@@ -153,6 +153,30 @@
       },
       "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "befa84ed_554979c3",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2022-05-27T08:44:55Z",
+      "side": 1,
+      "message": "Thanks for your suggestion.\nWe have update the change, and add the solution in checkAndSetVolume.\nplease help to check, thanks.",
+      "parentUuid": "05aba14f_bdeccc45",
+      "range": {
+        "startLine": 2801,
+        "startChar": 0,
+        "endLine": 2801,
+        "endChar": 78
+      },
+      "revId": "a8048b95e5e0c6ed68e5c5b32ff743208ca2ffce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
