@@ -16,6 +16,24 @@
       "message": "we may also want to check ro.board.first_api_level (ref: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/sfplugin/CCodecConfig.cpp;drc\u003d8dbff1b55c76b77e8ecc17028be6d9b657a4f59e;l\u003d1143)",
       "revId": "2dc1977e9b1ebf3b540053783d4f6f0d02af1d88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74035ffa_b6dd14fa",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-28T02:08:44Z",
+      "side": 1,
+      "message": "Thanks, have updated isFirstApiAtLeastT with ro.board.first_api_level as well.\nPlease note: Function is now moved to Codec2CommonUtils.cpp.",
+      "parentUuid": "34b7e98e_a470ce33",
+      "revId": "2dc1977e9b1ebf3b540053783d4f6f0d02af1d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
