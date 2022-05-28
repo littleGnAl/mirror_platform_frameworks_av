@@ -22,6 +22,30 @@
       },
       "revId": "4b16861b85d9f38d787ff36f26a86d7b01405145",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04753909_d26e5c81",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-28T00:40:16Z",
+      "side": 1,
+      "message": "Ray, Wonsik,\nI looked at the STS test that causes treehugger failure.\nWith the current code, I can\u0027t think of a way to fix that error without modifying Android.bp of the failing STS test.\n\nInstead, I will create a new Codec2CommonUtils.cpp and Codec2CommonUtilsUtils.h and move the new functions there.",
+      "parentUuid": "7f157a7e_5824d16b",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "4b16861b85d9f38d787ff36f26a86d7b01405145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
