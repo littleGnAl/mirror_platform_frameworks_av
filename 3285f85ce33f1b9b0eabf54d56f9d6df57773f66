@@ -16,6 +16,29 @@
       "message": "Please review.",
       "revId": "3285f85ce33f1b9b0eabf54d56f9d6df57773f66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac97a148_0fe47a8e",
+        "filename": "media/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-30T15:00:31Z",
+      "side": 1,
+      "message": "i\u0027m not convinced this is sufficient.\n\nin the bug, we get here with:\nthe value of (L_tmp1 \u003e\u003e 14) is -3234 and the value of L_tmp2 is -2147483648.\n(L_tmp2 is MIN_INT)\n\ngoing to 64 bits, gets a successful addition, but then we apply the \"\u003c\u003c2\"\nat the end. The results of the shift work in 64 bits, but they don\u0027t fit\ninto L_tmp1 when we cast back to 32-bits for the assignment.",
+      "range": {
+        "startLine": 184,
+        "startChar": 18,
+        "endLine": 184,
+        "endChar": 28
+      },
+      "revId": "3285f85ce33f1b9b0eabf54d56f9d6df57773f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
