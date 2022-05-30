@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e88213_27e5e8a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-05-30T03:00:37Z",
+      "side": 1,
+      "message": "c2 also sets BT2020 after resolution to 4k\n\n05-24 21:33:37.349  4078  7936 V ColorUtils: Setting color aspects (R:2(Limited), P:6(BT2020), M:5(BT2020), T:3(SMPTE170M)) into format (out:R:2(Limited), S:6(BT2020), T:3(SMPTE_170M))",
+      "parentUuid": "3fc450ea_0aab41af",
+      "revId": "9e0795b69ebc0573de7f708955b0f3282d0f6831",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa932d8c_0ff754ee",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-07T02:30:12Z",
       "side": 1,
       "message": "This could be moved to the constructor member initializer list",
+      "revId": "9e0795b69ebc0573de7f708955b0f3282d0f6831",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "662e4a22_5787e9fe",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-05-30T03:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa932d8c_0ff754ee",
       "revId": "9e0795b69ebc0573de7f708955b0f3282d0f6831",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
