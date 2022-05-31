@@ -307,6 +307,11 @@ public:
         return C2R::Ok();
     }
 
+    // unsafe getters
+    std::shared_ptr<C2StreamPixelFormatInfo::output> getPixelFormat_l() const {
+        return mPixelFormat;
+    }
+
 private:
     std::shared_ptr<C2StreamProfileLevelInfo::input> mProfileLevel;
     std::shared_ptr<C2StreamPictureSizeInfo::output> mSize;
@@ -434,6 +439,11 @@ status_t C2SoftVpxDec::initDecoder() {
     mMode = MODE_VP8;
 #endif
     mHalPixelFormat = HAL_PIXEL_FORMAT_YV12;
+    {
+        IntfImpl::Lock lock = mIntf->lock();
+        mPixelFormatInfo = mIntf->getPixelFormat_l();
+    }
+
     mWidth = 320;
     mHeight = 240;
     mFrameParallelMode = false;
@@ -689,7 +699,8 @@ status_t C2SoftVpxDec::outputBuffer(
     std::shared_ptr<C2GraphicBlock> block;
     uint32_t format = HAL_PIXEL_FORMAT_YV12;
     std::shared_ptr<C2StreamColorAspectsTuning::output> defaultColorAspects;
-    if (img->fmt == VPX_IMG_FMT_I42016) {
+    if (img->fmt == VPX_IMG_FMT_I42016 &&
+            mPixelFormatInfo->value != HAL_PIXEL_FORMAT_YCBCR_420_888) {
         IntfImpl::Lock lock = mIntf->lock();
         defaultColorAspects = mIntf->getDefaultColorAspects_l();
         bool allowRGBA1010102 = false;
