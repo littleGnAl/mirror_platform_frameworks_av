@@ -70,6 +70,30 @@
       },
       "revId": "4b16861b85d9f38d787ff36f26a86d7b01405145",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "004894fd_22f6e2e7",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-31T17:40:02Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has +2.",
+      "parentUuid": "46e935fa_d80ccfbe",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "4b16861b85d9f38d787ff36f26a86d7b01405145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
