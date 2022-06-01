@@ -859,7 +859,7 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
                 const std::unique_ptr<Config> &config = *configLocked;
                 if ((config->mDomain & Config::IS_DECODER)
-                        && (config->mDomain & Config::IS_VIDEO)) {
+                        && (config->mDomain & (Config::IS_VIDEO | Config::IS_IMAGE))) {
                     int32_t tunneled;
                     if (msg->findInt32("feature-tunneled-playback", &tunneled) && tunneled != 0) {
                         ALOGI("Configuring TUNNELED video playback.");
