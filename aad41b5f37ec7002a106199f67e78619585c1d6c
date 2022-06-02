@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d6916f_5be4b301",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-06-02T16:19:59Z",
+      "side": 1,
+      "message": "nit: it seems that we can just pass const ref here",
+      "revId": "aad41b5f37ec7002a106199f67e78619585c1d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
