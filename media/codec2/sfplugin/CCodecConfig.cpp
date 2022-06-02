@@ -1120,13 +1120,6 @@ status_t CCodecConfig::initialize(
 
     initializeStandardParams();
 
-    // subscribe to all supported standard (exposed) params
-    // TODO: limit this to params that are actually in the domain
-    std::vector<std::string> formatKeys = mStandardParams->getPathsForDomain(Domain(1 << 30));
-    std::vector<C2Param::Index> indices;
-    mParamUpdater->getParamIndicesForKeys(formatKeys, &indices);
-    mSubscribedIndices.insert(indices.begin(), indices.end());
-
     // also subscribe to some non-SDK standard parameters
     // for number of input/output buffers
     mSubscribedIndices.emplace(C2PortSuggestedBufferCountTuning::input::PARAM_TYPE);
