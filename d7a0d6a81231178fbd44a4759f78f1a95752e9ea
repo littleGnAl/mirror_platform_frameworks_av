@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444de760_f2611236",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-02T21:18:00Z",
+      "side": 1,
+      "message": "Lajos, sum should be 255 right?\n\ni.e. in full range, R,G and B equal to 255 should result in Y being 255 and 256.",
+      "range": {
+        "startLine": 540,
+        "startChar": 4,
+        "endLine": 540,
+        "endChar": 63
+      },
+      "revId": "d7a0d6a81231178fbd44a4759f78f1a95752e9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
