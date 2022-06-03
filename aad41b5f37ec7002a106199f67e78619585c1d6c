@@ -16,6 +16,24 @@
       "message": "nit: it seems that we can just pass const ref here",
       "revId": "aad41b5f37ec7002a106199f67e78619585c1d6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e283cb_7fc3ffdc",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-06-03T16:45:48Z",
+      "side": 1,
+      "message": "const ref cannot handle null by the standard I think.\n\nchanged it to const struct to ensure it\u0027s not modified here.",
+      "parentUuid": "d7d6916f_5be4b301",
+      "revId": "aad41b5f37ec7002a106199f67e78619585c1d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
