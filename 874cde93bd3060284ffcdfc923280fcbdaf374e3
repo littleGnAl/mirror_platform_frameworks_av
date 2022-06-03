@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0eca549_4b2ad06c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-03T23:54:41Z",
+      "side": 1,
+      "message": "Wei,\nThe tests that are failing in post submit are currently removed from presubmit.\n\nAre post submit failures blocking?\nIn that case, instead of reverting, I will create a CL to remove the failing tests from post submit as well.\n\nIf the post submit failures aren\u0027t blocking, we wanted to keep them so that the failures are actually addressed.",
+      "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
