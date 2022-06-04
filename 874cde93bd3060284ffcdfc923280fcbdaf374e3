@@ -16,6 +16,24 @@
       "message": "Wei,\nThe tests that are failing in post submit are currently removed from presubmit.\n\nAre post submit failures blocking?\nIn that case, instead of reverting, I will create a CL to remove the failing tests from post submit as well.\n\nIf the post submit failures aren\u0027t blocking, we wanted to keep them so that the failures are actually addressed.",
       "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410e0b99_9b441c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1077574
+      },
+      "writtenOn": "2022-06-04T00:01:49Z",
+      "side": 1,
+      "message": "Yes, they are blocking. \nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI52100010057558865\u0026testResultId\u003dTR68328071800953402\n\nAnd they are currently tagged with dm_platinum tests. So please create a CL to remove them from postsubmit.",
+      "parentUuid": "c0eca549_4b2ad06c",
+      "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
