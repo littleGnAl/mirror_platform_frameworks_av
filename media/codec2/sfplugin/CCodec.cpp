@@ -1502,6 +1502,21 @@ void CCodec::configure(const sp<AMessage> &msg) {
 
     config->queryConfiguration(comp);
 
+    // Components are supposed to work with any input buffer size;
+    // if the queried MAX_INPUT_SIZE is less than client configured
+    // MAX_INPUT_SIZE, we are going ahead with the client configured
+    // input size. Framework will allocate input buffer size based
+    // on client configured and components are expected to work with
+    // the given input buffers
+    int32_t clientInputSize = 0;
+    msg->findInt32(KEY_MAX_INPUT_SIZE, &clientInputSize);
+    int32_t queriedInputSize = 0;
+    config->mInputFormat->findInt32(KEY_MAX_INPUT_SIZE,
+        &queriedInputSize);
+    if (clientInputSize > queriedInputSize) {
+        config->mInputFormat->setInt32(KEY_MAX_INPUT_SIZE, clientInputSize);
+    }
+
     mCallback->onComponentConfigured(config->mInputFormat, config->mOutputFormat);
 }
 
