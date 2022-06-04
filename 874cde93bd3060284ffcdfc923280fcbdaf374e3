@@ -87,6 +87,24 @@
       "message": "Wonsik, Lajos,\nCan you please approve this revert?\n",
       "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f190ff17_3597a0ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1077574
+      },
+      "writtenOn": "2022-06-04T00:21:18Z",
+      "side": 1,
+      "message": "I +2 the CL, It will be reverted after presubmit is OK.",
+      "parentUuid": "523b8fda_e5adbe24",
+      "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
