@@ -34,6 +34,24 @@
       "parentUuid": "c0eca549_4b2ad06c",
       "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283740d5_a582deb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-04T00:03:12Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/2116277 is the CL that removes these from postsubmit as well.",
+      "parentUuid": "c0eca549_4b2ad06c",
+      "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
