@@ -52,6 +52,41 @@
       "parentUuid": "c0eca549_4b2ad06c",
       "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbb9af2_20740af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-04T00:13:44Z",
+      "side": 1,
+      "message": "that CL shows merge conflicts with git_master.\nSo in the interest of time, let us go ahead with the revert now.",
+      "parentUuid": "283740d5_a582deb6",
+      "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523b8fda_e5adbe24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-04T00:13:44Z",
+      "side": 1,
+      "message": "Wonsik, Lajos,\nCan you please approve this revert?\n",
+      "revId": "874cde93bd3060284ffcdfc923280fcbdaf374e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
