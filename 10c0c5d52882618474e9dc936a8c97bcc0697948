@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a57c1e4_d4fe4679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-04T05:18:25Z",
+      "side": 1,
+      "message": "This is now verified in surface mode.\nWhen decoding 10-bit clips using c2 vp9 or av1 decoders, P010 or RGBA1010102 will be used when color format is set to surface. \n",
+      "revId": "10c0c5d52882618474e9dc936a8c97bcc0697948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
