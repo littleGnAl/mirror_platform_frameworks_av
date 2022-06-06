@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2963fd_68960db8",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-06-06T20:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ebd7013_92cde5de",
+      "range": {
+        "startLine": 1505,
+        "startChar": 21,
+        "endLine": 1505,
+        "endChar": 28
+      },
+      "revId": "7fe01d772b80c1fee2c8a385c28830fab620bf90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0a4504e_430ef987",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-06T17:41:21Z",
       "side": 1,
       "message": "configured?",
+      "range": {
+        "startLine": 1507,
+        "startChar": 56,
+        "endLine": 1507,
+        "endChar": 65
+      },
+      "revId": "7fe01d772b80c1fee2c8a385c28830fab620bf90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "019b3a10_49f7b19e",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-06-06T20:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a4504e_430ef987",
       "range": {
         "startLine": 1507,
         "startChar": 56,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af92e83_b89a758d",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-06-06T20:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0fd2f3_72d31040",
+      "range": {
+        "startLine": 1505,
+        "startChar": 4,
+        "endLine": 1510,
+        "endChar": 29
+      },
+      "revId": "7fe01d772b80c1fee2c8a385c28830fab620bf90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee22515f_4c847cd1",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-06T17:41:21Z",
       "side": 1,
       "message": "Is this always clientInputSize?",
+      "range": {
+        "startLine": 1518,
+        "startChar": 21,
+        "endLine": 1518,
+        "endChar": 76
+      },
+      "revId": "7fe01d772b80c1fee2c8a385c28830fab620bf90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f494090_6d13a344",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-06-06T20:44:04Z",
+      "side": 1,
+      "message": "if the clientInputSize \u003e than the quieredInputSize then it is always the clientInputSize that we need to set.",
+      "parentUuid": "ee22515f_4c847cd1",
       "range": {
         "startLine": 1518,
         "startChar": 21,
