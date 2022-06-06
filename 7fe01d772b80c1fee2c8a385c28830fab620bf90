@@ -187,6 +187,30 @@
       },
       "revId": "7fe01d772b80c1fee2c8a385c28830fab620bf90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9aa064_1b2e695f",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-06-06T21:18:05Z",
+      "side": 1,
+      "message": "I am wondering whether c2_min() is necessary here.",
+      "parentUuid": "4f494090_6d13a344",
+      "range": {
+        "startLine": 1518,
+        "startChar": 21,
+        "endLine": 1518,
+        "endChar": 76
+      },
+      "revId": "7fe01d772b80c1fee2c8a385c28830fab620bf90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
