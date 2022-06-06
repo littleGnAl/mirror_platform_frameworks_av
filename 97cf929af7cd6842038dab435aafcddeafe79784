@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc00554_b0d69343",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2498,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-06-06T09:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5146b44_2bc56d5d",
+      "revId": "97cf929af7cd6842038dab435aafcddeafe79784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f8c8961_f245dc1f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-31T22:53:23Z",
       "side": 1,
       "message": "if (msg-\u003efindMessage(...) \u0026\u0026 tunings !\u003d NULL) {",
+      "range": {
+        "startLine": 4909,
+        "startChar": 8,
+        "endLine": 4910,
+        "endChar": 29
+      },
+      "revId": "97cf929af7cd6842038dab435aafcddeafe79784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "216b1596_d7bf4725",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4910,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-06-06T09:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8c8961_f245dc1f",
       "range": {
         "startLine": 4909,
         "startChar": 8,
