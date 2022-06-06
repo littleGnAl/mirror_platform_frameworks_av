@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b917f79d_e59589e5",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1906,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-06-06T09:59:41Z",
+      "side": 1,
+      "message": "I did some looking around about the meaning of stub (https://stackoverflow.com/questions/9777822/what-does-to-stub-mean-in-programming) because it sounded weird to me. I don\u0027t think it\u0027s a big deal, but would you consider \"placeholder\" or \"unused_placeholder\" or \"placeholder_char\" instead?\n\nOtherwise, happy to approve, and thanks for the change!",
+      "range": {
+        "startLine": 1906,
+        "startChar": 17,
+        "endLine": 1906,
+        "endChar": 21
+      },
+      "revId": "ba5f94f758fc9875bd2b8ce4751714b61a386594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
