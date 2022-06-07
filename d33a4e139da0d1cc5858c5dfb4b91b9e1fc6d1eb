@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e3f0be_24170009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-06-07T14:17:51Z",
+      "side": 1,
+      "message": "CCodec::configure will try to configure the component first and then populate the mInputFormat and mOutputFormat after querying the component. \nThe query fills mInputFormat with the configured values from the component. \n\nAccording to the my understanding, MAX_INPUT_SIZE is supposed to be a suggestion to the component, in software decoders ( c2.android.*), this is a fixed value for particular resolution ( see the bug). So the query was  coming back as a fixed value. That was the reason we were not able to see the change in MAX_INPUT_SIZE for software codecs. This change overrides the query result  from the component if the client requested size is greater than what is accepted from the component. Since we expect the component to work on any input size, the component should not complain.",
+      "parentUuid": "38fe49d2_9a51b02c",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a512b93_0aef961b",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "if we set it to mInputFormat, could it be passed to the component? and the component respects that value? \n\nDon\u0027t we need to comp-\u003econfig or equivalent for this?",
       "parentUuid": "729ac576_17a1aa52",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757449ba_dcd7fd96",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-06-07T14:17:51Z",
+      "side": 1,
+      "message": "@harish: The setting of the mInputFormat was done before config-\u003equeryConfiguration(comp). the queryConfiguration() was resetting the values according to the values configured in the component.\n\n@Lajos: the software component was setting a fixed input size for a resolution, which was less than what was asked in the configuration. \nconfig-\u003equeryConfiguration(comp); was resetting the configuration setting as configured from the component. This wont retry another config on the component, but results in the framework to allocate buffers as requested by the client. The component seems to be ok with this. But i am not sure why that problem is showing up only on some platforms ( may be due to difference in the encoder)\n\n@sungtak, AFAIK, this particular config KEY_MAX_INPUT_SIZE is only a suggestion to the component and the component should be working with any input size. The original issue happened because the component was not taking in the value requested from the client and was only accepting a lesser value.",
+      "parentUuid": "534a14f9_ecf328b0",
       "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
