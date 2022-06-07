@@ -33,6 +33,24 @@
       "message": "This part is currently being done in line 1318 above.\nNot sure if we really need this here.",
       "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729ac576_17a1aa52",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-06-07T04:47:55Z",
+      "side": 1,
+      "message": "My understanding is that we are re-setting the input buffer size if it came back smaller than the requested buffer size.\n\nHave we figured out why on the R vendor partition the initial configuration did not take place? Do we think it takes place on this retry?",
+      "parentUuid": "0a512b93_0aef961b",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
