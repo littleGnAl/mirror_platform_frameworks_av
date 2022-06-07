@@ -51,6 +51,24 @@
       "parentUuid": "0a512b93_0aef961b",
       "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534a14f9_ecf328b0",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-06-07T08:14:26Z",
+      "side": 1,
+      "message": "if we set it to mInputFormat, could it be passed to the component? and the component respects that value? \n\nDon\u0027t we need to comp-\u003econfig or equivalent for this?",
+      "parentUuid": "729ac576_17a1aa52",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
