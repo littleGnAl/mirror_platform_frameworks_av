@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38fe49d2_9a51b02c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-07T04:28:45Z",
+      "side": 1,
+      "message": "Arun,\nCame across this CL based on the link in the bug. \n\nJust thought of adding few more observations on the current t-fs-release source tree (hoping that it helps).\n\nmax-input-size passed from the MediaCodec side is taking effect as long as it is greater than component requested size.\nTo verify that, in a local AMediaCodec_* based application, I configured \"max-input-size\" to various values and checked the size of buffer returned in AMediaCodec_getInputBuffer.\n\nBuffer size matches the passed in \"max-input-size\" effect whenever it is greater than component requested size.\n\nIs it possible that in that, when going through the config params, before component reached \"max-input-size\", there was an error and thus it didn\u0027t configure the buffer sizes correctly leading to smaller buffers being allocated?  ",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a512b93_0aef961b",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-07T04:28:45Z",
+      "side": 1,
+      "message": "This part is currently being done in line 1318 above.\nNot sure if we really need this here.",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
