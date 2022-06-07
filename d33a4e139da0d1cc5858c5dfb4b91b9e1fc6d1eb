@@ -105,6 +105,24 @@
       "parentUuid": "534a14f9_ecf328b0",
       "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5b1b5b_5df6e90f",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-06-07T22:12:39Z",
+      "side": 1,
+      "message": "If client is taking only the value smaller than, why does this fix work? In that case does device HAL side fix is also necessary? Or does this fix alone work anyhow?",
+      "parentUuid": "757449ba_dcd7fd96",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
