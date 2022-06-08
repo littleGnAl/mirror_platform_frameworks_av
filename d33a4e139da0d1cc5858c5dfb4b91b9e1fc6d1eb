@@ -123,6 +123,24 @@
       "parentUuid": "757449ba_dcd7fd96",
       "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f501840_a02fee54",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-06-08T20:21:21Z",
+      "side": 1,
+      "message": "The bug here is no longer reproducible in T + R or T + T, but the fix for that came from https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/av/+/16720252/\nThe CL above establishes a minimum size of 2 MB for software codecs. so the issue was resolved. \n\nThis CL is relevant only if the component push back on the MAX_INPUT_SIZE. This CL will require all components to work for any input buffer size from the framework.",
+      "parentUuid": "4e5b1b5b_5df6e90f",
+      "revId": "d33a4e139da0d1cc5858c5dfb4b91b9e1fc6d1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
