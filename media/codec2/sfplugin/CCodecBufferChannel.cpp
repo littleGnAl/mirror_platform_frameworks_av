@@ -1012,6 +1012,10 @@ void CCodecBufferChannel::getInputBufferArray(Vector<sp<MediaCodecBuffer>> *arra
     array->clear();
     Mutexed<Input>::Locked input(mInput);
 
+    if (!input->buffers) {
+        ALOGE("getInputBufferArray: No Input Buffers allocated");
+        return;
+    }
     if (!input->buffers->isArrayMode()) {
         input->buffers = input->buffers->toArrayMode(input->numSlots);
     }
@@ -1022,7 +1026,10 @@ void CCodecBufferChannel::getInputBufferArray(Vector<sp<MediaCodecBuffer>> *arra
 void CCodecBufferChannel::getOutputBufferArray(Vector<sp<MediaCodecBuffer>> *array) {
     array->clear();
     Mutexed<Output>::Locked output(mOutput);
-
+    if (!output->buffers) {
+        ALOGE("getOutputBufferArray: No Output Buffers allocated");
+        return;
+    }
     if (!output->buffers->isArrayMode()) {
         output->buffers = output->buffers->toArrayMode(output->numSlots);
     }
