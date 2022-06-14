@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3324c315_a1e50150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-14T02:01:32Z",
+      "side": 1,
+      "message": "Solves the segfault seen, now results in a c2 timeout.",
+      "revId": "1eb370c8797b38c92b55d1f1ea92e66a77892d0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8593ae19_8e5d61b7",
