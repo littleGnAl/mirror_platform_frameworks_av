@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8593ae19_8e5d61b7",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-14T01:54:31Z",
+      "side": 1,
+      "message": "nit: this seems redundant as all the calls pass a valid address.",
+      "range": {
+        "startLine": 126,
+        "startChar": 14,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "1eb370c8797b38c92b55d1f1ea92e66a77892d0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95168784_a0fbd447",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-14T01:54:31Z",
+      "side": 1,
+      "message": "img \u003d\u003d nullptr check is redundant.\n\"img\" is used line 124 and 125.\nIf the preference is to retain the check, then it needs to be the first check.",
+      "range": {
+        "startLine": 126,
+        "startChar": 32,
+        "endLine": 127,
+        "endChar": 28
+      },
+      "revId": "1eb370c8797b38c92b55d1f1ea92e66a77892d0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28092c3c_ea514261",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-14T01:54:31Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 212,
+        "startChar": 14,
+        "endLine": 212,
+        "endChar": 28
+      },
+      "revId": "1eb370c8797b38c92b55d1f1ea92e66a77892d0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
