@@ -44,8 +44,7 @@ cc_library_shared {
         "libutils",
         "liblog",
         "libcrypto",
-        "libstagefright_foundation",
-        "libprotobuf-cpp-lite",
+        "libstagefright_foundation"
     ],
 
     header_libs: ["media_plugin_headers"],
@@ -53,7 +52,7 @@ cc_library_shared {
     static_libs: ["libjsmn"],
 
     proto: {
-        type: "full",
+        type: "lite-static",
         export_proto_headers: true,
     },
 
