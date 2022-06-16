@@ -46,7 +46,7 @@ LOCAL_STATIC_LIBRARIES := \
 
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
-LOCAL_PROTOC_OPTIMIZE_TYPE := full
+LOCAL_PROTOC_OPTIMIZE_TYPE := lite
 
 define proto_includes
 $(call local-generated-sources-dir)/proto/$(LOCAL_PATH)
