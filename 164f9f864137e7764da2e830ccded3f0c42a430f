@@ -16,6 +16,24 @@
       "message": "Do we need to CP this to T?",
       "revId": "164f9f864137e7764da2e830ccded3f0c42a430f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8551a9_0ece0de8",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2022-06-16T04:47:07Z",
+      "side": 1,
+      "message": "Yes, it is needed on T.",
+      "parentUuid": "fc72bd24_c9e80d20",
+      "revId": "164f9f864137e7764da2e830ccded3f0c42a430f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
