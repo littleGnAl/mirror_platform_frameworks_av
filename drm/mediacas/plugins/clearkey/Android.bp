@@ -53,7 +53,7 @@ cc_library_shared {
     static_libs: ["libjsmn"],
 
     proto: {
-        type: "full",
+        type: "lite",
         export_proto_headers: true,
     },
 
