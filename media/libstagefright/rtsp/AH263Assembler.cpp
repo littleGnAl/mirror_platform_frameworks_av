@@ -166,6 +166,10 @@ void AH263Assembler::submitAccessUnit() {
     }
 
     sp<ABuffer> accessUnit = new ABuffer(totalSize);
+
+	if (accessUnit->data() == NULL)
+		return;
+
     size_t offset = 0;
     it = mPackets.begin();
     while (it != mPackets.end()) {
