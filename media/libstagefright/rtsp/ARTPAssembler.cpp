@@ -87,6 +87,12 @@ sp<ABuffer> ARTPAssembler::MakeADTSCompoundFromAACFrames(
     }
 
     sp<ABuffer> accessUnit = new ABuffer(totalSize);
+
+    if (accessUnit->data != nullptr) {
+        ALOGW("Allocate accessUnit failed");
+        return;
+    }
+
     size_t offset = 0;
     for (List<sp<ABuffer> >::const_iterator it = frames.begin();
          it != frames.end(); ++it) {
@@ -133,6 +139,12 @@ sp<ABuffer> ARTPAssembler::MakeCompoundFromPackets(
     }
 
     sp<ABuffer> accessUnit = new ABuffer(totalSize);
+
+    if (accessUnit->data() != nullptr) {
+        ALOGW("Allocate accessUnit failed");
+        return;
+    }
+
     size_t offset = 0;
     for (List<sp<ABuffer> >::const_iterator it = packets.begin();
          it != packets.end(); ++it) {

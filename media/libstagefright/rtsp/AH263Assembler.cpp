@@ -166,6 +166,12 @@ void AH263Assembler::submitAccessUnit() {
     }
 
     sp<ABuffer> accessUnit = new ABuffer(totalSize);
+
+    if (accessUnit->data() != nullptr) {
+        ALOGW("Allocate accessUnit failed");
+        return;
+    }
+
     size_t offset = 0;
     it = mPackets.begin();
     while (it != mPackets.end()) {

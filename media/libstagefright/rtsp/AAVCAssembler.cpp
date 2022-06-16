@@ -580,6 +580,12 @@ void AAVCAssembler::submitAccessUnit() {
     }
 
     sp<ABuffer> accessUnit = new ABuffer(totalSize);
+
+    if (accessUnit->data() != nullptr) {
+        ALOGW("Allocate accessUnit failed");
+        return;
+    }
+
     size_t offset = 0;
     int32_t cvo = -1;
     for (List<sp<ABuffer> >::iterator it = mNALUnits.begin();
