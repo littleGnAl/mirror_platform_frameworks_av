@@ -34,6 +34,24 @@
       "parentUuid": "fc72bd24_c9e80d20",
       "revId": "164f9f864137e7764da2e830ccded3f0c42a430f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d44ea5_f51d1993",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-06-17T07:25:00Z",
+      "side": 1,
+      "message": "Could you handle Qualcomm-Review? (It is still required.)",
+      "parentUuid": "fa8551a9_0ece0de8",
+      "revId": "164f9f864137e7764da2e830ccded3f0c42a430f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
