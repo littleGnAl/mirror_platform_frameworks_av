@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43928f8b_f0ed7630",
+        "filename": "media/libeffects/spatializer/tests/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b6f67eb_d2d6a2c9",
+      "range": {
+        "startLine": 1,
+        "startChar": 28,
+        "endLine": 1,
+        "endChar": 35
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2641f725_bf6f9b88",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-18T02:46:13Z",
       "side": 1,
       "message": "TODO(b/234170025):",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad142e4_0ca77085",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2641f725_bf6f9b88",
       "range": {
         "startLine": 50,
         "startChar": 3,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "417dfbbd_f30806b0",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e54e5ab9_cdc09bf8",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5a8418a_805ebcb0",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-18T02:46:13Z",
       "side": 1,
       "message": "does not crash",
+      "range": {
+        "startLine": 100,
+        "startChar": 39,
+        "endLine": 100,
+        "endChar": 41
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b15afb2_89491322",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5a8418a_805ebcb0",
       "range": {
         "startLine": 100,
         "startChar": 39,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77f6b75_e7ec8353",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c83189e4_c036119f",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 8
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028ea512_338dbed6",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-06-18T02:46:13Z",
       "side": 1,
       "message": "nit: would be better with an empty line above above.  Also line 154.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff5111a_1d27484e",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028ea512_338dbed6",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb4aa92_a8828113",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633248e6_58e92399",
+      "range": {
+        "startLine": 111,
+        "startChar": 67,
+        "endLine": 111,
+        "endChar": 90
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ed41725_4785eb93",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-06-18T02:46:13Z",
       "side": 1,
       "message": "bounds check this?",
+      "range": {
+        "startLine": 161,
+        "startChar": 69,
+        "endLine": 161,
+        "endChar": 82
+      },
+      "revId": "dfc866f70bc5cb57a023d372ebff3db38c73e300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82324dc2_788968ce",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-18T05:19:17Z",
+      "side": 1,
+      "message": "This is a variable sized vector that is used to set multiple values.\nWe wouldn\u0027t know the upper bound for this.",
+      "parentUuid": "3ed41725_4785eb93",
       "range": {
         "startLine": 161,
         "startChar": 69,
