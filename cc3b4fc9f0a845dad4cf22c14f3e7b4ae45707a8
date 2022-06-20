@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eac1aca_5d8d9aab",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-06-20T14:44:05Z",
+      "side": 1,
+      "message": "rather than discarding all compressed formats, I would rather compare the requested for mat to the primary mix format and use the mix if either both are in the PCM family and can be for format adapted by the mixer or if they are the same compressed format.\nOr maybe better include this logic in AudioPolicyMixCollection.getOutputForAttr() by passing the audio config.",
+      "range": {
+        "startLine": 1036,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 51
+      },
+      "revId": "cc3b4fc9f0a845dad4cf22c14f3e7b4ae45707a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
