@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fcd277c_29328797",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-06-20T14:52:32Z",
+      "side": 1,
+      "message": "we should find a way to use the same path as line 1089.\nHere we miss policyDesc-\u003emPolicyMix \u003d primaryMix; and primaryMix-\u003esetOutput(policyDesc);\n\nThere must be a way to factor in the call to openDirectOutput() and what follows by splitting/modifying the condition in line 1050",
+      "range": {
+        "startLine": 1076,
+        "startChar": 0,
+        "endLine": 1076,
+        "endChar": 37
+      },
+      "revId": "96d030fa239150f3b151b8390855a8a7b3c9b7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
