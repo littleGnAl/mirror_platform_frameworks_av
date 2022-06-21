@@ -2516,7 +2516,7 @@ nsecs_t AudioTrack::processAudioBuffer()
     const nsecs_t timeAfterCallbacks = systemTime();
 
     // Convert frame units to time units
-    nsecs_t ns = NS_WHENEVER;
+    nsecs_t ns = 5 * NANOS_PER_SECOND;
     if (minFrames != (uint32_t) ~0) {
         // AudioFlinger consumption of client data may be irregular when coming out of device
         // standby since the kernel buffers require filling. This is throttled to no more than 2x
