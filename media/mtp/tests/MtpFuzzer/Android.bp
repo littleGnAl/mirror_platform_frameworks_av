@@ -57,3 +57,51 @@ cc_fuzz {
     dictionary: "mtp_fuzzer.dict",
     corpus: ["corpus/*"],
 }
+
+cc_defaults {
+    name: "mtp_property_fuzzer_defaults",
+    shared_libs: [
+        "libmtp",
+        "libbase",
+        "liblog",
+        "libutils",
+        "libasyncio",
+        "libusbhost",
+    ],
+    static_libs: ["libc++fs",],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-unused-parameter",
+    ],
+    header_libs: [
+         "libcutils_headers",
+     ],
+    fuzz_config: {
+
+        cc: ["jameswei@google.com"],
+        componentid: 1344,
+        acknowledgement: [
+            "Grant Hernandez of Google",
+        ],
+    },
+}
+
+cc_fuzz {
+     name: "mtp_device_property_fuzzer",
+     srcs: ["mtp_property_fuzzer.cpp"],
+     defaults: ["mtp_property_fuzzer_defaults"],
+     cflags: [
+         "-DMTP_DEVICE",
+     ],
+}
+
+cc_fuzz {
+     name: "mtp_host_property_fuzzer",
+     srcs: ["mtp_property_fuzzer.cpp"],
+     defaults: ["mtp_property_fuzzer_defaults"],
+     cflags: [
+         "-DMTP_HOST",
+     ],
+}
