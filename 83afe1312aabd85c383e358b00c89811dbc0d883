@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca2da12_0684a7c5",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-21T22:19:34Z",
+      "side": 1,
+      "message": "Thanks for the clean todo reminder.\nThis is one way to test with supported sample rates only, I can also see another way to pass in whatever possible sample rate we have, and if its unsupported sample rates, we should expect some error return code such as EPARAM, test case should pass with: success return code with supported sample rate, or error return code with unsupported sample rate.\nThis brings in another benefit as well: let\u0027s say in further we extend the supported sample rates in spatialize, then some test cases will fail because its still expecting error return code, then we will be forced to updated the testing code without need to look into bugs in queue.\nSame comment for \"TODO(b/234620538\".",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 81
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e598a1_c7a0faf2",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-21T22:19:34Z",
+      "side": 1,
+      "message": "Nint: can we take use of these enums definitions: t_virtualizer_stage_params/spatializer_level_t/spatialization_mode_t, and test them with range? So that we don\u0027t need to enum them manually in test code?",
+      "range": {
+        "startLine": 238,
+        "startChar": 36,
+        "endLine": 238,
+        "endChar": 76
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f046c0_b18bf68c",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-21T22:19:34Z",
+      "side": 1,
+      "message": "IMHO we should verify result of setParam with getParam, setParam function return 0 doesn\u0027t guarantee EFFECT_CMD_SET_PARAM was processed successfully.",
+      "range": {
+        "startLine": 267,
+        "startChar": 24,
+        "endLine": 267,
+        "endChar": 32
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1ad01b_518efbdc",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-21T22:19:34Z",
+      "side": 1,
+      "message": "Maybe add ASSERT_NE((y), 0) to avoid div 0?\nAnd actually maybe inline function works better here, just to avoid possible unintended expansion (y expanded twice here), just suggestion. 😊",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13047157_ce9cd97b",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-21T22:19:34Z",
+      "side": 1,
+      "message": "IMHO a test helper shouldn\u0027t return with illegal input because this limits our test coverage to legal input only.\nIt should be a thin layer which takes whatever parameter pass in, and return whatever return from effect-\u003ecommand(), its test cases\u0027s call to check the correctness of output according to input.",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 51
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
