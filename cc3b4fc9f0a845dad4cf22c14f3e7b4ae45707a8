@@ -22,6 +22,30 @@
       },
       "revId": "cc3b4fc9f0a845dad4cf22c14f3e7b4ae45707a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb5681b_9e1333fc",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-06-22T10:35:44Z",
+      "side": 1,
+      "message": "Ack. Please see PS3 which implements the logic in AudioPolicyMixCollection.getOutputForAttr() as suggested.",
+      "parentUuid": "6eac1aca_5d8d9aab",
+      "range": {
+        "startLine": 1036,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 51
+      },
+      "revId": "cc3b4fc9f0a845dad4cf22c14f3e7b4ae45707a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
