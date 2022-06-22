@@ -16,6 +16,24 @@
       "message": "Jiabin, can you please check this out?",
       "revId": "6e2ed332a600dc833648140fe90df2c52c2ab214",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2356428_0e2e36f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-06-22T05:12:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure if external mic will always work better than built-in mic in camera recording case. When capturing video from back camera, if audio is mainly from the phone user, it makes sense that the headset\u0027s mic will perform better than built-in mic. However, if the user is aim at capturing audio around, I\u0027d not expect headset\u0027s mic perform better than built-in mic.\n\nEric, could you also comment on this change?",
+      "parentUuid": "10e546bf_11338282",
+      "revId": "6e2ed332a600dc833648140fe90df2c52c2ab214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
