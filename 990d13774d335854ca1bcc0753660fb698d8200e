@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc98534f_b4e7ceb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-06-22T16:59:58Z",
+      "side": 1,
+      "message": "Title should be like\nRTSP: Fix null pointer dereference for AAVC/AH263/AHEVC/ARTPAssembler\n\nAnd please add the bug id as below. (file a bug accordingly to the issue tracker also.)\nBug: 173730101\n",
+      "revId": "990d13774d335854ca1bcc0753660fb698d8200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8bd0ebf_fd713fcd",
         "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
         "patchSetId": 1
