@@ -34,6 +34,29 @@
       "parentUuid": "10e546bf_11338282",
       "revId": "6e2ed332a600dc833648140fe90df2c52c2ab214",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6479152f_04f58f85",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-06-22T09:31:49Z",
+      "side": 1,
+      "message": "This is currently controlled by a UI in the camera app to let the user decide if they want to use the wired headset or not . this is similar to call audio routing selection to speakerphone or not. We prefer the default to be the build in mic even if a wired headset is connect and let the user override the default with the camera app UI",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 75
+      },
+      "revId": "6e2ed332a600dc833648140fe90df2c52c2ab214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
