@@ -703,6 +703,12 @@ c2_status_t C2AllocationGralloc::map(
 
         case static_cast<uint32_t>(PixelFormat4::YCBCR_P010): {
             void *pointer = nullptr;
+
+            c2_status_t status = Gralloc4Mapper_lock(
+                    const_cast<native_handle_t*>(mBuffer), grallocUsage, rect, layout, addr);
+            if (status == C2_OK) {
+                break;
+            }
             status_t err = GraphicBufferMapper::get().lock(
                     const_cast<native_handle_t *>(mBuffer), grallocUsage, rect, &pointer);
             if (err) {
