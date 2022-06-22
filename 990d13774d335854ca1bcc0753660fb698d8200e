@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "579a6881_a6b91e8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-06-22T16:53:43Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "990d13774d335854ca1bcc0753660fb698d8200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8bd0ebf_fd713fcd",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-06-22T16:53:43Z",
+      "side": 1,
+      "message": "We need to replace tabs with spaces, and ifs should use brackets even if there\u0027s a single statment inside. As in\n\n```\nif (accessUnit-\u003edata() \u003d\u003d nullptr) {\n    return;\n}\n```\n\nAlso please note the use of nullptr, instead of NULL.\n\nI need to take a longer look to make sure this is safe. It\u0027s not obvious to me this return is not violating post-conditions of this function.",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 0
+      },
+      "revId": "990d13774d335854ca1bcc0753660fb698d8200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
