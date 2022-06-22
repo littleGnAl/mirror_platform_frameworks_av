@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21240d3f_58b80c6f",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-22T04:04:34Z",
+      "side": 1,
+      "message": "Currently the library doesn\u0027t return an error code for unsupported sampling rates and frame counts.\n\nOnce the library is updated, this part will be updated such that, for all unsupported frame counts and sampling rates.\n\n- test will be marked as skipped\nor \n- test will be marked as failed\nor\n- will be updated as per the suggestion above",
+      "parentUuid": "9ca2da12_0684a7c5",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 81
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75e598a1_c7a0faf2",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9134e894_74c819ed",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-22T04:04:34Z",
+      "side": 1,
+      "message": "this test is just a simple API validation test to verify that library returns expected values in some specific calls.\n\nin subsequent CLs, for all supported params,\nseparate test will be added to actually validate the output for different params.\n\nfor eg, set SPATIALIZER_PARAM_HEAD_TO_STAGE to different rotation vectors and see how to test that. Need to align on the pass criteria for each of the combinations that will be tested.\n\nAndy,\nThis test currently is specific to the current spatializer implementation.\nOnce the updated library is ready and the test is extended to test each parameter separately, would it make sense to remove this function completely?\n\ni.e. for eg, if spatializer effect says it supports different channel masks, if we can test each channel mask (need to align how to test each parameter), then verifying that 5.1 is the supported channel mask is redundant.",
+      "parentUuid": "75e598a1_c7a0faf2",
+      "range": {
+        "startLine": 238,
+        "startChar": 36,
+        "endLine": 238,
+        "endChar": 76
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55f046c0_b18bf68c",
         "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
         "patchSetId": 8
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-21T22:19:34Z",
       "side": 1,
       "message": "IMHO we should verify result of setParam with getParam, setParam function return 0 doesn\u0027t guarantee EFFECT_CMD_SET_PARAM was processed successfully.",
+      "range": {
+        "startLine": 267,
+        "startChar": 24,
+        "endLine": 267,
+        "endChar": 32
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7779e20_6a1b0249",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-22T04:04:34Z",
+      "side": 1,
+      "message": "line 260 validates the returned parameter.\nCurrently library only supports SPATIALIZATION_LEVEL_MULTICHANNEL.\n\nThis is testing unsupported parameter and hence expects return to be not zero.\n\nThis validation by getParam() can be done where separate tests will be added to verify functionality with params set to different values.",
+      "parentUuid": "55f046c0_b18bf68c",
       "range": {
         "startLine": 267,
         "startChar": 24,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "656eecc9_02c9b250",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-22T04:04:34Z",
+      "side": 1,
+      "message": "ASSERT_NE() can\u0027t really be called here as this is just a macro.\nIt can\u0027t be called even after changing this to a function as ASSERT_NE() doesn\u0027t return a value.\n\nALIGN() approach was trying to divide a buffer into smaller parts and instead now it is simplified to combine multiple buffers.\ni.e. instead of dividing a certain buffer size into multiple smaller parts and calling the effect, multiple smaller sizes are combined to get size of larger buffers now. This simplifies the computations and avoids the need for alignment completely.",
+      "parentUuid": "7b1ad01b_518efbdc",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13047157_ce9cd97b",
         "filename": "media/libeffects/tests/common/EffectTestHelper.h",
         "patchSetId": 8
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-21T22:19:34Z",
       "side": 1,
       "message": "IMHO a test helper shouldn\u0027t return with illegal input because this limits our test coverage to legal input only.\nIt should be a thin layer which takes whatever parameter pass in, and return whatever return from effect-\u003ecommand(), its test cases\u0027s call to check the correctness of output according to input.",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 51
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ff05618_edb7e7b1",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-22T04:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13047157_ce9cd97b",
       "range": {
         "startLine": 113,
         "startChar": 8,
