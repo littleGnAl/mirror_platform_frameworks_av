@@ -33,6 +33,24 @@
       "message": "Can you please create a bug and upload a bugreport for this issue (if possible).\n\nWould obtaining a copy of the sp\u003cAudioTrack\u003e mAudioTrack under lock prevent the race condition here?  Obtaining a local copy of the sp\u003cAudioTrack\u003e will postpone the AudioTrack destruction.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaudioclient/include/media/TrackPlayerBase.h;drc\u003d419312541747dc19d37c23f8e65fdf0650f7c83e;l\u003d41\n",
       "revId": "3e285ff280146527c442fb9842cb889a8f65b9ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa45d75_19c73659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2022-06-22T10:46:15Z",
+      "side": 1,
+      "message": "TrackPlayerBase::doDestroy will call mAudioTrack.clear(),  mAudioTrack should be release when  mAudioTrack.clear().",
+      "parentUuid": "d25c3129_8c0aa7a4",
+      "revId": "3e285ff280146527c442fb9842cb889a8f65b9ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
