@@ -116,11 +116,14 @@ static inline status_t statusFromBinderStatus(hardware::Return<Status> &&status)
         return DEAD_OBJECT;
     }
     // Other exception
+    // TODO: girishshetty: Isn't there any error code mapping from
+    // hardware::Return<Status> to android::status_t?
     return UNKNOWN_ERROR;
 }
 
 // checks and converts status_t to a non-side-effect status_t
 static inline status_t makeNoSideEffectStatus(status_t err) {
+    // TODO: girishshetty: Can be more meaningful error here
     switch (err) {
     // the following errors have side effects and may come
     // from other code modules. Remap for safety reasons.
@@ -3380,6 +3383,7 @@ status_t ACodec::setVideoPortFormatType(
     }
 
     if (!found) {
+        // TODO: girishshetty: Can be more meaningful error here
         return UNKNOWN_ERROR;
     }
 
@@ -6913,7 +6917,7 @@ bool ACodec::UninitializedState::onAllocateComponent(const sp<AMessage> &msg) {
     sp<MediaCodecInfo> info = (MediaCodecInfo *)obj.get();
     if (info == nullptr) {
         ALOGE("Unexpected nullptr for codec information");
-        mCodec->signalError(OMX_ErrorUndefined, UNKNOWN_ERROR);
+        mCodec->signalError(OMX_ErrorUndefined, BAD_VALUE);
         return false;
     }
     AString owner = (info->getOwnerName() == nullptr) ? "default" : info->getOwnerName();
@@ -7798,6 +7802,7 @@ status_t ACodec::setParameters(const sp<AMessage> &params) {
                     stopTimeOffsetUs = result;
                 });
         if (!trans.isOk()) {
+            // TODO: girishshetty: Do we get anything useful from err here?
             err = trans.isDeadObject() ? DEAD_OBJECT : UNKNOWN_ERROR;
         }
 

@@ -2688,7 +2688,7 @@ status_t MediaCodec::getMetrics(mediametrics_handle_t &reply) {
 
     // shouldn't happen, but be safe
     if (mMetricsHandle == 0) {
-        return UNKNOWN_ERROR;
+        return NO_MEMORY;
     }
 
     // update any in-flight data that's not carried within the record
@@ -4915,12 +4915,10 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
         status_t err = OK;
         if (c2Buffer) {
             err = mBufferChannel->attachBuffer(c2Buffer, buffer);
-        } else if (memory) {
+        } else {
             err = mBufferChannel->attachEncryptedBuffer(
                     memory, (mFlags & kFlagIsSecure), key, iv, mode, pattern,
                     offset, subSamples, numSubSamples, buffer);
-        } else {
-            err = UNKNOWN_ERROR;
         }
 
         if (err == OK && !buffer->asC2Buffer()
