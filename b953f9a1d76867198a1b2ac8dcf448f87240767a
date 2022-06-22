@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9035415_7c726bd8",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-22T15:59:40Z",
+      "side": 1,
+      "message": "it seems to me that this opens us up to out-of-order frames.\n\nif the consumer has not yet processed the previous frame, then this would put\nthe new frame in front of the previous frame. and the consumer will say \"i\u0027ve already done a subsequent frame/timestamp, so this one is in the past and we have\nmissed the chance to display it\".",
+      "range": {
+        "startLine": 1426,
+        "startChar": 28,
+        "endLine": 1426,
+        "endChar": 46
+      },
+      "revId": "b953f9a1d76867198a1b2ac8dcf448f87240767a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
