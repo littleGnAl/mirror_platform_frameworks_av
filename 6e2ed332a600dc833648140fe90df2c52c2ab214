@@ -57,6 +57,30 @@
       },
       "revId": "6e2ed332a600dc833648140fe90df2c52c2ab214",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c01b5d_9ca570b2",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2022-06-22T10:38:53Z",
+      "side": 1,
+      "message": "Yes, thanks for your reply.\nwhen connect headset, users always feedbck the sound is lower when camera recording for sound is recorded by builtin mic.\nRefer to the habits of recorder APP and voice call, sound should default be recorded by external devices.  link voice call default select headset, not give selection to user.\n\nAnother scenario， when users use lapel type wireless microphone to live, or caemra recoding use selfie stick, the builtin sound is low for distance.\n\nso we thinks the design it better, thanks.",
+      "parentUuid": "6479152f_04f58f85",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 75
+      },
+      "revId": "6e2ed332a600dc833648140fe90df2c52c2ab214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
