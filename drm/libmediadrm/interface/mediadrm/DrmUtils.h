@@ -92,7 +92,9 @@ void LogToBuffer(android_LogPriority level, const char *fmt, Args... args) {
 
 template <typename... Args>
 void LogToBuffer(android_LogPriority level, const uint8_t uuid[16], const char *fmt, Args... args) {
-    const uint64_t* uuid2 = reinterpret_cast<const uint64_t*>(uuid);
+    uint64_t uuid2[2];
+    memcpy(&uuid2[0], &uuid[0], 8);
+    memcpy(&uuid2[1], &uuid[8], 8);
     std::string uuidFmt("uuid=[%lx %lx] ");
     uuidFmt += fmt;
     LogToBuffer(level, uuidFmt.c_str(), htobe64(uuid2[0]), htobe64(uuid2[1]), args...);
