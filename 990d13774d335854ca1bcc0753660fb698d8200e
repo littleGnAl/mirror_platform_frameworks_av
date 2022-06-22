@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d664093_fdf59be1",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-22T18:22:43Z",
+      "side": 1,
+      "message": "i wonder if in the failing condition, we can re-run the loop from 577-579\nbut stop with a smaller number of NALs.\ne.g. if there are 5 NALs in the queue and we can\u0027t assemble them into a single\nmessage because the ABuffer() creation fails,  can we partition into a group\nof 2 and then 3....",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 9
+      },
+      "revId": "990d13774d335854ca1bcc0753660fb698d8200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8bd0ebf_fd713fcd",
         "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
         "patchSetId": 1
