@@ -27,4 +27,7 @@ cc_test {
     name: "VtsHalMediaC2V1_0TargetMasterTest",
     defaults: ["VtsHalMediaC2V1_0Defaults"],
     srcs: ["VtsHalMediaC2V1_0TargetMasterTest.cpp"],
+    shared_libs: [
+        "libui",
+    ],
 }
