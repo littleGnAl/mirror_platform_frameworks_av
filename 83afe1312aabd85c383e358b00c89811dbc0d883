@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23989c8b_52732b97",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-22T18:18:40Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "9134e894_74c819ed",
+      "range": {
+        "startLine": 238,
+        "startChar": 36,
+        "endLine": 238,
+        "endChar": 76
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55f046c0_b18bf68c",
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1128181_e4369463",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-22T18:18:40Z",
+      "side": 1,
+      "message": "I think it will be best to remove the level.clear() in line #266, and then call effect.getParam after line#267 to verify that an unsupported parameter setting won\u0027t come though and change the actually parameter in effect.",
+      "parentUuid": "c7779e20_6a1b0249",
+      "range": {
+        "startLine": 267,
+        "startChar": 24,
+        "endLine": 267,
+        "endChar": 32
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b1ad01b_518efbdc",
         "filename": "media/libeffects/tests/common/EffectTestHelper.h",
         "patchSetId": 8
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "ASSERT_NE() can\u0027t really be called here as this is just a macro.\nIt can\u0027t be called even after changing this to a function as ASSERT_NE() doesn\u0027t return a value.\n\nALIGN() approach was trying to divide a buffer into smaller parts and instead now it is simplified to combine multiple buffers.\ni.e. instead of dividing a certain buffer size into multiple smaller parts and calling the effect, multiple smaller sizes are combined to get size of larger buffers now. This simplifies the computations and avoids the need for alignment completely.",
       "parentUuid": "7b1ad01b_518efbdc",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbaf3ff_deb06755",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-22T18:18:40Z",
+      "side": 1,
+      "message": "Yes I can see the good intention of simplified testing code with macro and its actually helps (better than previous implementation, just want to callout some edge case handling here).\nTo be clear we don\u0027t need a return value from ASSERT_NE, an assert to avoid crash is enough for this case.",
+      "parentUuid": "656eecc9_02c9b250",
       "range": {
         "startLine": 34,
         "startChar": 8,
