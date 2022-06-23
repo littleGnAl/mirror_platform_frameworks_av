@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00ee39d4_28b3cf3c",
+        "filename": "media/libeffects/spatializer/tests/SpatializerTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-23T03:10:32Z",
+      "side": 1,
+      "message": "Added getParam to verify that unsupported level doesn\u0027t come through as suggested.\n\nBut the level.clear() is still needed as it would have SPATIALIZATION_LEVEL_MULTICHANNEL as a first entry (line 262).\n\nAnd on line 269 we want to ensure that unsupported level is sent to setParam()",
+      "parentUuid": "e1128181_e4369463",
+      "range": {
+        "startLine": 267,
+        "startChar": 24,
+        "endLine": 267,
+        "endChar": 32
+      },
+      "revId": "83afe1312aabd85c383e358b00c89811dbc0d883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b1ad01b_518efbdc",
         "filename": "media/libeffects/tests/common/EffectTestHelper.h",
         "patchSetId": 8
