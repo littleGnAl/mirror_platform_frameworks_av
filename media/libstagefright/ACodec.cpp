@@ -758,13 +758,14 @@ status_t ACodec::handleSetSurface(const sp<Surface> &surface) {
     status_t err = setupNativeWindowSizeFormatAndUsage(
             nativeWindow, &usageBits, !storingMetadataInDecodedBuffers());
     if (err != OK) {
+        ALOGE("Failed to setup Native window size and usage");
         return err;
     }
 
     int ignoredFlags = kVideoGrallocUsage;
     // New output surface is not allowed to add new usage flag except ignored ones.
     if ((usageBits & ~(mNativeWindowUsageBits | ignoredFlags)) != 0) {
-        ALOGW("cannot change usage from %#x to %#x", mNativeWindowUsageBits, usageBits);
+        ALOGE("cannot change usage from %#x to %#x", mNativeWindowUsageBits, usageBits);
         return BAD_VALUE;
     }
 
@@ -994,10 +995,12 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
                         return NO_MEMORY;
                     }
                     if (!success) {
+                        ALOGE("hidl's AshmemAllocator failed");
                         return NO_MEMORY;
                     }
                     hidlMem = mapMemory(hidlMemToken);
                     if (hidlMem == nullptr) {
+                        ALOGE("hidl's mapMemory failed");
                         return NO_MEMORY;
                     }
                     err = mOMXNode->useBuffer(
@@ -1027,10 +1030,12 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
                                     hidlMemToken = m;
                                 });
                         if (!success) {
+                            ALOGE("hidl's Allocator failed to allocate memory");
                             return NO_MEMORY;
                         }
                         hidlMem = mapMemory(hidlMemToken);
                         if (hidlMem == nullptr) {
+                            ALOGE("hidl's mapMemory failed");
                             return NO_MEMORY;
                         }
                         info.mData = new SharedMemoryBuffer(format, hidlMem);
@@ -1047,6 +1052,7 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
     }
 
     if (err != OK) {
+        ALOGE("Failing with %d", err);
         return err;
     }
 
@@ -1155,6 +1161,7 @@ status_t ACodec::configureOutputBuffersFromNativeWindow(
     }
     if (err != OK) {
         mNativeWindowUsageBits = 0;
+        ALOGE("Failed to setup Native window size and usage");
         return err;
     }
 
@@ -1240,8 +1247,10 @@ status_t ACodec::allocateOutputBuffersFromNativeWindow() {
     OMX_U32 bufferCount, bufferSize, minUndequeuedBuffers;
     status_t err = configureOutputBuffersFromNativeWindow(
             &bufferCount, &bufferSize, &minUndequeuedBuffers, true /* preregister */);
-    if (err != 0)
+    if (err != 0) {
+        ALOGE("Failed to configure output buffers from the native window");
         return err;
+    }
     mNumUndequeuedBuffers = minUndequeuedBuffers;
 
     static_cast<Surface*>(mNativeWindow.get())
@@ -1331,8 +1340,10 @@ status_t ACodec::allocateOutputMetadataBuffers() {
     status_t err = configureOutputBuffersFromNativeWindow(
             &bufferCount, &bufferSize, &minUndequeuedBuffers,
             mFlags & kFlagPreregisterMetadataBuffers /* preregister */);
-    if (err != OK)
+    if (err != OK) {
+        ALOGE("Failed to configure output buffers from the native window");
         return err;
+    }
     mNumUndequeuedBuffers = minUndequeuedBuffers;
 
     ALOGV("[%s] Allocating %u meta buffers on output port",
@@ -1372,6 +1383,7 @@ status_t ACodec::submitOutputMetadataBuffer() {
 
     BufferInfo *info = dequeueBufferFromNativeWindow();
     if (info == NULL) {
+        ALOGE("Failed to dequeue buffers from the native window");
         return ERROR_IO;
     }
 
@@ -1717,6 +1729,7 @@ status_t ACodec::setComponentRole(
         bool isEncoder, const char *mime) {
     const char *role = GetComponentRole(isEncoder, mime);
     if (role == NULL) {
+        ALOGE("Failed to retrieve the component role");
         return BAD_VALUE;
     }
     status_t err = SetComponentRole(mOMXNode, role);
@@ -1758,10 +1771,12 @@ status_t ACodec::configureCodec(
     if (encoder) {
         if (mIsVideo || mIsImage) {
             if (!findVideoBitrateControlInfo(msg, &bitrateMode, &bitrate, &quality)) {
+                ALOGE("Failed to find Video/Image Bitrate Control Info");
                 return INVALID_OPERATION;
             }
         } else if (strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_FLAC)
             && !msg->findInt32("bitrate", &bitrate)) {
+            ALOGE("Failed to find Audio Bitrate Info");
             return INVALID_OPERATION;
         }
     }
@@ -1785,11 +1800,13 @@ status_t ACodec::configureCodec(
                     storeMeta == kMetadataBufferTypeGrallocSource) {
                 mode = IOMX::kPortModeDynamicANWBuffer;
             } else {
+                ALOGE("Invalid encoder input-metadata-buffer-type: %d", storeMeta);
                 return BAD_VALUE;
             }
         }
         err = setPortMode(kPortIndexInput, mode);
         if (err != OK) {
+            ALOGE("Failed to set encoder's input port mode to: %d", mode);
             return err;
         }
 
@@ -1808,6 +1825,7 @@ status_t ACodec::configureCodec(
     if (msg->findInt32("low-latency", &lowLatency)) {
         err = setLowLatency(lowLatency);
         if (err != OK) {
+            ALOGE("Failed to set low latency to: %d", lowLatency);
             return err;
         }
     }
@@ -1850,6 +1868,7 @@ status_t ACodec::configureCodec(
         err = setPortMode(kPortIndexOutput, enable ?
                 IOMX::kPortModePresetSecureBuffer : IOMX::kPortModePresetByteBuffer);
         if (err != OK) {
+            ALOGE("Failed to set video encoder's output port mode");
             return err;
         }
 
@@ -2098,6 +2117,7 @@ status_t ACodec::configureCodec(
             } else if (!storingMetadataInDecodedBuffers()) {
                 err = setPortMode(kPortIndexOutput, IOMX::kPortModePresetANWBuffer);
                 if (err != OK) {
+                    ALOGE("Failed to set output port mode to PresetANWBuffer");
                     return err;
                 }
             }
@@ -2391,6 +2411,7 @@ status_t ACodec::configureCodec(
     if (err == OK) {
         err = setVendorParameters(msg);
         if (err != OK) {
+            ALOGE("Failed to setup vendor specific parameters");
             return err;
         }
     }
@@ -2611,6 +2632,7 @@ status_t ACodec::setIntraRefreshPeriod(uint32_t intraRefreshPeriod, bool inConfi
 
     // Only in configure state, a component could invoke setParameter.
     if (!inConfigure) {
+        ALOGE("Codec isn't in configure state");
         return INVALID_OPERATION;
     } else {
         ALOGI("[%s] try falling back to Cyclic", mComponentName.c_str());
@@ -2655,6 +2677,7 @@ status_t ACodec::setIntraRefreshPeriod(uint32_t intraRefreshPeriod, bool inConfi
 status_t ACodec::configureTemporalLayers(
         const sp<AMessage> &msg, bool inConfigure, sp<AMessage> &outputFormat) {
     if (!mIsVideo || !mIsEncoder) {
+        ALOGE("Codec isn't a video encoder");
         return INVALID_OPERATION;
     }
 
@@ -2834,6 +2857,7 @@ status_t ACodec::setupAACCodec(
         int32_t maxOutputChannelCount, const drcParams_t& drc,
         int32_t pcmLimiterEnable) {
     if (encoder && isADTS) {
+        ALOGE("Encoder can't have Audio Data Transport Stream");
         return -EINVAL;
     }
 
@@ -2922,6 +2946,7 @@ status_t ACodec::setupAACCodec(
             break;
         default:
             // unsupported sbr mode
+            ALOGE("Unsupported SBR mode");
             return BAD_VALUE;
         }
 
@@ -3006,7 +3031,7 @@ status_t ACodec::setupAC3Codec(
     }
 
     if (encoder) {
-        ALOGW("AC3 encoding is not supported.");
+        ALOGE("AC3 encoding is not supported.");
         return INVALID_OPERATION;
     }
 
@@ -3038,7 +3063,7 @@ status_t ACodec::setupEAC3Codec(
     }
 
     if (encoder) {
-        ALOGW("EAC3 encoding is not supported.");
+        ALOGE("EAC3 encoding is not supported.");
         return INVALID_OPERATION;
     }
 
@@ -3070,7 +3095,7 @@ status_t ACodec::setupAC4Codec(
     }
 
     if (encoder) {
-        ALOGW("AC4 encoding is not supported.");
+        ALOGE("AC4 encoding is not supported.");
         return INVALID_OPERATION;
     }
 
@@ -3167,6 +3192,7 @@ status_t ACodec::setupAMRCodec(bool encoder, bool isWAMR, int32_t bitrate) {
 
 status_t ACodec::setupG711Codec(bool encoder, int32_t sampleRate, int32_t numChannels) {
     if (encoder) {
+        ALOGE("G711 encoding is not supported.");
         return INVALID_OPERATION;
     }
 
@@ -3176,6 +3202,7 @@ status_t ACodec::setupG711Codec(bool encoder, int32_t sampleRate, int32_t numCha
 
 status_t ACodec::setupOpusCodec(bool encoder, int32_t sampleRate, int32_t numChannels) {
     if (encoder) {
+        ALOGE("Opus encoding is not supported.");
         return INVALID_OPERATION;
     }
     OMX_AUDIO_PARAM_ANDROID_OPUSTYPE def;
@@ -3233,6 +3260,7 @@ status_t ACodec::setupRawAudioFormat(
             OMX_IndexParamPortDefinition, &def, sizeof(def));
 
     if (err != OK) {
+        ALOGE("Failed to get PortDefinition");
         return err;
     }
 
@@ -3242,6 +3270,7 @@ status_t ACodec::setupRawAudioFormat(
             OMX_IndexParamPortDefinition, &def, sizeof(def));
 
     if (err != OK) {
+        ALOGE("Failed to set PortDefinition");
         return err;
     }
 
@@ -3253,6 +3282,7 @@ status_t ACodec::setupRawAudioFormat(
             OMX_IndexParamAudioPcm, &pcmParams, sizeof(pcmParams));
 
     if (err != OK) {
+        ALOGE("Failed to get Audio PCM");
         return err;
     }
 
@@ -3271,6 +3301,7 @@ status_t ACodec::setupRawAudioFormat(
             pcmParams.nBitPerSample = 16;
             break;
         default:
+            ALOGE("Invalid Audio Encoding PCM bit: %x", encoding);
             return BAD_VALUE;
     }
     pcmParams.bInterleaved = OMX_TRUE;
@@ -3533,6 +3564,7 @@ status_t ACodec::setupVideoDecoder(
     int32_t width, height;
     if (!msg->findInt32("width", &width)
             || !msg->findInt32("height", &height)) {
+        ALOGE("Failed to get Video Decoder's resolution info");
         return INVALID_OPERATION;
     }
 
@@ -3540,6 +3572,7 @@ status_t ACodec::setupVideoDecoder(
     status_t err = GetVideoCodingTypeFromMime(mime, &compressionFormat);
 
     if (err != OK) {
+        ALOGE("Failed to get Video Decoder's compression format");
         return err;
     }
 
@@ -3553,6 +3586,7 @@ status_t ACodec::setupVideoDecoder(
                 err = verifySupportForProfileAndLevel(
                         kPortIndexInput, profile, 0);
                 if (err != OK) {
+                    ALOGE("Video Decoder doesn't support the profile[%d]", profile);
                     return err;
                 }
             }
@@ -3600,19 +3634,25 @@ status_t ACodec::setupVideoDecoder(
     // Set the component input buffer number to be |tmp|. If succeed,
     // component will set input port buffer number to be |tmp|. If fail,
     // component will keep the same buffer number as before.
+    // TODO: girishshetty: Comment and the code block below doesn't match
     if (msg->findInt32("android._num-input-buffers", &tmp)) {
         err = setPortBufferNum(kPortIndexInput, tmp);
-        if (err != OK)
+        if (err != OK) {
+            ALOGE("Failed to set num input buffers to %d with %d", tmp, err);
             return err;
+        }
     }
 
     // Set the component output buffer number to be |tmp|. If succeed,
     // component will set output port buffer number to be |tmp|. If fail,
     // component will keep the same buffer number as before.
+    // TODO: girishshetty: Comment and the code block below doesn't match
     if (msg->findInt32("android._num-output-buffers", &tmp)) {
         err = setPortBufferNum(kPortIndexOutput, tmp);
-        if (err != OK)
+        if (err != OK) {
+            ALOGE("Failed to set num output buffers to %d with %d", tmp, err);
             return err;
+        }
     }
 
     int32_t frameRateInt;
@@ -3989,6 +4029,7 @@ status_t ACodec::setupVideoEncoder(
         sp<AMessage> &outputFormat, sp<AMessage> &inputFormat) {
     int32_t tmp;
     if (!msg->findInt32("color-format", &tmp)) {
+        ALOGE("Failed to get Video Encoder's color-format");
         return INVALID_OPERATION;
     }
 
@@ -4022,11 +4063,13 @@ status_t ACodec::setupVideoEncoder(
     }
 
     OMX_VIDEO_CONTROLRATETYPE bitrateMode;
-    int32_t width, height, bitrate = 0, quality;
+    int32_t width = 0, height = 0, bitrate = 0, quality = 0;
     if (!msg->findInt32("width", &width)
             || !msg->findInt32("height", &height)
             || !findVideoBitrateControlInfo(
                     msg, &bitrateMode, &bitrate, &quality)) {
+        ALOGE("Failed to find width(%d) or height(%d) or Bitrate Control Info",
+              width, height);
         return INVALID_OPERATION;
     }
 
@@ -4053,6 +4096,7 @@ status_t ACodec::setupVideoEncoder(
     if (!msg->findFloat("frame-rate", &framerate)) {
         int32_t tmp;
         if (!msg->findInt32("frame-rate", &tmp)) {
+            ALOGE("Failed to get Video Encoder's frame-rate");
             return INVALID_OPERATION;
         }
         mFps = (double)tmp;
@@ -4086,6 +4130,7 @@ status_t ACodec::setupVideoEncoder(
     err = GetVideoCodingTypeFromMime(mime, &compressionFormat);
 
     if (err != OK) {
+        ALOGE("Failed to get Video Encoder's compression format");
         return err;
     }
 
@@ -4251,6 +4296,7 @@ status_t ACodec::setCyclicIntraMacroblockRefresh(const sp<AMessage> &msg, int32_
             params.eRefreshMode == OMX_VIDEO_IntraRefreshBoth) {
         int32_t mbs;
         if (!msg->findInt32("intra-refresh-CIR-mbs", &mbs)) {
+            ALOGE("Failed to get cyclic intra-refresh macroblocks");
             return INVALID_OPERATION;
         }
         params.nCirMBs = mbs;
@@ -4260,12 +4306,14 @@ status_t ACodec::setCyclicIntraMacroblockRefresh(const sp<AMessage> &msg, int32_
             params.eRefreshMode == OMX_VIDEO_IntraRefreshBoth) {
         int32_t mbs;
         if (!msg->findInt32("intra-refresh-AIR-mbs", &mbs)) {
+            ALOGE("Failed to get adaptive intra-refresh macroblocks");
             return INVALID_OPERATION;
         }
         params.nAirMBs = mbs;
 
         int32_t ref;
         if (!msg->findInt32("intra-refresh-AIR-ref", &ref)) {
+            ALOGE("Failed to get adaptive intra-refresh reference");
             return INVALID_OPERATION;
         }
         params.nAirRef = ref;
@@ -4304,10 +4352,12 @@ static OMX_U32 setPFramesSpacing(
 }
 
 status_t ACodec::setupMPEG4EncoderParameters(const sp<AMessage> &msg) {
-    int32_t bitrate;
-    float iFrameInterval;
+    int32_t bitrate = 0;
+    float iFrameInterval = 0.0f;
     if (!msg->findInt32("bitrate", &bitrate)
             || !msg->findAsFloat("i-frame-interval", &iFrameInterval)) {
+        ALOGE("Failed to get bitrate(%d) or i-frame-interval(%f)",
+              bitrate, iFrameInterval);
         return INVALID_OPERATION;
     }
 
@@ -4317,6 +4367,7 @@ status_t ACodec::setupMPEG4EncoderParameters(const sp<AMessage> &msg) {
     if (!msg->findFloat("frame-rate", &frameRate)) {
         int32_t tmp;
         if (!msg->findInt32("frame-rate", &tmp)) {
+            ALOGE("Failed to get Video Encoder's frame-rate");
             return INVALID_OPERATION;
         }
         frameRate = (float)tmp;
@@ -4356,12 +4407,15 @@ status_t ACodec::setupMPEG4EncoderParameters(const sp<AMessage> &msg) {
     if (msg->findInt32("profile", &profile)) {
         int32_t level;
         if (!msg->findInt32("level", &level)) {
+            ALOGE("Failed to get level for the profile(%d)", profile);
             return INVALID_OPERATION;
         }
 
         err = verifySupportForProfileAndLevel(kPortIndexOutput, profile, level);
 
         if (err != OK) {
+            ALOGE("Encoder doesn't support the profile(%d) and the level(%d)",
+                  profile, level);
             return err;
         }
 
@@ -4386,10 +4440,12 @@ status_t ACodec::setupMPEG4EncoderParameters(const sp<AMessage> &msg) {
 }
 
 status_t ACodec::setupH263EncoderParameters(const sp<AMessage> &msg) {
-    int32_t bitrate;
-    float iFrameInterval;
+    int32_t bitrate = 0;
+    float iFrameInterval = 0.0f;
     if (!msg->findInt32("bitrate", &bitrate)
             || !msg->findAsFloat("i-frame-interval", &iFrameInterval)) {
+        ALOGE("Failed to get bitrate(%d) or i-frame-interval(%f)",
+              bitrate, iFrameInterval);
         return INVALID_OPERATION;
     }
 
@@ -4399,6 +4455,7 @@ status_t ACodec::setupH263EncoderParameters(const sp<AMessage> &msg) {
     if (!msg->findFloat("frame-rate", &frameRate)) {
         int32_t tmp;
         if (!msg->findInt32("frame-rate", &tmp)) {
+            ALOGE("Failed to get Video Encoder's frame-rate");
             return INVALID_OPERATION;
         }
         frameRate = (float)tmp;
@@ -4428,12 +4485,15 @@ status_t ACodec::setupH263EncoderParameters(const sp<AMessage> &msg) {
     if (msg->findInt32("profile", &profile)) {
         int32_t level;
         if (!msg->findInt32("level", &level)) {
+            ALOGE("Failed to get level for the profile(%d)", profile);
             return INVALID_OPERATION;
         }
 
         err = verifySupportForProfileAndLevel(kPortIndexOutput, profile, level);
 
         if (err != OK) {
+            ALOGE("Encoder doesn't support the profile(%d) and the level(%d)",
+                  profile, level);
             return err;
         }
 
@@ -4519,10 +4579,12 @@ int /* OMX_VIDEO_AVCLEVELTYPE */ ACodec::getAVCLevelFor(
 }
 
 status_t ACodec::setupAVCEncoderParameters(const sp<AMessage> &msg) {
-    int32_t bitrate;
-    float iFrameInterval;
+    int32_t bitrate = 0;
+    float iFrameInterval = 0.0f;
     if (!msg->findInt32("bitrate", &bitrate)
             || !msg->findAsFloat("i-frame-interval", &iFrameInterval)) {
+        ALOGE("Failed to get bitrate(%d) or i-frame-interval(%f)",
+              bitrate, iFrameInterval);
         return INVALID_OPERATION;
     }
 
@@ -4532,6 +4594,7 @@ status_t ACodec::setupAVCEncoderParameters(const sp<AMessage> &msg) {
     if (!msg->findFloat("frame-rate", &frameRate)) {
         int32_t tmp;
         if (!msg->findInt32("frame-rate", &tmp)) {
+            ALOGE("Failed to get Video Encoder's frame-rate");
             return INVALID_OPERATION;
         }
         frameRate = (float)tmp;
@@ -4566,12 +4629,15 @@ status_t ACodec::setupAVCEncoderParameters(const sp<AMessage> &msg) {
     if (msg->findInt32("profile", &profile)) {
         int32_t level;
         if (!msg->findInt32("level", &level)) {
+            ALOGE("Failed to get level for the profile(%d)", profile);
             return INVALID_OPERATION;
         }
 
         err = verifySupportForProfileAndLevel(kPortIndexOutput, profile, level);
 
         if (err != OK) {
+            ALOGE("Encoder doesn't support the profile(%d) and the level(%d)",
+                  profile, level);
             return err;
         }
 
@@ -4763,6 +4829,7 @@ status_t ACodec::setupHEVCEncoderParameters(
     OMX_VIDEO_CONTROLRATETYPE bitrateMode;
     int32_t bitrate, quality;
     if (!findVideoBitrateControlInfo(msg, &bitrateMode, &bitrate, &quality)) {
+        ALOGE("Failed to find Video Bitrate Control Info");
         return INVALID_OPERATION;
     }
 
@@ -4781,11 +4848,14 @@ status_t ACodec::setupHEVCEncoderParameters(
     if (msg->findInt32("profile", &profile)) {
         int32_t level;
         if (!msg->findInt32("level", &level)) {
+            ALOGE("Failed to get level for the profile(%d)", profile);
             return INVALID_OPERATION;
         }
 
         err = verifySupportForProfileAndLevel(kPortIndexOutput, profile, level);
         if (err != OK) {
+            ALOGE("Encoder doesn't support the profile(%d) and the level(%d)",
+                  profile, level);
             return err;
         }
 
@@ -4798,6 +4868,7 @@ status_t ACodec::setupHEVCEncoderParameters(
     } else {
         float iFrameInterval;
         if (!msg->findAsFloat("i-frame-interval", &iFrameInterval)) {
+            ALOGE("Failed to find i-frame-interval");
             return INVALID_OPERATION;
         }
 
@@ -4805,6 +4876,7 @@ status_t ACodec::setupHEVCEncoderParameters(
         if (!msg->findFloat("frame-rate", &frameRate)) {
             int32_t tmp;
             if (!msg->findInt32("frame-rate", &tmp)) {
+                ALOGE("Failed to get Video Encoder's frame-rate");
                 return INVALID_OPERATION;
             }
             frameRate = (float)tmp;
@@ -4844,6 +4916,7 @@ status_t ACodec::setupVPXEncoderParameters(const sp<AMessage> &msg, sp<AMessage>
         { 40,  60, 100},  // 3 layers {40%, 20%, 40%}
     };
     if (!msg->findInt32("bitrate", &bitrate)) {
+        ALOGE("Failed to get Video Encoder's bitrate");
         return INVALID_OPERATION;
     }
     msg->findAsFloat("i-frame-interval", &iFrameInterval);
@@ -4854,6 +4927,7 @@ status_t ACodec::setupVPXEncoderParameters(const sp<AMessage> &msg, sp<AMessage>
     if (!msg->findFloat("frame-rate", &frameRate)) {
         int32_t tmp;
         if (!msg->findInt32("frame-rate", &tmp)) {
+            ALOGE("Failed to get Video Encoder's frame-rate");
             return INVALID_OPERATION;
         }
         frameRate = (float)tmp;
@@ -5357,6 +5431,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                             OMX_IndexParamAudioPcm, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio PCM param with: %d", err);
                         return err;
                     }
 
@@ -5433,6 +5508,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                             OMX_IndexParamAudioAac, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio AAC param with: %d", err);
                         return err;
                     }
 
@@ -5453,6 +5529,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                             OMX_IndexParamAudioAmr, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio AMR param with: %d", err);
                         return err;
                     }
 
@@ -5476,6 +5553,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                             OMX_IndexParamAudioFlac, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio FLAC param with: %d", err);
                         return err;
                     }
 
@@ -5494,6 +5572,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                             OMX_IndexParamAudioMp3, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio MP3 param with: %d", err);
                         return err;
                     }
 
@@ -5512,6 +5591,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                             OMX_IndexParamAudioVorbis, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio VORBIS param with: %d", err);
                         return err;
                     }
 
@@ -5531,6 +5611,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                             (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidAc3,
                             &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio Android AC3 param with: %d", err);
                         return err;
                     }
 
@@ -5550,6 +5631,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                             (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidEac3,
                             &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio Android EAC3 param with: %d", err);
                         return err;
                     }
 
@@ -5569,6 +5651,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                             (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidAc4,
                             &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio Android AC4 param with: %d", err);
                         return err;
                     }
 
@@ -5588,6 +5671,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                             (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidOpus,
                             &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio Android OPUS param with: %d", err);
                         return err;
                     }
 
@@ -5606,6 +5690,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                             (OMX_INDEXTYPE)OMX_IndexParamAudioPcm, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio PCM param with: %d", err);
                         return err;
                     }
 
@@ -5633,6 +5718,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     err = mOMXNode->getParameter(
                                 OMX_IndexParamAudioPcm, &params, sizeof(params));
                     if (err != OK) {
+                        ALOGE("Failed to get Audio PCM param with: %d", err);
                         return err;
                     }
 
@@ -7115,6 +7201,7 @@ bool ACodec::LoadedState::onConfigureComponent(
 
 status_t ACodec::LoadedState::setupInputSurface() {
     if (mCodec->mGraphicBufferSource == NULL) {
+        ALOGE("GraphicBufferSource can't be NULL");
         return BAD_VALUE;
     }
 
@@ -7211,6 +7298,8 @@ status_t ACodec::LoadedState::setupInputSurface() {
     sp<ABuffer> colorAspectsBuffer;
     if (mCodec->mInputFormat->findBuffer("android._color-aspects", &colorAspectsBuffer)) {
         if (colorAspectsBuffer->size() != sizeof(ColorAspects)) {
+            ALOGE("Unexpected ColorAspects size(expected: %zu vs actual: %zu)",
+                  sizeof(ColorAspects), colorAspectsBuffer->size());
             return INVALID_OPERATION;
         }
 
@@ -7333,11 +7422,13 @@ void ACodec::LoadedToIdleState::stateEntered() {
 status_t ACodec::LoadedToIdleState::allocateBuffers() {
     status_t err = mCodec->allocateBuffersOnPort(kPortIndexInput);
     if (err != OK) {
+        ALOGE("Failed to allocate Input Buffers: %d", err);
         return err;
     }
 
     err = mCodec->allocateBuffersOnPort(kPortIndexOutput);
     if (err != OK) {
+        ALOGE("Failed to allocate Output Buffers: %d", err);
         return err;
     }
 
@@ -7851,6 +7942,7 @@ status_t ACodec::setParameters(const sp<AMessage> &params) {
     if (params->findInt32("low-latency", &lowLatency)) {
         status_t err = setLowLatency(lowLatency);
         if (err != OK) {
+            ALOGE("Failed to setup Low latency (%d) with %d", lowLatency, err);
             return err;
         }
     }
@@ -7943,6 +8035,7 @@ status_t ACodec::setParameters(const sp<AMessage> &params) {
     if (params->findInt32(TUNNEL_PEEK_KEY, &tunnelPeek)) {
         status_t err = setTunnelPeek(tunnelPeek);
         if (err != OK) {
+            ALOGE("Failed to setup Tunnel Peek(%d) with %d", tunnelPeek, err);
             return err;
         }
     }
@@ -8042,6 +8135,7 @@ public:
         // try with one param first, then retry if extension needs more than 1 param
         for (size_t paramSizeUsed = 1;; ) {
             if (paramSizeUsed > OMX_MAX_ANDROID_VENDOR_PARAMCOUNT) {
+                ALOGE("Overflow with Vendor extension!");
                 return BAD_VALUE; // this prevents overflow in the following formula
             }
 
@@ -8049,6 +8143,7 @@ public:
                 (paramSizeUsed - 1) * sizeof(OMX_CONFIG_ANDROID_VENDOR_EXTENSIONTYPE::param);
             mBacking.reset(new uint8_t[size]);
             if (!mBacking) {
+                ALOGE("Failed to allocate memory!");
                 return NO_MEMORY;
             }
 
@@ -8986,12 +9081,14 @@ status_t ACodec::queryCapabilities(
         MediaCodecInfo::CapabilitiesWriter* caps) {
     const char *role = GetComponentRole(isEncoder, mime);
     if (role == NULL) {
+        ALOGE("Failed to get Component Role for the mime(%s)", mime);
         return BAD_VALUE;
     }
 
     OMXClient client;
     status_t err = client.connect(owner);
     if (err != OK) {
+        ALOGE("Failed to connect with the client");
         return err;
     }
 
@@ -9002,6 +9099,7 @@ status_t ACodec::queryCapabilities(
     err = omx->allocateNode(name, observer, &omxNode);
     if (err != OK) {
         client.disconnect();
+        ALOGE("Failed to allocate the node");
         return err;
     }
 
@@ -9009,6 +9107,7 @@ status_t ACodec::queryCapabilities(
     if (err != OK) {
         omxNode->freeNode();
         client.disconnect();
+        ALOGE("Failed to set component role");
         return err;
     }
 

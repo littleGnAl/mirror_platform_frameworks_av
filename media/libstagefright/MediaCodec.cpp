@@ -1390,6 +1390,7 @@ status_t MediaCodec::init(const AString &name) {
     if (!name.startsWith("android.filter.")) {
         status_t err = mGetCodecInfo(name, &mCodecInfo);
         if (err != OK) {
+            ALOGE("Failed to get Codec info with name: %s", name.c_str());
             mCodec = NULL;  // remove the codec.
             return err;
         }
@@ -4686,9 +4687,12 @@ status_t MediaCodec::queueCSDInputBuffer(size_t bufferIndex) {
                 FetchLinearBlock(csd->size(), {std::string{mComponentName.c_str()}});
             C2WriteView view{block->map().get()};
             if (view.error() != C2_OK) {
+                ALOGE("Failed to create view");
                 return -EINVAL;
             }
             if (csd->size() > view.capacity()) {
+                ALOGE("CSD size(%zu) is more than view capacity(%u)",
+                      csd->size(), view.capacity());
                 return -EINVAL;
             }
             memcpy(view.base(), csd->data(), csd->size());
@@ -4699,10 +4703,12 @@ status_t MediaCodec::queueCSDInputBuffer(size_t bufferIndex) {
         const sp<MediaCodecBuffer> &codecInputData = info.mData;
 
         if (csd->size() > codecInputData->capacity()) {
+            ALOGE("CSD size(%zu) is more than codec input data capacity(%zu)",
+                  csd->size(), codecInputData->capacity());
             return -EINVAL;
         }
         if (codecInputData->data() == NULL) {
-            ALOGV("Input buffer %zu is not properly allocated", bufferIndex);
+            ALOGE("Input buffer %zu is not properly allocated", bufferIndex);
             return -EINVAL;
         }
 
@@ -4900,6 +4906,7 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     }
 
     if (index >= mPortBuffers[kPortIndexInput].size()) {
+        ALOGE("Input index(%zu) is out of range", index);
         return -ERANGE;
     }
 
@@ -4940,15 +4947,19 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
         offset = buffer->offset();
         size = buffer->size();
         if (err != OK) {
+            ALOGE("Failed to attach buffers with %d", err);
             return err;
         }
     }
 
     if (buffer == nullptr || !info->mOwnedByClient) {
+        ALOGE("Either buffer is invalid or not owned by the client");
         return -EACCES;
     }
 
     if (offset + size > buffer->capacity()) {
+        ALOGE("Invalid data range (%zu) than buffer capacity (%zu)",
+              offset + size, buffer->capacity());
         return -EINVAL;
     }
 
@@ -5075,12 +5086,14 @@ status_t MediaCodec::onReleaseOutputBuffer(const sp<AMessage> &msg) {
     }
 
     if (index >= mPortBuffers[kPortIndexOutput].size()) {
+        ALOGE("Output index(%zu) is out of range", index);
         return -ERANGE;
     }
 
     BufferInfo *info = &mPortBuffers[kPortIndexOutput][index];
 
     if (info->mData == nullptr || !info->mOwnedByClient) {
+        ALOGE("Either Data is invalid or not owned by the client");
         return -EACCES;
     }
 
@@ -5398,6 +5411,7 @@ status_t MediaCodec::amendOutputFormatWithCodecSpecificData(
         }
 
         if (csdIndex != 2) {
+            ALOGE("Malformed CSD data");
             return ERROR_MALFORMED;
         }
     } else {
