@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e13307a_8660d931",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-23T22:52:01Z",
+      "side": 1,
+      "message": "unclear to me whether best move is to clear these fields in this case\nor have saved the old values.\n\non reflection.... since we failed at setCallback(), the codec isn\u0027t going to\nbe in async mode, so the old values are no longer relevant. so, clearing makes sense.",
+      "range": {
+        "startLine": 492,
+        "startChar": 37,
+        "endLine": 492,
+        "endChar": 39
+      },
+      "revId": "775d3cf067866c50794d40cf233825dc6700367e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
