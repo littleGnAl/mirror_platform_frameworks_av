@@ -28,11 +28,13 @@
 
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/foundation/AMessage.h>
+#include <media/stagefright/foundation/AUtils.h>
 #include <media/stagefright/foundation/MediaDefs.h>
 #include <media/stagefright/omx/OMXUtils.h>
 #include <media/stagefright/xmlparser/MediaCodecsXmlParser.h>
 #include <media/stagefright/CCodec.h>
 #include <media/stagefright/Codec2InfoBuilder.h>
+#include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/MediaCodecList.h>
 #include <media/stagefright/MediaErrors.h>
 #include <media/stagefright/OmxInfoBuilder.h>
@@ -44,6 +46,7 @@
 #include <cutils/properties.h>
 
 #include <algorithm>
+#include <limits>
 #include <regex>
 
 namespace android {
@@ -531,11 +534,265 @@ bool MediaCodecList::codecHandlesFormat(const char *mime, sp<MediaCodecInfo> inf
                 ALOGV("Codec does not support profile %d with level %d", profile, level);
                 return false;
             }
+
+            // check max-blocks
+            auto [errs, blockWidth, blockHeight, maxBlocks] = applyLevelLimits(mime, level);
+            if (errs != OK ||
+                    divUp(width, blockWidth) * divUp(height, blockHeight) > maxBlocks) {
+                return false;
+            }
         }
     }
 
     // haven't found a reason to discard this one
     return true;
+}
+
+// static
+std::tuple<int, int, int, int> MediaCodecList::applyLevelLimits(const char *mime,
+                                                                const int32_t level) {
+    int errors = OK;
+    int blockWidth = 2;
+    int blockHeight = 2;
+    int maxBlocks = 99;
+    int FS = 0; // Frame Size
+    if (strcmp(mime, MIMETYPE_VIDEO_AVC) == 0) {
+        switch (level) {
+            case AVCLevel1:
+            case AVCLevel1b:
+                FS =     99; break;
+            case AVCLevel11:
+            case AVCLevel12:
+            case AVCLevel13:
+            case AVCLevel2:
+                FS =    396; break;
+            case AVCLevel21:
+                FS =    792; break;
+            case AVCLevel22:
+            case AVCLevel3:
+                FS =   1620; break;
+            case AVCLevel31:
+                FS =   3600; break;
+            case AVCLevel32:
+                FS =   5120; break;
+            case AVCLevel4:
+            case AVCLevel41:
+                FS =   8192; break;
+            case AVCLevel42:
+                FS =   8704; break;
+            case AVCLevel5:
+                FS =  22080; break;
+            case AVCLevel51:
+            case AVCLevel52:
+                FS =  36864; break;
+            case AVCLevel6:
+            case AVCLevel61:
+            case AVCLevel62:
+                FS = 139264; break;
+            default:
+                ALOGE("Unrecognized level %d for %s", level, mime);
+                errors |= ERROR_UNRECOGNIZED;
+        }
+        blockWidth = 16;
+        blockHeight = 16;
+        maxBlocks = std::max(FS, maxBlocks);
+    } else if (strcmp(mime, MIMETYPE_VIDEO_MPEG2) == 0) {
+        switch (level) {
+            case MPEG2LevelLL:
+                FS =   396; break;
+            case MPEG2LevelML:
+                FS =  1620; break;
+            case MPEG2LevelH14:
+                FS =  6120; break;
+            case MPEG2LevelHL:
+            case MPEG2LevelHP:
+                FS =  8160; break;
+            default:
+                ALOGE("Unrecognized level %d for %s", level, mime);
+                errors |= ERROR_UNRECOGNIZED;
+        }
+        blockWidth = 16;
+        blockHeight = 16;
+        maxBlocks = std::max(FS, maxBlocks);
+    } else if (strcmp(mime, MIMETYPE_VIDEO_MPEG4) == 0) {
+        switch (level) {
+            case MPEG4Level0:
+            case MPEG4Level1:
+            case MPEG4Level0b:
+                FS =   99; break;
+            case MPEG4Level2:
+            case MPEG4Level3:
+            case MPEG4Level3b:
+                FS =  396; break;
+            case MPEG4Level4:
+                FS =  792; break;
+            case MPEG4Level4a:
+                FS = 1200; break;
+            case MPEG4Level5:
+                FS = 1620; break;
+            case MPEG4Level6:
+                FS = 3600; break;
+            default:
+                ALOGE("Unrecognized level %d for %s", level, mime);
+                errors |= ERROR_UNRECOGNIZED;
+        }
+        blockWidth = 16;
+        blockHeight = 16;
+        maxBlocks = std::max(FS, maxBlocks);
+    } else if (strcmp(mime, MIMETYPE_VIDEO_H263) == 0) {
+        int W = 0, H = 0;
+        switch (level) {
+            case H263Level10:
+                W = 11; H =  9; break;
+            case H263Level20:
+            case H263Level30:
+            case H263Level40:
+                W = 22; H = 18; break;
+            case H263Level45:
+                W = 11; H =  9; break;
+            case H263Level50:
+                W = 22; H = 18; break;
+            case H263Level60:
+                W = 45; H = 18; break;
+            case H263Level70:
+                W = 45; H = 36; break;
+            default:
+                ALOGE("Unrecognized level %d for %s", level, mime);
+                errors |= ERROR_UNRECOGNIZED;
+        }
+        blockWidth = 16;
+        blockHeight = 16;
+        maxBlocks = std::max(W * H, maxBlocks);
+    } else if (strcmp(mime, MIMETYPE_VIDEO_VP8)) {
+        blockWidth = 16;
+        blockHeight = 16;
+        maxBlocks = std::numeric_limits<int>::max();
+    } else if (strcmp(mime, MIMETYPE_VIDEO_VP9) == 0) {
+        maxBlocks = 36864;
+        switch (level) {
+            case VP9Level1:
+                FS =    36864; break;
+            case VP9Level11:
+                FS =    73728; break;
+            case VP9Level2:
+                FS =   122880; break;
+            case VP9Level21:
+                FS =   245760; break;
+            case VP9Level3:
+                FS =   552960; break;
+            case VP9Level31:
+                FS =   983040; break;
+            case VP9Level4:
+            case VP9Level41:
+                FS =  2228224; break;
+            case VP9Level5:
+            case VP9Level51:
+            case VP9Level52:
+                FS =  8912896; break;
+            case VP9Level6:
+            case VP9Level61:
+            case VP9Level62:
+                FS = 35651584; break;
+            default:
+                ALOGE("Unrecognized level %d for %s", level, mime);
+                errors |= ERROR_UNRECOGNIZED;
+        }
+        blockWidth = 8;
+        blockHeight = 8;
+        maxBlocks = std::max(FS, maxBlocks);
+        maxBlocks = divUp(maxBlocks, blockWidth * blockHeight);
+    } else if (strcmp(mime, MIMETYPE_VIDEO_HEVC) == 0) {
+        // CTBs are at least 8x8 so use 8x8 block size
+        maxBlocks = 36864 >> 6; // 192x192 pixels == 576 8x8 blocks
+        switch (level) {
+            case HEVCMainTierLevel1:
+            case HEVCHighTierLevel1:
+                FS =    36864; break;
+            case HEVCMainTierLevel2:
+            case HEVCHighTierLevel2:
+                FS =   122880; break;
+            case HEVCMainTierLevel21:
+            case HEVCHighTierLevel21:
+                FS =   245760; break;
+            case HEVCMainTierLevel3:
+            case HEVCHighTierLevel3:
+                FS =   552960; break;
+            case HEVCMainTierLevel31:
+            case HEVCHighTierLevel31:
+                FS =   983040; break;
+            case HEVCMainTierLevel4:
+            case HEVCHighTierLevel4:
+            case HEVCMainTierLevel41:
+            case HEVCHighTierLevel41:
+                FS =  2228224; break;
+            case HEVCMainTierLevel5:
+            case HEVCHighTierLevel5:
+            case HEVCMainTierLevel51:
+            case HEVCHighTierLevel51:
+            case HEVCMainTierLevel52:
+            case HEVCHighTierLevel52:
+                FS =  8912896; break;
+            case HEVCMainTierLevel6:
+            case HEVCHighTierLevel6:
+            case HEVCMainTierLevel61:
+            case HEVCHighTierLevel61:
+            case HEVCMainTierLevel62:
+            case HEVCHighTierLevel62:
+                FS = 35651584; break;
+            default:
+                ALOGE("Unrecognized level %d for %s", level, mime);
+                errors |= ERROR_UNRECOGNIZED;
+        }
+        blockWidth = 8;
+        blockHeight = 8;
+        maxBlocks = std::max(FS, maxBlocks);
+    } else if (strcmp(mime, MIMETYPE_VIDEO_AV1) == 0) {
+        maxBlocks = 36864;
+        switch (level) {
+            case AV1Level2:
+                FS =   147456; break;
+            case AV1Level21:
+            case AV1Level22:
+            case AV1Level23:
+                FS =   278784; break;
+
+            case AV1Level3:
+                FS =   665856; break;
+            case AV1Level31:
+            case AV1Level32:
+            case AV1Level33:
+                FS =  1065024; break;
+
+            case AV1Level4:
+            case AV1Level41:
+            case AV1Level42:
+            case AV1Level43:
+                FS =  2359296; break;
+
+            case AV1Level5:
+            case AV1Level51:
+            case AV1Level52:
+            case AV1Level53:
+                FS =  8912896; break;
+
+            case AV1Level6:
+            case AV1Level61:
+            case AV1Level62:
+            case AV1Level63:
+                FS = 35651584; break;
+            default:
+                ALOGE("Unrecognized level %d for %s", level, mime);
+                errors |= ERROR_UNRECOGNIZED;
+        }
+        blockWidth = 8;
+        blockHeight = 8;
+        maxBlocks = std::max(FS, maxBlocks);
+        maxBlocks = divUp(maxBlocks, blockWidth * blockHeight);
+    } else {
+        ALOGE("Unsupported mime %s", mime);
+        errors |= ERROR_UNSUPPORTED;
+    }
+    return std::make_tuple(errors, blockWidth, blockHeight, maxBlocks);
 }
 
 }  // namespace android

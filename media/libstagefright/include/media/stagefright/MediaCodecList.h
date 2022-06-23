@@ -32,6 +32,8 @@
 #include <utils/Vector.h>
 #include <utils/StrongPointer.h>
 
+#include <tuple>
+
 namespace android {
 
 extern const char *kMaxEncoderInputBuffers;
@@ -103,6 +105,14 @@ private:
     sp<AMessage> mGlobalSettings;
     std::vector<sp<MediaCodecInfo> > mCodecInfos;
 
+    enum {
+        OK                   = 0,
+        // found stuff that is not supported by framework (=> this should not happen)
+        ERROR_UNRECOGNIZED   = (1 << 0),
+        // found profile/level for which we don't have capability estimates
+        ERROR_UNSUPPORTED    = (1 << 1),
+    };
+
     /**
      * This constructor will call `buildMediaCodecList()` from the given
      * `MediaCodecListBuilderBase` objects.
@@ -115,6 +125,8 @@ private:
 
     MediaCodecList(const MediaCodecList&) = delete;
     MediaCodecList& operator=(const MediaCodecList&) = delete;
+
+    static std::tuple<int, int, int, int> applyLevelLimits(const char *mime, const int32_t level);
 };
 
 }  // namespace android
