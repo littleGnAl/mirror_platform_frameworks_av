@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8633d7_c65af9d9",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-23T13:50:13Z",
+      "side": 1,
+      "message": "if these mSize, mFrameRate, mBitRate are part of the class,\nwhy do we pass them here instead of just using \u0027mSize\u0027 etc within the ProfileLevelSetter function?\n\nit also feels strange here -- it feels like we\u0027re using the current values of\nmSize/FrameRate/Bitrate at the time we set up the setter. I know that they are\ndefined as pass-by-ref, so we\u0027re getting pointers to the fields instead of \nthe values themselves at this point.... but it just feels strange.\n\nalso -- it seems there\u0027s an ordering dependency here.\nif ProfileLevelSetter() is invoked before mSize/mFrameRate/mBitrate are set, then it won\u0027t be using the correct values. how do we ensure those parameters have been set before we invoke ProfileLevelSetter",
+      "range": {
+        "startLine": 155,
+        "startChar": 44,
+        "endLine": 155,
+        "endChar": 72
+      },
+      "revId": "973c84bfe1691596cf3d09d2f85f4736ed3022f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c4b25b_1556cfdd",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-23T13:50:13Z",
+      "side": 1,
+      "message": "should we be ensuring that width/height are block aligned, e.g. multiples of 8 ?",
+      "range": {
+        "startLine": 255,
+        "startChar": 23,
+        "endLine": 255,
+        "endChar": 51
+      },
+      "revId": "973c84bfe1691596cf3d09d2f85f4736ed3022f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929e7ebf_fe5bc209",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-23T13:50:13Z",
+      "side": 1,
+      "message": "we\u0027re already checking samples, which is actual picture area.\nthis seems to just ensure that we don\u0027t have something that is unusually\nlong and skinny -- so something like 8x8000 which would be samples \u003d\u003d 64000\nwhich would seem to fit in vp9_2 which supports 122800 blocks.\n\nis that the intent here?",
+      "range": {
+        "startLine": 257,
+        "startChar": 11,
+        "endLine": 257,
+        "endChar": 20
+      },
+      "revId": "973c84bfe1691596cf3d09d2f85f4736ed3022f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab8cf9a_679c244c",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-23T13:50:13Z",
+      "side": 1,
+      "message": "I continue to be a big fan of structure like:\n\nif (samples \u003e limit.samples) continue\nif (samplesPerSec \u003e limit.samplesPerSec) continue\n\ninstead of the large format used here.",
+      "range": {
+        "startLine": 267,
+        "startChar": 10,
+        "endLine": 268,
+        "endChar": 79
+      },
+      "revId": "973c84bfe1691596cf3d09d2f85f4736ed3022f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
