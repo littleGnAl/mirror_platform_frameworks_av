@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da33466_ab5cf0ef",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-23T20:59:24Z",
+      "side": 1,
+      "message": "part of making this part of the mutex in the first place was that\nI felt that as soon as we say setCallback(), we need to be ready for async\ncallbacks.\n\nso I\u0027m wondering if perhaps we want to put these 2 assignments up after line 479,\nas part of the first mutex. so that\u0027s all atomic.\n\n\nmaybe we undo these 2 assignments if the setCallBack() call on line 483 fails?",
+      "range": {
+        "startLine": 489,
+        "startChar": 7,
+        "endLine": 489,
+        "endChar": 46
+      },
+      "revId": "6bfd62075753affdd0a23ddf3c58515512e4a203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
