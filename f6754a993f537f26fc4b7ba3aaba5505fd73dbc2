@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3213c066_95bf04c1",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-23T19:13:33Z",
+      "side": 1,
+      "message": "With this change, devices like ADT3 will stop advertising support for HDR profiles.\nDetails in b/228237404#comment24.\nThis needs to be aligned before this can be merged.",
+      "range": {
+        "startLine": 166,
+        "startChar": 50,
+        "endLine": 166,
+        "endChar": 55
+      },
+      "revId": "f6754a993f537f26fc4b7ba3aaba5505fd73dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
