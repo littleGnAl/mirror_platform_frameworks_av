@@ -22,6 +22,30 @@
       },
       "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b1fc11_1f0ab24c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3206,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2022-06-23T15:07:08Z",
+      "side": 1,
+      "message": "There is a significant chance of overflowing if size_t is 32-bits.\nIf the mNormalFrameCount is \u003e\u003d 4294 then it would overflow.\nThat is about 89 msec at 48000 Hz.\n\nIf we need to run in a 32-bit mode then we should cast to uint64_t for the intermediate terms.",
+      "parentUuid": "c48746af_82e7748c",
+      "range": {
+        "startLine": 3206,
+        "startChar": 23,
+        "endLine": 3206,
+        "endChar": 50
+      },
+      "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
