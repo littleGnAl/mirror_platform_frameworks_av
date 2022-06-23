@@ -198,6 +198,10 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexHdrDynamicMetadata,
     kParamIndexHdrFormat,
 
+    // buffer number
+    kParamIndexInBufferNum,
+    kParamIndexOutBufferNum,
+
     /* ------------------------------------ video components ------------------------------------ */
 
     kParamIndexFrameRate = C2_PARAM_INDEX_VIDEO_PARAM_START,
@@ -872,6 +876,11 @@ typedef C2PortParam<C2Tuning, C2Uint32Value, kParamIndexDelay> C2PortDelayTuning
 typedef C2PortDelayTuning C2PortActualDelayTuning; // deprecated
 constexpr char C2_PARAMKEY_INPUT_DELAY[] = "input.delay";
 constexpr char C2_PARAMKEY_OUTPUT_DELAY[] = "output.delay";
+
+typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexInBufferNum> C2StreamInbufferNum;
+typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexOutBufferNum> C2StreamOutbufferNum;
+constexpr char C2_PARAMKEY_INPUT_BUFFER_NUM[] = "input.bufferNum";
+constexpr char C2_PARAMKEY_OUTPUT_BUFFER_NUM[] = "output.bufferNum";
 
 // read-only
 typedef C2GlobalParam<C2Tuning, C2Uint32Value, kParamIndexDelay> C2PipelineDelayTuning;
