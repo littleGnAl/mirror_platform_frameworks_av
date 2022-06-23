@@ -471,10 +471,12 @@ media_status_t AMediaCodec_setAsyncNotifyCallback(
         AMediaCodecOnAsyncNotifyCallback callback,
         void *userdata) {
 
-    Mutex::Autolock _l(mData->mAsyncCallbackLock);
+    {
+        Mutex::Autolock _l(mData->mAsyncCallbackLock);
 
-    if (mData->mAsyncNotify == NULL) {
-        mData->mAsyncNotify = new AMessage(kWhatAsyncNotify, mData->mHandler);
+        if (mData->mAsyncNotify == NULL) {
+            mData->mAsyncNotify = new AMessage(kWhatAsyncNotify, mData->mHandler);
+        }
     }
 
     // always call, codec may have been reset/re-configured since last call.
@@ -483,9 +485,11 @@ media_status_t AMediaCodec_setAsyncNotifyCallback(
         ALOGE("setAsyncNotifyCallback: err(%d), failed to set async callback", err);
         return translate_error(err);
     }
-
-    mData->mAsyncCallback = callback;
-    mData->mAsyncCallbackUserData = userdata;
+    {
+        Mutex::Autolock _l(mData->mAsyncCallbackLock);
+        mData->mAsyncCallback = callback;
+        mData->mAsyncCallbackUserData = userdata;
+    }
 
     return AMEDIA_OK;
 }
