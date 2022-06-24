@@ -46,6 +46,30 @@
       },
       "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ee5bba_8662b73b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3206,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2022-06-24T01:49:35Z",
+      "side": 1,
+      "message": "I founded that some app will stop play after several minutes, when the playback thread is suspended, and the root cause is  MixerThread::suspendSleepTimeUs returned a smaller value.",
+      "parentUuid": "52b1fc11_1f0ab24c",
+      "range": {
+        "startLine": 3206,
+        "startChar": 23,
+        "endLine": 3206,
+        "endChar": 50
+      },
+      "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
