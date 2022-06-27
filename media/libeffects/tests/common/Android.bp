@@ -7,39 +7,39 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
-cc_benchmark {
-    name: "lvm_benchmark",
-    vendor: true,
-    host_supported: true,
-    srcs: ["lvm_benchmark.cpp"],
-    static_libs: [
-        "libbundlewrapper",
-        "libmusicbundle",
-    ],
-    shared_libs: [
-        "libaudioutils",
-        "liblog",
-    ],
-    header_libs: [
-        "libhardware_headers",
+filegroup {
+    name: "libeffects-test-helper-srcs",
+    srcs: [
+        "EffectTestHelper.cpp",
     ],
 }
 
-cc_benchmark {
-    name: "reverb_benchmark",
+cc_library_headers {
+    name: "libeffects-test-helper-headers",
     vendor: true,
     host_supported: true,
-    srcs: ["reverb_benchmark.cpp"],
-    static_libs: [
-        "libreverb",
-        "libreverbwrapper",
+    export_include_dirs: [
+        ".",
     ],
-    shared_libs: [
+}
+
+cc_defaults {
+    name: "libeffects-test-defaults",
+    vendor: true,
+    gtest: true,
+    host_supported: true,
+    test_suites: ["device-tests"],
+    static_libs: [
         "libaudioutils",
-        "liblog",
+    ],
+    srcs: [
+        ":libeffects-test-helper-srcs",
     ],
     header_libs: [
-        "libaudioeffects",
+        "libeffects-test-helper-headers",
         "libhardware_headers",
+    ],
+    shared_libs: [
+        "liblog",
     ],
 }
