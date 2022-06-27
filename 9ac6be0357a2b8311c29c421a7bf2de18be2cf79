@@ -118,6 +118,30 @@
       },
       "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc91070d_64a836f8",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3206,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2022-06-27T19:31:24Z",
+      "side": 1,
+      "message": "If size_t is 8 then it will not overflow. But if size_t is 4 then it will easily overflow.\n\n@hunga - is anyone still running AudioFlinger in 32-bit mode?\nI think it would be safer to use a uint64_t intermediate term to avoid overflow.\n\n@Yongming - It is not clear why this change would fix the problem with playback stopping. Can you explain more?",
+      "parentUuid": "1549ebaa_81d822af",
+      "range": {
+        "startLine": 3206,
+        "startChar": 23,
+        "endLine": 3206,
+        "endChar": 50
+      },
+      "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
