@@ -22,6 +22,30 @@
       },
       "revId": "b953f9a1d76867198a1b2ac8dcf448f87240767a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468f5a86_281d5e51",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1786490
+      },
+      "writtenOn": "2022-06-28T01:26:13Z",
+      "side": 1,
+      "message": "The render buffer will be handled when two display refreshes before rendering is due. There is little chance to handle render msg when there is a render msg in queue.\nTo make sure the render order, I suggest postAtFrontOfQueue to check the msg type. Then it will not influence the msg order of same type.\nhttps://android.googlesource.com/platform/frameworks/av/+/refs/heads/master/media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp#1345\n\n\t        int64_t twoVsyncsUs \u003d 2 * (mVideoScheduler-\u003egetVsyncPeriod() / 1000);\n\t\n\t        // post 2 display refreshes before rendering is due\n\t        mMediaClock-\u003eaddTimer(msg, mediaTimeUs, -twoVsyncsUs);\n\t    }\n\n\nvoid ALooper::postAtFrontOfQueue(const sp\u003cAMessage\u003e \u0026msg) {\n    Mutex::Autolock autoLock(mLock);\n\n    int64_t whenUs \u003d 0;\n    List\u003cEvent\u003e::iterator it \u003d mEventQueue.begin();\n    while (it !\u003d mEventQueue.end() \u0026\u0026 (*it).mMessage-\u003ewhat() \u003d\u003d msg-\u003ewhat()) {\n        ++it;\n    }\n    Event event;\n    event.mWhenUs \u003d whenUs;\n    event.mMessage \u003d msg;\n\n    if (it \u003d\u003d mEventQueue.begin()) {\n        mQueueChangedCondition.signal();\n    }\n\n    mEventQueue.insert(it, event);\n}",
+      "parentUuid": "d9035415_7c726bd8",
+      "range": {
+        "startLine": 1426,
+        "startChar": 28,
+        "endLine": 1426,
+        "endChar": 46
+      },
+      "revId": "b953f9a1d76867198a1b2ac8dcf448f87240767a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
