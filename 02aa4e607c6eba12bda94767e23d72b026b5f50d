@@ -16,6 +16,23 @@
       "message": "I tried on my P6 Oriole:\n\n-------------------------------------------------------------\nBenchmark                   Time             CPU   Iterations\n-------------------------------------------------------------\nBM_SPATIALIZER/0/0     465751 ns       463813 ns         1365\nBM_SPATIALIZER/0/1     845368 ns       843216 ns          818\nBM_SPATIALIZER/0/2    1482789 ns      1479046 ns          469\nBM_SPATIALIZER/1/0     479747 ns       478350 ns         1461\nBM_SPATIALIZER/1/1     897681 ns       895760 ns          768\nBM_SPATIALIZER/1/2    1594915 ns      1590852 ns          437\nBM_SPATIALIZER/2/0     763561 ns       761551 ns          902\nBM_SPATIALIZER/2/1    1596940 ns      1592538 ns          436\nBM_SPATIALIZER/2/2    2983423 ns      2971185 ns          235\n",
       "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f2b6d8_f32f33ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-06-28T23:56:29Z",
+      "side": 1,
+      "message": "confirmed with Harish that the P6 numbers look reasonable.",
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
