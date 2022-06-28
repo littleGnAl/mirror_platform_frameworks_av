@@ -190,7 +190,8 @@ void Engine::filterOutputDevicesForStrategy(legacy_strategy strategy,
         }
         // Do not use A2DP devices when in call but use them when not in call
         // (e.g for voice mail playback)
-        if (isInCall()) {
+        if (isInCall() &&
+            availableOutputDevices.getDevicesFromTypes(getAudioDeviceOutAllScoSet()).isEmpty()) {
             availableOutputDevices.remove(availableOutputDevices.getDevicesFromTypes({
                     AUDIO_DEVICE_OUT_BLUETOOTH_A2DP, AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_HEADPHONES,
                     AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_SPEAKER, }));
