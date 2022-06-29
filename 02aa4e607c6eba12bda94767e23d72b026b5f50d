@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2186010_03f61d3b",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-29T02:59:53Z",
+      "side": 1,
+      "message": "Initial patches had larger durations and this was updated based on review comments.\nhttps://partner-android-review.googlesource.com/c/platform/frameworks/av/+/2222642/3/media/libeffects/lvm/benchmarks/spatializer_benchmark.cpp\n\nPlease let us know if more durations are needed and i will upload a CL with that. (current CL is merged).",
+      "parentUuid": "f4b2f94d_0c718f44",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 41
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2c3d5b0_c7eed601",
         "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
         "patchSetId": 4
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-29T01:06:39Z",
       "side": 1,
       "message": "Took \u003e2ms to process 2ms audio (2.1ms for 44.1kHz and 4.3 for 96kHz) will cause consistently underflow, seems not right on Pixel 5...",
+      "range": {
+        "startLine": 81,
+        "startChar": 24,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab30947d_af6bef39",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-29T02:59:53Z",
+      "side": 1,
+      "message": "It seems like for this run, either the frequency had dropped or the tasks were \nscheduled in little cores. \n\nCurrent run on recent T build on Pixel 5\n-------------------------------------------------------------\nBenchmark                   Time             CPU   Iterations\n-------------------------------------------------------------\nBM_SPATIALIZER/0/0     747775 ns       746009 ns          715\nBM_SPATIALIZER/0/1    1250611 ns      1247522 ns          482\nBM_SPATIALIZER/0/2    2092349 ns      2087042 ns          308\nBM_SPATIALIZER/1/0     784486 ns       782624 ns          679\nBM_SPATIALIZER/1/1    1335540 ns      1332298 ns          446\nBM_SPATIALIZER/1/2    2241516 ns      2236589 ns          297\nBM_SPATIALIZER/2/0    1209037 ns      1205864 ns          465\nBM_SPATIALIZER/2/1    2358721 ns      2352652 ns          264\nBM_SPATIALIZER/2/2    4255539 ns      4245626 ns          153\n\n\n\nWhen I explicitly turn-off high performance cores (keep only low power cores on)\n-------------------------------------------------------------\nBenchmark                   Time             CPU   Iterations\n-------------------------------------------------------------\nBM_SPATIALIZER/0/0    3271163 ns      3209186 ns          202\nBM_SPATIALIZER/0/1    5574271 ns      5471074 ns           98\nBM_SPATIALIZER/0/2    9003743 ns      8811529 ns           65\nBM_SPATIALIZER/1/0    3524468 ns      3470131 ns          182\nBM_SPATIALIZER/1/1    6077926 ns      5978859 ns           85\nBM_SPATIALIZER/1/2    9668960 ns      9536379 ns           60\nBM_SPATIALIZER/2/0    6372749 ns      6285395 ns           95\nBM_SPATIALIZER/2/1   12917826 ns     12734031 ns           42\nBM_SPATIALIZER/2/2   21946636 ns     21601902 ns           27\n\nNumbers in the source code are closer to the numbers when they run in low power cores.\n\nI will update the numbers in a follow up CL.",
+      "parentUuid": "f2c3d5b0_c7eed601",
       "range": {
         "startLine": 81,
         "startChar": 24,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1820034_ae132904",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-29T02:59:53Z",
+      "side": 1,
+      "message": "benchmark runs in a large loop and not sure if something like create that may allocate memory is a good candidate for looping.",
+      "parentUuid": "46fce4c3_367343fe",
+      "range": {
+        "startLine": 102,
+        "startChar": 51,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45a38572_c75fdcdd",
         "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
         "patchSetId": 4
@@ -117,6 +189,30 @@
       "writtenOn": "2022-06-29T01:06:39Z",
       "side": 1,
       "message": "nit: do we want to take the args from certain config file format say json? Will be easier to expand with more testing arguments.",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 27
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b32571_b5422259",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-29T02:59:53Z",
+      "side": 1,
+      "message": "an extra file adds added complexity of parsing from that file. Since we are only interested in small set of combinations, not sure if it is worth the extra dependencies to parse the json/xml files etc.\n\nIf this is preferred, please let us know and we will explore more on this.\nThanks.",
+      "parentUuid": "45a38572_c75fdcdd",
       "range": {
         "startLine": 154,
         "startChar": 12,
