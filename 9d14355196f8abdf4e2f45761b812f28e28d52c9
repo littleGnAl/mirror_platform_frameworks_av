@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa65c9ac_0a18dd19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2022-06-29T18:49:05Z",
+      "side": 1,
+      "message": "Looks like we are having merge conflicts with an internal branch. Dean can you fix the comments below and I\u0027ll try to merge internally instead.",
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c711ed07_4eea1e32",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2022-06-29T18:49:05Z",
+      "side": 1,
+      "message": "Nit: Use upper case I",
+      "range": {
+        "startLine": 1056,
+        "startChar": 11,
+        "endLine": 1056,
+        "endChar": 12
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1ffc80_df782afa",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2022-06-29T18:49:05Z",
+      "side": 1,
+      "message": "Lets also use a contants here also, constant in should start with lower case k followed by the name: kTestBustMediaOutput.",
+      "range": {
+        "startLine": 1475,
+        "startChar": 34,
+        "endLine": 1475,
+        "endChar": 50
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4a8727_23708d03",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2022-06-29T18:49:05Z",
+      "side": 1,
+      "message": "We could make this into a static constant, .i.e static const int k48000SamplingRate \u003d 48000;\n\nAnd use elsewhere in the file.",
+      "range": {
+        "startLine": 1501,
+        "startChar": 14,
+        "endLine": 1501,
+        "endChar": 19
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fb5488_d66c9a87",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_atmos_offload_configuration.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2022-06-29T18:49:05Z",
+      "side": 1,
+      "message": "Looks like this line is longer than 100 character, can we split into multiple lines. As many as needed, we could follow the format above in line 166.",
+      "range": {
+        "startLine": 299,
+        "startChar": 149,
+        "endLine": 299,
+        "endChar": 150
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
