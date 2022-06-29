@@ -149,7 +149,8 @@ CCodecBufferChannel::CCodecBufferChannel(
       mFirstValidFrameIndex(0u),
       mMetaMode(MODE_NONE),
       mInputMetEos(false),
-      mSendEncryptedInfoBuffer(false) {
+      mSendEncryptedInfoBuffer(false),
+      mBatchSize(base::GetUintProperty<uint32_t>("debug.stagefright.batch-size", 0)) {
     mOutputSurface.lock()->maxDequeueBuffers = kSmoothnessFactor + kRenderingDepth;
     {
         Mutexed<Input>::Locked input(mInput);
@@ -157,7 +158,7 @@ CCodecBufferChannel::CCodecBufferChannel(
         input->extraBuffers.flush();
         input->inputDelay = 0u;
         input->pipelineDelay = 0u;
-        input->numSlots = kSmoothnessFactor;
+        input->numSlots = kSmoothnessFactor + mBatchSize;
         input->numExtraSlots = 0u;
         input->lastFlushIndex = 0u;
     }
@@ -329,6 +330,20 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         items.push_back(std::move(work));
     }
     c2_status_t err = C2_OK;
+    if (mBatchSize > 0) {
+        mBatch.splice(mBatch.end(), items);
+        if (mBatch.size() >= mBatchSize || eos) {
+            std::stringstream ss;
+            ss << "Batch of " << mBatch.size() << " item(s) are being queued: {";
+            for (const std::unique_ptr<C2Work> &work : mBatch) {
+                ss << "#" << work->input.ordinal.frameIndex.peekll() << "@"
+                   << work->input.ordinal.timestamp.peekll() << "us ";
+            }
+            ss << "}";
+            ALOGD("[%s] %s", mName, ss.str().c_str());
+            mBatch.swap(items);
+        }
+    }
     if (!items.empty()) {
         ScopedTrace trace(ATRACE_TAG, android::base::StringPrintf(
                 "CCodecBufferChannel::queue(%s@ts=%lld)", mName, (long long)timeUs).c_str());
@@ -1071,7 +1086,7 @@ status_t CCodecBufferChannel::start(
     uint32_t pipelineDelayValue = pipelineDelay ? pipelineDelay.value : 0;
     uint32_t outputDelayValue = outputDelay ? outputDelay.value : 0;
 
-    size_t numInputSlots = inputDelayValue + pipelineDelayValue + kSmoothnessFactor;
+    size_t numInputSlots = inputDelayValue + pipelineDelayValue + kSmoothnessFactor + mBatchSize;
     size_t numOutputSlots = outputDelayValue + kSmoothnessFactor;
 
     // TODO: get this from input format
@@ -1849,7 +1864,7 @@ bool CCodecBufferChannel::handleWork(
         size_t newNumSlots =
             newInputDelay.value_or(input->inputDelay) +
             newPipelineDelay.value_or(input->pipelineDelay) +
-            kSmoothnessFactor;
+            kSmoothnessFactor + mBatchSize;
         if (input->buffers->isArrayMode()) {
             if (input->numSlots >= newNumSlots) {
                 input->numExtraSlots = 0;

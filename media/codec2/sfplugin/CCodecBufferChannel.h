@@ -331,6 +331,9 @@ private:
     std::atomic_bool mSendEncryptedInfoBuffer;
 
     std::atomic_bool mTunneled;
+
+    const uint32_t mBatchSize;
+    std::list<std::unique_ptr<C2Work>> mBatch;
 };
 
 // Conversion of a c2_status_t value to a status_t value may depend on the
