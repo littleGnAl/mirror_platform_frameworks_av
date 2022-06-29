@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23436b21_d1f69520",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2333,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-29T18:28:51Z",
+      "side": 1,
+      "message": "now that we\u0027re post-T release, aren\u0027t all new devices required to run codec2?\nwhich would make OMX support such as we\u0027re adding here something that is no\nlonger allowed?",
+      "range": {
+        "startLine": 2333,
+        "startChar": 14,
+        "endLine": 2333,
+        "endChar": 62
+      },
+      "revId": "9ef7a6bbbc4ce1823404b031a5cc7ca56a73b1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
