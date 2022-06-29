@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4706252_6d203198",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-06-29T23:35:56Z",
+      "side": 1,
+      "message": "Would it make sense to sometimes randomize one or more of these variables (for example, if an attacker could ever create or take advantage of a corrupted MtpStorage object)? \n\nApologies if you already considered this, I do see in the diff that some of the values in this initialization were already randomized compared to the previous CR.",
+      "range": {
+        "startLine": 57,
+        "startChar": 48,
+        "endLine": 57,
+        "endChar": 86
+      },
+      "revId": "c77f1fb9a27fb2f5bf7b4f4dd0c9d8933fa15ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5df017f_8c35252e",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-06-29T23:35:56Z",
+      "side": 1,
+      "message": "As with above, could it improve fuzzing coverage to sometimes randomize one or more of these variables?",
+      "range": {
+        "startLine": 80,
+        "startChar": 40,
+        "endLine": 80,
+        "endChar": 86
+      },
+      "revId": "c77f1fb9a27fb2f5bf7b4f4dd0c9d8933fa15ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
