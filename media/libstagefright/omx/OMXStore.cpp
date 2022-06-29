@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+// #define LOG_NDEBUG 0
 #define LOG_TAG "OMXStore"
 #include <android-base/properties.h>
 #include <utils/Log.h>
@@ -24,6 +24,8 @@
 #include <media/stagefright/foundation/ADebug.h>
 
 #include <vndksupport/linker.h>
+
+#include <sstream>
 
 #include <dlfcn.h>
 #include <fcntl.h>
@@ -99,8 +101,34 @@ void OMXStore::addPlugin(const char *libname) {
     }
 }
 
+static int getFirstApiLevel() {
+    int boardApiLevel = android::base::GetIntProperty("ro.board.first_api_level", 0);
+    if (boardApiLevel != 0) {
+        return boardApiLevel;
+    }
+
+    return android::base::GetIntProperty("ro.product.first_api_level", android_get_device_api_level());
+}
+
+static bool isTV() {
+    static const bool kIsTv = []() {
+        std::string characteristics = android::base::GetProperty("ro.build.characteristics", "");
+        std::stringstream ss(characteristics);
+        for (std::string item; std::getline(ss, item, ','); ) {
+            if (item == "tv") {
+                return true;
+            }
+        }
+        return false;
+    }();
+    return kIsTv;
+}
+
 void OMXStore::addPlugin(OMXPluginBase *plugin) {
     Mutex::Autolock autoLock(mLock);
+
+    bool typeTV = isTV();
+    int firstApiLevel = getFirstApiLevel();
 
     OMX_U32 index = 0;
 
@@ -109,6 +137,23 @@ void OMXStore::addPlugin(OMXPluginBase *plugin) {
     while ((err = plugin->enumerateComponents(
                     name, sizeof(name), index++)) == OMX_ErrorNone) {
         String8 name8(name);
+
+        Vector<String8> roles;
+        OMX_ERRORTYPE err = plugin->getRolesOfComponent(name, &roles);
+        if (err == OMX_ErrorNone) {
+            bool skip = false;
+            for (String8 role : roles) {
+                if (role.find("video_decoder") != -1 || role.find("video_encoder") != -1) {
+                    if (!typeTV && firstApiLevel >= __ANDROID_API_S__) {
+                        skip = true;
+                        break;
+                    }
+                }
+            }
+            if (skip) {
+                continue;
+            }
+        }
 
         if (mPluginByComponentName.indexOfKey(name8) >= 0) {
             ALOGE("A component of name '%s' already exists, ignoring this one.",
