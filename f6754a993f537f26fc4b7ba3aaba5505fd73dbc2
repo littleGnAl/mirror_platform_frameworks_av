@@ -80,6 +80,30 @@
       },
       "revId": "f6754a993f537f26fc4b7ba3aaba5505fd73dbc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f0231a_e4ff8ba3",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-06-29T04:55:12Z",
+      "side": 1,
+      "message": "one thing to be noted is, elsewhere in the system always treated this flag as false.\n\nBut that is not the case in Codec2InfoBuilder. Before this flag was used here, HDR profiles were always listed (i.e. irrespective of whether has_HDR_display was set to true or false or not set, HDR profiles were listed)\n\nSo if has_HDR_display unset case is treated as false, device will not list HDR profiles which is a regression from previous Android versions for devices like ADT3, because that doesn\u0027t set the flag.\nAnd not sure, if devices like ADT3 which depend on external display via HDMI can really set this as true or false. In that case, defaulting to false will mean such devices will never advertise HDR profiles. \n\nCurrent status is, only if device explicitly says HDR display isn\u0027t supported, do not list the HDR profiles, else continue to do what was done earlier (i.e. list HDR profiles). \n\nIt would be good to discuss with TV team once before landing this.",
+      "parentUuid": "447870e1_a862d504",
+      "range": {
+        "startLine": 166,
+        "startChar": 50,
+        "endLine": 166,
+        "endChar": 55
+      },
+      "revId": "f6754a993f537f26fc4b7ba3aaba5505fd73dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
