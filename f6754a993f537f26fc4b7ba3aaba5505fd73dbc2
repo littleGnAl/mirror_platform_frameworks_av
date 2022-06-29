@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aaff6f4_cab93454",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-29T03:24:49Z",
+      "side": 1,
+      "message": "i\u0027d do +2, but I want lajos to vote on this too as a sign that he agrees\nwith the end result of default \u003d\u003d not an hdr display.",
+      "revId": "f6754a993f537f26fc4b7ba3aaba5505fd73dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3213c066_95bf04c1",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-06-23T19:13:33Z",
       "side": 1,
       "message": "With this change, devices like ADT3 will stop advertising support for HDR profiles.\nDetails in b/228237404#comment24.\nThis needs to be aligned before this can be merged.",
+      "range": {
+        "startLine": 166,
+        "startChar": 50,
+        "endLine": 166,
+        "endChar": 55
+      },
+      "revId": "f6754a993f537f26fc4b7ba3aaba5505fd73dbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447870e1_a862d504",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-29T03:24:49Z",
+      "side": 1,
+      "message": "I think that the important thing is that this aligns the behavior of this\nwith the behavior implemented elsewhere in the system.\n(e.g. they both will now have the same default-if-missing).",
+      "parentUuid": "3213c066_95bf04c1",
       "range": {
         "startLine": 166,
         "startChar": 50,
