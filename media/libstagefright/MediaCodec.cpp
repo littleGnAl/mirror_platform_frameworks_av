@@ -2495,7 +2495,9 @@ status_t MediaCodec::queueBuffer(
     msg->setObject("c2buffer", obj);
     msg->setInt64("timeUs", presentationTimeUs);
     msg->setInt32("flags", flags);
-    msg->setMessage("tunings", tunings);
+    if (tunings && tunings->countEntries() > 0) {
+        msg->setMessage("tunings", tunings);
+    }
     msg->setPointer("errorDetailMsg", errorDetailMsg);
 
     sp<AMessage> response;
@@ -2537,7 +2539,9 @@ status_t MediaCodec::queueEncryptedBuffer(
     msg->setInt32("skipBlocks", pattern.mSkipBlocks);
     msg->setInt64("timeUs", presentationTimeUs);
     msg->setInt32("flags", flags);
-    msg->setMessage("tunings", tunings);
+    if (tunings && tunings->countEntries() > 0) {
+        msg->setMessage("tunings", tunings);
+    }
     msg->setPointer("errorDetailMsg", errorDetailMsg);
 
     sp<AMessage> response;
@@ -4099,26 +4103,29 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 break;
             }
 
-            if (asyncNotify != nullptr) {
-                if (mSurface != NULL) {
-                    if (!mReleaseSurface) {
-                        uint64_t usage = 0;
-                        if (mSurface->getConsumerUsage(&usage) != OK) {
-                            usage = 0;
-                        }
-                        mReleaseSurface.reset(new ReleaseSurface(usage));
+            bool forceSync = false;
+            if (asyncNotify != nullptr && mSurface != NULL) {
+                if (!mReleaseSurface) {
+                    uint64_t usage = 0;
+                    if (mSurface->getConsumerUsage(&usage) != OK) {
+                        usage = 0;
                     }
-                    if (mSurface != mReleaseSurface->getSurface()) {
-                        status_t err = connectToSurface(mReleaseSurface->getSurface());
-                        ALOGW_IF(err != OK, "error connecting to release surface: err = %d", err);
-                        if (err == OK && !(mFlags & kFlagUsesSoftwareRenderer)) {
-                            err = mCodec->setSurface(mReleaseSurface->getSurface());
-                            ALOGW_IF(err != OK, "error setting release surface: err = %d", err);
-                        }
-                        if (err == OK) {
-                            (void)disconnectFromSurface();
-                            mSurface = mReleaseSurface->getSurface();
-                        }
+                    mReleaseSurface.reset(new ReleaseSurface(usage));
+                }
+                if (mSurface != mReleaseSurface->getSurface()) {
+                    status_t err = connectToSurface(mReleaseSurface->getSurface());
+                    ALOGW_IF(err != OK, "error connecting to release surface: err = %d", err);
+                    if (err == OK && !(mFlags & kFlagUsesSoftwareRenderer)) {
+                        err = mCodec->setSurface(mReleaseSurface->getSurface());
+                        ALOGW_IF(err != OK, "error setting release surface: err = %d", err);
+                    }
+                    if (err == OK) {
+                        (void)disconnectFromSurface();
+                        mSurface = mReleaseSurface->getSurface();
+                    } else {
+                        // We were not able to switch the surface, so force
+                        // synchronous release.
+                        forceSync = true;
                     }
                 }
             }
@@ -4142,8 +4149,10 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             }
 
             if (asyncNotify != nullptr) {
-                mResourceManagerProxy->markClientForPendingRemoval();
-                postPendingRepliesAndDeferredMessages("kWhatRelease:async");
+                if (!forceSync) {
+                    mResourceManagerProxy->markClientForPendingRemoval();
+                    postPendingRepliesAndDeferredMessages("kWhatRelease:async");
+                }
                 asyncNotifyPost.clear();
                 mAsyncReleaseCompleteNotification = asyncNotify;
             }
@@ -4713,12 +4722,10 @@ status_t MediaCodec::queueCSDInputBuffer(size_t bufferIndex) {
         sp<WrapperObject<std::shared_ptr<C2Buffer>>> obj{
             new WrapperObject<std::shared_ptr<C2Buffer>>{c2Buffer}};
         msg->setObject("c2buffer", obj);
-        msg->setMessage("tunings", new AMessage);
     } else if (memory) {
         sp<WrapperObject<sp<hardware::HidlMemory>>> obj{
             new WrapperObject<sp<hardware::HidlMemory>>{memory}};
         msg->setObject("memory", obj);
-        msg->setMessage("tunings", new AMessage);
     }
 
     return onQueueInputBuffer(msg);
@@ -4900,9 +4907,10 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     sp<MediaCodecBuffer> buffer = info->mData;
 
     if (c2Buffer || memory) {
-        sp<AMessage> tunings;
-        CHECK(msg->findMessage("tunings", &tunings));
-        onSetParameters(tunings);
+        sp<AMessage> tunings = NULL;
+        if (msg->findMessage("tunings", &tunings) && tunings != NULL) {
+            onSetParameters(tunings);
+        }
 
         status_t err = OK;
         if (c2Buffer) {

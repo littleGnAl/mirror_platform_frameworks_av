@@ -1478,8 +1478,12 @@ void CCodec::configure(const sp<AMessage> &msg) {
                                                            // with more enc stat kinds
                 // Future extended encoding statistics for the level 2 should be added here
                 case VIDEO_ENCODING_STATISTICS_LEVEL_1:
-                    config->subscribeToConfigUpdate(comp,
-                        {kParamIndexAverageBlockQuantization, kParamIndexPictureType});
+                    config->subscribeToConfigUpdate(
+                            comp,
+                            {
+                                C2AndroidStreamAverageBlockQuantizationInfo::output::PARAM_TYPE,
+                                C2StreamPictureTypeInfo::output::PARAM_TYPE,
+                            });
                     break;
                 case VIDEO_ENCODING_STATISTICS_LEVEL_NONE:
                     break;
@@ -2396,7 +2400,8 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
                         C2StreamColorAspectsInfo::output::PARAM_TYPE,
                         C2StreamDataSpaceInfo::output::PARAM_TYPE,
                         C2StreamHdrStaticInfo::output::PARAM_TYPE,
-                        C2StreamHdr10PlusInfo::output::PARAM_TYPE,
+                        C2StreamHdr10PlusInfo::output::PARAM_TYPE,  // will be deprecated
+                        C2StreamHdrDynamicMetadataInfo::output::PARAM_TYPE,
                         C2StreamPixelAspectRatioInfo::output::PARAM_TYPE,
                         C2StreamSurfaceScalingInfo::output::PARAM_TYPE
                     };
