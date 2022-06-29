@@ -33,6 +33,98 @@
       "message": "confirmed with Harish that the P6 numbers look reasonable.",
       "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b2f94d_0c718f44",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-29T01:06:39Z",
+      "side": 1,
+      "message": "Can we add several more longer durations?\nBenchmarking should collect as much information as possible even some args are not currently used yet.",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 41
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c3d5b0_c7eed601",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-29T01:06:39Z",
+      "side": 1,
+      "message": "Took \u003e2ms to process 2ms audio (2.1ms for 44.1kHz and 4.3 for 96kHz) will cause consistently underflow, seems not right on Pixel 5...",
+      "range": {
+        "startLine": 81,
+        "startChar": 24,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fce4c3_367343fe",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-29T01:06:39Z",
+      "side": 1,
+      "message": "Do we also want to benchmark the effect create/release at some point?\nJust some thoughts, don\u0027t necessary need to be addressed in this patch.",
+      "range": {
+        "startLine": 102,
+        "startChar": 51,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a38572_c75fdcdd",
+        "filename": "media/libeffects/spatializer/benchmarks/spatializer_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-06-29T01:06:39Z",
+      "side": 1,
+      "message": "nit: do we want to take the args from certain config file format say json? Will be easier to expand with more testing arguments.",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 27
+      },
+      "revId": "02aa4e607c6eba12bda94767e23d72b026b5f50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
