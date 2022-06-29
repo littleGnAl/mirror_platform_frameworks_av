@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab6a50e9_cec906c2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-06-29T19:06:44Z",
+      "side": 1,
+      "message": "nit: okay as is, but perhaps inverting the if might be more clear.\n\n    if (status \u003d\u003d NO_ERROR) {\n        policyDesc \u003d mOutputs.valueFor(newOutput);\n        primaryMix-\u003esetOutput(policyDesc);\n    } else if (tryDirectForFlags) {\n        policyDesc \u003d nullptr;\n    } // otherwise use primary if available.",
+      "range": {
+        "startLine": 1069,
+        "startChar": 0,
+        "endLine": 1074,
+        "endChar": 13
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f1ffc80_df782afa",
         "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
         "patchSetId": 2
