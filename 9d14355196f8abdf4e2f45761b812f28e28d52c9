@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "582e7e7f_d4338e64",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-06-30T23:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c711ed07_4eea1e32",
+      "range": {
+        "startLine": 1056,
+        "startChar": 11,
+        "endLine": 1056,
+        "endChar": 12
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab6a50e9_cec906c2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-29T19:06:44Z",
       "side": 1,
       "message": "nit: okay as is, but perhaps inverting the if might be more clear.\n\n    if (status \u003d\u003d NO_ERROR) {\n        policyDesc \u003d mOutputs.valueFor(newOutput);\n        primaryMix-\u003esetOutput(policyDesc);\n    } else if (tryDirectForFlags) {\n        policyDesc \u003d nullptr;\n    } // otherwise use primary if available.",
+      "range": {
+        "startLine": 1069,
+        "startChar": 0,
+        "endLine": 1074,
+        "endChar": 13
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f6cda4_3b82d0c3",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-06-30T23:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab6a50e9_cec906c2",
       "range": {
         "startLine": 1069,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6353236_7b659c32",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-06-30T23:56:44Z",
+      "side": 1,
+      "message": "This comment applies to the current in progress review https://android-review.googlesource.com/c/platform/frameworks/av/+/1978270 so will be applied there.",
+      "parentUuid": "7f1ffc80_df782afa",
+      "range": {
+        "startLine": 1475,
+        "startChar": 34,
+        "endLine": 1475,
+        "endChar": 50
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b4a8727_23708d03",
         "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
         "patchSetId": 2
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b797e83a_b5404db3",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-06-30T23:56:44Z",
+      "side": 1,
+      "message": "This comment applies to the current in progress review https://android-review.googlesource.com/c/platform/frameworks/av/+/1978270 so will be applied there.",
+      "parentUuid": "4b4a8727_23708d03",
+      "range": {
+        "startLine": 1501,
+        "startChar": 14,
+        "endLine": 1501,
+        "endChar": 19
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4fb5488_d66c9a87",
         "filename": "services/audiopolicy/tests/resources/test_car_ap_atmos_offload_configuration.xml",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2022-06-29T18:49:05Z",
       "side": 1,
       "message": "Looks like this line is longer than 100 character, can we split into multiple lines. As many as needed, we could follow the format above in line 166.",
+      "range": {
+        "startLine": 299,
+        "startChar": 149,
+        "endLine": 299,
+        "endChar": 150
+      },
+      "revId": "9d14355196f8abdf4e2f45761b812f28e28d52c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2377b282_bc72f0bc",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_atmos_offload_configuration.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-06-30T23:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4fb5488_d66c9a87",
       "range": {
         "startLine": 299,
         "startChar": 149,
