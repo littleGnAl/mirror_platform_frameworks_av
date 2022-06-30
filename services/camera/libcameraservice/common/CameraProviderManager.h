@@ -24,6 +24,7 @@
 #include <string>
 #include <mutex>
 #include <future>
+#include <optional>
 
 #include <camera/camera2/ConcurrentCamera.h>
 #include <camera/CameraParameters2.h>
@@ -387,7 +388,8 @@ private:
 
         status_t initialize(sp<hardware::camera::provider::V2_4::ICameraProvider>& interface,
                 hardware::hidl_bitfield<hardware::camera::provider::V2_5::DeviceState>
-                    currentDeviceState);
+                    currentDeviceState, 
+                    const std::shared_ptr<aidl::android::apex::IApexService>& apexService);
 
         const sp<hardware::camera::provider::V2_4::ICameraProvider> startProviderInterface();
 
@@ -459,6 +461,8 @@ private:
                         hardware::camera::provider::V2_7::CameraIdAndStreamCombination>
                                 &halCameraIdsAndStreamCombinations,
                 bool *isSupported);
+
+        std::optional<aidl::android::apex::ApexCertificationInfo>& getProviderApexInfo();
 
         // Basic device information, common to all camera devices
         struct DeviceInfo {
@@ -678,6 +682,10 @@ private:
         // Expects to have mLock locked
         status_t getConcurrentCameraIdsInternalLocked(
                 sp<hardware::camera::provider::V2_6::ICameraProvider> &interface2_6);
+
+        std::optional<aidl::android::apex::ApexCertificationInfo> mApexInfo;
+        void initializeProviderApexInfo(
+                const std::shared_ptr<aidl::android::apex::IApexService>& apexService);
     };
 
     /**
@@ -742,6 +750,8 @@ private:
               hardware::hidl_vec<hardware::camera::provider::V2_7::CameraIdAndStreamCombination>
                       *halCameraIdsAndStreamCombinations,
               bool *earlyExit);
+    void initializeApexService();
+    void reportHealthCheck(const sp<ProviderInfo>& providerInfo, status_t providerStatus);
 };
 
 } // namespace android

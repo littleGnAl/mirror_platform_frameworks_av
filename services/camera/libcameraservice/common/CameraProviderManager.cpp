@@ -359,7 +359,11 @@ status_t CameraProviderManager::notifyDeviceStateChange(
     std::lock_guard<std::mutex> lock(mInterfaceMutex);
     mDeviceState = newState;
     status_t res = OK;
-    for (auto& provider : mProviders) {
+    // Make a copy of mProviders because we unlock mInterfaceMutex temporarily
+    // within the loop. It's possible that during the time mInterfaceMutex is
+    // unlocked, mProviders has changed.
+    auto providers = mProviders;
+    for (auto& provider : providers) {
         ALOGV("%s: Notifying %s for new state 0x%" PRIx64,
                 __FUNCTION__, provider->mProviderName.c_str(), newState);
         // b/199240726 Camera providers can for example try to add/remove
@@ -1249,16 +1253,8 @@ CameraProviderManager::isHiddenPhysicalCameraInternal(const std::string& cameraI
 
 status_t CameraProviderManager::tryToInitializeProviderLocked(
         const std::string& providerName, const sp<ProviderInfo>& providerInfo) {
+    initializeApexService();
     sp<provider::V2_4::ICameraProvider> interface;
-
-    if (mApexService == nullptr) {
-      mApexService = aidl::android::apex::IApexService::fromBinder(
-          ndk::SpAIBinder(AServiceManager_getService("apexservice")));
-    }
-    // TODO(before merging) stop hardcoding this
-    mApexService->startCertificationByClient(
-        "android.hardware.camera.provider@2.7::ICameraProvider/internal/0");
-
     interface = mServiceProxy->tryGetService(providerName);
 
     if (interface == nullptr) {
@@ -1269,7 +1265,11 @@ status_t CameraProviderManager::tryToInitializeProviderLocked(
         return BAD_VALUE;
     }
 
-    return providerInfo->initialize(interface, mDeviceState);
+    ALOGW("%s: Camera provider HAL '%s' is reporting health status", __FUNCTION__,
+                providerName.c_str());
+    auto status = providerInfo->initialize(interface, mDeviceState, mApexService);
+    reportHealthCheck(providerInfo, status);
+    return status;
 }
 
 status_t CameraProviderManager::addProviderLocked(const std::string& newProvider,
@@ -1373,7 +1373,8 @@ CameraProviderManager::ProviderInfo::ProviderInfo(
 
 status_t CameraProviderManager::ProviderInfo::initialize(
         sp<provider::V2_4::ICameraProvider>& interface,
-        hardware::hidl_bitfield<provider::V2_5::DeviceState> currentDeviceState) {
+        hardware::hidl_bitfield<provider::V2_5::DeviceState> currentDeviceState,
+        const std::shared_ptr<aidl::android::apex::IApexService>& apexService) {
     status_t res = parseProviderName(mProviderName, &mType, &mId);
     if (res != OK) {
         ALOGE("%s: Invalid provider name, ignoring", __FUNCTION__);
@@ -1414,25 +1415,7 @@ status_t CameraProviderManager::ProviderInfo::initialize(
         }
     }
 
-    /*
-    Get the ApexCertificationInfo soon after connecting to the HAL interface, before performing
-    the health check API calls. The ApexCertificationInfo.version is the active APEX version.
-
-    - If the APEX is updated before the ICameraProvider API calls used by the health check, then
-      the API calls will return DEAD_OBJECT. This should not be reported as a failed health check.
-    - If the APEX is updated after the ICameraProvider API calls used by the health check but before
-      the call to reportHealthCheck() then the report will be ignored since the provided version is
-      out of date. This helps prevent a race condition of certifying an APEX update using the health
-      report from before its update.
-
-    In both cases, CameraProviderManager will reattempt connection thanks to the
-    interface->linkToDeath() call, and the health check procedure will run again automatically.
-    */
-    aidl::android::apex::ApexCertificationInfo certificationInfo;
-    mApexService->getCertificationInfo(
-        // TODO(before merging) stop hardcoding this
-        "android.hardware.camera.provider@2.7::ICameraProvider/internal/0",
-        &certificationInfo);
+    initializeProviderApexInfo(apexService);
 
     // cameraDeviceStatusChange callbacks may be called (and causing new devices added)
     // before setCallback returns
@@ -1501,14 +1484,14 @@ status_t CameraProviderManager::ProviderInfo::initialize(
                 __FUNCTION__, mProviderName.c_str(), linked.description().c_str());
         return DEAD_OBJECT;
     }
-    // Report the health check.
-    if (certificationInfo.certificationRequired) {
-        // TODO(before merging): empty devices isn't a valid health check, since there may be no
-        // cameras for certain scenarios.
-        mApexService->reportHealthCheck(
-            "android.hardware.camera.provider@2.7::ICameraProvider/internal/0",
-            certificationInfo.versionCode, /*success=*/!devices.empty());
-    }
+    // // Report the health check.
+    // if (mApexInfo && mApexInfo->certificationRequired) {
+    //     // TODO(before merging): empty devices isn't a valid health check, since there may be no
+    //     // cameras for certain scenarios.
+    //     apexService->reportHealthCheck(
+    //         "android.hardware.camera.provider@2.7::ICameraProvider/internal/0",
+    //         mApexInfo->versionCode, /*success=*/!devices.empty());
+    // }
     if (status != Status::OK) {
         ALOGE("%s: Unable to query for camera devices from provider '%s'",
                 __FUNCTION__, mProviderName.c_str());
@@ -2911,7 +2894,41 @@ status_t CameraProviderManager::ProviderInfo::parseDeviceName(const std::string&
     return OK;
 }
 
+void CameraProviderManager::ProviderInfo::initializeProviderApexInfo(
+    const std::shared_ptr<aidl::android::apex::IApexService>& apexService) {
+    mApexInfo = std::nullopt;
+    if(apexService == nullptr) {
+        return;
+    }
 
+    // TODO(before merging) stop hardcoding this
+    apexService->startCertificationByClient(
+        "android.hardware.camera.provider@2.7::ICameraProvider/internal/0");
+    /*
+    Get the ApexCertificationInfo soon after connecting to the HAL interface, before performing
+    the health check API calls. The ApexCertificationInfo.version is the active APEX version.
+
+    - If the APEX is updated before the ICameraProvider API calls used by the health check, then
+      the API calls will return DEAD_OBJECT. This should not be reported as a failed health check.
+    - If the APEX is updated after the ICameraProvider API calls used by the health check but before
+      the call to reportHealthCheck() then the report will be ignored since the provided version is
+      out of date. This helps prevent a race condition of certifying an APEX update using the health
+      report from before its update.
+
+    In both cases, CameraProviderManager will reattempt connection thanks to the
+    interface->linkToDeath() call, and the health check procedure will run again automatically.
+    */
+    ::aidl::android::apex::ApexCertificationInfo apexInfo;
+    apexService->getCertificationInfo(
+        // TODO(before merging) stop hardcoding this
+        "android.hardware.camera.provider@2.7::ICameraProvider/internal/0",
+        &apexInfo);
+
+    mApexInfo = apexInfo;
+}
+std::optional<aidl::android::apex::ApexCertificationInfo>& CameraProviderManager::ProviderInfo::getProviderApexInfo() {
+    return mApexInfo;
+}
 
 CameraProviderManager::ProviderInfo::~ProviderInfo() {
     if (mInitialStatusCallbackFuture.valid()) {
@@ -3274,6 +3291,26 @@ void CameraProviderManager::filterLogicalCameraIdsLocked(
                 [&removedIds](const std::string& s) {
                 return removedIds.find(s) != removedIds.end();}),
                 deviceIds.end());
+    }
+}
+
+void CameraProviderManager::initializeApexService() {
+    if (mApexService == nullptr) {
+      mApexService = aidl::android::apex::IApexService::fromBinder(
+          ndk::SpAIBinder(AServiceManager_getService("apexservice")));
+    }
+}
+
+void CameraProviderManager::reportHealthCheck(const sp<ProviderInfo>& providerInfo, 
+        status_t providerStatus) {
+    if (mApexService == nullptr || providerStatus == DEAD_OBJECT) {
+        return;
+    }
+    auto apexInfo = providerInfo->getProviderApexInfo();
+    if (apexInfo && apexInfo->certificationRequired) {
+        mApexService->reportHealthCheck(
+            "android.hardware.camera.provider@2.7::ICameraProvider/internal/0",
+            apexInfo->versionCode, providerStatus == OK);
     }
 }
 
