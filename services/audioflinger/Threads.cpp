@@ -882,6 +882,12 @@ String8 channelMaskToString(audio_channel_mask_t mask, bool output) {
             if (mask & AUDIO_CHANNEL_IN_TOP_RIGHT) s.append("top-right, ");
             if (mask & AUDIO_CHANNEL_IN_VOICE_UPLINK) s.append("voice-uplink, ");
             if (mask & AUDIO_CHANNEL_IN_VOICE_DNLINK) s.append("voice-dnlink, ");
+            if (mask & AUDIO_CHANNEL_IN_SIDE_LEFT) s.append("side-left, ");
+            if (mask & AUDIO_CHANNEL_IN_SIDE_RIGHT) s.append("side-right, ");
+            if (mask & AUDIO_CHANNEL_IN_TOP_FRONT_LEFT) s.append("top-front-left, ");
+            if (mask & AUDIO_CHANNEL_IN_TOP_FRONT_RIGHT) s.append("top-front-right, ");
+            if (mask & AUDIO_CHANNEL_IN_TOP_BACK_LEFT) s.append("top-back-left, ");
+            if (mask & AUDIO_CHANNEL_IN_TOP_BACK_RIGHT) s.append("top-back-right, ");
             if (mask & ~AUDIO_CHANNEL_IN_ALL) s.append("unknown,  ");
         }
         const int len = s.length();
