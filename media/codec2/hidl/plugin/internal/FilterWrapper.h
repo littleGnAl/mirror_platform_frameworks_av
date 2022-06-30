@@ -109,6 +109,7 @@ private:
     std::list<std::vector<std::weak_ptr<const C2Component>>> mWrappedComponents;
 
     std::vector<FilterWrapper::Component> createFilters();
+    std::vector<FilterWrapper::Component> createPreFilters();
     C2Component::Traits getTraits(const std::shared_ptr<C2ComponentInterface> &intf);
 
     C2_DO_NOT_COPY(FilterWrapper);
