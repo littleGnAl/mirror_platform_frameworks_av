@@ -142,6 +142,30 @@
       },
       "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8fa49b4_79aa464c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3206,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2022-06-30T03:42:44Z",
+      "side": 1,
+      "message": "suspendSleepTimeUs() will affect threadloop\u0027s periods, if threadloop\u0027s periods becomes shorter, it maybe mismatch client\u0027s audio data write logic.",
+      "parentUuid": "fc91070d_64a836f8",
+      "range": {
+        "startLine": 3206,
+        "startChar": 23,
+        "endLine": 3206,
+        "endChar": 50
+      },
+      "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
