@@ -63,6 +63,30 @@
       },
       "revId": "3285f85ce33f1b9b0eabf54d56f9d6df57773f66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ce29e7_a4633ef3",
+        "filename": "media/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-06-30T21:16:23Z",
+      "side": 1,
+      "message": "all of those fxp_mul and fpx_mac calls are saturating calls.\nis the answer that this calculation also needs to be saturating.\n\nis the fix that we calculate as a int64 (which the cast does) but before\nwe put it back into L_tmp1 (which is an int32), we saturate it. so maybe something like:\n\nint64 what \u003d ((int64_t)(L_tmp1 \u003e\u003e 14) + L_tmp2) \u003c\u003c 2;\nif (what \u003e INT_MAX) what \u003d INT_MAX\nelse if (what \u003c INT_MIN) what \u003d INT_MIN\nL_tmp1 \u003d what;",
+      "parentUuid": "3c5b42cd_408ed3e6",
+      "range": {
+        "startLine": 184,
+        "startChar": 18,
+        "endLine": 184,
+        "endChar": 28
+      },
+      "revId": "3285f85ce33f1b9b0eabf54d56f9d6df57773f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
