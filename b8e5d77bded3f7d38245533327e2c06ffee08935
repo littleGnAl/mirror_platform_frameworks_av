@@ -16,6 +16,24 @@
       "message": "nit: is this ever used in this block?",
       "revId": "b8e5d77bded3f7d38245533327e2c06ffee08935",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701a37b0_94d0b22b",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-06-30T22:15:23Z",
+      "side": 1,
+      "message": "this is creating a build error in the main (master) branch.",
+      "parentUuid": "c52b1c24_4b10a342",
+      "revId": "b8e5d77bded3f7d38245533327e2c06ffee08935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
