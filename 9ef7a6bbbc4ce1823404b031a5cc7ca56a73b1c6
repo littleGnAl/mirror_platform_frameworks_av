@@ -22,6 +22,30 @@
       },
       "revId": "9ef7a6bbbc4ce1823404b031a5cc7ca56a73b1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940aafc9_cf344d96",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2333,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-06-30T18:45:55Z",
+      "side": 1,
+      "message": "Understood. Some of our IC customers(who use Android 11 or older versions and hardware codec implementation) wanted to see the ACodec changes mainlined.\nSo I submitted those changes for review along with the other modification.\n\nIf the OMX support is no longer allowed(either for hardware codec or software codec), I would remove these code changes. Thanks.",
+      "parentUuid": "23436b21_d1f69520",
+      "range": {
+        "startLine": 2333,
+        "startChar": 14,
+        "endLine": 2333,
+        "endChar": 62
+      },
+      "revId": "9ef7a6bbbc4ce1823404b031a5cc7ca56a73b1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
