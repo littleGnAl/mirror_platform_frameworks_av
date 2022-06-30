@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b61f3a_4ddac3ae",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_property_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-06-30T21:03:46Z",
+      "side": 1,
+      "message": "I\u0027m unfamiliar with this library, but would it make sense to sometimes randomize one or both of these values as well? (for example, if the change would increase fuzzer performance or coverage, or if an attacker could sometimes corrupt this variable)",
+      "range": {
+        "startLine": 104,
+        "startChar": 54,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "5beb8152083585176adb400eccda20e49080fe94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
