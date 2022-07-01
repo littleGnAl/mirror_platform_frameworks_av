@@ -16,6 +16,23 @@
       "message": "@Lajos/Wonsik, please help to check on this one. This is related to the HDR reuqirement",
       "revId": "c57b65b563c657caea4d46be1a43bb5a450f8b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7518fb7e_7be3a1ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-07-01T18:02:34Z",
+      "side": 1,
+      "message": "This may need to be combined with a fix similar to android-review.googlesource.com/c/platform/frameworks/av/+/2143192",
+      "revId": "c57b65b563c657caea4d46be1a43bb5a450f8b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
