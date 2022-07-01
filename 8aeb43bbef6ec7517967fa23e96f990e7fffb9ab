@@ -46,6 +46,30 @@
       },
       "revId": "8aeb43bbef6ec7517967fa23e96f990e7fffb9ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d89296b_cdc1ae9b",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_atmos_offload_configuration.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-07-01T08:09:01Z",
+      "side": 1,
+      "message": "we usually don\u0027t apply the 100 characters rule in audio config xml files because it makes them harder to read most of the times",
+      "parentUuid": "78757fef_cfaaa5c1",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 104
+      },
+      "revId": "8aeb43bbef6ec7517967fa23e96f990e7fffb9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
