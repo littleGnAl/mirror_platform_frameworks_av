@@ -152,14 +152,21 @@ void OutputBuffers::initSkipCutBuffer(
     mPadding = padding;
     mSampleRate = sampleRate;
     mChannelCount = channelCount;
-    setSkipCutBuffer(delay, padding);
+    mEncodeType = AudioEncoding::kAudioEncodingDefault;
+    if (mFormat) {
+        int32_t encodeType;
+        if (mFormat->findInt32(KEY_PCM_ENCODING, &encodeType)) {
+            mEncodeType = encodeType;
+        }
+    }
+    setSkipCutBuffer(delay, padding, mEncodeType);
 }
 
-void OutputBuffers::updateSkipCutBuffer(int32_t sampleRate, int32_t channelCount) {
+void OutputBuffers::updateSkipCutBuffer(int32_t sampleRate, int32_t channelCount, int32_t encodeType) {
     if (mSkipCutBuffer == nullptr) {
         return;
     }
-    if (mSampleRate == sampleRate && mChannelCount == channelCount) {
+    if (mSampleRate == sampleRate && mChannelCount == channelCount && mEncodeType == encodeType) {
         return;
     }
     int32_t delay = mDelay;
@@ -170,7 +177,8 @@ void OutputBuffers::updateSkipCutBuffer(int32_t sampleRate, int32_t channelCount
     }
     mSampleRate = sampleRate;
     mChannelCount = channelCount;
-    setSkipCutBuffer(delay, padding);
+    mEncodeType = encodeType;
+    setSkipCutBuffer(delay, padding, encodeType);
 }
 
 void OutputBuffers::updateSkipCutBuffer(const sp<AMessage> &format) {
@@ -179,9 +187,13 @@ void OutputBuffers::updateSkipCutBuffer(const sp<AMessage> &format) {
             && mediaType == MIMETYPE_AUDIO_RAW) {
         int32_t channelCount;
         int32_t sampleRate;
+        int32_t encodeType;
         if (format->findInt32(KEY_CHANNEL_COUNT, &channelCount)
                 && format->findInt32(KEY_SAMPLE_RATE, &sampleRate)) {
-            updateSkipCutBuffer(sampleRate, channelCount);
+            if (!format->findInt32(KEY_PCM_ENCODING, &encodeType)) {
+                encodeType = mEncodeType;
+            }
+            updateSkipCutBuffer(sampleRate, channelCount, encodeType);
         }
     }
 }
@@ -192,14 +204,14 @@ void OutputBuffers::submit(const sp<MediaCodecBuffer> &buffer) {
     }
 }
 
-void OutputBuffers::setSkipCutBuffer(int32_t skip, int32_t cut) {
+void OutputBuffers::setSkipCutBuffer(int32_t skip, int32_t cut, int32_t encodeType) {
     if (mSkipCutBuffer != nullptr) {
         size_t prevSize = mSkipCutBuffer->size();
         if (prevSize != 0u) {
             ALOGD("[%s] Replacing SkipCutBuffer holding %zu bytes", mName, prevSize);
         }
     }
-    mSkipCutBuffer = new SkipCutBuffer(skip, cut, mChannelCount);
+    mSkipCutBuffer = new SkipCutBuffer(skip, cut, mChannelCount, encodeType);
 }
 
 bool OutputBuffers::convert(

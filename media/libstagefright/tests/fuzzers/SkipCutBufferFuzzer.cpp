@@ -27,8 +27,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   FuzzedDataProvider fdp = FuzzedDataProvider(data, size);
   size_t skip = fdp.ConsumeIntegral<size_t>();
   size_t cut = fdp.ConsumeIntegral<size_t>();
-  size_t num16Channels = fdp.ConsumeIntegral<size_t>();
-  sp<SkipCutBuffer> sBuffer(new SkipCutBuffer(skip, cut, num16Channels));
+  size_t numChannels = fdp.ConsumeIntegral<size_t>();
+  sp<SkipCutBuffer> sBuffer(new SkipCutBuffer(skip, cut, numChannels));
 
   while (fdp.remaining_bytes() > 0) {
     // Cap size to 1024 to limit max amount allocated.

@@ -21,6 +21,7 @@
 #include <media/MediaCodecBuffer.h>
 #include <media/stagefright/MediaBuffer.h>
 #include <media/stagefright/foundation/ABuffer.h>
+#include <media/stagefright/foundation/MediaDefs.h>
 
 namespace android {
 
@@ -32,8 +33,10 @@ class SkipCutBuffer: public RefBase {
  public:
     // 'skip' is the number of frames to skip from the beginning
     // 'cut' is the number of frames to cut from the end
-    // 'num16BitChannels' is the number of channels, which are assumed to be 16 bit wide each
-    SkipCutBuffer(size_t skip, size_t cut, size_t num16Channels);
+    // 'numChannels' is the number of channels
+    // 'encodeType' is the PCM encoding type, and if not specified, the default
+    //              int 16 bit is used.
+    SkipCutBuffer(size_t skip, size_t cut, size_t numChannels, int32_t encodeType = AudioEncoding::kAudioEncodingDefault);
 
     // Submit one MediaBuffer for skipping and cutting. This may consume all or
     // some of the data in the buffer, or it may add data to it.

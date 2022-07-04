@@ -24,18 +24,38 @@
 
 namespace android {
 
-SkipCutBuffer::SkipCutBuffer(size_t skip, size_t cut, size_t num16BitChannels) {
+SkipCutBuffer::SkipCutBuffer(size_t skip, size_t cut, size_t numChannels, int32_t encodeType) {
 
     mWriteHead = 0;
     mReadHead = 0;
     mCapacity = 0;
     mCutBuffer = NULL;
 
-    if (num16BitChannels == 0 || num16BitChannels > INT32_MAX / 2) {
-        ALOGW("# channels out of range: %zu, using passthrough instead", num16BitChannels);
+    size_t dataSize;
+    switch (encodeType) {
+    case AudioEncoding::kAudioEncodingPcm8bit:
+        dataSize = sizeof(int8_t);
+        break;
+    case AudioEncoding::kAudioEncodingPcmFloat:
+        dataSize = sizeof(float);
+        break;
+    case AudioEncoding::kAudioEncodingPcm24bitPacked:
+        dataSize = 3;  // packed as 3 bytes
+        break;
+    case AudioEncoding::kAudioEncodingPcm32bit:
+        dataSize = sizeof(int32_t);
+        break;
+    case AudioEncoding::kAudioEncodingPcm16bit:
+    case AudioEncoding::kAudioEncodingDefault:
+    default:
+        dataSize = sizeof(int16_t);
+    }
+
+    if (numChannels == 0 || numChannels > INT32_MAX / dataSize) {
+        ALOGW("# channels out of range: %zu, using passthrough instead", numChannels);
         return;
     }
-    size_t frameSize = num16BitChannels * 2;
+    size_t frameSize = numChannels * dataSize;
     if (skip > INT32_MAX / frameSize || cut > INT32_MAX / frameSize
             || cut * frameSize > INT32_MAX - 4096) {
         ALOGW("out of range skip/cut: %zu/%zu, using passthrough instead",
@@ -49,7 +69,7 @@ SkipCutBuffer::SkipCutBuffer(size_t skip, size_t cut, size_t num16BitChannels) {
     mBackPadding = cut;
     mCapacity = cut + 4096;
     mCutBuffer = new (std::nothrow) char[mCapacity];
-    ALOGV("skipcutbuffer %zu %zu %d", skip, cut, mCapacity);
+    ALOGV("skipcutbuffer %zu %zu %d %d", skip, cut, mCapacity, encodeType);
 }
 
 SkipCutBuffer::~SkipCutBuffer() {
