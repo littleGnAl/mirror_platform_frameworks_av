@@ -87,6 +87,30 @@
       },
       "revId": "3285f85ce33f1b9b0eabf54d56f9d6df57773f66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431a99b1_eb675dae",
+        "filename": "media/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2022-07-04T16:15:49Z",
+      "side": 1,
+      "message": "Ray,\nFollowing is the reference source for AMR WB \nhttps://www.3gpp.org/ftp/Specs/archive/26_series/26.204/26204-h00.zip\nD_UTIL_hp50_12k8() in dec_util.c corresponds to this.\n\nWhat is needed in this function is a series of multiply accumulations with one intermediate result downshifted by 14.\nIn this implementation, two temporary variables were used to compute this and when adding in the last stage, there was\nan integer overflow seen. Instead of clipping the result after adding and storing the result in a 64 bit variable, we \nchanged this to use a single temporary variable to be consistent with reference as that is cleaner and more readable.\n\nIf you prefer to change this to a clip after storing to a 64 bit variable, please let us know and we will update the CL.\nThanks.",
+      "parentUuid": "c3ce29e7_a4633ef3",
+      "range": {
+        "startLine": 184,
+        "startChar": 18,
+        "endLine": 184,
+        "endChar": 28
+      },
+      "revId": "3285f85ce33f1b9b0eabf54d56f9d6df57773f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
