@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e20ffaa_0b495db0",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-04T12:59:04Z",
+      "side": 1,
+      "message": "move this module definition to L53 to group it with its use",
+      "revId": "cc61894b6ce1988546f5153943867c98992d5a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ddf2887_99f18646",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-04T12:59:04Z",
+      "side": 1,
+      "message": "],",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "cc61894b6ce1988546f5153943867c98992d5a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5840df75_6f581fe3",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-04T12:59:04Z",
+      "side": 1,
+      "message": "lib64: {\n    suffix: \"64\",\n},",
+      "range": {
+        "startLine": 100,
+        "startChar": 37,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "cc61894b6ce1988546f5153943867c98992d5a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b581de23_247327a4",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-04T12:59:04Z",
+      "side": 1,
+      "message": "},",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "cc61894b6ce1988546f5153943867c98992d5a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
