@@ -65,6 +65,12 @@ const char *MEDIA_MIMETYPE_AUDIO_ALAC = "audio/alac";
 const char *MEDIA_MIMETYPE_AUDIO_WMA = "audio/x-ms-wma";
 const char *MEDIA_MIMETYPE_AUDIO_MS_ADPCM = "audio/x-adpcm-ms";
 const char *MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM = "audio/x-adpcm-dvi-ima";
+const char *MEDIA_MIMETYPE_AUDIO_VND_DTS = "audio/vnd.dts";
+const char *MEDIA_MIMETYPE_AUDIO_VND_DTSHD = "audio/vnd.dts.hd";
+const char *MEDIA_MIMETYPE_AUDIO_VND_DTSHD_PROFILE_MA = "audio/vnd.dts.hd;profile=dtsma";
+const char *MEDIA_MIMETYPE_AUDIO_VND_DTSHD_PROFILE_LBR = "audio/vnd.dts.hd;profile=lbr";
+const char *MEDIA_MIMETYPE_AUDIO_VND_DTSUHD_PROFILE_P1 = "audio/vnd.dts.uhd;profile=p1";
+const char *MEDIA_MIMETYPE_AUDIO_VND_DTSUHD_PROFILE_P2 = "audio/vnd.dts.uhd;profile=p2";
 
 
 const char *MEDIA_MIMETYPE_CONTAINER_MPEG4 = "video/mp4";

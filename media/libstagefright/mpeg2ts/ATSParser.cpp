@@ -556,7 +556,9 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
             if (descriptor_length > ES_info_length) {
                 return ERROR_MALFORMED;
             }
-            if (descriptor_tag == DESCRIPTOR_CA && descriptor_length >= 4) {
+            if (descriptor_tag == DESCRIPTOR_DTS && descriptor_length >= 4) {
+                info.mType = STREAMTYPE_DTS_HD; //Handle the DTS stream in the same way as DTS-HD
+            } else if (descriptor_tag == DESCRIPTOR_CA && descriptor_length >= 4) {
                 hasStreamCA = true;
                 streamCA.mSystemID = br->getBits(16);
                 streamCA.mPID = br->getBits(16) & 0x1fff;
@@ -574,6 +576,12 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
                 // audio.
                 if (descTagExt == EXT_DESCRIPTOR_DVB_AC4) {
                     info.mTypeExt = EXT_DESCRIPTOR_DVB_AC4;
+                    br->skipBits(descriptor_length * 8);
+                } else if (descTagExt == EXT_DESCRIPTOR_DVB_DTS_HD) { //DTS HD extended descriptor
+                    info.mTypeExt = EXT_DESCRIPTOR_DVB_DTS_HD;
+                    br->skipBits(descriptor_length * 8);
+                } else if (descTagExt == EXT_DESCRIPTOR_DVB_DTS_UHD) {
+                    info.mTypeExt = EXT_DESCRIPTOR_DVB_DTS_UHD;
                     br->skipBits(descriptor_length * 8);
                 } else if (descTagExt == EXT_DESCRIPTOR_DVB_AUDIO_PRESELECTION &&
                            descriptor_length >= 1) {
@@ -920,9 +928,17 @@ ATSParser::Stream::Stream(
             mode = ElementaryStreamQueue::EAC3;
             break;
 
+        case STREAMTYPE_DTS_HD:
+            mode = ElementaryStreamQueue::DTS_HD;
+            break;
+
         case STREAMTYPE_PES_PRIVATE_DATA:
             if (mStreamTypeExt == EXT_DESCRIPTOR_DVB_AC4) {
                 mode = ElementaryStreamQueue::AC4;
+            } else if (mStreamTypeExt == EXT_DESCRIPTOR_DVB_DTS_HD) {
+                mode = ElementaryStreamQueue::DTS_HD;
+            } else if (mStreamTypeExt == EXT_DESCRIPTOR_DVB_DTS_UHD) {
+                mode = ElementaryStreamQueue::DTS_UHD;
             }
             break;
 
@@ -1158,9 +1174,12 @@ bool ATSParser::Stream::isAudio() const {
         case STREAMTYPE_EAC3:
         case STREAMTYPE_AAC_ENCRYPTED:
         case STREAMTYPE_AC3_ENCRYPTED:
+        case STREAMTYPE_DTS_HD:
             return true;
         case STREAMTYPE_PES_PRIVATE_DATA:
-            return mStreamTypeExt == EXT_DESCRIPTOR_DVB_AC4;
+            return (mStreamTypeExt == EXT_DESCRIPTOR_DVB_AC4
+                    || mStreamTypeExt == EXT_DESCRIPTOR_DVB_DTS_HD
+                    || mStreamTypeExt == EXT_DESCRIPTOR_DVB_DTS_UHD);
 
         default:
             return false;
