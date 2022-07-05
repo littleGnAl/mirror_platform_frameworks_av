@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e1d0e1d_4e128570",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2022-07-05T02:09:39Z",
+      "side": 1,
+      "message": "mNormalFrameCount: 2048\nsample rate: 48000\nsuspendSleepTimeUs: 42000\napp: com.roposo.android com.google.android.apps.nbu.files\nplaybackthread is suspended",
+      "parentUuid": "dbc8d64a_00c6d0f4",
+      "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c48746af_82e7748c",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 1
