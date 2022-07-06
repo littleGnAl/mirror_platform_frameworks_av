@@ -22,6 +22,30 @@
       },
       "revId": "5beb8152083585176adb400eccda20e49080fe94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4959a711_6a5a2365",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_property_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2022-07-06T08:37:29Z",
+      "side": 1,
+      "message": "memfd_create is a function defined in sys/mman.h. It is used to open a file descriptor, the fd is then later used in the fuzzer to create a structure of usbrequest which is then passed in one of the APIs. memfd_create also needs a valid file path otherwise the fd is not created.\nmemfd_create is not part of the libmtp module. So randomizing it would be ineffective for fuzzing.",
+      "parentUuid": "f2b61f3a_4ddac3ae",
+      "range": {
+        "startLine": 104,
+        "startChar": 54,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "5beb8152083585176adb400eccda20e49080fe94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
