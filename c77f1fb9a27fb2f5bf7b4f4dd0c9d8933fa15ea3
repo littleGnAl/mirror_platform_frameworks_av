@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af26a880_b767d43f",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2022-07-06T08:30:52Z",
+      "side": 1,
+      "message": "There was some scope of randomizing in the \u0027storageId\u0027 and the \u0027descriptor\u0027, thus made appropriate changes. \nFor the \u0027storage_path\u0027, a proper valid path needs to be sent, otherwise no operation would be performed and it would be inefficient from Fuzzing Perspective.",
+      "parentUuid": "c4706252_6d203198",
+      "range": {
+        "startLine": 57,
+        "startChar": 48,
+        "endLine": 57,
+        "endChar": 86
+      },
+      "revId": "c77f1fb9a27fb2f5bf7b4f4dd0c9d8933fa15ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5df017f_8c35252e",
         "filename": "media/mtp/tests/MtpFuzzer/mtp_fuzzer.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-29T23:35:56Z",
       "side": 1,
       "message": "As with above, could it improve fuzzing coverage to sometimes randomize one or more of these variables?",
+      "range": {
+        "startLine": 80,
+        "startChar": 40,
+        "endLine": 80,
+        "endChar": 86
+      },
+      "revId": "c77f1fb9a27fb2f5bf7b4f4dd0c9d8933fa15ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c83886_8fa0463b",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2022-07-06T08:30:52Z",
+      "side": 1,
+      "message": "The \u0027createDatavaseFromSourceDir()\u0027 is a fuzzer helper method, which helps in creating a storage database. Also, these paths need to be valid else, the directories would not be created. Therefore, randomizing these arguments would not improve fuzzing coverage.",
+      "parentUuid": "a5df017f_8c35252e",
       "range": {
         "startLine": 80,
         "startChar": 40,
