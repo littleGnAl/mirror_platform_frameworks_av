@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4bf514_9d6785ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-06T23:01:32Z",
+      "side": 1,
+      "message": "the structural changes are relatively simple to resolve.\nthe bigger one is to figure how you\u0027re going to make the 64/32 mixed image\nrun a 32-bit mediaserver.",
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6d5a48_7613e7ab",
+        "filename": "media/mediaserver/mediaserver.zygote64.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-06T23:01:32Z",
+      "side": 1,
+      "message": "break this out to its own rc file, since it\u0027s the same between the two variants.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 31
+      },
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353a031a_da77449f",
+        "filename": "media/mediaserver/mediaserver.zygote64.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-06T23:01:32Z",
+      "side": 1,
+      "message": "we wind up with 2 entries for service \u0027media\u0027.\nI think init just takes the last one, which is not going to give us the\nbehavior we\u0027re trying to get here.\n\nperhaps if these files are named without a .rc suffix -- mediaserver.32 and mediaserver.64, then the dynamic_* guy can include the preferred one and \ninit won\u0027t look at the underlying files by themselves.",
+      "range": {
+        "startLine": 4,
+        "startChar": 8,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986ffe07_8d8a92b9",
+        "filename": "media/mediaserver/mediaserver_dynamic.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-06T23:01:32Z",
+      "side": 1,
+      "message": "a 64/32 system MUST run the mediaserver in 32-bit mode.\nunless you can guarantee that there are no OMX codecs on the vendor partition.\n\nyou can\u0027t make that guarantee in a GSI image, since you\u0027re layering this on top of all sorts of vendor partitions.",
+      "range": {
+        "startLine": 1,
+        "startChar": 38,
+        "endLine": 1,
+        "endChar": 52
+      },
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
