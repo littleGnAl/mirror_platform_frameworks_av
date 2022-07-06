@@ -16,6 +16,23 @@
       "message": "This looks good. But I would still like to understand the problem this is solving.\n",
       "revId": "ed8b0fa20339ca1ad6e9810ae547af59efc17c51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64104c3a_eec939ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2022-07-06T21:51:55Z",
+      "side": 1,
+      "message": "This change seems fine. But I think it is covering up the problem in b/236661899\nThat bug is a race condition and this patch may change the timing enough that the race result changes. I would like to see b/236661899 fixed, or well understood, before we merge this.",
+      "revId": "ed8b0fa20339ca1ad6e9810ae547af59efc17c51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
