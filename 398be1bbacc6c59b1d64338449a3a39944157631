@@ -16,6 +16,23 @@
       "message": "PS5 applies changes to services/audiopolicy/tests/audiopolicymanager_tests.cpp that were suggested in https://android-review.googlesource.com/c/platform/frameworks/av/+/2022216/2",
       "revId": "398be1bbacc6c59b1d64338449a3a39944157631",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb14cf95_628c9ee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2022-07-07T17:23:43Z",
+      "side": 1,
+      "message": "Can you add the bug you created to the description:\n\nBug: 238286324\nTest: ...\n\nCan you also do the same for the other CLs.",
+      "revId": "398be1bbacc6c59b1d64338449a3a39944157631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
