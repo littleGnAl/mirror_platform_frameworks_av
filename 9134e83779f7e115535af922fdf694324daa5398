@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38131682_adcdf557",
+        "filename": "media/mediaserver/mediaserver.zygote64.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2022-07-07T14:02:53Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "2e6d5a48_7613e7ab",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 31
+      },
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "353a031a_da77449f",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a256a2c_84ece050",
+        "filename": "media/mediaserver/mediaserver.zygote64.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2022-07-07T14:02:53Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/master:system/core/init/parser.cpp;l\u003d221;drc\u003d839353018122112fe43994609e4d6ab7bd7e9b57\n\n`init` does not automatically load the .rc files under the sub-folder of /system/etc/init/. The files `mediaserver.*.rc` are placed under /system/etc/init/hw/. Thus only one will be load.\n\nThis is a trick using by some other case, for example:\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/rootdir/init.rc;l\u003d12;drc\u003d2f38c391695d355b3d5ebe9a5bfe46251de87be5",
+      "parentUuid": "353a031a_da77449f",
+      "range": {
+        "startLine": 4,
+        "startChar": 8,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "986ffe07_8d8a92b9",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-06T23:01:32Z",
       "side": 1,
       "message": "a 64/32 system MUST run the mediaserver in 32-bit mode.\nunless you can guarantee that there are no OMX codecs on the vendor partition.\n\nyou can\u0027t make that guarantee in a GSI image, since you\u0027re layering this on top of all sorts of vendor partitions.",
+      "range": {
+        "startLine": 1,
+        "startChar": 38,
+        "endLine": 1,
+        "endChar": 52
+      },
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dccc9a9_dd944142",
+        "filename": "media/mediaserver/mediaserver_dynamic.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2022-07-07T14:02:53Z",
+      "side": 1,
+      "message": "Hi Ray,\n\nThanks for you reminding. \n\nAs the mail I said, The patch is to let gsi_arm64 to put both 32-bit and 64-bit mediaserver into GSI:\n\n- When the GSI on 64_32 devices, use 32-bit mediaserver (like you said)\n- When the GSI on 64-bit only devices, use 64-bit mediaserver\n\nThe $ro.zygote is defined in vendor partition. It defines the device bitness. GSI is the generic system image for all Android devices. After GSI (only system) be flashed on a device, it can use the property on the vendor to decide which .rc file be import.",
+      "parentUuid": "986ffe07_8d8a92b9",
       "range": {
         "startLine": 1,
         "startChar": 38,
