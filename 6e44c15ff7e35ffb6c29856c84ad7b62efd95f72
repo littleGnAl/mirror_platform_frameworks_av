@@ -50,6 +50,24 @@
       "message": "How would you get overflow here since this only contains subtraction \u0026 division (and doesn\u0027t look to be dividing by a number \u003c1), and none of the inputs are highp either?",
       "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c6c2a0_a7e93323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071172
+      },
+      "writtenOn": "2022-07-08T15:56:29Z",
+      "side": 1,
+      "message": "Thanks for asking.\nTo share more information, I replied in https://partnerissuetracker.corp.google.com/u/1/issues/237997490.",
+      "parentUuid": "9e26ec2f_00bdec48",
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
