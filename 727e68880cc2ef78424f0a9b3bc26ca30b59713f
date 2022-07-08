@@ -84,6 +84,23 @@
       "message": "Please answer questions in bug 184132692 comment #4 before we can proceed with the code review",
       "revId": "727e68880cc2ef78424f0a9b3bc26ca30b59713f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4118aa30_3cebe0ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958366
+      },
+      "writtenOn": "2022-07-08T10:04:57Z",
+      "side": 1,
+      "message": "the deviceID of Audiotrack is set as the device with min deviceTYPE, so duplicate thread shall use mpatch of thread which has min devicetype.   ",
+      "revId": "727e68880cc2ef78424f0a9b3bc26ca30b59713f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
