@@ -85,6 +85,29 @@
       "message": "+media for OWNERs",
       "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9c8b90_0c27d7cd",
+        "filename": "media/libstagefright/renderfright/gl/ProgramCache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-09T03:27:37Z",
+      "side": 1,
+      "message": "i\u0027m not totally familiar with how the lowp/mediump/highp primitives map out,\nand this is float not int....\n\nin an int world, we\u0027d do the calculations with y1, y0, x1, and x0 in sizes appropriate to their types (all are simple floats here). then we\u0027d worry about a cast to save a possibly more precise slope.\n\nso it makes me think that perhaps y1/y0/x1/x0 should be declared as or cast to a \u0027highp float\u0027 so that the calculation happens in the wider type.\n\nI realize that I come at this more from the C-on-a-cpu perspective and not so much the GLES perspective, but help me understand \"highp float\" vs \"double\".",
+      "range": {
+        "startLine": 377,
+        "startChar": 36,
+        "endLine": 377,
+        "endChar": 78
+      },
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
