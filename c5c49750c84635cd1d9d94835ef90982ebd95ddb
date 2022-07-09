@@ -16,6 +16,75 @@
       "message": "Hi Ray,\n\nI updated the patch and replied in each comments. \nPlease take a look. \n\nThanks!",
       "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db600628_6ab2b79c",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-09T23:23:19Z",
+      "side": 1,
+      "message": "i\u0027m thinking hard about tagging the 32-bit version with a \"32\" suffix.\nthe underlying thought process is \"if we\u0027re going to have both, then label both\".\nIf we only had 1 binary (e.g. as it existed before this CL) then i\u0027d be content with the unadorned \"mediaserver\" name.",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15151aa4_28399395",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-09T23:23:19Z",
+      "side": 1,
+      "message": "i don\u0027t know enough about soong_config_variables...  my first look at this, i expected something like the way multilib: {} works similarly to switch/case statements. and I therefore expected the mediaserver.rc to be in a different \"case\".  But I can deal with being wrong about that.  Assuming that this is the right syntax....\n\nI\u0027d like to see line 98 move down here; so that the two init_rc clauses are physically next to each other and it\u0027s obvious how they are related.",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4ad81c_9476300d",
+        "filename": "media/mediaserver/mediaserver.zygote64_32.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-09T23:23:19Z",
+      "side": 1,
+      "message": "I think i want to make this mediaserver, to parallel the suffix on the 64-bit version.",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

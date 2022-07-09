@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b71ec0_af34d1c3",
+        "filename": "media/mediaserver/mediaserver.zygote64.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-09T23:23:19Z",
+      "side": 1,
+      "message": "system/etc/init vs system/etc/init/hw is where i got confused.",
+      "parentUuid": "4a256a2c_84ece050",
+      "range": {
+        "startLine": 4,
+        "startChar": 8,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "9134e83779f7e115535af922fdf694324daa5398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "986ffe07_8d8a92b9",
