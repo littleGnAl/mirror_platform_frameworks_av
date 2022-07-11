@@ -33,6 +33,24 @@
       "message": "seems I was wrong in my review.  as a std:unique_ptr\u003c\u003e the new patch doesn\u0027t seem to be correct.",
       "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54760dea_32e1e814",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-11T15:47:59Z",
+      "side": 1,
+      "message": "ah.  aosp doesn\u0027t have the std:unique_ptr\u003c\u003e declaration. we added that in a patch that landed on an internal branch and will be available when T releases.\n\nknwing that the unique_ptr\u003c\u003e takes care of the delete for us when the containing MediaCodec is deconstructed, we should drop this patch and let the unique_ptr\u003c\u003e declaration catch up when T releases.",
+      "parentUuid": "db10b1cc_a1b636d2",
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
