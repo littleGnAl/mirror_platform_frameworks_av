@@ -63,7 +63,8 @@ Camera2ClientBase<TClientBase>::Camera2ClientBase(
         mSharedCameraCallbacks(remoteCallback),
         mDeviceVersion(cameraService->getDeviceVersion(TClientBase::mCameraIdStr)),
         mDevice(new Camera3Device(cameraId, overrideForPerfClass, legacyClient)),
-        mDeviceActive(false), mApi1CameraId(api1CameraId)
+        mDeviceActive(false), mApi1CameraId(api1CameraId),
+        mIsUserDebugOrEngBuild(isUserDebugOrEngBuild())
 {
     ALOGI("Camera %s: Opened. Client: %s (PID %d, UID %d)", cameraId.string(),
             String8(clientPackageName).string(), clientPid, clientUid);
@@ -200,7 +201,7 @@ binder::Status Camera2ClientBase<TClientBase>::disconnect() {
     // Before detaching the device, cache the info from current open session.
     // The disconnected check avoids duplication of info and also prevents
     // deadlock while acquiring service lock in cacheDump.
-    if (!TClientBase::mDisconnected) {
+    if (!TClientBase::mDisconnected && mIsUserDebugOrEngBuild) {
         Camera2ClientBase::getCameraService()->cacheDump();
     }
 

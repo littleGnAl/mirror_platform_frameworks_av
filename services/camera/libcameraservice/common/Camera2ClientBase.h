@@ -156,6 +156,13 @@ protected:
 private:
     template<typename TProviderPtr>
     status_t              initializeImpl(TProviderPtr providerPtr, const String8& monitorTags);
+
+    bool mIsUserDebugOrEngBuild;
+    static inline bool isUserDebugOrEngBuild() {
+        char value[PROPERTY_VALUE_MAX];
+        (void)property_get("ro.build.type", value, "unknown");
+        return strcmp(value, "userdebug") == 0 || strcmp(value, "eng") == 0;
+    }
 };
 
 }; // namespace android
