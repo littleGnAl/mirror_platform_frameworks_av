@@ -108,6 +108,30 @@
       },
       "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3aa96e_5aa240eb",
+        "filename": "media/libstagefright/renderfright/gl/ProgramCache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1071172
+      },
+      "writtenOn": "2022-07-11T15:13:48Z",
+      "side": 1,
+      "message": "Thanks for asking. The process of finding the cause is intriguing.\n\n- We once thought about making change like below, it could give wider coverage.\n\nhighp float nits \u003d color.y;\n\nBut consider to the unknown performance impact and try the least modification of solution, the change in the review only covers the issue found.\n\n- I don\u0027t know in detail of ToneMap. Since there are some mathematical expressions, thay may need to be checked in real cases whether it could exceed the max value of float.\n \n- highp\nLike other floating-point types, it follows spec of IEEE 754. More details, please refer to:\n\nhttps://www.khronos.org/registry/OpenGL/specs/es/3.0/GLSL_ES_Specification_3.00.pdf\n4.5 Precision and Precision Qualifiers\nThe precision of highp floating-point variables is defined by the IEEE 754 standard for 32-bit floating-point numbers.",
+      "parentUuid": "2a9c8b90_0c27d7cd",
+      "range": {
+        "startLine": 377,
+        "startChar": 36,
+        "endLine": 377,
+        "endChar": 78
+      },
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
