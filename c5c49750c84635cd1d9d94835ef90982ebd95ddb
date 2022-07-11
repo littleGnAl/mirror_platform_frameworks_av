@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d10b488_752b2629",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-11T08:37:11Z",
+      "side": 1,
+      "message": "more like \n```\nif (TARGET_DYNAMIC_64_32_MEDIASERVER) {\n  compile_multilib \u003d \"both\"\n  required +\u003d [ \"mediaserver.zygote64_32.rc\", \"mediaserver.zygote64.rc\" ]\n  init_rc +\u003d [ \"mediaserver_dynamic.rc\" ]\n} else {  // conditions_default:\n  init_rc +\u003d [ \"mediaserver.rc\" ]\n}\n```\n\nIn soong_config, scalar fields are overridden, and vector fields are *appended*.",
+      "parentUuid": "4329a18e_85941457",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f4ad81c_9476300d",
