@@ -87,6 +87,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f3b5aa_a39c55ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-11T23:24:59Z",
+      "side": 1,
+      "message": "if my reasoning in my last comment holds, this is ok and my only suggestion is\nto add a comment about why we\u0027re bumping the range the slope calculation.  and perhaps bumping all of the slope calculations.",
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9c8b90_0c27d7cd",
@@ -124,6 +141,30 @@
       "side": 1,
       "message": "Thanks for asking. The process of finding the cause is intriguing.\n\n- We once thought about making change like below, it could give wider coverage.\n\nhighp float nits \u003d color.y;\n\nBut consider to the unknown performance impact and try the least modification of solution, the change in the review only covers the issue found.\n\n- I don\u0027t know in detail of ToneMap. Since there are some mathematical expressions, thay may need to be checked in real cases whether it could exceed the max value of float.\n \n- highp\nLike other floating-point types, it follows spec of IEEE 754. More details, please refer to:\n\nhttps://www.khronos.org/registry/OpenGL/specs/es/3.0/GLSL_ES_Specification_3.00.pdf\n4.5 Precision and Precision Qualifiers\nThe precision of highp floating-point variables is defined by the IEEE 754 standard for 32-bit floating-point numbers.",
       "parentUuid": "2a9c8b90_0c27d7cd",
+      "range": {
+        "startLine": 377,
+        "startChar": 36,
+        "endLine": 377,
+        "endChar": 78
+      },
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da1590c_5bfd3790",
+        "filename": "media/libstagefright/renderfright/gl/ProgramCache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-11T23:24:59Z",
+      "side": 1,
+      "message": "my reading says that \u0027highp float\u0027 is 32-bit ieee, so largest value about 10^38;\nit\u0027s not clear to me that \u0027float\u0027 and \u0027highp float\u0027 behave differently (at least from a 2 minute skim of that GLS document).\n\n32 bit ieee numbers go up to about 3*10^38.  (which is about 2^127)\n\nseems to me that if we\u0027re overflowing in here, it\u0027s likely that \u0027x1-x0\u0027 and y1-y0 differ by at least 10^38.  which sounds like a nearly vertical line; slope is always problematic in such cases.\n\n\nahh.... it appears that in renderfright/gl/ProgramCache.cpp and renderfright/gl/filters/BlurFilter.cpp, we do \"precision mediump float\", so all of the otherwise unadorned float variables become \"mediump float\"\n\nmediump has range of about 2^14\nhighp has range of about 2^127\n\nthat\u0027s what is getting me -- that the simple \u0027float\u0027 is really a mediump float and has a pretty restrictive range.\n\nmight be worth some comments in here as to why we need the extra range.",
+      "parentUuid": "aa3aa96e_5aa240eb",
       "range": {
         "startLine": 377,
         "startChar": 36,
