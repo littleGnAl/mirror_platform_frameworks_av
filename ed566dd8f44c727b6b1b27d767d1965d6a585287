@@ -16,6 +16,23 @@
       "message": "let\u0027s get a treehugger check on the patch.\n\nseems a fairly standard java/C who-reclaims-space failure pattern.",
       "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db10b1cc_a1b636d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-11T15:43:36Z",
+      "side": 1,
+      "message": "seems I was wrong in my review.  as a std:unique_ptr\u003c\u003e the new patch doesn\u0027t seem to be correct.",
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
