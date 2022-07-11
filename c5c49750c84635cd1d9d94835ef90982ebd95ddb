@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eafda046_71134c41",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2022-07-11T08:22:10Z",
+      "side": 1,
+      "message": "SGTM. Done.",
+      "parentUuid": "db600628_6ab2b79c",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15151aa4_28399395",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4329a18e_85941457",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2022-07-11T08:22:10Z",
+      "side": 1,
+      "message": "`conditions_default` is a special property of `soong_config_variables`. \n https://cs.android.com/android/platform/superproject/+/master:build/soong/README.md;l\u003d482;drc\u003dd13fcd8227e872dfec165f073067c05ce9583e66\n \nIt\u0027s similar:\n \n```\nif (TARGET_DYNAMIC_64_32_MEDIASERVER) {\n   compile_multilib \u003d \"both\"\n   init_rc \u003d [ \"mediaserver_dynamic.rc\" ]\n   ...\n} else { \n   // conditions_default:\n   init_rc \u003d [ \"mediaserver_dynamic.rc\" ]\n}\n```\n\nReference to the example and other .rc files, `conditions_default` is placed at the last usually.\n\nbtw, there is a reason that we need `conditions_default` here. We don\u0027t need `conditions_default` in most case, like `compile_multilib`. We just need to put the default value at the outside of `soong_config_variables`. However `init_rc` is a list variable. The default behavior of `soong_config_variables` is appending elements to outside list variables. On the other hand, `soong_config_variables` replace list variables in `conditions_default` (like the behavior of the above pseudo code).",
+      "parentUuid": "15151aa4_28399395",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f4ad81c_9476300d",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-09T23:23:19Z",
       "side": 1,
       "message": "I think i want to make this mediaserver, to parallel the suffix on the 64-bit version.",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d759ebdb_a516762f",
+        "filename": "media/mediaserver/mediaserver.zygote64_32.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2022-07-11T08:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4ad81c_9476300d",
       "range": {
         "startLine": 1,
         "startChar": 26,
