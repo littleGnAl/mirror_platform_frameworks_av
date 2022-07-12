@@ -70,6 +70,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7693e28_379910b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2022-07-12T19:19:53Z",
+      "side": 1,
+      "message": "mPlaybackDurationAccumulator is a unique_ptr... it calls delete in it\u0027s destructor, so this CL seems unnecessary. Do you have an out-of-date branch?",
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cebb82ce_5def4939",
@@ -83,6 +100,30 @@
       "writtenOn": "2022-07-12T17:27:48Z",
       "side": 1,
       "message": "just call delete... no need to check \u0027if\u0027 or re-assign to null",
+      "range": {
+        "startLine": 828,
+        "startChar": 3,
+        "endLine": 831,
+        "endChar": 5
+      },
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a2e404_df44e4da",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2022-07-12T19:19:53Z",
+      "side": 1,
+      "message": "this CL shouldn\u0027t be needed",
+      "parentUuid": "cebb82ce_5def4939",
       "range": {
         "startLine": 828,
         "startChar": 3,
