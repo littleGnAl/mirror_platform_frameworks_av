@@ -30,6 +30,7 @@
 #include <android/hardware/media/c2/1.0/IInputSurface.h>
 #include <android/hardware/media/omx/1.0/IGraphicBufferSource.h>
 #include <android/hardware/media/omx/1.0/IOmx.h>
+#include <android/sysprop/VndkProperties.sysprop.h>
 #include <android-base/stringprintf.h>
 #include <cutils/properties.h>
 #include <gui/IGraphicBufferProducer.h>
@@ -2364,6 +2365,11 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
                             : work->worklets.front()->output.configUpdate) {
                         updates.push_back(C2Param::Copy(*param));
                     }
+                    const static int sVendorVndkVersion = []() {
+                        using android::sysprop::VndkProperties::vendor_vndk_version;
+                        std::string str = vendor_vndk_version().value_or("");
+                        return std::atoi(str.c_str());
+                    }();
                     unsigned stream = 0;
                     std::vector<std::shared_ptr<C2Buffer>> &outputBuffers =
                         work->worklets.front()->output.buffers;
@@ -2384,6 +2390,10 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
                             const C2ConstGraphicBlock &block = blocks[0];
                             updates.emplace_back(new C2StreamCropRectInfo::output(
                                     stream, block.crop()));
+                            if (sVendorVndkVersion <= __ANDROID_API_S__) {
+                                updates.emplace_back(new C2StreamPictureSizeInfo::output(
+                                        stream, block.crop().width, block.crop().height));
+                            }
                         }
                         ++stream;
                     }
