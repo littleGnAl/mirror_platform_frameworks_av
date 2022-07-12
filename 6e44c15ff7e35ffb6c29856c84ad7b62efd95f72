@@ -104,6 +104,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5993dfd0_4405dac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1234492
+      },
+      "writtenOn": "2022-07-12T10:20:48Z",
+      "side": 1,
+      "message": "Yes, it is a concern that the division may lead to a very large value.\nTo verify, I tried on checking the slope value based on the case in this commit:\n\nfloat x1 \u003d maxOutLumi * 0.75;\nfloat y1 \u003d x1;\nx0 \u003d 10;\ny0 \u003d 17;\n\nslope \u003d (y1 - y0) / (x1 - x0);\nslope \u003d (x1 - 17) / (x1 - 10);\n\nTo let \u0027slope\u0027 exceed the max float, 65504, x1 should be very close to 10.\nMy calculation is that it would exceed the max float 65504 if x1 is between 9.999893136 and 10. Thus, I think it is relative safe in this case. I added comments about the \"multiplication reciprocal and associative\" in codes. Please let me know if any suggestions, thanks.",
+      "parentUuid": "23f3b5aa_a39c55ca",
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9c8b90_0c27d7cd",
