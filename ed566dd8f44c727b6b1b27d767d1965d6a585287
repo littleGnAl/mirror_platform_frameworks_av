@@ -51,6 +51,29 @@
       "parentUuid": "db10b1cc_a1b636d2",
       "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebb82ce_5def4939",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2022-07-12T17:27:48Z",
+      "side": 1,
+      "message": "just call delete... no need to check \u0027if\u0027 or re-assign to null",
+      "range": {
+        "startLine": 828,
+        "startChar": 3,
+        "endLine": 831,
+        "endChar": 5
+      },
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
