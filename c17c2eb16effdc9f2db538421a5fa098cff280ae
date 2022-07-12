@@ -16,6 +16,29 @@
       "message": "Hi Ray,\n\nThe patch is updated and verified. \nPlease take a look.\n\nThanks!",
       "revId": "c17c2eb16effdc9f2db538421a5fa098cff280ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73cd169_3ddcbb80",
+        "filename": "media/mediaserver/mediaserver_dynamic.rc",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-12T17:34:53Z",
+      "side": 1,
+      "message": "i would like to make this mediaserver32.rc and mediaserver64_32.rc since mediaserver is not a zygote-dependent service.\n\nBut I don\u0027t see a handy way to strip the \"zygote\" prefix off the ro.zygote value as part of this macro expansion.",
+      "range": {
+        "startLine": 4,
+        "startChar": 27,
+        "endLine": 4,
+        "endChar": 50
+      },
+      "revId": "c17c2eb16effdc9f2db538421a5fa098cff280ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
