@@ -46,11 +46,6 @@ constexpr audio_channel_mask_t kSpatializerChMasks[] = {
 };
 constexpr size_t kNumSpatializerChMasks = std::size(kSpatializerChMasks);
 
-// sampleRates
-// TODO(b/234170025): Add all sampling rates once they are handled by spatializer
-constexpr int kSpatializerSampleRates[] = {44100, 48000, 96000};
-constexpr size_t kNumSpatializerSampleRates = std::size(kSpatializerSampleRates);
-
 // frame counts
 // TODO(b/234620538): Add sizes smaller than 80 once they are handled by spatializer
 constexpr size_t kSpatializerFrameCounts[] = {4800, 1920, 480, 80};
@@ -76,7 +71,7 @@ class SingleEffectTest : public ::testing::TestWithParam<SingleEffectTestParam> 
           mInputChannelCount(audio_channel_count_from_out_mask(mInputChMask)),
           mOutputChMask(AUDIO_CHANNEL_OUT_STEREO),
           mOutputChannelCount(audio_channel_count_from_out_mask(mOutputChMask)),
-          mSampleRate(kSpatializerSampleRates[std::get<1>(GetParam())]),
+          mSampleRate(EffectTestHelper::kSampleRates[std::get<1>(GetParam())]),
           mFrameCount(kSpatializerFrameCounts[std::get<2>(GetParam())]),
           mLoopCount(EffectTestHelper::kLoopCounts[std::get<3>(GetParam())]),
           mTotalFrameCount(mFrameCount * mLoopCount),
@@ -119,13 +114,13 @@ TEST_P(SingleEffectTest, SimpleProcess) {
     ASSERT_NO_FATAL_FAILURE(effect.releaseEffect());
 }
 
-INSTANTIATE_TEST_SUITE_P(SpatializerTest, SingleEffectTest,
-                         ::testing::Combine(::testing::Range(0, (int)kNumSpatializerChMasks),
-                                            ::testing::Range(0, (int)kNumSpatializerSampleRates),
-                                            ::testing::Range(0, (int)kNumSpatializerFrameCounts),
-                                            ::testing::Range(0,
-                                                             (int)EffectTestHelper::kNumLoopCounts),
-                                            ::testing::Range(0, (int)kNumSpatializerEffectUuids)));
+INSTANTIATE_TEST_SUITE_P(
+        SpatializerTest, SingleEffectTest,
+        ::testing::Combine(::testing::Range(0, (int)kNumSpatializerChMasks),
+                           ::testing::Range(0, (int)EffectTestHelper::kNumSampleRates),
+                           ::testing::Range(0, (int)kNumSpatializerFrameCounts),
+                           ::testing::Range(0, (int)EffectTestHelper::kNumLoopCounts),
+                           ::testing::Range(0, (int)kNumSpatializerEffectUuids)));
 
 using SingleEffectComparisonTestParam = std::tuple<int, int, int>;
 
@@ -137,7 +132,7 @@ class SingleEffectComparisonTest
           mInputChannelCount(audio_channel_count_from_out_mask(mInputChMask)),
           mOutputChMask(AUDIO_CHANNEL_OUT_STEREO),
           mOutputChannelCount(audio_channel_count_from_out_mask(mOutputChMask)),
-          mSampleRate(kSpatializerSampleRates[std::get<1>(GetParam())]),
+          mSampleRate(EffectTestHelper::kSampleRates[std::get<1>(GetParam())]),
           mUuid(&kSpatializerEffectUuids[std::get<2>(GetParam())]) {}
 
     const size_t mInputChMask;
@@ -193,17 +188,18 @@ TEST_P(SingleEffectComparisonTest, DISABLED_SimpleProcess) {
                                   << " is lower than required " << kSNRThreshold;
 }
 
-INSTANTIATE_TEST_SUITE_P(SpatializerTest, SingleEffectComparisonTest,
-                         ::testing::Combine(::testing::Range(0, (int)kNumSpatializerChMasks),
-                                            ::testing::Range(0, (int)kNumSpatializerSampleRates),
-                                            ::testing::Range(0, (int)kNumSpatializerEffectUuids)));
+INSTANTIATE_TEST_SUITE_P(
+        SpatializerTest, SingleEffectComparisonTest,
+        ::testing::Combine(::testing::Range(0, (int)kNumSpatializerChMasks),
+                           ::testing::Range(0, (int)EffectTestHelper::kNumSampleRates),
+                           ::testing::Range(0, (int)kNumSpatializerEffectUuids)));
 
 // This test checks if get/set Spatializer effect params are in accordance with documentation. The
 // test doesn't validate the functionality of the params configured. It only checks the return
 // status of API calls.
 TEST(ParameterTests, CheckParameterSupport) {
     EffectTestHelper effect(&kSpatializerEffectUuids[0], kSpatializerChMasks[0],
-                            AUDIO_CHANNEL_OUT_STEREO, kSpatializerSampleRates[0],
+                            AUDIO_CHANNEL_OUT_STEREO, EffectTestHelper::kSampleRates[0],
                             kSpatializerFrameCounts[0], EffectTestHelper::kLoopCounts[0]);
     ASSERT_NO_FATAL_FAILURE(effect.createEffect());
 
