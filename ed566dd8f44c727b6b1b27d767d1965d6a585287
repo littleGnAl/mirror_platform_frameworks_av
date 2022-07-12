@@ -53,6 +53,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63bafd96_e2385d13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2022-07-12T19:17:37Z",
+      "side": 1,
+      "message": "mPlaybackDurationAccumulator is a unique_ptr and it calls delete in it\u0027s own destructor - this code shouldn\u0027t be necessary",
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cebb82ce_5def4939",
