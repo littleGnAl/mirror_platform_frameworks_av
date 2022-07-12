@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf77c79_0643287a",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2022-07-12T02:38:40Z",
+      "side": 1,
+      "message": "Thanks Yi-yo.\n\nThat\u0027s more clear. \nWith `conditions_default`, we can avoid the appending behavior.",
+      "parentUuid": "5d10b488_752b2629",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "c5c49750c84635cd1d9d94835ef90982ebd95ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f4ad81c_9476300d",
