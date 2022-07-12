@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ff52b8_c78fd105",
+        "filename": "media/libstagefright/renderfright/gl/ProgramCache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-12T17:45:00Z",
+      "side": 1,
+      "message": "maybe say \"mediump float\u0027 instead of \u0027float\u0027 here in the comment.\notherwise, ok.",
+      "range": {
+        "startLine": 379,
+        "startChar": 68,
+        "endLine": 379,
+        "endChar": 76
+      },
+      "revId": "405708105a2cc485533a2ca1917fbdb2ef7d71d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
