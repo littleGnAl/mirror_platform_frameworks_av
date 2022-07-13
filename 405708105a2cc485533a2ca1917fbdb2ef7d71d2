@@ -22,6 +22,30 @@
       },
       "revId": "405708105a2cc485533a2ca1917fbdb2ef7d71d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6dd2834_55e540d2",
+        "filename": "media/libstagefright/renderfright/gl/ProgramCache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1071172
+      },
+      "writtenOn": "2022-07-13T10:08:37Z",
+      "side": 1,
+      "message": "Thanks. I modified accordingly.\n\nI also updated the counter part in https://android-review.googlesource.com/c/platform/frameworks/native/+/2135173. The commit here already solves our issue. Feel free to abandon or having further step in renderengine/gl part. Thanks",
+      "parentUuid": "59ff52b8_c78fd105",
+      "range": {
+        "startLine": 379,
+        "startChar": 68,
+        "endLine": 379,
+        "endChar": 76
+      },
+      "revId": "405708105a2cc485533a2ca1917fbdb2ef7d71d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
