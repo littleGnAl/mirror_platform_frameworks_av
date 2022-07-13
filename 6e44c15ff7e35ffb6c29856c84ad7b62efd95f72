@@ -122,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60b6f04_35b4f11a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-07-13T17:22:30Z",
+      "side": 1,
+      "message": "To be safest you probably would want ensure that either x1 or y1 are highp to guarantee that evaluating nits will be done at highp; it looks like from the spec language the precision of the slope calculation would be based on the highest precision of the operand, rather than the storage precision of the slope itself.\n\nThat said, maxOutLumi is always going to be something like 500 nits, and I wouldn\u0027t be surprised if most GLSL compilers promote the precision of subexpression evaluations anyways. So I don\u0027t think there will be a problem in practice.",
+      "parentUuid": "5993dfd0_4405dac3",
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9c8b90_0c27d7cd",
