@@ -140,6 +140,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb69cab9_efa4d4e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-13T17:42:42Z",
+      "side": 1,
+      "message": "it\u0027s that \"most\" qualifier and \"not a problem in practice\" that worries me\nfrom the perspective of lurking bugs.\n\nif i were coding this, i\u0027d probably make sure that entire block of slope calculations is done in highp. There was a legitimate question of \"how does this impact throughput\"... but I think we know how to measure that, so that we have an answer.",
+      "parentUuid": "c60b6f04_35b4f11a",
+      "revId": "6e44c15ff7e35ffb6c29856c84ad7b62efd95f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9c8b90_0c27d7cd",
