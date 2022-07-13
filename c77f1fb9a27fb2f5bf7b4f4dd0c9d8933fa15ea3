@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b84c1d8_eaa3c8eb",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-07-13T18:45:18Z",
+      "side": 1,
+      "message": "I see! Thanks for these details, Devendra.",
+      "parentUuid": "af26a880_b767d43f",
+      "range": {
+        "startLine": 57,
+        "startChar": 48,
+        "endLine": 57,
+        "endChar": 86
+      },
+      "revId": "c77f1fb9a27fb2f5bf7b4f4dd0c9d8933fa15ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5df017f_8c35252e",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "The \u0027createDatavaseFromSourceDir()\u0027 is a fuzzer helper method, which helps in creating a storage database. Also, these paths need to be valid else, the directories would not be created. Therefore, randomizing these arguments would not improve fuzzing coverage.",
       "parentUuid": "a5df017f_8c35252e",
+      "range": {
+        "startLine": 80,
+        "startChar": 40,
+        "endLine": 80,
+        "endChar": 86
+      },
+      "revId": "c77f1fb9a27fb2f5bf7b4f4dd0c9d8933fa15ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ec9589_6c591cfb",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-07-13T18:45:18Z",
+      "side": 1,
+      "message": "Got it - Thanks for the reply.",
+      "parentUuid": "b5c83886_8fa0463b",
       "range": {
         "startLine": 80,
         "startChar": 40,
