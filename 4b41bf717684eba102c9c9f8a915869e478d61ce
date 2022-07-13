@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5f0029_b5e1d7f5",
+        "filename": "media/mtp/tests/MtpFuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-07-13T21:12:56Z",
+      "side": 1,
+      "message": "This is a broader question for all of Ittiam\u0027s MtpFuzzers, but do we know if these latest fuzzers can be run on host? If so we would want to have an entry of host_supported: true (following go/fuzzer-review-checklist#correct-build-arch).",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "4b41bf717684eba102c9c9f8a915869e478d61ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
