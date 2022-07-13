@@ -107,6 +107,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65af9732_c6a92b3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1114898
+      },
+      "writtenOn": "2022-07-13T02:20:29Z",
+      "side": 1,
+      "message": "I view code in the master branch, it just a ordinary pointer",
+      "parentUuid": "2e436a47_9234c554",
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2059ccd0_c4e4525b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1114898
+      },
+      "writtenOn": "2022-07-13T02:20:29Z",
+      "side": 1,
+      "message": "thanks for your reply. I will observed it after T releases",
+      "parentUuid": "54760dea_32e1e814",
+      "revId": "ed566dd8f44c727b6b1b27d767d1965d6a585287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cebb82ce_5def4939",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 2
