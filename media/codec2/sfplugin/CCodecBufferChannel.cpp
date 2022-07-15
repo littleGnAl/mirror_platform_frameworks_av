@@ -1277,37 +1277,41 @@ status_t CCodecBufferChannel::start(
             // set default allocator ID.
             pools->outputAllocatorId = (graphic) ? C2PlatformAllocatorStore::GRALLOC
                                                  : preferredLinearId;
-
-            // query C2PortAllocatorsTuning::output from component, or use default allocator if
-            // unsuccessful.
             std::vector<std::unique_ptr<C2Param>> params;
-            err = mComponent->query({ },
-                                    { C2PortAllocatorsTuning::output::PARAM_TYPE },
-                                    C2_DONT_BLOCK,
-                                    &params);
-            if ((err != C2_OK && err != C2_BAD_INDEX) || params.size() != 1) {
-                ALOGD("[%s] Query output allocators returned %zu params => %s (%u)",
-                        mName, params.size(), asString(err), err);
-            } else if (err == C2_OK && params.size() == 1) {
-                C2PortAllocatorsTuning::output *outputAllocators =
-                    C2PortAllocatorsTuning::output::From(params[0].get());
-                if (outputAllocators && outputAllocators->flexCount() > 0) {
-                    std::shared_ptr<C2Allocator> allocator;
-                    // verify allocator IDs and resolve default allocator
-                    allocatorStore->fetchAllocator(outputAllocators->m.values[0], &allocator);
-                    if (allocator) {
-                        pools->outputAllocatorId = allocator->getId();
-                    } else {
-                        ALOGD("[%s] component requested invalid output allocator ID %u",
-                                mName, outputAllocators->m.values[0]);
+            if (!outputSurface){
+                // query C2PortAllocatorsTuning::output from component, or use default allocator if
+                // unsuccessful.
+                err = mComponent->query({ },
+                                        { C2PortAllocatorsTuning::output::PARAM_TYPE },
+                                        C2_DONT_BLOCK,
+                                        &params);
+                if ((err != C2_OK && err != C2_BAD_INDEX) || params.size() != 1) {
+                    ALOGD("[%s] Query output allocators returned %zu params => %s (%u)",
+                            mName, params.size(), asString(err), err);
+                } else if (err == C2_OK && params.size() == 1) {
+                    C2PortAllocatorsTuning::output *outputAllocators =
+                        C2PortAllocatorsTuning::output::From(params[0].get());
+                    if (outputAllocators && outputAllocators->flexCount() > 0) {
+                            err = mComponent->createBlockPool(
+                                outputAllocators->m.values[0], &pools->outputPoolId, &pools->outputPoolIntf);
+                        if (err != C2_OK) {
+                            ALOGD("[%s] component fail to create pool with output allocator ID %u",
+                                    mName, outputAllocators->m.values[0]);
+                        }
+                        else {
+                            pools->outputAllocatorId = outputAllocators->m.values[0];
+                            ALOGI("[%s] Created output block pool with allocatorID %u => poolID %llu - %s",
+                                    mName, pools->outputAllocatorId,
+                                    (unsigned long long)pools->outputPoolId,
+                                    asString(err));
+                        }
                     }
                 }
             }
-
             // use bufferqueue if outputting to a surface.
             // query C2PortSurfaceAllocatorTuning::output from component, or use default allocator
             // if unsuccessful.
-            if (outputSurface) {
+           else {
                 params.clear();
                 err = mComponent->query({ },
                                         { C2PortSurfaceAllocatorTuning::output::PARAM_TYPE },
@@ -1320,15 +1324,18 @@ status_t CCodecBufferChannel::start(
                     C2PortSurfaceAllocatorTuning::output *surfaceAllocator =
                         C2PortSurfaceAllocatorTuning::output::From(params[0].get());
                     if (surfaceAllocator) {
-                        std::shared_ptr<C2Allocator> allocator;
-                        // verify allocator IDs and resolve default allocator
-                        allocatorStore->fetchAllocator(surfaceAllocator->value, &allocator);
-                        if (allocator) {
-                            pools->outputAllocatorId = allocator->getId();
-                        } else {
-                            ALOGD("[%s] component requested invalid surface output allocator ID %u",
+                        err = mComponent->createBlockPool(
+                            surfaceAllocator->value, &pools->outputPoolId, &pools->outputPoolIntf);
+                        if (err != C2_OK) {
+                            ALOGD("[%s] component fail to create pool with surface output allocator ID %u",
                                     mName, surfaceAllocator->value);
-                            err = C2_BAD_VALUE;
+                        }
+                        else {
+                             pools->outputAllocatorId = surfaceAllocator->value;
+                             ALOGI("[%s] Created output block pool with allocatorID %u => poolID %llu - %s",
+                                    mName, pools->outputAllocatorId,
+                                    (unsigned long long)pools->outputPoolId,
+                                    asString(err));
                         }
                     }
                 }
@@ -1339,16 +1346,15 @@ status_t CCodecBufferChannel::start(
                 }
             }
 
-            if ((poolMask >> pools->outputAllocatorId) & 1) {
+            if (err != C2_OK && ((poolMask >> pools->outputAllocatorId) & 1)) {
                 err = mComponent->createBlockPool(
                         pools->outputAllocatorId, &pools->outputPoolId, &pools->outputPoolIntf);
                 ALOGI("[%s] Created output block pool with allocatorID %u => poolID %llu - %s",
                         mName, pools->outputAllocatorId,
                         (unsigned long long)pools->outputPoolId,
                         asString(err));
-            } else {
-                err = C2_NOT_FOUND;
             }
+
             if (err != C2_OK) {
                 // use basic pool instead
                 pools->outputPoolId =
