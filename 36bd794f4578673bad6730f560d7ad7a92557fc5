@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54682e2_14642321",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-17T19:18:58Z",
+      "side": 1,
+      "message": "this seems like the wrong place to be declaring this struct. color conversion is not a codec2-specific concept.\n\nwhy isn\u0027t it declared in some place like\nframeworks/av/media/libstagefright/include/media/stagefright/ColorConverter.h\nor somewhere tied to media/libstagefright/colorconversion/",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 15
+      },
+      "revId": "36bd794f4578673bad6730f560d7ad7a92557fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
