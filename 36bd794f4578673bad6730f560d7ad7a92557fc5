@@ -39,6 +39,30 @@
       },
       "revId": "36bd794f4578673bad6730f560d7ad7a92557fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b54930b_5dc4a8b3",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-17T19:30:34Z",
+      "side": 1,
+      "message": "i see now that this one has an extra _c16 field that is not in \nColorConvert::Coeff",
+      "parentUuid": "e54682e2_14642321",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 15
+      },
+      "revId": "36bd794f4578673bad6730f560d7ad7a92557fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
