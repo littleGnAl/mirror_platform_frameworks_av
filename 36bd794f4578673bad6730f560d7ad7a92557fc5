@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7244be_a2792ab7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-17T19:19:35Z",
+      "side": 1,
+      "message": "how the fields are laid out and the changes that this CL makes to that, i don\u0027t have a problem with.  my problem is where this struct is being declared.",
+      "revId": "36bd794f4578673bad6730f560d7ad7a92557fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e54682e2_14642321",
