@@ -46,6 +46,30 @@
       },
       "revId": "5beb8152083585176adb400eccda20e49080fe94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da135da3_118ccd0e",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_property_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-07-18T17:35:35Z",
+      "side": 1,
+      "message": "Ah, the decision makes sense Devendra, thanks for the explanation. Marking as resolved.",
+      "parentUuid": "4959a711_6a5a2365",
+      "range": {
+        "startLine": 104,
+        "startChar": 54,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "5beb8152083585176adb400eccda20e49080fe94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
