@@ -111,6 +111,16 @@ cc_fuzz {
     cflags: ["-DMPEG4"],
 }
 
+cc_afl_fuzz {
+    name: "afl_mpeg4_enc_fuzzer",
+
+    defaults: [
+        "mpeg4_h263_enc_fuzz_defaults",
+    ],
+
+    cflags: ["-DMPEG4"],
+}
+
 cc_fuzz {
     name: "h263_enc_fuzzer",
 
