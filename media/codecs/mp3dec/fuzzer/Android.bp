@@ -46,3 +46,23 @@ cc_fuzz {
         componentid: 155276,
     },
 }
+
+cc_afl_fuzz {
+    name: "afl_mp3_dec_fuzzer",
+    host_supported: true,
+
+    static_libs: [
+        "libstagefright_mp3dec",
+    ],
+
+    srcs: [
+        "mp3_dec_fuzzer.cpp",
+    ],
+
+    fuzz_config: {
+        cc: [
+            "android-media-fuzzing-reports@google.com",
+        ],
+        componentid: 155276,
+    },
+}

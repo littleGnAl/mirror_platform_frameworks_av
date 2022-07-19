@@ -164,6 +164,29 @@ cc_fuzz {
     ],
 }
 
+cc_afl_fuzz {
+    name: "afl_wav_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
+    host_supported: true,
+
+    srcs: [
+        "wav_extractor_fuzzer.cpp",
+    ],
+
+    include_dirs: [
+        "frameworks/av/media/extractors/wav",
+    ],
+
+    static_libs: [
+        "libfifo",
+        "libwavextractor",
+    ],
+
+    shared_libs: [
+        "libbinder_ndk",
+    ],
+}
+
 cc_fuzz {
     name: "amr_extractor_fuzzer",
     defaults: ["extractor-fuzzer-defaults"],
