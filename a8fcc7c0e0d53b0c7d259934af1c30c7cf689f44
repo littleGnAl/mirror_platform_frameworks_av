@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f97a31e_a3acbaa2",
+        "filename": "media/codecs/m4v_h263/fuzzer/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-07-20T20:02:36Z",
+      "side": 1,
+      "message": "afl and libfuzzer will both run on clusterfuzz, and we can\u0027t have one binary for both afl and libfuzzer because they are instrumented differently.\n\nLet me revisit the fuzzers array. There are reasons to avoid that, but I\u0027m thinking now that an approach were we dont need to change the Android.bp file at all for AFL fuzzers is the best approach, and AFL feature configs can be passed in from the build command. Abandoning this CL for now.",
+      "parentUuid": "fbc76141_f272ca31",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "a8fcc7c0e0d53b0c7d259934af1c30c7cf689f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "defc3fce_7c0deccc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-20T18:50:52Z",
       "side": 1,
       "message": "seems like it should be mp3_dec_afl_fuzzer\nsince the afl binds to the fuzzer fragment not the mp3 fragment.",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "a8fcc7c0e0d53b0c7d259934af1c30c7cf689f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1943ecde_32cf2a05",
+        "filename": "media/codecs/mp3dec/fuzzer/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-07-20T20:02:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "defc3fce_7c0deccc",
       "range": {
         "startLine": 51,
         "startChar": 11,
