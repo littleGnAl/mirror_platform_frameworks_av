@@ -22,6 +22,30 @@
       },
       "revId": "c82dc3cf259898336da781da4ccc97705c941977",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3484b9d_7b6e755c",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_request_packet_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2022-07-20T08:42:25Z",
+      "side": 1,
+      "message": "mUsbRequest is a structure of usb_request. It is populated with random data from FuzzedDataProvider in fillUsbRequest() of the MtpPacketFuzzerUtils.h.\nIn fillUsbRequest(), \u0027mUsbRequest.dev\u0027 is initialized using usb_device_new() which reads data from a file. This file is also populated with random data from FuzzedDataProvider.\nSo mUsbRequest is randomized as much as possible.",
+      "parentUuid": "8c8530e3_faad3878",
+      "range": {
+        "startLine": 65,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "c82dc3cf259898336da781da4ccc97705c941977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
