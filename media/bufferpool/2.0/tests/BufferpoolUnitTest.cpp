@@ -139,6 +139,10 @@ class BufferpoolFunctionalityTest : public BufferpoolTest, public ::testing::Tes
             int wstatus;
             wait(&wstatus);
         }
+        close(mCommandPipeFds[0]);
+        close(mCommandPipeFds[1]);
+        close(mResultPipeFds[0]);
+        close(mResultPipeFds[1]);
     }
 
   protected:
