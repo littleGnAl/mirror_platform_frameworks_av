@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc76141_f272ca31",
+        "filename": "media/codecs/m4v_h263/fuzzer/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-20T18:50:52Z",
+      "side": 1,
+      "message": "feels ... awkward ... to have a different build to add a new fuzzing target.\n\nare we unable to produce a single binary that runs more than 1 fuzzing scheme?\n\nif we can build so that both run from the same binary, then it\u0027s simple to change the cc_fuzz underpinnings to generate both.\nif we wanted to give folks a choice for what fuzzing approaches to use, we could\nadd a \"fuzzers: []\" clause in cc_fuzz so one could say:\n    fuzzers: [ \"clusterfuzz\", \"afl\" ]\nor  maybe  instead a \"exclude_fuzzers\" clause so we could exclude a fuzzer that performed particularly poorly.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "a8fcc7c0e0d53b0c7d259934af1c30c7cf689f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defc3fce_7c0deccc",
+        "filename": "media/codecs/mp3dec/fuzzer/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-20T18:50:52Z",
+      "side": 1,
+      "message": "seems like it should be mp3_dec_afl_fuzzer\nsince the afl binds to the fuzzer fragment not the mp3 fragment.",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "a8fcc7c0e0d53b0c7d259934af1c30c7cf689f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
