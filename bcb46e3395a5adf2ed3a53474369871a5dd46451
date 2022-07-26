@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4374893d_a3a9cfd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-26T02:27:04Z",
+      "side": 1,
+      "message": "still a bunch of unresolved comments.",
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88d34c6a_caf3c96c",
@@ -36,6 +53,75 @@
         "startChar": 8,
         "endLine": 487,
         "endChar": 14
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0c2318_e7e82c89",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-26T02:27:04Z",
+      "side": 1,
+      "message": "since there are multiple OUTPUT_FORMAT_xxx things that are mp4 derivatices.",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f95021e_583dda8f",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-26T02:27:04Z",
+      "side": 1,
+      "message": "ALOGE(\"MediaMuxer does not support output format %d\", format);",
+      "range": {
+        "startLine": 76,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 24
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13af7727_530a296d",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-26T02:27:04Z",
+      "side": 1,
+      "message": "file descriptor is not suitable for format %d\n\n[it could still be a valid file descriptor, just not writable (or r/w for ogg format).",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 41
       },
       "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
