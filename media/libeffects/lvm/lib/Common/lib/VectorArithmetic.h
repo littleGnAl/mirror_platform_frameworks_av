@@ -46,6 +46,7 @@ void Mac3s_Sat_Float(const LVM_FLOAT* src, const LVM_FLOAT val, LVM_FLOAT* dst, 
     SHIFT FUNCTIONS
 ***********************************************************************************/
 void Shift_Sat_Float(const LVM_INT16 val, const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 n);
+void Shift_Gain_Float(const LVM_INT16 val, const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 n);
 /**********************************************************************************
     AUDIO FORMAT CONVERSION FUNCTIONS
 ***********************************************************************************/

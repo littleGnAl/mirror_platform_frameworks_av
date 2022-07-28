@@ -388,7 +388,7 @@ void ReverbBlock(LVM_FLOAT* pInput, LVM_FLOAT* pOutput, LVREV_Instance_st* pPriv
 
     /* Apply Gain*/
 
-    Shift_Sat_Float(LVREV_OUTPUTGAIN_SHIFT, pOutput, pOutput, size);
+    Shift_Gain_Float(LVREV_OUTPUTGAIN_SHIFT, pOutput, pOutput, size);
 
     MixSoft_1St_D32C31_WRA(&pPrivate->GainMixer, pOutput, pOutput, size);
 
