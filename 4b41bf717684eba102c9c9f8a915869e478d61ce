@@ -22,6 +22,30 @@
       },
       "revId": "4b41bf717684eba102c9c9f8a915869e478d61ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec0e9fb_2f1f3438",
+        "filename": "media/mtp/tests/MtpFuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2022-07-28T04:18:50Z",
+      "side": 1,
+      "message": "When we tried adding \"host_supported: true\", the build failed due to underlying dependencies and the following error is triggered: \"\u0027sys/endian.h\u0027 file not found\".\nTherefore, not added host support for the fuzzers",
+      "parentUuid": "bc5f0029_b5e1d7f5",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "4b41bf717684eba102c9c9f8a915869e478d61ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
