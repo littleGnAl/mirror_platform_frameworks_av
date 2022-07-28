@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604b6561_a217ee34",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDrm.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1953260
+      },
+      "writtenOn": "2022-07-28T03:40:33Z",
+      "side": 1,
+      "message": "But with the above patch, build error will occur, it should change the definition on NuPlayerDrm#makeCryptoInfo on NuPlayerDrm.h too.\n\n\n        static CryptoInfo *makeCryptoInfo(\n\n                int numSubSamples,\n\n                uint8_t key[kBlockSize],\n\n                uint8_t iv[kBlockSize],\n\n                CryptoPlugin::Mode mode,\n\n                size_t *clearbytes,\n\n                size_t *encryptedbytes);\n\nTo be:\n\n        static CryptoInfo *makeCryptoInfo(\n\n                int numSubSamples,\n\n                uint8_t key[kBlockSize],\n\n                uint8_t iv[kBlockSize],\n\n                CryptoPlugin::Mode mode,\n\n                uint32_t *clearbytes,\n\n                uint32_t *encryptedbytes);",
+      "range": {
+        "startLine": 189,
+        "startChar": 38,
+        "endLine": 189,
+        "endChar": 52
+      },
+      "revId": "beaddea11b9c6e60c4af7a7705f8ae2d2f2c42ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
