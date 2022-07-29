@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebdd1370_e74cecd2",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-07-29T20:09:46Z",
+      "side": 1,
+      "message": "Let\u0027s go with non-realtime for all cases. I can\u0027t think of a case where we would require real-time priority for decoding thumbnails.",
+      "parentUuid": "9f1a0fd9_b815b509",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28a51a95_816778fe",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
