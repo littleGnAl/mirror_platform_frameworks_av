@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfb3ebe_944da355",
+        "filename": "media/libeffects/lvm/lib/Common/src/Shift_Gain_v32xv32.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-07-29T01:17:23Z",
+      "side": 1,
+      "message": "What happen if n is negative?",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "1b9b0b80ec5ecd09f1879c8e4624ec88a956c8e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
