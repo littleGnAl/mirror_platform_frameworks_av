@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21273e1c_ccf0cfd1",
+        "filename": "media/libeffects/lvm/lib/Common/src/Shift_Gain_v32xv32.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-08-01T18:04:43Z",
+      "side": 1,
+      "message": "Unnecessary",
+      "revId": "5e71cfa93d7e57006a58c0ba282c4416e4de36c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251bcb5a_fbb46f6e",
+        "filename": "media/libeffects/lvm/lib/Common/src/Shift_Gain_v32xv32.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-08-01T18:04:43Z",
+      "side": 1,
+      "message": "Perhaps ternary",
+      "revId": "5e71cfa93d7e57006a58c0ba282c4416e4de36c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
