@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0d077c0a_3e9cebf8",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d34c6a_caf3c96c",
+      "range": {
+        "startLine": 486,
+        "startChar": 8,
+        "endLine": 487,
+        "endChar": 14
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0a0c2318_e7e82c89",
         "filename": "media/libstagefright/MediaMuxer.cpp",
         "patchSetId": 5
@@ -104,6 +128,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13056d6b_66ac074c",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f95021e_583dda8f",
+      "range": {
+        "startLine": 76,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 24
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13af7727_530a296d",
@@ -117,6 +165,30 @@
       "writtenOn": "2022-07-26T02:27:04Z",
       "side": 1,
       "message": "file descriptor is not suitable for format %d\n\n[it could still be a valid file descriptor, just not writable (or r/w for ogg format).",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aac8439_aa5f2d63",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13af7727_530a296d",
       "range": {
         "startLine": 80,
         "startChar": 14,
@@ -150,6 +222,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84469cb_8c9dcef9",
+        "filename": "media/libstagefright/OggWriter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae6a95ba_58a18648",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c0604cb_8b3748a1",
@@ -163,6 +259,30 @@
       "writtenOn": "2021-10-13T13:53:13Z",
       "side": 1,
       "message": "Ditto, would you mind putting above the constructor? \n\nAlso, would you please rename to \"isFdOpenModeValid\"?\n\nIf you could add documentation to the function, that would be great. I don\u0027t know how you document functions in Android C++, but the documentation would be something along the lines of:\n\nReturns whether the given file descriptor is opened using a mode which is compatible with  MPEG4Writer.\n\nEDIT: Actually Ray\u0027s comment about having a static Create which does the fd validation is probably better. The documentation and location parts of the comment still help, I believe.",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1922f81_8dc755cf",
+        "filename": "media/libstagefright/include/media/stagefright/MPEG4Writer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c0604cb_8b3748a1",
       "range": {
         "startLine": 80,
         "startChar": 4,
@@ -196,6 +316,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b914eb9a_e6902161",
+        "filename": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "637ffe64_f44c8ffa",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 59
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69ba3fbb_3d745ccb",
@@ -219,6 +363,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d528e635_909aec3b",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69ba3fbb_3d745ccb",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 10
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd796b2d_cdf9daf2",
@@ -232,6 +400,30 @@
       "writtenOn": "2022-04-22T03:57:17Z",
       "side": 1,
       "message": "s/should/must/",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9fbf1d_2fdc2686",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-08-02T12:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd796b2d_cdf9daf2",
       "range": {
         "startLine": 64,
         "startChar": 20,
