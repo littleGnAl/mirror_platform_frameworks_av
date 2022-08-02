@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adca3ef_3e56983b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-08-02T23:05:09Z",
+      "side": 1,
+      "message": "Andy,\nIs this ensured in the framework?\ni.e. is saturation done somewhere in the later stages?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "46c1f0e1ea66b3fc9b83053459638e7fba305be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55671021_537c6b47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-08-02T23:05:09Z",
+      "side": 1,
+      "message": "Assuming it is okay to not saturate in this effect, change looks good to me.\n",
+      "revId": "46c1f0e1ea66b3fc9b83053459638e7fba305be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
