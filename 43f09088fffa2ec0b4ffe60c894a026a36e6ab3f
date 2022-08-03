@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3b0bf6_3577835d",
+        "filename": "media/codec2/components/aac/C2SoftAacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2022-08-03T08:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "233982b0_5de23761",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 43
+      },
+      "revId": "43f09088fffa2ec0b4ffe60c894a026a36e6ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76fa550e_2ff5f95e",
