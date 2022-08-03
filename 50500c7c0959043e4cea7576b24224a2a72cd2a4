@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba34fb28_d2a14373",
+        "filename": "media/libstagefright/MediaCodecList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-08-03T22:00:59Z",
+      "side": 1,
+      "message": "please do the following:\n\n  status_t applyLevelLimits(const char *mediaType, int32_t level, int32_t *blockWidth, int32_t *blockHeight, int32_t *maxBlocks);",
+      "range": {
+        "startLine": 552,
+        "startChar": 47,
+        "endLine": 552,
+        "endChar": 63
+      },
+      "revId": "50500c7c0959043e4cea7576b24224a2a72cd2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
