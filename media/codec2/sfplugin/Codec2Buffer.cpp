@@ -810,6 +810,10 @@ sp<ConstGraphicBlockBuffer> ConstGraphicBlockBuffer::AllocateEmpty(
         }
     }
     sp<ABuffer> aBuffer(alloc(align(width, 16) * align(height, 16) * bpp / 8));
+    if (aBuffer == nullptr) {
+        ALOGD("%s: failed to allocate buffer", __func__);
+        return nullptr;
+    }
     return new ConstGraphicBlockBuffer(
             format,
             aBuffer,
@@ -965,9 +969,11 @@ native_handle_t *EncryptedLinearBlockBuffer::handle() const {
 }
 
 using ::aidl::android::hardware::graphics::common::Cta861_3;
+using ::aidl::android::hardware::graphics::common::Dataspace;
 using ::aidl::android::hardware::graphics::common::Smpte2086;
 
 using ::android::gralloc4::MetadataType_Cta861_3;
+using ::android::gralloc4::MetadataType_Dataspace;
 using ::android::gralloc4::MetadataType_Smpte2086;
 using ::android::gralloc4::MetadataType_Smpte2094_40;
 
@@ -1123,7 +1129,8 @@ c2_status_t GetHdrMetadataFromGralloc4Handle(
     return err;
 }
 
-c2_status_t SetHdrMetadataToGralloc4Handle(
+c2_status_t SetMetadataToGralloc4Handle(
+        android_dataspace_t dataSpace,
         const std::shared_ptr<const C2StreamHdrStaticMetadataInfo::output> &staticInfo,
         const std::shared_ptr<const C2StreamHdrDynamicMetadataInfo::output> &dynamicInfo,
         const C2Handle *const handle) {
@@ -1133,6 +1140,17 @@ c2_status_t SetHdrMetadataToGralloc4Handle(
     if (!mapper || !buffer) {
         // Gralloc4 not supported; nothing to do
         return err;
+    }
+    {
+        hidl_vec<uint8_t> metadata;
+        if (gralloc4::encodeDataspace(static_cast<Dataspace>(dataSpace), &metadata) == OK) {
+            Return<Error4> ret = mapper->set(buffer.get(), MetadataType_Dataspace, metadata);
+            if (!ret.isOk()) {
+                err = C2_REFUSED;
+            } else if (ret != Error4::NONE) {
+                err = C2_CORRUPTED;
+            }
+        }
     }
     if (staticInfo && *staticInfo) {
         ALOGV("Setting static HDR info as gralloc4 metadata");
