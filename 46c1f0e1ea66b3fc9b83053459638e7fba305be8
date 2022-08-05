@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87cea810_d71a15ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2022-08-05T00:38:35Z",
+      "side": 1,
+      "message": "Harish, my understanding is that memcpy_by_audio_format and its sub functions are used for the conversion in the framework then the saturation is done.\n(e.g. clamp16_from_float in audio_utils is for the converstion from float to pcm16)\nAndy, please correct me if I\u0027m wrong.",
+      "parentUuid": "7adca3ef_3e56983b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "46c1f0e1ea66b3fc9b83053459638e7fba305be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "55671021_537c6b47",
@@ -37,6 +61,23 @@
       "writtenOn": "2022-08-02T23:05:09Z",
       "side": 1,
       "message": "Assuming it is okay to not saturate in this effect, change looks good to me.\n",
+      "revId": "46c1f0e1ea66b3fc9b83053459638e7fba305be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5515c188_351278e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2022-08-05T00:38:35Z",
+      "side": 1,
+      "message": "Thank you for your review.\nIs there any remaining action for me?",
       "revId": "46c1f0e1ea66b3fc9b83053459638e7fba305be8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
