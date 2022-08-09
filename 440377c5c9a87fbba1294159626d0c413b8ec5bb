@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06b64a0_63a17e88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-08-09T20:42:39Z",
+      "side": 1,
+      "message": "Patchset 6 merges cleanly.",
+      "parentUuid": "c5dbc409_8fed3e5c",
+      "revId": "440377c5c9a87fbba1294159626d0c413b8ec5bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e0534af_a15be601",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-09T17:45:15Z",
       "side": 1,
       "message": "nit: 65535",
+      "range": {
+        "startLine": 388,
+        "startChar": 22,
+        "endLine": 388,
+        "endChar": 28
+      },
+      "revId": "440377c5c9a87fbba1294159626d0c413b8ec5bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d908c4f0_61332b51",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-08-09T20:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e0534af_a15be601",
       "range": {
         "startLine": 388,
         "startChar": 22,
