@@ -19,12 +19,15 @@
 
 #include <sys/types.h>
 
+#include <android/content/AttributionSourceState.h>
+#include <android/media/AudioConfigBase.h>
 #include <android/media/AudioVibratorInfo.h>
 #include <android/media/BnAudioFlingerClient.h>
 #include <android/media/BnAudioPolicyServiceClient.h>
+#include <android/media/EffectDescriptor.h>
 #include <android/media/INativeSpatializerCallback.h>
 #include <android/media/ISpatializer.h>
-#include <android/content/AttributionSourceState.h>
+#include <android/media/RecordClientInfo.h>
 #include <media/AidlConversionUtil.h>
 #include <media/AudioDeviceTypeAddr.h>
 #include <media/AudioPolicy.h>
