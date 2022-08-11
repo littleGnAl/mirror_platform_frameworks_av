@@ -447,6 +447,10 @@ private:
                 } else {
                     (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
                 }
+                sp<GraphicBuffer> &slotBuffer = mBuffers[slot];
+                if (slotBuffer)
+                    slotBuffer.clear();
+                ALOGD("buffer fence wait timeout %d", status);
                 return C2_BLOCKING;
             }
             if (status != android::NO_ERROR) {
@@ -462,6 +466,9 @@ private:
                 } else {
                     (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
                 }
+                sp<GraphicBuffer> &slotBuffer = mBuffers[slot];
+                if (slotBuffer)
+                    slotBuffer.clear();
                 return C2_BAD_VALUE;
             } else if (mRenderCallback) {
                 nsecs_t signalTime = fence->getSignalTime();
