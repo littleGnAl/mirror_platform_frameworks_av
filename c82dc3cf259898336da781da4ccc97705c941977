@@ -46,6 +46,30 @@
       },
       "revId": "c82dc3cf259898336da781da4ccc97705c941977",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9198edcc_981bf9ed",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_request_packet_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2022-08-12T22:18:42Z",
+      "side": 1,
+      "message": "Ah, thank you for explaining that Devendra - I did not realize that the arguments to usb_device_new() led to a file populated by FuzzedDataProvider. Resolving.",
+      "parentUuid": "b3484b9d_7b6e755c",
+      "range": {
+        "startLine": 65,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "c82dc3cf259898336da781da4ccc97705c941977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
