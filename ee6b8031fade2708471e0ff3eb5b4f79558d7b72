@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bde2fc1_68a7bb27",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-08-12T03:28:42Z",
+      "side": 1,
+      "message": "let\u0027s make frameworks/base/media/jni/android_media_MediaMuxer.cpp use\nthis instead of \"new MediaMuxer\".\n\nmy goal is to hide/private the constructor MediaMuxer::MediaMuxer \nconstructor so that everyone has to invoke this new MediaMuxer::create() routine.\n\nit looks like there are a couple places in frameworks/av/media/tests and\nframeworks/av/media/libstagefright/tests/fuzzers",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "ee6b8031fade2708471e0ff3eb5b4f79558d7b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e776884_37a38a88",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-08-12T03:28:42Z",
+      "side": 1,
+      "message": "can we say super.isFdOpenModeValid() here?\n\nso that it\u0027s an obvious \"we\u0027re testing according to the base class rules .... plus these extra conditions.",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "ee6b8031fade2708471e0ff3eb5b4f79558d7b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fa7c16_2dcb2b67",
+        "filename": "media/libstagefright/webm/WebmWriter.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-08-12T03:28:42Z",
+      "side": 1,
+      "message": "add to the comment:\n// Note that this overrides that method in the base class.",
+      "revId": "ee6b8031fade2708471e0ff3eb5b4f79558d7b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

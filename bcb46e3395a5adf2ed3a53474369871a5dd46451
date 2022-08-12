@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f396124a_9d505ab8",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-08-12T03:28:42Z",
+      "side": 1,
+      "message": "wasn\u0027t sure what happened here, but i found it.\npulled to a muxer-level routine that looks for w or rw as well as seekability.",
+      "parentUuid": "0d077c0a_3e9cebf8",
+      "range": {
+        "startLine": 486,
+        "startChar": 8,
+        "endLine": 487,
+        "endChar": 14
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0a0c2318_e7e82c89",
