@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c23c78c_41023a0f",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-08-12T02:37:15Z",
+      "side": 1,
+      "message": "am i correct that returning now means we\u0027ll come back later, when we have perhaps added more NALs?  that means that we\u0027ll want even more space the next time we\ncome in here.  That seems to me to be a \"once we get behind, we\u0027ll never catch up\" scenario.\n\nI think we need to make a really strong effort to move as many NALs as we can before we return from this routine. Maybe we send them individually; maybe we try to do them in pairs or triples...",
+      "parentUuid": "e830af9c_0f5f92ec",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 9
+      },
+      "revId": "990d13774d335854ca1bcc0753660fb698d8200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8bd0ebf_fd713fcd",
         "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
         "patchSetId": 1
