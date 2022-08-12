@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b886d25b_88c20f49",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-08-12T20:51:48Z",
+      "side": 1,
+      "message": "Replaced all occurrences of MediaMuxer() with a MediaMuxer::create() and made the constructor private.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1842097 has changes in frameworks/base and both CLs are now in a topic branch.",
+      "parentUuid": "7bde2fc1_68a7bb27",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "ee6b8031fade2708471e0ff3eb5b4f79558d7b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e776884_37a38a88",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7507e6ce_745ce361",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-08-12T20:51:48Z",
+      "side": 1,
+      "message": "Ray,\nsuper doesn\u0027t exist in c++.",
+      "parentUuid": "5e776884_37a38a88",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "ee6b8031fade2708471e0ff3eb5b4f79558d7b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28fa7c16_2dcb2b67",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-08-12T03:28:42Z",
       "side": 1,
       "message": "add to the comment:\n// Note that this overrides that method in the base class.",
+      "revId": "ee6b8031fade2708471e0ff3eb5b4f79558d7b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d8389b_f79cefb5",
+        "filename": "media/libstagefright/webm/WebmWriter.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-08-12T20:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28fa7c16_2dcb2b67",
       "revId": "ee6b8031fade2708471e0ff3eb5b4f79558d7b72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
