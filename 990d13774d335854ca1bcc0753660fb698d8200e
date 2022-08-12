@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea360da6_2d118e7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934159
+      },
+      "writtenOn": "2022-08-12T01:57:51Z",
+      "side": 1,
+      "message": "Thanks. This is my first submission, I will notice this at the next submission.",
+      "parentUuid": "fc98534f_b4e7ceb5",
+      "revId": "990d13774d335854ca1bcc0753660fb698d8200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d664093_fdf59be1",
         "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-22T18:22:43Z",
       "side": 1,
       "message": "i wonder if in the failing condition, we can re-run the loop from 577-579\nbut stop with a smaller number of NALs.\ne.g. if there are 5 NALs in the queue and we can\u0027t assemble them into a single\nmessage because the ABuffer() creation fails,  can we partition into a group\nof 2 and then 3....",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 9
+      },
+      "revId": "990d13774d335854ca1bcc0753660fb698d8200e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e830af9c_0f5f92ec",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1934159
+      },
+      "writtenOn": "2022-08-12T01:57:51Z",
+      "side": 1,
+      "message": "I think this method is not feasible. The totalSize too big is the reason of malloc failed. If the remaining memory is not enough, also will cause the malloc failed.",
+      "parentUuid": "9d664093_fdf59be1",
       "range": {
         "startLine": 585,
         "startChar": 2,
