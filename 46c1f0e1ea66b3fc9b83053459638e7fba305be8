@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e54f7e_d7841b8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-08-16T01:59:20Z",
+      "side": 1,
+      "message": "Yes, agreed that there is clamping so long as the data goes to integer PCM.  But maybe it could go to a float sink. Do you know whether we can limit the output data to a dynamic range that is needed?  could we use for example\n\n    const float RANGE \u003d 4.f;\n    ... data \u003d std::clamp(data, -RANGE, +RANGE);",
+      "parentUuid": "87cea810_d71a15ad",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "46c1f0e1ea66b3fc9b83053459638e7fba305be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "55671021_537c6b47",
