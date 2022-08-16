@@ -75,6 +75,8 @@ private:
 
     ResultStatus getAccessor(sp<IAccessor> *accessor);
 
+    ResultStatus getLocalAccessor(sp<Accessor> *accessor);
+
     void receiveInvalidation(uint32_t msgId);
 
     ResultStatus flush();

@@ -274,6 +274,10 @@ void Accessor::Impl::flush() {
     mBufferPool.flush(shared_from_this());
 }
 
+void Accessor::Impl::getBufferPoolStats(size_t &cachedSize, size_t &inUseSize) {
+    mBufferPool.getBufferPoolStats(cachedSize, inUseSize);
+}
+
 void Accessor::Impl::handleInvalidateAck() {
     std::map<ConnectionId, const sp<IObserver>> observers;
     uint32_t invalidationId;
@@ -798,6 +802,11 @@ void Accessor::Impl::BufferPool::flush(const std::shared_ptr<Accessor::Impl> &im
     if (from != to) {
         invalidate(true, from, to, impl);
     }
+}
+
+void Accessor::Impl::BufferPool::getBufferPoolStats(size_t &cachedSize, size_t &inUseSize) {
+    cachedSize = mStats.mBuffersCached;
+    inUseSize = mStats.mBuffersInUse;
 }
 
 void Accessor::Impl::invalidatorThread(

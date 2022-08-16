@@ -181,6 +181,16 @@ struct Accessor : public IAccessor {
     void cleanUp(bool clearCache);
 
     /**
+     * Provide client to get bufferpool statistics.
+     *
+     * @param cachedSize    return # of cached buffers which are used or available to use.
+     *
+     * @param inUseSize     return # of currently used buffers.
+     *
+     */
+    void getBufferPoolStats(size_t &cachedSize, size_t &inUseSize);
+
+    /**
      * Gets a hidl_death_recipient for remote connection death.
      */
     static sp<ConnectionDeathRecipient> getConnectionDeathRecipient();

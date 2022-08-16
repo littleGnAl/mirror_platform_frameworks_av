@@ -1101,6 +1101,19 @@ public:
         (void) fence;
         return C2_OMITTED;
     }
+
+    /**
+     * Retrieves the accessor which is used by underlying bufferpool.
+     *
+     * \param accessor          Accessor will be written to this out parameter.
+     *
+     * \return true             Acessor is writen successfully.
+     * \return false            Accessor is not written.
+     */
+    virtual bool getLocalAccessor(void *accessor) {
+        (void) accessor;
+        return false;
+    }
 protected:
     C2BlockPool() = default;
 };

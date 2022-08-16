@@ -92,6 +92,13 @@ struct Connection : public IConnection {
         SYNC_BUFFERID = UINT32_MAX,
     };
 
+    /**
+     * Get Local Accessor in current connection
+     *
+     * @return reference of buffer pool Accessor.
+     */
+    sp<Accessor> &getAccessor()  { return mAccessor; }
+
 private:
     bool mInitialized;
     sp<Accessor> mAccessor;

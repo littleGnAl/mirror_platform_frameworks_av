@@ -66,6 +66,8 @@ public:
 
     void cleanUp(bool clearCache);
 
+    void getBufferPoolStats(size_t &cachedSize, size_t &inUseSize);
+
     bool isValid();
 
     void handleInvalidateAck();
@@ -378,6 +380,16 @@ private:
          * free buffers. Active buffers are invalidated after being inactive.
          */
         void flush(const std::shared_ptr<Accessor::Impl> &impl);
+
+        /**
+         * Provide client to get bufferpool statistics.
+         *
+         * @param cachedSize    return # of cached buffers which are used or available to use.
+         *
+         * @param inUseSize     return # of currently used buffers.
+         *
+         */
+        void getBufferPoolStats(size_t &cachedSize, size_t &inUseSize);
 
         friend class Accessor::Impl;
     } mBufferPool;

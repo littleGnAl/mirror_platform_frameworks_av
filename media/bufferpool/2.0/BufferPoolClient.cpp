@@ -58,6 +58,10 @@ public:
         return mAccessor;
     }
 
+    sp<Accessor> &getLocalAccessor() {
+        return mLocalConnection->getAccessor();
+    }
+
     bool isActive(int64_t *lastTransactionUs, bool clearCache);
 
     void receiveInvalidation(uint32_t msgID);
@@ -817,6 +821,14 @@ ConnectionId BufferPoolClient::getConnectionId() {
 ResultStatus BufferPoolClient::getAccessor(sp<IAccessor> *accessor) {
     if (isValid()) {
         *accessor = mImpl->getAccessor();
+        return ResultStatus::OK;
+    }
+    return ResultStatus::CRITICAL_ERROR;
+}
+
+ResultStatus BufferPoolClient::getLocalAccessor(sp<Accessor> *accessor) {
+    if (isValid() && isLocal()) {
+        *accessor = mImpl->getLocalAccessor();
         return ResultStatus::OK;
     }
     return ResultStatus::CRITICAL_ERROR;
