@@ -173,6 +173,18 @@ struct ClientManager : public IClientManager {
      */
     void cleanUp();
 
+    /**
+     * Get local accessor with the specific connection id.
+     *
+     * @param connectionId  The id of the connection.
+     * @param accessor      The local accessor with specific connection id.
+     *
+     * @return OK when a buffer transaction was posted successfully.
+     *         NOT_FOUND when the accessor was not found.
+     *         CRITICAL_ERROR otherwise.
+     */
+    ResultStatus getLocalAccessor(ConnectionId connectionId, void *accessor);
+
     /** Destructs the manager of buffer pool clients.  */
     ~ClientManager();
 private:

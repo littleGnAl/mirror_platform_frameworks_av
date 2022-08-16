@@ -754,6 +754,15 @@ public:
         return mInit != C2_OK ? INVALID_CONNECTIONID : mConnectionId;
     }
 
+    bool getLocalAccessor(void *accessor) {
+        ResultStatus status = mBufferPoolManager->getLocalAccessor(mConnectionId, accessor);
+        if (status == ResultStatus::OK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 private:
     c2_status_t mInit;
     const android::sp<ClientManager> mBufferPoolManager;
@@ -795,6 +804,13 @@ int64_t C2PooledBlockPool::getConnectionId() {
         return mImpl->getConnectionId();
     }
     return 0;
+}
+
+bool C2PooledBlockPool::getLocalAccessor(void *accessor) {
+    if (mImpl) {
+        return mImpl->getLocalAccessor(accessor);
+    }
+    return false;
 }
 
 /* ========================================== 2D BLOCK ========================================= */

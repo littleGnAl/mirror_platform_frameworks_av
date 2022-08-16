@@ -218,6 +218,12 @@ void Accessor::cleanUp(bool clearCache) {
     }
 }
 
+void Accessor::getBufferPoolStats(size_t &cachedSize, size_t &inUseSize) {
+    if (mImpl) {
+        mImpl->getBufferPoolStats(cachedSize, inUseSize);
+    }
+}
+
 //IAccessor* HIDL_FETCH_IAccessor(const char* /* name */) {
 //    return new Accessor();
 //}

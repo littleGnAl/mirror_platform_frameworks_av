@@ -130,8 +130,10 @@ public:
     ResultStatus getAccessor(ConnectionId connectionId,
                              sp<IAccessor> *accessor);
 
-    void cleanUp(bool clearCache = false);
+    ResultStatus getLocalAccessor(ConnectionId connectionId,
+                             sp<Accessor> *accessor);
 
+    void cleanUp(bool clearCache = false);
 private:
     // In order to prevent deadlock between multiple locks,
     // always lock ClientCache.lock before locking ActiveClients.lock.
@@ -429,6 +431,20 @@ ResultStatus ClientManager::Impl::getAccessor(
     return client->getAccessor(accessor);
 }
 
+ResultStatus ClientManager::Impl::getLocalAccessor(
+        ConnectionId connectionId, sp<Accessor> *accessor) {
+    std::shared_ptr<BufferPoolClient> client;
+    {
+        std::lock_guard<std::mutex> lock(mActive.mMutex);
+        auto it = mActive.mClients.find(connectionId);
+        if (it == mActive.mClients.end()) {
+            return ResultStatus::NOT_FOUND;
+        }
+        client = it->second;
+    }
+    return client->getLocalAccessor(accessor);
+}
+
 void ClientManager::Impl::cleanUp(bool clearCache) {
     int64_t now = getTimestampNow();
     int64_t lastTransactionUs;
@@ -559,6 +575,14 @@ void ClientManager::cleanUp() {
     if (mImpl) {
         mImpl->cleanUp(true);
     }
+}
+
+ResultStatus ClientManager::getLocalAccessor(ConnectionId connectionId, void *accessor) {
+    sp<Accessor> *spAccessor = (sp<Accessor> *) accessor;
+    if (mImpl) {
+        return mImpl->getLocalAccessor(connectionId, spAccessor);
+    }
+    return ResultStatus::NOT_FOUND;
 }
 
 }  // namespace implementation

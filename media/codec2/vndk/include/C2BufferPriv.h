@@ -98,6 +98,8 @@ public:
             C2MemoryUsage usage,
             std::shared_ptr<C2GraphicBlock> *block) override;
 
+    virtual bool getLocalAccessor(void *accessor) override;
+
     /**
      * Retrieves the connection Id for underlying bufferpool
      */
