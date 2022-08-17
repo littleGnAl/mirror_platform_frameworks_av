@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a7d38f_45061655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2022-08-17T01:54:44Z",
+      "side": 1,
+      "message": "I also do not know if we can limit the output data here. I think the clamping should be done when converting to PCM data even if it\u0027s done under HAL layer.",
+      "parentUuid": "87e54f7e_d7841b8d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "46c1f0e1ea66b3fc9b83053459638e7fba305be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "55671021_537c6b47",
