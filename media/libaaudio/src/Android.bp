@@ -131,6 +131,7 @@ cc_library {
         "client/AudioStreamInternalCapture.cpp",
         "client/AudioStreamInternalPlay.cpp",
         "client/IsochronousClockModel.cpp",
+        "client/SysTrace.cpp",
         "binding/AudioEndpointParcelable.cpp",
         "binding/AAudioBinderAdapter.cpp",
         "binding/AAudioBinderClient.cpp",

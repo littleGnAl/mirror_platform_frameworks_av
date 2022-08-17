@@ -24,9 +24,7 @@
 
 #include "client/AudioStreamInternalCapture.h"
 #include "utility/AudioClock.h"
-
-#define ATRACE_TAG ATRACE_TAG_AUDIO
-#include <utils/Trace.h>
+#include "SysTrace.h"
 
 // We do this after the #includes because if a header uses ALOG.
 // it would fail on the reference to mInService.
@@ -79,7 +77,7 @@ aaudio_result_t AudioStreamInternalCapture::processDataNow(void *buffer, int32_t
     }
 
     const char *traceName = "aaRdNow";
-    ATRACE_BEGIN(traceName);
+    atrace_audio_begin(traceName);
 
     if (mClockModel.isStarting()) {
         // Still haven't got any timestamps from server.
@@ -88,7 +86,7 @@ aaudio_result_t AudioStreamInternalCapture::processDataNow(void *buffer, int32_t
         ALOGD("processDataNow() wait for valid timestamps");
         // Sleep very briefly and hope we get a timestamp soon.
         *wakeTimePtr = currentNanoTime + (2000 * AAUDIO_NANOS_PER_MICROSECOND);
-        ATRACE_END();
+        atrace_audio_end();
         return 0;
     }
     // If we have gotten this far then we have at least one timestamp from server.
@@ -118,7 +116,7 @@ aaudio_result_t AudioStreamInternalCapture::processDataNow(void *buffer, int32_t
     if (mAudioEndpoint->isFreeRunning()
         && mAudioEndpoint->getFullFramesAvailable() > mAudioEndpoint->getBufferCapacityInFrames()) {
         mXRunCount++;
-        if (ATRACE_ENABLED()) {
+        if (atrace_audio_enabled()) {
             ATRACE_INT("aaOverRuns", mXRunCount);
         }
     }
@@ -128,7 +126,7 @@ aaudio_result_t AudioStreamInternalCapture::processDataNow(void *buffer, int32_t
     int32_t framesProcessed = readNowWithConversion(buffer, numFrames);
     //ALOGD("AudioStreamInternalCapture::processDataNow() - tried to read %d frames, read %d",
     //    numFrames, framesProcessed);
-    if (ATRACE_ENABLED()) {
+    if (atrace_audio_enabled()) {
         ATRACE_INT("aaRead", framesProcessed);
     }
 
@@ -161,7 +159,7 @@ aaudio_result_t AudioStreamInternalCapture::processDataNow(void *buffer, int32_t
 
     }
 
-    ATRACE_END();
+    atrace_audio_end();
     return framesProcessed;
 }
 
