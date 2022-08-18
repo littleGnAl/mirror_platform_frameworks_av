@@ -50,6 +50,52 @@
       "message": "wonsik is the authority here...",
       "revId": "a3b37cbd5850a2f3edefea5ae0e5fe2e953c469e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340f1952_7a90986f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-08-18T16:08:28Z",
+      "side": 1,
+      "message": "I think the info buffer needs to be described.\n\n1. index of the C2InfoBuffer\n2. kind / layout of the buffer (graphic/linear, buffer layout, etc)",
+      "range": {
+        "startLine": 1820,
+        "startChar": 3,
+        "endLine": 1820,
+        "endChar": 16
+      },
+      "revId": "a3b37cbd5850a2f3edefea5ae0e5fe2e953c469e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe4abd4_603b7544",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1852,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-08-18T16:08:28Z",
+      "side": 1,
+      "message": "Maybe we should handle this via C2SubscribedParamIndicesTuning",
+      "range": {
+        "startLine": 1815,
+        "startChar": 0,
+        "endLine": 1852,
+        "endChar": 0
+      },
+      "revId": "a3b37cbd5850a2f3edefea5ae0e5fe2e953c469e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
