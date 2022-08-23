@@ -57,6 +57,30 @@ enum {
     WAVE_FORMAT_EXTENSIBLE = 0xFFFE
 };
 
+static inline int getPCMEncoding(int bitsPerSample,  int waveFormat) {
+    int pcmEncoding;
+    if (waveFormat == WAVE_FORMAT_IEEE_FLOAT || shouldExtractorOutputFloat(bitsPerSample)) {
+        pcmEncoding = kAudioEncodingPcmFloat;
+    } else {
+        switch(bitsPerSample) {
+            case 8:
+              pcmEncoding = kAudioEncodingPcm8bit;
+              break;
+            case 24:
+              pcmEncoding = kAudioEncodingPcm24bitPacked;
+              break;
+            case 32:
+              pcmEncoding = kAudioEncodingPcm32bit;
+              break;
+            default:
+            case 16:
+              pcmEncoding = kAudioEncodingPcm16bit;
+              break;
+        }
+    }
+    return pcmEncoding;
+}
+
 static const char* WAVEEXT_SUBFORMAT = "\x00\x00\x00\x00\x10\x00\x80\x00\x00\xAA\x00\x38\x9B\x71";
 static const char* AMBISONIC_SUBFORMAT = "\x00\x00\x21\x07\xD3\x11\x86\x44\xC8\xC1\xCA\x00\x00\x00";
 
@@ -153,8 +177,7 @@ media_status_t WAVExtractor::getTrackMetaData(
     const media_status_t status = AMediaFormat_copy(meta, mTrackMeta);
     if (status == OK) {
         AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_PCM_ENCODING,
-                shouldExtractorOutputFloat(mBitsPerSample)
-                        ? kAudioEncodingPcmFloat : kAudioEncodingPcm16bit);
+                getPCMEncoding(mBitsPerSample, mWaveFormat));
     }
     return status;
 }
@@ -424,7 +447,7 @@ media_status_t WAVSource::getFormat(AMediaFormat *meta) {
     if (status == OK) {
         AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_MAX_INPUT_SIZE, kMaxFrameSize);
         AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_PCM_ENCODING,
-                mOutputFloat ? kAudioEncodingPcmFloat : kAudioEncodingPcm16bit);
+                getPCMEncoding(mBitsPerSample, mWaveFormat));
     }
     return status;
 }
@@ -530,32 +553,7 @@ media_status_t WAVSource::read(
                 memcpy_to_float_from_i32(fdest, (const int32_t *)buffer->data(), numSamples);
             } break;
             }
-        } else {
-            int16_t *idest = (int16_t *)buffer->data();
-            buffer->set_range(0, 2 * numSamples);
-            switch (mBitsPerSample) {
-            case 8: {
-                memcpy_to_i16_from_u8(idest, (const uint8_t *)buffer->data(), numSamples);
-            } break;
-            case 16:
-                // no conversion needed
-                break;
-            case 24: {
-                memcpy_to_i16_from_p24(idest, (const uint8_t *)buffer->data(), numSamples);
-            } break;
-            case 32: {
-                memcpy_to_i16_from_i32(idest, (const int32_t *)buffer->data(), numSamples);
-            } break;
-            }
         }
-    } else if (mWaveFormat == WAVE_FORMAT_IEEE_FLOAT) {
-        if (!mOutputFloat) { // mBitsPerSample == 32
-            int16_t *idest = (int16_t *)buffer->data();
-            const size_t numSamples = n / 4;
-            memcpy_to_i16_from_float(idest, (const float *)buffer->data(), numSamples);
-            buffer->set_range(0, 2 * numSamples);
-        }
-        // Note: if output encoding is float, no need to convert if source is float.
     }
 
     int64_t timeStampUs = 0;
