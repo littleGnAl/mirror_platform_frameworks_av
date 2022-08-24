@@ -22,6 +22,30 @@
       },
       "revId": "d71aa1466d2c4814ce3940a1e862613a85cf7732",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d05df0_a7b32441",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-08-24T18:50:33Z",
+      "side": 1,
+      "message": "compiler generates equivalent code for either expression.\n\nI\u0027ve seen some really complex boolean expression combinations for this sort of thing that have become unreadable/unmaintainable.\nI keep making people simplify them.",
+      "parentUuid": "bf8ae530_ae6a1e35",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 153,
+        "endChar": 26
+      },
+      "revId": "d71aa1466d2c4814ce3940a1e862613a85cf7732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
