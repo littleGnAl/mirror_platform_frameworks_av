@@ -96,6 +96,12 @@ private:
                                         // dependencies
     std::mutex _mComponentStoreReadLock; // must protect only read/write of _mComponentStore
     std::shared_ptr<C2ComponentStore> _mComponentStore;
+
+    /// change the namespace of mutex, make sure the mutex init done
+    std::mutex gIonAllocatorMutex;
+    std::mutex gDmaBufAllocatorMutex;
+    std::weak_ptr<C2AllocatorIon> gIonAllocator;
+    std::weak_ptr<C2DmaBufAllocator> gDmaBufAllocator;
 };
 
 C2PlatformAllocatorStoreImpl::C2PlatformAllocatorStoreImpl() {
@@ -173,11 +179,6 @@ c2_status_t C2PlatformAllocatorStoreImpl::fetchAllocator(
 }
 
 namespace {
-
-std::mutex gIonAllocatorMutex;
-std::mutex gDmaBufAllocatorMutex;
-std::weak_ptr<C2AllocatorIon> gIonAllocator;
-std::weak_ptr<C2DmaBufAllocator> gDmaBufAllocator;
 
 void UseComponentStoreForIonAllocator(
         const std::shared_ptr<C2AllocatorIon> allocator,
