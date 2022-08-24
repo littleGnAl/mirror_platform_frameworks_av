@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8ae530_ae6a1e35",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2022-08-24T16:43:27Z",
+      "side": 1,
+      "message": "nit, perhaps\nif(format \u003d\u003d nullptr || name \u003d\u003d nullptr) {\n return false;\n}",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 153,
+        "endChar": 26
+      },
+      "revId": "d71aa1466d2c4814ce3940a1e862613a85cf7732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
