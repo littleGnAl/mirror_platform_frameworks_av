@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948c232d_bce11e5b",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1723,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-25T07:59:21Z",
+      "side": 1,
+      "message": "please also add GUARDED_BY(mLock) statements in AudioPolicyService.h for the declarations of mCachedUids and mOverrideUids",
+      "range": {
+        "startLine": 1723,
+        "startChar": 36,
+        "endLine": 1723,
+        "endChar": 47
+      },
+      "revId": "7d67316e6a244ec414cfa44e2a5fac1f223cdc74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
