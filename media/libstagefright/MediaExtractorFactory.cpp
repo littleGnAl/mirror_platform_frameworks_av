@@ -145,6 +145,7 @@ void *MediaExtractorFactory::sniff(
     }
 
     void *bestCreator = NULL;
+    size_t track = 0;
     for (auto it = plugins->begin(); it != plugins->end(); ++it) {
         ALOGV("sniffing %s", (*it)->def.extractor_name);
         float newConfidence;
@@ -161,7 +162,16 @@ void *MediaExtractorFactory::sniff(
         }
 
         if (curCreator) {
-            if (newConfidence > *confidence) {
+            MediaExtractor *ex = nullptr;
+            if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V1 ||
+                    (*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2) {
+                CMediaExtractor *ret = ((CreatorFunc)curCreator)(source->wrap(), newMeta);
+                ex = ret != nullptr ? new MediaExtractorCUnwrapper(ret) : nullptr;
+            }
+            ALOGV("%s: countTracks(): %zu, confidence: %.2f", (*it)->def.extractor_name,
+                ex != nullptr ? ex->countTracks() : -1, newConfidence);
+            if (newConfidence > *confidence && ex != nullptr && ex->countTracks() >= track) {
+                track = ex->countTracks();
                 *confidence = newConfidence;
                 if (*meta != nullptr && *freeMeta != nullptr) {
                     (*freeMeta)(*meta);
@@ -171,10 +181,12 @@ void *MediaExtractorFactory::sniff(
                 plugin = *it;
                 bestCreator = curCreator;
                 *creatorVersion = (*it)->def.def_version;
-            } else {
-                if (newMeta != nullptr && newFreeMeta != nullptr) {
-                    newFreeMeta(newMeta);
-                }
+            } else if (newMeta != nullptr && newFreeMeta != nullptr) {
+                newFreeMeta(newMeta);
+            }
+            if (ex != nullptr) {
+                delete ex;
+                ex = nullptr;
             }
         }
     }
