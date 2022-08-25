@@ -17,17 +17,14 @@
 #ifndef ANDROID_C2_SOFT_GAV1_DEC_H_
 #define ANDROID_C2_SOFT_GAV1_DEC_H_
 
+#include <inttypes.h>
+
 #include <media/stagefright/foundation/ColorUtils.h>
 
 #include <SimpleC2Component.h>
 #include <C2Config.h>
 #include "libgav1/src/gav1/decoder.h"
 #include "libgav1/src/gav1/decoder_settings.h"
-
-#define GETTIME(a, b) gettimeofday(a, b);
-#define TIME_DIFF(start, end, diff)     \
-    diff = (((end).tv_sec - (start).tv_sec) * 1000000) + \
-            ((end).tv_usec - (start).tv_usec);
 
 namespace android {
 
@@ -64,6 +61,9 @@ struct C2SoftGav1Dec : public SimpleC2Component {
   bool mSignalledOutputEos;
   bool mSignalledError;
 
+  C2StreamHdrStaticMetadataInfo::output mHdrStaticMetadataInfo;
+  std::unique_ptr<C2StreamHdr10PlusInfo::output> mHdr10PlusInfo = nullptr;
+
   // Color aspects. These are ISO values and are meant to detect changes in aspects to avoid
   // converting them to C2 values for each frame
   struct VuiColorAspects {
@@ -85,10 +85,14 @@ struct C2SoftGav1Dec : public SimpleC2Component {
       }
   } mBitstreamColorAspects;
 
-  struct timeval mTimeStart;  // Time at the start of decode()
-  struct timeval mTimeEnd;    // Time at the end of decode()
+  nsecs_t mTimeStart = 0;  // Time at the start of decode()
+  nsecs_t mTimeEnd = 0;    // Time at the end of decode()
 
   bool initDecoder();
+  void getHDRStaticParams(const libgav1::DecoderBuffer *buffer,
+                  const std::unique_ptr<C2Work> &work);
+  void getHDR10PlusInfoData(const libgav1::DecoderBuffer *buffer,
+                  const std::unique_ptr<C2Work> &work);
   void getVuiParams(const libgav1::DecoderBuffer *buffer);
   void destroyDecoder();
   void finishWork(uint64_t index, const std::unique_ptr<C2Work>& work,
