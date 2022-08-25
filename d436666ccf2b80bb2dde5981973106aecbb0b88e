@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ee4a8e_1f28c59c",
+        "filename": "media/libaaudio/src/client/AudioStreamInternalCapture.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2022-08-25T22:22:59Z",
+      "side": 1,
+      "message": "Will this interfere with the ATRACE_TAG definitions in the include files?\n\nWould it be better to just add:\n    #undef ATRACE_TAG\nbefore the #define rather than move the #define?",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "d436666ccf2b80bb2dde5981973106aecbb0b88e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
