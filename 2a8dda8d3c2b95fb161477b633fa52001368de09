@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b7392b_f4d65071",
+        "filename": "media/libstagefright/MediaExtractorFactory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-08-25T09:13:29Z",
+      "side": 1,
+      "message": "We are missing a bug that describes why we\u0027d want this change, including tests.\n\nI don\u0027t think this is a change we want to make. It breaks the semantics of confidence where an extractor with higher confidence is now not selected if it has a lower track count. On top of that, this could dramatically increases sniffing time.",
+      "range": {
+        "startLine": 173,
+        "startChar": 16,
+        "endLine": 173,
+        "endChar": 90
+      },
+      "revId": "2a8dda8d3c2b95fb161477b633fa52001368de09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
