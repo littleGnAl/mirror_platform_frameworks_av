@@ -15,6 +15,7 @@
  */
 
 //#define LOG_NDEBUG 0
+#define ATRACE_TAG ATRACE_TAG_AUDIO
 #include <utils/Log.h>
 
 #include <algorithm>
@@ -25,7 +26,6 @@
 #include "client/AudioStreamInternalCapture.h"
 #include "utility/AudioClock.h"
 
-#define ATRACE_TAG ATRACE_TAG_AUDIO
 #include <utils/Trace.h>
 
 // We do this after the #includes because if a header uses ALOG.
