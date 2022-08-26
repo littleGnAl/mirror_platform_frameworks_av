@@ -16,6 +16,29 @@
       "message": "Adding audio folks to approve",
       "revId": "9a56cf644078c0ed13b5bc2bd38d647e7b6c8830",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70cb1d54_b062dad4",
+        "filename": "services/audioflinger/PatchPanel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-08-26T23:32:03Z",
+      "side": 1,
+      "message": "nit: just remove this line?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 64
+      },
+      "revId": "9a56cf644078c0ed13b5bc2bd38d647e7b6c8830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
