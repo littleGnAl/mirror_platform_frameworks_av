@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63804c68_09d47eaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-29T09:51:33Z",
+      "side": 1,
+      "message": "device effects",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "3c8b3264bd2c5916fa3e29718d068dcc24591803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55088648_be504b2f",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-29T09:51:33Z",
+      "side": 1,
+      "message": "here a status of NAME_NOT_FOUND should be ignored and transformed in NO_ERROR.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "3c8b3264bd2c5916fa3e29718d068dcc24591803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "137f3481_d55dfe6f",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-29T09:51:33Z",
+      "side": 1,
+      "message": "do not add the effect if the status from effect-\u003einit() is different from NO_ERROR, ALREADY_EXISTS or NAME_NOT_FOUND",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 55
+      },
+      "revId": "3c8b3264bd2c5916fa3e29718d068dcc24591803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
