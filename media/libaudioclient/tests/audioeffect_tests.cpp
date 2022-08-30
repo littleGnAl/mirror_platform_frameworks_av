@@ -17,6 +17,7 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "AudioEffectUnitTests"
 
+#include <android/media/BnNativeSpatializerCallback.h>
 #include <gtest/gtest.h>
 #include <media/AudioEffect.h>
 #include <system/audio_effects/effect_hapticgenerator.h>
@@ -556,4 +557,220 @@ TEST(AudioEffectTest, TestHapticEffect) {
     playback.clear();
     EXPECT_TRUE(cb->receivedFramesProcessed)
             << "AudioEffect frames processed callback not received";
+}
+
+class SpatializerEffectCallback : public media::BnNativeSpatializerCallback {
+  public:
+    media::SpatializationLevel mLevel = media::SpatializationLevel::NONE;
+    int32_t mOutput = (int32_t)AUDIO_IO_HANDLE_NONE;
+    std::mutex mMutex;
+    std::condition_variable mCondition;
+
+    binder::Status onLevelChanged(media::SpatializationLevel level) override {
+        mLevel = level;
+        mCondition.notify_all();
+        return binder::Status::ok();
+    }
+
+    binder::Status onOutputChanged(int32_t output) override {
+        mOutput = output;
+        mCondition.notify_all();
+        return binder::Status::ok();
+    }
+
+    status_t waitForLevelCb(media::SpatializationLevel level) {
+        std::unique_lock<std::mutex> lock{mMutex};
+        if (mLevel != level) {
+            mCondition.wait_for(lock, std::chrono::milliseconds(500));
+            if (mLevel != level) return TIMED_OUT;
+        }
+        return OK;
+    }
+
+    status_t waitForOutputCb(bool isDefault) {
+        std::unique_lock<std::mutex> lock{mMutex};
+        if (isDefault && mOutput != AUDIO_IO_HANDLE_NONE) {
+            mCondition.wait_for(lock, std::chrono::milliseconds(500));
+            if (mOutput != AUDIO_IO_HANDLE_NONE) return TIMED_OUT;
+        } else if (!isDefault && mOutput == AUDIO_IO_HANDLE_NONE) {
+            mCondition.wait_for(lock, std::chrono::milliseconds(500));
+            if (mOutput == AUDIO_IO_HANDLE_NONE) return TIMED_OUT;
+        }
+        return OK;
+    }
+};
+
+TEST(AudioEffectTest, TestCreateSpatializerEffect) {
+    int32_t selectedEffect = -1;
+    std::vector<effect_descriptor_t> descriptors;
+    ASSERT_NO_FATAL_FAILURE(listEffectsAvailable(descriptors));
+    for (auto i = 0; i < descriptors.size(); i++) {
+        if (!isSpatializer(descriptors[i])) continue;
+        selectedEffect = i;
+        break;
+    }
+    if (selectedEffect == -1) GTEST_SKIP() << "spatializer effect not present";
+
+    effect_uuid_t* selectedEffectType = &descriptors[selectedEffect].type;
+    effect_uuid_t* selectedEffectUuid = &descriptors[selectedEffect].uuid;
+    auto [type, uuid] = typeAndUuidToString(descriptors[selectedEffect]);
+
+    SCOPED_TRACE(testing::Message() << "\n selected effect type is :: " << type
+                                    << "\n selected effect uuid is :: " << uuid);
+
+    audio_session_t sessionId =
+            (audio_session_t)AudioSystem::newAudioUniqueId(AUDIO_UNIQUE_ID_USE_SESSION);
+    sp<AudioEffectCallback> cb = sp<AudioEffectCallback>::make();
+    sp<AudioEffect> audioEffect = createEffect(selectedEffectType, selectedEffectUuid,
+                                               kDefaultOutputEffectPriority, sessionId, cb);
+    EXPECT_EQ(NO_INIT, audioEffect->initCheck()) << "only aps can create spatializer effect";
+}
+
+TEST(AudioEffectTest, DISABLED_TestCreateISpatializer) {
+    sp<SpatializerEffectCallback> cbSpatializer = sp<SpatializerEffectCallback>::make();
+    sp<media::ISpatializer> spatializer;
+    EXPECT_EQ(OK, AudioSystem::getSpatializer(cbSpatializer, &spatializer));
+    if (spatializer == nullptr) GTEST_SKIP() << "No spatializer found";
+
+    sp<SpatializerEffectCallback> cbSpatializerNew = sp<SpatializerEffectCallback>::make();
+    sp<media::ISpatializer> spatializerNew;
+    EXPECT_NE(OK, AudioSystem::getSpatializer(cbSpatializerNew, &spatializerNew))
+            << "Only one ISpatializer interface can exist at a given time";
+
+    spatializer->release();
+    if (spatializerNew != nullptr) {
+        spatializerNew->release();
+        FAIL() << "Only one ISpatializer interface can exist at a given time";
+    }
+    EXPECT_EQ(OK, AudioSystem::getSpatializer(cbSpatializerNew, &spatializerNew));
+    spatializerNew->release();
+}
+
+TEST(AudioEffectTest, TestCanBeSpatialized) {
+    sp<SpatializerEffectCallback> cbSpatializer = sp<SpatializerEffectCallback>::make();
+    sp<media::ISpatializer> spatializer;
+    EXPECT_EQ(OK, AudioSystem::getSpatializer(cbSpatializer, &spatializer));
+    if (spatializer == nullptr) GTEST_SKIP() << "No spatializer found";
+    spatializer->release();
+
+    audio_attributes_t attributes;
+    attributes.usage = AUDIO_USAGE_MEDIA;
+    attributes.content_type = AUDIO_CONTENT_TYPE_MUSIC;
+    audio_config_t config = AUDIO_CONFIG_INITIALIZER;
+    config.sample_rate = 48000;
+    config.channel_mask = AUDIO_CHANNEL_OUT_5POINT1;
+    config.format = AUDIO_FORMAT_PCM_16_BIT;
+    AudioDeviceTypeAddrVector outputDevices;
+    EXPECT_EQ(BAD_VALUE,
+              AudioSystem::canBeSpatialized(&attributes, &config, outputDevices, nullptr));
+
+    bool canBeSpatialized = false;
+    EXPECT_EQ(OK, AudioSystem::canBeSpatialized(&attributes, &config, outputDevices,
+                                                &canBeSpatialized));
+    ASSERT_TRUE(canBeSpatialized);
+}
+
+TEST(AudioEffectTest, ApplySpatializerEffect) {
+    sp<SpatializerEffectCallback> cbSpatializer = sp<SpatializerEffectCallback>::make();
+    sp<media::ISpatializer> spatializer;
+    EXPECT_EQ(OK, AudioSystem::getSpatializer(cbSpatializer, &spatializer));
+    if (spatializer == nullptr) GTEST_SKIP() << "No spatializer found";
+
+    binder::Status status;
+    // get Supported levels
+    std::vector<media::SpatializationLevel> levels;
+    status = spatializer->getSupportedLevels(&levels);
+    EXPECT_TRUE(status.isOk());
+    if ((levels.size() == 0) ||
+        ((levels.size() == 1) && (levels[0] == media::SpatializationLevel::NONE))) {
+        FAIL() << "Spatializer present but cannot be enabled";
+    }
+
+    // get supported spatialization modes
+    std::vector<media::SpatializationMode> spatializationModes;
+    status = spatializer->getSupportedModes(&spatializationModes);
+    EXPECT_TRUE(status.isOk());
+    EXPECT_TRUE(spatializationModes.size() > 0) << "Spatializer reports no Spatialization modes";
+    bool isBinauralSupported = false;
+    bool isTransAuralSupported = false;
+    for (auto mode : spatializationModes) {
+        if (mode == media::SpatializationMode::SPATIALIZER_BINAURAL)
+            isBinauralSupported = true;
+        else if (mode == media::SpatializationMode::SPATIALIZER_TRANSAURAL)
+            isTransAuralSupported = true;
+    }
+    EXPECT_TRUE(isBinauralSupported || isTransAuralSupported)
+            << "Spatializer reports unknown Spatialization mode";
+
+    // head tracking
+    bool isHeadTrackingSupported;
+    status = spatializer->isHeadTrackingSupported(&isHeadTrackingSupported);
+    EXPECT_TRUE(status.isOk());
+    std::vector<media::SpatializerHeadTrackingMode> htModes;
+    status = spatializer->getSupportedHeadTrackingModes(&htModes);
+    EXPECT_TRUE(status.isOk());
+    status = spatializer->setDesiredHeadTrackingMode(media::SpatializerHeadTrackingMode::DISABLED);
+    if (isHeadTrackingSupported) {
+        EXPECT_TRUE(status.isOk());
+    } else {
+        EXPECT_FALSE(status.isOk());
+    }
+    media::SpatializerHeadTrackingMode actualHtMode;
+    status = spatializer->getActualHeadTrackingMode(&actualHtMode);
+    EXPECT_TRUE(status.isOk());
+    EXPECT_EQ(media::SpatializerHeadTrackingMode::DISABLED, actualHtMode);
+    // TODO: use head, screen sensors services and enable head tracking
+
+    audio_attributes_t attributes;
+    attributes.usage = AUDIO_USAGE_MEDIA;
+    attributes.content_type = AUDIO_CONTENT_TYPE_MUSIC;
+    audio_config_t config = AUDIO_CONFIG_INITIALIZER;
+    config.sample_rate = 48000;
+    config.channel_mask = AUDIO_CHANNEL_OUT_5POINT1;
+    config.format = AUDIO_FORMAT_PCM_16_BIT;
+    AudioDeviceTypeAddrVector outputDevices;
+    EXPECT_EQ(OK, AudioSystem::getDevicesForAttributes(attributes, &outputDevices, false));
+
+    bool canBeSpatialized = false;
+    EXPECT_EQ(OK, AudioSystem::canBeSpatialized(&attributes, &config, outputDevices,
+                                                &canBeSpatialized));
+    if (!canBeSpatialized) GTEST_SKIP() << "device does not support spatializer";
+
+    // If speaker is chosen, then spatializer is expected to support transaural
+    // If wired headset is chosen, then spatializer is expected to support binaural
+    // playing binaural audio on speaker is not desirable but for code coverage its ok
+
+    // enable effect
+    media::SpatializationLevel currLevel;
+    status = spatializer->getLevel(&currLevel);
+    EXPECT_TRUE(status.isOk());
+    EXPECT_EQ(media::SpatializationLevel::NONE, currLevel);  // default effect shall be disabled
+    for (auto level : levels) {
+        if (level != media::SpatializationLevel::NONE) {
+            status = spatializer->setLevel(level);
+            EXPECT_TRUE(status.isOk());
+            break;
+        }
+    }
+    status = spatializer->getLevel(&currLevel);
+    EXPECT_TRUE(status.isOk());
+    ASSERT_NE(media::SpatializationLevel::NONE, currLevel);  // no immersive level applied
+    EXPECT_EQ(OK, cbSpatializer->waitForLevelCb(currLevel));
+
+    auto playback = sp<AudioPlayback>::make(
+            48000, AUDIO_FORMAT_PCM_16_BIT, AUDIO_CHANNEL_OUT_5POINT1, AUDIO_OUTPUT_FLAG_NONE,
+            AUDIO_SESSION_NONE, AudioTrack::TRANSFER_OBTAIN, &attributes);
+    ASSERT_NE(nullptr, playback);
+    ASSERT_EQ(NO_ERROR, playback->loadResource("/data/local/tmp/bbb_6ch_48kHz_s16le.raw"));
+    EXPECT_EQ(NO_ERROR, playback->create());
+    EXPECT_EQ(NO_ERROR, playback->start());
+    EXPECT_EQ(OK, cbSpatializer->waitForOutputCb(false));
+    EXPECT_EQ(cbSpatializer->mOutput, (int32_t)playback->getAudioTrackHandle()->getOutput());
+    EXPECT_EQ(NO_ERROR, playback->onProcess());
+    status = spatializer->setLevel(media::SpatializationLevel::NONE);
+    EXPECT_TRUE(status.isOk());
+    EXPECT_EQ(OK, cbSpatializer->waitForLevelCb(media::SpatializationLevel::NONE));
+    EXPECT_EQ(OK, cbSpatializer->waitForOutputCb(true));
+    playback->stop();
+    spatializer->release();
 }
