@@ -145,6 +145,7 @@ cc_defaults {
         "libaudiomanager",
         "libaudiopolicy",
         "libaudioutils",
+        "spatializer-aidl-cpp",
     ],
     data: ["bbb*.raw"],
     test_config_template: "audio_test_template.xml",
