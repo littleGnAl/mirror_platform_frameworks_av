@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f96f781_fdcdd4ef",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-08-30T20:03:47Z",
+      "side": 1,
+      "message": "Are these changes of `waitForConsumption` to `onProcess` related to spatializer testing? If not, either please move into a separate CL or add some explanation of this change into the commit description.",
+      "range": {
+        "startLine": 420,
+        "startChar": 24,
+        "endLine": 420,
+        "endChar": 44
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66be70c_f9d6c4cb",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-08-30T20:03:47Z",
+      "side": 1,
+      "message": "Regarding what we were discussing on the meeting, it is possible to stop the shell by using `run-command` and `teardown-command` options of the preparer. We need to stop the framework, thus the command will be `stop` for preparation and `start` for teardown, see an example of `run-command` usage here: https://cs.android.com/android/platform/superproject/+/master:cts/tests/tests/widget/AndroidTest.xml. If restarting of the native audio service is needed, this can be achieved by issuing `pkill audioserver`.",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 47
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
