@@ -45,6 +45,98 @@
       },
       "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb551f7_897cb075",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-31T09:59:53Z",
+      "side": 1,
+      "message": "this should be considered a failure: if a spatializer is present, it should at least support one spatialization level",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 661,
+        "endChar": 5
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb94d4b0_718251de",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-31T09:59:53Z",
+      "side": 1,
+      "message": "if isHeadTrackingSupported is false, setDesiredHeadTrackingMode() will return an error",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 31
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23801893_ab64870d",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-31T09:59:53Z",
+      "side": 1,
+      "message": "this should not be necessary",
+      "range": {
+        "startLine": 731,
+        "startChar": 36,
+        "endLine": 731,
+        "endChar": 65
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5c73b6_13b48c06",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-31T09:59:53Z",
+      "side": 1,
+      "message": "should we add a delay or a latch in the callback to make sure callbacks are received after calling onProcess()?",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 47
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
