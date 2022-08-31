@@ -38,11 +38,13 @@ extern "C" JNIEXPORT int JNICALL Java_com_android_media_benchmark_library_Native
     env->ReleaseStringUTFChars(jFileName, fileName);
     env->ReleaseStringUTFChars(jFilePath, filePath);
     if (!inputFp) {
-        ALOGE("Unable to open input file for reading");
+        ALOGE("Unable to open input file (%s) for reading", sFilePath.c_str());
         return -1;
     }
 
-    Decoder *decoder = new Decoder();
+    Decoder *decoder = nullptr;
+    Stats::Mode mode = (jStatsFile == NULL)? Stats::Mode::TO_LISTENER:Stats::Mode::TO_FILE;
+    decoder = new Decoder(mode);
     Extractor *extractor = decoder->getExtractor();
     if (!extractor) {
         ALOGE("Extractor creation failed");

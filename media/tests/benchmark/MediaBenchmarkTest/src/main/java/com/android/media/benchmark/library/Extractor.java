@@ -20,6 +20,7 @@ import android.media.MediaCodec;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.util.Log;
+import android.content.res.AssetFileDescriptor;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -40,6 +41,22 @@ public class Extractor {
         mStats = new Stats();
     }
 
+    /**
+     * Creates a Media Extractor and sets data source(FileDescriptor)to use
+     *
+     * @param fileDescriptor FileDescriptor for the file which is to be extracted
+     * @return TrackCount of the sample
+     * @throws IOException If FileDescriptor is null
+     */
+    public int setUpExtractor(AssetFileDescriptor afd) throws IOException {
+        long sTime = mStats.getCurTime();
+        mExtractor = new MediaExtractor();
+        mExtractor.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+        long eTime = mStats.getCurTime();
+        long timeTaken = mStats.getTimeDiff(sTime, eTime);
+        mStats.setInitTime(timeTaken);
+        return mExtractor.getTrackCount();
+    }
     /**
      * Creates a Media Extractor and sets data source(FileDescriptor)to use
      *
