@@ -36,6 +36,17 @@ public class Stats {
     private ArrayList<Long> mInputTimer;
     private ArrayList<Long> mOutputTimer;
 
+    public enum Mode {
+        TO_LISTENER,
+        TO_FILE
+    };
+    private Mode mMode = Mode.TO_FILE;
+    static private String LOG_STAT = "ForTimingCollector";
+    public Stats(Mode mode) {
+        this();
+        //TODO: check for validity 
+        mMode = mode;
+    }
     public Stats() {
         mFrameSizes = new ArrayList<>();
         mInputTimer = new ArrayList<>();
@@ -100,7 +111,11 @@ public class Stats {
      * \param statsFile    file where the stats data is to be written
      **/
     public boolean writeStatsHeader(String statsFile) throws IOException {
-        File outputFile = new File(statsFile);
+      if (mMode != Mode.TO_FILE) {
+          // just return this, without failure.
+          return true;
+      }
+      File outputFile = new File(statsFile);
         FileOutputStream out = new FileOutputStream(outputFile, true);
         if (!outputFile.exists())
             return false;
@@ -150,29 +165,36 @@ public class Stats {
             }
         }
 
-        // Write the stats row data to file
-        String rowData = "";
-        rowData += System.nanoTime() + ", ";
-        rowData += inputReference + ", ";
-        rowData += operation + ", ";
-        rowData += componentName + ", ";
-        rowData += "SDK, ";
-        rowData += mode + ", ";
-        rowData += mInitTimeNs + ", ";
-        rowData += mDeInitTimeNs + ", ";
-        rowData += minTimeTakenNs + ", ";
-        rowData += maxTimeTakenNs + ", ";
-        rowData += totalTimeTakenNs / mOutputTimer.size() + ", ";
-        rowData += timeTakenPerSec + ", ";
-        rowData += (size * 1000000000) / totalTimeTakenNs + ", ";
-        rowData += timeToFirstFrameNs + ", ";
-        rowData += size + ", ";
-        rowData += totalTimeTakenNs + "\n";
+        if (mMode == Mode.TO_LISTENER) {
+            Log.i(LOG_STAT, componentName + "_" + "InitTimeNs:" + mInitTimeNs);
+            Log.i(LOG_STAT, componentName + "_" + "DeInitTimeNs:" + mDeInitTimeNs);
+            Log.i(LOG_STAT, componentName + "_" + "MinTimeNs:" + minTimeTakenNs);
+            Log.i(LOG_STAT, componentName + "_" + "MaxTimeNs:" + maxTimeTakenNs);
+        } else if (mMode == Mode.TO_FILE) {
+            // Write the stats row data to file
+            String rowData = "";
+            rowData += System.nanoTime() + ", ";
+            rowData += inputReference + ", ";
+            rowData += operation + ", ";
+            rowData += componentName + ", ";
+            rowData += "SDK, ";
+            rowData += mode + ", ";
+            rowData += mInitTimeNs + ", ";
+            rowData += mDeInitTimeNs + ", ";
+            rowData += minTimeTakenNs + ", ";
+            rowData += maxTimeTakenNs + ", ";
+            rowData += totalTimeTakenNs / mOutputTimer.size() + ", ";
+            rowData += timeTakenPerSec + ", ";
+            rowData += (size * 1000000000) / totalTimeTakenNs + ", ";
+            rowData += timeToFirstFrameNs + ", ";
+            rowData += size + ", ";
+            rowData += totalTimeTakenNs + "\n";
 
-        File outputFile = new File(statsFile);
-        FileOutputStream out = new FileOutputStream(outputFile, true);
-        assert outputFile.exists() : "Failed to open the stats file for writing!";
-        out.write(rowData.getBytes());
-        out.close();
+            File outputFile = new File(statsFile);
+            FileOutputStream out = new FileOutputStream(outputFile, true);
+            assert outputFile.exists() : "Failed to open the stats file for writing!";
+            out.write(rowData.getBytes());
+            out.close();
+        }
     }
 }
