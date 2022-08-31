@@ -24,6 +24,10 @@
 
 #include "Stats.h"
 
+#define LOG_STAT "ForTimingCollector"
+#define LOG_TO_LISTENER(...) \
+    __android_log_print(ANDROID_LOG_INFO, LOG_STAT, __VA_ARGS__);
+
 /**
  * Dumps the stats of the operation for a given input media.
  *
@@ -57,7 +61,7 @@ void Stats::dumpStatistics(string operation, string inputReference, int64_t dura
         if (minTimeTakenNs > intervalNs) minTimeTakenNs = intervalNs;
         else if (maxTimeTakenNs < intervalNs) maxTimeTakenNs = intervalNs;
     }
-
+    if (mMode == Mode::TO_FILE) {
     // Write the stats data to file.
     int64_t dataSize = size;
     int64_t bytesPerSec = ((int64_t)dataSize * 1000000000) / totalTimeTakenNs;
@@ -86,4 +90,9 @@ void Stats::dumpStatistics(string operation, string inputReference, int64_t dura
     }
     out << rowData;
     out.close();
+    } else if (mMode == Mode::TO_LISTENER) {
+      LOG_TO_LISTENER("%s_InitTimeNs%lld",componentName.c_str(),(long long)mInitTimeNs);
+      //__android_log_print(ANDROID_LOG_INFO, LOG_STAT, "%s_InitTimeNs%llu",componentName,mInitTimeNs);
+    }
 }
+

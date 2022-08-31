@@ -51,6 +51,13 @@ using namespace std;
 
 class Stats {
   public:
+    enum Mode {
+        TO_LISTENER = 1,
+       TO_FILE = 2
+    };
+    Stats(Mode mode):mMode(mode) {
+        Stats();
+    }
     Stats() {
         mInitTimeNs = 0;
         mDeInitTimeNs = 0;
@@ -67,7 +74,7 @@ class Stats {
     std::vector<int32_t> mFrameSizes;
     std::vector<nsecs_t> mInputTimer;
     std::vector<nsecs_t> mOutputTimer;
-
+    Mode mMode = Mode::TO_FILE;
   public:
     nsecs_t getCurTime() { return systemTime(CLOCK_MONOTONIC); }
 

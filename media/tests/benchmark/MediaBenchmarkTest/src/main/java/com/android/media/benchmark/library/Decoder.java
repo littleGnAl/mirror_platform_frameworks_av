@@ -49,6 +49,7 @@ public class Decoder {
     private FileOutputStream mOutputStream;
 
     public Decoder() { mStats = new Stats(); }
+    public Decoder(Stats.Mode statsMode) { mStats = new Stats(statsMode); }
 
     /**
      * Setup of decoder

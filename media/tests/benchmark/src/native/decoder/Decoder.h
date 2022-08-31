@@ -29,8 +29,9 @@
 
 class Decoder : public CallBackHandle {
   public:
-    Decoder()
-        : mCodec(nullptr),
+    Decoder(Stats::Mode mode = Stats::TO_FILE)
+        : CallBackHandle(mode),
+          mCodec(nullptr),
           mFormat(nullptr),
           mExtractor(nullptr),
           mNumInputFrame(0),

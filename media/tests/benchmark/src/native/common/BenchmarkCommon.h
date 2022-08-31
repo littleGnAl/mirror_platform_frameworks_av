@@ -76,6 +76,9 @@ class CallBackHandle {
     CallBackHandle() : mSawError(false), mIsDone(false), mStats(nullptr) {
         mStats = new Stats();
     }
+    CallBackHandle(Stats::Mode mode): mSawError(false), mIsDone(false), mStats(nullptr) {
+        mStats = new Stats(mode);
+    }
 
     virtual ~CallBackHandle() {
         if (mIOThread.joinable()) mIOThread.join();
