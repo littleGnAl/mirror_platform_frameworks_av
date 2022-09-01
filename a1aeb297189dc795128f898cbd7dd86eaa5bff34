@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f293ae6_5c4340c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2022-09-01T14:57:55Z",
+      "side": 1,
+      "message": "Apparently this needs to be merged into aosp first before being cherry-picked to android-internal (see warning on ag/19748525).",
+      "revId": "a1aeb297189dc795128f898cbd7dd86eaa5bff34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
