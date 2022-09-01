@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54c2e636_3d7cab8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-09-01T19:11:36Z",
+      "side": 1,
+      "message": "```\nWhen onPhysicalCameraStatusChanged is a block hidl call, it will blocked by onDeviceError, so the first disconnect will be blocked by interfaceChain in casting.\n```\n\nSorry, Why is this true ? why does onDeviceError from client 1 block a binder call from client 2 from progressing ?",
+      "parentUuid": "3d730b29_fe5d8257",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74827f0b_70bf2235",
         "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
         "patchSetId": 2
