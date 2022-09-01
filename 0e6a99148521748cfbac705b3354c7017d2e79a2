@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc7dd363_f03ad5b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-09-01T04:54:52Z",
+      "side": 1,
+      "message": "Hmm.... I wonder why casting from listener2.0 to listener2.1 doesn\u0027t work in this case? Isn\u0027t listener2.1 derived from listener2.0?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74827f0b_70bf2235",
+        "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-09-01T04:54:52Z",
+      "side": 1,
+      "message": "Do you mean this cast would deadlock? I wonder if it\u0027s expected for ::castFrom to block.",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
