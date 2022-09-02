@@ -23,7 +23,8 @@
 #include <media/stagefright/OggWriter.h>
 
 #include "MediaMimeTypes.h"
-#include "webm/WebmWriter.h"
+
+#include <webm/WebmWriter.h>
 
 namespace android {
 std::string genMimeType(FuzzedDataProvider *dataProvider) {
@@ -65,8 +66,8 @@ sp<MediaSource> genMediaSource(FuzzedDataProvider *dataProvider, uint16_t maxMed
     for (size_t i = 0; i < extractor->countTracks(); ++i) {
         sp<MetaData> meta = extractor->getTrackMetaData(i);
 
-        const char *trackMime;
-        if (!strcasecmp(mime.c_str(), trackMime)) {
+        std::string trackMime = dataProvider->PickValueInArray(kTestedMimeTypes);
+        if (!strcasecmp(mime.c_str(), trackMime.c_str())) {
             sp<IMediaSource> track = extractor->getTrack(i);
             if (track == NULL) {
                 return NULL;

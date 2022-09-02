@@ -417,6 +417,7 @@ public:
         }
         std::unique_lock lock(mQueueMutex);
         mQueue.splice(mQueue.end(), *items);
+        mQueueCondition.notify_all();
         return C2_OK;
     }
 
@@ -665,6 +666,7 @@ private:
                         grallocHandle, GraphicBuffer::CLONE_HANDLE,
                         width, height, format, 1, usage, stride);
 
+                native_handle_delete(grallocHandle);
                 std::shared_ptr<C2GraphicBlock> dstBlock;
                 C2BlockPool::local_id_t poolId = mIntf->getPoolId();
                 std::shared_ptr<C2BlockPool> pool;
@@ -683,6 +685,7 @@ private:
                         grallocHandle, GraphicBuffer::CLONE_HANDLE,
                         width, height, format, 1, usage, stride);
 
+                native_handle_delete(grallocHandle);
                 Rect sourceCrop(0, 0, width, height);
 
                 renderengine::DisplaySettings clientCompositionDisplay;
@@ -807,7 +810,8 @@ const FilterPlugin_V1::Descriptor SampleToneMappingFilter::Interface::DESCRIPTOR
     // affectedParams
     {
         C2StreamHdrStaticInfo::output::PARAM_TYPE,
-        C2StreamHdr10PlusInfo::output::PARAM_TYPE,
+        C2StreamHdr10PlusInfo::output::PARAM_TYPE,  // will be deprecated
+        C2StreamHdrDynamicMetadataInfo::output::PARAM_TYPE,
         C2StreamColorAspectsInfo::output::PARAM_TYPE,
     },
 };

@@ -392,9 +392,9 @@ public:
     static C2R PictureQuantizationSetter(bool mayBlock,
                                          C2P<C2StreamPictureQuantizationTuning::output> &me) {
         (void)mayBlock;
-        (void)me;
 
-        // TODO: refactor with same algorithm in the SetQp()
+        // these are the ones we're going to set, so want them to default
+        // to the DEFAULT values for the codec
         int32_t iMin = DEFAULT_I_QP_MIN, pMin = DEFAULT_P_QP_MIN, bMin = DEFAULT_B_QP_MIN;
         int32_t iMax = DEFAULT_I_QP_MAX, pMax = DEFAULT_P_QP_MAX, bMax = DEFAULT_B_QP_MAX;
 
@@ -419,13 +419,14 @@ public:
         ALOGV("PictureQuantizationSetter(entry): i %d-%d p %d-%d b %d-%d",
               iMin, iMax, pMin, pMax, bMin, bMax);
 
-        // ensure we have legal values
-        iMax = std::clamp(iMax, CODEC_QP_MIN, CODEC_QP_MAX);
-        iMin = std::clamp(iMin, CODEC_QP_MIN, CODEC_QP_MAX);
-        pMax = std::clamp(pMax, CODEC_QP_MIN, CODEC_QP_MAX);
-        pMin = std::clamp(pMin, CODEC_QP_MIN, CODEC_QP_MAX);
-        bMax = std::clamp(bMax, CODEC_QP_MIN, CODEC_QP_MAX);
-        bMin = std::clamp(bMin, CODEC_QP_MIN, CODEC_QP_MAX);
+        // min is clamped to [AVC_QP_MIN, max] to avoid error
+        // cases where layer.min > layer.max
+        iMax = std::clamp(iMax, AVC_QP_MIN, AVC_QP_MAX);
+        iMin = std::clamp(iMin, AVC_QP_MIN, iMax);
+        pMax = std::clamp(pMax, AVC_QP_MIN, AVC_QP_MAX);
+        pMin = std::clamp(pMin, AVC_QP_MIN, pMax);
+        bMax = std::clamp(bMax, AVC_QP_MIN, AVC_QP_MAX);
+        bMin = std::clamp(bMin, AVC_QP_MIN, bMax);
 
         // put them back into the structure
         for (size_t i = 0; i < me.v.flexCount(); ++i) {
@@ -656,8 +657,7 @@ void  C2SoftAvcEnc::initEncParams() {
     mEntropyMode = DEFAULT_ENTROPY_MODE;
     mBframes = DEFAULT_B_FRAMES;
 
-    gettimeofday(&mTimeStart, nullptr);
-    gettimeofday(&mTimeEnd, nullptr);
+    mTimeStart = mTimeEnd = systemTime();
 }
 
 c2_status_t C2SoftAvcEnc::setDimensions() {
@@ -820,7 +820,8 @@ c2_status_t C2SoftAvcEnc::setQp() {
     s_qp_ip.e_cmd = IVE_CMD_VIDEO_CTL;
     s_qp_ip.e_sub_cmd = IVE_CMD_CTL_SET_QP;
 
-    // TODO: refactor with same algorithm in the PictureQuantizationSetter()
+    // we resolved out-of-bound and unspecified values in PictureQuantizationSetter()
+    // so we can start with defaults that are overridden as needed.
     int32_t iMin = DEFAULT_I_QP_MIN, pMin = DEFAULT_P_QP_MIN, bMin = DEFAULT_B_QP_MIN;
     int32_t iMax = DEFAULT_I_QP_MAX, pMax = DEFAULT_P_QP_MAX, bMax = DEFAULT_B_QP_MAX;
 
@@ -1515,7 +1516,8 @@ c2_status_t C2SoftAvcEnc::setEncodeArgs(
             vPlane = uPlane + yPlaneSize / 4;
             yStride = width;
             uStride = vStride = yStride / 2;
-            ConvertRGBToPlanarYUV(yPlane, yStride, height, conversionBuffer.size(), *input);
+            ConvertRGBToPlanarYUV(yPlane, yStride, height, conversionBuffer.size(), *input,
+                                  mColorAspects->matrix, mColorAspects->range);
             break;
         }
         case C2PlanarLayout::TYPE_YUV: {
@@ -1650,8 +1652,7 @@ void C2SoftAvcEnc::process(
     work->worklets.front()->output.flags = work->input.flags;
 
     IV_STATUS_T status;
-    WORD32 timeDelay = 0;
-    WORD32 timeTaken = 0;
+    nsecs_t timeDelay = 0;
     uint64_t workIndex = work->input.ordinal.frameIndex.peekull();
 
     // Initialize encoder if not already initialized
@@ -1817,10 +1818,10 @@ void C2SoftAvcEnc::process(
         //         mInFile, s_encode_ip.s_inp_buf.apv_bufs[0],
         //         (mHeight * mStride * 3 / 2));
 
-        GETTIME(&mTimeStart, nullptr);
         /* Compute time elapsed between end of previous decode()
          * to start of current decode() */
-        TIME_DIFF(mTimeEnd, mTimeStart, timeDelay);
+        mTimeStart = systemTime();
+        timeDelay = mTimeStart - mTimeEnd;
         status = ive_api_function(mCodecCtx, &s_video_encode_ip, &s_video_encode_op);
 
         if (IV_SUCCESS != status) {
@@ -1844,11 +1845,11 @@ void C2SoftAvcEnc::process(
         mBuffers[ps_encode_ip->s_inp_buf.apv_bufs[0]] = inputBuffer;
     }
 
-    GETTIME(&mTimeEnd, nullptr);
     /* Compute time taken for decode() */
-    TIME_DIFF(mTimeStart, mTimeEnd, timeTaken);
+    mTimeEnd = systemTime();
+    nsecs_t timeTaken = mTimeEnd - mTimeStart;
 
-    ALOGV("timeTaken=%6d delay=%6d numBytes=%6d", timeTaken, timeDelay,
+    ALOGV("timeTaken=%" PRId64 "d delay=%" PRId64 " numBytes=%6d", timeTaken, timeDelay,
             ps_encode_op->s_out_buf.u4_bytes);
 
     void *freed = ps_encode_op->s_inp_buf.apv_bufs[0];

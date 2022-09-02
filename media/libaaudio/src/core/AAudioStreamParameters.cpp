@@ -30,9 +30,6 @@ using namespace aaudio;
 // HDMI supports up to 32 channels at 1536000 Hz.
 #define SAMPLE_RATE_HZ_MAX           1600000
 
-AAudioStreamParameters::AAudioStreamParameters() {}
-AAudioStreamParameters::~AAudioStreamParameters() {}
-
 void AAudioStreamParameters::copyFrom(const AAudioStreamParameters &other) {
     mSamplesPerFrame      = other.mSamplesPerFrame;
     mSampleRate           = other.mSampleRate;
@@ -86,7 +83,6 @@ aaudio_result_t AAudioStreamParameters::validate() const {
     switch (mSessionId) {
         case AAUDIO_SESSION_ID_NONE:
         case AAUDIO_SESSION_ID_ALLOCATE:
-            break;
         default:
             break;
     }

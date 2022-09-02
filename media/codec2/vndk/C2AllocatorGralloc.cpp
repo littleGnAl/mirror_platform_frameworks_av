@@ -54,6 +54,10 @@ namespace /* unnamed */ {
     static_assert((~C2MemoryUsage::PLATFORM_MASK & PASSTHROUGH_USAGE_MASK) == 0, "");
 } // unnamed
 
+static bool isAtLeastT() {
+    return android_get_device_api_level() >= __ANDROID_API_T__;
+}
+
 C2MemoryUsage C2AndroidMemoryUsage::FromGrallocUsage(uint64_t usage) {
     // gralloc does not support WRITE_PROTECTED
     return C2MemoryUsage(
@@ -261,7 +265,7 @@ c2_status_t Gralloc4Mapper_lock(native_handle_t *handle, uint64_t usage, const R
     for (const ui::PlaneLayout &plane : planes) {
         layout->rootPlanes++;
         uint32_t lastOffsetInBits = 0;
-        uint32_t rootIx = 0;
+        uint32_t rootIx = layout->numPlanes;
 
         for (const PlaneLayoutComponent &component : plane.components) {
             if (!gralloc4::isStandardPlaneLayoutComponentType(component.type)) {
@@ -309,7 +313,6 @@ c2_status_t Gralloc4Mapper_lock(native_handle_t *handle, uint64_t usage, const R
 
             layout->numPlanes++;
             lastOffsetInBits = component.offsetInBits + component.sizeInBits;
-            rootIx++;
         }
     }
     return C2_OK;
@@ -699,21 +702,18 @@ c2_status_t C2AllocationGralloc::map(
                 C2PlanarLayout::PLANE_V,          // rootIx
                 0,                                // offset
             };
-            // handle interleaved formats
-            intptr_t uvOffset = addr[C2PlanarLayout::PLANE_V] - addr[C2PlanarLayout::PLANE_U];
-            if (uvOffset > 0 && uvOffset < (intptr_t)ycbcrLayout.chroma_step) {
-                layout->rootPlanes = 2;
-                layout->planes[C2PlanarLayout::PLANE_V].rootIx = C2PlanarLayout::PLANE_U;
-                layout->planes[C2PlanarLayout::PLANE_V].offset = uvOffset;
-            } else if (uvOffset < 0 && uvOffset > -(intptr_t)ycbcrLayout.chroma_step) {
-                layout->rootPlanes = 2;
-                layout->planes[C2PlanarLayout::PLANE_U].rootIx = C2PlanarLayout::PLANE_V;
-                layout->planes[C2PlanarLayout::PLANE_U].offset = -uvOffset;
-            }
             break;
         }
 
         case static_cast<uint32_t>(PixelFormat4::YCBCR_P010): {
+            // In Android T, P010 is relaxed to allow arbitrary stride for the Y and UV planes,
+            // try locking with the gralloc4 mapper first.
+            c2_status_t status = Gralloc4Mapper_lock(
+                    const_cast<native_handle_t*>(mBuffer), grallocUsage, rect, layout, addr);
+            if (status == C2_OK) {
+                break;
+            }
+
             void *pointer = nullptr;
             status_t err = GraphicBufferMapper::get().lock(
                     const_cast<native_handle_t *>(mBuffer), grallocUsage, rect, &pointer);
@@ -772,10 +772,12 @@ c2_status_t C2AllocationGralloc::map(
         default: {
             // We don't know what it is, let's try to lock it with gralloc4
             android_ycbcr ycbcrLayout;
-            c2_status_t status = Gralloc4Mapper_lock(
-                    const_cast<native_handle_t*>(mBuffer), grallocUsage, rect, layout, addr);
-            if (status == C2_OK) {
-                break;
+            if (isAtLeastT()) {
+                c2_status_t status = Gralloc4Mapper_lock(
+                        const_cast<native_handle_t*>(mBuffer), grallocUsage, rect, layout, addr);
+                if (status == C2_OK) {
+                    break;
+                }
             }
 
             // fallback to lockYCbCr
@@ -830,17 +832,6 @@ c2_status_t C2AllocationGralloc::map(
                     C2PlanarLayout::PLANE_V,          // rootIx
                     0,                                // offset
                 };
-                // handle interleaved formats
-                intptr_t uvOffset = addr[C2PlanarLayout::PLANE_V] - addr[C2PlanarLayout::PLANE_U];
-                if (uvOffset > 0 && uvOffset < (intptr_t)ycbcrLayout.chroma_step) {
-                    layout->rootPlanes = 2;
-                    layout->planes[C2PlanarLayout::PLANE_V].rootIx = C2PlanarLayout::PLANE_U;
-                    layout->planes[C2PlanarLayout::PLANE_V].offset = uvOffset;
-                } else if (uvOffset < 0 && uvOffset > -(intptr_t)ycbcrLayout.chroma_step) {
-                    layout->rootPlanes = 2;
-                    layout->planes[C2PlanarLayout::PLANE_U].rootIx = C2PlanarLayout::PLANE_V;
-                    layout->planes[C2PlanarLayout::PLANE_U].offset = -uvOffset;
-                }
                 break;
             }
 
@@ -885,6 +876,29 @@ c2_status_t C2AllocationGralloc::map(
         }
     }
     mLocked = true;
+
+    // handle interleaved formats
+    if (layout->type == C2PlanarLayout::TYPE_YUV && layout->rootPlanes == 3) {
+        intptr_t uvOffset = addr[C2PlanarLayout::PLANE_V] - addr[C2PlanarLayout::PLANE_U];
+        intptr_t uvColInc = layout->planes[C2PlanarLayout::PLANE_U].colInc;
+        if (uvOffset > 0 && uvOffset < uvColInc) {
+            layout->rootPlanes = 2;
+            layout->planes[C2PlanarLayout::PLANE_V].rootIx = C2PlanarLayout::PLANE_U;
+            layout->planes[C2PlanarLayout::PLANE_V].offset = uvOffset;
+        } else if (uvOffset < 0 && uvOffset > -uvColInc) {
+            layout->rootPlanes = 2;
+            layout->planes[C2PlanarLayout::PLANE_U].rootIx = C2PlanarLayout::PLANE_V;
+            layout->planes[C2PlanarLayout::PLANE_U].offset = -uvOffset;
+        }
+    }
+
+    ALOGV("C2AllocationGralloc::map: layout: type=%d numPlanes=%d rootPlanes=%d",
+          layout->type, layout->numPlanes, layout->rootPlanes);
+    for (int i = 0; i < layout->numPlanes; ++i) {
+        const C2PlaneInfo &plane = layout->planes[i];
+        ALOGV("C2AllocationGralloc::map: plane[%d]: colInc=%d rowInc=%d rootIx=%u offset=%u",
+              i, plane.colInc, plane.rowInc, plane.rootIx, plane.offset);
+    }
 
     return C2_OK;
 }

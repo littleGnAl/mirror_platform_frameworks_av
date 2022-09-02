@@ -283,6 +283,10 @@ public:
     status_t         setHapticIntensity(int id, int intensity);
     status_t         setVibratorInfo(const media::AudioVibratorInfo& vibratorInfo);
 
+    status_t         getConfigs(audio_config_base_t* inputCfg,
+                                audio_config_base_t* outputCfg,
+                                bool* isOutput) const;
+
     void             dump(int fd, const Vector<String16>& args);
 
 private:
@@ -314,6 +318,7 @@ private:
     uint32_t mDisableWaitCnt;       // current process() calls count during disable period.
     bool     mOffloaded;            // effect is currently offloaded to the audio DSP
     bool     mAddedToHal;           // effect has been added to the audio HAL
+    bool     mIsOutput;             // direction of the AF thread
 
 #ifdef FLOAT_EFFECT_CHAIN
     bool    mSupportsFloat;         // effect supports float processing
@@ -356,6 +361,8 @@ public:
             const sp<media::IEffectClient>& effectClient,
             int32_t priority, bool notifyFramesProcessed);
     virtual ~EffectHandle();
+    status_t onTransact(
+            uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags) override;
     virtual status_t initCheck();
 
     // IEffect
@@ -368,6 +375,8 @@ public:
                                     int32_t* _aidl_return) override;
     android::binder::Status disconnect() override;
     android::binder::Status getCblk(media::SharedFileRegion* _aidl_return) override;
+    android::binder::Status getConfig(media::EffectConfig* _config,
+                                      int32_t* _aidl_return) override;
 
     sp<Client> client() const { return mClient; }
 
@@ -766,8 +775,8 @@ private:
         void resetVolume() override {}
         product_strategy_t strategy() const override  { return static_cast<product_strategy_t>(0); }
         int32_t activeTrackCnt() const override { return 0; }
-        void onEffectEnable(const sp<EffectBase>& effect __unused) override {}
-        void onEffectDisable(const sp<EffectBase>& effect __unused) override {}
+        void onEffectEnable(const sp<EffectBase>& effect __unused) override;
+        void onEffectDisable(const sp<EffectBase>& effect __unused) override;
 
         wp<EffectChain> chain() const override { return nullptr; }
 

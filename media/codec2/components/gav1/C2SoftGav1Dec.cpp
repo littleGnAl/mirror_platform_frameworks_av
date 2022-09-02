@@ -21,6 +21,7 @@
 #include <C2Debug.h>
 #include <C2PlatformSupport.h>
 #include <Codec2BufferUtils.h>
+#include <Codec2CommonUtils.h>
 #include <Codec2Mapper.h>
 #include <SimpleC2Interface.h>
 #include <log/log.h>
@@ -31,6 +32,8 @@ namespace android {
 
 // codecname set and passed in as a compile flag from Android.bp
 constexpr char COMPONENT_NAME[] = CODECNAME;
+
+constexpr size_t kMinInputBufferSize = 2 * 1024 * 1024;
 
 class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
  public:
@@ -53,8 +56,8 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
         DefineParam(mSize, C2_PARAMKEY_PICTURE_SIZE)
             .withDefault(new C2StreamPictureSizeInfo::output(0u, 320, 240))
             .withFields({
-                C2F(mSize, width).inRange(2, 4096, 2),
-                C2F(mSize, height).inRange(2, 4096, 2),
+                C2F(mSize, width).inRange(2, 4096),
+                C2F(mSize, height).inRange(2, 4096),
             })
             .withSetter(SizeSetter)
             .build());
@@ -99,6 +102,29 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
             .withSetter(Hdr10PlusInfoOutputSetter)
             .build());
 
+    // default static info
+    C2HdrStaticMetadataStruct defaultStaticInfo{};
+    helper->addStructDescriptors<C2MasteringDisplayColorVolumeStruct, C2ColorXyStruct>();
+    addParameter(
+        DefineParam(mHdrStaticInfo, C2_PARAMKEY_HDR_STATIC_INFO)
+            .withDefault(new C2StreamHdrStaticInfo::output(0u, defaultStaticInfo))
+            .withFields({
+                C2F(mHdrStaticInfo, mastering.red.x).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.red.y).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.green.x).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.green.y).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.blue.x).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.blue.y).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.white.x).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.white.x).inRange(0, 1),
+                C2F(mHdrStaticInfo, mastering.maxLuminance).inRange(0, 65535),
+                C2F(mHdrStaticInfo, mastering.minLuminance).inRange(0, 6.5535),
+                C2F(mHdrStaticInfo, maxCll).inRange(0, 0XFFFF),
+                C2F(mHdrStaticInfo, maxFall).inRange(0, 0XFFFF)
+            })
+            .withSetter(HdrStaticInfoSetter)
+            .build());
+
     addParameter(
         DefineParam(mMaxSize, C2_PARAMKEY_MAX_PICTURE_SIZE)
             .withDefault(new C2StreamMaxPictureSizeTuning::output(0u, 320, 240))
@@ -110,8 +136,7 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
             .build());
 
     addParameter(DefineParam(mMaxInputSize, C2_PARAMKEY_INPUT_MAX_BUFFER_SIZE)
-                     .withDefault(new C2StreamMaxBufferSizeInfo::input(
-                         0u, 320 * 240 * 3 / 4))
+                     .withDefault(new C2StreamMaxBufferSizeInfo::input(0u, kMinInputBufferSize))
                      .withFields({
                          C2F(mMaxInputSize, value).any(),
                      })
@@ -189,11 +214,23 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
               .withSetter(ColorAspectsSetter, mDefaultColorAspects, mCodedColorAspects)
               .build());
 
+    std::vector<uint32_t> pixelFormats = {HAL_PIXEL_FORMAT_YCBCR_420_888};
+    if (isHalPixelFormatSupported((AHardwareBuffer_Format)HAL_PIXEL_FORMAT_YCBCR_P010)) {
+        pixelFormats.push_back(HAL_PIXEL_FORMAT_YCBCR_P010);
+    }
+    // If color format surface isn't added to supported formats, there is no way to know
+    // when the color-format is configured to surface. This is necessary to be able to
+    // choose 10-bit format while decoding 10-bit clips in surface mode.
+    pixelFormats.push_back(HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED);
+
     // TODO: support more formats?
-    addParameter(DefineParam(mPixelFormat, C2_PARAMKEY_PIXEL_FORMAT)
-                     .withConstValue(new C2StreamPixelFormatInfo::output(
-                         0u, HAL_PIXEL_FORMAT_YCBCR_420_888))
-                     .build());
+    addParameter(
+            DefineParam(mPixelFormat, C2_PARAMKEY_PIXEL_FORMAT)
+            .withDefault(new C2StreamPixelFormatInfo::output(
+                              0u, HAL_PIXEL_FORMAT_YCBCR_420_888))
+            .withFields({C2F(mPixelFormat, value).oneOf(pixelFormats)})
+            .withSetter((Setter<decltype(*mPixelFormat)>::StrictValueWithNoDeps))
+            .build());
   }
 
   static C2R SizeSetter(bool mayBlock,
@@ -227,9 +264,9 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
       bool mayBlock, C2P<C2StreamMaxBufferSizeInfo::input> &me,
       const C2P<C2StreamMaxPictureSizeTuning::output> &maxSize) {
     (void)mayBlock;
-    // assume compression ratio of 2
-    me.set().value =
-        (((maxSize.v.width + 63) / 64) * ((maxSize.v.height + 63) / 64) * 3072);
+    // assume compression ratio of 2, but enforce a floor
+    me.set().value = c2_max((((maxSize.v.width + 63) / 64)
+                * ((maxSize.v.height + 63) / 64) * 3072), kMinInputBufferSize);
     return C2R::Ok();
   }
 
@@ -314,6 +351,50 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
     return C2R::Ok();
   }
 
+  // unsafe getters
+  std::shared_ptr<C2StreamPixelFormatInfo::output> getPixelFormat_l() const { return mPixelFormat; }
+
+  static C2R HdrStaticInfoSetter(bool mayBlock, C2P<C2StreamHdrStaticInfo::output> &me) {
+    (void)mayBlock;
+    if (me.v.mastering.red.x > 1) {
+      me.set().mastering.red.x = 1;
+    }
+    if (me.v.mastering.red.y > 1) {
+      me.set().mastering.red.y = 1;
+    }
+    if (me.v.mastering.green.x > 1) {
+      me.set().mastering.green.x = 1;
+    }
+    if (me.v.mastering.green.y > 1) {
+      me.set().mastering.green.y = 1;
+    }
+    if (me.v.mastering.blue.x > 1) {
+      me.set().mastering.blue.x = 1;
+    }
+    if (me.v.mastering.blue.y > 1) {
+      me.set().mastering.blue.y = 1;
+    }
+    if (me.v.mastering.white.x > 1) {
+      me.set().mastering.white.x = 1;
+    }
+    if (me.v.mastering.white.y > 1) {
+      me.set().mastering.white.y = 1;
+    }
+    if (me.v.mastering.maxLuminance > 65535.0) {
+      me.set().mastering.maxLuminance = 65535.0;
+    }
+    if (me.v.mastering.minLuminance > 6.5535) {
+      me.set().mastering.minLuminance = 6.5535;
+    }
+    if (me.v.maxCll > 65535.0) {
+      me.set().maxCll = 65535.0;
+    }
+    if (me.v.maxFall > 65535.0) {
+      me.set().maxFall = 65535.0;
+    }
+    return C2R::Ok();
+  }
+
  private:
   std::shared_ptr<C2StreamProfileLevelInfo::input> mProfileLevel;
   std::shared_ptr<C2StreamPictureSizeInfo::output> mSize;
@@ -326,6 +407,7 @@ class C2SoftGav1Dec::IntfImpl : public SimpleInterface<void>::BaseParams {
   std::shared_ptr<C2StreamColorAspectsInfo::output> mColorAspects;
   std::shared_ptr<C2StreamHdr10PlusInfo::input> mHdr10PlusInfoInput;
   std::shared_ptr<C2StreamHdr10PlusInfo::output> mHdr10PlusInfoOutput;
+  std::shared_ptr<C2StreamHdrStaticInfo::output> mHdrStaticInfo;
 };
 
 C2SoftGav1Dec::C2SoftGav1Dec(const char *name, c2_node_id_t id,
@@ -334,8 +416,7 @@ C2SoftGav1Dec::C2SoftGav1Dec(const char *name, c2_node_id_t id,
           std::make_shared<SimpleInterface<IntfImpl>>(name, id, intfImpl)),
       mIntf(intfImpl),
       mCodecCtx(nullptr) {
-  gettimeofday(&mTimeStart, nullptr);
-  gettimeofday(&mTimeEnd, nullptr);
+  mTimeStart = mTimeEnd = systemTime();
 }
 
 C2SoftGav1Dec::~C2SoftGav1Dec() { onRelease(); }
@@ -402,6 +483,11 @@ static int GetCPUCoreCount() {
 bool C2SoftGav1Dec::initDecoder() {
   mSignalledError = false;
   mSignalledOutputEos = false;
+  mHalPixelFormat = HAL_PIXEL_FORMAT_YV12;
+  {
+      IntfImpl::Lock lock = mIntf->lock();
+      mPixelFormatInfo = mIntf->getPixelFormat_l();
+  }
   mCodecCtx.reset(new libgav1::Decoder());
 
   if (mCodecCtx == nullptr) {
@@ -505,19 +591,17 @@ void C2SoftGav1Dec::process(const std::unique_ptr<C2Work> &work,
   int64_t frameIndex = work->input.ordinal.frameIndex.peekll();
   if (inSize) {
     uint8_t *bitstream = const_cast<uint8_t *>(rView.data() + inOffset);
-    int32_t decodeTime = 0;
-    int32_t delay = 0;
 
-    GETTIME(&mTimeStart, nullptr);
-    TIME_DIFF(mTimeEnd, mTimeStart, delay);
+    mTimeStart = systemTime();
+    nsecs_t delay = mTimeStart - mTimeEnd;
 
     const Libgav1StatusCode status =
         mCodecCtx->EnqueueFrame(bitstream, inSize, frameIndex,
                                 /*buffer_private_data=*/nullptr);
 
-    GETTIME(&mTimeEnd, nullptr);
-    TIME_DIFF(mTimeStart, mTimeEnd, decodeTime);
-    ALOGV("decodeTime=%4d delay=%4d\n", decodeTime, delay);
+    mTimeEnd = systemTime();
+    nsecs_t decodeTime = mTimeEnd - mTimeStart;
+    ALOGV("decodeTime=%4" PRId64 " delay=%4" PRId64 "\n", decodeTime, delay);
 
     if (status != kLibgav1StatusOk) {
       ALOGE("av1 decoder failed to decode frame. status: %d.", status);
@@ -536,6 +620,76 @@ void C2SoftGav1Dec::process(const std::unique_ptr<C2Work> &work,
     mSignalledOutputEos = true;
   } else if (!inSize) {
     fillEmptyWork(work);
+  }
+}
+
+void C2SoftGav1Dec::getHDRStaticParams(const libgav1::DecoderBuffer *buffer,
+                                       const std::unique_ptr<C2Work> &work) {
+  C2StreamHdrStaticMetadataInfo::output hdrStaticMetadataInfo{};
+  bool infoPresent = false;
+  if (buffer->has_hdr_mdcv) {
+    // hdr_mdcv.primary_chromaticity_* values are in 0.16 fixed-point format.
+    hdrStaticMetadataInfo.mastering.red.x = buffer->hdr_mdcv.primary_chromaticity_x[0] / 65536.0;
+    hdrStaticMetadataInfo.mastering.red.y = buffer->hdr_mdcv.primary_chromaticity_y[0] / 65536.0;
+
+    hdrStaticMetadataInfo.mastering.green.x = buffer->hdr_mdcv.primary_chromaticity_x[1] / 65536.0;
+    hdrStaticMetadataInfo.mastering.green.y = buffer->hdr_mdcv.primary_chromaticity_y[1] / 65536.0;
+
+    hdrStaticMetadataInfo.mastering.blue.x = buffer->hdr_mdcv.primary_chromaticity_x[2] / 65536.0;
+    hdrStaticMetadataInfo.mastering.blue.y = buffer->hdr_mdcv.primary_chromaticity_y[2] / 65536.0;
+
+    // hdr_mdcv.white_point_chromaticity_* values are in 0.16 fixed-point format.
+    hdrStaticMetadataInfo.mastering.white.x = buffer->hdr_mdcv.white_point_chromaticity_x / 65536.0;
+    hdrStaticMetadataInfo.mastering.white.y = buffer->hdr_mdcv.white_point_chromaticity_y / 65536.0;
+
+    // hdr_mdcv.luminance_max is in 24.8 fixed-point format.
+    hdrStaticMetadataInfo.mastering.maxLuminance = buffer->hdr_mdcv.luminance_max / 256.0;
+    // hdr_mdcv.luminance_min is in 18.14 format.
+    hdrStaticMetadataInfo.mastering.minLuminance = buffer->hdr_mdcv.luminance_min / 16384.0;
+    infoPresent = true;
+  }
+
+  if (buffer->has_hdr_cll) {
+    hdrStaticMetadataInfo.maxCll = buffer->hdr_cll.max_cll;
+    hdrStaticMetadataInfo.maxFall = buffer->hdr_cll.max_fall;
+    infoPresent = true;
+  }
+  // config if static info has changed
+  if (infoPresent && !(hdrStaticMetadataInfo == mHdrStaticMetadataInfo)) {
+    mHdrStaticMetadataInfo = hdrStaticMetadataInfo;
+    work->worklets.front()->output.configUpdate.push_back(C2Param::Copy(mHdrStaticMetadataInfo));
+  }
+}
+
+void C2SoftGav1Dec::getHDR10PlusInfoData(const libgav1::DecoderBuffer *buffer,
+                                         const std::unique_ptr<C2Work> &work) {
+  if (buffer->has_itut_t35) {
+    std::vector<uint8_t> payload;
+    size_t payloadSize = buffer->itut_t35.payload_size;
+    if (payloadSize > 0) {
+      payload.push_back(buffer->itut_t35.country_code);
+      if (buffer->itut_t35.country_code == 0xFF) {
+        payload.push_back(buffer->itut_t35.country_code_extension_byte);
+      }
+      payload.insert(payload.end(), buffer->itut_t35.payload_bytes,
+                     buffer->itut_t35.payload_bytes + buffer->itut_t35.payload_size);
+    }
+
+    std::unique_ptr<C2StreamHdr10PlusInfo::output> hdr10PlusInfo =
+            C2StreamHdr10PlusInfo::output::AllocUnique(payload.size());
+    if (!hdr10PlusInfo) {
+      ALOGE("Hdr10PlusInfo allocation failed");
+      mSignalledError = true;
+      work->result = C2_NO_MEMORY;
+      return;
+    }
+    memcpy(hdr10PlusInfo->m.value, payload.data(), payload.size());
+
+    // config if hdr10Plus info has changed
+    if (nullptr == mHdr10PlusInfo || !(*hdr10PlusInfo == *mHdr10PlusInfo)) {
+      mHdr10PlusInfo = std::move(hdr10PlusInfo);
+      work->worklets.front()->output.configUpdate.push_back(std::move(mHdr10PlusInfo));
+    }
   }
 }
 
@@ -614,6 +768,9 @@ bool C2SoftGav1Dec::outputBuffer(const std::shared_ptr<C2BlockPool> &pool,
   }
 
   getVuiParams(buffer);
+  getHDRStaticParams(buffer, work);
+  getHDR10PlusInfoData(buffer, work);
+
   if (!(buffer->image_format == libgav1::kImageFormatYuv420 ||
         buffer->image_format == libgav1::kImageFormatMonochrome400)) {
     ALOGE("image_format %d not supported", buffer->image_format);
@@ -627,10 +784,10 @@ bool C2SoftGav1Dec::outputBuffer(const std::shared_ptr<C2BlockPool> &pool,
 
   std::shared_ptr<C2GraphicBlock> block;
   uint32_t format = HAL_PIXEL_FORMAT_YV12;
-  if (buffer->bitdepth == 10) {
+  std::shared_ptr<C2StreamColorAspectsInfo::output> codedColorAspects;
+  if (buffer->bitdepth == 10 && mPixelFormatInfo->value != HAL_PIXEL_FORMAT_YCBCR_420_888) {
     IntfImpl::Lock lock = mIntf->lock();
-    std::shared_ptr<C2StreamColorAspectsInfo::output> codedColorAspects =
-        mIntf->getColorAspects_l();
+    codedColorAspects = mIntf->getColorAspects_l();
     bool allowRGBA1010102 = false;
     if (codedColorAspects->primaries == C2Color::PRIMARIES_BT2020 &&
         codedColorAspects->matrix == C2Color::MATRIX_BT2020 &&
@@ -647,10 +804,32 @@ bool C2SoftGav1Dec::outputBuffer(const std::shared_ptr<C2BlockPool> &pool,
       return false;
     }
   }
+
+  if (mHalPixelFormat != format) {
+    C2StreamPixelFormatInfo::output pixelFormat(0u, format);
+    std::vector<std::unique_ptr<C2SettingResult>> failures;
+    c2_status_t err = mIntf->config({&pixelFormat }, C2_MAY_BLOCK, &failures);
+    if (err == C2_OK) {
+      work->worklets.front()->output.configUpdate.push_back(
+          C2Param::Copy(pixelFormat));
+    } else {
+      ALOGE("Config update pixelFormat failed");
+      mSignalledError = true;
+      work->workletsProcessed = 1u;
+      work->result = C2_CORRUPTED;
+      return UNKNOWN_ERROR;
+    }
+    mHalPixelFormat = format;
+  }
+
   C2MemoryUsage usage = {C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE};
 
-  c2_status_t err = pool->fetchGraphicBlock(align(mWidth, 16), mHeight, format,
-                                            usage, &block);
+  // We always create a graphic block that is width aligned to 16 and height
+  // aligned to 2. We set the correct "crop" value of the image in the call to
+  // createGraphicBuffer() by setting the correct image dimensions.
+  c2_status_t err = pool->fetchGraphicBlock(align(mWidth, 16),
+                                            align(mHeight, 2), format, usage,
+                                            &block);
 
   if (err != C2_OK) {
     ALOGE("fetchGraphicBlock for Output failed with status %d", err);
@@ -686,9 +865,11 @@ bool C2SoftGav1Dec::outputBuffer(const std::shared_ptr<C2BlockPool> &pool,
     const uint16_t *srcV = (const uint16_t *)buffer->plane[2];
 
     if (format == HAL_PIXEL_FORMAT_RGBA_1010102) {
-        convertYUV420Planar16ToY410((uint32_t *)dstY, srcY, srcU, srcV, srcYStride / 2,
-                                    srcUStride / 2, srcVStride / 2, dstYStride / sizeof(uint32_t),
-                                    mWidth, mHeight);
+        convertYUV420Planar16ToY410OrRGBA1010102(
+                (uint32_t *)dstY, srcY, srcU, srcV, srcYStride / 2,
+                srcUStride / 2, srcVStride / 2,
+                dstYStride / sizeof(uint32_t), mWidth, mHeight,
+                std::static_pointer_cast<const C2ColorAspectsStruct>(codedColorAspects));
     } else if (format == HAL_PIXEL_FORMAT_YCBCR_P010) {
         convertYUV420Planar16ToP010((uint16_t *)dstY, (uint16_t *)dstU, srcY, srcU, srcV,
                                     srcYStride / 2, srcUStride / 2, srcVStride / 2, dstYStride / 2,
