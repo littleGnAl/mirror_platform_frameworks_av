@@ -794,6 +794,8 @@ static std::vector<std::pair<const char *, uint32_t>> int32Mappings {
         { "thumbnail-height", kKeyThumbnailHeight },
         { "track-id", kKeyTrackID },
         { "valid-samples", kKeyValidSamples },
+        { "component-tag", kKeyComponentTag},
+        { "audio-description", kKeyAudioDescription},
     }
 };
 
@@ -1000,6 +1002,16 @@ status_t convertMetaDataToMessage(
     int32_t isSync;
     if (meta->findInt32(kKeyIsSyncFrame, &isSync) && isSync != 0) {
         msg->setInt32("is-sync-frame", 1);
+    }
+
+    int32_t componentTag = 0;
+    if (meta->findInt32(kKeyComponentTag, &componentTag)) {
+        msg->setInt32("component-tag", componentTag);
+    }
+
+    int32_t audioDescription = 0;
+    if (meta->findInt32(kKeyAudioDescription, &audioDescription)) {
+        msg->setInt32("audio-description", audioDescription);
     }
 
     const char *lang;
@@ -1786,6 +1798,16 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
     }
     if (msg->findInt32("max-bitrate", &maxBitrate) && maxBitrate > 0 && maxBitrate >= avgBitrate) {
         meta->setInt32(kKeyMaxBitRate, maxBitrate);
+    }
+
+    int32_t componentTag = 0;
+    if (msg->findInt32("component-tag", &componentTag) && componentTag > 0) {
+        meta->setInt32(kKeyComponentTag, componentTag);
+    }
+
+    int32_t audioDescription = 0;
+    if (msg->findInt32("audio-description", &audioDescription)) {
+        meta->setInt32(kKeyAudioDescription, audioDescription);
     }
 
     AString lang;
