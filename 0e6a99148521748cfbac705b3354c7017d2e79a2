@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edd07f5f_a18119d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1965242
+      },
+      "writtenOn": "2022-09-02T02:45:04Z",
+      "side": 1,
+      "message": "Client 1 call disconnect and notify Client 2 physical camera status has been changed with onPhysicalCameraStatusChanged.\n\nAnd Client 2 call disconnect and flush error requests, and then receive \nhidl notification onDeviceError.\n\nSo disconnection of client 2 hold mDeviceLock and onDeviceError acquire it, onDeviceError wait for client 2 disconnect.\n\nClient 2 disconnect wait client 1 disconnect, client 1 wait for onPhysicalCameraStatusChanged, onPhysicalCameraStatusChanged wait onDeviceError, onDeviceError wait Client 2 disconnect.\n\nAn perfetto trace is attached in Customer Issue: 243902566, It will visually shows you this deadlock.",
+      "parentUuid": "54c2e636_3d7cab8c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74827f0b_70bf2235",
         "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
         "patchSetId": 2
