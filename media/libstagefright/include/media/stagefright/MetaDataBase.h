@@ -277,6 +277,11 @@ enum {
     kKeyLastSampleIndexInChunk = 'lsic',  //int64_t, index of last sample in a chunk.
     kKeySampleTimeBeforeAppend = 'lsba', // int64_t, timestamp of last sample of a track.
 
+    // Component tag
+    kKeyComponentTag = 'copt', // int32_t, component tag for video/audio/subtitle
+
+    // Audio description
+    kKeyAudioDescription = 'addt', // bool (int32_t), audio description only defined for audio component
 };
 
 enum {
