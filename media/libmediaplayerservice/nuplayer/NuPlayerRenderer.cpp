@@ -165,6 +165,7 @@ NuPlayer::Renderer::Renderer(
 }
 
 NuPlayer::Renderer::~Renderer() {
+    mAudioSink->setAudioSinkCallbackEnabled(false);
     if (offloadingAudio()) {
         mAudioSink->stop();
         mAudioSink->flush();
@@ -873,11 +874,15 @@ void NuPlayer::Renderer::notifyIfMediaRenderingStarted_l() {
 
 // static
 size_t NuPlayer::Renderer::AudioSinkCallback(
-        MediaPlayerBase::AudioSink * /* audioSink */,
+        MediaPlayerBase::AudioSink * audioSink,
         void *buffer,
         size_t size,
         void *cookie,
         MediaPlayerBase::AudioSink::cb_event_t event) {
+    if (!audioSink->isAudioSinkCallbackEnabled()) {
+        ALOGD("renderer was destructed, would not handle callback");
+        return 0;
+    }
     NuPlayer::Renderer *me = (NuPlayer::Renderer *)cookie;
 
     switch (event) {

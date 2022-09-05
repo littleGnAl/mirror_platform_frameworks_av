@@ -132,6 +132,8 @@ class MediaPlayerService : public BnMediaPlayerService
         virtual status_t        dump(int fd, const Vector<String16>& args) const;
 
         static bool             isOnEmulator();
+        virtual void            setAudioSinkCallbackEnabled(bool enable);
+        virtual bool            isAudioSinkCallbackEnabled();
         static int              getMinBufferCount();
                 void            setNextOutput(const sp<AudioOutput>& nextOutput);
                 void            switchToNextOutput();
@@ -182,7 +184,7 @@ class MediaPlayerService : public BnMediaPlayerService
         bool                    mDeviceCallbackEnabled;
         wp<AudioSystem::AudioDeviceCallback>        mDeviceCallback;
         mutable Mutex           mLock;
-
+        volatile bool           mAudioSinkCallbackEnabled;
         // static variables below not protected by mutex
         static bool             mIsOnEmulator;
         static int              mMinBufferCount;  // 12 for emulator; otherwise 4

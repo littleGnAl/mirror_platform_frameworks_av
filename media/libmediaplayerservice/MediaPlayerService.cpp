@@ -1824,7 +1824,8 @@ MediaPlayerService::AudioOutput::AudioOutput(audio_session_t sessionId,
       mSelectedDeviceId(AUDIO_PORT_HANDLE_NONE),
       mRoutedDeviceId(AUDIO_PORT_HANDLE_NONE),
       mDeviceCallbackEnabled(false),
-      mDeviceCallback(deviceCallback)
+      mDeviceCallback(deviceCallback),
+      mAudioSinkCallbackEnabled(true)
 {
     ALOGV("AudioOutput(%d)", sessionId);
     if (attr != NULL) {
@@ -1853,6 +1854,16 @@ void MediaPlayerService::AudioOutput::setMinBufferCount()
         mIsOnEmulator = true;
         mMinBufferCount = 12;  // to prevent systematic buffer underrun for emulator
     }
+}
+
+void MediaPlayerService::AudioOutput::setAudioSinkCallbackEnabled(bool enable)
+{
+    mAudioSinkCallbackEnabled = enable;
+}
+
+bool MediaPlayerService::AudioOutput::isAudioSinkCallbackEnabled()
+{
+    return mAudioSinkCallbackEnabled;
 }
 
 // static
