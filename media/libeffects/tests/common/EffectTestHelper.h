@@ -107,6 +107,51 @@ class EffectTestHelper {
     };
 
     template <bool MULTI_VALUES, typename T>
+    int32_t getParam(uint32_t type, int32_t paramVal, std::vector<T>& values) {
+        const int kMaxEffectParamValues = 64;
+        uint8_t cmd[sizeof(effect_param_t) + (sizeof(int32_t) * 2)];
+        uint8_t reply[sizeof(cmd) + (kMaxEffectParamValues * sizeof(T))];
+
+        effect_param_t* p = (effect_param_t*)cmd;
+        p->psize = sizeof(int32_t) * 2;
+        if (MULTI_VALUES) {
+            p->vsize = kMaxEffectParamValues * sizeof(T);
+        } else {
+            p->vsize = sizeof(T);
+        }
+        *(uint32_t*)p->data = type;
+        *((uint32_t*)p->data + 1) = paramVal;
+        uint32_t replySize = sizeof(effect_param_t) + p->psize + p->vsize;
+
+        int32_t status = (*mEffectHandle)
+                                 ->command(mEffectHandle, EFFECT_CMD_GET_PARAM,
+                                           sizeof(cmd), cmd,
+                                           &replySize, reply);
+        if (status) {
+            return status;
+        }
+        if (p->status) {
+            return p->status;
+        }
+        if (replySize <
+            sizeof(effect_param_t) + p->psize + (MULTI_VALUES ? 2 : 1) * sizeof(T)) {
+            return -EINVAL;
+        }
+        T* params = (T*)((uint8_t*)reply + sizeof(effect_param_t) + p->psize);
+        int numParams = 1;
+        if (MULTI_VALUES) {
+            effect_param_t* v = (effect_param_t*)reply;
+            numParams = v->vsize / sizeof(T);
+        }
+        if (numParams > kMaxEffectParamValues) {
+            return -EINVAL;
+        }
+        values.clear();
+        std::copy(&params[0], &params[numParams], back_inserter(values));
+        return 0;
+    }
+
+    template <bool MULTI_VALUES, typename T>
     int32_t getParam(uint32_t type, std::vector<T>& values) {
         const int kMaxEffectParamValues = 10;
         uint32_t cmd[sizeof(effect_param_t) / sizeof(uint32_t) + 1];
