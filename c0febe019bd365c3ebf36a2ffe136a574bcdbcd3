@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a395a2a6_74fd32c9",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-09-06T17:02:05Z",
+      "side": 1,
+      "message": "Eric has made a change to that method, now the body looks like this:\n\n```\n    std::lock_guard lock(mLock);\n    if (callback \u003d\u003d nullptr) {\n        return BAD_VALUE;\n    }\n\n    if (mSpatializerCallback !\u003d nullptr) {\n        if (IInterface::asBinder(callback) \u003d\u003d IInterface::asBinder(mSpatializerCallback)) {\n            ALOGW(\"%s: Registering callback %p again\",\n                __func__, mSpatializerCallback.get());\n            return NO_ERROR;\n        }\n        ALOGE(\"%s: Already one client registered with callback %p\",\n            __func__, mSpatializerCallback.get());\n        return INVALID_OPERATION;\n    }\n\n    sp\u003cIBinder\u003e binder \u003d IInterface::asBinder(callback);\n    status_t status \u003d binder-\u003elinkToDeath(this);\n    if (status \u003d\u003d NO_ERROR) {\n        mSpatializerCallback \u003d callback;\n    }\n    ALOGV(\"%s status %d\", __func__, status);\n    return status;\n```",
+      "parentUuid": "8fd70d57_c3b86258",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 47
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bb551f7_897cb075",
         "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
         "patchSetId": 1
