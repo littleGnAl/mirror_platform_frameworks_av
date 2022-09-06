@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e874935_12c8f8ca",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-09-06T05:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f96f781_fdcdd4ef",
+      "range": {
+        "startLine": 420,
+        "startChar": 24,
+        "endLine": 420,
+        "endChar": 44
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d66be70c_f9d6c4cb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-30T20:03:47Z",
       "side": 1,
       "message": "Regarding what we were discussing on the meeting, it is possible to stop the shell by using `run-command` and `teardown-command` options of the preparer. We need to stop the framework, thus the command will be `stop` for preparation and `start` for teardown, see an example of `run-command` usage here: https://cs.android.com/android/platform/superproject/+/master:cts/tests/tests/widget/AndroidTest.xml. If restarting of the native audio service is needed, this can be achieved by issuing `pkill audioserver`.",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 47
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd70d57_c3b86258",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-09-06T05:58:37Z",
+      "side": 1,
+      "message": "Mikhail, before that i just wanted to check if this change is an acceptable change,\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/service/Spatializer.cpp;l\u003d372;drc\u003dde13f0fd2731824228777e465f05d721b1f544b4\nif (callback \u003d\u003d nullptr || mSpatializerCallback !\u003d nullptr) {...}\n\nThis ensures, AudioSystem::getSpatializer() fails when an interface already exists. After the test runs, I may have to restart the audio service  to ensure it gets back the ownership of spatializer interface. For now i have marked this as DISABLED",
+      "parentUuid": "d66be70c_f9d6c4cb",
       "range": {
         "startLine": 603,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7c1f6e_d6b751f6",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-09-06T05:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb551f7_897cb075",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 661,
+        "endChar": 5
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb94d4b0_718251de",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-31T09:59:53Z",
       "side": 1,
       "message": "if isHeadTrackingSupported is false, setDesiredHeadTrackingMode() will return an error",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 31
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8664519e_37e39f2f",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-09-06T05:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb94d4b0_718251de",
       "range": {
         "startLine": 687,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac331248_4393f930",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-09-06T05:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23801893_ab64870d",
+      "range": {
+        "startLine": 731,
+        "startChar": 36,
+        "endLine": 731,
+        "endChar": 65
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd5c73b6_13b48c06",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-31T09:59:53Z",
       "side": 1,
       "message": "should we add a delay or a latch in the callback to make sure callbacks are received after calling onProcess()?",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 47
+      },
+      "revId": "c0febe019bd365c3ebf36a2ffe136a574bcdbcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6486cb82_81bca8cb",
+        "filename": "media/libaudioclient/tests/audioeffect_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-09-06T05:58:37Z",
+      "side": 1,
+      "message": "Done.\nplayback-\u003eonProcess() is a blocking call that waits till all the samples are played. By that time the callback should have serviced. So i didnt have any additional latency in the check. I modified this to address as per your suggestions to avoid any possible race conditions. Thank you.",
+      "parentUuid": "dd5c73b6_13b48c06",
       "range": {
         "startLine": 737,
         "startChar": 0,
