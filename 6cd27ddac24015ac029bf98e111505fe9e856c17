@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d3d92c_369e6640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-06T22:42:10Z",
+      "side": 1,
+      "message": "this only ever sets the values, i don\u0027t see any code using these new fields.",
+      "revId": "6cd27ddac24015ac029bf98e111505fe9e856c17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba76699_6690fc68",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-06T22:42:10Z",
+      "side": 1,
+      "message": "salt both of these literal stringswith dvb, so perhaps\n\"dvb-component-tag\" and \"dvb-audiodescription\".\n\nthe kKey stuff -- also include \"dvb\" in some way, as described in comments in the other file.",
+      "range": {
+        "startLine": 797,
+        "startChar": 10,
+        "endLine": 798,
+        "endChar": 28
+      },
+      "revId": "6cd27ddac24015ac029bf98e111505fe9e856c17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb4341b_2e0fc0e6",
+        "filename": "media/libstagefright/include/media/stagefright/MetaDataBase.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-06T22:42:10Z",
+      "side": 1,
+      "message": "i\u0027d like to salt both of these new names somehow with DVB, since they appear to be\nDVB-specific as opposed to general to all content.",
+      "range": {
+        "startLine": 281,
+        "startChar": 6,
+        "endLine": 281,
+        "endChar": 16
+      },
+      "revId": "6cd27ddac24015ac029bf98e111505fe9e856c17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
