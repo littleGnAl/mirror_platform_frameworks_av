@@ -16,6 +16,23 @@
       "message": "Cherry-pick from internal ag/19210923.",
       "revId": "d8913a420b0c37e3ec87decdcb3513fd4200c75a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73a3b34a_98909cb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-09-07T18:06:37Z",
+      "side": 1,
+      "message": "Need to wait for the automerger to propagate the parent CLs.",
+      "revId": "d8913a420b0c37e3ec87decdcb3513fd4200c75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
