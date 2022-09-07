@@ -134,6 +134,30 @@
       },
       "revId": "6cd27ddac24015ac029bf98e111505fe9e856c17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b3e7fc_f8721f7d",
+        "filename": "media/libstagefright/include/media/stagefright/MetaDataBase.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-09-07T17:49:33Z",
+      "side": 1,
+      "message": "\u003e I meant kKeyComponentTag and kKeyAudioDescription as the ones that I wanted to include \"Dvb\" in the name.\n\nThanks, make more sense now.\n\n\u003e I thought the 4-letter codes came out of the standard.\n\nI don\u0027t want to risk it and reverted to the initial proposed 4 letter code. Since the suggestion was just for the key naming, this is now done.",
+      "parentUuid": "b2357029_6b739a5f",
+      "range": {
+        "startLine": 281,
+        "startChar": 6,
+        "endLine": 281,
+        "endChar": 16
+      },
+      "revId": "6cd27ddac24015ac029bf98e111505fe9e856c17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
