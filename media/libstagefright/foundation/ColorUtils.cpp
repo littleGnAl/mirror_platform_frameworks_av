@@ -60,6 +60,10 @@ ALookup<CU::ColorStandard, std::pair<CA::Primaries, CA::MatrixCoeffs>> sStandard
         { CU::kColorStandardBT470M,         { CA::PrimariesBT470_6M, CA::MatrixBT470_6M } },
         // NOTE: there is no close match to the matrix used by standard film, chose closest
         { CU::kColorStandardFilm,           { CA::PrimariesGenericFilm, CA::MatrixBT2020 } },
+        // DCI-P3 (in DataSpace that drives this standard) is actually Display P3
+        // ITU does not specify a matrix suitable for P3. The theoretical KR/KB numbers are
+        // 0.229 and 0.079. Assume BT.709 matrix (KR=0.2126, KB=0.0722).
+        { CU::kColorStandardDCI_P3,         { CA::PrimariesEG432, CA::MatrixBT709 } },
     }
 };
 
@@ -438,6 +442,9 @@ ALookup<CU::ColorStandard, CA::Primaries> sStandardPrimariesFallbacks {
         { CU::kColorStandardBT2020,               CA::PrimariesBT2020 },
         { CU::kColorStandardBT601_525_Unadjusted, CA::PrimariesBT601_6_525 },
         { CU::kColorStandardBT601_625_Unadjusted, CA::PrimariesBT601_6_625 },
+        { CU::kColorStandardDisplay_P3,           CA::PrimariesEG432 },
+        // fall back DCI P3 primaries to Display P3
+        { CU::kColorStandardDisplay_P3,           CA::PrimariesRP432 },
     }
 };
 
