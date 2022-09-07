@@ -33,6 +33,23 @@
       "message": "Verified together with aosp/2208196. Not sure why this hasn\u0027t erased the previous PV-1, which actually was due to a CB timeout.",
       "revId": "441b487ea1223cb7817b28ae5cff81ab5411193a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5713c84_f78aee13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-09-07T18:23:00Z",
+      "side": 1,
+      "message": "Eric, could you please reapprove? It seems that because Andy has re-uploaded the change his vote does not count anymore.",
+      "revId": "441b487ea1223cb7817b28ae5cff81ab5411193a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
