@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e99e8a36_1a3c082f",
+        "filename": "media/module/bqhelper/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-08T12:36:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d3409fc_9c795913",
+      "range": {
+        "startLine": 2,
+        "startChar": 1,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "8e7d70357b8abf0c8508984c4d0f4fb8fd64bebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d01e1a56_f0b26cee",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-07T19:36:55Z",
       "side": 1,
       "message": "remove comment",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "8e7d70357b8abf0c8508984c4d0f4fb8fd64bebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9cdbb14_b928eae6",
+        "filename": "media/module/bqhelper/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-08T12:36:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d01e1a56_f0b26cee",
       "range": {
         "startLine": 2,
         "startChar": 0,
