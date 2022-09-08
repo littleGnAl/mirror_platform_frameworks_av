@@ -3185,14 +3185,14 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         mediametrics_setInt32(mMetricsHandle, kCodecSecure, 0);
                     }
 
-                    MediaCodecInfo::Attributes attr = mCodecInfo
-                            ? mCodecInfo->getAttributes()
-                            : MediaCodecInfo::Attributes(0);
-                    if (!(attr & MediaCodecInfo::kFlagIsSoftwareOnly)) {
+                    //MediaCodecInfo::Attributes attr = mCodecInfo
+                    //        ? mCodecInfo->getAttributes()
+                    //        : MediaCodecInfo::Attributes(0);
+                    //if (!(attr & MediaCodecInfo::kFlagIsSoftwareOnly)) {
                         // software codec is currently ignored.
                         mResourceManagerProxy->addResource(
                                 MediaResource::CodecResource(mFlags & kFlagIsSecure, mIsVideo));
-                    }
+                    //}
 
                     postPendingRepliesAndDeferredMessages("kWhatComponentAllocated");
                     break;
