@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15580851_e37003d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1965242
+      },
+      "writtenOn": "2022-09-08T12:33:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78dce71c_9e2d4685",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74827f0b_70bf2235",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "Yes, ::castFrom will cause dealock. It\u0027s expected for ::castFrom to block when the listener added is 2.0. But when we add listener 2.1, this cast is not necessary, and the blocking is not excepted.\n\nCastFrom call flow as follows:\n\n::android::hardware::Return\u003c::android::sp\u003c::android::frameworks::cameraservice::service::V2_1::ICameraServiceListener\u003e\u003e ICameraServiceListener::castFrom(const ::android::sp\u003c::android::frameworks::cameraservice::service::V2_1::ICameraServiceListener\u003e\u0026 parent, bool /* emitError */) {\n    return parent;\n}\n\n::android::hardware::Return\u003c::android::sp\u003c::android::frameworks::cameraservice::service::V2_1::ICameraServiceListener\u003e\u003e ICameraServiceListener::castFrom(const ::android::sp\u003c::android::frameworks::cameraservice::service::V2_0::ICameraServiceListener\u003e\u0026 parent, bool emitError) {\n    return ::android::hardware::details::castInterface\u003cICameraServiceListener, ::android::frameworks::cameraservice::service::V2_0::ICameraServiceListener, BpHwCameraServiceListener\u003e(\n            parent, \"android.frameworks.cameraservice.service@2.1::ICameraServiceListener\", emitError);\n}\n\n\n\n\nReturn\u003csp\u003cIChild\u003e\u003e castInterface(sp\u003cIParent\u003e parent, const char* childIndicator, bool emitError) {\n    if (parent.get() \u003d\u003d nullptr) {\n        // casts always succeed with nullptrs.\n        return nullptr;\n    }\n    Return\u003cbool\u003e canCastRet \u003d details::canCastInterface(parent.get(), childIndicator, emitError);\n    if (!canCastRet.isOk()) {\n        // call fails, propagate the error if emitError\n        return emitError\n                ? details::StatusOf\u003cbool, sp\u003cIChild\u003e\u003e(canCastRet)\n                : Return\u003csp\u003cIChild\u003e\u003e(sp\u003cIChild\u003e(nullptr));\n    }\n\n    if (!canCastRet) {\n        return sp\u003cIChild\u003e(nullptr); // cast failed.\n    }\n    // TODO b/32001926 Needs to be fixed for socket mode.\n    if (parent-\u003eisRemote()) {\n        // binderized mode. Got BpChild. grab the remote and wrap it.\n        return sp\u003cIChild\u003e(new BpChild(getOrCreateCachedBinder(parent.get())));\n    }\n    // Passthrough mode. Got BnChild or BsChild.\n    return sp\u003cIChild\u003e(static_cast\u003cIChild *\u003e(parent.get()));\n}\n\n\n\n\nAnd then canCastInterface call interfaceChain, interfaceChain is not a oneway binder, it will cause blocking in hidl.\n\n\n\n\nReturn\u003cbool\u003e canCastInterface(IBase* interface, const char* castTo, bool emitError) {\n    if (interface \u003d\u003d nullptr) {\n        return false;\n    }\n\n    // b/68217907\n    // Every HIDL interface is a base interface.\n    if (std::string(IBase::descriptor) \u003d\u003d castTo) {\n        return true;\n    }\n\n    bool canCast \u003d false;\n    auto chainRet \u003d interface-\u003einterfaceChain([\u0026](const hidl_vec\u003chidl_string\u003e \u0026types) {\n        for (size_t i \u003d 0; i \u003c types.size(); i++) {\n            if (types[i] \u003d\u003d castTo) {\n                canCast \u003d true;\n                break;\n            }\n        }\n    });\n\n    if (!chainRet.isOk()) {\n        // call fails, propagate the error if emitError\n        return emitError\n                ? details::StatusOf\u003cvoid, bool\u003e(chainRet)\n                : Return\u003cbool\u003e(false);\n    }\n\n    return canCast;\n}",
       "parentUuid": "74827f0b_70bf2235",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca592c19_b02b803d",
+        "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1965242
+      },
+      "writtenOn": "2022-09-08T12:33:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3607cd32_5e024932",
       "range": {
         "startLine": 47,
         "startChar": 17,
