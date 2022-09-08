@@ -3704,6 +3704,11 @@ void AudioFlinger::updateSecondaryOutputsForTrack_l(
 
         using namespace std::chrono_literals;
         auto inChannelMask = audio_channel_mask_out_to_in(track->channelMask());
+        if (inChannelMask == AUDIO_CHANNEL_INVALID) {
+            ALOGE("Unable to map channel mask %x to an input channel mask for secondary output",
+                    track->channelMask());
+            continue;
+        }
         sp patchRecord = new RecordThread::PatchRecord(nullptr /* thread */,
                                                        track->sampleRate(),
                                                        inChannelMask,
