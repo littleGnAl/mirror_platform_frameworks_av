@@ -38,6 +38,7 @@ cc_fuzz {
     ],
 
     static_libs: [
+        "libbase",
         "liblog",
         "libstagefright_amrwbenc",
         "libstagefright_enc_common",
