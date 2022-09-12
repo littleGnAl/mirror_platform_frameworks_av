@@ -5167,12 +5167,11 @@ void ACodec::deferMessage(const sp<AMessage> &msg) {
 }
 
 void ACodec::processDeferredMessages() {
-    List<sp<AMessage> > queue = mDeferredQueue;
+    auto queue = mDeferredQueue;
     mDeferredQueue.clear();
 
-    List<sp<AMessage> >::iterator it = queue.begin();
-    while (it != queue.end()) {
-        onMessageReceived(*it++);
+    for(const auto& msg : queue) {
+        onMessageReceived(msg);
     }
 }
 
