@@ -46,6 +46,23 @@
       },
       "revId": "50b027744e3afb4ddf9fe1ddc383046f07b4efcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74810064_17a7c2e5",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1782,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-09-12T16:11:52Z",
+      "side": 1,
+      "message": "Could you add bug id here since this is workaround? (in the other encoder code also)",
+      "revId": "50b027744e3afb4ddf9fe1ddc383046f07b4efcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
