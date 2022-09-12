@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ab046a_57aa5abc",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2022-09-12T19:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a65e22_044513f4",
+      "revId": "ab63ef6b2fe2855cd0120662126a4baa6e7807d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d06289eb_daab5449",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42fc78b7_df85baa1",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1557,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2022-09-12T19:45:37Z",
+      "side": 1,
+      "message": "Done, but is there any clang-format for this repo?",
+      "parentUuid": "d06289eb_daab5449",
+      "range": {
+        "startLine": 1556,
+        "startChar": 20,
+        "endLine": 1557,
+        "endChar": 22
+      },
+      "revId": "ab63ef6b2fe2855cd0120662126a4baa6e7807d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96dcd550_2f320bf3",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-12T17:24:50Z",
       "side": 1,
       "message": "nit: please join the two lines",
+      "range": {
+        "startLine": 1614,
+        "startChar": 20,
+        "endLine": 1615,
+        "endChar": 22
+      },
+      "revId": "ab63ef6b2fe2855cd0120662126a4baa6e7807d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c415c6fb_4ccded9f",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2022-09-12T19:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96dcd550_2f320bf3",
       "range": {
         "startLine": 1614,
         "startChar": 20,
