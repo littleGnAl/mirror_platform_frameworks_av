@@ -22,6 +22,30 @@
       },
       "revId": "50b027744e3afb4ddf9fe1ddc383046f07b4efcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "375504d8_bfc1c668",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1959186
+      },
+      "writtenOn": "2022-09-12T13:35:13Z",
+      "side": 1,
+      "message": "Constructor which use crop are protected and they can not be used.",
+      "parentUuid": "4ba9c07a_86badf6d",
+      "range": {
+        "startLine": 1775,
+        "startChar": 46,
+        "endLine": 1776,
+        "endChar": 73
+      },
+      "revId": "50b027744e3afb4ddf9fe1ddc383046f07b4efcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
