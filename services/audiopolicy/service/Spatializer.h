@@ -89,7 +89,8 @@ public:
  */
 class Spatializer : public media::BnSpatializer,
                     public IBinder::DeathRecipient,
-                    private SpatializerPoseController::Listener {
+                    private SpatializerPoseController::Listener,
+                    public virtual AudioSystem::SupportedLatencyModesCallback {
   public:
     static sp<Spatializer> create(SpatializerPolicyCallback *callback);
 
@@ -125,6 +126,10 @@ class Spatializer : public media::BnSpatializer,
 
     /** IBinder::DeathRecipient. Listen to the death of the INativeSpatializerCallback. */
     virtual void binderDied(const wp<IBinder>& who);
+
+    /** SupportedLatencyModesCallback */
+    void onSupportedLatencyModesChanged(
+            audio_io_handle_t output, const std::vector<audio_latency_mode_t>& modes) override;
 
     /** Registers a INativeSpatializerCallback when a client is attached to this Spatializer
      * by audio policy service.
@@ -205,6 +210,8 @@ private:
 
     void onHeadToStagePoseMsg(const std::vector<float>& headToStage);
     void onActualModeChangeMsg(media::HeadTrackingMode mode);
+    void onSupportedLatencyModesChangedMsg(
+            audio_io_handle_t output, std::vector<audio_latency_mode_t>&& modes);
 
     static constexpr int kMaxEffectParamValues = 10;
     /**
@@ -397,6 +404,7 @@ private:
     sp<EngineCallbackHandler> mHandler;
 
     size_t mNumActiveTracks GUARDED_BY(mLock) = 0;
+    std::vector<audio_latency_mode_t> mSupportedLatencyModes GUARDED_BY(mLock);
 
     static const std::vector<const char*> sHeadPoseKeys;
 
