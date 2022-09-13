@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ab104aa_9fdb91d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-09-13T05:11:22Z",
+      "side": 1,
+      "message": "Hi,\nfrom your previous comment\n\u003e onPhysicalCameraStatusChanged wait onDeviceError\n\nMy question still stands, why is this true ? onPhysicalCameraStatusChanged is a binder call into client 2, so is onDeviceError. But why is onPhysicalCameraStatusChanged blocked by onDeviceError ? Are there not enough hwbinder threads in client 2 ?  \n\nI tried looking at the perfetto trace, it can get slightly harder to reason with since it only shows trace points (which all functions don\u0027t have). If the deadlock is reproducible is it possible for you to capture stack traces for both cameraserver and the client processes by doing :\nadb shell debuggerd -b \u003cpid\u003e\n\nThat way we\u0027ll have a clearer understanding of where exactly the deadlock is happening. \n\nThanks",
+      "parentUuid": "15580851_e37003d2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74827f0b_70bf2235",
         "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
         "patchSetId": 2
