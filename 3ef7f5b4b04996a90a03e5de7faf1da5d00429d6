@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7e794c_47ac86fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-09-15T23:20:20Z",
+      "side": 1,
+      "message": "Sorry for the delay on this. Unless there\u0027s reason not to, we should get this merged.",
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae218cff_09fefeb2",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-09-15T23:20:20Z",
+      "side": 1,
+      "message": "Super-nit: You can remove this line.",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b21570_1bfa2915",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-09-15T23:20:20Z",
+      "side": 1,
+      "message": "Uber-nit: Please add the brackets. So:\n\n```\nif (mMuxer \u003d\u003d nullptr) {\n    return 0;\n}\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
