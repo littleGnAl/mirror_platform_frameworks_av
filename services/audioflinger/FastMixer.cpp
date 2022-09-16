@@ -236,7 +236,6 @@ void FastMixer::onStateChange()
         mOutputSink = current->mOutputSink;
         mOutputSinkGen = current->mOutputSinkGen;
         mSinkChannelMask = current->mSinkChannelMask;
-        mBalance.setChannelMask(mSinkChannelMask);
         if (mOutputSink == NULL) {
             mFormat = Format_Invalid;
             mSampleRate = 0;
@@ -255,6 +254,7 @@ void FastMixer::onStateChange()
             mAudioChannelCount = mSinkChannelCount - audio_channel_count_from_out_mask(
                     mSinkChannelMask & AUDIO_CHANNEL_HAPTIC_ALL);
         }
+        mBalance.setChannelMask(mSinkChannelMask);
         dumpState->mSampleRate = mSampleRate;
     }
 
