@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1650fb78_cd699b2c",
+        "filename": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-09-16T03:41:54Z",
+      "side": 1,
+      "message": "One of the files in internal branch (not available on aosp) uses this constructor and making this private shows a build failure in treehugger.\nSince we don\u0027t have access to internal gerrit, is it okay to keep this public in this CL and once this lands and the internal invocation is updated to use MediaMuxer::create() instead of MediaMuxer(), land another CL that will make this private.\nIf this approach sounds good, we will split this to two CLs (second CL that will make this private).",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90b21570_1bfa2915",
         "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
         "patchSetId": 11
