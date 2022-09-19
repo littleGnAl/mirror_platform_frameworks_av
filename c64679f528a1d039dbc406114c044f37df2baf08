@@ -69,6 +69,24 @@
       "parentUuid": "9b0e432d_2215387a",
       "revId": "c64679f528a1d039dbc406114c044f37df2baf08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ef6490_0e70883d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2022-09-19T01:28:29Z",
+      "side": 1,
+      "message": "aosp-master does not have this file，and this problem occurs in ro.vendor.build.version.sdk \u003d\u003d 30.",
+      "parentUuid": "31a31380_f4de0203",
+      "revId": "c64679f528a1d039dbc406114c044f37df2baf08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
