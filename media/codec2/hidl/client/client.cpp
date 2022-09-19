@@ -23,6 +23,7 @@
 #include <C2BufferPriv.h>
 #include <C2Config.h> // for C2StreamUsageTuning
 #include <C2PlatformSupport.h>
+#include <C2SurfaceSyncObj.h>
 
 #include <android/hardware/media/bufferpool/2.0/IClientManager.h>
 #include <android/hardware/media/c2/1.0/IComponent.h>
@@ -1504,6 +1505,7 @@ c2_status_t Codec2Client::Component::setOutputSurface(
 
     std::scoped_lock lock(mOutputMutex);
     std::shared_ptr<SurfaceSyncObj> syncObj;
+    std::shared_ptr<C2SurfaceSyncMemory> oldMem;
 
     if (!surface) {
         mOutputBufferQueue->configure(nullIgbp, generation, 0, maxDequeueCount, nullptr);
@@ -1514,7 +1516,7 @@ c2_status_t Codec2Client::Component::setOutputSurface(
         mOutputBufferQueue->configure(nullIgbp, generation, 0, maxDequeueCount, nullptr);
     } else {
         mOutputBufferQueue->configure(surface, generation, bqId, maxDequeueCount, mBase1_2 ?
-                                      &syncObj : nullptr);
+                                      &syncObj : nullptr, &oldMem);
     }
 
     // set consumer bits
@@ -1561,6 +1563,11 @@ c2_status_t Codec2Client::Component::setOutputSurface(
             mBase1_0->setOutputSurface(
                     static_cast<uint64_t>(blockPoolId),
                     bqId == 0 ? nullHgbp : igbp);
+    C2SyncVariables *oldSync = oldMem ? oldMem->mem() : nullptr;
+    if (oldSync) {
+        // If HAL is waiting on C2SyncVarialble, signal to finish the waiting.
+        oldSync->fin();
+    }
 
     if (!transStatus.isOk()) {
         LOG(ERROR) << "setOutputSurface -- transaction failed.";

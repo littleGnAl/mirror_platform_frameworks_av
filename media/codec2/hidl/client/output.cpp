@@ -179,7 +179,8 @@ bool OutputBufferQueue::configure(const sp<IGraphicBufferProducer>& igbp,
                                   uint32_t generation,
                                   uint64_t bqId,
                                   int maxDequeueBufferCount,
-                                  std::shared_ptr<V1_2::SurfaceSyncObj> *syncObj) {
+                                  std::shared_ptr<V1_2::SurfaceSyncObj> *syncObj,
+                                  std::shared_ptr<C2SurfaceSyncMemory> *ptrOldMem) {
     uint64_t consumerUsage = 0;
     if (igbp && igbp->getConsumerUsage(&consumerUsage) != OK) {
         ALOGW("failed to get consumer usage");
@@ -244,6 +245,12 @@ bool OutputBufferQueue::configure(const sp<IGraphicBufferProducer>& igbp,
             oldSync->lock();
             oldSync->setSyncStatusLocked(C2SyncVariables::STATUS_SWITCHING);
             oldSync->unlock();
+            if (ptrOldMem) {
+                // After surface switching completed,
+                // waitors from old surface memory should be notified in order
+                // not to block forever.
+                *ptrOldMem = mSyncMem;
+            }
         }
         mSyncMem.reset();
         if (syncMem) {

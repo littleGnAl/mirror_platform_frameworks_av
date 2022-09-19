@@ -111,6 +111,11 @@ struct C2SyncVariables {
      */
     c2_status_t waitForChange(uint32_t waitId, c2_nsecs_t timeoutNs);
 
+    /**
+     * Wake up all waiters in case of the class being no more used.
+     */
+    void fin();
+
     C2SyncVariables() {}
 
 private:
