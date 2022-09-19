@@ -48,7 +48,8 @@ struct OutputBufferQueue {
                    uint32_t generation,
                    uint64_t bqId,
                    int maxDequeueBufferCount,
-                   std::shared_ptr<V1_2::SurfaceSyncObj> *syncObj);
+                   std::shared_ptr<V1_2::SurfaceSyncObj> *syncObj,
+                   std::shared_ptr<C2SurfaceSyncMemory> *ptrOldMem = nullptr);
 
     // Stop using the current output surface. Pending buffer opeations will not
     // perform anymore.
