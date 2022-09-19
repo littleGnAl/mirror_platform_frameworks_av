@@ -39,6 +39,30 @@
       },
       "revId": "5b71f7dc9fff023b3a54c424342278e0d8d1ba40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11897b4_958d07f1",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 4033,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2022-09-19T01:42:38Z",
+      "side": 1,
+      "message": "from the bug, we can see in this state on line 4035, the previous surface has not disconnect, so i think mSurface should remain.",
+      "parentUuid": "a66ea11b_e481fd92",
+      "range": {
+        "startLine": 4033,
+        "startChar": 55,
+        "endLine": 4033,
+        "endChar": 80
+      },
+      "revId": "5b71f7dc9fff023b3a54c424342278e0d8d1ba40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
