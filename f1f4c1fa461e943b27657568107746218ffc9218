@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45ba1e4_361e70a2",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-09-20T18:41:04Z",
+      "side": 1,
+      "message": "Isnt the if statement protecting the creation of this buffer ?",
+      "range": {
+        "startLine": 549,
+        "startChar": 38,
+        "endLine": 549,
+        "endChar": 60
+      },
+      "revId": "f1f4c1fa461e943b27657568107746218ffc9218",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
