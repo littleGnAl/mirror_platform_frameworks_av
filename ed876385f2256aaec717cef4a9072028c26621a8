@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d982c1d7_807ffc3b",
+        "filename": "camera/ndk/ndk_vendor/impl/ACameraManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-09-20T06:16:06Z",
+      "side": 1,
+      "message": "Should we have a null check here as well ? - typically we\u0027d think that a client would give us a non null fp here if its registering for them in the first place.  If yes, we might need to have them in the ndk ACameraManager.cpp as well  - onAccessPrioritiesChanged ?",
+      "range": {
+        "startLine": 452,
+        "startChar": 65,
+        "endLine": 452,
+        "endChar": 71
+      },
+      "revId": "ed876385f2256aaec717cef4a9072028c26621a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
