@@ -22,6 +22,30 @@
       },
       "revId": "ed876385f2256aaec717cef4a9072028c26621a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c376709_ee76c22f",
+        "filename": "camera/ndk/ndk_vendor/impl/ACameraManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2022-09-20T18:15:42Z",
+      "side": 1,
+      "message": "If my understanding is correct the cause here is that we are using the same registration method:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/camera/ndk/ndk_vendor/impl/ACameraManager.cpp;l\u003d359\n\nfor the the regular and extended callback. In case the registration is called with the regular callback the extended callbacks are always going to be null:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/camera/ndk/ndk_vendor/impl/ACameraManager.h;l\u003d115\n\nIn case of onAccessPrioritiesChanges, I think we are not posting a callback at all: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/camera/ndk/impl/ACameraManager.cpp;l\u003d489",
+      "parentUuid": "d982c1d7_807ffc3b",
+      "range": {
+        "startLine": 452,
+        "startChar": 65,
+        "endLine": 452,
+        "endChar": 71
+      },
+      "revId": "ed876385f2256aaec717cef4a9072028c26621a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
