@@ -16,6 +16,23 @@
       "message": "interesting that it declares the one shell script as a binary file.",
       "revId": "5d1f670126fa57921489b7829cab6e04c04f3c96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b80c91_fc73a689",
+        "filename": "tools/mainline_hook_partial.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2022-09-21T13:32:34Z",
+      "side": 1,
+      "message": "Why is this shown as a binary ?",
+      "revId": "5d1f670126fa57921489b7829cab6e04c04f3c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
