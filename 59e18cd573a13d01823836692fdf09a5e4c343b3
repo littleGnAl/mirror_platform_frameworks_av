@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9c60b3_45fd579e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4100,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-09-21T15:19:00Z",
+      "side": 1,
+      "message": "isNonOffloadableEffectEnabled() only applies to media strategy. So this test should only apply if the attributes correspond to the media strategy",
+      "range": {
+        "startLine": 4100,
+        "startChar": 17,
+        "endLine": 4100,
+        "endChar": 46
+      },
+      "revId": "59e18cd573a13d01823836692fdf09a5e4c343b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
