@@ -21,6 +21,18 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
+python_defaults {
+    name: "tools_default",
+    version: {
+        py2: {
+            enabled: false,
+        },
+        py3: {
+            enabled: true,
+        },
+    },
+}
+
 //##################################################################################################
 // Tools for audio policy engine criterion type configuration file
 //
@@ -30,6 +42,7 @@ python_binary_host {
     srcs: [
         "buildPolicyCriterionTypes.py",
     ],
+    defaults: ["tools_default"],
 }
 
 genrule_defaults {
@@ -64,6 +77,7 @@ python_binary_host {
     srcs: [
         "domainGeneratorPolicy.py",
     ],
+    defaults: ["tools_default"],
     libs: [
         "EddParser.py",
         "hostConfig.py",
@@ -112,6 +126,7 @@ python_binary_host {
     srcs: [
         "buildStrategiesStructureFile.py",
     ],
+    defaults: ["tools_default"],
 }
 
 genrule_defaults {
@@ -139,6 +154,7 @@ python_binary_host {
     srcs: [
         "buildCommonTypesStructureFile.py",
     ],
+    defaults: ["tools_default"],
 }
 
 genrule_defaults {
