@@ -69,6 +69,24 @@
       "parentUuid": "9efd5bad_00284ad8",
       "revId": "5d1f670126fa57921489b7829cab6e04c04f3c96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bf9c77_468d1067",
+        "filename": "tools/mainline_hook_partial.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2022-09-21T14:58:27Z",
+      "side": 1,
+      "message": "you could try some blank / generic comment lines at the top to see if that fix it.\n\nhttps://groups.google.com/a/google.com/g/android-git-discuss/c/Tku8Ksg-kMk/m/WhTDeN_Jk6cJ",
+      "parentUuid": "9efd5bad_00284ad8",
+      "revId": "5d1f670126fa57921489b7829cab6e04c04f3c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
