@@ -33,6 +33,24 @@
       "message": "Why is this shown as a binary ?",
       "revId": "5d1f670126fa57921489b7829cab6e04c04f3c96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efd5bad_00284ad8",
+        "filename": "tools/mainline_hook_partial.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-21T14:04:44Z",
+      "side": 1,
+      "message": "i think sed doesn\u0027t like the ^M that is in one of the sed command lines.\nit sees a \u003creturn\u003e there and throws its hands up.",
+      "parentUuid": "a6b80c91_fc73a689",
+      "revId": "5d1f670126fa57921489b7829cab6e04c04f3c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
