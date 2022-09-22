@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6f7bbd_6bf83998",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-09-22T01:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae218cff_09fefeb2",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1650fb78_cd699b2c",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11b052ee_bf218336",
+        "filename": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-09-22T01:17:25Z",
+      "side": 1,
+      "message": "Retained this as public for the time being\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2226257 changes this to private and that CL can land after internal references to MediaMuxer\u0027s default constructor are replaced by MediaMuxer::create() once these two CLs in the current topic branch \"media-muxer-static-create\" land.\n\nRay, Santiago,\nCan you please review and let us know if this approach of splitting the CLs is fine.\nOther option is to cherry-pick these two CLs to internal gerrit and make the required change in internal only repository as well (However, as I don\u0027t have internal access, I wouldn\u0027t be able to do that)",
+      "parentUuid": "1650fb78_cd699b2c",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90b21570_1bfa2915",
         "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
         "patchSetId": 11
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-15T23:20:20Z",
       "side": 1,
       "message": "Uber-nit: Please add the brackets. So:\n\n```\nif (mMuxer \u003d\u003d nullptr) {\n    return 0;\n}\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16b81e7_cb4c0c08",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-09-22T01:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90b21570_1bfa2915",
       "range": {
         "startLine": 56,
         "startChar": 2,
