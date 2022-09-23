@@ -70,6 +70,30 @@
       },
       "revId": "59e18cd573a13d01823836692fdf09a5e4c343b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee03c81_e1c48b6b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4100,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-09-23T15:19:43Z",
+      "side": 1,
+      "message": "given the time pressure, lets take this CL as is an open a bug to follow up with a more fine grained use of isNonOffloadableEffectEnabled() for relevant use cases",
+      "parentUuid": "f7a2b205_1512bb5c",
+      "range": {
+        "startLine": 4100,
+        "startChar": 17,
+        "endLine": 4100,
+        "endChar": 46
+      },
+      "revId": "59e18cd573a13d01823836692fdf09a5e4c343b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
