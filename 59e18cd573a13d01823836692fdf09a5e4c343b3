@@ -46,6 +46,30 @@
       },
       "revId": "59e18cd573a13d01823836692fdf09a5e4c343b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a2b205_1512bb5c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4100,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-09-23T15:15:13Z",
+      "side": 1,
+      "message": "So openDirectOutput() should only take isNonOffloadableEffectEnabled() into account if the stream is MUSIC",
+      "parentUuid": "2c984edf_22d207f0",
+      "range": {
+        "startLine": 4100,
+        "startChar": 17,
+        "endLine": 4100,
+        "endChar": 46
+      },
+      "revId": "59e18cd573a13d01823836692fdf09a5e4c343b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
