@@ -24,7 +24,7 @@
 #include <aaudio/AAudio.h>        // error codes
 #include <audio_utils/clock.h>    // clock conversions
 #include <cutils/properties.h>
-#include <statslog.h>             // statsd
+#include <statslog_mediametrics.h>             // statsd
 #include <system/audio.h>
 
 #include "AudioTypes.h"           // string to int conversions
@@ -292,7 +292,7 @@ int sendToStatsd(Types ... args)
     int result = 0;
 
 #ifdef STATSD_ENABLE
-    result = android::util::stats_write(args...);
+    result = mediametrics::stats::stats_write(args...);
 #endif
     return result;
 }
@@ -308,7 +308,7 @@ std::pair<int, std::string> sendToStatsd(const char * const (& fields)[N], Types
     std::stringstream ss;
 
 #ifdef STATSD_ENABLE
-    result = android::util::stats_write(args...);
+    result = mediametrics::stats::stats_write(args...);
     ss << "result:" << result;
 #endif
     ss << " { ";
@@ -607,7 +607,7 @@ bool AudioAnalytics::reportAudioRecordStatus(
         const int atom_status = types::lookup<types::STATUS, int32_t>(statusString);
 
         // currently we only send create status events.
-        const int32_t event = android::util::
+        const int32_t event = mediametrics::stats::
                 MEDIAMETRICS_AUDIO_RECORD_STATUS_REPORTED__EVENT__AUDIO_RECORD_EVENT_CREATE;
 
         // The following fields should all be present in a create event.
@@ -647,7 +647,7 @@ bool AudioAnalytics::reportAudioRecordStatus(
                 __func__, AMEDIAMETRICS_KEY_PREFIX_AUDIO_RECORD, AMEDIAMETRICS_PROP_SAMPLERATE);
 
         const auto [ result, str ] = sendToStatsd(AudioRecordStatusFields,
-                CONDITION(android::util::MEDIAMETRICS_AUDIORECORDSTATUS_REPORTED)
+                CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIORECORDSTATUS_REPORTED)
                 , atom_status
                 , message.c_str()
                 , subCode
@@ -661,7 +661,7 @@ bool AudioAnalytics::reportAudioRecordStatus(
                 , sampleRate
                 );
         ALOGV("%s: statsd %s", __func__, str.c_str());
-        mStatsdLog->log(android::util::MEDIAMETRICS_AUDIORECORDSTATUS_REPORTED, str);
+        mStatsdLog->log(mediametrics::stats::MEDIAMETRICS_AUDIORECORDSTATUS_REPORTED, str);
         return true;
     }
     return false;
@@ -679,7 +679,7 @@ bool AudioAnalytics::reportAudioTrackStatus(
         const int atom_status = types::lookup<types::STATUS, int32_t>(statusString);
 
         // currently we only send create status events.
-        const int32_t event = android::util::
+        const int32_t event = mediametrics::stats::
                 MEDIAMETRICS_AUDIO_TRACK_STATUS_REPORTED__EVENT__AUDIO_TRACK_EVENT_CREATE;
 
         // The following fields should all be present in a create event.
@@ -734,7 +734,7 @@ bool AudioAnalytics::reportAudioTrackStatus(
                 __func__,
                 AMEDIAMETRICS_KEY_PREFIX_AUDIO_TRACK, AMEDIAMETRICS_PROP_PLAYBACK_PITCH);
         const auto [ result, str ] = sendToStatsd(AudioTrackStatusFields,
-                CONDITION(android::util::MEDIAMETRICS_AUDIOTRACKSTATUS_REPORTED)
+                CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIOTRACKSTATUS_REPORTED)
                 , atom_status
                 , message.c_str()
                 , subCode
@@ -751,7 +751,7 @@ bool AudioAnalytics::reportAudioTrackStatus(
                 , (float)pitch
                 );
         ALOGV("%s: statsd %s", __func__, str.c_str());
-        mStatsdLog->log(android::util::MEDIAMETRICS_AUDIOTRACKSTATUS_REPORTED, str);
+        mStatsdLog->log(mediametrics::stats::MEDIAMETRICS_AUDIOTRACKSTATUS_REPORTED, str);
         return true;
     }
     return false;
@@ -903,7 +903,7 @@ void AudioAnalytics::DeviceUse::endAudioIntervalGroup(
         if (clientCalled  // only log if client app called AudioRecord.
                 && mAudioAnalytics.mDeliverStatistics) {
             const auto [ result, str ] = sendToStatsd(AudioRecordDeviceUsageFields,
-                    CONDITION(android::util::MEDIAMETRICS_AUDIORECORDDEVICEUSAGE_REPORTED)
+                    CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIORECORDDEVICEUSAGE_REPORTED)
                     , ENUM_EXTRACT(inputDeviceBits)
                     , inputDeviceNames.c_str()
                     , deviceTimeNs
@@ -921,7 +921,7 @@ void AudioAnalytics::DeviceUse::endAudioIntervalGroup(
                     );
             ALOGV("%s: statsd %s", __func__, str.c_str());
             mAudioAnalytics.mStatsdLog->log(
-                    android::util::MEDIAMETRICS_AUDIORECORDDEVICEUSAGE_REPORTED, str);
+                    mediametrics::stats::MEDIAMETRICS_AUDIORECORDDEVICEUSAGE_REPORTED, str);
         }
     } break;
     case THREAD: {
@@ -956,7 +956,7 @@ void AudioAnalytics::DeviceUse::endAudioIntervalGroup(
               << ")";
         if (mAudioAnalytics.mDeliverStatistics) {
             const auto [ result, str ] = sendToStatsd(AudioThreadDeviceUsageFields,
-                CONDITION(android::util::MEDIAMETRICS_AUDIOTHREADDEVICEUSAGE_REPORTED)
+                CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIOTHREADDEVICEUSAGE_REPORTED)
                 , isInput ? ENUM_EXTRACT(inputDeviceBits) : ENUM_EXTRACT(outputDeviceBits)
                 , isInput ? inputDeviceNames.c_str() : outputDeviceNames.c_str()
                 , deviceTimeNs
@@ -970,7 +970,7 @@ void AudioAnalytics::DeviceUse::endAudioIntervalGroup(
             );
             ALOGV("%s: statsd %s", __func__, str.c_str());
             mAudioAnalytics.mStatsdLog->log(
-                    android::util::MEDIAMETRICS_AUDIOTHREADDEVICEUSAGE_REPORTED, str);
+                    mediametrics::stats::MEDIAMETRICS_AUDIOTHREADDEVICEUSAGE_REPORTED, str);
         }
     } break;
     case TRACK: {
@@ -1067,7 +1067,7 @@ void AudioAnalytics::DeviceUse::endAudioIntervalGroup(
         if (clientCalled // only log if client app called AudioTracks
                 && mAudioAnalytics.mDeliverStatistics) {
             const auto [ result, str ] = sendToStatsd(AudioTrackDeviceUsageFields,
-                    CONDITION(android::util::MEDIAMETRICS_AUDIOTRACKDEVICEUSAGE_REPORTED)
+                    CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIOTRACKDEVICEUSAGE_REPORTED)
                     , ENUM_EXTRACT(outputDeviceBits)
                     , outputDeviceNames.c_str()
                     , deviceTimeNs
@@ -1091,7 +1091,7 @@ void AudioAnalytics::DeviceUse::endAudioIntervalGroup(
                     );
             ALOGV("%s: statsd %s", __func__, str.c_str());
             mAudioAnalytics.mStatsdLog->log(
-                    android::util::MEDIAMETRICS_AUDIOTRACKDEVICEUSAGE_REPORTED, str);
+                    mediametrics::stats::MEDIAMETRICS_AUDIOTRACKDEVICEUSAGE_REPORTED, str);
         }
         } break;
     }
@@ -1158,7 +1158,7 @@ void AudioAnalytics::DeviceConnection::createPatch(
             const long_enum_type_t inputDeviceBits{};
 
             const auto [ result, str ] = sendToStatsd(AudioDeviceConnectionFields,
-                    CONDITION(android::util::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED)
+                    CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED)
                     , ENUM_EXTRACT(inputDeviceBits)
                     , ENUM_EXTRACT(outputDeviceBits)
                     , mA2dpDeviceName.c_str()
@@ -1168,7 +1168,7 @@ void AudioAnalytics::DeviceConnection::createPatch(
                     );
             ALOGV("%s: statsd %s", __func__, str.c_str());
             mAudioAnalytics.mStatsdLog->log(
-                    android::util::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED, str);
+                    mediametrics::stats::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED, str);
         }
     }
 }
@@ -1212,7 +1212,7 @@ void AudioAnalytics::DeviceConnection::expire() {
                 << " deviceName:" << mA2dpDeviceName;
         if (mAudioAnalytics.mDeliverStatistics) {
             const auto [ result, str ] = sendToStatsd(AudioDeviceConnectionFields,
-                    CONDITION(android::util::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED)
+                    CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED)
                     , ENUM_EXTRACT(inputDeviceBits)
                     , ENUM_EXTRACT(outputDeviceBits)
                     , mA2dpDeviceName.c_str()
@@ -1222,7 +1222,7 @@ void AudioAnalytics::DeviceConnection::expire() {
                     );
             ALOGV("%s: statsd %s", __func__, str.c_str());
             mAudioAnalytics.mStatsdLog->log(
-                    android::util::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED, str);
+                    mediametrics::stats::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED, str);
         }
         return;
     }
@@ -1239,7 +1239,7 @@ void AudioAnalytics::DeviceConnection::expire() {
             << " deviceName:" << mA2dpDeviceName;
     if (mAudioAnalytics.mDeliverStatistics) {
         const auto [ result, str ] = sendToStatsd(AudioDeviceConnectionFields,
-                CONDITION(android::util::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED)
+                CONDITION(mediametrics::stats::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED)
                 , ENUM_EXTRACT(inputDeviceBits)
                 , ENUM_EXTRACT(outputDeviceBits)
                 , mA2dpDeviceName.c_str()
@@ -1249,7 +1249,7 @@ void AudioAnalytics::DeviceConnection::expire() {
                 );
         ALOGV("%s: statsd %s", __func__, str.c_str());
         mAudioAnalytics.mStatsdLog->log(
-                android::util::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED, str);
+                mediametrics::stats::MEDIAMETRICS_AUDIODEVICECONNECTION_REPORTED, str);
     }
 }
 
@@ -1377,10 +1377,10 @@ void AudioAnalytics::AAudioStreamInfo::endAAudioStream(
                     << "(" << sharingModeRequestedStr << ")";
 
     if (mAudioAnalytics.mDeliverStatistics) {
-        android::util::BytesField bf_serialized(
+        mediametrics::stats::BytesField bf_serialized(
             serializedDeviceTypes.c_str(), serializedDeviceTypes.size());
         const auto result = sendToStatsd(
-                CONDITION(android::util::MEDIAMETRICS_AAUDIOSTREAM_REPORTED)
+                CONDITION(mediametrics::stats::MEDIAMETRICS_AAUDIOSTREAM_REPORTED)
                 , path
                 , direction
                 , framesPerBurst
@@ -1403,7 +1403,7 @@ void AudioAnalytics::AAudioStreamInfo::endAAudioStream(
         std::stringstream ss;
         ss << "result:" << result;
         const auto fieldsStr = printFields(AAudioStreamFields,
-                CONDITION(android::util::MEDIAMETRICS_AAUDIOSTREAM_REPORTED)
+                CONDITION(mediametrics::stats::MEDIAMETRICS_AAUDIOSTREAM_REPORTED)
                 , path
                 , direction
                 , framesPerBurst
@@ -1426,7 +1426,7 @@ void AudioAnalytics::AAudioStreamInfo::endAAudioStream(
         ss << " " << fieldsStr;
         std::string str = ss.str();
         ALOGV("%s: statsd %s", __func__, str.c_str());
-        mAudioAnalytics.mStatsdLog->log(android::util::MEDIAMETRICS_AAUDIOSTREAM_REPORTED, str);
+        mAudioAnalytics.mStatsdLog->log(mediametrics::stats::MEDIAMETRICS_AAUDIOSTREAM_REPORTED, str);
     }
 }
 
@@ -1566,12 +1566,12 @@ std::pair<std::string, int32_t> AudioAnalytics::Health::dump(
 // Classifies the setting event for statsd (use generated statsd enums.proto constants).
 static int32_t classifySettingEvent(bool isSetAlready, bool withinBoot) {
     if (isSetAlready) {
-        return util::MEDIAMETRICS_SPATIALIZER_DEVICE_ENABLED_REPORTED__EVENT__SPATIALIZER_SETTING_EVENT_NORMAL;
+        return mediametrics::stats::MEDIAMETRICS_SPATIALIZER_DEVICE_ENABLED_REPORTED__EVENT__SPATIALIZER_SETTING_EVENT_NORMAL;
     }
     if (withinBoot) {
-        return util::MEDIAMETRICS_SPATIALIZER_DEVICE_ENABLED_REPORTED__EVENT__SPATIALIZER_SETTING_EVENT_BOOT;
+        return mediametrics::stats::MEDIAMETRICS_SPATIALIZER_DEVICE_ENABLED_REPORTED__EVENT__SPATIALIZER_SETTING_EVENT_BOOT;
     }
-    return util::MEDIAMETRICS_SPATIALIZER_DEVICE_ENABLED_REPORTED__EVENT__SPATIALIZER_SETTING_EVENT_FIRST;
+    return mediametrics::stats::MEDIAMETRICS_SPATIALIZER_DEVICE_ENABLED_REPORTED__EVENT__SPATIALIZER_SETTING_EVENT_FIRST;
 }
 
 void AudioAnalytics::Spatializer::onEvent(
@@ -1620,7 +1620,7 @@ void AudioAnalytics::Spatializer::onEvent(
                 types::channelMaskVectorFromString(channelMasks);
 
         const auto [ result, str ] = sendToStatsd(SpatializerCapabilitiesFields,
-                CONDITION(android::util::MEDIAMETRICS_SPATIALIZERCAPABILITIES_REPORTED)
+                CONDITION(mediametrics::stats::MEDIAMETRICS_SPATIALIZERCAPABILITIES_REPORTED)
                 , headTrackingModesVector
                 , levelsVector
                 , modesVector
@@ -1628,7 +1628,7 @@ void AudioAnalytics::Spatializer::onEvent(
                 );
 
         mAudioAnalytics.mStatsdLog->log(
-                android::util::MEDIAMETRICS_SPATIALIZERCAPABILITIES_REPORTED, str);
+                mediametrics::stats::MEDIAMETRICS_SPATIALIZERCAPABILITIES_REPORTED, str);
 
         std::lock_guard lg(mLock);
         if (mFirstCreateTimeNs == 0) {
@@ -1677,13 +1677,13 @@ void AudioAnalytics::Spatializer::onEvent(
                 deviceState.enabled = enabled;
                 const bool enabledStatsd = enabled == "true";
                 const auto [ result, str ] = sendToStatsd(SpatializerDeviceEnabledFields,
-                        CONDITION(android::util::MEDIAMETRICS_SPATIALIZERDEVICEENABLED_REPORTED)
+                        CONDITION(mediametrics::stats::MEDIAMETRICS_SPATIALIZERDEVICEENABLED_REPORTED)
                         , deviceTypeStatsd
                         , settingEventStatsd
                         , enabledStatsd
                         );
                 mAudioAnalytics.mStatsdLog->log(
-                        android::util::MEDIAMETRICS_SPATIALIZERDEVICEENABLED_REPORTED, str);
+                        mediametrics::stats::MEDIAMETRICS_SPATIALIZERDEVICEENABLED_REPORTED, str);
             }
         }
         if (!hasHeadTracker.empty()) {
@@ -1693,13 +1693,13 @@ void AudioAnalytics::Spatializer::onEvent(
                 deviceState.hasHeadTracker = hasHeadTracker;
                 const bool supportedStatsd = hasHeadTracker == "true";
                 const auto [ result, str ] = sendToStatsd(HeadTrackerDeviceSupportedFields,
-                        CONDITION(android::util::MEDIAMETRICS_HEADTRACKERDEVICESUPPORTED_REPORTED)
+                        CONDITION(mediametrics::stats::MEDIAMETRICS_HEADTRACKERDEVICESUPPORTED_REPORTED)
                         , deviceTypeStatsd
                         , settingEventStatsd
                         , supportedStatsd
                         );
                 mAudioAnalytics.mStatsdLog->log(
-                        android::util::MEDIAMETRICS_HEADTRACKERDEVICESUPPORTED_REPORTED, str);
+                        mediametrics::stats::MEDIAMETRICS_HEADTRACKERDEVICESUPPORTED_REPORTED, str);
             }
         }
         if (!headTrackerEnabled.empty()) {
@@ -1709,13 +1709,13 @@ void AudioAnalytics::Spatializer::onEvent(
                 deviceState.headTrackerEnabled = headTrackerEnabled;
                 const bool enabledStatsd = headTrackerEnabled == "true";
                 const auto [ result, str ] = sendToStatsd(HeadTrackerDeviceEnabledFields,
-                        CONDITION(android::util::MEDIAMETRICS_HEADTRACKERDEVICEENABLED_REPORTED)
+                        CONDITION(mediametrics::stats::MEDIAMETRICS_HEADTRACKERDEVICEENABLED_REPORTED)
                         , deviceTypeStatsd
                         , settingEventStatsd
                         , enabledStatsd
                         );
                 mAudioAnalytics.mStatsdLog->log(
-                        android::util::MEDIAMETRICS_HEADTRACKERDEVICEENABLED_REPORTED, str);
+                        mediametrics::stats::MEDIAMETRICS_HEADTRACKERDEVICEENABLED_REPORTED, str);
             }
         }
         mSimpleLog.log("%s deviceKey: %s item: %s",

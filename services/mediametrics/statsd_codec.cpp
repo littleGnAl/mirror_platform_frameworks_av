@@ -29,7 +29,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include <statslog.h>
+#include <statslog_mediametrics.h>
 #include <stats_event.h>
 
 #include "cleaner.h"
@@ -46,7 +46,7 @@ bool statsd_codec(const std::shared_ptr<const mediametrics::Item>& item,
     if (item == nullptr) return false;
 
     AStatsEvent* event = AStatsEvent_obtain();
-    AStatsEvent_setAtomId(event, android::util::MEDIA_CODEC_REPORTED);
+    AStatsEvent_setAtomId(event, mediametrics::stats::MEDIA_CODEC_REPORTED);
 
     const nsecs_t timestamp_nanos = MediaMetricsService::roundTime(item->getTimestamp());
     AStatsEvent_writeInt64(event, timestamp_nanos);
@@ -455,8 +455,8 @@ bool statsd_codec(const std::shared_ptr<const mediametrics::Item>& item,
         ALOGE("Failed to serialize codec metrics");
         return false;
     }
-    android::util::BytesField bf_serialized( serialized.c_str(), serialized.size());
-    int result = android::util::stats_write(android::util::MEDIAMETRICS_CODEC_REPORTED,
+    mediametrics::stats::BytesField bf_serialized( serialized.c_str(), serialized.size());
+    int result = mediametrics::stats::stats_write(mediametrics::stats::MEDIAMETRICS_CODEC_REPORTED,
                                timestamp_nanos, package_name.c_str(), package_version_code,
                                media_apex_version,
                                bf_serialized);
@@ -464,7 +464,7 @@ bool statsd_codec(const std::shared_ptr<const mediametrics::Item>& item,
     std::stringstream log;
     log << "result:" << result << " {"
             << " mediametrics_codec_reported:"
-            << android::util::MEDIAMETRICS_CODEC_REPORTED
+            << mediametrics::stats::MEDIAMETRICS_CODEC_REPORTED
             << " timestamp_nanos:" << timestamp_nanos
             << " package_name:" << package_name
             << " package_version_code:" << package_version_code
@@ -525,7 +525,7 @@ bool statsd_codec(const std::shared_ptr<const mediametrics::Item>& item,
             << " original_qp_b_min:" << qpBMinOri
             << " original_qp_b_max:" << qpBMaxOri
             << " }";
-    statsdLog->log(android::util::MEDIAMETRICS_CODEC_REPORTED, log.str());
+    statsdLog->log(mediametrics::stats::MEDIAMETRICS_CODEC_REPORTED, log.str());
 
 
     return true;

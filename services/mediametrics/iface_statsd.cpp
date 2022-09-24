@@ -37,7 +37,7 @@
 #include "MediaMetricsService.h"
 #include "iface_statsd.h"
 
-#include <statslog.h>
+#include <statslog_mediametrics.h>
 
 namespace android {
 
