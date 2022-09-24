@@ -51,7 +51,7 @@ cc_fuzz {
         "libprotobuf-cpp-lite",
         "libstagefright",
         "libstagefright_foundation",
-        "libstatslog",
+        "libstatslog_mediametrics",
         "libstatspull",
         "libstatssocket",
         "libutils",
@@ -69,4 +69,34 @@ cc_fuzz {
         ],
         componentid: 155276,
     },
+}
+
+cc_library {
+    name: "libstatslog_mediametrics",
+    generated_sources: ["statslog_mediametrics.cpp"],
+    generated_headers: ["statslog_mediametrics.h"],
+    export_generated_headers: ["statslog_mediametrics.h"],
+    shared_libs: [
+        "libcutils",
+        "libstatspull",
+        "libstatssocket",
+    ],
+}
+
+genrule {
+    name: "statslog_mediametrics.h",
+    tools: ["stats-log-api-gen"],
+    cmd: "$(location stats-log-api-gen) --header $(genDir)/statslog_mediametrics.h --module media_metrics --namespace android,mediametrics,stats",
+    out: [
+        "statslog_mediametrics.h",
+    ],
+}
+
+genrule {
+    name: "statslog_mediametrics.cpp",
+    tools: ["stats-log-api-gen"],
+    cmd: "$(location stats-log-api-gen) --cpp $(genDir)/statslog_mediametrics.cpp --module media_metrics --namespace android,mediametrics,stats --importHeader statslog_mediametrics.h",
+    out: [
+        "statslog_mediametrics.cpp",
+    ],
 }
