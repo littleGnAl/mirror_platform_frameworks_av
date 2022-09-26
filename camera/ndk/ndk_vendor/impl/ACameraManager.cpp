@@ -47,7 +47,7 @@ const char* CameraManagerGlobal::kCallbackFpKey = "CallbackFp";
 const char* CameraManagerGlobal::kContextKey    = "CallbackContext";
 const nsecs_t CameraManagerGlobal::kCallbackDrainTimeout = 5000000; // 5 ms
 Mutex                CameraManagerGlobal::sLock;
-CameraManagerGlobal* CameraManagerGlobal::sInstance = nullptr;
+wp<CameraManagerGlobal> CameraManagerGlobal::sInstance = nullptr;
 
 /**
  * The vendor tag descriptor class that takes HIDL vendor tag information as
@@ -147,15 +147,15 @@ status_t HidlVendorTagDescriptor::createDescriptorFromHidl(const hidl_vec<Vendor
     return OK;
 }
 
-CameraManagerGlobal&
+sp<CameraManagerGlobal>
 CameraManagerGlobal::getInstance() {
     Mutex::Autolock _l(sLock);
-    CameraManagerGlobal* instance = sInstance;
-    if (instance == nullptr) {
+    auto instance = sInstance.promote();
+    if (instance.get() == nullptr) {
         instance = new CameraManagerGlobal();
         sInstance = instance;
     }
-    return *instance;
+    return instance;
 }
 
 CameraManagerGlobal::~CameraManagerGlobal() {
@@ -671,7 +671,7 @@ ACameraManager::getCameraIdList(ACameraIdList** cameraIdList) {
     Mutex::Autolock _l(mLock);
 
     std::vector<hidl_string> idList;
-    CameraManagerGlobal::getInstance().getCameraIdList(&idList);
+    CameraManagerGlobal::getInstance()->getCameraIdList(&idList);
 
     int numCameras = idList.size();
     ACameraIdList *out = new ACameraIdList;
@@ -721,7 +721,7 @@ camera_status_t ACameraManager::getCameraCharacteristics(
         const char *cameraIdStr, sp<ACameraMetadata> *characteristics) {
     Mutex::Autolock _l(mLock);
 
-    sp<ICameraService> cs = CameraManagerGlobal::getInstance().getCameraService();
+    sp<ICameraService> cs = CameraManagerGlobal::getInstance()->getCameraService();
     if (cs == nullptr) {
         ALOGE("%s: Cannot reach camera service!", __FUNCTION__);
         return ACAMERA_ERROR_CAMERA_DISCONNECTED;
@@ -763,7 +763,7 @@ ACameraManager::openCamera(
 
     ACameraDevice* device = new ACameraDevice(cameraId, callback, std::move(rawChars));
 
-    sp<ICameraService> cs = CameraManagerGlobal::getInstance().getCameraService();
+    sp<ICameraService> cs = CameraManagerGlobal::getInstance()->getCameraService();
     if (cs == nullptr) {
         ALOGE("%s: Cannot reach camera service!", __FUNCTION__);
         delete device;
