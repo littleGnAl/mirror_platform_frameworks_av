@@ -198,11 +198,6 @@ class Spatializer : public media::BnSpatializer,
         return ss;
     };
 
-    // If the Spatializer is not created, we send the status for metrics purposes.
-    // OK:      Spatializer not expected to be created.
-    // NO_INIT: Spatializer creation failed.
-    static void sendEmptyCreateSpatializerMetricWithStatus(status_t status);
-
 private:
     Spatializer(effect_descriptor_t engineDescriptor,
                      SpatializerPolicyCallback *callback);
@@ -356,9 +351,7 @@ private:
     SpatializerPolicyCallback* const mPolicyCallback;
 
     /** Currently there is only one version of the spatializer running */
-    static constexpr const char* kDefaultMetricsId =
-            AMEDIAMETRICS_KEY_PREFIX_AUDIO_SPATIALIZER "0";
-    const std::string mMetricsId = kDefaultMetricsId;
+    const std::string mMetricsId = AMEDIAMETRICS_KEY_PREFIX_AUDIO_SPATIALIZER "0";
 
     /** Mutex protecting internal state */
     mutable std::mutex mLock;
