@@ -23,6 +23,7 @@
 
 #include <inttypes.h>
 #include <utils/Trace.h>
+#include <utils/SystemClock.h>
 
 #include <android/hardware/media/omx/1.0/IGraphicBufferSource.h>
 
@@ -656,11 +657,26 @@ void ACodec::initiateConfigureComponent(const sp<AMessage> &msg) {
 }
 
 status_t ACodec::setSurface(const sp<Surface> &surface) {
-    sp<AMessage> msg = new AMessage(kWhatSetSurface, this);
-    msg->setObject("surface", surface);
-
+    sp<AMessage> msg;
     sp<AMessage> response;
-    status_t err = msg->postAndAwaitResponse(&response);
+    status_t err = OK;
+
+    int64_t startTs = android::elapsedRealtimeNano();
+    int numTry = 0;
+    do {
+        ++numTry;
+        if (err != OK) {
+            // TODO: sleep or no-op little bit maybe
+        }
+        sp<AMessage> msg = new AMessage(kWhatSetSurface, this);
+        msg->setObject("surface", surface);
+        err = msg->postAndAwaitResponse(&response);
+    } while (err == WOULD_BLOCK);
+
+    if (numTry > 1) {
+        int64_t diffTs = android::elapsedRealtimeNano() - startTs;
+        ALOGD("setSurface() is taking %lld(%d)", (long long)diffTs, numTry);
+    }
 
     if (err == OK) {
         (void)response->findInt32("err", &err);
@@ -5928,19 +5944,17 @@ bool ACodec::BaseState::onMessageReceived(const sp<AMessage> &msg) {
 
         case ACodec::kWhatSetSurface:
         {
+            sp<AReplyToken> replyID;
+            CHECK(msg->senderAwaitsResponse(&replyID));
+
             sp<RefBase> obj;
             CHECK(msg->findObject("surface", &obj));
 
             status_t err = mCodec->handleSetSurface(static_cast<Surface *>(obj.get()));
 
-            sp<AReplyToken> replyID;
-            if (msg->senderAwaitsResponse(&replyID)) {
-                sp<AMessage> response = new AMessage;
-                response->setInt32("err", err);
-                response->postReply(replyID);
-            } else if (err != OK) {
-                mCodec->signalError(OMX_ErrorUndefined, err);
-            }
+            sp<AMessage> response = new AMessage;
+            response->setInt32("err", err);
+            response->postReply(replyID);
             break;
         }
 
@@ -8529,15 +8543,13 @@ bool ACodec::OutputPortSettingsChangedState::onMessageReceived(
 
         case kWhatSetSurface:
         {
-            ALOGV("[%s] Deferring setSurface", mCodec->mComponentName.c_str());
+            ALOGV("[%s] Retry setSurface() later", mCodec->mComponentName.c_str());
 
             sp<AReplyToken> replyID;
             CHECK(msg->senderAwaitsResponse(&replyID));
 
-            mCodec->deferMessage(msg);
-
             sp<AMessage> response = new AMessage;
-            response->setInt32("err", OK);
+            response->setInt32("err", WOULD_BLOCK);
             response->postReply(replyID);
 
             handled = true;
