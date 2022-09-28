@@ -48,6 +48,14 @@ struct _C2FenceFactory {
      */
     static C2Fence CreateSyncFence(int fenceFd);
 
+    /*
+     * Create C2Fence from a fence file fd.
+     *
+     * \param fenceFds          vector of Fence file descriptor.
+     *                          It will be owned and closed by the returned fence object.
+     */
+    static C2Fence CreateMultipleFDSyncFence(std::vector<int> fenceFds);
+
     /**
      * Create a native handle from fence for marshalling
      *
