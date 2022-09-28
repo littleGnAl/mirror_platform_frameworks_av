@@ -101,6 +101,7 @@ public:
 
     /**
      * Returns a file descriptor that can be used to wait for this fence in a select system call.
+     * \note If there are multiple FDs in fence then a fd for merged fence  would be returned
      * \note The returned file descriptor, if valid, must be closed by the caller.
      *
      * This can be used in e.g. poll() system calls. This file becomes readable (POLLIN) when the
@@ -112,6 +113,24 @@ public:
      * \todo this must be compatible with fences used by gralloc
      */
     int fd() const;
+
+    /**
+     * Returns a vector of file descriptors from list of FDs
+     * that can be used to wait for this fence in a select system call.
+     *
+     * \note The returned file descriptor, if valid, must be closed by the caller.
+     *
+     * This can be used in e.g. poll() system calls. This file becomes readable (POLLIN) when the
+     * fence is signaled, and bad (POLLERR) if the fence is abandoned.
+     *
+     * \return a list of file descriptors representing this fence (with ownership),
+     *  or list of -1 if the fences has already been signaled
+     *  or empty vector/list (i.e. size 0) if there are no fds attached.
+     *
+     * \todo this must be compatible with fences used by gralloc
+     */
+    std::vector<int> fds() const;
+
 
     /**
      * Returns whether this fence is a hardware-backed fence.
