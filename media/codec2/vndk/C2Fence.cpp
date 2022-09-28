@@ -42,6 +42,8 @@ public:
 
     virtual int fd() const = 0;
 
+    virtual std::vector<int> fds() const = 0;
+
     virtual bool isHW() const = 0;
 
     virtual type_t type() const = 0;
@@ -98,6 +100,14 @@ int C2Fence::fd() const {
     return -1;
 }
 
+std::vector<int> C2Fence::fds() const {
+    if (mImpl) {
+        return mImpl->fds();
+    }
+    // null fence does not have fd.
+    return std::vector<int>();
+}
+
 bool C2Fence::isHW() const {
     if (mImpl) {
         return mImpl->isHW();
@@ -137,6 +147,11 @@ public:
     virtual int fd() const {
         // does not support fd, since this is shared mem and futex based
         return -1;
+    }
+
+    virtual std::vector<int> fds() const {
+        // does not support fd, since this is shared mem and futex based
+        return std::vector<int>();
     }
 
     virtual bool isHW() const {
@@ -190,27 +205,50 @@ public:
         if (timeoutMs > INT_MAX) {
             timeoutMs = INT_MAX;
         }
-
-        switch (mFence->wait((int)timeoutMs)) {
-            case NO_ERROR:
-                return C2_OK;
-            case -ETIME:
-                return C2_TIMED_OUT;
-            default:
-                return C2_CORRUPTED;
+        if (mFence.size() > 0) {
+            switch (mFence[mFence.size()-1]->wait((int)timeoutMs)) {
+                case NO_ERROR:
+                    return C2_OK;
+                case -ETIME:
+                    return C2_TIMED_OUT;
+                default:
+                    return C2_CORRUPTED;
+            }
+        }
+        else {
+            return C2_CORRUPTED;
         }
     }
 
     virtual bool valid() const {
-        return mFence->getStatus() != Fence::Status::Invalid;
+        for (int index = 0; index < mFence.size(); index++) {
+            if (mFence[index]->getStatus() == Fence::Status::Invalid) {
+                return false;
+            }
+        }
+        return true;
     }
 
     virtual bool ready() const {
-        return mFence->getStatus() == Fence::Status::Signaled;
+        if (mFence.size() <= 0) {
+            return false;
+        }
+        return mFence[mFence.size()-1]->getStatus() == Fence::Status::Signaled;
     }
 
     virtual int fd() const {
-        return mFence->dup();
+        if (mFence.size() <= 0) {
+            return -1;
+        }
+        return mFence[mFence.size()-1]->dup();
+    }
+
+    virtual std::vector<int> fds() const {
+        std::vector<int> RetFDs;
+        for (int index = 0; index < mFence.size(); index++) {
+            RetFDs.push_back(mFence[index]->dup());
+        }
+        return RetFDs;
     }
 
     virtual bool isHW() const {
@@ -222,37 +260,51 @@ public:
     }
 
     virtual native_handle_t *createNativeHandle() const {
-        native_handle_t* nh = native_handle_create(1, 1);
+        std::vector<int> nativefds = fds();
+        native_handle_t* nh = native_handle_create(nativefds.size(), 1);
         if (!nh) {
             ALOGE("Failed to allocate native handle for sync fence");
             return nullptr;
         }
-        nh->data[0] = fd();
-        nh->data[1] = type();
+
+        for (int i = 0; i < nativefds.size(); i++) {
+            nh->data[i]= nativefds[i];
+        }
+        nh->data[nativefds.size()] = type();
         return nh;
     }
 
     virtual ~SyncFenceImpl() {};
 
-    SyncFenceImpl(int fenceFd) :
-            mFence(sp<Fence>::make(fenceFd)) {}
+    SyncFenceImpl(int fenceFd)
+    {
+        mFence.push_back(sp<Fence>::make(fenceFd));
+    }
+
+    SyncFenceImpl(std::vector<int> fenceFds)
+    {
+        for (int fenceFd : fenceFds) {
+            mFence.push_back(sp<Fence>::make(fenceFd));
+        }
+    }
 
     static std::shared_ptr<SyncFenceImpl> CreateFromNativeHandle(const native_handle_t* nh) {
-        if (!nh || nh->numFds != 1 || nh->numInts != 1) {
-            ALOGE("Invalid handle for sync fence");
-            return nullptr;
+        std::vector<int> fds;
+        for (int i = 0; i < nh->numFds; i++) {
+            fds.push_back(dup(nh->data[i]));
         }
-        int fd = dup(nh->data[0]);
-        std::shared_ptr<SyncFenceImpl> p = std::make_shared<SyncFenceImpl>(fd);
+        std::shared_ptr<SyncFenceImpl> p = std::make_shared<SyncFenceImpl>(fds);
         if (!p) {
             ALOGE("Failed to allocate sync fence impl");
-            close(fd);
+            for (int fd : fds) {
+                close(fd);
+            }
         }
         return p;
     }
 
 private:
-    const sp<Fence> mFence;
+    std::vector<sp<Fence>> mFence;
 };
 
 C2Fence _C2FenceFactory::CreateSyncFence(int fenceFd) {
@@ -263,11 +315,30 @@ C2Fence _C2FenceFactory::CreateSyncFence(int fenceFd) {
             ALOGE("Failed to allocate sync fence impl");
             close(fenceFd);
         }
-        if (!p->valid()) {
+        if (p && !p->valid()) {
             p.reset();
         }
     } else {
         ALOGE("Create sync fence from invalid fd");
+    }
+    return C2Fence(p);
+}
+
+C2Fence _C2FenceFactory::CreateMultipleFDSyncFence(std::vector<int> fenceFds) {
+    std::shared_ptr<C2Fence::Impl> p;
+    if (fenceFds.size() >= 0) {
+        p = std::make_shared<_C2FenceFactory::SyncFenceImpl>(fenceFds);
+        if (!p) {
+            ALOGE("Failed to allocate sync fence impl closing FDs");
+            for (int fenceFd : fenceFds) {
+                close(fenceFd);
+            }
+        }
+        if (p && !p->valid()) {
+            p.reset();
+        }
+    } else {
+        ALOGE("Create sync fence from invalid fd list of size 0");
     }
     return C2Fence(p);
 }
