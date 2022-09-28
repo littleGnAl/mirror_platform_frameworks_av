@@ -48,12 +48,26 @@ struct _C2FenceFactory {
      */
     static C2Fence CreateSyncFence(int fenceFd);
 
+    /*
+     * Create C2Fence from list of fence file fds.
+     *
+     * \param fenceFds          Vector of file descriptor for fence.
+     *                          It will be owned and closed by the returned fence object.
+     */
+    static C2Fence CreateMultipleFdSyncFence(const std::vector<int>& fenceFds);
+
     /**
      * Create a native handle from fence for marshalling
      *
      * \return a non-null pointer if the fence can be marshalled, otherwise return nullptr
      */
     static native_handle_t* CreateNativeHandle(const C2Fence& fence);
+
+    /**
+     * Create a list of fds from fence
+     * \return a vector of fds otherwise return vector of size 0
+     */
+    static std::vector<int> ExtractFdsFromC2Fence(const C2Fence& C2fencep);
 
     /*
      * Create C2Fence from a native handle.
