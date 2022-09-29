@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1803fe_500653d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-09-29T16:12:35Z",
+      "side": 1,
+      "message": "I don\u0027t think CaptureRequest.Builder is thread safe. Did you attempt to use a lock when calling Builder.set() and Builder.build() from different threads?",
+      "revId": "bc4442beac536bc6f834eac6cf730d863e25482b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
