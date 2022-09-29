@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9efb45_c8d6c498",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-09-29T22:17:05Z",
+      "side": 1,
+      "message": "I think the right fix should be checking for baseStore before creating Codec2Client here. Something like\n\n    if (baseStore \u003d\u003d nullptr) {\n        return nullptr;\n    }\n\nNOTE that the constructor of Codec2Client specifically says that base can\u0027t be null: https://android.googlesource.com/platform/frameworks/av/+/master/media/codec2/hidl/client/include/codec2/hidl/client.h#232",
+      "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
