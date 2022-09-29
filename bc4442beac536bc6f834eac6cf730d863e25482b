@@ -16,6 +16,24 @@
       "message": "I don\u0027t think CaptureRequest.Builder is thread safe. Did you attempt to use a lock when calling Builder.set() and Builder.build() from different threads?",
       "revId": "bc4442beac536bc6f834eac6cf730d863e25482b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d26639d_00eea093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-09-29T17:30:59Z",
+      "side": 1,
+      "message": "Yes, camera_metadata is not a thread-safe data structure - it may only be accessed by multiple threads if proper mutexing/access control is used.",
+      "parentUuid": "7b1803fe_500653d6",
+      "revId": "bc4442beac536bc6f834eac6cf730d863e25482b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
