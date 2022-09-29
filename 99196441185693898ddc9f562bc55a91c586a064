@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab4137f_38c92b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2022-09-29T17:50:06Z",
+      "side": 1,
+      "message": "Looks good to me,  Over to ray for C++ review.",
+      "revId": "99196441185693898ddc9f562bc55a91c586a064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163922b3_d93e66bf",
+        "filename": "services/mediametrics/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2022-09-29T17:50:06Z",
+      "side": 1,
+      "message": "This seems like the wrong location for this target.  Probably up a dir.",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "99196441185693898ddc9f562bc55a91c586a064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
