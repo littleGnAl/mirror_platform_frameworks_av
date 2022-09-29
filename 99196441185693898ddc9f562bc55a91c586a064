@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36e89f3_93cec190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-29T19:24:22Z",
+      "side": 1,
+      "message": "since this new library is not defined in the correct place.",
+      "revId": "99196441185693898ddc9f562bc55a91c586a064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "163922b3_d93e66bf",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-09-29T17:50:06Z",
       "side": 1,
       "message": "This seems like the wrong location for this target.  Probably up a dir.",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "99196441185693898ddc9f562bc55a91c586a064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee71000_a6cc170d",
+        "filename": "services/mediametrics/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-09-29T19:24:22Z",
+      "side": 1,
+      "message": "this fuzzer subdirectory is definitely the wrong place to define it.\n\nit feels a little incorrect to be building any of the statsd pieces here;\ni\u0027d think that they should be built/defined within the statsd code tree.",
+      "parentUuid": "163922b3_d93e66bf",
       "range": {
         "startLine": 75,
         "startChar": 11,
