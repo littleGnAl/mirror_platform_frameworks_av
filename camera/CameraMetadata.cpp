@@ -524,16 +524,15 @@ status_t CameraMetadata::resizeIfNeeded(size_t extraEntries, size_t extraData) {
 
         if (newEntryCount > currentEntryCap ||
                 newDataCount > currentDataCap) {
-            camera_metadata_t *oldBuffer = mBuffer;
-            mBuffer = allocate_camera_metadata(newEntryCount,
-                    newDataCount);
-            if (mBuffer == NULL) {
+            camera_metadata_t *newBuffer = allocate_camera_metadata(newEntryCount,newDataCount);
+            if (newBuffer == NULL) {
                 // Maintain old buffer to avoid potential memory leak.
-                mBuffer = oldBuffer;
                 ALOGE("%s: Can't allocate larger metadata buffer", __FUNCTION__);
                 return NO_MEMORY;
             }
-            append_camera_metadata(mBuffer, oldBuffer);
+            camera_metadata_t *oldBuffer = mBuffer;
+            append_camera_metadata(newBuffer, oldBuffer);
+            mBuffer = newBuffer;
             free_camera_metadata(oldBuffer);
         }
     }
