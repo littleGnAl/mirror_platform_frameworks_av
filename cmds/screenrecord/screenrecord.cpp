@@ -119,6 +119,9 @@ static uint32_t gVideoHeight = 0;
 static uint32_t gBitRate = 20000000;     // 20Mbps
 static uint32_t gTimeLimitSec = kMaxTimeLimitSec;
 static uint32_t gBframes = 0;
+static uint32_t gLayerCount = 0;         // Temporal Layer info (Layer count in total)
+static uint32_t gBLayerCount = 0;        // Temporal Layer info (Bi Layer count)
+static bool gTSSchemaSet = false;        // was temporal layer explicitly requested?
 static PhysicalDisplayId gPhysicalDisplayId;
 // Set by signal handler to stop recording.
 static volatile bool gStopRequested = false;
@@ -197,8 +200,22 @@ static status_t prepareEncoder(float displayFps, sp<MediaCodec>* pCodec,
     format->setInt32(KEY_BIT_RATE, gBitRate);
     format->setFloat(KEY_FRAME_RATE, displayFps);
     format->setInt32(KEY_I_FRAME_INTERVAL, 10);
-    format->setInt32(KEY_MAX_B_FRAMES, gBframes);
-    if (gBframes > 0) {
+    if (gTSSchemaSet) {
+        if (gBLayerCount) {
+            format->setString(KEY_TEMPORAL_LAYERING, AStringPrintf(
+                        "android.generic.%u+%u",
+                        gLayerCount - gBLayerCount,
+                        gBLayerCount);
+        } else {
+            format->setString(KEY_TEMPORAL_LAYERING, AStringPrintf(
+                        "android.generic.%u",
+                        gLayerCount);
+        }
+    } else if (gBframes) {
+        format->setInt32(KEY_MAX_B_FRAMES, gBframes);
+    }
+
+    if (gBframes > 0 || gTSSchemaSet) {
         format->setInt32(KEY_PROFILE, AVCProfileMain);
         format->setInt32(KEY_LEVEL, AVCLevel41);
     }
@@ -982,6 +999,40 @@ static bool parseWidthHeight(const char* widthHeight, uint32_t* pWidth,
 }
 
 /*
+ * Parses a string of the form "1+2".
+ *
+ * Returns true on success.
+ */
+static bool parseTemporalLayerInfo(const char* tsSchema, uint32_t* pLayerCount,
+        uint32_t* pBLayerCount) {
+    uint32_t layerCount = 0, bLayerCount = 0;
+    char* end;
+
+    // Must specify base 10, or "0+0" gets parsed differently.
+    layerCount = strtoul(tsSchema, &end, 10);
+    if (end == tsSchema) {
+        return false;
+    }
+
+    if (*end != '+') {
+        return true;
+    }
+
+    if (*(end+1) == '\0') {
+        bLayerCount = 0;
+    } else {
+        bLayerCount = strtol(end + 1, &end, 10);
+        if (*end != '\0') {
+            // invalid chars in bLayerCount
+            return false;
+        }
+    }
+
+    *pBLayerCount = bLayerCount;
+    return true;
+}
+
+/*
  * Accepts a string with a bare number ("4000000") or with a single-character
  * unit ("4m").
  *
@@ -1032,6 +1083,10 @@ static void usage() {
         "    see \"dumpsys SurfaceFlinger --display-id\" for valid display IDs.\n"
         "--verbose\n"
         "    Display interesting information on stdout.\n"
+        "--ts-schema N+M\n"
+        "    Set temporal layering following ts-schema taking values N, N+M,\n"
+        "    where N denotes the total number of non-bidirectional layers (which must be at least 1)\n"
+        "    and M denotes the total number of bidirectional layers (which must be non-negative)..\n"
         "--help\n"
         "    Show this message.\n"
         "\n"
@@ -1061,6 +1116,7 @@ int main(int argc, char* const argv[]) {
         { "monotonic-time",     no_argument,        NULL, 'm' },
         { "persistent-surface", no_argument,        NULL, 'p' },
         { "bframes",            required_argument,  NULL, 'B' },
+        { "ts-schema",          required_argument,  NULL, 'T' },
         { "display-id",         required_argument,  NULL, 'd' },
         { NULL,                 0,                  NULL, 0 }
     };
@@ -1166,6 +1222,14 @@ int main(int argc, char* const argv[]) {
             if (parseValueWithUnit(optarg, &gBframes) != NO_ERROR) {
                 return 2;
             }
+            break;
+        case 'T':
+            if (!parseTemporalLayerInfo(optarg, &gLayerCount, &gBLayerCount)) {
+                fprintf(stderr, "Invalid temporal layer info '%s', must be N or N+M\n",
+                        optarg);
+                return 2;
+            }
+            gTSSchemaSet = true;
             break;
         case 'd':
             if (const auto id = android::DisplayId::fromValue<PhysicalDisplayId>(atoll(optarg));
