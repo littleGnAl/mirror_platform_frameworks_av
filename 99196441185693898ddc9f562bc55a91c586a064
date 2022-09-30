@@ -80,6 +80,30 @@
       },
       "revId": "99196441185693898ddc9f562bc55a91c586a064",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060fcead_10d8c1c7",
+        "filename": "services/mediametrics/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2022-09-30T01:10:11Z",
+      "side": 1,
+      "message": "Greetings, Thank you for review - I moved impl to internal branch http://ag/20077908",
+      "parentUuid": "dee71000_a6cc170d",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "99196441185693898ddc9f562bc55a91c586a064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
