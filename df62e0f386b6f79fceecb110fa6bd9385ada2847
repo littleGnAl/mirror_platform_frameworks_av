@@ -46,6 +46,30 @@
       },
       "revId": "df62e0f386b6f79fceecb110fa6bd9385ada2847",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4000f4b6_11249546",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-10-03T19:52:30Z",
+      "side": 1,
+      "message": "Greg,\nThanks for flagging this.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2239986 updates this CL to be consistent with what is in AVC encoder and what was in patchset 1 of this CL.",
+      "parentUuid": "659eca86_75aa28af",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 9
+      },
+      "revId": "df62e0f386b6f79fceecb110fa6bd9385ada2847",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
