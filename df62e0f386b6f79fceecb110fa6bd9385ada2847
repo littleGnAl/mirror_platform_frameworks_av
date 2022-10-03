@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe4184a_6db4461a",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-10-03T13:58:43Z",
+      "side": 1,
+      "message": "With this \"break;\", we never reach this level check logic.",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 9
+      },
+      "revId": "df62e0f386b6f79fceecb110fa6bd9385ada2847",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
