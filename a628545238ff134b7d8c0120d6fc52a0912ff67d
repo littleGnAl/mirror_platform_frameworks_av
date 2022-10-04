@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9b3935_aabbee81",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-04T02:23:35Z",
+      "side": 1,
+      "message": "probably should be \u003cgav1/decoder.h\u003e\n\nand Android.bp in external/libgav1/Android.bp should be modified\nto ensure that it exports the correct subtree.",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "a628545238ff134b7d8c0120d6fc52a0912ff67d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
