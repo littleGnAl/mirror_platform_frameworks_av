@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfd99f9_cee98b33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-05T19:56:35Z",
+      "side": 1,
+      "message": "please split into 2 CLs:\n(1) the pieces under media/module/\n(2) the ACodec and OMXUtils file",
+      "revId": "faeb9340c420498ccbb54970bfeaa47e6dbe87bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
