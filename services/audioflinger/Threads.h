@@ -1590,7 +1590,8 @@ class OffloadThread : public DirectOutputThread {
 public:
 
     OffloadThread(const sp<AudioFlinger>& audioFlinger, AudioStreamOut* output,
-                  audio_io_handle_t id, bool systemReady);
+                  audio_io_handle_t id, bool systemReady,
+                  const audio_offload_info_t& offloadInfo);
     virtual                 ~OffloadThread() {};
                 void        flushHw_l() override;
 
@@ -1605,7 +1606,9 @@ protected:
 
     virtual     bool        keepWakeLock() const { return (mKeepWakeLock || (mDrainSequence & 1)); }
 
+                bool        isTunerStream() const { return (mOffloadInfo.content_id > 0); }
 private:
+    const       audio_offload_info_t mOffloadInfo;
     size_t      mPausedWriteLength;     // length in bytes of write interrupted by pause
     size_t      mPausedBytesRemaining;  // bytes still waiting in mixbuffer after resume
     bool        mKeepWakeLock;          // keep wake lock while waiting for write callback
