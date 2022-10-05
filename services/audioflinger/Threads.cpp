@@ -6082,8 +6082,10 @@ void AudioFlinger::MixerThread::cacheParameters_l()
 // ----------------------------------------------------------------------------
 
 AudioFlinger::DirectOutputThread::DirectOutputThread(const sp<AudioFlinger>& audioFlinger,
-        AudioStreamOut* output, audio_io_handle_t id, ThreadBase::type_t type, bool systemReady)
+        AudioStreamOut* output, audio_io_handle_t id, ThreadBase::type_t type, bool systemReady,
+        const audio_offload_info_t& offloadInfo)
     :   PlaybackThread(audioFlinger, output, id, type, systemReady)
+    , mOffloadInfo(offloadInfo)
 {
     setMasterBalance(audioFlinger->getMasterBalance_l());
 }
@@ -6348,7 +6350,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
                 // No buffers for this track. Give it a few chances to
                 // fill a buffer, then remove it from active list.
                 // Only consider last track started for mixer state control
-                if (--(track->mRetryCount) <= 0) {
+                if (!isTunerStream()  // tuner streams remain active in underrun
+                        && --(track->mRetryCount) <= 0) {
                     const bool running = checkRunningTimestamp();
                     if (running) { // still running, give us more time.
                         track->mRetryCount = kMaxTrackRetriesOffload;
@@ -6712,8 +6715,9 @@ void AudioFlinger::AsyncCallbackThread::setAsyncError()
 
 // ----------------------------------------------------------------------------
 AudioFlinger::OffloadThread::OffloadThread(const sp<AudioFlinger>& audioFlinger,
-        AudioStreamOut* output, audio_io_handle_t id, bool systemReady)
-    :   DirectOutputThread(audioFlinger, output, id, OFFLOAD, systemReady),
+        AudioStreamOut* output, audio_io_handle_t id, bool systemReady,
+        const audio_offload_info_t& offloadInfo)
+    :   DirectOutputThread(audioFlinger, output, id, OFFLOAD, systemReady, offloadInfo),
         mPausedWriteLength(0), mPausedBytesRemaining(0), mKeepWakeLock(true)
 {
     //FIXME: mStandby should be set to true by ThreadBase constructo
@@ -6931,7 +6935,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
             } else {
                 // No buffers for this track. Give it a few chances to
                 // fill a buffer, then remove it from active list.
-                if (--(track->mRetryCount) <= 0) {
+                if (!isTunerStream()  // tuner streams remain active in underrun
+                        && --(track->mRetryCount) <= 0) {
                     const bool running = checkRunningTimestamp();
                     if (running) { // still running, give us more time.
                         track->mRetryCount = kMaxTrackRetriesOffload;
