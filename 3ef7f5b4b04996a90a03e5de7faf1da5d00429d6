@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9605f3_ef9235e9",
+        "filename": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-10-06T23:05:33Z",
+      "side": 1,
+      "message": "Added the details in the bug.",
+      "parentUuid": "ec247ba9_daae9794",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "3ef7f5b4b04996a90a03e5de7faf1da5d00429d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90b21570_1bfa2915",
