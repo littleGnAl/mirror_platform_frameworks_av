@@ -16,6 +16,121 @@
       "message": "I\u0027ll defer to Ray, who had some comments after I +2ed.",
       "revId": "f967e6e6193d35ee202c9cbf4e9cb82b26025fa7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e86bc1_21f4b63a",
+        "filename": "cmds/stagefright/muxer.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-06T19:24:24Z",
+      "side": 1,
+      "message": "this doesn\u0027t tell us in the diagnostic whether it\u0027s the input or output file\nthat it can\u0027t open.\n\ni\u0027m torn between \"fix it while we have the covers off\"\nand trying to keep CLs as small and specific as possible.",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 36
+      },
+      "revId": "f967e6e6193d35ee202c9cbf4e9cb82b26025fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128b3666_96127ff3",
+        "filename": "cmds/stagefright/muxer.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-06T19:24:24Z",
+      "side": 1,
+      "message": "doesn\u0027t seem that we should be returning fd;  a \u0027return 1\u0027\n(or my favorite:  return -1)\n\nlooks like this routine is 0\u003d\u003dsuccess, !\u003d0 failure.\nnot sure why original authors chose 0/1 for the return values.",
+      "range": {
+        "startLine": 82,
+        "startChar": 10,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "f967e6e6193d35ee202c9cbf4e9cb82b26025fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1317d62d_e570b856",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-06T19:24:24Z",
+      "side": 1,
+      "message": "which meets minimum writer/muxer requirements.\nSome muxers impose additional requirements on top of these.\n\n[that extra sentence preps people to look at how the webm muxer/writer \nwants r/w instead of just writable.",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "f967e6e6193d35ee202c9cbf4e9cb82b26025fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62583f57_cbbf4eea",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-06T19:24:24Z",
+      "side": 1,
+      "message": "isFdValidForMuxing()  maybe as a name.\n\nI\u0027m not too stressed about this.",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "f967e6e6193d35ee202c9cbf4e9cb82b26025fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866fbd1f_61f0ebbe",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-06T19:24:24Z",
+      "side": 1,
+      "message": "let\u0027s say \"must be writable\".",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "f967e6e6193d35ee202c9cbf4e9cb82b26025fa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
