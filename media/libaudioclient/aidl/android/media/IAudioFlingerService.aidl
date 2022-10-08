@@ -16,13 +16,10 @@
 
 package android.media;
 
-import android.media.AudioMode;
 import android.media.AudioPatch;
 import android.media.AudioPort;
 import android.media.AudioPortConfig;
-import android.media.AudioStreamType;
 import android.media.AudioUniqueIdUse;
-import android.media.AudioUuid;
 import android.media.AudioVibratorInfo;
 import android.media.CreateEffectRequest;
 import android.media.CreateEffectResponse;
@@ -38,10 +35,17 @@ import android.media.EffectDescriptor;
 import android.media.IAudioFlingerClient;
 import android.media.IAudioRecord;
 import android.media.IAudioTrack;
+import android.media.LatencyMode;
 import android.media.MicrophoneInfoData;
 import android.media.RenderPosition;
 import android.media.TrackSecondaryOutputInfo;
-import android.media.audio.common.AudioFormat;
+import android.media.audio.common.AudioChannelLayout;
+import android.media.audio.common.AudioFormatDescription;
+import android.media.audio.common.AudioMMapPolicyInfo;
+import android.media.audio.common.AudioMMapPolicyType;
+import android.media.audio.common.AudioMode;
+import android.media.audio.common.AudioStreamType;
+import android.media.audio.common.AudioUuid;
 
 /**
  * {@hide}
@@ -62,7 +66,7 @@ interface IAudioFlingerService {
      */
     int sampleRate(int /* audio_io_handle_t */ ioHandle);
 
-    AudioFormat format(int /* audio_io_handle_t */ output);
+    AudioFormatDescription format(int /* audio_io_handle_t */ output);
 
     long frameCount(int /* audio_io_handle_t */ ioHandle);
 
@@ -115,8 +119,8 @@ interface IAudioFlingerService {
     // Retrieve the audio recording buffer size in bytes.
     // FIXME This API assumes a route, and so should be deprecated.
     long getInputBufferSize(int sampleRate,
-                            AudioFormat format,
-                            int /* audio_channel_mask_t */ channelMask);
+                            in AudioFormatDescription format,
+                            in AudioChannelLayout channelMask);
 
     OpenOutputResponse openOutput(in OpenOutputRequest request);
     int /* audio_io_handle_t */ openDuplicateOutput(int /* audio_io_handle_t */ output1,
@@ -217,5 +221,33 @@ interface IAudioFlingerService {
     void updateSecondaryOutputs(
             in TrackSecondaryOutputInfo[] trackSecondaryOutputInfos);
 
+    AudioMMapPolicyInfo[] getMmapPolicyInfos(AudioMMapPolicyType policyType);
+
+    int getAAudioMixerBurstCount();
+
+    int getAAudioHardwareBurstMinUsec();
+
     void setDeviceConnectedState(in AudioPort devicePort, boolean connected);
+
+    /**
+     * Requests a given latency mode (See LatencyMode.aidl) on an output stream.
+     * This can be used when some use case on a given mixer/stream can only be enabled
+     * if a specific latency mode is selected on the audio path below the HAL.
+     * For instance spatial audio with head tracking.
+     * output is the I/O handle of the output stream for which the request is made.
+     * latencyMode is the requested latency mode.
+     */
+     void setRequestedLatencyMode(int output, LatencyMode latencyMode);
+
+    /**
+     * Queries the list of latency modes (See LatencyMode.aidl) supported by an output stream.
+     * output is the I/O handle of the output stream to which the query applies.
+     * returns the list of supported latency modes.
+     */
+    LatencyMode[] getSupportedLatencyModes(int output);
+
+    // When adding a new method, please review and update
+    // IAudioFlinger.h AudioFlingerServerAdapter::Delegate::TransactionCode
+    // AudioFlinger.cpp AudioFlinger::onTransactWrapper()
+    // AudioFlinger.cpp IAUDIOFLINGER_BINDER_METHOD_MACRO_LIST
 }

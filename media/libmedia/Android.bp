@@ -19,6 +19,10 @@ cc_library_headers {
     name: "libmedia_headers",
     vendor_available: true,
     min_sdk_version: "29",
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.media.swcodec",
+    ],
 
     export_include_dirs: ["include"],
     header_libs: [
@@ -214,6 +218,11 @@ cc_library_static {
     name: "libmedia_midiiowrapper",
 
     min_sdk_version: "29",
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.media",
+    ],
+
 
     srcs: ["MidiIoWrapper.cpp"],
 
@@ -294,6 +303,10 @@ cc_library_shared {
 
 cc_library {
     name: "libmedia",
+
+    defaults: [
+        "latest_android_media_audio_common_types_cpp_shared",
+    ],
 
     srcs: [
         ":mediaextractorservice_aidl",
@@ -440,6 +453,6 @@ cc_library_static {
 
     apex_available: [
         "//apex_available:platform",
-        "com.android.media"
+        "com.android.media",
     ],
 }
