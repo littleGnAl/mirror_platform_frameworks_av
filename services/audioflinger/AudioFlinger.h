@@ -76,6 +76,7 @@
 #include <media/VolumeShaper.h>
 #include <mediautils/ServiceUtilities.h>
 #include <mediautils/Synchronization.h>
+#include <mediautils/ThreadSnapshot.h>
 
 #include <audio_utils/clock.h>
 #include <audio_utils/FdToString.h>
@@ -282,7 +283,21 @@ public:
     virtual status_t updateSecondaryOutputs(
             const TrackSecondaryOutputsMap& trackSecondaryOutputs);
 
+    virtual status_t getMmapPolicyInfos(
+            media::audio::common::AudioMMapPolicyType policyType,
+            std::vector<media::audio::common::AudioMMapPolicyInfo> *policyInfos);
+
+    virtual int32_t getAAudioMixerBurstCount();
+
+    virtual int32_t getAAudioHardwareBurstMinUsec();
+
     virtual status_t setDeviceConnectedState(const struct audio_port_v7 *port, bool connected);
+
+    virtual status_t setRequestedLatencyMode(
+            audio_io_handle_t output, audio_latency_mode_t mode);
+
+    virtual status_t getSupportedLatencyModes(audio_io_handle_t output,
+            std::vector<audio_latency_mode_t>* modes);
 
     status_t onTransactWrapper(TransactionCode code, const Parcel& data, uint32_t flags,
         const std::function<status_t()>& delegate) override;
@@ -752,9 +767,11 @@ using effect_buffer_t = int16_t;
               // no range check, AudioFlinger::mLock held
               bool streamMute_l(audio_stream_type_t stream) const
                                 { return mStreamTypes[stream].mute; }
-              void ioConfigChanged(audio_io_config_event event,
+              void ioConfigChanged(audio_io_config_event_t event,
                                    const sp<AudioIoDescriptor>& ioDesc,
                                    pid_t pid = 0);
+              void onSupportedLatencyModesChanged(
+                    audio_io_handle_t output, const std::vector<audio_latency_mode_t>& modes);
 
               // Allocate an audio_unique_id_t.
               // Specific types are audio_io_handle_t, audio_session_t, effect ID (int),
@@ -1007,6 +1024,11 @@ private:
 
     // Keep in sync with java definition in media/java/android/media/AudioRecord.java
     static constexpr int32_t kMaxSharedAudioHistoryMs = 5000;
+
+    std::map<media::audio::common::AudioMMapPolicyType,
+             std::vector<media::audio::common::AudioMMapPolicyInfo>> mPolicyInfos;
+    int32_t mAAudioBurstsPerBuffer = 0;
+    int32_t mAAudioHwBurstMinMicros = 0;
 };
 
 #undef INCLUDING_FROM_AUDIOFLINGER_H
