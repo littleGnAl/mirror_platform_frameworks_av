@@ -321,7 +321,7 @@ cc_library {
         "libstagefright_webm",
         "libstagefright_timedtext",
         "libogg",
-        "libwebm",
+        "libwebm_mkvparser",
         "libstagefright_id3",
         "framework-permission-aidl-cpp",
         "libmediandk_format",
