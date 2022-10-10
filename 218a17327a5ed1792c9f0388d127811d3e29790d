@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed1d33a_0fd0169b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-10T23:58:25Z",
+      "side": 1,
+      "message": "seems like the analyzer is missing out on the fact that the\nassert() only happens .... when there is nothing to free.",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "218a17327a5ed1792c9f0388d127811d3e29790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9ba0bc0c_91f0e4e9",
@@ -31,6 +54,29 @@
       "writtenOn": "2022-10-10T21:39:15Z",
       "side": 1,
       "message": "Hey Ray,\n\nLooks like you\u0027ve reviewed some of the most recent changes to this file. Are you willing to also review this one? :)",
+      "revId": "218a17327a5ed1792c9f0388d127811d3e29790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c16aa05e_3b38a7ea",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-10T23:58:25Z",
+      "side": 1,
+      "message": "if I\u0027m reading things, the FontRecord that is getting at the back\nexpects a \u0027char *\u0027 aka a null terminated string.\n\nby removing the strndup() -- which as a side effect guarantees that we get\na null terminated string as a result.\n\ni think this change will fail if the value we pull from the incoming data\nis not null terminated within \u0027tempFontNameLength\u0027 bytes.",
+      "range": {
+        "startLine": 246,
+        "startChar": 81,
+        "endLine": 246,
+        "endChar": 88
+      },
       "revId": "218a17327a5ed1792c9f0388d127811d3e29790d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
