@@ -16,6 +16,24 @@
       "message": "Wonsik,\nThis is an update to\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1890238\n\nThe condition now is consistent with what is in avc and what was in patchset 1 of the CL above.",
       "revId": "a786d7100e00d6101eafd6ebbbab4ac677865bc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a596f29_4c284893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-10-10T23:32:53Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has Code-Review +2.",
+      "parentUuid": "7d236fbf_3cf92880",
+      "revId": "a786d7100e00d6101eafd6ebbbab4ac677865bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
