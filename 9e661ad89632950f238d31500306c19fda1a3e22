@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006a3cb6_f8ee58d1",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5913,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-10T17:09:25Z",
+      "side": 1,
+      "message": "Yes, we can fix this comment later after this lands.  It is a CP of an internal CL.",
+      "parentUuid": "4a0c22bd_cf1cb3de",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4977732a_bdfa9af9",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-10-10T11:49:41Z",
       "side": 1,
       "message": "Is this needed outside of the retry count check scope?",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af7f46a_cd2417eb",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6374,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-10T17:09:25Z",
+      "side": 1,
+      "message": "yes, there is a side effect so we want this checked periodically before the retry count goes to 0, instead of at the 0 point.   Note that if the timestamp is still advancing we reset the counter back to the retry limit.",
+      "parentUuid": "4977732a_bdfa9af9",
       "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6156dd_52c12f85",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6957,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-10T17:09:25Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "efc26daf_0dc67177",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cfbd87b_8ad90bc7",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-10-10T11:49:41Z",
       "side": 1,
       "message": "typo: value?",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc5d6a3_ac4ffc2d",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-10T17:09:25Z",
+      "side": 1,
+      "message": "yes. this is a cherry pick, so this would be fixed with another CL after this one lands.",
+      "parentUuid": "7cfbd87b_8ad90bc7",
       "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
