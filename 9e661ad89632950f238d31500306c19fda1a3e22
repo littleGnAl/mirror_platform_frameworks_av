@@ -16,6 +16,74 @@
       "message": "CP this from internal ag/19430796 to AOSP to make future changes easier.",
       "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0c22bd_cf1cb3de",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5913,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-10-10T11:49:41Z",
+      "side": 1,
+      "message": "mMinimumTimeBetweenChecksNs instead of 150ms, if the defined value is changed, the value here will be inaccurate/stale.",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4977732a_bdfa9af9",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6374,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-10-10T11:49:41Z",
+      "side": 1,
+      "message": "Is this needed outside of the retry count check scope?",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc26daf_0dc67177",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6957,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-10-10T11:49:41Z",
+      "side": 1,
+      "message": "Same, is this needed outside of the retry count check scope?",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cfbd87b_8ad90bc7",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-10-10T11:49:41Z",
+      "side": 1,
+      "message": "typo: value?",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
