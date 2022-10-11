@@ -105,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83799ee5_430b1617",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6374,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-10-11T15:50:28Z",
+      "side": 1,
+      "message": "Got it, the side effect is rather subtle, if we count on it and it\u0027s not obvious from the code, when there are future adjustments for the above minor changes, we could add a comment what is the side effect and why the check is better on the outside. Thanks!",
+      "parentUuid": "0af7f46a_cd2417eb",
+      "revId": "9e661ad89632950f238d31500306c19fda1a3e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efc26daf_0dc67177",
