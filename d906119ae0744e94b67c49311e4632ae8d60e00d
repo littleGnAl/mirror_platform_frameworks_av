@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a4607e_336cfaae",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-11T05:49:38Z",
+      "side": 0,
+      "message": "rename the one in external/libvpx/libwebm as libwebm_vpx to force the discovery of any uses of the old name.\n\npresumably our goal is to ensure that everyone uses the new libwebm_mkvparser\nand that nobody uses the other one;  and that we could even remove the old one.\n\nthis rename can be a separate CL; but should be built and submitted right away, under the same bug as this one that is changing these references.",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 18
+      },
+      "revId": "d906119ae0744e94b67c49311e4632ae8d60e00d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
