@@ -22,6 +22,30 @@
       },
       "revId": "d906119ae0744e94b67c49311e4632ae8d60e00d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc768fa2_f870b85c",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-10-11T13:05:14Z",
+      "side": 0,
+      "message": "Ray,\nhttps://android-review.googlesource.com/c/platform/external/libvpx/+/2244035 removes the external/libvpx/libwebm folder.\nIt will be marked as ready for review once these two CLs land.\nInstead of landing 5 CLs in a topic, this work is being done in stages.",
+      "parentUuid": "24a4607e_336cfaae",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 18
+      },
+      "revId": "d906119ae0744e94b67c49311e4632ae8d60e00d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
