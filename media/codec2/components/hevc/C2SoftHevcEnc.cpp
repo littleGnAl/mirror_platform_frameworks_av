@@ -606,15 +606,15 @@ c2_status_t C2SoftHevcEnc::onInit() {
 }
 
 c2_status_t C2SoftHevcEnc::onStop() {
-    return C2_OK;
+    return releaseEncoder();
 }
 
 void C2SoftHevcEnc::onReset() {
-    releaseEncoder();
+    (void) onStop();
 }
 
 void C2SoftHevcEnc::onRelease() {
-    releaseEncoder();
+    (void) onStop();
 }
 
 c2_status_t C2SoftHevcEnc::onFlush_sm() {
