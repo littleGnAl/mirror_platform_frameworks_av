@@ -16,6 +16,24 @@
       "message": "@git.rahulm@gmail.com Is this the right mapping here or it should be \"audio_decoder.dtsuhd\", \"audio_encoder.dtsuhd\"?",
       "revId": "4479d2b070244c044ac8d88a039a7088a0f1aa19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a477e30f_9d49706f",
+        "filename": "media/libstagefright/omx/OMXUtils.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-10-12T08:32:58Z",
+      "side": 1,
+      "message": "@dorindrimus@google.com\nThanks for the updates.\nI could confirm this after an internal discussion.\n\nAre we going to deprecate the \u0027MEDIA_MIMETYPE_AUDIO_DTS_UHD\u0027 once the \u0027MEDIA_MIMETYPE_AUDIO_DTS_UHD_P1\u0027 is added?\nSimilar to this MIME-type update, are we planning to add \u0027UHD_P1\u0027 in the ENCODING_* ?",
+      "parentUuid": "b3eab9c7_f3095b9d",
+      "revId": "4479d2b070244c044ac8d88a039a7088a0f1aa19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
