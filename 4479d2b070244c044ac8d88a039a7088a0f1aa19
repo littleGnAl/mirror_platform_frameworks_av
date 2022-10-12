@@ -52,6 +52,24 @@
       "parentUuid": "a477e30f_9d49706f",
       "revId": "4479d2b070244c044ac8d88a039a7088a0f1aa19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d329ee2_6906cc75",
+        "filename": "media/libstagefright/omx/OMXUtils.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-10-12T14:55:31Z",
+      "side": 1,
+      "message": "ENCODING_DTS_UHD_P1 was added as an alias for ENCODING_DTS_UHD.",
+      "parentUuid": "1aa1501c_62c3e0b9",
+      "revId": "4479d2b070244c044ac8d88a039a7088a0f1aa19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
