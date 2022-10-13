@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30aacf0d_8abba844",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-10-13T00:42:21Z",
+      "side": 1,
+      "message": "consider to make fd()/valid()/ready() work on the merged fence instead of first fence. It makes more sense that the whole c2fence stands for the whole frame. A non-optimal display could just wait for this single c2fence before touching whole frame.",
+      "revId": "75f68e70263f7a5627accf1b4a2ee7627f247cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
