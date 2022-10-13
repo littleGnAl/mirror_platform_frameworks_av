@@ -221,7 +221,9 @@ struct ResourceManagerClient : public BnResourceManagerClient {
             std::shared_ptr<IResourceManagerService> service =
                     IResourceManagerService::fromBinder(binder);
             if (service == nullptr) {
-                ALOGW("MediaCodec::ResourceManagerClient unable to find ResourceManagerService");
+                ALOGE("MediaCodec::ResourceManagerClient unable to find ResourceManagerService");
+                *_aidl_return = false;
+                return Status::fromStatus(STATUS_DEAD_OBJECT);
             }
             service->removeClient(mPid, getId(this));
             *_aidl_return = true;
@@ -265,26 +267,25 @@ private:
     DISALLOW_EVIL_CONSTRUCTORS(ResourceManagerClient);
 };
 
-struct MediaCodec::ResourceManagerServiceProxy : public RefBase {
+struct MediaCodec::ResourceManagerServiceProxy {
     ResourceManagerServiceProxy(pid_t pid, uid_t uid,
             const std::shared_ptr<IResourceManagerClient> &client);
-    virtual ~ResourceManagerServiceProxy();
+    ~ResourceManagerServiceProxy();
 
     status_t init();
-
-    // implements DeathRecipient
-    static void BinderDiedCallback(void* cookie);
-    void binderDied();
-    static Mutex sLockCookies;
-    static std::set<void*> sCookies;
-    static void addCookie(void* cookie);
-    static void removeCookie(void* cookie);
 
     void addResource(const MediaResourceParcel &resource);
     void removeResource(const MediaResourceParcel &resource);
     void removeClient();
     void markClientForPendingRemoval();
     bool reclaimResource(const std::vector<MediaResourceParcel> &resources);
+
+private:
+    // implements DeathRecipient
+    void binderDied();
+    static void BinderDiedCallback(void* cookie);
+    static std::mutex sLockCookies;
+    static std::set<void*> sCookies;
 
 private:
     Mutex mLock;
@@ -311,7 +312,10 @@ MediaCodec::ResourceManagerServiceProxy::~ResourceManagerServiceProxy() {
 
     // remove the cookie, so any in-flight death notification will get dropped
     // by our handler.
-    removeCookie(this);
+    {
+        std::scoped_lock lock{sLockCookies};
+        sCookies.erase(this);
+    }
 
     Mutex::Autolock _l(mLock);
     if (mService != nullptr) {
@@ -325,7 +329,7 @@ status_t MediaCodec::ResourceManagerServiceProxy::init() {
     mService = IResourceManagerService::fromBinder(binder);
     if (mService == nullptr) {
         ALOGE("Failed to get ResourceManagerService");
-        return UNKNOWN_ERROR;
+        return DEAD_OBJECT;
     }
 
     int callerPid = AIBinder_getCallingPid();
@@ -346,7 +350,10 @@ status_t MediaCodec::ResourceManagerServiceProxy::init() {
     mService->reclaimResourcesFromClientsPendingRemoval(mPid);
 
     // so our handler will process the death notifications
-    addCookie(this);
+    {
+        std::scoped_lock lock{sLockCookies};
+        sCookies.insert(this);
+    }
 
     // after this, require mLock whenever using mService
     AIBinder_linkToDeath(mService->asBinder().get(), mDeathRecipient.get(), this);
@@ -354,26 +361,20 @@ status_t MediaCodec::ResourceManagerServiceProxy::init() {
 }
 
 //static
-Mutex MediaCodec::ResourceManagerServiceProxy::sLockCookies;
+std::mutex MediaCodec::ResourceManagerServiceProxy::sLockCookies;
 std::set<void*> MediaCodec::ResourceManagerServiceProxy::sCookies;
 
 //static
-void MediaCodec::ResourceManagerServiceProxy::addCookie(void* cookie) {
-    Mutex::Autolock _l(sLockCookies);
-    sCookies.insert(cookie);
-}
-
-//static
-void MediaCodec::ResourceManagerServiceProxy::removeCookie(void* cookie) {
-    Mutex::Autolock _l(sLockCookies);
-    sCookies.erase(cookie);
-}
-
-//static
 void MediaCodec::ResourceManagerServiceProxy::BinderDiedCallback(void* cookie) {
-    Mutex::Autolock _l(sLockCookies);
-    if (sCookies.find(cookie) != sCookies.end()) {
-        auto thiz = static_cast<ResourceManagerServiceProxy*>(cookie);
+    ResourceManagerServiceProxy* thiz = nullptr;
+    {
+        std::scoped_lock lock{sLockCookies};
+        if (sCookies.find(cookie) != sCookies.end()) {
+            thiz = static_cast<ResourceManagerServiceProxy*>(cookie);
+        }
+    }
+
+    if (thiz != nullptr) {
         thiz->binderDied();
     }
 }
@@ -835,7 +836,7 @@ MediaCodec::MediaCodec(
       mInputBufferCounter(0),
       mGetCodecBase(getCodecBase),
       mGetCodecInfo(getCodecInfo) {
-    mResourceManagerProxy = new ResourceManagerServiceProxy(pid, uid,
+    mResourceManagerProxy = std::make_shared<ResourceManagerServiceProxy>(pid, uid,
             ::ndk::SharedRefBase::make<ResourceManagerClient>(this, pid));
     if (!mGetCodecBase) {
         mGetCodecBase = [](const AString &name, const char *owner) {
