@@ -16,6 +16,24 @@
       "message": "so that we don\u0027t accidentally merge until the other stuff merges.",
       "revId": "86ed61a699fb5dafa066ff64f72931c17596d963",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d27849_3565cf68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2022-10-13T06:19:34Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/1842949 and https://android-review.googlesource.com/c/platform/frameworks/base/+/1842097 have merged now.\n\nThis review may continue",
+      "parentUuid": "74d254e0_966920e6",
+      "revId": "86ed61a699fb5dafa066ff64f72931c17596d963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
