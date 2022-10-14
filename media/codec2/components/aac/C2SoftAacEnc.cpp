@@ -185,16 +185,21 @@ c2_status_t C2SoftAacEnc::onStop() {
     mLastFrameEndTimestampUs.reset();
     mSignalledError = false;
     mRemainderLen = 0;
-    return C2_OK;
+    mNumBytesPerInputFrame = 0u;
+    mOutBufferSize = 0u;
+    mOutIndex = 0u;
+    if (mAACEncoder == nullptr) {
+        return C2_OK;
+    }
+    return aacEncClose(&mAACEncoder) ? C2_CORRUPTED : C2_OK;
 }
 
 void C2SoftAacEnc::onReset() {
     (void)onStop();
-    aacEncClose(&mAACEncoder);
 }
 
 void C2SoftAacEnc::onRelease() {
-    // no-op
+    (void)onStop();
 }
 
 c2_status_t C2SoftAacEnc::onFlush_sm() {
@@ -325,6 +330,16 @@ void C2SoftAacEnc::process(
     work->result = C2_OK;
     work->workletsProcessed = 1u;
     work->worklets.front()->output.flags = work->input.flags;
+
+    if (mAACEncoder == nullptr) {
+        if (C2_OK != initEncoder()) {
+            ALOGE("Failed to initialize encoder");
+            mSignalledError = true;
+            work->result = C2_CORRUPTED;
+            work->workletsProcessed = 1u;
+            return;
+        }
+    }
 
     if (mSignalledError) {
         return;
