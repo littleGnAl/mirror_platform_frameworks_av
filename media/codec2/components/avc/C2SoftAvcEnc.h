@@ -195,7 +195,6 @@ private:
     std::shared_ptr<C2StreamColorAspectsInfo::output> mColorAspects;
 
     uint32_t mOutBufferSize;
-    UWORD32 mHeaderGenerated;
     UWORD32 mBframes;
     IV_ARCH_T mArch;
     IVE_SLICE_MODE_T mSliceMode;

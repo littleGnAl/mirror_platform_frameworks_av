@@ -600,8 +600,6 @@ C2SoftAvcEnc::C2SoftAvcEnc(
     GENERATE_FILE_NAMES();
     CREATE_DUMP_FILE(mInFile);
     CREATE_DUMP_FILE(mOutFile);
-
-    initEncParams();
 }
 
 C2SoftAvcEnc::~C2SoftAvcEnc() {
@@ -613,23 +611,18 @@ c2_status_t C2SoftAvcEnc::onInit() {
 }
 
 c2_status_t C2SoftAvcEnc::onStop() {
-    return C2_OK;
+    if (mOutBlock) {
+        mOutBlock.reset();
+    }
+    return releaseEncoder();
 }
 
 void C2SoftAvcEnc::onReset() {
-    // TODO: use IVE_CMD_CTL_RESET?
-    releaseEncoder();
-    if (mOutBlock) {
-        mOutBlock.reset();
-    }
-    initEncParams();
+    (void) onStop();
 }
 
 void C2SoftAvcEnc::onRelease() {
-    releaseEncoder();
-    if (mOutBlock) {
-        mOutBlock.reset();
-    }
+    (void) onStop();
 }
 
 c2_status_t C2SoftAvcEnc::onFlush_sm() {
@@ -641,7 +634,6 @@ void  C2SoftAvcEnc::initEncParams() {
     mCodecCtx = nullptr;
     mMemRecords = nullptr;
     mNumMemRecords = DEFAULT_MEM_REC_CNT;
-    mHeaderGenerated = 0;
     mNumCores = GetCPUCoreCount();
     mArch = DEFAULT_ARCH;
     mSliceMode = DEFAULT_SLICE_MODE;
@@ -1146,6 +1138,8 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
     IV_STATUS_T status;
     WORD32 level;
 
+    initEncParams();
+
     CHECK(!mStarted);
 
     c2_status_t errType = C2_OK;
@@ -1438,8 +1432,9 @@ c2_status_t C2SoftAvcEnc::releaseEncoder() {
 
     // clear other pointers into the space being free()d
     mCodecCtx = nullptr;
-
     mStarted = false;
+    mSawInputEOS = false;
+    mSignalledError = false;
 
     return C2_OK;
 }
