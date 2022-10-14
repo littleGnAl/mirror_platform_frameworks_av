@@ -467,6 +467,7 @@ private:
         }
         auto deleter = [this, poolId](C2BlockPool *pool) {
             std::unique_lock lock(mMutex);
+            ALOGD("Pooled BlockPool %llu deleting", (unsigned long long)poolId);
             mBlockPools.erase(poolId);
             mComponents.erase(poolId);
             delete pool;
@@ -476,6 +477,7 @@ private:
                 res = allocatorStore->fetchAllocator(
                         C2PlatformAllocatorStore::ION, &allocator);
                 if (res == C2_OK) {
+                    ALOGD("Pooled BlockPool %llu creating", (unsigned long long)poolId);
                     std::shared_ptr<C2BlockPool> ptr(
                             new C2PooledBlockPool(allocator, poolId), deleter);
                     *pool = ptr;
@@ -489,6 +491,7 @@ private:
                 res = allocatorStore->fetchAllocator(
                         C2PlatformAllocatorStore::BLOB, &allocator);
                 if (res == C2_OK) {
+                    ALOGD("Pooled BlockPool %llu creating", (unsigned long long)poolId);
                     std::shared_ptr<C2BlockPool> ptr(
                             new C2PooledBlockPool(allocator, poolId), deleter);
                     *pool = ptr;
@@ -503,6 +506,7 @@ private:
                 res = allocatorStore->fetchAllocator(
                         C2AllocatorStore::DEFAULT_GRAPHIC, &allocator);
                 if (res == C2_OK) {
+                    ALOGD("Pooled BlockPool %llu creating", (unsigned long long)poolId);
                     std::shared_ptr<C2BlockPool> ptr(
                         new C2PooledBlockPool(allocator, poolId), deleter);
                     *pool = ptr;
@@ -572,6 +576,7 @@ public:
                             return component == ptr.lock();
                         });
                 if (found != mComponents[blockPoolId].end()) {
+                    ALOGD("Found BlockPool %llu", (unsigned long long)blockPoolId);
                     *pool = ptr;
                     return C2_OK;
                 }

@@ -671,6 +671,8 @@ public:
         if (mAllocator && mBufferPoolManager) {
             if (mBufferPoolManager->create(
                     mAllocator, &mConnectionId) == ResultStatus::OK) {
+                ALOGD("bufferpool blockpool connection %lld started by ctor",
+                      (long long)mConnectionId);
                 return;
             }
         }
@@ -679,6 +681,8 @@ public:
 
     ~Impl() {
         if (mInit == C2_OK) {
+            ALOGD("bufferpool blockpool connection %lld closed by dtor",
+                  (long long)mConnectionId);
             mBufferPoolManager->close(mConnectionId);
         }
     }

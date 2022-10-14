@@ -309,6 +309,7 @@ ResultStatus ClientManager::Impl::close(ConnectionId connectionId) {
         it->second->getAccessor(&accessor);
         std::shared_ptr<BufferPoolClient> closing = it->second;
         mActive.mClients.erase(connectionId);
+        ALOGD("closing connection %lld", (long long)connectionId);
         for (auto cit = mCache.mClients.begin(); cit != mCache.mClients.end();) {
             // clean up dead client caches
             sp<IAccessor> cAccessor = cit->first.promote();
@@ -408,6 +409,7 @@ ResultStatus ClientManager::Impl::postSend(
         std::lock_guard<std::mutex> lock(mActive.mMutex);
         auto it = mActive.mClients.find(connectionId);
         if (it == mActive.mClients.end()) {
+            ALOGD("connection %lld NOT FOUND", (long long)connectionId);
             return ResultStatus::NOT_FOUND;
         }
         client = it->second;
@@ -440,6 +442,8 @@ void ClientManager::Impl::cleanUp(bool clearCache) {
             if (!it->second->isActive(&lastTransactionUs, clearCache)) {
                 if (lastTransactionUs + kClientTimeoutUs < now) {
                     sp<IAccessor> accessor;
+                    ConnectionId conId = it->first;
+                    ALOGD("cleaning connection %lld", (long long)conId);
                     it->second->getAccessor(&accessor);
                     it = mActive.mClients.erase(it);
                     ++cleaned;
