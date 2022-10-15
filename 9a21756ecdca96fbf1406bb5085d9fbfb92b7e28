@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d79bcc7_e1920390",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/libstagefright_timedtext_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-15T13:56:36Z",
+      "side": 1,
+      "message": "timedtest_fuzzer.cpp seems fine; not sure that we need \"libstagefright\" in the\nfile name.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "9a21756ecdca96fbf1406bb5085d9fbfb92b7e28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1fed879_29cbca43",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/libstagefright_timedtext_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-15T13:56:36Z",
+      "side": 1,
+      "message": "reminding myself:  timedtext[] appears to be stored in big-endian order here.",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "9a21756ecdca96fbf1406bb5085d9fbfb92b7e28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82247b68_03f0f75d",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/timedtext_fuzz.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-15T13:56:36Z",
+      "side": 1,
+      "message": "is this proto describiing something that is part of timedtext and the interations between the native and java halves of that system?\n\nor is it purely within the fuzzer?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "9a21756ecdca96fbf1406bb5085d9fbfb92b7e28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
