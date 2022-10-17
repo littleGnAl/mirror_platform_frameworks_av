@@ -797,7 +797,7 @@ void AudioPolicyManager::connectTelephonyTxAudioSource(
     srcDevice->toAudioPortConfig(&source);
     mCallTxSourceClient = new InternalSourceClientDescriptor(
                 callTxSourceClientPortId, mUidCached, aa, source, srcDevice, sinkDevice,
-                mCommunnicationStrategy, toVolumeSource(aa));
+                mCommunnicationStrategy, toVolumeSource(AUDIO_STREAM_VOICE_CALL, false));
     audio_patch_handle_t patchHandle = AUDIO_PATCH_HANDLE_NONE;
     status_t status = connectAudioSourceToSink(
                 mCallTxSourceClient, sinkDevice, patchBuilder.patch(), patchHandle, mUidCached,
