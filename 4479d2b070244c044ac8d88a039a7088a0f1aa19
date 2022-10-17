@@ -70,6 +70,24 @@
       "parentUuid": "1aa1501c_62c3e0b9",
       "revId": "4479d2b070244c044ac8d88a039a7088a0f1aa19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f157e99_6ef6521a",
+        "filename": "media/libstagefright/omx/OMXUtils.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-10-17T14:14:49Z",
+      "side": 1,
+      "message": "returning with a small correction, to clarify, we still keep MIMETYPE_AUDIO_DTS_UHD (https://developer.android.com/reference/android/media/MediaFormat#MIMETYPE_AUDIO_DTS) for applications and media use. In HAL the implementation, the OEMs will have to use the new value MEDIA_MIMETYPE_AUDIO_DTS_UHD_P1 (with the profile\u003dp1 tag) which will replace the previous existing value (without the profile tag).",
+      "parentUuid": "4d329ee2_6906cc75",
+      "revId": "4479d2b070244c044ac8d88a039a7088a0f1aa19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
