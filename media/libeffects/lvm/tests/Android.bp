@@ -41,6 +41,21 @@ cc_test {
 }
 
 cc_test {
+    name: "effect_freq_resp",
+    defaults: [
+      "libeffects-test-defaults",
+    ],
+    srcs: [
+        "effect_freq_resp.cpp",
+    ],
+    static_libs: [
+        "libbundlewrapper",
+        "libmusicbundle",
+        "libpffft",
+    ],
+}
+
+cc_test {
     name: "lvmtest",
     host_supported: false,
     proprietary: true,
