@@ -16,6 +16,24 @@
       "message": "Are there any tests to verify that these were propagated correctly?",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057c67f6_360bebb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2022-10-18T13:55:57Z",
+      "side": 1,
+      "message": "This feature was enabled for AVC encoder and is tested manually. The change for software HEVC encoder was merged in https://android-review.googlesource.com/c/platform/frameworks/av/+/1709436 \n\nThis feature needs to be enabled in XML (media/libstagefright/data/media_codecs_sw.xml). Currently it is enabled only for AVC Encoder (c2.android.avc.encoder)\n\n\u003cFeature name\u003d\"qp-bounds\" /\u003e\n\nNeed to determine if VideoEncodingStatisticsTest in CTS validates some aspect of this feature.",
+      "parentUuid": "e7a56ff8_fd9eb045",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
