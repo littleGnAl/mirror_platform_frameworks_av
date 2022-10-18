@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad2117c_8ee56c31",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-18T19:10:59Z",
+      "side": 1,
+      "message": "Please add a suffix on the constant name: `kAudioDurationSec`, this should eliminate the need for the comment.",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed5b12c_a81c8974",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-18T19:10:59Z",
+      "side": 1,
+      "message": "I think, this function deserves an explanation on the criteria of \"suitability\" of the factors we are looking for.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4691709_3e59c8a5",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-18T19:10:59Z",
+      "side": 1,
+      "message": "There can be an edge case when a bad \u0027totalFrameCount\u0027, for example 0 or 1, will emit empty arrays, and trying to access the middle will result in undefined behavior.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64ab90f_7aea2255",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-18T19:10:59Z",
+      "side": 1,
+      "message": "Please don\u0027t use the implementation UUID. Use the type UUID instead. There is absolutely no guarantee that all Android devices in the world use the implementation from NXP. You can safely copy the type UUID from https://cs.android.com/android/platform/superproject/+/master:frameworks/base/media/java/android/media/audiofx/AudioEffect.java;l\u003d104;drc\u003db033da4e3a7e13d6c704ee7ddd0ec4a559cc54b2 here because it\u0027s kind of set in stone in the SDK.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "307fb966_284731c3",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-18T19:10:59Z",
+      "side": 1,
+      "message": "In order to improve precision of the result obtained from the FFT, the often used approach is to shift the frequencies slightly so that they land exactly into the center of some FFT bin. For example, if we use 16k point FFT for a 48 kHz range, then there is 2.9296875 Hz step between bins, and thus a frequency of 999 Hz will land almost exactly into the center of the bin 341: 2.9296875 × 341 \u003d 999.0234375, whereas a 1000 Hz frequency would not. A more precise signal positioning leads to less \"processing losses\", see https://en.wikipedia.org/wiki/Spectral_leakage#Processing_gain_and_losses.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 76
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "033418c3_a546e010",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-18T19:10:59Z",
+      "side": 1,
+      "message": "The PFFFT library recommends providing buffers that are aligned in memory and provides some functions to allocate them in a proper way:\n - C functions:\nhttps://cs.android.com/android/platform/superproject/+/master:external/pffft/pffft.h;l\u003d203;drc\u003deeb17fc8a08078372de542647841750136e1cf85;\n - C++ allocator: https://cs.android.com/android/platform/superproject/+/master:external/pffft/pffft.hpp;l\u003d919;drc\u003dee17cb0c97146a888c8d925999413f20934676fb\n\nI would recommend using either of these functions.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 53
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9b5f6d_235e9c0d",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-18T19:10:59Z",
+      "side": 1,
+      "message": "Why do we have to recalculate these for each band? They don\u0027t seem to depend on \u0027i\u0027 of this loop.\n\nAlso, could you please explain the approach? In my understanding, it would be sufficient to only consider the elements from magnitude arrays that correspond to the band frequencies, and compare their input and output values. Why do we have to find largest values?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 78
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
