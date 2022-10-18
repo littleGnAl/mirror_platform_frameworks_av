@@ -116,6 +116,30 @@
       },
       "revId": "9a21756ecdca96fbf1406bb5085d9fbfb92b7e28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db1adf8_31c92f98",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/timedtext_fuzz.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-18T15:19:01Z",
+      "side": 1,
+      "message": "let\u0027s add a comment to that effect -- just what is being \"proto\"-ized here\nand who the parties are that use it.\n\nThis will keep me from forgetting and re-asking the same question repeatedly.\nIt\u0027ll also help when someone else asks: \"it\u0027s a proto -- who are the parties on either end\"",
+      "parentUuid": "dcdaecea_eae066a9",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "9a21756ecdca96fbf1406bb5085d9fbfb92b7e28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
