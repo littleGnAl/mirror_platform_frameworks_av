@@ -2252,7 +2252,10 @@ void AudioFlinger::EffectChain::clearInputBuffer_l()
     const size_t frameSize = audio_bytes_per_sample(EFFECT_BUFFER_FORMAT)
             * mEffectCallback->inChannelCount(mEffects[0]->id());
 
-    memset(mInBuffer->audioBuffer()->raw, 0, mEffectCallback->frameCount() * frameSize);
+    // We clear entire buffer instead of actual data size to avoid reading stale data
+    // on spatializer effect chain when the last spatialized track is removed.
+    // memset(mInBuffer->audioBuffer()->raw, 0, mEffectCallback->frameCount() * frameSize);
+    memset(mInBuffer->audioBuffer()->raw, 0, mInBuffer->getSize());
     mInBuffer->commit();
 }
 
