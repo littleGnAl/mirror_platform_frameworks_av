@@ -126,7 +126,7 @@ android::status_t InitDataParser::parsePssh(const Vector<uint8_t>& initData,
     uint64_t psshSize = 0;
     if (__builtin_mul_overflow(keyIdCount, kKeyIdSize, &psshSize) ||
         __builtin_add_overflow(readPosition, psshSize, &psshSize) ||
-        psshSize != initData.size() - sizeof(uint32_t) /* DataSize(0) */) {
+        psshSize > initData.size() - sizeof(uint32_t)) {
         return android::ERROR_DRM_CANNOT_HANDLE;
     }
 
