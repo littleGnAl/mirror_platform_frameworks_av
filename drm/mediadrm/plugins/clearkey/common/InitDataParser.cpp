@@ -125,7 +125,7 @@ CdmResponseType InitDataParser::parsePssh(const std::vector<uint8_t>& initData,
     uint64_t psshSize = 0;
     if (__builtin_mul_overflow(keyIdCount, kKeyIdSize, &psshSize) ||
         __builtin_add_overflow(readPosition, psshSize, &psshSize) ||
-        psshSize != initData.size() - sizeof(uint32_t) /* DataSize(0) */) {
+        psshSize > initData.size() - sizeof(uint32_t)) {
         return clearkeydrm::ERROR_CANNOT_HANDLE;
     }
 
