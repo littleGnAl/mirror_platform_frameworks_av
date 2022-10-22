@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1325c03_2e1ed147",
+        "filename": "media/module/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-22T15:43:23Z",
+      "side": 1,
+      "message": "we bring in the \u003e\u003e14 here, so that it gets run through all the saturating operations in the fxp_mac() operations.\nthat seems good.",
+      "range": {
+        "startLine": 172,
+        "startChar": 14,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "95bdda3cfa6d2f84cf2d60bf07e07ac356311544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c5b9e3_3bb795ac",
+        "filename": "media/module/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-10-22T15:43:23Z",
+      "side": 1,
+      "message": "if we\u0027ve saturated L_tmp1 along the way (and the fuzzer got here with L_tmp2 \u003d\u003d INT_MIN), then we\u0027re trying to do   INT_MIN \u003c\u003c 2   which is itself undefined behavior.  although I don\u0027t think that we\u0027re trapping that for now.\n\nwhere I\u0027m heading with this is: we\u0027re still got an undefined behavior here, even though we aren\u0027t flagging it during fuzzing. Let\u0027s figure out the right solution here.  is that overflowing shift intentional? does the correct decoding operation depend on the overflows? should we be disabling the arithmetic+shifting overflows for this routine?",
+      "range": {
+        "startLine": 184,
+        "startChar": 16,
+        "endLine": 184,
+        "endChar": 27
+      },
+      "revId": "95bdda3cfa6d2f84cf2d60bf07e07ac356311544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
