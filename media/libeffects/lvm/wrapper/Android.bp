@@ -100,3 +100,50 @@ cc_library {
         integer_overflow: true,
     },
 }
+
+cc_library_shared {
+    name: "libbundleaidl",
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
+
+    vendor: true,
+    //host_supported: true,
+    srcs: ["Aidl/EffectBundleAidl.cpp"],
+
+    cppflags: [
+        "-fvisibility=hidden",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wthread-safety",
+    ],
+
+    relative_install_path: "soundfx",
+
+    static_libs: ["libmusicbundle"],
+
+    shared_libs: [
+        "libaudioutils",
+        "libbase",
+        "libcutils",
+        "liblog",
+    ],
+
+    defaults: [
+        "aidlaudioservice_defaults",
+        "latest_android_media_audio_common_types_ndk_shared",
+        "latest_android_hardware_audio_effect_ndk_shared",
+    ],
+    local_include_dirs: ["Aidl"],
+
+    header_libs: [
+        "libhardware_headers",
+        "libaudioeffects",
+    ],
+    visibility: [
+        "//hardware/interfaces/audio/aidl/default",
+    ],
+}
