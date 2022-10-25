@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470384c9_e5c977b0",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "I would suggest providing an expectation here. Is this what you expect— `EXPECT_EQ(totalFrameCount, frameCount * loopCount)`?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c18826_f0fc3315",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "This call needs to be wrapped into `ASSERT_NO_FATAL_FAILURE` otherwise any error raised by this function will not be noticed until the test completion.",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 15
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d08574b_e2072fdb",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "Please be consistent in naming. This should be named `kFrameCountPrimePad`, and constants below: `kNPointFft` and `kBinWidth`.",
+      "range": {
+        "startLine": 82,
+        "startChar": 14,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76860773_3eaefb24",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "Since we seem to perform this many times, let\u0027s make a function for this:\n`void getParam(int param, int\u0026 value)`, and also wrap calls to it into `ASSERT_NO_FATAL_FAILURE`.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 52
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5364430d_c5829d97",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "How about `EXPECT_LE(1.0f, fabs(diffA - diffB)) \u003c\u003c ...error message...`",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 29
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d6060a_935ee2ba",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "This function seems be similar to `getParam` below, but has some differences about which I\u0027m not sure whether they are intentional or not. In order to make things cleaner, I would suggest introducing 3 parts for this task: preparation of the `cmd` array, sending the command and checking of the status, and extraction of the result from the reply. Then we can build any variant of the `getParam` from those components, and it should appear clearer which parts are different and which are the same.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 79
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d622b2_d26dcf5c",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "Compared to the line 188, the number of parameters is extracted here in a different way. Is this intentional?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 9
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4203214c_9a6cb3a9",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "Frankly, I don\u0027t think that `MULTI_VALUES` a good use for a template parameter mechanism. When we are looking at the call site, it\u0027s not clear what this parameter is intended for: both `getParam\u003cfalse\u003e` and `getParam\u003ctrue\u003e` does not make it immediately obvious. It would be much more cleaner if we were using a different out value instead:\n\n```\nint32_t value;\nif (getParam(EQ_PARAM_..., value)...)\n\nstd::vector\u003cint32_t\u003e values;\nif (getParam(EQ_PARAM_..., values)...)\n```",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 61
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe989850_a5fcb4bd",
+        "filename": "media/libeffects/tests/common/EffectTestHelper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-25T18:01:26Z",
+      "side": 1,
+      "message": "Is this also `sizeof(cmd)`?",
+      "range": {
+        "startLine": 172,
+        "startChar": 43,
+        "endLine": 172,
+        "endChar": 84
+      },
+      "revId": "a495bd973a99bdfd5de783e20181a50815613968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
