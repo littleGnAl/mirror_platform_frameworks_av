@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8faee4c8_66dbdb58",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-10-25T12:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad2117c_8ee56c31",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ed5b12c_a81c8974",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82707fe_cda67833",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-10-25T12:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed5b12c_a81c8974",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4691709_3e59c8a5",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-18T19:10:59Z",
       "side": 1,
       "message": "There can be an edge case when a bad \u0027totalFrameCount\u0027, for example 0 or 1, will emit empty arrays, and trying to access the middle will result in undefined behavior.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6251f2_9fee35c7",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-10-25T12:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4691709_3e59c8a5",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "488652ec_71a48df4",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-10-25T12:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "307fb966_284731c3",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 76
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "033418c3_a546e010",
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98303226_26444319",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-10-25T12:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "033418c3_a546e010",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 53
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d9b5f6d_235e9c0d",
@@ -152,6 +272,30 @@
       "writtenOn": "2022-10-18T19:10:59Z",
       "side": 1,
       "message": "Why do we have to recalculate these for each band? They don\u0027t seem to depend on \u0027i\u0027 of this loop.\n\nAlso, could you please explain the approach? In my understanding, it would be sufficient to only consider the elements from magnitude arrays that correspond to the band frequencies, and compare their input and output values. Why do we have to find largest values?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 78
+      },
+      "revId": "702eb2a4707d3030c31b915eba34ad08e9d3cbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e29ab24_b34d9d33",
+        "filename": "media/libeffects/lvm/tests/effect_freq_resp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-10-25T12:33:44Z",
+      "side": 1,
+      "message": "Mikhail, I am not using the input center frequencies directly here. Instead i am finding the maxima\u0027s of the spectrum and ensuring that the bins align with the input frequencies used. This is to ensure, i did nothing wrong during fft library usage. This i have removed now.",
+      "parentUuid": "1d9b5f6d_235e9c0d",
       "range": {
         "startLine": 166,
         "startChar": 0,
