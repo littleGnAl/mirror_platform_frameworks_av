@@ -16,6 +16,52 @@
       "message": "and trigger a presubmit while i\u0027m here.",
       "revId": "22b7bea611f85a6a2674c035a7764c029f563409",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde0221a_31f1b386",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/timedtext_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2022-10-25T14:34:35Z",
+      "side": 1,
+      "message": "I\u0027m seeing this imported by I don\u0027t see the FuzzedDataProvider instantiated and used. Can you please explain the absense?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "22b7bea611f85a6a2674c035a7764c029f563409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479ce2ff_30cd42d4",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/timedtext_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2022-10-25T14:34:35Z",
+      "side": 1,
+      "message": "Additionally, I don\u0027t see `LLVMTestOneInput` instantiated anywhere.",
+      "range": {
+        "startLine": 20,
+        "startChar": 34,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "22b7bea611f85a6a2674c035a7764c029f563409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
