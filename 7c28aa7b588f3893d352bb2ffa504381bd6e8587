@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93416b0b_cc7c0609",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2022-10-27T05:50:16Z",
+      "side": 1,
+      "message": "What is the purpose of this API and who is client of this?\n\nIs it going to update the effect type Bundle is serving?\n\nFor example, BassBoost was started on Bundle, then it is stopped and then Equalizer from BundleWrapper comes in, is it for such cases?\n\nCan you please explain more on this API?\n\nPS : found the caller from getOrCreateSession API. added comment there as well.",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e1c4e9_4ad7e5d5",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2022-10-27T05:50:16Z",
+      "side": 1,
+      "message": "what does these tempDisabled parameters mean ? similarly for virtualizer I see the same.",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb1bd2b_9a4b3775",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2022-10-27T05:50:16Z",
+      "side": 1,
+      "message": "As mentioned last time all FMQ related stuff was supposed to go into EffectContext and concrete effect implementation needed not to worry about FMQs, but here I see that FMQ are updated? \nIs it not possible to move FMQ related stuff entriely in EffectContext?",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709fbb7e_858bacfd",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2022-10-27T05:50:16Z",
+      "side": 1,
+      "message": "we can have multiple effects in the same bundle global session, \n\nIs it right to update with latest effect. \nmSessionMap[sessionId]-\u003eupdate(type);\n\nFor example session X is having Eq, followed by BB, then Virtualizer. \nDoesn\u0027t this current code just have last effect type updated?",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
