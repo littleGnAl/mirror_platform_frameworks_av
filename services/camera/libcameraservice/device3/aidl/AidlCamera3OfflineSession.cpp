@@ -123,8 +123,8 @@ status_t AidlCamera3OfflineSession::initialize(wp<NotificationListener> listener
         mNumPartialResults, mVendorTagId, mDeviceInfo, mPhysicalDeviceInfoMap,
         mDistortionMappers, mZoomRatioMappers, mRotateAndCropMappers,
         mTagMonitor, mInputStream, mOutputStreams, mSessionStatsBuilder, listener, *this,
-        *this, mBufferRecords, /*legacyClient*/ false, mMinExpectedDuration, mIsFixedFps},
-      mResultMetadataQueue
+        *this, mBufferRecords, /*legacyClient*/ false, mMinExpectedDuration, mIsFixedFps,
+        /*overrideToPortrait*/false}, mResultMetadataQueue
     };
 
     std::lock_guard<std::mutex> lock(mProcessCaptureResultLock);
@@ -169,8 +169,8 @@ status_t AidlCamera3OfflineSession::initialize(wp<NotificationListener> listener
         mNumPartialResults, mVendorTagId, mDeviceInfo, mPhysicalDeviceInfoMap,
         mDistortionMappers, mZoomRatioMappers, mRotateAndCropMappers,
         mTagMonitor, mInputStream, mOutputStreams, mSessionStatsBuilder, listener, *this,
-        *this, mBufferRecords, /*legacyClient*/ false, mMinExpectedDuration, mIsFixedFps},
-      mResultMetadataQueue
+        *this, mBufferRecords, /*legacyClient*/ false, mMinExpectedDuration, mIsFixedFps,
+        /*overrideToPortrait*/false}, mResultMetadataQueue
     };
     for (const auto& msg : msgs) {
         camera3::notify(states, msg);
