@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a6ccb27_754cafb7",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-27T17:46:10Z",
+      "side": 1,
+      "message": "Just \u0027int\u0027",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93416b0b_cc7c0609",
         "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
         "patchSetId": 4
@@ -14,6 +37,52 @@
       "writtenOn": "2022-10-27T05:50:16Z",
       "side": 1,
       "message": "What is the purpose of this API and who is client of this?\n\nIs it going to update the effect type Bundle is serving?\n\nFor example, BassBoost was started on Bundle, then it is stopped and then Equalizer from BundleWrapper comes in, is it for such cases?\n\nCan you please explain more on this API?\n\nPS : found the caller from getOrCreateSession API. added comment there as well.",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f257a13b_f9686e19",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-27T17:46:10Z",
+      "side": 1,
+      "message": "mEnabled? I\u0027ve never seen use of the word \u0027enablement\u0027 for this purpose.",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 20
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28984922_79a54b5a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-27T17:46:10Z",
+      "side": 1,
+      "message": "Note that `AudioDeviceType` does not identify a particular device, it is not intended to be use on its own, see https://cs.android.com/android/platform/superproject/+/master:system/hardware/interfaces/media/aidl/android/media/audio/common/AudioDeviceType.aidl;l\u003d20;drc\u003d1fd893afe97a79069aa6b8dbf029b09a25fae8f2. If there is a need to specify a particular device, AudioDevice type must be used: system/hardware/interfaces/media/aidl/android/media/audio/common/AudioDevice.aidl.",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 56
+      },
       "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -37,6 +106,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d796dc4b_4290a115",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-27T17:46:10Z",
+      "side": 1,
+      "message": "Will it make more sense to take an expression here and print that expression in the error log? Using the function name is ambiguous since there can be many uses of this macro inside the same function.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 46
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efb1bd2b_9a4b3775",
         "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
         "patchSetId": 4
@@ -48,6 +140,52 @@
       "writtenOn": "2022-10-27T05:50:16Z",
       "side": 1,
       "message": "As mentioned last time all FMQ related stuff was supposed to go into EffectContext and concrete effect implementation needed not to worry about FMQs, but here I see that FMQ are updated? \nIs it not possible to move FMQ related stuff entriely in EffectContext?",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b87d72_596de4fa",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-27T17:46:10Z",
+      "side": 1,
+      "message": "explicit",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28badc1c_e7e3e571",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-27T17:46:10Z",
+      "side": 1,
+      "message": "typo: mGlobalSession",
+      "range": {
+        "startLine": 91,
+        "startChar": 49,
+        "endLine": 91,
+        "endChar": 62
+      },
       "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
