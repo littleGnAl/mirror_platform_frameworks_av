@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54daf7fa_63e28571",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6ccb27_754cafb7",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93416b0b_cc7c0609",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2516f288_292582c9",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Answered in other comment",
+      "parentUuid": "93416b0b_cc7c0609",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f257a13b_f9686e19",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-10-27T17:46:10Z",
       "side": 1,
       "message": "mEnabled? I\u0027ve never seen use of the word \u0027enablement\u0027 for this purpose.",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 20
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b80ded_1b21d65c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f257a13b_f9686e19",
       "range": {
         "startLine": 78,
         "startChar": 9,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5d79c7_e39f449a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28984922_79a54b5a",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76e1c4e9_4ad7e5d5",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-10-27T05:50:16Z",
       "side": 1,
       "message": "what does these tempDisabled parameters mean ? similarly for virtualizer I see the same.",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3a0726_c03b2753",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "These are needed by legacy bundle implementation which can be used later in bass implementation.\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/lvm/wrapper/Bundle/EffectBundle.h;l\u003d62",
+      "parentUuid": "76e1c4e9_4ad7e5d5",
       "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -127,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9fbe23_41c2ad00",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "I removed this one and use RETURN_IF instead",
+      "parentUuid": "d796dc4b_4290a115",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 46
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb1bd2b_9a4b3775",
@@ -144,6 +276,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76671824_038c5c96",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb1bd2b_9a4b3775",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32b87d72_596de4fa",
@@ -157,6 +307,30 @@
       "writtenOn": "2022-10-27T17:46:10Z",
       "side": 1,
       "message": "explicit",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3665bf_b45f6488",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b87d72_596de4fa",
       "range": {
         "startLine": 72,
         "startChar": 4,
@@ -190,6 +364,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf3a591_9c6c0908",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28badc1c_e7e3e571",
+      "range": {
+        "startLine": 91,
+        "startChar": 49,
+        "endLine": 91,
+        "endChar": 62
+      },
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "709fbb7e_858bacfd",
@@ -203,6 +401,24 @@
       "writtenOn": "2022-10-27T05:50:16Z",
       "side": 1,
       "message": "we can have multiple effects in the same bundle global session, \n\nIs it right to update with latest effect. \nmSessionMap[sessionId]-\u003eupdate(type);\n\nFor example session X is having Eq, followed by BB, then Virtualizer. \nDoesn\u0027t this current code just have last effect type updated?",
+      "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe91e8b6_e7083711",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-28T01:12:13Z",
+      "side": 1,
+      "message": "Good point, I wasn\u0027t paying attention to this as the major goal now is to enable eq first.\nWith the latest revision we should be able to handle multiple effects (but different type) in same session now.",
+      "parentUuid": "709fbb7e_858bacfd",
       "revId": "7c28aa7b588f3893d352bb2ffa504381bd6e8587",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
