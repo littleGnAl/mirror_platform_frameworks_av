@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa05d76c_21f3cd16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-28T18:36:24Z",
+      "side": 1,
+      "message": "Do you want Eric to look at this? He knows much more about effect implementations.",
+      "revId": "d8a4489250e5d88a204acecbf9163734fda40fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8215fbe_98c86a61",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-28T18:36:24Z",
+      "side": 1,
+      "message": "Please add `GUARDED_BY` to the fields that are protected with this mutex.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "d8a4489250e5d88a204acecbf9163734fda40fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
