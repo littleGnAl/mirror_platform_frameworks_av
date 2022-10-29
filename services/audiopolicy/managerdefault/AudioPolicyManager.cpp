@@ -254,9 +254,6 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
 
             checkOutputsForDevice(device, state, outputs);
 
-            // Reset active device codec
-            device->setEncodedFormat(AUDIO_FORMAT_DEFAULT);
-
             // remove device from mReportedFormatsMap cache
             mReportedFormatsMap.erase(device);
 
@@ -360,6 +357,8 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
         }
 
         if (state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE) {
+            // Reset active device codec
+            device->setEncodedFormat(AUDIO_FORMAT_DEFAULT);
             cleanUpForDevice(device);
         }
 
