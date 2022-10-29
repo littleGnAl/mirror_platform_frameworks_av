@@ -1794,7 +1794,6 @@ void MatroskaExtractor::getColorInformation(
         int32_t isotransfer = 2; // ISO unspecified
         int32_t coeffs = 2; // ISO unspecified
         bool fullRange = false; // default
-        bool rangeSpecified = false;
 
         if (isValidInt32ColourValue(color->primaries)) {
             primaries = color->primaries;
@@ -1810,7 +1809,6 @@ void MatroskaExtractor::getColorInformation(
             // We only support MKV broadcast range (== limited) and full range.
             // We treat all other value as the default limited range.
             fullRange = color->range == 2 /* MKV fullRange */;
-            rangeSpecified = true;
         }
 
         int32_t range = 0;
