@@ -46,6 +46,30 @@
       },
       "revId": "5f016b1c1bae9f4386787b6200378948996dcbac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab7ad40c_a805bc09",
+        "filename": "media/libaudioclient/AidlConversion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-10-31T14:59:07Z",
+      "side": 1,
+      "message": "Indeed, I missed the \u0027adaptive\u0027 part. Thanks for pointing that out! Fixed.",
+      "parentUuid": "19dd6874_d48f4eab",
+      "range": {
+        "startLine": 1044,
+        "startChar": 94,
+        "endLine": 1044,
+        "endChar": 96
+      },
+      "revId": "5f016b1c1bae9f4386787b6200378948996dcbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
