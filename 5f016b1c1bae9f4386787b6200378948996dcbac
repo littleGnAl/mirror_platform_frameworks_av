@@ -22,6 +22,30 @@
       },
       "revId": "5f016b1c1bae9f4386787b6200378948996dcbac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dd6874_d48f4eab",
+        "filename": "media/libaudioclient/AidlConversion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1809641
+      },
+      "writtenOn": "2022-10-31T13:14:45Z",
+      "side": 1,
+      "message": "as per the bug, we planned to use \"audio/vnd.qcom.aptx.adaptive.r3\" and \"audio/vnd.qcom.aptx.adaptive.r4\" resp.",
+      "parentUuid": "23f1b7a6_65512098",
+      "range": {
+        "startLine": 1044,
+        "startChar": 94,
+        "endLine": 1044,
+        "endChar": 96
+      },
+      "revId": "5f016b1c1bae9f4386787b6200378948996dcbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
