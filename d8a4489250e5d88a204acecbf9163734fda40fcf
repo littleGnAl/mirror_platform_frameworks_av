@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38b3112_d5dc3839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-31T17:00:18Z",
+      "side": 1,
+      "message": "Looks like Eric is out today, adding Andy to help review.",
+      "parentUuid": "fa05d76c_21f3cd16",
+      "revId": "d8a4489250e5d88a204acecbf9163734fda40fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8215fbe_98c86a61",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-28T18:36:24Z",
       "side": 1,
       "message": "Please add `GUARDED_BY` to the fields that are protected with this mutex.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "d8a4489250e5d88a204acecbf9163734fda40fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4230f7a0_033eb113",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-10-31T17:00:18Z",
+      "side": 1,
+      "message": "Actually the mutex was not needed in the BundleContext because there is only one context for each effect instance. Removing it.",
+      "parentUuid": "f8215fbe_98c86a61",
       "range": {
         "startLine": 64,
         "startChar": 4,
