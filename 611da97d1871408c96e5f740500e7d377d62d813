@@ -1,0 +1,912 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6281228_8da2f3de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "A few nits and suggestions.",
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0fed02_408e4704",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: alphabetical or put this at the top to ensure there are no missing dependencies.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b494b5e9_85a4dd65",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "Maybe comment this is the normal preset, stored first?\n\nhttps://source.corp.google.com/android/frameworks/av/media/libeffects/lvm/wrapper/Bundle/EffectBundle.h;rcl\u003d391e2d0695d75877228f635e962b52c0f121815b;l\u003d154",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756725a7_7516e9cf",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "there\u0027s a weird 11.4 format here.  Can you put a //TODO to fix this.  Normally this should be using something like this:\n\nhttps://source.corp.google.com/android-internal/system/media/audio_utils/include/audio_utils/power.h;rcl\u003d459a2a3cc5aced24c8d5fe5fb500af1194dca06e;l\u003d80",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 14
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20261aa5_06fa57d2",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "does emplace_back(i, mBandGaindB[i]) work?",
+      "range": {
+        "startLine": 194,
+        "startChar": 19,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b275ed8f_58a834bd",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "Do you need something like\n\n    if (bandLevels.empty()) return true;",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45092d77_15a68988",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "this needs to be a static for line 232, otherwise you have a dangling reference.  I would suggest a helper method\n\n   static const LVM_EQNB_BandDef_t BandDefs[MAX_NUM_BANDS] \u003d getDefaultEqualizerBandDefs()\n   \nand rely on copy elision.  Alternatively it can be constexpr if getDefaultEqualizerBandDefs is a constexpr method.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 4
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e06c81_4c34eab4",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "why is this an ERROR?",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 19
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541c1811_3d073c8f",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "is this const?",
+      "range": {
+        "startLine": 273,
+        "startChar": 9,
+        "endLine": 273,
+        "endChar": 13
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f46312_bfe337bd",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "static constexpr ....[] \u003d {\n { .Limit_Low \u003d ...\n \n },\n { .Limit_Low \u003d ...\n \n },\n};\u0027",
+      "range": {
+        "startLine": 296,
+        "startChar": 4,
+        "endLine": 296,
+        "endChar": 25
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d222238f_a007306f",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "this is a dangling reference without line 296 being static.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 53
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6765fd87_ffc7feeb",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: override",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba61091_10f24c9f",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: no need for \u0026 unless this is a template.",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c940ca6f_180dfabf",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: is this const?  here and on line 53, line 56, line 59, line 62?",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 24
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367c50ca_c159b1f9",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: more common in our code to spell out Ch -\u003e Channel here and on line 53.",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400d88c1_cd4ec54a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: prefer Equalizer here on the public API here and on line 56.  Private stuff is OK to leave as is.",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ae4c51_beb3fc03",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: can this be const?  if so, traditionally these are initialized at the start.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb83f499_145dc845",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "to be more type correct, make this (and line 30) size_t and update the code?",
+      "range": {
+        "startLine": 29,
+        "startChar": 13,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52156e7_67b34d63",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "any of these constexpr?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91c7eec_946f4b7b",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "constexpr array or array\u003c\u003e better here and on line 79?",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa64e424_f2ab4fba",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit follow this with a ,",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 10
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2547c9f3_0d9271f5",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: remove extra line to make consistent with line 165.",
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4886a444_a3866526",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "maybe uuid \u003d\u003d nullptr",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8547dc23_0d49a814",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "does this actually destroy the effect?",
+      "range": {
+        "startLine": 56,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9918593f_ef067831",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: not thread safe.  would a C++ meyer\u0027s singleton be better here?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f3a473_15cad18a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "is this right? Only for equalizer?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 12
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0402fa_36748636",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "this error code correct in all cases?  maybe an explicit return { , , } below?",
+      "range": {
+        "startLine": 219,
+        "startChar": 29,
+        "endLine": 219,
+        "endChar": 53
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c3a559_dad2c132",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: should we remove these debug statements ?",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "625d3d13_95958a4c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit alphabetical",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b3ffb1_8e31b883",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: override",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eed19e8_799196d8",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "isn\u0027t this const?",
+      "range": {
+        "startLine": 45,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c616063_e5036b34",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: override here and on line 54 and line 58",
+      "range": {
+        "startLine": 50,
+        "startChar": 37,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948582db_4c753ad5",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit const here and on line 82 and 86?",
+      "range": {
+        "startLine": 79,
+        "startChar": 21,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ed9cf3_f1e9bf20",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: clphabetical",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990fab91_2675897b",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "maybe skip the const ref?",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d475ac4_02f16676",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "is this a static method?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61847b51_37096fda",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "isn\u0027t this a shared_ptr?",
+      "range": {
+        "startLine": 56,
+        "startChar": 32,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d764bf7_7c6af57d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "Nit: doing something like line 94 would simplify the rest of the logic past this point.\n\n    auto\u0026 list \u003d mSessionMap[sessionId];\n    \nand maybe erase if empty on failure on line 82.  It reduces the extra data motion on the successful path.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e410429b_16f31b3c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "from the comment on line 56, this should return the context, not nullptr, right?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01554aa_aa77bf55",
+        "filename": "media/libeffects/lvm/wrapper/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-10-31T19:18:42Z",
+      "side": 1,
+      "message": "nit: alphabetical here and on line 120.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 11
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
