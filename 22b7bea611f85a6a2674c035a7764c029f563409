@@ -79,6 +79,54 @@
       },
       "revId": "22b7bea611f85a6a2674c035a7764c029f563409",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08dfbc8_fd5dc774",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/timedtext_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2022-10-31T05:07:51Z",
+      "side": 1,
+      "message": "libprotobuf-mutator uses libfuzzer for fuzzing. libfuzzer is internally invoking LLVMTestOneinput and using FDP.",
+      "parentUuid": "479ce2ff_30cd42d4",
+      "range": {
+        "startLine": 20,
+        "startChar": 34,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "22b7bea611f85a6a2674c035a7764c029f563409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94aec28d_7e4be74f",
+        "filename": "media/libstagefright/timedtext/test/fuzzer/timedtext_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2022-10-31T05:07:51Z",
+      "side": 1,
+      "message": "We are using Structure-aware fuzzing to fuzz timedtext module. Structure-aware fuzzing  is possible with libFuzzer using custom mutators. In our case  libprotobuf-mutator is used. libprotobuf-mutator provides a convenience macro DEFINE_PROTO_FUZZER to define a fuzz target that directly consumes a protobuf message.",
+      "parentUuid": "cde0221a_31f1b386",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "22b7bea611f85a6a2674c035a7764c029f563409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
