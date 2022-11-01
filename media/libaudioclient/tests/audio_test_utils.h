@@ -34,8 +34,6 @@
 #include <media/AudioRecord.h>
 #include <media/AudioTrack.h>
 
-#define RECORD_TO_FILE 0
-
 using namespace android;
 
 struct MixPort {
@@ -53,7 +51,6 @@ struct Route {
 status_t parse_audio_policy_configuration_xml(std::vector<std::string>& attachedDevices,
                                               std::vector<MixPort>& mixPorts,
                                               std::vector<Route>& routes);
-void CreateRandomFile(int& fd);
 status_t listAudioPorts(std::vector<audio_port_v7>& portsVec);
 status_t listAudioPatches(std::vector<struct audio_patch>& patchesVec);
 status_t getPortByAttributes(audio_port_role_t role, audio_port_type_t type,
@@ -156,6 +153,9 @@ class AudioCapture : public AudioRecord::IAudioRecordCallback {
     void onNewPos(uint32_t newPos) override;
     void onNewIAudioRecord() override;
     status_t create();
+    status_t setRecordDuration(float durationInSec);
+    status_t enableRecordDump();
+    std::string getRecordDumpFileName() const { return mFileName; }
     sp<AudioRecord> getAudioRecordHandle();
     status_t start(AudioSystem::sync_event_t event = AudioSystem::SYNC_EVENT_NONE,
                    audio_session_t triggerSession = AUDIO_SESSION_NONE);
@@ -195,6 +195,7 @@ class AudioCapture : public AudioRecord::IAudioRecordCallback {
     sp<AudioRecord> mRecord;
     State mState;
     bool mStopRecording;
+    std::string mFileName;
     int mOutFileFd = -1;
 
     std::mutex mMutex;
