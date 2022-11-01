@@ -252,7 +252,7 @@ status_t Camera3Device::disconnectImpl() {
 
             if (mStatus == STATUS_ACTIVE ||
                     (mStatus == STATUS_ERROR && mRequestThread != NULL)) {
-                res = mRequestThread->clearRepeatingRequests();
+                res = mRequestThread->clear();
                 if (res != OK) {
                     SET_ERR_L("Can't stop streaming");
                     // Continue to close device even in case of error
@@ -3047,7 +3047,8 @@ status_t Camera3Device::RequestThread::clearRepeatingRequests(/*out*/int64_t *la
 
 }
 
-status_t Camera3Device::RequestThread::clearRepeatingRequestsLocked(/*out*/int64_t *lastFrameNumber) {
+status_t Camera3Device::RequestThread::clearRepeatingRequestsLocked(
+        /*out*/int64_t *lastFrameNumber) {
     std::vector<int32_t> streamIds;
     for (const auto& request : mRepeatingRequests) {
         for (const auto& stream : request->mOutputStreams) {
@@ -3071,7 +3072,12 @@ status_t Camera3Device::RequestThread::clear(
     ATRACE_CALL();
     Mutex::Autolock l(mRequestLock);
     ALOGV("RequestThread::%s:", __FUNCTION__);
-
+    std::vector<int32_t> streamIds;
+    for (const auto& request : mRepeatingRequests) {
+        for (const auto& stream : request->mOutputStreams) {
+            streamIds.push_back(stream->getId());
+        }
+    }
     mRepeatingRequests.clear();
 
     // Send errors for all requests pending in the request queue, including
@@ -3114,6 +3120,7 @@ status_t Camera3Device::RequestThread::clear(
     if (lastFrameNumber != NULL) {
         *lastFrameNumber = mRepeatingLastFrameNumber;
     }
+    mInterface->repeatingRequestEnd(mRepeatingLastFrameNumber, streamIds);
     mRepeatingLastFrameNumber = hardware::camera2::ICameraDeviceUser::NO_IN_FLIGHT_REPEATING_FRAMES;
     mRequestClearing = true;
     mRequestSignal.signal();
