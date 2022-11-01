@@ -36,9 +36,6 @@
 
 #include "ColorConvert.h"
 #include "GraphicBufferListener.h"
-#include "IntrinsicBlurFilter.h"
-#include "RSFilter.h"
-#include "SaturationFilter.h"
 #include "ZeroFilter.h"
 
 namespace android {
@@ -491,12 +488,6 @@ void MediaFilter::onAllocateComponent(const sp<AMessage> &msg) {
     const char* name = mComponentName.c_str();
     if (!strcasecmp(name, "android.filter.zerofilter")) {
         mFilter = new ZeroFilter;
-    } else if (!strcasecmp(name, "android.filter.saturation")) {
-        mFilter = new SaturationFilter;
-    } else if (!strcasecmp(name, "android.filter.intrinsicblur")) {
-        mFilter = new IntrinsicBlurFilter;
-    } else if (!strcasecmp(name, "android.filter.RenderScript")) {
-        mFilter = new RSFilter;
     } else {
         ALOGE("Unrecognized filter name: %s", name);
         signalError(NAME_NOT_FOUND);
