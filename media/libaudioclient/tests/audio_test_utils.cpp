@@ -37,12 +37,6 @@ constexpr auto make_xmlUnique(T* t) {
     return std::unique_ptr<T, decltype(deleter)>{t, deleter};
 }
 
-// Generates a random string.
-void CreateRandomFile(int& fd) {
-    std::string filename = "/data/local/tmp/record-XXXXXX";
-    fd = mkstemp(filename.data());
-}
-
 void OnAudioDeviceUpdateNotifier::onAudioDeviceUpdate(audio_io_handle_t audioIo,
                                                       audio_port_handle_t deviceId) {
     std::unique_lock<std::mutex> lock{mMutex};
@@ -246,7 +240,7 @@ status_t AudioPlayback::onProcess(bool testSeek) {
 void AudioPlayback::stop() {
     std::unique_lock<std::mutex> lock{mMutex};
     mStopPlaying = true;
-    if (mState != PLAY_STOPPED) {
+    if (mState != PLAY_STOPPED && mState != PLAY_NO_INIT) {
         int32_t msec = 0;
         (void)mTrack->pendingDuration(&msec);
         mTrack->stopAndJoinCallbacks();
@@ -389,12 +383,10 @@ AudioCapture::AudioCapture(audio_source_t inputSource, uint32_t sampleRate, audi
     mReceivedCbMarkerCount = 0;
     mState = REC_NO_INIT;
     mStopRecording = false;
-#if RECORD_TO_FILE
-    CreateRandomFile(mOutFileFd);
-#endif
 }
 
 AudioCapture::~AudioCapture() {
+    if (mFileName != nullptr) delete[] mFileName;
     if (mOutFileFd > 0) close(mOutFileFd);
     stop();
 }
@@ -460,6 +452,30 @@ status_t AudioCapture::create() {
     return status;
 }
 
+status_t AudioCapture::setRecordDuration(float durationInSec) {
+    if (REC_READY != mState) {
+        return INVALID_OPERATION;
+    }
+    uint32_t sampleRate = mSampleRate == 0 ? mRecord->getSampleRate() : mSampleRate;
+    mNumFramesToRecord = (sampleRate * durationInSec);
+    return OK;
+}
+
+status_t AudioCapture::enableRecordDump() {
+    if (mOutFileFd != -1 || mFileName != nullptr) {
+        return INVALID_OPERATION;
+    }
+    std::string fullPath{"/data/local/tmp/record-XXXXXX"};
+    mFileName = new char[fullPath.length() + 1];
+    strcpy(mFileName, fullPath.c_str());
+    mOutFileFd = mkstemp(mFileName);
+    return OK;
+}
+
+const char* AudioCapture::getRecordDumpFileName() {
+    return mFileName;
+}
+
 sp<AudioRecord> AudioCapture::getAudioRecordHandle() {
     return (REC_NO_INIT == mState) ? nullptr : mRecord;
 }
@@ -481,7 +497,7 @@ status_t AudioCapture::start(AudioSystem::sync_event_t event, audio_session_t tr
 status_t AudioCapture::stop() {
     status_t status = OK;
     mStopRecording = true;
-    if (mState != REC_STOPPED) {
+    if (mState != REC_STOPPED && mState != REC_NO_INIT) {
         if (mInputSource != AUDIO_SOURCE_DEFAULT) {
             bool state = false;
             status = AudioSystem::isSourceActive(mInputSource, &state);
