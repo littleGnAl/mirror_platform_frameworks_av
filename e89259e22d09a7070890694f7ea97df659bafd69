@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13993b73_5d6bac86",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-riscv64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-02T21:31:23Z",
+      "side": 1,
+      "message": "just to clarify, since there was some confusion.\n\nmediacodec-*.policy is OMX\nmediaswcodec-*.policy is Codec2 \n\nOMX is a 32-bit only thing, so would never be available in riscv64\nadditionally, I believe we\u0027re at \"no devices introduced in T are allowed to use OMX\".\n\nso this one (mediacodec, the omx one) doesn\u0027t need a riscv64 version.\n\nthe mediaswcodec file does need a riscv64 version.",
+      "parentUuid": "6411b48c_78e2cccd",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "e89259e22d09a7070890694f7ea97df659bafd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "070b96fc_9027a88d",
         "filename": "services/mediacodec/seccomp_policy/mediaswcodec-riscv64.policy",
         "patchSetId": 3
