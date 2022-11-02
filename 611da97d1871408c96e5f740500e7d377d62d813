@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc2a874_61329637",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0fed02_408e4704",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b494b5e9_85a4dd65",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "Maybe comment this is the normal preset, stored first?\n\nhttps://source.corp.google.com/android/frameworks/av/media/libeffects/lvm/wrapper/Bundle/EffectBundle.h;rcl\u003d391e2d0695d75877228f635e962b52c0f121815b;l\u003d154",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c9f525_ac588e27",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b494b5e9_85a4dd65",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b05b9ee_d1f0e768",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "756725a7_7516e9cf",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 14
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20261aa5_06fa57d2",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "does emplace_back(i, mBandGaindB[i]) work?",
+      "range": {
+        "startLine": 194,
+        "startChar": 19,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44c9970_25a3c449",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20261aa5_06fa57d2",
       "range": {
         "startLine": 194,
         "startChar": 19,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed31172_03066ef2",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "I think this was checked before calling updateControlParameter()",
+      "parentUuid": "b275ed8f_58a834bd",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45092d77_15a68988",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "this needs to be a static for line 232, otherwise you have a dangling reference.  I would suggest a helper method\n\n   static const LVM_EQNB_BandDef_t BandDefs[MAX_NUM_BANDS] \u003d getDefaultEqualizerBandDefs()\n   \nand rely on copy elision.  Alternatively it can be constexpr if getDefaultEqualizerBandDefs is a constexpr method.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 4
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2534082b_c343996c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Good point, that\u0027s a bug in existing bundle code and I didn\u0027t catch it.",
+      "parentUuid": "45092d77_15a68988",
       "range": {
         "startLine": 209,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0495f90c_16fc9817",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0e06c81_4c34eab4",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 19
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "541c1811_3d073c8f",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "is this const?",
+      "range": {
+        "startLine": 273,
+        "startChar": 9,
+        "endLine": 273,
+        "endChar": 13
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e996b9_3169483c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541c1811_3d073c8f",
       "range": {
         "startLine": 273,
         "startChar": 9,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5f47f9_ea380f7b",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f46312_bfe337bd",
+      "range": {
+        "startLine": 296,
+        "startChar": 4,
+        "endLine": 296,
+        "endChar": 25
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d222238f_a007306f",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "this is a dangling reference without line 296 being static.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 53
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4183f6_f1753ffe",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d222238f_a007306f",
       "range": {
         "startLine": 303,
         "startChar": 0,
@@ -271,6 +511,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1e160b_ca38e139",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6765fd87_ffc7feeb",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ba61091_10f24c9f",
@@ -284,6 +548,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "nit: no need for \u0026 unless this is a template.",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0574c1c_71a09db2",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ba61091_10f24c9f",
       "range": {
         "startLine": 47,
         "startChar": 32,
@@ -317,6 +605,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5235c9f6_071d121d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c940ca6f_180dfabf",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 24
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "367c50ca_c159b1f9",
@@ -330,6 +642,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "nit: more common in our code to spell out Ch -\u003e Channel here and on line 53.",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d2316c_6cad776a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "367c50ca_c159b1f9",
       "range": {
         "startLine": 50,
         "startChar": 9,
@@ -363,6 +699,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a471e512_623daae3",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400d88c1_cd4ec54a",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ae4c51_beb3fc03",
@@ -376,6 +736,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "nit: can this be const?  if so, traditionally these are initialized at the start.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc32a8f_a0315d4e",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ae4c51_beb3fc03",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -432,6 +816,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f430803_67891a15",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb83f499_145dc845",
+      "range": {
+        "startLine": 29,
+        "startChar": 13,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb84660c_0d15e319",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e52156e7_67b34d63",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d91c7eec_946f4b7b",
@@ -445,6 +877,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "constexpr array or array\u003c\u003e better here and on line 79?",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1316a2_f1a176fa",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Using vector here because they are",
+      "parentUuid": "d91c7eec_946f4b7b",
       "range": {
         "startLine": 42,
         "startChar": 12,
@@ -478,6 +934,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9702603a_c1832b11",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa64e424_f2ab4fba",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 10
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2547c9f3_0d9271f5",
@@ -495,6 +975,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71ac2e0_b6f62b27",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2547c9f3_0d9271f5",
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4886a444_a3866526",
@@ -508,6 +1006,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "maybe uuid \u003d\u003d nullptr",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3617a663_b448208a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4886a444_a3866526",
       "range": {
         "startLine": 40,
         "startChar": 7,
@@ -541,6 +1063,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f3c301_cfc16da4",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "The IEffect instance was maintained in the factory map:",
+      "parentUuid": "8547dc23_0d49a814",
+      "range": {
+        "startLine": 56,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9918593f_ef067831",
@@ -554,6 +1100,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "nit: not thread safe.  would a C++ meyer\u0027s singleton be better here?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a445fbfb_c3236c28",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9918593f_ef067831",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -587,6 +1157,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d6d958_ad987ccd",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Only support Equalizer in bundle for now, added a TODO",
+      "parentUuid": "e4f3a473_15cad18a",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 12
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c0402fa_36748636",
@@ -600,6 +1194,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "this error code correct in all cases?  maybe an explicit return { , , } below?",
+      "range": {
+        "startLine": 219,
+        "startChar": 29,
+        "endLine": 219,
+        "endChar": 53
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff3b249_f9ddba39",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c0402fa_36748636",
       "range": {
         "startLine": 219,
         "startChar": 29,
@@ -633,6 +1251,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c506e51_68342f1d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Would like to keep it for now when we are testing with vts, will remove these with framework side change.\nAdded a TODO:\nhttps://android-review.googlesource.com/c/platform/hardware/interfaces/+/2268147/16/audio/aidl/default/include/effect-impl/EffectWorker.h#65",
+      "parentUuid": "f3c3a559_dad2c132",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "625d3d13_95958a4c",
@@ -646,6 +1288,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "nit alphabetical",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f53d746_457b6857",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "625d3d13_95958a4c",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -679,6 +1345,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ceb95d_8ce83474",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b3ffb1_8e31b883",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eed19e8_799196d8",
@@ -692,6 +1382,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "isn\u0027t this const?",
+      "range": {
+        "startLine": 45,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7175568_ae78dd2e",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Not defined as const yet because I\u0027m thinking how to handle the case of in-place processing, will keep this as a TODO",
+      "parentUuid": "8eed19e8_799196d8",
       "range": {
         "startLine": 45,
         "startChar": 38,
@@ -725,6 +1439,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3696998e_49e031f1",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c616063_e5036b34",
+      "range": {
+        "startLine": 50,
+        "startChar": 37,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "948582db_4c753ad5",
@@ -738,6 +1476,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "nit const here and on line 82 and 86?",
+      "range": {
+        "startLine": 79,
+        "startChar": 21,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcce7b27_7c16a630",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "948582db_4c753ad5",
       "range": {
         "startLine": 79,
         "startChar": 21,
@@ -771,6 +1533,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed405cdc_96fdb907",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ed9cf3_f1e9bf20",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "990fab91_2675897b",
@@ -784,6 +1570,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "maybe skip the const ref?",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de098291_a26796ff",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990fab91_2675897b",
       "range": {
         "startLine": 37,
         "startChar": 25,
@@ -817,6 +1627,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e04008_752b2437",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d475ac4_02f16676",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61847b51_37096fda",
@@ -830,6 +1664,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "isn\u0027t this a shared_ptr?",
+      "range": {
+        "startLine": 56,
+        "startChar": 32,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1f596d_4da388f3",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61847b51_37096fda",
       "range": {
         "startLine": 56,
         "startChar": 32,
@@ -863,6 +1721,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c0be88_5c43ca6a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d764bf7_7c6af57d",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e410429b_16f31b3c",
@@ -886,6 +1768,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "824864d4_f0de387b",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Each session should map to only one instance, so we can not get an existing session here.\nChanged the method name and comment.",
+      "parentUuid": "e410429b_16f31b3c",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a01554aa_aa77bf55",
@@ -899,6 +1805,30 @@
       "writtenOn": "2022-10-31T19:18:42Z",
       "side": 1,
       "message": "nit: alphabetical here and on line 120.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 11
+      },
+      "revId": "611da97d1871408c96e5f740500e7d377d62d813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1f3173_17e65611",
+        "filename": "media/libeffects/lvm/wrapper/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-02T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a01554aa_aa77bf55",
       "range": {
         "startLine": 115,
         "startChar": 0,
