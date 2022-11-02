@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb086924_8ca3af5d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-11-02T01:29:18Z",
+      "side": 1,
+      "message": "nit: not threadsafe.  consider a Meyer\u0027s singleton?\n\nhttps://www.modernescpp.com/index.php/thread-safe-initialization-of-a-singleton",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 59
+      },
+      "revId": "5a88c7d4a4420c82c695ebd031de40f2dd54d94d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f04543_a899275d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-11-02T01:29:18Z",
+      "side": 1,
+      "message": "would prefer to reorder this onto line 68, for better initialization order.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "5a88c7d4a4420c82c695ebd031de40f2dd54d94d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3768dd9_78b2967c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleTypes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-11-02T01:29:18Z",
+      "side": 1,
+      "message": "nit: constexpr inline is more robust, i think.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "5a88c7d4a4420c82c695ebd031de40f2dd54d94d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf54c594_27320267",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-11-02T01:29:18Z",
+      "side": 1,
+      "message": "maybe return a (const?) reference here?  Shouldn\u0027t be deleted and always non-null.  just be careful to assign with an auto\u0026 foo \u003d ... to avoid copying.",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "5a88c7d4a4420c82c695ebd031de40f2dd54d94d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c196b1d_7304e2ca",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/GlobalSession.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-11-02T01:29:18Z",
+      "side": 1,
+      "message": "nit: is this const?",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "5a88c7d4a4420c82c695ebd031de40f2dd54d94d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
