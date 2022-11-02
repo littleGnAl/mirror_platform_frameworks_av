@@ -16,6 +16,46 @@
       "message": "+essick for CR+2...",
       "revId": "e89259e22d09a7070890694f7ea97df659bafd69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6411b48c_78e2cccd",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-riscv64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-02T03:29:03Z",
+      "side": 1,
+      "message": "this one is for OMX-based codecs;\ni expect riscv64 to be codec2 from the start and this component will never\nget used.\n\nwhich is a long winded \"I think we can drop this file\".",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "e89259e22d09a7070890694f7ea97df659bafd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070b96fc_9027a88d",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-riscv64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-02T03:29:03Z",
+      "side": 1,
+      "message": "should have an @include for codec_coverage.riscv64.policy...",
+      "revId": "e89259e22d09a7070890694f7ea97df659bafd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
