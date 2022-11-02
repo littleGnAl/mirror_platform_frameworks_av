@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01c5b7f_66af9609",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-11-02T20:24:29Z",
+      "side": 1,
+      "message": "ah actually this might not be true when the request queue is empty.",
+      "range": {
+        "startLine": 255,
+        "startChar": 16,
+        "endLine": 255,
+        "endChar": 45
+      },
+      "revId": "662a1d6114ab32556bfa82aad6f63c70ba687393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
