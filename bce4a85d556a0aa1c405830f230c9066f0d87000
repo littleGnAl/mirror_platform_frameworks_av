@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e153a83d_0512e7fe",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-11-03T18:38:15Z",
+      "side": 1,
+      "message": "1. can we use atomic int as cookies instead of this pointer?\n2. can we keep a map of int -\u003e weak_ptr so that we can make sure the object is alive when we call binderDied()?\n3. if we\u0027re making all these changes, it may make sense to create a singleton class to manage the mapping.",
+      "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
