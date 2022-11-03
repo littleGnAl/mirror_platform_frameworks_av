@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc39bf14_dc9065fe",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-03T20:29:48Z",
+      "side": 1,
+      "message": "STATUS_DEAD_OBJECT is returned if the binder being used to make the call(`reclaimResources()`) no longer exists. So that would be returned in this case OR if this processes died which might be confusing for the client.\n\nWould something else, like maybe `STATUS_INVALID_OPERATION`, work instead?",
+      "range": {
+        "startLine": 226,
+        "startChar": 42,
+        "endLine": 226,
+        "endChar": 60
+      },
+      "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e153a83d_0512e7fe",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 1
