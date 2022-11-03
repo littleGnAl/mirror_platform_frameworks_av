@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ca10b93_d3bf0afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-11-03T18:54:42Z",
+      "side": 1,
+      "message": "Devin, we are using shared_ptr instead of sp here.\nCould you review w.r.t the current aidl best practices?",
+      "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e153a83d_0512e7fe",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 1
