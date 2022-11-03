@@ -1,5 +1,80 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc862771_395e5d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-03T17:18:27Z",
+      "side": 1,
+      "message": "A couple post-submit drive-bys",
+      "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d000294_9067761d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-03T17:18:27Z",
+      "side": 1,
+      "message": "We need to swap these two lines.  If _aidl_return is null, we want to safely return instead of crashing in a logging statement.  (I\u0027d put up a fix CL myself, but don\u0027t have an aosp tree up at the moment.)",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2869bf28_d380240d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-03T17:18:27Z",
+      "side": 1,
+      "message": "Neither of these fields appear to be set in the constructor, so they appear to be left uninitialized.  It looks like they might be unused altogether, but then it\u0027s probably a better idea to remove them than leave them uninitialized.",
+      "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed04ea8_12d4ec52",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-03T17:18:27Z",
+      "side": 1,
+      "message": "Similar comment about being uninitialized.",
+      "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
