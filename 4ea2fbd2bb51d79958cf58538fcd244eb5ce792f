@@ -56,6 +56,30 @@
       },
       "revId": "4ea2fbd2bb51d79958cf58538fcd244eb5ce792f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d704c97_a31a915f",
+        "filename": "media/codec2/hidl/services/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-11-03T18:28:46Z",
+      "side": 1,
+      "message": "probably because alibaba started this work way back in Android 10 or whatever. i\u0027ll update it...\n\n(the actual content of the policy file seems to match the current arm64 policy though.)",
+      "parentUuid": "32bc33d1_1a86a1b3",
+      "range": {
+        "startLine": 89,
+        "startChar": 59,
+        "endLine": 89,
+        "endChar": 62
+      },
+      "revId": "4ea2fbd2bb51d79958cf58538fcd244eb5ce792f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
