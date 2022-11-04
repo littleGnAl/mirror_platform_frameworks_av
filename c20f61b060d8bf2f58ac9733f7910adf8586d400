@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c86cfc0_3adc9d70",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-11-04T08:45:16Z",
+      "side": 1,
+      "message": "Hi, Wonsik,\nIt seems you have made a mistake. As my comment before, this code not only thumbnail case(-1) run but also image/photo case(0) can run. Please help to double confirm. Thank you.",
+      "parentUuid": "ebdd1370_e74cecd2",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28a51a95_816778fe",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
