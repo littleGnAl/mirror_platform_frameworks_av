@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2776f02_e2078be1",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3955,
+      "author": {
+        "id": 1395785
+      },
+      "writtenOn": "2022-11-04T20:00:25Z",
+      "side": 1,
+      "message": "Does using `enabled` work here?",
+      "range": {
+        "startLine": 3955,
+        "startChar": 32,
+        "endLine": 3955,
+        "endChar": 62
+      },
+      "revId": "4732ecfe0d5431390125565ee89fa44bf6a3dd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
