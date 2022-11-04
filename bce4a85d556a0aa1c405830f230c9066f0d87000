@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebc8ebe2_029983f0",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-11-04T01:15:46Z",
+      "side": 1,
+      "message": "Will take this suggestion - thanks Devin",
+      "parentUuid": "dc39bf14_dc9065fe",
+      "range": {
+        "startLine": 226,
+        "startChar": 42,
+        "endLine": 226,
+        "endChar": 60
+      },
+      "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e153a83d_0512e7fe",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2022-11-03T18:38:15Z",
       "side": 1,
       "message": "1. can we use atomic int as cookies instead of this pointer?\n2. can we keep a map of int -\u003e weak_ptr so that we can make sure the object is alive when we call binderDied()?\n3. if we\u0027re making all these changes, it may make sense to create a singleton class to manage the mapping.",
+      "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b26b99_81474cbb",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-11-04T01:15:46Z",
+      "side": 1,
+      "message": "Thanks Wonsik.\nI will go with singleton class for the cookie management, but for ease of use I will continue with void* and weak_ptr as the binder death notification\u0027s context is also a voide*",
+      "parentUuid": "e153a83d_0512e7fe",
       "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
