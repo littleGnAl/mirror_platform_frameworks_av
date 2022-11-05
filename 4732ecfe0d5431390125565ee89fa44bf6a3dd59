@@ -22,6 +22,30 @@
       },
       "revId": "4732ecfe0d5431390125565ee89fa44bf6a3dd59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "983cdd8a_194cecf6",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3955,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2022-11-05T13:01:37Z",
+      "side": 1,
+      "message": "Yes. We don\u0027t need to check again as the value is already posted via listener.\nGood catch, thanks! Addressed with patchset 3.",
+      "parentUuid": "c2776f02_e2078be1",
+      "range": {
+        "startLine": 3955,
+        "startChar": 32,
+        "endLine": 3955,
+        "endChar": 62
+      },
+      "revId": "4732ecfe0d5431390125565ee89fa44bf6a3dd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
