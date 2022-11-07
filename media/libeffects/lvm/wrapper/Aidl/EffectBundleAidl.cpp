@@ -86,8 +86,8 @@ EffectBundleAidl::~EffectBundleAidl() {
 }
 
 ndk::ScopedAStatus EffectBundleAidl::getDescriptor(Descriptor* _aidl_return) {
-    LOG(DEBUG) << _aidl_return->toString();
     RETURN_IF(!_aidl_return, EX_ILLEGAL_ARGUMENT, "Parameter:nullptr");
+    LOG(DEBUG) << _aidl_return->toString();
     *_aidl_return = *mDescriptor;
     return ndk::ScopedAStatus::ok();
 }
