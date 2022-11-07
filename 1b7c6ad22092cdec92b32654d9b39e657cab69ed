@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7f698a_8343eead",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-07T20:44:43Z",
+      "side": 1,
+      "message": "Thanks for the review, good catch.\nAddressed in aosp/2289887",
+      "parentUuid": "2d000294_9067761d",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2869bf28_d380240d",
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3004e6b6_b461b45c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-07T20:44:43Z",
+      "side": 1,
+      "message": "Addressed in aosp/2289887",
+      "parentUuid": "2869bf28_d380240d",
+      "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ed04ea8_12d4ec52",
         "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
         "patchSetId": 12
@@ -71,6 +113,24 @@
       "writtenOn": "2022-11-03T17:18:27Z",
       "side": 1,
       "message": "Similar comment about being uninitialized.",
+      "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbf6103_38095f1f",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-07T20:44:43Z",
+      "side": 1,
+      "message": "Addressed in aosp/2289887",
+      "parentUuid": "4ed04ea8_12d4ec52",
       "revId": "1b7c6ad22092cdec92b32654d9b39e657cab69ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
