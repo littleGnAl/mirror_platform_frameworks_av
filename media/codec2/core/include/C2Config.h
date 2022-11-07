@@ -160,6 +160,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexSecureMode,
     kParamIndexEncryptedBuffer, // info-buffer, used with SM_READ_PROTECTED_WITH_ENCRYPTED
 
+    /* codecs string */
+    kParamIndexCodecsString,
+
     // deprecated
     kParamIndexDelayRequest = kParamIndexDelay | C2Param::CoreIndex::IS_REQUEST_FLAG,
 
@@ -1209,6 +1212,14 @@ C2ENUM(C2Config::secure_mode_t, uint32_t,
 typedef C2GlobalParam<C2Tuning, C2SimpleValueStruct<C2Config::secure_mode_t>, kParamIndexSecureMode>
         C2SecureModeTuning;
 constexpr char C2_PARAMKEY_SECURE_MODE[] = "algo.secure-mode";
+
+/* ------------------------------------- codecs string ----------------------------------------- */
+
+/**
+ * Codecs String.
+ */
+typedef C2StreamParam<C2Setting, C2StringValue, kParamIndexCodecsString> C2StreamCodecsString;
+constexpr char C2_PARAMKEY_CODECS_STRING[] = "coded.codecs-string";
 
 /* ===================================== ENCODER COMPONENTS ===================================== */
 
