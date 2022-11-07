@@ -98,6 +98,24 @@
       "parentUuid": "e153a83d_0512e7fe",
       "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c00331_14bded74",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-11-07T20:52:37Z",
+      "side": 1,
+      "message": "With a single binder interface (shared across all the MediaCodec in the process), we don\u0027t really need this map or set anymore.",
+      "parentUuid": "18b26b99_81474cbb",
+      "revId": "bce4a85d556a0aa1c405830f230c9066f0d87000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
