@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "514821b8_ce215acb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "Please specify",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f98e50cf_fd4b03d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "Looks good, just needs some polishing.",
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a8aa6b_712f8cb5",
+        "filename": "media/libaudioclient/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "Please mention that this is for libpffft.",
+      "range": {
+        "startLine": 182,
+        "startChar": 8,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc0dd70_a388334d",
+        "filename": "media/libaudioclient/tests/audio_test_utils.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "const\n\nMay also define inline since it\u0027s trivial.",
+      "range": {
+        "startLine": 158,
+        "startChar": 39,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f5d4ac_bae6a6e6",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "It is recommended to use `sp\u003cAudioEffect\u003e::make` instead, see https://cs.android.com/android/platform/superproject/+/master:system/core/libutils/include/utils/StrongPointer.h;l\u003d35;drc\u003dcd4ef87efdf88cb5abc17ee6739208b3386420ec",
+      "range": {
+        "startLine": 146,
+        "startChar": 29,
+        "endLine": 146,
+        "endChar": 44
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde7c7b8_92aa6fbb",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "Please explain in a comment why do we need to use this offset.",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 67
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3a6008_b282de65",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "Is this correct? The value type is \u0027uint16_t\u0027.",
+      "range": {
+        "startLine": 262,
+        "startChar": 25,
+        "endLine": 262,
+        "endChar": 42
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423c1356_fc82ba83",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "I think this needs to be updated since we only check that the equalizer actually \"pulls\" the band in the specified direction.",
+      "range": {
+        "startLine": 292,
+        "startChar": 25,
+        "endLine": 293,
+        "endChar": 66
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0126395_89d6fbf1",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "I actually not understand this check fully. Why is it important to know the number of non-flat presets? What if there is no \"flat\" preset at all (we don\u0027t mandate it\u0027s existence in CDD)?",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 51
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d617e313_84b070dc",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "bool?",
+      "range": {
+        "startLine": 324,
+        "startChar": 4,
+        "endLine": 324,
+        "endChar": 7
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4f3a65_f4111100",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-08T23:09:32Z",
+      "side": 1,
+      "message": "I would suggest extracting a function which tunes the frequencies and reuse it in the equalizer test.",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 5
+      },
+      "revId": "40859704457a607218d177e76388c9eada9fa21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
