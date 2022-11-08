@@ -64,6 +64,7 @@ bool patchContainsOutputDevice(audio_port_handle_t deviceId, audio_patch patch);
 bool patchContainsInputDevice(audio_port_handle_t deviceId, audio_patch patch);
 bool checkPatchPlayback(audio_io_handle_t audioIo, audio_port_handle_t deviceId);
 bool checkPatchCapture(audio_io_handle_t audioIo, audio_port_handle_t deviceId);
+bool doesDeviceSupportSubmixCapture(std::vector<struct audio_port_v7>& ports);
 std::string dumpPort(const audio_port_v7& port);
 std::string dumpPortConfig(const audio_port_config& port);
 std::string dumpPatch(const audio_patch& patch);
@@ -148,7 +149,8 @@ class AudioCapture : public AudioRecord::IAudioRecordCallback {
                  audio_channel_mask_t channelMask,
                  audio_input_flags_t flags = AUDIO_INPUT_FLAG_NONE,
                  audio_session_t sessionId = AUDIO_SESSION_ALLOCATE,
-                 AudioRecord::transfer_type transferType = AudioRecord::TRANSFER_CALLBACK);
+                 AudioRecord::transfer_type transferType = AudioRecord::TRANSFER_CALLBACK,
+                 const audio_attributes_t* attributes = nullptr);
     ~AudioCapture();
     size_t onMoreData(const AudioRecord::Buffer& buffer) override;
     void onOverrun() override;
@@ -190,6 +192,7 @@ class AudioCapture : public AudioRecord::IAudioRecordCallback {
     const audio_input_flags_t mFlags;
     const audio_session_t mSessionId;
     const AudioRecord::transfer_type mTransferType;
+    const audio_attributes_t* mAttributes;
 
     size_t mMaxBytesPerCallback = 2048;
     sp<AudioRecord> mRecord;
