@@ -52,9 +52,10 @@ void OnAudioDeviceUpdateNotifier::onAudioDeviceUpdate(audio_io_handle_t audioIo,
     mCondition.notify_all();
 }
 
-status_t OnAudioDeviceUpdateNotifier::waitForAudioDeviceCb() {
+status_t OnAudioDeviceUpdateNotifier::waitForAudioDeviceCb(audio_port_handle_t expDeviceId) {
     std::unique_lock<std::mutex> lock{mMutex};
-    if (mAudioIo == AUDIO_IO_HANDLE_NONE) {
+    if (mAudioIo == AUDIO_IO_HANDLE_NONE ||
+        (expDeviceId != AUDIO_PORT_HANDLE_NONE && expDeviceId != mDeviceId)) {
         mCondition.wait_for(lock, std::chrono::milliseconds(500));
         if (mAudioIo == AUDIO_IO_HANDLE_NONE) return TIMED_OUT;
     }
@@ -369,14 +370,16 @@ void AudioCapture::onNewIAudioRecord() {
 
 AudioCapture::AudioCapture(audio_source_t inputSource, uint32_t sampleRate, audio_format_t format,
                            audio_channel_mask_t channelMask, audio_input_flags_t flags,
-                           audio_session_t sessionId, AudioRecord::transfer_type transferType)
+                           audio_session_t sessionId, AudioRecord::transfer_type transferType,
+                           const audio_attributes_t* attributes)
     : mInputSource(inputSource),
       mSampleRate(sampleRate),
       mFormat(format),
       mChannelMask(channelMask),
       mFlags(flags),
       mSessionId(sessionId),
-      mTransferType(transferType) {
+      mTransferType(transferType),
+      mAttributes(attributes) {
     mFrameCount = 0;
     mNotificationFrames = 0;
     mNumFramesToRecord = 0;
@@ -431,19 +434,20 @@ status_t AudioCapture::create() {
         if (mSampleRate == 48000) {  // test all available constructors
             mRecord = new AudioRecord(mInputSource, mSampleRate, mFormat, mChannelMask,
                                       attributionSource, mFrameCount, nullptr /* callback */,
-                                      mNotificationFrames, mSessionId, mTransferType, mFlags);
+                                      mNotificationFrames, mSessionId, mTransferType, mFlags,
+                                      mAttributes);
         } else {
             mRecord = new AudioRecord(attributionSource);
             status = mRecord->set(mInputSource, mSampleRate, mFormat, mChannelMask, mFrameCount,
                                   nullptr /* callback */, 0 /* notificationFrames */,
                                   false /* canCallJava */, mSessionId, mTransferType, mFlags,
-                                  attributionSource.uid, attributionSource.pid);
+                                  attributionSource.uid, attributionSource.pid, mAttributes);
         }
         if (NO_ERROR != status) return status;
     } else if (mTransferType == AudioRecord::TRANSFER_CALLBACK) {
         mRecord = new AudioRecord(mInputSource, mSampleRate, mFormat, mChannelMask,
                                   attributionSource, mFrameCount, this, mNotificationFrames,
-                                  mSessionId, mTransferType, mFlags);
+                                  mSessionId, mTransferType, mFlags, mAttributes);
     } else {
         ALOGE("Test application is not handling transfer type %s",
               AudioRecord::convertTransferToText(mTransferType));
@@ -716,6 +720,17 @@ bool checkPatchCapture(audio_io_handle_t audioIo, audio_port_handle_t deviceId) 
     struct audio_patch patch;
     if (getPatchForInputMix(audioIo, patch) == OK) {
         return patchContainsInputDevice(deviceId, patch);
+    }
+    return false;
+}
+
+bool doesDeviceSupportSubmixCapture(std::vector<struct audio_port_v7>& ports) {
+    for (const auto& port : ports) {
+        if (port.type == AUDIO_PORT_TYPE_DEVICE &&
+            port.ext.device.type == AUDIO_DEVICE_IN_REMOTE_SUBMIX &&
+            port.role == AUDIO_PORT_ROLE_SOURCE) {
+            return true;
+        }
     }
     return false;
 }
