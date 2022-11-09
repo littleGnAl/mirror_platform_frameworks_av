@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe5088c_1fe3326b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-09T02:45:18Z",
+      "side": 1,
+      "message": "undoes work that done to manage race conditions\nas part of security vulnerability b/173791720",
+      "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34adcd3_8fe599a1",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-09T02:45:18Z",
+      "side": 1,
+      "message": "i can\u0027t quite put my fingers on it, but it feels like there\u0027s a race here.\n\nthe sequence I\u0027m thinking about is:\n-- destructor starts running\n-- service actually dies and we start the callback\n-- callback runs, gets to block on the mutex in binderDied()\n-- destructor unregisters [so no further callbacks happen]\n-- destructor unlocks the mutex and deletes the object\n-- the no-longer-blocked callback proceeds to dereference mLock and mService\n\ni haven\u0027t convinced myself yet.  if the sequence *can* happen, then we have a race. If the sequence can\u0027t happen that way, then i think we\u0027re ok.\n\ni also can\u0027t remember if there\u0027s any rule about unlinkToDeath() being clever in the sense of \"this will stop any callbacks that are already in process\". If the underlying linkToDeath/unlinkToDeath makes some guarantees about that, then we should be ok.\n\nthe addCookie() / removeCookie() methods being removed here were added specifically to handle this race condition as part of a security bug fix b/173791720",
+      "range": {
+        "startLine": 303,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 0
+      },
+      "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
