@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9d01a82_2b3ec7be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-09T22:27:14Z",
+      "side": 1,
+      "message": "I have reduced the time by roughly by 5 more sec.",
+      "parentUuid": "17ac39cd_540ae169",
+      "revId": "4c2b758b6e6ab956ef79fe2438850dd1a1073c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae77c23a_5e85385c",
         "filename": "media/libaudioclient/tests/Android.bp",
         "patchSetId": 19
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-09T20:51:16Z",
       "side": 1,
       "message": "Please add this test to the \"postsubmit\" section of frameworks/av/media/libaudioclient/TEST_MAPPING (the section needs to be created, you might want to look at previous versions of the file to check the correct syntax).",
+      "range": {
+        "startLine": 179,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 31
+      },
+      "revId": "4c2b758b6e6ab956ef79fe2438850dd1a1073c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc15d66_6ca720f1",
+        "filename": "media/libaudioclient/tests/Android.bp",
+        "patchSetId": 19
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-09T22:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae77c23a_5e85385c",
       "range": {
         "startLine": 179,
         "startChar": 11,
@@ -54,6 +96,30 @@
       "writtenOn": "2022-11-09T19:21:10Z",
       "side": 1,
       "message": "Note that there is a c++17 feature called \"structured binding\" (https://en.cppreference.com/w/cpp/language/structured_binding) which allows to write this simpler:\n\n`auto [bin_index, bin_freq] \u003d ...`",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 86
+      },
+      "revId": "4c2b758b6e6ab956ef79fe2438850dd1a1073c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4b5ad9_e1af8000",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-09T22:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf95d7a_23b07302",
       "range": {
         "startLine": 240,
         "startChar": 0,
