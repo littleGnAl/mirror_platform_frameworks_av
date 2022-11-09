@@ -1519,7 +1519,7 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevices(
     }
 
     *isSpatialized = false;
-    if (mSpatializerOutput != nullptr
+    if (!mSpatializerReleased && mSpatializerOutput != nullptr
             && canBeSpatializedInt(attr, config, devices.toTypeAddrVector())) {
         *isSpatialized = true;
         return mSpatializerOutput->mIoHandle;
@@ -5402,8 +5402,9 @@ void AudioPolicyManager::checkVirtualizerClientRoutes() {
             AudioDeviceTypeAddrVector devicesTypeAddress = devices.toTypeAddrVector();
             audio_config_base_t clientConfig = client->config();
             audio_config_t config = audio_config_initializer(&clientConfig);
-            if (desc != mSpatializerOutput
-                    && canBeSpatializedInt(&attr, &config, devicesTypeAddress)) {
+            if (canBeSpatializedInt(&attr, &config, devicesTypeAddress) &&
+                    ((!mSpatializerReleased && desc != mSpatializerOutput) ||
+                     (mSpatializerReleased && desc == mSpatializerOutput))) {
                 streamsToInvalidate.insert(client->stream());
             }
         }
@@ -5497,7 +5498,8 @@ status_t AudioPolicyManager::getSpatializerOutput(const audio_config_base_t *mix
             outputsChanged = true;
         }
     }
-
+    
+    mSpatializerReleased = false;
     checkVirtualizerClientRoutes();
 
     if (outputsChanged) {
@@ -5523,9 +5525,9 @@ status_t AudioPolicyManager::releaseSpatializerOutput(audio_io_handle_t output) 
     }
 
     if (!isOutputOnlyAvailableRouteToSomeDevice(mSpatializerOutput)) {
-        ALOGV("%s closing spatializer output %d", __func__, mSpatializerOutput->mIoHandle);
-        closeOutput(mSpatializerOutput->mIoHandle);
-        //from now on mSpatializerOutput is null
+        ALOGV("%s standby spatializer output %d", __func__, mSpatializerOutput->mIoHandle);
+        //closeOutput(mSpatializerOutput->mIoHandle);
+        mSpatializerReleased = true;
         checkVirtualizerClientRoutes();
     }
 

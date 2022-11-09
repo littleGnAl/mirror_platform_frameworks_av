@@ -909,6 +909,9 @@ protected:
 
         sp<SwAudioOutputDescriptor> mSpatializerOutput;
 
+        //Spatializer state
+        bool mSpatializerReleased = true;
+
         SwAudioOutputCollection mOutputs;
         // copy of mOutputs before setDeviceConnectionState() opens new outputs
         // reset to mOutputs when updateDevicesAndOutputs() is called.
