@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17ac39cd_540ae169",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-09T20:51:16Z",
+      "side": 1,
+      "message": "I\u0027ve verified that tests pass on a Pixel 6. It seems that they take a bit long to complete: ~30 seconds in total. Are there any possibilities to shorten the time?",
+      "revId": "4c2b758b6e6ab956ef79fe2438850dd1a1073c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae77c23a_5e85385c",
+        "filename": "media/libaudioclient/tests/Android.bp",
+        "patchSetId": 19
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-11-09T20:51:16Z",
+      "side": 1,
+      "message": "Please add this test to the \"postsubmit\" section of frameworks/av/media/libaudioclient/TEST_MAPPING (the section needs to be created, you might want to look at previous versions of the file to check the correct syntax).",
+      "range": {
+        "startLine": 179,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 31
+      },
+      "revId": "4c2b758b6e6ab956ef79fe2438850dd1a1073c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbf95d7a_23b07302",
         "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
         "patchSetId": 19
