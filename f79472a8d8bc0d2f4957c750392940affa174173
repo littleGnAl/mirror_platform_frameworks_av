@@ -56,6 +56,30 @@
       },
       "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff42d3a_cac336b5",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-11-09T19:21:09Z",
+      "side": 1,
+      "message": "Hey Ray,\nThank you for this, now I see your point.\nThere is a use after free crash on the android::Mutex with the current implementation (as explained in the commit message bug)\nI will update the patch to address the race condition that you mentioned above.",
+      "parentUuid": "b34adcd3_8fe599a1",
+      "range": {
+        "startLine": 303,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 0
+      },
+      "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
