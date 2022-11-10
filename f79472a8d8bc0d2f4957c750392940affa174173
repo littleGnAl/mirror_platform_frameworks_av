@@ -80,6 +80,30 @@
       },
       "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7540534f_67aa42b5",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-10T19:30:20Z",
+      "side": 1,
+      "message": "looked at the bug; it seems to me that it\u0027s something outside of the code structure.  Seems we need to find out who and how that mutex got zapped.\n\nright now -- I don\u0027t think that this CL is what we need.",
+      "parentUuid": "9ff42d3a_cac336b5",
+      "range": {
+        "startLine": 303,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 0
+      },
+      "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
