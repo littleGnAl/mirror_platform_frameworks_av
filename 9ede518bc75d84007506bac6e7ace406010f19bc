@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d88615f_92e0b05d",
+        "filename": "media/libaudioclient/tests/audio_test_utils.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-11-10T10:22:07Z",
+      "side": 1,
+      "message": "It is preferable to have only one indicator of the fact that the file is not in use, preferably mOutFileFd. If mOutFileFd and mFileName are out of sync this is a sign of a problem and should be reported as an error in logcat",
+      "range": {
+        "startLine": 465,
+        "startChar": 8,
+        "endLine": 465,
+        "endChar": 46
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd90db0_2b00467f",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-11-10T10:22:07Z",
+      "side": 1,
+      "message": "would be good to comment that this \"hack\" only works if kSamplingFrequency is 48000 and the res file is 24k/stereo.\nOr is the AudioPlayback class doing the conversion?",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 60
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef58a036_5ed037aa",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-11-10T10:22:07Z",
+      "side": 1,
+      "message": "where are argsP mSampleRate, mFormat and mChannelMask adapted to the actual parameters in mRes?",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 9
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434203c1_4778d4e3",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-11-10T10:22:07Z",
+      "side": 1,
+      "message": "we should check that k * 2 + 1 is \u003c nPointFft",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 31
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e394f2_1d640533",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-11-10T10:22:07Z",
+      "side": 1,
+      "message": "are we only considering bands with the exact same gain?\ncouldn\u0027t we check if the actual gain difference is within a given tolerance from the expected gain difference?",
+      "range": {
+        "startLine": 297,
+        "startChar": 16,
+        "endLine": 297,
+        "endChar": 27
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
