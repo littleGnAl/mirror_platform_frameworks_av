@@ -33,6 +33,24 @@
       "message": "Ram, RoutingTestWithTags test is failing on bots:\n\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:195: Failure\nExpected equality of these values:\n  port.id\n    Which is: 37\n  playback-\u003egetAudioTrackHandle()-\u003egetRoutedDeviceId()\n    Which is: 2\nPlayback NOT routed on expected port\n\nAnd AudioTrackTest.RoutingTest is flaky, failing often like this:\n\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:118: Failure\nExpected equality of these values:\n  port.id\n    Which is: 20\n  playback-\u003egetAudioTrackHandle()-\u003egetRoutedDeviceId()\n    Which is: 2\nPlayback NOT routed on expected porth",
       "revId": "f853db8a6483de8440d0137d11c6446e69a74c41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59849790_94ed7f97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-10T10:17:09Z",
+      "side": 1,
+      "message": "Mikhail, Earler i am not waiting for callback indicating re-routing has happened. This is the cause for the tests to be flaky. I have corrected the same.",
+      "parentUuid": "e73a8ac0_3f098826",
+      "revId": "f853db8a6483de8440d0137d11c6446e69a74c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
