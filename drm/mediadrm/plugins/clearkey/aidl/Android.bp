@@ -69,3 +69,17 @@ phony {
         "android.hardware.drm-service.clearkey",
     ],
 }
+
+filegroup {
+    name: "android.hardware.drm-service.clearkey.rc",
+    srcs: [
+        "android.hardware.drm-service.clearkey.rc",
+    ],
+}
+
+filegroup {
+    name: "android.hardware.drm-service.clearkey.xml",
+    srcs: [
+        "android.hardware.drm-service.clearkey.xml",
+    ],
+}

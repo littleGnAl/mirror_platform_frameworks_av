@@ -1,0 +1,74 @@
+// Copyright (C) 2022 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+apex_key {
+    name: "com.android.hardware.clearkey.key",
+    public_key: "com.android.hardware.clearkey.avbpubkey",
+    private_key: "com.android.hardware.clearkey.pem",
+}
+
+android_app_certificate {
+    name: "com.android.hardware.clearkey.certificate",
+    certificate: "com.android.hardware.clearkey",
+}
+
+apex_defaults {
+    name: "com.android.hardware.clearkey.defaults",
+    apex_name: "com.android.hardware.clearkey",
+    manifest: "manifest.json",
+    file_contexts: "file_contexts",
+    key: "com.android.hardware.clearkey.key",
+    certificate: ":com.android.hardware.clearkey.certificate",
+    vendor: true,
+    use_vndk_as_stable: true,
+    updatable: false,
+}
+
+apex {
+    name: "com.android.hardware.clearkey",
+    defaults: ["com.android.hardware.clearkey.defaults"],
+    binaries: [
+        "android.hardware.drm-service.clearkey",
+    ],
+    prebuilts: [
+        "com.android.hardware.clearkey.rc",
+        "com.android.hardware.clearkey.xml"
+    ],
+}
+
+genrule {
+    name: "gen-android.hardware.drm-service.clearkey.rc",
+    srcs: [":android.hardware.drm-service.clearkey.rc"],
+    out: ["android.hardware.drm-service.clearkey.rc"],
+    cmd: "sed -E 's/\\/vendor\\/bin/\\/apex\\/com.android.hardware.clearkey\\/bin/' $(in) > $(out)",
+}
+
+prebuilt_etc {
+    name: "com.android.hardware.clearkey.rc",
+    src: ":gen-android.hardware.drm-service.clearkey.rc",
+    vendor: true,
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "com.android.hardware.clearkey.xml",
+    src: ":android.hardware.drm-service.clearkey.xml",
+    sub_dir: "vintf",
+    vendor: true,
+    installable: false,
+}
