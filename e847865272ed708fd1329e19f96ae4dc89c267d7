@@ -16,6 +16,24 @@
       "message": "I think for clearkey, we wanted to move it to system apex as it does not load liboemcrypto library from vendor partition.",
       "revId": "e847865272ed708fd1329e19f96ae4dc89c267d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1bc5da5_2e2213f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-14T20:08:17Z",
+      "side": 0,
+      "message": "Thanks for letting me know Kyle. So, your team doesn\u0027t want to make it a vendor apex, right?",
+      "parentUuid": "783c80ce_2e5f3f8b",
+      "revId": "e847865272ed708fd1329e19f96ae4dc89c267d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
