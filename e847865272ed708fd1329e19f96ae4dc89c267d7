@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "783c80ce_2e5f3f8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2022-11-14T18:39:26Z",
+      "side": 0,
+      "message": "I think for clearkey, we wanted to move it to system apex as it does not load liboemcrypto library from vendor partition.",
+      "revId": "e847865272ed708fd1329e19f96ae4dc89c267d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
