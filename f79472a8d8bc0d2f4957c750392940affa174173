@@ -104,6 +104,30 @@
       },
       "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a6b796_4477146b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-11-14T21:04:32Z",
+      "side": 1,
+      "message": "Hey Ray\nI agree with you that, the original issue is most likely related to memory corruption. But with the data provided in the bug, its out of my depth to see and understand where the memory corruption could have happened.\nBut having said that - with this change, it looks like an improvement from the current implementation, like:\n- If the resource manager does, reinitialize binder interface (with the current implementation, if the binder interface fails, that client won\u0027t use resource manager for add/update/removal of the resources)\n- Keep one binder interface per process vs one binder interface per codec.",
+      "parentUuid": "7540534f_67aa42b5",
+      "range": {
+        "startLine": 303,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 0
+      },
+      "revId": "f79472a8d8bc0d2f4957c750392940affa174173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
