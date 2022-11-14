@@ -7,6 +7,20 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
+filegroup {
+    name: "android.hardware.drm-service.clearkey.rc",
+    srcs: [
+        "android.hardware.drm-service.clearkey.rc",
+    ],
+}
+
+filegroup {
+    name: "android.hardware.drm-service.clearkey.xml",
+    srcs: [
+        "android.hardware.drm-service.clearkey.xml",
+    ],
+}
+
 cc_defaults {
     name: "aidl_clearkey_service_defaults",
     vendor: true,
