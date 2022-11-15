@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d57276_ec459c8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-15T17:35:22Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that this is the correct change.\n\nIt seems to me that the more appropriate change is to make sure that the\nstop() is coordinated -- where this code pushes the EOS into the stream of frames\nand making sure that those come through to get flushed appropriately.",
+      "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
