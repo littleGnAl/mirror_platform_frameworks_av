@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b4d3d7f_982006a3",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-15T16:25:16Z",
+      "side": 1,
+      "message": "Both audio playback and capture are at 48khz, mono, pcm float. The default values are overriden later. This is now cleaned up to indicate the same.",
+      "parentUuid": "edd90db0_2b00467f",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 60
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef58a036_5ed037aa",
@@ -84,6 +108,30 @@
       "writtenOn": "2022-11-10T10:22:07Z",
       "side": 1,
       "message": "where are argsP mSampleRate, mFormat and mChannelMask adapted to the actual parameters in mRes?",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 9
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ff9db6_2b99a248",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-15T16:25:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef58a036_5ed037aa",
       "range": {
         "startLine": 159,
         "startChar": 4,
@@ -117,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a0928a_b8099843",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-15T16:25:16Z",
+      "side": 1,
+      "message": "roundToFreqCenteredToFftBin(...) will ensure this.",
+      "parentUuid": "434203c1_4778d4e3",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 31
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82e394f2_1d640533",
@@ -130,6 +202,30 @@
       "writtenOn": "2022-11-10T10:22:07Z",
       "side": 1,
       "message": "are we only considering bands with the exact same gain?\ncouldn\u0027t we check if the actual gain difference is within a given tolerance from the expected gain difference?",
+      "range": {
+        "startLine": 297,
+        "startChar": 16,
+        "endLine": 297,
+        "endChar": 27
+      },
+      "revId": "9ede518bc75d84007506bac6e7ace406010f19bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2810a7f_902e6d28",
+        "filename": "media/libaudioclient/tests/audioeffect_analyser.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-11-15T16:25:16Z",
+      "side": 1,
+      "message": "We initially started with that, where a tolerance of 1 dB was chosen between the neighboring bands. Few presets were not passing. Later mikhail pointed out, the roll-off rate of eq band filters is not so high. \nhttps://docs.google.com/document/d/1zsPmFjfEVMWQBGa-d15w_Af7546PLqMPnwj_tPc2TT8/edit\nSo for two near-by bands, and if their center frequencies are close by, then effects of one filter will be felt on the other. Even though individually, the bands are scaled according to the configured gain, but neighboring bands filters are effecting the overall scale factor.",
+      "parentUuid": "82e394f2_1d640533",
       "range": {
         "startLine": 297,
         "startChar": 16,
