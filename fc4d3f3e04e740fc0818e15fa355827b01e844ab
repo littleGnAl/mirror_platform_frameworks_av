@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad91f071_ce8c3359",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-11-15T22:27:37Z",
+      "side": 1,
+      "message": "nit: remove this variable.\n\nreturn false on line 1911.\nreturn true on lin 1914.",
+      "range": {
+        "startLine": 1902,
+        "startChar": 0,
+        "endLine": 1902,
+        "endChar": 21
+      },
+      "revId": "fc4d3f3e04e740fc0818e15fa355827b01e844ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
