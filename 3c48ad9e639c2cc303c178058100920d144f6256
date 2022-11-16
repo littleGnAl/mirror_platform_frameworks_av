@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eaeba5f_5542de42",
+        "filename": "services/audiopolicy/service/Spatializer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-11-16T03:35:10Z",
+      "side": 1,
+      "message": "nit: should we add this to dumpsys `mLocalLog`?",
+      "range": {
+        "startLine": 807,
+        "startChar": 16,
+        "endLine": 807,
+        "endChar": 37
+      },
+      "revId": "3c48ad9e639c2cc303c178058100920d144f6256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
