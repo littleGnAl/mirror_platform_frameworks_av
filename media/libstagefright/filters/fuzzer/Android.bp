@@ -69,3 +69,13 @@ cc_fuzz {
         "libstagefright_filters_fuzzer",
     ],
 }
+
+cc_fuzz {
+    name: "libstagefright_graphicBufferListener_fuzzer",
+    srcs: [
+        "libstagefright_graphicBufferListener_fuzzer.cpp",
+    ],
+    defaults: [
+        "libstagefright_filters_fuzzer",
+    ],
+}
