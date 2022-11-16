@@ -34,6 +34,24 @@
       "parentUuid": "02d57276_ec459c8c",
       "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2f64af_04c3f5d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-16T17:36:02Z",
+      "side": 1,
+      "message": "correct; there may be some delay as the last few frames are written.\n\nhow many frames get written (and thus how long we might wait) can be reduced by\nputting those EOS markers at the front of the pending queue instead of the back.\n\nThe correct synchronization point at around the stop(), not the start().",
+      "parentUuid": "afa21707_85434d23",
+      "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
