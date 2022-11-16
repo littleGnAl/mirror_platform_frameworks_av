@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e9e08e_a5819819",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-11-16T22:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc42167_0321228b",
+      "range": {
+        "startLine": 254,
+        "startChar": 20,
+        "endLine": 254,
+        "endChar": 73
+      },
+      "revId": "ab80aef5ad6b08754543aa655fd16d576ab717dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f57a0784_a3de5cd1",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-08T19:29:26Z",
       "side": 1,
       "message": "nit: while we are at it, should we call clearRepeatingRequestsLocked() instead? That would eliminate some duplicate codes.",
+      "range": {
+        "startLine": 3131,
+        "startChar": 4,
+        "endLine": 3131,
+        "endChar": 74
+      },
+      "revId": "ab80aef5ad6b08754543aa655fd16d576ab717dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd007d0_c54f19e1",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3131,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-11-16T22:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f57a0784_a3de5cd1",
       "range": {
         "startLine": 3131,
         "startChar": 4,
