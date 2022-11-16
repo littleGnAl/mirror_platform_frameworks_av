@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7438ba4a_d9499a08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-11-16T23:01:41Z",
+      "side": 1,
+      "message": "I ran PerformanceTest.java#testCameraLaunch 10 times and noted that the average close time doesn\u0027t reduce significantly. This is possible since we\u0027re not hitting the race condition that in disconnect: mRequestThread-\u003ejoin() is getting called when the RequestThread is waiting on receiving another request. Vendor testing did confirm that it fixes the issue for them though.",
+      "parentUuid": "a6ccbdc0_dd08426c",
+      "revId": "ab80aef5ad6b08754543aa655fd16d576ab717dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc42167_0321228b",
