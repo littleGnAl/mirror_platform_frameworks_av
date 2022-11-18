@@ -16,6 +16,24 @@
       "message": "Hi Hongguang,\nWe need your patch to pass the below CTS in android13.\nCtsMediaV2TestCases android.mediav2.cts.DecodeGlAccuracyTest\nPlease help review this cherry-pick to android13-gsi branch.\nThanks in advance for your time.\nBest Regards",
       "revId": "0b02a330e2d408f34dd77b01e7ebef3028aa578e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6246a94_dcda4122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2022-11-18T16:11:47Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "16a26c05_69b2f66b",
+      "revId": "0b02a330e2d408f34dd77b01e7ebef3028aa578e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
