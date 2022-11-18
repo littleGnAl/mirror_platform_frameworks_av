@@ -33,6 +33,24 @@
       "message": "From the TH, this CL has conflict with internal master branch. Will need to cherry-pick to internal and resolve the conflict and merge internal first and then merge this CL.",
       "revId": "0ff7b8fccd4e0a47bd44b0bf37e778caf00ecd49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ad6f97_557bb6d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1930705
+      },
+      "writtenOn": "2022-11-18T18:05:14Z",
+      "side": 1,
+      "message": "thanks for your reply. Do I need to update this cl after internal branch merged ?",
+      "parentUuid": "9ce6695e_2e3c561e",
+      "revId": "0ff7b8fccd4e0a47bd44b0bf37e778caf00ecd49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
