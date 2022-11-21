@@ -52,6 +52,24 @@
       "parentUuid": "afa21707_85434d23",
       "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f879be5_1e67e871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733827
+      },
+      "writtenOn": "2022-11-21T09:51:02Z",
+      "side": 1,
+      "message": "The cts case will write one frame and expect to get it in mkv file.\nIf remove mDone \u003d true; in stop(), then all frames will write to mkv file.\nIf push eos frames to the front of queue, then cts will fail due to thread will not get the frame and write it to file.\nIf delay can\u0027t be reduced, I prefer to add it in start().\nSome devices requires stop executes immediately and board may power off after that such as driving recorder.",
+      "parentUuid": "ae2f64af_04c3f5d5",
+      "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
