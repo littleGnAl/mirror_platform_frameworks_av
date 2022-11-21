@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f552dfe4_392232ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-11-21T22:36:48Z",
+      "side": 1,
+      "message": "Girish, is there a description how this new class is supposed to operate? You could describe it in some extensive class comments. Also, some functionality seems to be removed, is that not needed?",
+      "revId": "78dcba702390778755d4245124d3e20e2819b665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5ef382_359e281f",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-11-21T22:36:48Z",
+      "side": 1,
+      "message": "is this method ever called given that this is a singleton instance?",
+      "range": {
+        "startLine": 306,
+        "startChar": 5,
+        "endLine": 306,
+        "endChar": 20
+      },
+      "revId": "78dcba702390778755d4245124d3e20e2819b665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
