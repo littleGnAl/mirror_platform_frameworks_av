@@ -3602,6 +3602,17 @@ status_t ACodec::setupVideoDecoder(
     if (msg->findInt32("color-format", &tmp)) {
         OMX_COLOR_FORMATTYPE colorFormat =
             static_cast<OMX_COLOR_FORMATTYPE>(tmp);
+        if (tmp == COLOR_FormatYUVP010) {
+            /* OMX does not support COLOR_FormatYUVP010(54)
+             * and it means HAL_PIXEL_FORMAT_YCBCR_P010.
+             * save this format as pixel format and uses OMX foramt instead of it
+             */
+            outputFormat->setInt32("android._color-format", tmp);
+
+            /* uses suitable OMX format for the backward compatibility */
+            colorFormat = OMX_COLOR_FormatYUV420Planar16;
+        }
+
         err = setVideoPortFormatType(
                 kPortIndexOutput, OMX_VIDEO_CodingUnused, colorFormat, haveNativeWindow);
         if (err != OK) {
@@ -5206,6 +5217,14 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     notify->setInt32("slice-height", videoDef->nSliceHeight);
                     notify->setInt32("color-format", videoDef->eColorFormat);
 
+                    {
+                        /* if COLOR_FormatYUVP010 was set, restore KEY_COLOR_FORMAT */
+                        int32_t tmp;
+                        if (notify->findInt32("android._color-format", &tmp)) {
+                            notify->setInt32("color-format", tmp);
+                        }
+                    }
+
                     if (mNativeWindow == NULL) {
                         DescribeColorFormat2Params describeParams;
                         InitOMXParams(&describeParams);
@@ -5230,6 +5249,8 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                                     plane[0].mOffset, plane[0].mColInc, plane[0].mRowInc,
                                     plane[1].mOffset, plane[1].mColInc, plane[1].mRowInc,
                                     plane[2].mOffset, plane[2].mColInc, plane[2].mRowInc);
+
+                            notify->setInt32("stride", plane[0].mRowInc);
                         }
                     }
 
