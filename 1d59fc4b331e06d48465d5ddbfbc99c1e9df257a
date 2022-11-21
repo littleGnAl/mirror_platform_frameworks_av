@@ -22,6 +22,30 @@
       },
       "revId": "1d59fc4b331e06d48465d5ddbfbc99c1e9df257a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58807456_685d3a10",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-11-21T23:48:35Z",
+      "side": 0,
+      "message": "Earlier, the binder death was handled by ResourceManagerServiceProxy. And there was a binder interface to IResourceManagerService for every ResourceManagerServiceProxy object (that is for every MediaCodec that is created). So, ResourceManagerServiceProxy used this std::set to track all the ResourceManagerServiceProxy objects (and their associated binder interfaces)\nBut, with this current CL, we are keeping only one instance of binder handle to IResourceManagerService through this Singleton class. So even death notification registration (and unregistration) happens only once",
+      "parentUuid": "640969fc_097ca4e5",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 0
+      },
+      "revId": "1d59fc4b331e06d48465d5ddbfbc99c1e9df257a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
