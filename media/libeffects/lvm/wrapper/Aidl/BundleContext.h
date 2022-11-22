@@ -60,6 +60,9 @@ class BundleContext final : public EffectContext {
     RetCode setEqualizerBandLevels(const std::vector<Equalizer::BandLevel>& bandLevels);
     std::vector<Equalizer::BandLevel> getEqualizerBandLevels() const;
 
+    RetCode setBassBoostStrength(int strength);
+    int getBassBoostStrength() const { return mBassStrengthSaved; }
+
     RetCode setVolumeStereo(const Parameter::VolumeStereo& volumeStereo) override;
     Parameter::VolumeStereo getVolumeStereo() override { return mVolumeStereo; };
 
@@ -103,6 +106,7 @@ class BundleContext final : public EffectContext {
 
     void initControlParameter(LVM_ControlParams_t& params) const;
     void initHeadroomParameter(LVM_HeadroomParams_t& params) const;
+    RetCode limitLevel();
     int16_t VolToDb(uint32_t vol) const;
     LVM_INT16 LVC_ToDB_s32Tos16(LVM_INT32 Lin_fix) const;
     RetCode updateControlParameter(const std::vector<Equalizer::BandLevel>& bandLevels);

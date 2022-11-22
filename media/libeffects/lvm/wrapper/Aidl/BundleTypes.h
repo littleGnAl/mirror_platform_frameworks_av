@@ -81,9 +81,24 @@ static const Descriptor kEqualizerDesc = {
                    .implementor = "NXP Software Ltd."},
         .capability = Capability::make<Capability::equalizer>(kEqCap)};
 
+static const bool mStrengthSupported = true;
+
+static const BassBoost::Capability kBassBoostCap = {.strengthSupported = mStrengthSupported};
+
+static const Descriptor kBassBoostDesc = {
+        .common = {.id = {.type = kBassBoostTypeUUID,
+                          .uuid = kBassBoostBundleImplUUID,
+                          .proxy = kBassBoostProxyUUID},
+                   .flags = {.type = Flags::Type::INSERT,
+                             .insert = Flags::Insert::FIRST,
+                             .volume = Flags::Volume::CTRL,
+                             .deviceIndication = true},
+                   .name = "BassBoostBundle",
+                   .implementor = "NXP Software Ltd."},
+        .capability = Capability::make<Capability::bassBoost>(kBassBoostCap)};
+
 // TODO: add descriptors for other bundle effect types here.
 static const Descriptor kVirtualizerDesc;
-static const Descriptor kBassBoostDesc;
 static const Descriptor kVolumeDesc;
 
 /* The following tables have been computed using the actual levels measured by the output of
