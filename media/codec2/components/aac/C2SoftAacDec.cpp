@@ -1039,8 +1039,13 @@ c2_status_t C2SoftAacDec::onFlush_sm() {
 }
 
 void C2SoftAacDec::drainDecoder() {
-    // flush decoder until outputDelay is compensated
-    while (mOutputDelayCompensated > 0) {
+    if (mOutputDelayCompensated == 0) {
+        return;
+    }
+
+    int32_t outputDelay = mStreamInfo->outputDelay * mStreamInfo->numChannels;
+    int32_t toFlush = outputDelay;
+    while (toFlush > 0) {
         // a buffer big enough for MAX_CHANNEL_COUNT channels of decoded HE-AAC
         INT_PCM tmpOutBuffer[2048 * MAX_CHANNEL_COUNT];
 
@@ -1056,14 +1061,31 @@ void C2SoftAacDec::drainDecoder() {
         if (decoderErr != AAC_DEC_OK) {
             ALOGW("aacDecoder_DecodeFrame decoderErr = 0x%4.4x", decoderErr);
         }
-
+        INT_PCM *tmpOutBufferOffset = tmpOutBuffer;
         int32_t tmpOutBufferSamples = mStreamInfo->frameSize * mStreamInfo->numChannels;
-        if (tmpOutBufferSamples > mOutputDelayCompensated) {
-            tmpOutBufferSamples = mOutputDelayCompensated;
+        // We need to compensate output delay firstly.
+        if (mOutputDelayCompensated < outputDelay) {
+            // discard outputDelay at the beginning
+            int32_t toCompensate = outputDelay - mOutputDelayCompensated;
+            int32_t discard = tmpOutBufferSamples;
+            if (discard > toCompensate) {
+                discard = toCompensate;
+            }
+            mOutputDelayCompensated += discarded;
+            tmpOutBufferOffset += discard;
+            tmpOutBufferSamples -= discarded;
+            toFlush -= discard;
         }
-        outputDelayRingBufferPutSamples(tmpOutBuffer, tmpOutBufferSamples);
-
-        mOutputDelayCompensated -= tmpOutBufferSamples;
+        // If we have compensated output delay and there is data in tmpOutBuffer
+        if ((mOutputDelayCompensated == outputDelay) &&
+            (tmpOutBufferSamples > 0) &&
+            (toFlush > 0)) {
+            if (tmpOutBufferSamples > toFlush) {
+                tmpOutBufferSamples = toFlush;
+            }
+            outputDelayRingBufferPutSamples(tmpOutBufferOffset, tmpOutBufferSamples);
+            toFlush -= tmpOutBufferSamples;
+        }
     }
 }
 
