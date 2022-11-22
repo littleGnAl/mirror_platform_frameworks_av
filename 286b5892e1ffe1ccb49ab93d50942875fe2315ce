@@ -22,6 +22,30 @@
       },
       "revId": "286b5892e1ffe1ccb49ab93d50942875fe2315ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7bf9a0f_a5ac62bd",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-11-22T04:14:42Z",
+      "side": 1,
+      "message": "Thats correct, its per codec. The actual size is updated once the start completes here: https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2283536/6/media/libstagefright/MediaCodec.cpp#3570",
+      "parentUuid": "9d8303e5_d393c9cc",
+      "range": {
+        "startLine": 1854,
+        "startChar": 0,
+        "endLine": 1858,
+        "endChar": 5
+      },
+      "revId": "286b5892e1ffe1ccb49ab93d50942875fe2315ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
