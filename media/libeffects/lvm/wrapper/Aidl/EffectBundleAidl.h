@@ -58,7 +58,9 @@ class EffectBundleAidl final : public EffectImpl {
     lvm::BundleEffectType mType = lvm::BundleEffectType::EQUALIZER;
 
     IEffect::Status status(binder_status_t status, size_t consumed, size_t produced);
-    ndk::ScopedAStatus getParameterEqualizer(const Equalizer::Tag& tag,
+
+    ndk::ScopedAStatus setParameterEqualizer(const Parameter::Specific& specific);
+    ndk::ScopedAStatus getParameterEqualizer(const Equalizer::Id& id,
                                              Parameter::Specific* specific);
 };
 
