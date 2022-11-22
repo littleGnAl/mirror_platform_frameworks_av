@@ -70,6 +70,24 @@
       "parentUuid": "ae2f64af_04c3f5d5",
       "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091c79ec_a363487d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2022-11-22T10:39:53Z",
+      "side": 1,
+      "message": "I think the desired behavior is that all frames that have been passed to the muxer get written and flushed out before stop returns (stop shouldn\u0027t \u0027drop\u0027 any frames). That may require stop to block for a while.\n\nI\u0027m struggling a bit to understand this thread but it sounds like the proposal is to drop some of the frames that have been written, which sounds wrong. Could you correct my understanding if needed? What is the desired behavior from the perspective of the caller of the muxer API?",
+      "parentUuid": "3f879be5_1e67e871",
+      "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
