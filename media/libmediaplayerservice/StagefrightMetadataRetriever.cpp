@@ -239,6 +239,16 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         }
     }
 
+    static const int kVendorSdkVersion = property_get_int32(
+            "ro.product.first_api_level", android_get_device_api_level());
+    if (kVendorSdkVersion < __ANDROID_API_T__) {
+        /* b/258355840
+         * 10bit thumbnail is supported since android T launching devices
+         * - OMX doesn't support COLOR_FormatYUVP010
+         */
+        bitDepth = 8;
+    }
+
     if (metaOnly) {
         return FrameDecoder::getMetadataOnly(trackMeta, colorFormat, thumbnail, bitDepth);
     }
