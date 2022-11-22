@@ -435,7 +435,12 @@ void AAudioServiceStreamBase::run() {
             }
         }
         if (isIdle_l() && AudioClock::getNanoseconds() >= standbyTime) {
-            standby_l();
+            aaudio_result_t result = standby_l();
+            if (result != AAUDIO_OK) {
+                // Avoid busy looping
+                ALOGW("Failed to enter standby, error=%d", result);
+                standbyTime = std::numeric_limits<int64_t>::max();
+            }
         }
 
         if (command != nullptr) {
