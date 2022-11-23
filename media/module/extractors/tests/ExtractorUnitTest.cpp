@@ -19,6 +19,7 @@
 #include <utils/Log.h>
 
 #include <inttypes.h>
+#include <memory>
 
 #include <datasource/FileSource.h>
 #include <media/stagefright/MediaBufferGroup.h>
@@ -328,12 +329,12 @@ void randomSeekTest(MediaTrackHelper *track, int64_t clipDuration) {
     }
 
     for (int64_t seekPts : seekToTimeStamp) {
-        MediaTrackHelper::ReadOptions *options = new MediaTrackHelper::ReadOptions(
-                CMediaTrackReadOptions::SEEK_CLOSEST | CMediaTrackReadOptions::SEEK, seekPts);
+        std::unique_ptr<MediaTrackHelper::ReadOptions> options(new MediaTrackHelper::ReadOptions(
+                CMediaTrackReadOptions::SEEK_CLOSEST | CMediaTrackReadOptions::SEEK, seekPts));
         ASSERT_NE(options, nullptr) << "Cannot create read option";
 
         MediaBufferHelper *buffer = nullptr;
-        status = track->read(&buffer, options);
+        status = track->read(&buffer, options.get());
         if (buffer) {
             AMediaFormat *metaData = buffer->meta_data();
             int64_t timeStamp = 0;
@@ -348,7 +349,6 @@ void randomSeekTest(MediaTrackHelper *track, int64_t clipDuration) {
                     << "received " << timeStamp << ", list of input seek timestamps ["
                     << seekPtsString << "]";
         }
-        delete options;
     }
 }
 
@@ -417,10 +417,10 @@ TEST_P(ExtractorFunctionalityTest, ExtractorTest) {
         MediaTrackHelper *track = mExtractor->getTrack(idx);
         ASSERT_NE(track, nullptr) << "Failed to get track for index " << idx;
 
-        CMediaTrack *cTrack = wrap(track);
+        std::unique_ptr<CMediaTrack> cTrack(wrap(track));
         ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << idx;
 
-        MediaBufferGroup *bufferGroup = new MediaBufferGroup();
+        std::unique_ptr<MediaBufferGroup> bufferGroup(new MediaBufferGroup());
         status = cTrack->start(track, bufferGroup->wrap());
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
 
@@ -443,7 +443,6 @@ TEST_P(ExtractorFunctionalityTest, ExtractorTest) {
         if (outFp) fclose(outFp);
         status = cTrack->stop(track);
         ASSERT_EQ(OK, status) << "Failed to stop the track";
-        delete bufferGroup;
         delete track;
     }
 }
@@ -473,10 +472,10 @@ TEST_P(ExtractorFunctionalityTest, MetaDataComparisonTest) {
         MediaTrackHelper *track = mExtractor->getTrack(idx);
         ASSERT_NE(track, nullptr) << "Failed to get track for index " << idx;
 
-        CMediaTrack *cTrack = wrap(track);
+        std::unique_ptr<CMediaTrack> cTrack(wrap(track));
         ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << idx;
 
-        MediaBufferGroup *bufferGroup = new MediaBufferGroup();
+        std::unique_ptr<MediaBufferGroup> bufferGroup(new MediaBufferGroup());
         status = cTrack->start(track, bufferGroup->wrap());
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
 
@@ -519,7 +518,6 @@ TEST_P(ExtractorFunctionalityTest, MetaDataComparisonTest) {
         }
         status = cTrack->stop(track);
         ASSERT_EQ(OK, status) << "Failed to stop the track";
-        delete bufferGroup;
         delete track;
     }
     AMediaFormat_delete(trackFormat);
@@ -548,10 +546,10 @@ TEST_P(ExtractorFunctionalityTest, MultipleStartStopTest) {
             MediaTrackHelper *track = mExtractor->getTrack(idx);
             ASSERT_NE(track, nullptr) << "Failed to get track for index " << idx;
 
-            CMediaTrack *cTrack = wrap(track);
+            std::unique_ptr<CMediaTrack> cTrack(wrap(track));
             ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << idx;
 
-            MediaBufferGroup *bufferGroup = new MediaBufferGroup();
+            std::unique_ptr<MediaBufferGroup> bufferGroup(new MediaBufferGroup());
             status = cTrack->start(track, bufferGroup->wrap());
             ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
             MediaBufferHelper *buffer = nullptr;
@@ -563,7 +561,6 @@ TEST_P(ExtractorFunctionalityTest, MultipleStartStopTest) {
             }
             status = cTrack->stop(track);
             ASSERT_EQ(OK, status) << "Failed to stop the track";
-            delete bufferGroup;
             delete track;
         }
     }
@@ -600,11 +597,11 @@ TEST_P(ExtractorFunctionalityTest, SeekTest) {
         MediaTrackHelper *track = mExtractor->getTrack(idx);
         ASSERT_NE(track, nullptr) << "Failed to get track for index " << idx;
 
-        CMediaTrack *cTrack = wrap(track);
+        std::unique_ptr<CMediaTrack> cTrack(wrap(track));
         ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << idx;
 
         // Get all the seekable points of a given input
-        MediaBufferGroup *bufferGroup = new MediaBufferGroup();
+        std::unique_ptr<MediaBufferGroup> bufferGroup(new MediaBufferGroup());
         status = cTrack->start(track, bufferGroup->wrap());
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
 
@@ -698,14 +695,13 @@ TEST_P(ExtractorFunctionalityTest, SeekTest) {
                     seekToTimeStamp += opusSeekPreRollUs;
                 }
 
-                MediaTrackHelper::ReadOptions *options = new MediaTrackHelper::ReadOptions(
-                        mode | CMediaTrackReadOptions::SEEK, seekToTimeStamp);
+                std::unique_ptr<MediaTrackHelper::ReadOptions> options(new MediaTrackHelper::ReadOptions(
+                        mode | CMediaTrackReadOptions::SEEK, seekToTimeStamp));
                 ASSERT_NE(options, nullptr) << "Cannot create read option";
 
                 MediaBufferHelper *buffer = nullptr;
-                status = track->read(&buffer, options);
+                status = track->read(&buffer, options.get());
                 if (status == AMEDIA_ERROR_END_OF_STREAM) {
-                    delete options;
                     continue;
                 }
                 if (buffer) {
@@ -728,12 +724,10 @@ TEST_P(ExtractorFunctionalityTest, SeekTest) {
                             break;
                     }
                 }
-                delete options;
             }
         }
         status = cTrack->stop(track);
         ASSERT_EQ(OK, status) << "Failed to stop the track";
-        delete bufferGroup;
         delete track;
     }
     seekablePoints.clear();
@@ -772,10 +766,10 @@ TEST_P(ExtractorFunctionalityTest, MonkeySeekTest) {
         MediaTrackHelper *track = mExtractor->getTrack(idx);
         ASSERT_NE(track, nullptr) << "Failed to get track for index " << idx;
 
-        CMediaTrack *cTrack = wrap(track);
+        std::unique_ptr<CMediaTrack> cTrack(wrap(track));
         ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << idx;
 
-        MediaBufferGroup *bufferGroup = new MediaBufferGroup();
+        std::unique_ptr<MediaBufferGroup> bufferGroup(new MediaBufferGroup());
         status = cTrack->start(track, bufferGroup->wrap());
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
 
@@ -801,14 +795,13 @@ TEST_P(ExtractorFunctionalityTest, MonkeySeekTest) {
         for (int32_t mode = CMediaTrackReadOptions::SEEK_PREVIOUS_SYNC;
              mode <= CMediaTrackReadOptions::SEEK_CLOSEST; mode++) {
             for (int64_t seekTimeUs : seekToTimeStampUs) {
-                MediaTrackHelper::ReadOptions *options = new MediaTrackHelper::ReadOptions(
-                        mode | CMediaTrackReadOptions::SEEK, seekTimeUs);
+                std::unique_ptr<MediaTrackHelper::ReadOptions> options(new MediaTrackHelper::ReadOptions(
+                        mode | CMediaTrackReadOptions::SEEK, seekTimeUs));
                 ASSERT_NE(options, nullptr) << "Cannot create read option";
 
                 MediaBufferHelper *buffer = nullptr;
-                status = track->read(&buffer, options);
+                status = track->read(&buffer, options.get());
                 if (status == AMEDIA_ERROR_END_OF_STREAM) {
-                    delete options;
                     continue;
                 }
                 if (buffer) {
@@ -819,12 +812,10 @@ TEST_P(ExtractorFunctionalityTest, MonkeySeekTest) {
                           (long long)seekTimeUs);
                     buffer->release();
                 }
-                delete options;
             }
         }
         status = cTrack->stop(track);
         ASSERT_EQ(OK, status) << "Failed to stop the track";
-        delete bufferGroup;
         delete track;
     }
 }
@@ -1048,7 +1039,7 @@ TEST_P(ExtractorComparison, ExtractorComparisonTest) {
         status = track->getFormat(extractorFormat[idx]);
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to get track meta data";
 
-        CMediaTrack *cTrack = wrap(track);
+        std::unique_ptr<CMediaTrack> cTrack(wrap(track));
         ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << trackIdx;
 
         mExtractorOuputSize[idx] = allocateOutputBuffers(inputFileName, extractorFormat[idx]);
@@ -1058,7 +1049,7 @@ TEST_P(ExtractorComparison, ExtractorComparisonTest) {
         ASSERT_NE(mExtractorOutput[idx], nullptr)
                 << "Unable to allocate memory for writing extractor's output";
 
-        MediaBufferGroup *bufferGroup = new MediaBufferGroup();
+        std::unique_ptr<MediaBufferGroup> bufferGroup(new MediaBufferGroup());
         status = cTrack->start(track, bufferGroup->wrap());
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
 
@@ -1081,7 +1072,6 @@ TEST_P(ExtractorComparison, ExtractorComparisonTest) {
         ASSERT_EQ(OK, status) << "Failed to stop the track";
 
         fclose(mInputFp);
-        delete bufferGroup;
         delete track;
         mDataSource.clear();
         delete mExtractor;
