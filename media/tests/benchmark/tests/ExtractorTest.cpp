@@ -17,6 +17,8 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "extractorTest"
 
+#include <memory>
+
 #include <gtest/gtest.h>
 
 #include <android/binder_process.h>
@@ -29,7 +31,7 @@ static BenchmarkTestEnvironment *gEnv = nullptr;
 class ExtractorTest : public ::testing::TestWithParam<pair<string, int32_t>> {};
 
 TEST_P(ExtractorTest, Extract) {
-    Extractor *extractObj = new Extractor();
+    std::unique_ptr<Extractor> extractObj(new Extractor());
     ASSERT_NE(extractObj, nullptr) << "Extractor creation failed";
 
     string inputFile = gEnv->getRes() + GetParam().first;
@@ -53,7 +55,6 @@ TEST_P(ExtractorTest, Extract) {
     extractObj->dumpStatistics(GetParam().first, "", gEnv->getStatsFile());
 
     fclose(inputFp);
-    delete extractObj;
 }
 
 INSTANTIATE_TEST_SUITE_P(ExtractorTestAll, ExtractorTest,
