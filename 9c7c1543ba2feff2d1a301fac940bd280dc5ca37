@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6c948e_70131847",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1977977
+      },
+      "writtenOn": "2022-11-24T14:56:57Z",
+      "side": 1,
+      "message": "if mFence.size() is zero, then it will lead to out of access.",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "842bb803_3d4c756d",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1977977
+      },
+      "writtenOn": "2022-11-24T14:56:57Z",
+      "side": 1,
+      "message": "same here.",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad35798_7a589d40",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1977977
+      },
+      "writtenOn": "2022-11-24T14:56:57Z",
+      "side": 1,
+      "message": "remove this comment.",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c48170_9e4421e7",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1977977
+      },
+      "writtenOn": "2022-11-24T14:56:57Z",
+      "side": 1,
+      "message": "use space instead of tabs.",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c99558e_b286d66d",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1977977
+      },
+      "writtenOn": "2022-11-24T14:56:57Z",
+      "side": 1,
+      "message": "remove commented blocks",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01298783_efae9357",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1977977
+      },
+      "writtenOn": "2022-11-24T14:56:57Z",
+      "side": 1,
+      "message": "nit: tab alignment",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
