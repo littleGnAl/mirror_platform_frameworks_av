@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d59e7a_c3adb7c2",
+        "filename": "media/libstagefright/OggWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-25T15:25:55Z",
+      "side": 1,
+      "message": "let\u0027s go ahead and follow the language suggestion and replace \u0027dummy\u0027.",
+      "range": {
+        "startLine": 245,
+        "startChar": 10,
+        "endLine": 245,
+        "endChar": 16
+      },
+      "revId": "136197175affc947dce8a660b4b16e0c56ee3b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b3adb9_8afa7ce1",
+        "filename": "media/libstagefright/OggWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-11-25T15:25:55Z",
+      "side": 1,
+      "message": "please move above the declaration, so that the declaration/use are not separated.\ne.g. in this order:\n\nstatus \u003d stop();\n\nvoid *placeholder;\npthread_join(.., \u0026placeholder);",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "136197175affc947dce8a660b4b16e0c56ee3b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
