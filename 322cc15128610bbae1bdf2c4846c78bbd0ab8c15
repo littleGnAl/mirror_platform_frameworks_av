@@ -88,6 +88,24 @@
       "parentUuid": "3f879be5_1e67e871",
       "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a709552_062a1c42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733827
+      },
+      "writtenOn": "2022-11-27T08:48:48Z",
+      "side": 1,
+      "message": "The purpose of my patch is to fix the issue that thread did not run until stop called and cts program does not expect to drop frames.\nI did not find any declarations about how stop of media muxer API works, and I just surmise it from the source code. \nAll media writer implementation including MPEG4Writer, WebmWriter and OggWriter in android have similar behavior, they just set mDone to true and call pthread_join to destroy writer thread. I thought stop() is to stop thread immediately regardless of any pending frames in writer thread. \nFor this cts case. I just want to make sure the only frame was written to the file and did not want to change stop behavior.",
+      "parentUuid": "091c79ec_a363487d",
+      "revId": "322cc15128610bbae1bdf2c4846c78bbd0ab8c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
