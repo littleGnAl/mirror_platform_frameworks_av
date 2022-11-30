@@ -16,6 +16,24 @@
       "message": "I would also suggest cloning `frameworks/av/services/audiopolicy/config/surround_sound_configuration_5_0.xml` into something like `frameworks/av/services/audiopolicy/config/surround_sound_configuration_aidl.xml` and making a similar change there.",
       "revId": "51ec08d87f5a57f957745bf4b44fb08e034652e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeac535c_966c651c",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioPolicyConfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-11-30T13:58:07Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "d497c4ea_394e91ae",
+      "revId": "51ec08d87f5a57f957745bf4b44fb08e034652e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
