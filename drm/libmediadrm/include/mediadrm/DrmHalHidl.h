@@ -26,6 +26,7 @@
 #include <media/drm/DrmAPI.h>
 #include <mediadrm/DrmMetrics.h>
 #include <mediadrm/DrmSessionManager.h>
+#include <mediadrm/DrmStatus.h>
 #include <mediadrm/IDrm.h>
 #include <mediadrm/IDrmClient.h>
 #include <mediadrm/IDrmMetricsConsumer.h>
@@ -63,12 +64,10 @@ struct DrmHalHidl : public IDrm,
     DrmHalHidl();
     virtual ~DrmHalHidl();
 
-    virtual status_t initCheck() const;
+    virtual DrmStatus initCheck() const;
 
-    virtual status_t isCryptoSchemeSupported(const uint8_t uuid[16],
-                                             const String8& mimeType,
-                                             DrmPlugin::SecurityLevel level,
-                                             bool *isSupported);
+    virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+                                              DrmPlugin::SecurityLevel level, bool* isSupported);
 
     virtual status_t createPlugin(const uint8_t uuid[16],
                                   const String8 &appPackageName);

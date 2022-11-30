@@ -17,6 +17,7 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "DrmHalAidl"
 
+#include <mediadrm/DrmStatus.h>
 #include <array>
 #include <algorithm>
 #include <map>
@@ -396,8 +397,8 @@ DrmHalAidl::DrmHalAidl()
       mFactories(DrmUtils::makeDrmFactoriesAidl()),
       mInitCheck((mFactories.size() == 0) ? ERROR_UNSUPPORTED : NO_INIT) {}
 
-status_t DrmHalAidl::initCheck() const {
-    return mInitCheck;
+DrmStatus DrmHalAidl::initCheck() const {
+    return DrmStatus(mInitCheck);
 }
 
 DrmHalAidl::~DrmHalAidl() {}
@@ -407,8 +408,8 @@ status_t DrmHalAidl::setListener(const sp<IDrmClient>& listener) {
     return NO_ERROR;
 }
 
-status_t DrmHalAidl::isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
-                                             DrmPlugin::SecurityLevel level, bool* isSupported) {
+DrmStatus DrmHalAidl::isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+                                              DrmPlugin::SecurityLevel level, bool* isSupported) {
     Mutex::Autolock autoLock(mLock);
     *isSupported = false;
     Uuid uuidAidl = DrmUtils::toAidlUuid(uuid);
@@ -438,9 +439,9 @@ status_t DrmHalAidl::isCryptoSchemeSupported(const uint8_t uuid[16], const Strin
                 // isCryptoSchemeSupported(uuid, mimeType)
                 *isSupported = contentTypes.count(mimeTypeStr);
             }
-            return OK;
+            return DrmStatus(OK);
         } else if (mimeType == "") {
-            return BAD_VALUE;
+            return DrmStatus(BAD_VALUE);
         }
 
         auto ct = contentTypes[mimeTypeStr];
@@ -452,10 +453,10 @@ status_t DrmHalAidl::isCryptoSchemeSupported(const uint8_t uuid[16], const Strin
         break;
     }
 
-    return OK;
+    return DrmStatus(OK);
 }
 
-status_t DrmHalAidl::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
+DrmStatus DrmHalAidl::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
     Mutex::Autolock autoLock(mLock);
 
     Uuid uuidAidl = DrmUtils::toAidlUuid(uuid);
@@ -497,10 +498,10 @@ status_t DrmHalAidl::createPlugin(const uint8_t uuid[16], const String8& appPack
         }
     }
 
-    return mInitCheck;
+    return DrmStatus(mInitCheck);
 }
 
-status_t DrmHalAidl::openSession(DrmPlugin::SecurityLevel level, Vector<uint8_t>& sessionId) {
+DrmStatus DrmHalAidl::openSession(DrmPlugin::SecurityLevel level, Vector<uint8_t>& sessionId) {
     Mutex::Autolock autoLock(mLock);
     INIT_CHECK();
 
@@ -542,10 +543,10 @@ status_t DrmHalAidl::openSession(DrmPlugin::SecurityLevel level, Vector<uint8_t>
     }
 
     mMetrics.mOpenSessionCounter.Increment(err);
-    return err;
+    return DrmStatus(err);
 }
 
-status_t DrmHalAidl::closeSession(Vector<uint8_t> const& sessionId) {
+DrmStatus DrmHalAidl::closeSession(Vector<uint8_t> const& sessionId) {
     Mutex::Autolock autoLock(mLock);
     INIT_CHECK();
 
@@ -609,7 +610,7 @@ status_t DrmHalAidl::getKeyRequest(Vector<uint8_t> const& sessionId,
 
     err = statusAidlToStatusT(status);
     keyRequestTimer.SetAttribute(err);
-    return err;
+    return DrmStatus(err);
 }
 
 status_t DrmHalAidl::provideKeyResponse(Vector<uint8_t> const& sessionId,
@@ -1225,9 +1226,9 @@ void DrmHalAidl::cleanup() {
     mPlugin.reset();
 }
 
-status_t DrmHalAidl::destroyPlugin() {
+DrmStatus DrmHalAidl::destroyPlugin() {
     cleanup();
-    return OK;
+    return DrmStatus(OK);
 }
 
 ::ndk::ScopedAStatus DrmHalAidl::onEvent(EventTypeAidl eventTypeAidl,
