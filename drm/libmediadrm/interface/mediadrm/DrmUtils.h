@@ -17,6 +17,7 @@
 #ifndef ANDROID_DRMUTILS_H
 #define ANDROID_DRMUTILS_H
 
+#include <mediadrm/DrmStatus.h>
 #include <android/hardware/drm/1.0/ICryptoFactory.h>
 #include <android/hardware/drm/1.0/IDrmFactory.h>
 #include <android/hardware/drm/1.4/IDrmPlugin.h>
@@ -198,7 +199,7 @@ inline status_t toStatusT(const android::hardware::Return<T> &status) {
     return toStatusT_1_4(err);
 }
 
-inline status_t statusAidlToStatusT(::ndk::ScopedAStatus &statusAidl) {
+inline DrmStatus statusAidlToDrmStatus(::ndk::ScopedAStatus &statusAidl) {
     if (statusAidl.isOk()) return OK;
     if (statusAidl.getExceptionCode() != EX_SERVICE_SPECIFIC) return DEAD_OBJECT;
     auto status = static_cast<StatusAidl>(statusAidl.getServiceSpecificError());
