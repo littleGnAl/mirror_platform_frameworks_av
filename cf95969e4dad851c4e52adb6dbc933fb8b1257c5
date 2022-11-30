@@ -16,6 +16,24 @@
       "message": "Robert,\nThis is incomplete and will be updated.\nwe will ping you once a couple of apis are updated to return DrmStatus.",
       "revId": "cf95969e4dad851c4e52adb6dbc933fb8b1257c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c4fc7c_83692615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-11-30T16:44:39Z",
+      "side": 1,
+      "message": "Could you please also check if `libmedia_jni` \u0026 `libmediandk` needs to be updated accordingly? Thanks.",
+      "parentUuid": "39e61e9e_f2b4baf7",
+      "revId": "cf95969e4dad851c4e52adb6dbc933fb8b1257c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
