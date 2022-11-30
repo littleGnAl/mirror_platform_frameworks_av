@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <mediadrm/DrmStatus.h>
 #include <mediadrm/IDrm.h>
 
 #ifndef DRM_HAL_H_
@@ -24,17 +25,15 @@ namespace android {
 struct DrmHal : public IDrm {
     DrmHal();
     virtual ~DrmHal();
-    virtual status_t initCheck() const;
-    virtual status_t isCryptoSchemeSupported(const uint8_t uuid[16],
-                                             const String8 &mimeType,
-                                             DrmPlugin::SecurityLevel securityLevel,
-                                             bool *result);
-    virtual status_t createPlugin(const uint8_t uuid[16],
+    virtual DrmStatus initCheck() const;
+    virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+                                              DrmPlugin::SecurityLevel securityLevel, bool* result);
+    virtual DrmStatus createPlugin(const uint8_t uuid[16],
                                   const String8 &appPackageName);
-    virtual status_t destroyPlugin();
-    virtual status_t openSession(DrmPlugin::SecurityLevel securityLevel,
+    virtual DrmStatus destroyPlugin();
+    virtual DrmStatus openSession(DrmPlugin::SecurityLevel securityLevel,
             Vector<uint8_t> &sessionId);
-    virtual status_t closeSession(Vector<uint8_t> const &sessionId);
+    virtual DrmStatus closeSession(Vector<uint8_t> const &sessionId);
     virtual status_t
         getKeyRequest(Vector<uint8_t> const &sessionId,
                       Vector<uint8_t> const &initData,
