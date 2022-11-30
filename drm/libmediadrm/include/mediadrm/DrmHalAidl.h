@@ -25,6 +25,7 @@
 #include <mediadrm/DrmMetrics.h>
 #include <mediadrm/DrmSessionManager.h>
 #include <mediadrm/DrmHalListener.h>
+#include <mediadrm/DrmStatus.h>
 #include <mediadrm/IDrm.h>
 
 using IDrmPluginAidl = ::aidl::android::hardware::drm::IDrmPlugin;
@@ -38,14 +39,14 @@ struct DrmHalAidl : public IDrm{
     struct DrmSessionClient;
     DrmHalAidl();
     virtual ~DrmHalAidl();
-    virtual status_t initCheck() const;
-    virtual status_t isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
-                                             DrmPlugin::SecurityLevel securityLevel, bool* result);
-    virtual status_t createPlugin(const uint8_t uuid[16], const String8& appPackageName);
-    virtual status_t destroyPlugin();
-    virtual status_t openSession(DrmPlugin::SecurityLevel securityLevel,
+    virtual DrmStatus initCheck() const;
+    virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+                                              DrmPlugin::SecurityLevel securityLevel, bool* result);
+    virtual DrmStatus createPlugin(const uint8_t uuid[16], const String8& appPackageName);
+    virtual DrmStatus destroyPlugin();
+    virtual DrmStatus openSession(DrmPlugin::SecurityLevel securityLevel,
                                  Vector<uint8_t>& sessionId);
-    virtual status_t closeSession(Vector<uint8_t> const& sessionId);
+    virtual DrmStatus closeSession(Vector<uint8_t> const& sessionId);
     virtual status_t getKeyRequest(Vector<uint8_t> const& sessionId,
                                    Vector<uint8_t> const& initData, String8 const& mimeType,
                                    DrmPlugin::KeyType keyType,

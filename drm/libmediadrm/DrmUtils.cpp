@@ -63,7 +63,8 @@ Hal* MakeObject(status_t* pstatus) {
     status_t err = OK;
     status_t& status = pstatus ? *pstatus : err;
     auto obj = new Hal();
-    status = obj->initCheck();
+    DrmStatus drmStatus = DrmStatus(obj->initCheck());
+    status = drmStatus;
     if (status != OK && status != NO_INIT) {
         return NULL;
     }
