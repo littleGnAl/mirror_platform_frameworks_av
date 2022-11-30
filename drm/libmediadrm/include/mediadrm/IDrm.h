@@ -16,6 +16,7 @@
 
 #include <media/stagefright/foundation/ABase.h>
 #include <media/drm/DrmAPI.h>
+#include <mediadrm/DrmStatus.h>
 #include <mediadrm/IDrmClient.h>
 #include <mediadrm/IDrmMetricsConsumer.h>
 
@@ -40,22 +41,21 @@ struct IDrm : public virtual RefBase {
 
     virtual ~IDrm() {}
 
-    virtual status_t initCheck() const = 0;
+    virtual DrmStatus initCheck() const = 0;
 
-    virtual status_t isCryptoSchemeSupported(const uint8_t uuid[16],
-                                             const String8 &mimeType,
-                                             DrmPlugin::SecurityLevel securityLevel,
-                                             bool *result) = 0;
+    virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+                                              DrmPlugin::SecurityLevel securityLevel,
+                                              bool* result) = 0;
 
-    virtual status_t createPlugin(const uint8_t uuid[16],
+    virtual DrmStatus createPlugin(const uint8_t uuid[16],
                                   const String8 &appPackageName) = 0;
 
-    virtual status_t destroyPlugin() = 0;
+    virtual DrmStatus destroyPlugin() = 0;
 
-    virtual status_t openSession(DrmPlugin::SecurityLevel securityLevel,
+    virtual DrmStatus openSession(DrmPlugin::SecurityLevel securityLevel,
             Vector<uint8_t> &sessionId) = 0;
 
-    virtual status_t closeSession(Vector<uint8_t> const &sessionId) = 0;
+    virtual DrmStatus closeSession(Vector<uint8_t> const &sessionId) = 0;
 
     virtual status_t
         getKeyRequest(Vector<uint8_t> const &sessionId,

@@ -17,6 +17,7 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "DrmHal"
 
+#include <mediadrm/DrmStatus.h>
 #include <mediadrm/DrmHal.h>
 #include <mediadrm/DrmHalAidl.h>
 #include <mediadrm/DrmHalHidl.h>
@@ -31,40 +32,35 @@ DrmHal::DrmHal() {
 
 DrmHal::~DrmHal() {}
 
-status_t DrmHal::initCheck() const {
-    if (mDrmHalAidl->initCheck() == OK || mDrmHalHidl->initCheck() == OK) return OK;
-    if (mDrmHalAidl->initCheck() == NO_INIT || mDrmHalHidl->initCheck() == NO_INIT) return NO_INIT;
+DrmStatus DrmHal::initCheck() const {
+    if (mDrmHalAidl->initCheck() == OK || mDrmHalHidl->initCheck() == OK) return DrmStatus(OK);
+    if (mDrmHalAidl->initCheck() == NO_INIT || mDrmHalHidl->initCheck() == NO_INIT)
+        return DrmStatus(NO_INIT);
     return mDrmHalHidl->initCheck();
 }
 
-status_t DrmHal::isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
-                                         DrmPlugin::SecurityLevel securityLevel, bool* result) {
-    status_t statusResult;
-    statusResult = mDrmHalAidl->isCryptoSchemeSupported(uuid, mimeType, securityLevel, result);
-    if (*result) return statusResult;
+DrmStatus DrmHal::isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+                                          DrmPlugin::SecurityLevel securityLevel, bool* result) {
+    if (*result) return mDrmHalAidl->isCryptoSchemeSupported(uuid, mimeType, securityLevel, result);
     return mDrmHalHidl->isCryptoSchemeSupported(uuid, mimeType, securityLevel, result);
 }
 
-status_t DrmHal::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
-    status_t statusResult;
-    statusResult = mDrmHalAidl->createPlugin(uuid, appPackageName);
-    if (statusResult != OK) return mDrmHalHidl->createPlugin(uuid, appPackageName);
-    return statusResult;
+DrmStatus DrmHal::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
+    return mDrmHalAidl->createPlugin(uuid, appPackageName) == OK ?
+            DrmStatus(OK) : mDrmHalHidl->createPlugin(uuid, appPackageName);
 }
 
-status_t DrmHal::destroyPlugin() {
-    status_t statusResult = mDrmHalAidl->destroyPlugin();
-    status_t statusResultHidl = mDrmHalHidl->destroyPlugin();
-    if (statusResult != OK) return statusResult;
-    return statusResultHidl;
+DrmStatus DrmHal::destroyPlugin() {
+    return mDrmHalAidl->destroyPlugin() != OK ?
+        mDrmHalAidl->destroyPlugin() : mDrmHalHidl->destroyPlugin();
 }
 
-status_t DrmHal::openSession(DrmPlugin::SecurityLevel securityLevel, Vector<uint8_t>& sessionId) {
+DrmStatus DrmHal::openSession(DrmPlugin::SecurityLevel securityLevel, Vector<uint8_t>& sessionId) {
     if (mDrmHalAidl->initCheck() == OK) return mDrmHalAidl->openSession(securityLevel, sessionId);
     return mDrmHalHidl->openSession(securityLevel, sessionId);
 }
 
-status_t DrmHal::closeSession(Vector<uint8_t> const& sessionId) {
+DrmStatus DrmHal::closeSession(Vector<uint8_t> const& sessionId) {
     if (mDrmHalAidl->initCheck() == OK) return mDrmHalAidl->closeSession(sessionId);
     return mDrmHalHidl->closeSession(sessionId);
 }
