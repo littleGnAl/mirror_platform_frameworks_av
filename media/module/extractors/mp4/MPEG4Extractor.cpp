@@ -394,6 +394,16 @@ static const char *FourCC2MIME(uint32_t fourcc) {
             return MEDIA_MIMETYPE_AUDIO_MPEGH_MHA1;
         case FOURCC("mhm1"):
             return MEDIA_MIMETYPE_AUDIO_MPEGH_MHM1;
+        case FOURCC("dtsc"):
+            return MEDIA_MIMETYPE_AUDIO_DTS;
+        case FOURCC("dtsh"):
+            return MEDIA_MIMETYPE_AUDIO_DTS_HD;
+        case FOURCC("dtse"):
+            return MEDIA_MIMETYPE_AUDIO_DTS_HD;
+        case FOURCC("dtsl"):
+            return MEDIA_MIMETYPE_AUDIO_DTS_HD_MA;
+        case FOURCC("dtsx"):
+            return MEDIA_MIMETYPE_AUDIO_DTS_UHD_P2;
         default:
             ALOGW("Unknown fourcc: %c%c%c%c",
                    (fourcc >> 24) & 0xff,
