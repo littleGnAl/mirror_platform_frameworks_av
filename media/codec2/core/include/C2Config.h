@@ -75,6 +75,10 @@ struct C2Config {
     enum secure_mode_t : uint32_t;          ///< secure/protected modes
     enum supplemental_info_t : uint32_t;    ///< supplemental information types
     enum tiling_mode_t : uint32_t;          ///< tiling modes
+    enum dts_drc_effect_type_t : int32_t;   ///< DTS DRC effect type
+    enum dts_drc_loudness_norm_enable_t : uint32_t;   ///< DTS DRC effect type
+    enum dts_limiter_type_t : uint32_t;     ///< DTS limiter type
+    enum dts_output_layout_t : uint32_t;    ///< DTS output layout mask
 };
 
 struct C2PlatformConfig {
@@ -234,6 +238,10 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexDrcOutputLoudness, // drc, float (dBFS)
     kParamIndexDrcAlbumMode, // drc, enum
     kParamIndexAudioFrameSize, // int
+    kParamIndexDtsDrcEffectType, // dts drc type, enum
+    kParamIndexDtsDrcLoudnessNormStatus, //dts loudness normalization status (ON or OFF)
+    kParamIndexDtsLimiterType, //dts limiter type
+    kParamIndexDtsOutputSpkrMask, // dts output layout mask
 
     /* ============================== platform-defined parameters ============================== */
 
@@ -2060,7 +2068,8 @@ C2ENUM(C2Config::drc_compression_mode_t, int32_t,
     DRC_COMPRESSION_ODM_DEFAULT, ///< odm's default
     DRC_COMPRESSION_NONE,
     DRC_COMPRESSION_LIGHT,
-    DRC_COMPRESSION_HEAVY ///<
+    DRC_COMPRESSION_HEAVY,
+    DRC_COMPRESSION_MEDIUM ///<
 )
 
 typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::drc_compression_mode_t>,
@@ -2160,6 +2169,86 @@ typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2EasyEnum<C2Config::aac_packa
 typedef C2StreamAacPackagingInfo C2StreamAacFormatInfo;
 constexpr char C2_PARAMKEY_AAC_PACKAGING[] = "coded.aac-packaging";
 
+/* --------------------------------------- DTS components --------------------------------------- */
+
+/**
+ * DRC Compression curve types used in DTS decoder.
+ */
+C2ENUM(C2Config::dts_drc_effect_type_t, int32_t,
+    DTS_DRC_EFFECT_NO_COMPRESSION = 0,
+    DTS_DRC_EFFECT_LEGACY_FILM_STANDARD,
+    DTS_DRC_EFFECT_LEGACY_FILM_LIGHT,
+    DTS_DRC_EFFECT_LEGACY_MUSIC_STANDARD,
+    DTS_DRC_EFFECT_LEGACY_MUSIC_LIGHT,
+    DTS_DRC_EFFECT_LEGACY_SPEECH,
+    DTS_DRC_EFFECT_UHD_LOW_DRC_LESS_ATTENUATION,
+    DTS_DRC_EFFECT_UHD_LOW_DRC_LESS_BOOST,
+    DTS_DRC_EFFECT_UHD_LOW_DRC_SYMMETRICAL,
+    DTS_DRC_EFFECT_UHD_MEDIUM_DRC_LESS_ATTENUATION,
+    DTS_DRC_EFFECT_UHD_MEDIUM_DRC_LESS_BOOST,
+    DTS_DRC_EFFECT_UHD_MEDIUM_DRC_SYMMETRICAL,
+    DTS_DRC_EFFECT_UHD_HIGH_DRC_LESS_ATTENUATION,
+    DTS_DRC_EFFECT_UHD_HIGH_DRC_LESS_BOOST,
+    DTS_DRC_EFFECT_UHD_HIGH_DRC_SYMMETRICAL
+)
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_drc_effect_type_t>,
+                kParamIndexDtsDrcEffectType> C2StreamDtsDrcEffectTypeTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_EFFECT_TYPE[] = "coding.dts-drc-effect-type";
+
+
+C2ENUM(C2Config::dts_drc_loudness_norm_enable_t, uint32_t,
+    DTS_DRC_LOUDNESS_NORM_OFF = 0,
+    DTS_DRC_LOUDNESS_NORM_ON
+)
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_drc_loudness_norm_enable_t>,
+                kParamIndexDtsDrcLoudnessNormStatus> C2StreamDtsDrcLoudnessNormStatusTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_LOUDNESS_NORM_STATUS[] = "coding.dts-drc-loudness-norm-status";
+
+/**
+ * DRC Compression curve types used in DTS decoder.
+ */
+ C2ENUM(C2Config::dts_limiter_type_t, uint32_t,
+    DTS_HYBRID_LIMITER_UN_LINKED = 0,
+    DTS_HYBRID_LIMITER_LINKED,
+    DTS_HARD_LIMITER_EXCEPT_LFE_CHANNEL,
+    DTS_HARD_LIMITER_ALL_CHANNEL
+)
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_limiter_type_t>,
+                kParamIndexDtsLimiterType> C2StreamDtsLimiterTypeTuning;
+constexpr char C2_PARAMKEY_DTS_LIMITER_TYPE[] = "coding.dts-limiter-type";
+
+/**
+ * Output layout configurations for DTS decoder.
+ */
+ C2ENUM(C2Config::dts_output_layout_t, uint32_t,
+    DTS_SPEAKER_LAYOUT_STEREO = 0x00000002, //2.0
+    DTS_SPEAKER_LAYOUT_2P1 = 0x0000000A, //2.1
+    DTS_SPEAKER_LAYOUT_2P0P2 = 0x00000022, //2.0.2
+    DTS_SPEAKER_LAYOUT_2P1P2 = 0x0000002A, //2.1.2
+    DTS_SPEAKER_LAYOUT_5P0 = 0x00000007, //5.0 
+    DTS_SPEAKER_LAYOUT_5P1 = 0x0000000F, //2.1
+    DTS_SPEAKER_LAYOUT_5P0P2 = 0x00000027, //5.0.2,
+    DTS_SPEAKER_LAYOUT_5P1P2 = 0x0000002F, //5.1.2
+    DTS_SPEAKER_LAYOUT_5P0P4 = 0x00008027, //5.0.4
+    DTS_SPEAKER_LAYOUT_5P1P4 = 0x0000802F, //5.1.4
+    DTS_SPEAKER_LAYOUT_3P0 = 0x00000003, //3.0
+    DTS_SPEAKER_LAYOUT_3P1 = 0x0000000B, //3.1
+    DTS_SPEAKER_LAYOUT_3P0P2 = 0x00000023, //3.0.2
+    DTS_SPEAKER_LAYOUT_3P1P2 = 0x0000002B, //3.1.2
+    DTS_SPEAKER_LAYOUT_7P0 = 0x00000843, //7.0
+    DTS_SPEAKER_LAYOUT_7P1 = 0x0000084B, //7.1
+    DTS_SPEAKER_LAYOUT_7P0P2 = 0x00000863, //7.0.2
+    DTS_SPEAKER_LAYOUT_7P1P2 = 0x0000086B, //7.1.2
+    DTS_SPEAKER_LAYOUT_7P0P4 = 0x00008863, //7.0.4
+    DTS_SPEAKER_LAYOUT_7P1P4 = 0x0000886B //7.1.4
+)
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_output_layout_t>,
+                kParamIndexDtsOutputSpkrMask> C2StreamDtsOutputLayoutTuning;
+constexpr char C2_PARAMKEY_DTS_OUTPUT_LAYOUT_MASK[] = "coding.dts-out-speaker-mask";
 /* ================================ PLATFORM-DEFINED PARAMETERS ================================ */
 
 /**

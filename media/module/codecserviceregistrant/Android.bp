@@ -67,5 +67,6 @@ cc_library {
         "libcodec2_soft_flacdec",
         "libcodec2_soft_flacenc",
         "libcodec2_soft_gsmdec",
+        "libcodec2_soft_dtsdec",
     ],
 }
