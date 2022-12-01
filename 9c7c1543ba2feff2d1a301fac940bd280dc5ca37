@@ -88,6 +88,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23d8980f_22aeb48c",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2022-12-01T02:00:47Z",
+      "side": 1,
+      "message": "it should be \"if (p \u0026\u0026 !p-\u003evalid())\", please include the fix.",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01298783_efae9357",
         "filename": "media/codec2/vndk/C2Fence.cpp",
         "patchSetId": 2
@@ -99,6 +116,23 @@
       "writtenOn": "2022-11-24T14:56:57Z",
       "side": 1,
       "message": "nit: tab alignment",
+      "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c099cde3_07412dea",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2022-12-01T02:00:47Z",
+      "side": 1,
+      "message": "it should be \"if (p \u0026\u0026 !p-\u003evalid())\"",
       "revId": "9c7c1543ba2feff2d1a301fac940bd280dc5ca37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
