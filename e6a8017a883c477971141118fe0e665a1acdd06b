@@ -16,6 +16,23 @@
       "message": "Leaving this review to the codecs folks.",
       "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c31bc42_80545c00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-01T20:59:13Z",
+      "side": 1,
+      "message": "the described problem seems to be hdr specific;\nthe code provided is dobly-vision specific;\nthose are not the same thing.\n\nthis disables the check for most formats, not just hdr. I don\u0027t think this is the right change.",
+      "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
