@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b213e367_2d8e9f2d",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmStatus.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-01T12:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a8daed0_16396ce5",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "cf8db355609ae65dd26939204a3ab176eb52abb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "756b6f83_da2170bc",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-30T15:47:51Z",
       "side": 1,
       "message": "all the calls below also would need to be updated.\nWe can do this after the initial changes are reviewed.",
+      "revId": "cf8db355609ae65dd26939204a3ab176eb52abb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e47b709_9da6b4cd",
+        "filename": "drm/libmediadrm/include/mediadrm/IDrm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-01T12:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "756b6f83_da2170bc",
       "revId": "cf8db355609ae65dd26939204a3ab176eb52abb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

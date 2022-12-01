@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1a0fde_bbe441d5",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-01T12:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f42ed52_6a9d454e",
+      "range": {
+        "startLine": 521,
+        "startChar": 14,
+        "endLine": 521,
+        "endChar": 33
+      },
+      "revId": "853c23e7557e5d52548260d6253efbf60142dbcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d3b4899_cefeacea",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-01T02:03:27Z",
       "side": 1,
       "message": "I know I have this line in the doc, but do you think this is required? Considering this class only contains primitive types.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 42
+      },
+      "revId": "853c23e7557e5d52548260d6253efbf60142dbcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c915c27e_5bf19435",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmStatus.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-01T12:20:16Z",
+      "side": 1,
+      "message": "Able to build without it.Removed",
+      "parentUuid": "6d3b4899_cefeacea",
       "range": {
         "startLine": 38,
         "startChar": 0,
