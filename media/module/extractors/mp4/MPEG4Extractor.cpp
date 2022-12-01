@@ -397,6 +397,10 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC("dtsc"):
             return MEDIA_MIMETYPE_AUDIO_DTS;
         case FOURCC("dtse"):
+<<<<<<< PATCH SET (415fc2 Audio: Add DTS decoder Codec2 coponent)
+            return MEDIA_MIMETYPE_AUDIO_DTS_HD;
+=======
+>>>>>>> BASE      (520c3a Merge changes I9746914d,Ic96f8c2f)
         case FOURCC("dtsh"):
             return MEDIA_MIMETYPE_AUDIO_DTS_HD;
         case FOURCC("dtsl"):
