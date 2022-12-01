@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b1834a4_01e8d595",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-01T18:04:05Z",
+      "side": 1,
+      "message": "Does it need to be vintf-stable?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
