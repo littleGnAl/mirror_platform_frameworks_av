@@ -1083,6 +1083,7 @@ C2PlatformComponentStore::C2PlatformComponentStore()
     emplace("libcodec2_soft_av1dec_gav1.so");
     emplace("libcodec2_soft_avcdec.so");
     emplace("libcodec2_soft_avcenc.so");
+    emplace("libcodec2_soft_dtsdec.so");
     emplace("libcodec2_soft_flacdec.so");
     emplace("libcodec2_soft_flacenc.so");
     emplace("libcodec2_soft_g711alawdec.so");

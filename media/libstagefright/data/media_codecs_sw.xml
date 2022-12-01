@@ -99,6 +99,48 @@
             <Limit name="bitrate" range="13000" />
             <Attribute name="software-codec" />
         </MediaCodec>
+                <MediaCodec name="c2.DTS.audio_decoder.dts" type="audio/vnd.dts">
+            <Alias name="OMX.DTS.audio_decoder.dts" />
+            <Limit name="channel-count" max="6" />
+            <Limit name="sample-rate" ranges="8000-48000" />
+            <Limit name="bitrate" range="96000-1524000" />
+            <Attribute name="software-codec" />
+        </MediaCodec>
+        <MediaCodec name="c2.DTS.audio_decoder.dts" type="audio/vnd.dts.hd;profile=lbr">
+            <Alias name="OMX.DTS.audio_decoder.dts" />
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000-48000" />
+            <Limit name="bitrate" range="32000-768000" />
+            <Attribute name="software-codec" />
+        </MediaCodec>
+        <MediaCodec name="c2.DTS.audio_decoder.dts" type="audio/vnd.dts.hd">
+            <Alias name="OMX.DTS.audio_decoder.dts" />
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000-192000" />
+            <Limit name="bitrate" range="96000-24500000" />
+            <Attribute name="software-codec" />
+        </MediaCodec>
+        <MediaCodec name="c2.DTS.audio_decoder.dts" type="audio/vnd.dts.hd;profile=dtsma">
+            <Alias name="OMX.DTS.audio_decoder.dts" />
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000-192000" />
+            <Limit name="bitrate" range="96000-24500000" />
+            <Attribute name="software-codec" />
+        </MediaCodec>
+        <MediaCodec name="c2.DTS.audio_decoder.dts" type="audio/vnd.dts.uhd;profile=p1">
+            <Alias name="OMX.DTS.audio_decoder.dts" />
+            <Limit name="channel-count" max="32" />
+            <Limit name="sample-rate" ranges="8000-192000" />
+            <Limit name="bitrate" range="96000-24500000" />
+            <Attribute name="software-codec" />
+        </MediaCodec>
+        <MediaCodec name="c2.DTS.audio_decoder.dts" type="audio/vnd.dts.uhd;profile=p2">
+            <Alias name="OMX.DTS.audio_decoder.dts" />
+            <Limit name="channel-count" max="10" />
+            <Limit name="sample-rate" ranges="8000-48000" />
+            <Limit name="bitrate" range="96000-768000" />
+            <Attribute name="software-codec" />
+        </MediaCodec>
         <MediaCodec name="c2.android.mpeg4.decoder" type="video/mp4v-es">
             <Alias name="OMX.google.mpeg4.decoder" />
             <!-- profiles and levels:  ProfileSimple : Level3 -->
