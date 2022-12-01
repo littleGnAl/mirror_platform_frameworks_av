@@ -120,6 +120,40 @@
             <Feature name="adaptive-playback" />
             <Attribute name="software-codec" />
         </MediaCodec>
+        <MediaCodec name="c2.DTS.audio_decoder.dts">
+            <Alias name="OMX.DTS.audio_decoder.dts" />
+            <Type name ="audio/vnd.dts">
+            <Limit name="channel-count" max="6" />
+            <Limit name="sample-rate" ranges="8000-48000" />
+            <Limit name="bitrate" range="96000-1524000" />
+            </Type>
+            <Type name ="audio/vnd.dts.hd">
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000-192000" />
+            <Limit name="bitrate" range="96000-24500000" />
+            </Type>
+            <Type name ="audio/vnd.dts.hd;profile=dtsma">
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000-192000" />
+            <Limit name="bitrate" range="96000-24500000" />
+            </Type>
+            <Type name ="audio/vnd.dts.hd;profile=lbr">
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000-48000" />
+            <Limit name="bitrate" range="32000-768000" />
+            </Type>
+            <Type name ="audio/vnd.dts.uhd;profile=p1">
+            <Limit name="channel-count" max="32" />
+            <Limit name="sample-rate" ranges="8000-192000" />
+            <Limit name="bitrate" range="96000-24500000" />
+            </Type>
+            <Type name ="audio/vnd.dts.uhd;profile=p2">
+            <Limit name="channel-count" max="10" />
+            <Limit name="sample-rate" ranges="8000-48000" />
+            <Limit name="bitrate" range="96000-768000" />
+            </Type>
+            <Attribute name="software-codec" />
+        </MediaCodec>
         <MediaCodec name="c2.android.avc.decoder" type="video/avc" variant="slow-cpu,!slow-cpu">
             <Alias name="OMX.google.h264.decoder" />
             <Limit name="alignment" value="2x2" />
