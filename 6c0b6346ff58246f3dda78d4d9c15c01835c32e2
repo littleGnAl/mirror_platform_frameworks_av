@@ -22,6 +22,98 @@
       },
       "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26bb4b5_64121fd0",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-12-01T18:30:14Z",
+      "side": 1,
+      "message": "Do we use @see in aidl comment?",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e2ffcf_1499a721",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-12-01T18:30:14Z",
+      "side": 1,
+      "message": "Remove the empty line.",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba874ba_5a0f58b5",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-12-01T18:30:14Z",
+      "side": 1,
+      "message": "Should be aidl",
+      "range": {
+        "startLine": 38,
+        "startChar": 86,
+        "endLine": 38,
+        "endChar": 90
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce958c58_f01797f7",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-12-01T18:30:14Z",
+      "side": 1,
+      "message": "REmove empty line.",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
