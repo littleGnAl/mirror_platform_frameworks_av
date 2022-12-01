@@ -1,0 +1,20 @@
+cc_library_shared {
+    name: "libcodec2_soft_dtsdec",
+    defaults: [
+        "libcodec2_soft-defaults",
+        "libcodec2_soft_sanitize_all-defaults",
+    ],
+
+    srcs: [
+        "C2SoftDTSDec.cpp",
+    ],
+    cflags: [
+        "-Werror",
+        "-Wno-unused-parameter",
+    ],
+    shared_libs: [
+        "libcodec2-dts",
+    ],
+}
+
+
