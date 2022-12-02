@@ -16,23 +16,15 @@
 
 #pragma once
 
-#include <memory>
-
-#include PATH(android/hardware/audio/effect/FILE_VERSION/IEffectsFactory.h)
+#include <android/hardware/audio/effect/IFactory.h>
 #include <media/audiohal/EffectsFactoryHalInterface.h>
-
-#include "EffectConversionHelperHidl.h"
 
 namespace android {
 namespace effect {
 
-using ::android::hardware::hidl_vec;
-using namespace ::android::hardware::audio::effect::CPP_VERSION;
+using namespace ::android::hardware::audio::effect;
 
-class EffectDescriptorCache;
-
-class EffectsFactoryHalHidl final : public EffectsFactoryHalInterface,
-                                    public EffectConversionHelperHidl {
+class EffectsFactoryHalAidl final : public EffectsFactoryHalInterface {
   public:
     EffectsFactoryHalHidl(sp<IEffectsFactory> effectsFactory);
 
@@ -63,8 +55,7 @@ class EffectsFactoryHalHidl final : public EffectsFactoryHalInterface,
     android::detail::AudioHalVersionInfo getHalVersion() const override;
 
   private:
-    sp<IEffectsFactory> mEffectsFactory;
-    std::unique_ptr<EffectDescriptorCache> mCache;
+    sp<IFactory> mEffectsFactory;
 };
 
 } // namespace effect

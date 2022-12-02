@@ -14,39 +14,44 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "FactoryHalHidl"
+
+#define LOG_TAG "FactoryHal"
 
 #include <algorithm>
 #include <array>
-#include <utility>
-
-#include <media/audiohal/FactoryHalHidl.h>
-
 #include <dlfcn.h>
+#include <utility>
 
 #include <android/hidl/manager/1.0/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
 #include <hidl/Status.h>
 #include <utils/Log.h>
 
+#include "include/media/audiohal/FactoryHal.h"
+
 namespace android::detail {
 
 namespace {
-/** Supported HAL versions, from most recent to least recent.
+
+using android::media::AudioHalVersion;
+
+/**
+ * Supported HAL versions, from most recent to least recent.
+ * This list need to keep sync with AudioHalVersionInfo.VERSIONS in
+ * media/java/android/media/AudioHalVersionInfo.java.
  */
-#define CONC_VERSION(maj, min) #maj "." #min
-#define DECLARE_VERSION(maj, min) std::make_pair(std::make_pair(maj, min), CONC_VERSION(maj, min))
-static constexpr std::array<std::pair<std::pair<int, int>, const char*>, 5> sAudioHALVersions = {
-    DECLARE_VERSION(7, 1),
-    DECLARE_VERSION(7, 0),
-    DECLARE_VERSION(6, 0),
-    DECLARE_VERSION(5, 0),
-    DECLARE_VERSION(4, 0)
+static const std::array<AudioHalVersionInfo, 6> sAudioHALVersions = {
+    AudioHalVersionInfo(AudioHalVersion::Type::AIDL, 1, 0),
+    AudioHalVersionInfo(AudioHalVersion::Type::HIDL, 7, 1),
+    AudioHalVersionInfo(AudioHalVersion::Type::HIDL, 7, 0),
+    AudioHalVersionInfo(AudioHalVersion::Type::HIDL, 6, 0),
+    AudioHalVersionInfo(AudioHalVersion::Type::HIDL, 5, 0),
+    AudioHalVersionInfo(AudioHalVersion::Type::HIDL, 4, 0),
 };
 
-bool createHalService(const std::string& version, const std::string& interface,
+bool createHalService(const AudioHalVersionInfo& version, const std::string& interface,
         void** rawInterface) {
-    const std::string libName = "libaudiohal@" + version + ".so";
+    const std::string libName = "libaudiohal@" + version.toVersionString() + ".so";
     const std::string factoryFunctionName = "create" + interface;
     constexpr int dlMode = RTLD_LAZY;
     void* handle = nullptr;
@@ -74,8 +79,15 @@ bool createHalService(const std::string& version, const std::string& interface,
     return true;
 }
 
-bool hasHalService(const std::string& package, const std::string& version,
-        const std::string& interface) {
+bool hasAidlHalService(const std::string& package, const AudioHalVersionInfo& version,
+                       const std::string& interface) {
+    const std::string fqName = package + "@" + version.toVersionString() + "::" + interface;
+    ALOGW("AIDL HAL not implemented yet: %s", fqName.c_str());
+    return false;
+}
+
+bool hasHidlHalService(const std::string& package, const AudioHalVersionInfo& version,
+                       const std::string& interface) {
     using ::android::hidl::manager::V1_0::IServiceManager;
     sp<IServiceManager> sm = ::android::hardware::defaultServiceManager();
     if (!sm) {
@@ -86,7 +98,7 @@ bool hasHalService(const std::string& package, const std::string& version,
     // the interface right away. Instead, query the transport type for it.
     using ::android::hardware::Return;
     using Transport = IServiceManager::Transport;
-    const std::string fqName = package + "@" + version + "::" + interface;
+    const std::string fqName = package + "@" + version.toVersionString() + "::" + interface;
     const std::string instance = "default";
     Return<Transport> transport = sm->getTransport(fqName, instance);
     if (!transport.isOk()) {
@@ -97,24 +109,37 @@ bool hasHalService(const std::string& package, const std::string& version,
     return transport != Transport::EMPTY;
 }
 
+bool hasHalService(const std::string& package, const AudioHalVersionInfo& version,
+                   const std::string& interface) {
+
+    auto halType = version.getType();
+    if (halType == AudioHalVersion::Type::AIDL) {
+        return hasAidlHalService(package, version, interface);
+    } else if (version.getType() == AudioHalVersion::Type::HIDL) {
+        return hasHidlHalService(package, version, interface);
+    } else {
+        ALOGE("HalType not supported %s", version.toString().c_str());
+        return false;
+    }
+}
+
 }  // namespace
 
 void* createPreferredImpl(const InterfaceName& iface, const InterfaceName& siblingIface) {
     auto findMostRecentVersion = [](const InterfaceName& iface) {
-        return std::find_if(detail::sAudioHALVersions.begin(), detail::sAudioHALVersions.end(),
-                [&](const auto& v) { return hasHalService(iface.first, v.second, iface.second); });
+        return std::find_if(
+                detail::sAudioHALVersions.begin(), detail::sAudioHALVersions.end(),
+                [&](const auto& v) { return hasHalService(iface.first, v, iface.second); });
     };
     auto ifaceVersionIt = findMostRecentVersion(iface);
     auto siblingVersionIt = findMostRecentVersion(siblingIface);
     if (ifaceVersionIt != detail::sAudioHALVersions.end() &&
-            siblingVersionIt != detail::sAudioHALVersions.end() &&
-            // same major version
-            ifaceVersionIt->first.first == siblingVersionIt->first.first) {
-        std::string libraryVersion =
-                ifaceVersionIt->first >= siblingVersionIt->first ?
-                ifaceVersionIt->second : siblingVersionIt->second;
+        siblingVersionIt != detail::sAudioHALVersions.end() &&
+        // same major version
+        ifaceVersionIt->getMajorVersion() == siblingVersionIt->getMajorVersion()) {
         void* rawInterface;
-        if (createHalService(libraryVersion, iface.second, &rawInterface)) {
+        if (createHalService(std::max(*ifaceVersionIt, *siblingVersionIt), iface.second,
+                             &rawInterface)) {
             return rawInterface;
         }
     }
