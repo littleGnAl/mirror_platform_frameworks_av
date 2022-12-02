@@ -1028,6 +1028,25 @@ AAUDIO_API void AAudioStreamBuilder_setContentType(AAudioStreamBuilder* builder,
         aaudio_content_type_t contentType) __INTRODUCED_IN(28);
 
 /**
+ * Add a vendor extension tag that the output stream will carry.
+ *
+ * The AAudio system will use this information for routing.
+ * Routing is based on audio attributes, translated into legacy stream type.
+ * The stream types cannot be extended, so the product strategies have been introduced to allow
+ * vendor extension of routing capabilities.
+ * This could, for example, affect how volume and routing is handled for the stream.
+ *
+ * The default, if you do not call this function, tags are empty.
+ *
+ * Available since API level 33.
+ *
+ * @param builder reference provided by AAudio_createStreamBuilder()
+ * @param tags the desired tag to add.
+ */
+AAUDIO_API void AAudioStreamBuilder_setTags(AAudioStreamBuilder* builder, const char* tags)
+        __INTRODUCED_IN(33);
+
+/**
  * Sets the behavior affecting whether spatialization will be used.
  *
  * The AAudio system will use this information to select whether the stream will go
@@ -1863,6 +1882,16 @@ AAUDIO_API aaudio_usage_t AAudioStream_getUsage(AAudioStream* stream) __INTRODUC
  */
 AAUDIO_API aaudio_content_type_t AAudioStream_getContentType(AAudioStream* stream)
         __INTRODUCED_IN(28);
+
+/**
+ * Return the audio attributes' tags for the stream.
+ *
+ * Available since API level 33.
+ *
+ * @param stream reference provided by AAudioStreamBuilder_openStream()
+ * @return tags, e.g. empty string, or oem extension tags.
+ */
+AAUDIO_API const char* AAudioStream_getTags(AAudioStream* stream) __INTRODUCED_IN(33);
 
 /**
  * Return the spatialization behavior for the stream.

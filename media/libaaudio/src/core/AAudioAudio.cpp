@@ -167,6 +167,17 @@ AAUDIO_API void AAudioStreamBuilder_setContentType(AAudioStreamBuilder* builder,
     streamBuilder->setContentType(contentType);
 }
 
+AAUDIO_API void AAudioStreamBuilder_setTags(AAudioStreamBuilder* builder, const char* tags) {
+    AudioStreamBuilder* streamBuilder = convertAAudioBuilderToStreamBuilder(builder);
+    std::optional<std::string> optionalTags = tags != nullptr ? std::string(tags) : "";
+    if (optionalTags->size() >= AUDIO_ATTRIBUTES_TAGS_MAX_SIZE) {
+        ALOGE("%s() invalid tags %s, exceeding size %d", __func__, tags,
+              AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+        return;
+    }
+    streamBuilder->setTags(optionalTags);
+}
+
 AAUDIO_API void AAudioStreamBuilder_setSpatializationBehavior(AAudioStreamBuilder* builder,
         aaudio_spatialization_behavior_t spatializationBehavior) {
     AudioStreamBuilder *streamBuilder = convertAAudioBuilderToStreamBuilder(builder);
@@ -514,6 +525,12 @@ AAUDIO_API aaudio_content_type_t AAudioStream_getContentType(AAudioStream* strea
 {
     AudioStream *audioStream = convertAAudioStreamToAudioStream(stream);
     return audioStream->getContentType();
+}
+
+AAUDIO_API const char* AAudioStream_getTags(AAudioStream* stream) {
+    AudioStream* audioStream = convertAAudioStreamToAudioStream(stream);
+    std::optional<std::string> optTags = audioStream->getTags();
+    return optTags.has_value() ? optTags.value().c_str() : "";
 }
 
 AAUDIO_API aaudio_spatialization_behavior_t AAudioStream_getSpatializationBehavior(

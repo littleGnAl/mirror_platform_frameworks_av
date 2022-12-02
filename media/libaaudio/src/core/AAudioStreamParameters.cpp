@@ -41,6 +41,7 @@ void AAudioStreamParameters::copyFrom(const AAudioStreamParameters &other) {
     mBufferCapacity       = other.mBufferCapacity;
     mUsage                = other.mUsage;
     mContentType          = other.mContentType;
+    mTags = other.mTags;
     mSpatializationBehavior = other.mSpatializationBehavior;
     mIsContentSpatialized = other.mIsContentSpatialized;
     mInputPreset          = other.mInputPreset;
@@ -303,6 +304,7 @@ void AAudioStreamParameters::dump() const {
     ALOGD("mBufferCapacity       = %6d", mBufferCapacity);
     ALOGD("mUsage                = %6d", mUsage);
     ALOGD("mContentType          = %6d", mContentType);
+    ALOGD("mTags                 = %s", mTags.has_value() ? mTags.value().c_str() : "");
     ALOGD("mSpatializationBehavior = %6d", mSpatializationBehavior);
     ALOGD("mIsContentSpatialized = %s", mIsContentSpatialized ? "true" : "false");
     ALOGD("mInputPreset          = %6d", mInputPreset);

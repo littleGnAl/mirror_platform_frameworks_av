@@ -46,7 +46,7 @@ AAudioStreamConfiguration::AAudioStreamConfiguration(const StreamParameters& par
     setUsage(parcelable.usage);
     static_assert(sizeof(aaudio_content_type_t) == sizeof(parcelable.contentType));
     setContentType(parcelable.contentType);
-
+    setTags(parcelable.tags);
     static_assert(sizeof(aaudio_spatialization_behavior_t) ==
             sizeof(parcelable.spatializationBehavior));
     setSpatializationBehavior(parcelable.spatializationBehavior);
@@ -92,6 +92,8 @@ StreamParameters AAudioStreamConfiguration::parcelable() const {
     result.usage = getUsage();
     static_assert(sizeof(aaudio_content_type_t) == sizeof(result.contentType));
     result.contentType = getContentType();
+    std::optional<std::string> tags = getTags();
+    result.tags = tags.has_value() ? tags.value() : "";
     static_assert(sizeof(aaudio_spatialization_behavior_t) ==
                   sizeof(result.spatializationBehavior));
     result.spatializationBehavior = getSpatializationBehavior();

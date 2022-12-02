@@ -191,20 +191,23 @@ audio_attributes_t AAudioServiceEndpoint::getAudioAttributesFrom(
             ? AAudioConvert_inputPresetToAudioSource(params->getInputPreset())
             : AUDIO_SOURCE_DEFAULT;
     audio_flags_mask_t flags;
+    std::optional<std::string> optTags = {};
     if (direction == AAUDIO_DIRECTION_OUTPUT) {
         flags = static_cast<audio_flags_mask_t>(AUDIO_FLAG_LOW_LATENCY
                 | AAudioConvert_allowCapturePolicyToAudioFlagsMask(
                         params->getAllowedCapturePolicy(),
                         params->getSpatializationBehavior(),
                         params->isContentSpatialized()));
+        optTags = params->getTags();
     } else {
         flags = static_cast<audio_flags_mask_t>(AUDIO_FLAG_LOW_LATENCY
                 | AAudioConvert_privacySensitiveToAudioFlagsMask(params->isPrivacySensitive()));
     }
-    return {
-            .content_type = contentType,
-            .usage = usage,
-            .source = source,
-            .flags = flags,
-            .tags = "" };
+    audio_attributes_t nativeAttributes = {
+            .content_type = contentType, .usage = usage, .source = source, .flags = flags};
+    if (optTags.has_value() && !optTags->empty()) {
+        strncpy(nativeAttributes.tags, optTags.value().c_str(), AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+        nativeAttributes.tags[AUDIO_ATTRIBUTES_TAGS_MAX_SIZE - 1] = '\0';
+    }
+    return nativeAttributes;
 }

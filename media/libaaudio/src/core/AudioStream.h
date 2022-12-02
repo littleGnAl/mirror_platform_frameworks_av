@@ -253,6 +253,8 @@ public:
         return mContentType;
     }
 
+    const std::optional<std::string> getTags() const { return mTags; }
+
     aaudio_spatialization_behavior_t getSpatializationBehavior() const {
         return mSpatializationBehavior;
     }
@@ -610,6 +612,11 @@ protected:
         mContentType = contentType;
     }
 
+    /**
+     * This should not be called after the open() call.
+     */
+    void setTags(const std::optional<std::string>& tags) { mTags = tags; }
+
     void setSpatializationBehavior(aaudio_spatialization_behavior_t spatializationBehavior) {
         mSpatializationBehavior = spatializationBehavior;
     }
@@ -689,6 +696,7 @@ private:
 
     aaudio_usage_t              mUsage           = AAUDIO_UNSPECIFIED;
     aaudio_content_type_t       mContentType     = AAUDIO_UNSPECIFIED;
+    std::optional<std::string> mTags = {};
     aaudio_spatialization_behavior_t mSpatializationBehavior = AAUDIO_UNSPECIFIED;
     bool                        mIsContentSpatialized = false;
     aaudio_input_preset_t       mInputPreset     = AAUDIO_UNSPECIFIED;
