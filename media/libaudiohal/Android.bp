@@ -13,7 +13,7 @@ cc_library_shared {
     srcs: [
         "DevicesFactoryHalInterface.cpp",
         "EffectsFactoryHalInterface.cpp",
-        "FactoryHalHidl.cpp",
+        "FactoryHal.cpp",
     ],
 
     cflags: [

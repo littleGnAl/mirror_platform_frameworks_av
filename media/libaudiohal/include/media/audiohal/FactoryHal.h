@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_HARDWARE_FACTORY_HAL_HIDL_H
-#define ANDROID_HARDWARE_FACTORY_HAL_HIDL_H
+#pragma once
 
 #include <string>
 #include <utility>
-
 #include <utils/StrongPointer.h>
+
+#include "AudioHalVersionInfo.h"
 
 namespace android {
 
@@ -57,5 +57,3 @@ static sp<Interface> createPreferredImpl(
 }
 
 } // namespace android
-
-#endif // ANDROID_HARDWARE_FACTORY_HAL_HIDL_H

@@ -31,6 +31,10 @@
 #include "EffectHalHidl.h"
 #include "EffectsFactoryHalHidl.h"
 
+#include "android/media/AudioHalVersion.h"
+
+using android::media::AudioHalVersion;
+
 using ::android::hardware::audio::common::CPP_VERSION::implementation::UuidUtils;
 using ::android::hardware::audio::effect::CPP_VERSION::implementation::EffectUtils;
 using ::android::hardware::Return;
@@ -221,11 +225,19 @@ status_t EffectsFactoryHalHidl::mirrorBuffer(void* external, size_t size,
     return EffectBufferHalHidl::mirror(external, size, buffer);
 }
 
+AudioHalVersion EffectsFactoryHalHidl::getHalVersion() const {
+    AudioHalVersion version;
+    version.type = AudioHalVersion::Type::HIDL;
+    version.major = MAJOR_VERSION;
+    version.minor = MINOR_VERSION;
+    return version;
+}
+
 } // namespace effect
 
 // When a shared library is built from a static library, even explicit
 // exports from a static library are optimized out unless actually used by
-// the shared library. See EffectsFactoryHalHidlEntry.cpp.
+// the shared library. See EffectsFactoryHalEntry.cpp.
 extern "C" void* createIEffectsFactoryImpl() {
     auto service = hardware::audio::effect::CPP_VERSION::IEffectsFactory::getService();
     return service ? new effect::EffectsFactoryHalHidl(service) : nullptr;
