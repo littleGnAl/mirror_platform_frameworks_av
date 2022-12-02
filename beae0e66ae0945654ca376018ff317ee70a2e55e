@@ -93,6 +93,30 @@
       },
       "revId": "beae0e66ae0945654ca376018ff317ee70a2e55e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec8ee9e_8cc0b9a9",
+        "filename": "drm/libmediadrm/DrmHal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1cfcfa4_a19cbaca",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "beae0e66ae0945654ca376018ff317ee70a2e55e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

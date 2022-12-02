@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6a40970_0e521366",
+        "filename": "drm/libmediadrm/DrmHal.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "previously both destroyPlugins were called.\ndecision was only on which status was returned.\nCan we try the same here? and return DrmStatus(statusResult) or DrmStatus(statusResultHidl)?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2091781c_fee7979b",
         "filename": "drm/libmediadrm/DrmHalAidl.cpp",
         "patchSetId": 5
@@ -129,6 +152,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cc54ab0_1b9af9b0",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmHal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "100 chars",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808abd8a_8817e656",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmHalAidl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "100 chars",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 101
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915ea04a_540a097f",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmHalAidl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "100 chars",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 101
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632648a8_2bfa7c44",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmHalAidl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "100 chars",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 101
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dbbbbe3_03346d0d",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmHalHidl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "100 chars",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 101
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d608c5_d8dd1d7b",
+        "filename": "drm/libmediadrm/include/mediadrm/IDrm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "100 chars",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 101
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f572995a_3a047af7",
         "filename": "drm/libmediadrm/interface/mediadrm/DrmUtils.h",
         "patchSetId": 5
@@ -140,6 +301,30 @@
       "writtenOn": "2022-12-02T16:51:02Z",
       "side": 1,
       "message": "Can we change this to `DrmStatus` please? Thanks.",
+      "range": {
+        "startLine": 201,
+        "startChar": 7,
+        "endLine": 201,
+        "endChar": 15
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "030cc26c_1b5f0e47",
+        "filename": "drm/libmediadrm/interface/mediadrm/DrmUtils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-02T17:45:49Z",
+      "side": 1,
+      "message": "Sohail,\nAfter changing this to DrmStatus, please review all occurrences of statusAidlToDrmStatus and remove redundant DrmStatus(statusAidlToDrmStatus())",
+      "parentUuid": "f572995a_3a047af7",
       "range": {
         "startLine": 201,
         "startChar": 7,
