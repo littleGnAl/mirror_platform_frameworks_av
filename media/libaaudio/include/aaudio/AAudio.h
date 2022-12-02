@@ -504,6 +504,25 @@ enum {
      * Available since API level 29.
      */
     AAUDIO_INPUT_PRESET_VOICE_PERFORMANCE = 10,
+
+    /**
+     * Use this preset to capture reference signal to be cancelled by an echo canceller.
+     * When declared as supported by Audio HAL implementer, the echo reference signal will
+     * be captured as close as possible to the DAC in order to include all post processing
+     * applied to the playback path.
+     * This is a system hidden preset.
+     * Privileged CAPTURE_AUDIO_OUTPUT permission required.
+     * Available since API level 29.
+     */
+    AAUDIO_INPUT_PRESET_ECHO_REFERENCE = 1997,
+
+    /**
+     * Use ths preset to do an always-on software hotword detection.
+     * This is a system hidden preset.
+     * Privileged CAPTURE_AUDIO_HOTWORD permission required.
+     * Available since API level 28.
+     */
+    AAUDIO_INPUT_PRESET_HOTWORD = 1999,
 };
 typedef int32_t aaudio_input_preset_t;
 
