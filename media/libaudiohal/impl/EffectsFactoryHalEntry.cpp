@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include "android/media/AudioHalVersion.h"
+
 extern "C" void* createIEffectsFactoryImpl();
 
 extern "C" __attribute__((visibility("default"))) void* createIEffectsFactory() {
