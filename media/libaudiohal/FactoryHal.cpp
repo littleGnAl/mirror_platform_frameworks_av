@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "FactoryHalHidl"
+#define LOG_TAG "FactoryHal"
 
 #include <algorithm>
 #include <array>
 #include <utility>
 
-#include <media/audiohal/FactoryHalHidl.h>
+#include <media/audiohal/FactoryHal.h>
 
 #include <dlfcn.h>
 
@@ -32,7 +32,10 @@
 namespace android::detail {
 
 namespace {
-/** Supported HAL versions, from most recent to least recent.
+/**
+ * Supported HAL versions, from most recent to least recent.
+ * This list need to keep sync with AudioHalVersionInfo.VERSIONS in
+ * media/java/android/media/AudioHalVersionInfo.java.
  */
 #define CONC_VERSION(maj, min) #maj "." #min
 #define DECLARE_VERSION(maj, min) std::make_pair(std::make_pair(maj, min), CONC_VERSION(maj, min))
@@ -68,6 +71,7 @@ bool createHalService(const std::string& version, const std::string& interface,
         dlclose(handle);
         return false;
     }
+    ALOGE("Factory function xxx %s from %s", factoryFunctionName.c_str(), libName.c_str());
     *rawInterface = (*factoryFunction)();
     ALOGW_IF(!*rawInterface, "Factory function %s from %s returned nullptr",
             factoryFunctionName.c_str(), libName.c_str());
@@ -94,6 +98,8 @@ bool hasHalService(const std::string& package, const std::string& version,
                 fqName.c_str(), instance.c_str(), transport.description().c_str());
         return false;
     }
+    ALOGE("obtain xxx transport type for %s/%s: %s", fqName.c_str(), instance.c_str(),
+          transport.description().c_str());
     return transport != Transport::EMPTY;
 }
 
