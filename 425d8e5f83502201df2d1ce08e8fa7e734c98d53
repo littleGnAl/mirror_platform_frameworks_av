@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723f3e17_e4610e53",
+        "filename": "drm/libmediadrm/CryptoHalAidl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-02T16:51:02Z",
+      "side": 1,
+      "message": "Can we change this to `DrmStatus` too? Thanks.\n\nFor `ICrypto`, updating `setMediaDrmSession` \u0026 `decrypt` should suffice.\n\nWe can track in separate CL / bug.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272be35e_22d39e02",
+        "filename": "drm/libmediadrm/CryptoHalAidl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-02T16:51:02Z",
+      "side": 1,
+      "message": "`DrmStatus` in separate CL. We can add new field to `DrmStatus` to encode decrypt size.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 7
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caec2b8e_ce412ebf",
+        "filename": "drm/libmediadrm/DrmHal.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-02T16:51:02Z",
+      "side": 1,
+      "message": "This method should still call `mDrmHalAidl-\u003eisCryptoSchemeSupported` unconditionally.\n\ni.e. check result *after* calling `mDrmHalAidl-\u003eisCryptoSchemeSupported`.",
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe1c60a_2f2ac794",
+        "filename": "drm/libmediadrm/DrmUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-02T16:51:02Z",
+      "side": 1,
+      "message": "Is this required when conversions are implicit?",
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f572995a_3a047af7",
+        "filename": "drm/libmediadrm/interface/mediadrm/DrmUtils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-02T16:51:02Z",
+      "side": 1,
+      "message": "Can we change this to `DrmStatus` please? Thanks.",
+      "range": {
+        "startLine": 201,
+        "startChar": 7,
+        "endLine": 201,
+        "endChar": 15
+      },
+      "revId": "425d8e5f83502201df2d1ce08e8fa7e734c98d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
