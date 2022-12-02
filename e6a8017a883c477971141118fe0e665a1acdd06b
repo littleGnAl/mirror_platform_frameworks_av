@@ -51,6 +51,24 @@
       "parentUuid": "3c31bc42_80545c00",
       "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c03d7b_33244102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-02T16:35:53Z",
+      "side": 1,
+      "message": "if you want this behavior:  that the profile is ignored for your device, you can modify your codec so that it advertises support for the higher profiles.\n\nthe check as it stands improves the matching of content and codecs that handle it. That is an improvement for everyone.",
+      "parentUuid": "4a47e7fa_798331c6",
+      "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
