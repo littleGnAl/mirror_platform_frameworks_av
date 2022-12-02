@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1a8ea1_f5cf5553",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-02T03:24:49Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "6b1834a4_01e8d595",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b26bb4b5_64121fd0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-01T18:30:14Z",
       "side": 1,
       "message": "Do we use @see in aidl comment?",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfcf1b8_0156dd4d",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-02T03:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b26bb4b5_64121fd0",
       "range": {
         "startLine": 31,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36728160_c0262b4d",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-02T03:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e2ffcf_1499a721",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba874ba_5a0f58b5",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3382951_46cf9d63",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-02T03:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba874ba_5a0f58b5",
+      "range": {
+        "startLine": 38,
+        "startChar": 86,
+        "endLine": 38,
+        "endChar": 90
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce958c58_f01797f7",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-12-01T18:30:14Z",
       "side": 1,
       "message": "REmove empty line.",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "6c0b6346ff58246f3dda78d4d9c15c01835c32e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d7263a_d036b0e8",
+        "filename": "media/libaudioclient/aidl/android/media/AudioHalVersion.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-02T03:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce958c58_f01797f7",
       "range": {
         "startLine": 39,
         "startChar": 7,
