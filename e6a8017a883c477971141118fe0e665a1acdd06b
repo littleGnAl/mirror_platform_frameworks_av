@@ -33,6 +33,24 @@
       "message": "the described problem seems to be hdr specific;\nthe code provided is dobly-vision specific;\nthose are not the same thing.\n\nthis disables the check for most formats, not just hdr. I don\u0027t think this is the right change.",
       "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a47e7fa_798331c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2022-12-02T01:40:06Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/1876132，\nThis new code on T checks the profile and level for faster decoding of thumbnails, but it affects the playback of some videos，such as HDR clip which level is wrong in metadata, but it\u0027s really level is within the range of driver support.",
+      "parentUuid": "3c31bc42_80545c00",
+      "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
