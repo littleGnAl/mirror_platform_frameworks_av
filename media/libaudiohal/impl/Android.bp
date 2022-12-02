@@ -74,7 +74,7 @@ cc_library_shared {
     srcs: [
         ":audio_core_hal_client_sources",
         ":audio_effect_hal_client_sources",
-        "EffectsFactoryHalHidlEntry.cpp",
+        "EffectsFactoryHalEntry.cpp",
     ],
     shared_libs: [
         "android.hardware.audio.common@4.0",
@@ -97,7 +97,7 @@ cc_library_shared {
     srcs: [
         ":audio_core_hal_client_sources",
         ":audio_effect_hal_client_sources",
-        "EffectsFactoryHalHidlEntry.cpp",
+        "EffectsFactoryHalEntry.cpp",
     ],
     shared_libs: [
         "android.hardware.audio.common@5.0",
@@ -120,7 +120,7 @@ cc_library_shared {
     srcs: [
         ":audio_core_hal_client_sources",
         ":audio_effect_hal_client_sources",
-        "EffectsFactoryHalHidlEntry.cpp",
+        "EffectsFactoryHalEntry.cpp",
     ],
     shared_libs: [
         "android.hardware.audio.common@6.0",
@@ -161,7 +161,7 @@ cc_library_shared {
     defaults: ["libaudiohal_default"],
     srcs: [
         ":audio_core_hal_client_sources",
-        "EffectsFactoryHalHidlEntry.cpp",
+        "EffectsFactoryHalEntry.cpp",
     ],
     static_libs: [
         "android.hardware.audio.common@7.0",
@@ -185,7 +185,7 @@ cc_library_shared {
     defaults: ["libaudiohal_default"],
     srcs: [
         ":audio_core_hal_client_sources",
-        "EffectsFactoryHalHidlEntry.cpp",
+        "EffectsFactoryHalEntry.cpp",
     ],
     static_libs: [
         "android.hardware.audio.common@7.0",
@@ -202,6 +202,27 @@ cc_library_shared {
     cflags: [
         "-DMAJOR_VERSION=7",
         "-DMINOR_VERSION=1",
+        "-DCOMMON_TYPES_MINOR_VERSION=0",
+        "-DCORE_TYPES_MINOR_VERSION=0",
+        "-include common/all-versions/VersionMacro.h",
+    ]
+}
+
+cc_library_shared {
+    name: "libaudiohal@1001.0",
+    defaults: [
+        "libaudiohal_default",
+        "latest_android_hardware_audio_effect_ndk_shared",
+    ],
+    srcs: [
+        "EffectsFactoryHalAidl.cpp",
+        "EffectsFactoryHalEntry.cpp",
+    ],
+    static_libs: [
+    ],
+    cflags: [
+        "-DMAJOR_VERSION=1001",
+        "-DMINOR_VERSION=0",
         "-DCOMMON_TYPES_MINOR_VERSION=0",
         "-DCORE_TYPES_MINOR_VERSION=0",
         "-include common/all-versions/VersionMacro.h",

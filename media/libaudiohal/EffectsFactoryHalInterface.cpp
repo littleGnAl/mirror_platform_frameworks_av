@@ -17,7 +17,7 @@
 #include <string>
 
 #include <media/audiohal/EffectsFactoryHalInterface.h>
-#include <media/audiohal/FactoryHalHidl.h>
+#include <media/audiohal/FactoryHal.h>
 
 namespace android {
 
