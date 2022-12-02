@@ -262,7 +262,15 @@ binder_status_t ResourceManagerService::dump(int fd, const char** /*args*/, uint
 
     result.append("  Processes:\n");
     for (size_t i = 0; i < mapCopy.size(); ++i) {
-        snprintf(buffer, SIZE, "    Pid: %d\n", mapCopy.keyAt(i));
+        int pid = mapCopy.keyAt(i);
+        snprintf(buffer, SIZE, "    Pid: %d\n", pid);
+        result.append(buffer);
+        int priority = 0;
+        if (getPriority_l(pid, &priority)) {
+            snprintf(buffer, SIZE, "    Priority: %d\n", priority);
+        } else {
+            snprintf(buffer, SIZE, "    Priority: <unknown>\n");
+        }
         result.append(buffer);
 
         const ResourceInfos &infos = mapCopy.valueAt(i);

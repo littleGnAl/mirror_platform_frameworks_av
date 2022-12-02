@@ -40,6 +40,7 @@ bool ProcessInfo::getPriority(int pid, int* priority) {
     int32_t state;
     int32_t score = INVALID_ADJ;
     status_t err = service->getProcessStatesAndOomScoresFromPids(length, &pid, &state, &score);
+    ALOGI("%s: pid:%d state:%d score:%d err:%d", __FUNCTION__, pid, state, score, err);
     if (err != OK) {
         ALOGE("getProcessStatesAndOomScoresFromPids failed");
         return false;
