@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8101bd_ac3d04ab",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/MediaDefs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-12-05T17:56:11Z",
+      "side": 1,
+      "message": "there are actually multiple non-realtime priority levels...\n\nPerhaps:\n\n```PRIORITY_HIGH,  // non-real-time```\n\nAt this time we don\u0027t have a requirement on how many other priority levels implementations support, but perhaps starting at HIGH is safe.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "5bad8f725426402b04623c1aaff47a78d0d86ae4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
