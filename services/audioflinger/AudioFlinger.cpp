@@ -419,7 +419,30 @@ status_t AudioFlinger::setVibratorInfos(
 
 status_t AudioFlinger::updateSecondaryOutputs(
         const TrackSecondaryOutputsMap& trackSecondaryOutputs) {
+    std::set<audio_port_handle_t> trackIds;
+    for (const auto& it = trackSecondaryOutputs.begin(); it != trackSecondaryOutputs.end(); ++it) {
+        trackIds.insert(it->first);
+    }
     Mutex::Autolock _l(mLock);
+    // First release all tee patches before setting up new ones as it may
+    // take some time to set up new patches.
+    for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
+        PlaybackThread *thread = mPlaybackThreads.valueAt(i).get();
+        Mutex::Autolock _tl(thread->mLock);
+        for (auto it = trackIds.begin(); it != tracksIds.end();) {
+            sp<PlaybackThread::Track> track = thread->getTrackById_l(*it);
+            if (track != nullptr) {
+                TeePatches emptyPatches;
+                track->setTeePatches(emptyPatches);
+                it = trackIds.earse(it);
+            } else {
+                ++it;
+            }
+        }
+        if (trackIds.empty()) {
+            break;
+        }
+    }
     for (const auto& [trackId, secondaryOutputs] : trackSecondaryOutputs) {
         size_t i = 0;
         for (; i < mPlaybackThreads.size(); ++i) {
