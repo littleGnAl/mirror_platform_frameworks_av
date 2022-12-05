@@ -156,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22adcdc7_9e073190",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-12-05T17:57:08Z",
+      "side": 1,
+      "message": "PRIORITY_HIGH is the desired default by our API spec, so there is no issue setting this explicitly here.",
+      "parentUuid": "9c86cfc0_3adc9d70",
+      "revId": "c20f61b060d8bf2f58ac9733f7910adf8586d400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28a51a95_816778fe",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
