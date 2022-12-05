@@ -413,6 +413,52 @@
       },
       "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54d7aac_b8c4027c",
+        "filename": "drm/libmediadrm/DrmHalHidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-05T21:30:04Z",
+      "side": 1,
+      "message": "Sohail,\nchanges suggested by Robert in DrmHalAidl.cpp apply to this file as well.\nPlease make similar changes here too.",
+      "range": {
+        "startLine": 608,
+        "startChar": 4,
+        "endLine": 608,
+        "endChar": 33
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e918a4d_76884479",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmStatus.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-05T21:30:04Z",
+      "side": 1,
+      "message": "remove trailing space",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
