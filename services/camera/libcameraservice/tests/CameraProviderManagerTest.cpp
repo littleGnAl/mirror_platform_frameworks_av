@@ -612,6 +612,8 @@ TEST(CameraProviderManagerTest, BinderDeathRegistrationRaceTest) {
     res = providerManager->initialize(statusListener, &serviceProxy);
     ASSERT_EQ(res, OK) << "Unable to initialize provider manager";
 
+    auto aidlDeviceCount = static_cast<unsigned> (providerManager->getCameraCount().second);
+
     // Now set up provider and trigger a registration
     serviceProxy.setProvider(provider);
 
@@ -631,6 +633,6 @@ TEST(CameraProviderManagerTest, BinderDeathRegistrationRaceTest) {
     provider->signalInitialBinderDeathRecipient();
 
     auto deviceCount = static_cast<unsigned> (providerManager->getCameraCount().second);
-    ASSERT_EQ(deviceCount, deviceNames.size()) <<
+    ASSERT_EQ(deviceCount, deviceNames.size() + aidlDeviceCount) <<
             "Unexpected amount of camera devices";
 }
