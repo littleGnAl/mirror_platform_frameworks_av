@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba82e1d8_dacbd6cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-06T17:38:40Z",
+      "side": 1,
+      "message": "Change LGTM in general.\n\nDoes the entire OS build with this change (not just `libmediadrm`)?\n\nCould you please try running `CtsMediaDrmFrameworkTestCases` for the `Test` clause?\n\nThanks.",
+      "revId": "792070d43acb0ad7faf2b29a9e61572e73e41edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
