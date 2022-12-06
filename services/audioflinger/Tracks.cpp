@@ -1474,6 +1474,19 @@ void AudioFlinger::PlaybackThread::Track::setTeePatches(TeePatches teePatches) {
     }
 }
 
+void AudioFlinger::PlaybackThread::Track::updateTeePatches() {
+    if (mNeedUpdateTeePatches) {
+        setTeePatches(mTeePatchesToUpdate);
+        mTeePatchesToUpdate.clear();
+        mNeedUpdateTeePatches = false;
+    }
+}
+
+void AudioFlinger::PlaybackThread::Track::setTeePatchesToUpdate(TeePatches teePatchesToUpdate) {
+    mTeePatchesToUpdate = std::move(teePatchesToUpdate);
+    mNeedUpdateTeePatches = true;
+}
+
 status_t AudioFlinger::PlaybackThread::Track::getTimestamp(AudioTimestamp& timestamp)
 {
     if (!isOffloaded() && !isDirect()) {
