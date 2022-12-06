@@ -46,6 +46,30 @@
       },
       "revId": "c236e1d9bc2a5945f30559f5d7725551d678484b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8882a159_d1cbbb7a",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2022-12-06T01:32:25Z",
+      "side": 1,
+      "message": "I think it won\u0027t help to resolve the problem if vendor had not supported C2StoreFlexibleFormatDescriptorsInfo at pre-S devices.",
+      "parentUuid": "2aec87d8_4a8d795f",
+      "range": {
+        "startLine": 1078,
+        "startChar": 29,
+        "endLine": 1078,
+        "endChar": 67
+      },
+      "revId": "c236e1d9bc2a5945f30559f5d7725551d678484b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
