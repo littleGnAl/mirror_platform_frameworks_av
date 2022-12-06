@@ -5217,6 +5217,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
         // this const just means the local variable doesn't change
         Track* const track = t.get();
 
+        track->updateTeePatches();
+
         // process fast tracks
         if (track->isFastTrack()) {
             LOG_ALWAYS_FATAL_IF(mFastMixer.get() == nullptr,
@@ -6239,6 +6241,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
         sp<Track> l = mActiveTracks.getLatest();
         bool last = l.get() == track;
 
+        track->updateTeePatches();
+
         if (track->isPausePending()) {
             track->pauseAck();
             // It is possible a track might have been flushed or stopped.
@@ -6789,6 +6793,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
         // direct output, it is not a problem to ignore the underrun case.
         sp<Track> l = mActiveTracks.getLatest();
         bool last = l.get() == track;
+
+        track->updateTeePatches();
 
         if (track->isInvalid()) {
             ALOGW("An invalidated track shouldn't be in active list");
