@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e91f9a_234485d3",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2022-12-06T01:01:22Z",
+      "side": 1,
+      "message": "before pre-S, pixel format was HAL_PIXEL_FORMAT_YCBCR_420_888 when COLOR_FormatYUV420Flexible was set. it will cause another problem at vendor side.\nplease, check b/248144271.\n\u003d\u003d\u003d\u003d\u003d\u003d\n1) android R\nCCodec sets COLOR_FormatYUV420Flexible and Codec2Mapper converts to HAL_PIXEL_FORMAT_YCBCR_420_888.\n\nhttps://cs.android.com/android/platform/superproject/+/android11-release:frameworks/av/media/codec2/sfplugin/CCodec.cpp;l\u003d870;drc\u003dd12500adf3b2ea4cbd3c93edd8c327e5c7755766\n\nhttps://cs.android.com/android/platform/superproject/+/android11-release:frameworks/av/media/codec2/sfplugin/utils/Codec2Mapper.cpp;l\u003d961;drc\u003dfb7a76711abb9021d4fec90dac12d3b9eeb49c90",
+      "range": {
+        "startLine": 1078,
+        "startChar": 29,
+        "endLine": 1078,
+        "endChar": 67
+      },
+      "revId": "c236e1d9bc2a5945f30559f5d7725551d678484b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
