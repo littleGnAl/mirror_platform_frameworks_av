@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935b1d2c_2740ad87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-06T21:39:49Z",
+      "side": 1,
+      "message": "This is a cherry-pick CL, will address this warning as followup:\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2329975/2/media/libaudiohal/impl/EffectsFactoryHalHidl.cpp#84",
+      "revId": "0288c75765005fab340603920ad0424dc85bdd5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
