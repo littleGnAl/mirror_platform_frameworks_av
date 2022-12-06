@@ -22,6 +22,30 @@
       },
       "revId": "5bad8f725426402b04623c1aaff47a78d0d86ae4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eda2759_74823128",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/MediaDefs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2022-12-06T02:12:51Z",
+      "side": 1,
+      "message": "Hi, Lajos,\nI added some comment in bug id https://partnerissuetracker.corp.google.com/issues/194765813 #20\nPlease help also check. Thank you.",
+      "parentUuid": "2c8101bd_ac3d04ab",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "5bad8f725426402b04623c1aaff47a78d0d86ae4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
