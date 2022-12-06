@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61739f07_1cf0a625",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc03e77a_ae5b2a8c",
+      "range": {
+        "startLine": 514,
+        "startChar": 4,
+        "endLine": 514,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc549281_c2b714b2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "not required if `err` is `DrmStatus` type.",
+      "range": {
+        "startLine": 546,
+        "startChar": 11,
+        "endLine": 546,
+        "endChar": 20
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb59f8f4_75b2a9ba",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc549281_c2b714b2",
       "range": {
         "startLine": 546,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10fc604d_972bff99",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b76e711_0b4b476c",
+      "range": {
+        "startLine": 555,
+        "startChar": 4,
+        "endLine": 555,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f90c04ba_d117c407",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "not required after type change.",
+      "range": {
+        "startLine": 569,
+        "startChar": 11,
+        "endLine": 569,
+        "endChar": 20
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e5d894_7c20fc7c",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f90c04ba_d117c407",
       "range": {
         "startLine": 569,
         "startChar": 11,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0fdd903_1bce1cb8",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8676006f_b9a56102",
+      "range": {
+        "startLine": 596,
+        "startChar": 4,
+        "endLine": 596,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a418b7_413f2484",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "err",
+      "range": {
+        "startLine": 613,
+        "startChar": 11,
+        "endLine": 613,
+        "endChar": 25
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "796b53c7_16ce0fcb",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a418b7_413f2484",
       "range": {
         "startLine": 613,
         "startChar": 11,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "788f09eb_a8bceeab",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88f9468_fb6ffa6d",
+      "range": {
+        "startLine": 625,
+        "startChar": 4,
+        "endLine": 625,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "994b9748_7cc8c2b6",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "err",
+      "range": {
+        "startLine": 636,
+        "startChar": 11,
+        "endLine": 636,
+        "endChar": 25
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538f7497_b02fa3ad",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "994b9748_7cc8c2b6",
       "range": {
         "startLine": 636,
         "startChar": 11,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48124fda_0804095f",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4130fc91_9457d1c1",
+      "range": {
+        "startLine": 680,
+        "startChar": 4,
+        "endLine": 680,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d27f0fd9_8f63e8dc",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "err",
+      "range": {
+        "startLine": 691,
+        "startChar": 11,
+        "endLine": 691,
+        "endChar": 25
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a351e1_28c8260b",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d27f0fd9_8f63e8dc",
       "range": {
         "startLine": 691,
         "startChar": 11,
@@ -254,6 +494,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eabe35e_6d117eb3",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4505e9_72395b54",
+      "range": {
+        "startLine": 700,
+        "startChar": 4,
+        "endLine": 700,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6be26ac_0798f3bf",
@@ -267,6 +531,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "err",
+      "range": {
+        "startLine": 708,
+        "startChar": 11,
+        "endLine": 708,
+        "endChar": 25
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ffcc29_f022d182",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6be26ac_0798f3bf",
       "range": {
         "startLine": 708,
         "startChar": 11,
@@ -300,6 +588,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea0745b_c7dedf1d",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ca8d6b_040ca5ba",
+      "range": {
+        "startLine": 909,
+        "startChar": 4,
+        "endLine": 909,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89f1a302_85631eb4",
@@ -313,6 +625,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "err",
+      "range": {
+        "startLine": 919,
+        "startChar": 11,
+        "endLine": 919,
+        "endChar": 25
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f2385f_84f84f24",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89f1a302_85631eb4",
       "range": {
         "startLine": 919,
         "startChar": 11,
@@ -346,6 +682,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae329d6_54da2af2",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d007edf4_d1a469cc",
+      "range": {
+        "startLine": 962,
+        "startChar": 4,
+        "endLine": 962,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76c2023b_bfdb9f74",
@@ -359,6 +719,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "err",
+      "range": {
+        "startLine": 974,
+        "startChar": 11,
+        "endLine": 974,
+        "endChar": 25
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44dd89f_460de1c5",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76c2023b_bfdb9f74",
       "range": {
         "startLine": 974,
         "startChar": 11,
@@ -392,6 +776,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2983565f_60e1b2c8",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d8cc2d_0493672b",
+      "range": {
+        "startLine": 1107,
+        "startChar": 4,
+        "endLine": 1107,
+        "endChar": 12
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b82f7c75_bdf8af85",
@@ -405,6 +813,30 @@
       "writtenOn": "2022-12-05T17:47:49Z",
       "side": 1,
       "message": "err",
+      "range": {
+        "startLine": 1112,
+        "startChar": 11,
+        "endLine": 1112,
+        "endChar": 25
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc9c15a_a4600bc2",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b82f7c75_bdf8af85",
       "range": {
         "startLine": 1112,
         "startChar": 11,
@@ -438,6 +870,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2872e9f1_ee42313a",
+        "filename": "drm/libmediadrm/DrmHalHidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54d7aac_b8c4027c",
+      "range": {
+        "startLine": 608,
+        "startChar": 4,
+        "endLine": 608,
+        "endChar": 33
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e918a4d_76884479",
@@ -451,6 +907,30 @@
       "writtenOn": "2022-12-05T21:30:04Z",
       "side": 1,
       "message": "remove trailing space",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "1e48b5a4916703d6d0e259176b437132f0b097f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feacd0e9_99df4f14",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmStatus.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2022-12-06T05:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e918a4d_76884479",
       "range": {
         "startLine": 20,
         "startChar": 25,
