@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de6f46b_23e683d9",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-06T21:38:51Z",
+      "side": 1,
+      "message": "I think, the format of interface descriptors is different between AIDL and HIDL. Compare HIDL: https://cs.android.com/android/platform/superproject/+/master:out/soong/.intermediates/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0_genc++/gen/android/hardware/audio/effect/7.0/EffectsFactoryAll.cpp;l\u003d23 with AIDL: https://cs.android.com/android/platform/superproject/+/master:out/soong/.intermediates/hardware/interfaces/audio/aidl/android.hardware.audio.effect-V1-ndk-source/gen/android/hardware/audio/effect/IFactory.cpp;l\u003d403;drc\u003dmaster.\n\nIt looks like they don\u0027t put the package version into descriptors in AIDL.\n\nAlso, it looks like `toVersionString` will emit `aidl1.0` which does not match what aidl-gen generates.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 92
+      },
+      "revId": "5d0721bfe4a308b94062c49d41006c6611d1c23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae8e3b1_2b9cdd7d",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-06T21:38:51Z",
+      "side": 1,
+      "message": "I hope we don\u0027t need those. In HIDL they were used to unify source code for different versions of interfaces, because each version is independent from each other and is represented by its own set of C++ classes. In AIDL versioning is done in a different way.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 5
+      },
+      "revId": "5d0721bfe4a308b94062c49d41006c6611d1c23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87023e4_42caecd4",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-06T21:38:51Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be using HIDL types here.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "5d0721bfe4a308b94062c49d41006c6611d1c23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8f14f7_eca61c96",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-06T21:38:51Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be using the approach with macros for AIDL. They seem to have a framework support for versions: https://source.android.com/docs/core/architecture/aidl/stable-aidl#querying-the-interface-version-of-the-remote-object. So I think in AIDL we will only need add new .so library of libaudiohal in case of another interface rewrite, and @aidl1.0 should really handle all extensions to the current AIDL interface.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "5d0721bfe4a308b94062c49d41006c6611d1c23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
