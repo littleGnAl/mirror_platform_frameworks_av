@@ -69,6 +69,24 @@
       "parentUuid": "4a47e7fa_798331c6",
       "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74da3781_69887635",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2022-12-07T12:55:19Z",
+      "side": 1,
+      "message": "I don\u0027t mean to ignore profile \u0026 level, instead, it should be judged by the video driver whether it can be decoded, because the level(written in the mp4 box) obtained by the metadata is not the real level of the video raw data.\n\nIn this issue, codec supports HEVCMainTierLevel3, but frameworks intercept it.",
+      "parentUuid": "d0c03d7b_33244102",
+      "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
