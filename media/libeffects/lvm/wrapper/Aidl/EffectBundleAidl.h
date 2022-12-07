@@ -42,28 +42,23 @@ class EffectBundleAidl final : public EffectImpl {
     ndk::ScopedAStatus setParameterSpecific(const Parameter::Specific& specific) override;
     ndk::ScopedAStatus getParameterSpecific(const Parameter::Id& id,
                                             Parameter::Specific* specific) override;
-    IEffect::Status effectProcessImpl(float *in, float *out, int process) override;
 
-    std::shared_ptr<EffectContext> createContext(const Parameter::Common& common) override;
-    RetCode releaseContext() override;
+    std::shared_ptr<EffectContext> createContext_l(const Parameter::Common& common) override;
+    std::shared_ptr<EffectContext> getContext_l() override;
+    RetCode releaseContext_l() override;
 
-    ndk::ScopedAStatus commandStart() override {
-        mContext->enable();
-        return ndk::ScopedAStatus::ok();
-    }
-    ndk::ScopedAStatus commandStop() override {
-        mContext->disable();
-        return ndk::ScopedAStatus::ok();
-    }
-    ndk::ScopedAStatus commandReset() override {
-            mContext->disable();
-            return ndk::ScopedAStatus::ok();
-    }
+    IEffect::Status effectProcessImpl(float* in, float* out, int process) override;
+
+    ndk::ScopedAStatus commandStart_l() override;
+    ndk::ScopedAStatus commandStop_l() override;
+    ndk::ScopedAStatus commandReset_l() override;
+
+    std::string getEffectName() override { return "EqualizerBundle"; }
 
   private:
+    std::shared_ptr<BundleContext> mContext;
     const Descriptor* mDescriptor;
     lvm::BundleEffectType mType = lvm::BundleEffectType::EQUALIZER;
-    std::shared_ptr<BundleContext> mContext;
 
     IEffect::Status status(binder_status_t status, size_t consumed, size_t produced);
     ndk::ScopedAStatus getParameterEqualizer(const Equalizer::Tag& tag,
