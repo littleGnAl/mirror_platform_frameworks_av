@@ -93,8 +93,8 @@ ndk::ScopedAStatus EffectBundleAidl::getDescriptor(Descriptor* _aidl_return) {
 }
 
 ndk::ScopedAStatus EffectBundleAidl::setParameterCommon(const Parameter& param) {
-    std::lock_guard lg(mMutex);
     RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
+
     auto tag = param.getTag();
     switch (tag) {
         case Parameter::common:
@@ -133,7 +133,7 @@ ndk::ScopedAStatus EffectBundleAidl::setParameterSpecific(const Parameter::Speci
     auto tag = specific.getTag();
     RETURN_IF(tag != Parameter::Specific::equalizer, EX_ILLEGAL_ARGUMENT,
               "specificParamNotSupported");
-    RETURN_IF(mContext == nullptr, EX_NULL_POINTER , "nullContext");
+    RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
 
     auto& eq = specific.get<Parameter::Specific::equalizer>();
     auto eqTag = eq.getTag();
@@ -174,7 +174,6 @@ ndk::ScopedAStatus EffectBundleAidl::getParameterSpecific(const Parameter::Id& i
 
 ndk::ScopedAStatus EffectBundleAidl::getParameterEqualizer(const Equalizer::Tag& tag,
                                                            Parameter::Specific* specific) {
-    std::lock_guard lg(mMutex);
     RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
     Equalizer eqParam;
     switch (tag) {
@@ -200,12 +199,16 @@ ndk::ScopedAStatus EffectBundleAidl::getParameterEqualizer(const Equalizer::Tag&
 std::shared_ptr<EffectContext> EffectBundleAidl::createContext(const Parameter::Common& common) {
     if (mContext) {
         LOG(DEBUG) << __func__ << " context already exist";
-        return mContext;
+    } else {
+        // GlobalSession is a singleton
+        mContext = GlobalSession::getGlobalSession().createSession(mType, 1 /* statusFmqDepth */,
+                                                                   common);
     }
 
-    // GlobalSession is a singleton
-    mContext =
-            GlobalSession::getGlobalSession().createSession(mType, 1 /* statusFmqDepth */, common);
+    return mContext;
+}
+
+std::shared_ptr<EffectContext> EffectBundleAidl::getContext() {
     return mContext;
 }
 
@@ -217,29 +220,25 @@ RetCode EffectBundleAidl::releaseContext() {
     return RetCode::SUCCESS;
 }
 
+ndk::ScopedAStatus EffectBundleAidl::commandStart() {
+    RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
+    mContext->enable();
+    return ndk::ScopedAStatus::ok();
+}
+ndk::ScopedAStatus EffectBundleAidl::commandStop() {
+    RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
+    mContext->disable();
+    return ndk::ScopedAStatus::ok();
+}
+ndk::ScopedAStatus EffectBundleAidl::commandReset() {
+    RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
+    mContext->disable();
+    return ndk::ScopedAStatus::ok();
+}
+
 // Processing method running in EffectWorker thread.
 IEffect::Status EffectBundleAidl::effectProcessImpl(float* in, float* out, int sampleToProcess) {
-    LOG(DEBUG) << __func__ << " in " << in << " out " << out << " sample " << sampleToProcess;
-    if (!mContext) {
-        LOG(ERROR) << __func__ << " nullContext";
-        return {EX_NULL_POINTER, 0, 0};
-    }
-
-    auto frameSize = mContext->getInputFrameSize();
-    if (0 == frameSize) {
-        LOG(ERROR) << __func__ << " frameSizeIs0";
-        return {EX_ILLEGAL_ARGUMENT, 0, 0};
-    }
-
-    LOG(DEBUG) << __func__ << " start processing";
-    LVM_UINT16 frames = sampleToProcess * sizeof(float) / frameSize;
-    LVM_ReturnStatus_en lvmStatus = LVM_Process(mContext->getLvmInstance(), in, out, frames, 0);
-    if (lvmStatus != LVM_SUCCESS) {
-        LOG(ERROR) << __func__ << lvmStatus;
-        return {EX_UNSUPPORTED_OPERATION, 0, 0};
-    }
-    LOG(DEBUG) << __func__ << " done processing";
-    return {STATUS_OK, sampleToProcess, sampleToProcess};
+    return mContext->lvmProcess(in, out, sampleToProcess);
 }
 
 }  // namespace aidl::android::hardware::audio::effect
