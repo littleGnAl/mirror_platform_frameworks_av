@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18115844_37fcdb95",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-12-08T10:52:07Z",
+      "side": 1,
+      "message": "We support only one media type per decoder so we\u0027ll have to split this part in multiple decoders (even if they are all mapped to the same library).",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
