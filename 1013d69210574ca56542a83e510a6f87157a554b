@@ -33,6 +33,23 @@
       "message": "i think this is the wrong branch.\nthe cl affects system framework code, not the test cases.\nandroid13-tests-dev is for changes that affect the tests and test harness.\n\naosp/master would seem a more appropriate place for an initial landing.",
       "revId": "1013d69210574ca56542a83e510a6f87157a554b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e70da1_6b855bd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-08T13:41:37Z",
+      "side": 1,
+      "message": "it appears there is an aosp/master version of this at https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2335462\n\nthat\u0027s the one to pursue, not this one.",
+      "revId": "1013d69210574ca56542a83e510a6f87157a554b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
