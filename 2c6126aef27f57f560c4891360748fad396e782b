@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db2d1b1_6962d7fe",
+        "filename": "media/libaudiohal/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-08T22:45:16Z",
+      "side": 1,
+      "message": "We shouldn\u0027t have this dependency. libaudiohal is a bootstrap library which loads the actual interface library. Only particular interface libraries (hal@x.x, @aidl) are allowed to depend on corresponding interface definitions. libaudiohal must not depend on anything interface-specific as it\u0027s purpose is to cut down on dependencies. For example, if the vendor partition exposes a HIDL HAL interface, the audio server must not load any AIDL HAL libraries, and for that to happen, libaudiohal must not depend on them.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa7650e_e24dd033",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-08T22:45:16Z",
+      "side": 1,
+      "message": "Please remove this.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ce4bd3_e087c206",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-08T22:45:16Z",
+      "side": 1,
+      "message": "We must not use IFactory here, can only use generic Binders as we do for the HIDL service.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 5
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3ac29f_e8a070c8",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-08T22:45:16Z",
+      "side": 1,
+      "message": "If we plan to use these defaults for AIDL, we must remove all the HIDL-related stuff.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8a1735_048decb0",
+        "filename": "media/libaudiohal/include/media/audiohal/FactoryHal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-08T22:45:16Z",
+      "side": 1,
+      "message": "isCore?",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
