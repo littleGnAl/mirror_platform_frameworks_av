@@ -22,6 +22,30 @@
       },
       "revId": "e6757827b42ea5f1b9f38442d0da78e88c3d3856",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d1738f_6dadb0bf",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/EffectBundleAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T21:47:05Z",
+      "side": 1,
+      "message": "`disable` is actually turning off EQ in BundleContext.\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2331945/6/media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp#87",
+      "parentUuid": "da39948d_4fdde1c3",
+      "range": {
+        "startLine": 235,
+        "startChar": 14,
+        "endLine": 235,
+        "endChar": 21
+      },
+      "revId": "e6757827b42ea5f1b9f38442d0da78e88c3d3856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
