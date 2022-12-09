@@ -413,7 +413,7 @@ status_t findBestMatchingOutputConfig(
         if (inputProfile == nullptr || outputProfile == nullptr) {
             continue;
         }
-        auto channels = intersectFilterAndOrder(asOutMask(inputProfile->getChannels()),
+        auto channels = intersectFilterAndOrder(asOutOrIndexMask(inputProfile->getChannels()),
                 outputProfile->getChannels(), preferredOutputChannelVector);
         if (channels.empty()) {
             continue;
