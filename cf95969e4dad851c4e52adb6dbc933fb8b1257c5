@@ -52,6 +52,24 @@
       "parentUuid": "62c4fc7c_83692615",
       "revId": "cf95969e4dad851c4e52adb6dbc933fb8b1257c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9388d9bc_60ae27ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-09T15:39:23Z",
+      "side": 1,
+      "message": "This passed presubmit, but may need to change some of the variable types in `frameworks/base/media/jni/android_media_MediaDrm.cpp` to `DrmStatus` (part of `libmedia_jni`) to facilitate follow-up changes.",
+      "parentUuid": "d66a5476_5d234370",
+      "revId": "cf95969e4dad851c4e52adb6dbc933fb8b1257c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
