@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea586b84_4c6eeaa6",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "ALOGW",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8909501c_dc5eb1a0",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "ALOGW\n\nI think, in future the HIDL service manager will be removed from devices that only have AIDL HALs.",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 13
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf26d3f_dbb9ec5d",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "ALOGW",
+      "range": {
+        "startLine": 133,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 13
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8751c0d_a883365e",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "Isn\u0027t this returning the same value across two calls? The resulting \u003ciface, sibling\u003e pair must be one of: \u003cDevicesFactory, EffectsFactory\u003e or \u003cEffectsFactory, DevicesFactory\u003e.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 52
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580de600_3de178dd",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "This isn\u0027t a terribly useful message. Imagine you see it in a log received from a vendor, with no extra info, will it help to diagnose the problem?",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90e18ff_bef545b2",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "This is also HIDL-specific, please see https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/common/all-versions/default/Android.bp.",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b6ea0b_2d33601f",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "Also HIDL-specific",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f61b79f_5f6de64a",
+        "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-09T17:46:06Z",
+      "side": 1,
+      "message": "IModule is not equivalent to a DeviceFactory, it\u0027s equivalent to a Device, should not be here. This factory should really either not hold any interface instances, or hold ::aidl::android::hardware::audio::core::IConfig if we must hold onto something.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
