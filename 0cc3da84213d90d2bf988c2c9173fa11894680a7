@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a074ccf_42d15da5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-09T19:23:23Z",
+      "side": 1,
+      "message": "Changes between patchset 8 and patchset 12 are trivial (objdump of library at patchset 8 and patchset 12 is identical).\n\nchanges in *.cpp were updated as per git clang-format, but the header files were manually updated.\ngit clang-format was making too many changes in those header files which were unrelated to the changes being done here.",
+      "revId": "0cc3da84213d90d2bf988c2c9173fa11894680a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
