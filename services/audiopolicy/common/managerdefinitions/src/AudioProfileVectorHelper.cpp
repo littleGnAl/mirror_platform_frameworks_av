@@ -415,6 +415,10 @@ status_t findBestMatchingOutputConfig(
         }
         auto channels = intersectFilterAndOrder(asOutMask(inputProfile->getChannels()),
                 outputProfile->getChannels(), preferredOutputChannelVector);
+        // Find intersection of channel index masks as well, and preference them over position masks
+        const std::vector<audio_channel_mask_t> preferredChannelIndexMaskVector { AUDIO_CHANNEL_INDEX_MASK_24 };
+        auto channelIndexMasks = intersectFilterAndOrder(inputProfile->getChannels(), outputProfile->getChannels(), preferredChannelIndexMaskVector);
+        channels.insert(channels.begin(), channelIndexMasks.begin(), channelIndexMasks.end());
         if (channels.empty()) {
             continue;
         }

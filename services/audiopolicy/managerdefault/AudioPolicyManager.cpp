@@ -68,16 +68,6 @@ using content::AttributionSourceState;
 // media / notification / system volume.
 constexpr float IN_CALL_EARPIECE_HEADROOM_DB = 3.f;
 
-// Compressed formats for MSD module, ordered from most preferred to least preferred.
-static const std::vector<audio_format_t> msdCompressedFormatsOrder = {{
-        AUDIO_FORMAT_IEC60958, AUDIO_FORMAT_MAT_2_1, AUDIO_FORMAT_MAT_2_0, AUDIO_FORMAT_E_AC3,
-        AUDIO_FORMAT_AC3, AUDIO_FORMAT_PCM_16_BIT }};
-// Channel masks for MSD module, 3D > 2D > 1D ordering (most preferred to least preferred).
-static const std::vector<audio_channel_mask_t> msdSurroundChannelMasksOrder = {{
-        AUDIO_CHANNEL_OUT_3POINT1POINT2, AUDIO_CHANNEL_OUT_3POINT0POINT2,
-        AUDIO_CHANNEL_OUT_2POINT1POINT2, AUDIO_CHANNEL_OUT_2POINT0POINT2,
-        AUDIO_CHANNEL_OUT_5POINT1, AUDIO_CHANNEL_OUT_STEREO }};
-
 template <typename T>
 bool operator== (const SortedVector<T> &left, const SortedVector<T> &right)
 {
@@ -1644,10 +1634,26 @@ status_t AudioPolicyManager::getBestMsdConfig(bool hwAvSync,
         const AudioProfileVector &sourceProfiles, const AudioProfileVector &sinkProfiles,
         audio_port_config *sourceConfig, audio_port_config *sinkConfig) const
 {
+    // Compressed formats for MSD module, ordered from most preferred to least preferred.
+    static const std::vector<audio_format_t> formatsOrder = {{
+            AUDIO_FORMAT_IEC60958, AUDIO_FORMAT_MAT_2_1, AUDIO_FORMAT_MAT_2_0, AUDIO_FORMAT_E_AC3,
+            AUDIO_FORMAT_AC3, AUDIO_FORMAT_PCM_16_BIT }};
+    // Channel masks for MSD module, 3D > 2D > 1D ordering (most preferred to least preferred).
+    static std::vector<audio_channel_mask_t> channelMasksOrder = {{
+            AUDIO_CHANNEL_OUT_3POINT1POINT2, AUDIO_CHANNEL_OUT_3POINT0POINT2,
+            AUDIO_CHANNEL_OUT_2POINT1POINT2, AUDIO_CHANNEL_OUT_2POINT0POINT2,
+            AUDIO_CHANNEL_OUT_5POINT1, AUDIO_CHANNEL_OUT_STEREO }};
+    // insert channel index masks as preferred over position masks
+    std::vector<audio_channel_mask_t> indexMasks {};
+    for (int i = FCC_24; i >= 1; --i) {
+        indexMasks.insert(
+                indexMasks.begin(), audio_channel_mask_for_index_assignment_from_count(i));
+    }
+    channelMasksOrder.insert(channelMasksOrder.begin(), indexMasks.begin(), indexMasks.end());
+
     struct audio_config_base bestSinkConfig;
-    status_t result = findBestMatchingOutputConfig(sourceProfiles, sinkProfiles,
-            msdCompressedFormatsOrder, msdSurroundChannelMasksOrder,
-            true /*preferHigherSamplingRates*/, bestSinkConfig);
+    status_t result = findBestMatchingOutputConfig(sourceProfiles, sinkProfiles, formatsOrder,
+            channelMasksOrder, true /*preferHigherSamplingRates*/, bestSinkConfig);
     if (result != NO_ERROR) {
         ALOGD("%s() no matching config found for sink, hwAvSync: %d",
                 __func__, hwAvSync);
@@ -1669,7 +1675,10 @@ status_t AudioPolicyManager::getBestMsdConfig(bool hwAvSync,
     }
     sourceConfig->sample_rate = bestSinkConfig.sample_rate;
     // Specify exact channel mask to prevent guessing by bit count in PatchPanel.
-    sourceConfig->channel_mask = audio_channel_mask_out_to_in(bestSinkConfig.channel_mask);
+    sourceConfig->channel_mask =
+            audio_channel_mask_get_representation(bestSinkConfig.channel_mask)
+            == AUDIO_CHANNEL_REPRESENTATION_INDEX ?
+            bestSinkConfig.channel_mask : audio_channel_mask_out_to_in(bestSinkConfig.channel_mask);
     sourceConfig->format = bestSinkConfig.format;
     // Copy input stream directly without any processing (e.g. resampling).
     sourceConfig->flags.input = static_cast<audio_input_flags_t>(
@@ -4251,11 +4260,11 @@ status_t AudioPolicyManager::createAudioPatch(const struct audio_patch *patch,
                                               audio_patch_handle_t *handle,
                                               uid_t uid)
 {
-    ALOGV("%s", __func__);
+    ALOGD("%s", __func__);
     if (handle == NULL || patch == NULL) {
         return BAD_VALUE;
     }
-    ALOGV("%s num sources %d num sinks %d", __func__, patch->num_sources, patch->num_sinks);
+    ALOGD("%s num sources %d num sinks %d", __func__, patch->num_sources, patch->num_sinks);
     if (!audio_patch_is_valid(patch)) {
         return BAD_VALUE;
     }
@@ -4278,7 +4287,7 @@ status_t AudioPolicyManager::createAudioPatch(const struct audio_patch *patch,
         ALOGW("%s could not create patch, invalid sink and/or source device(s)", __func__);
         return BAD_VALUE;
     }
-    ALOGV("%s between source %s and sink %s", __func__,
+    ALOGD("%s between source %s and sink %s", __func__,
             srcDevice->toString().c_str(), sinkDevice->toString().c_str());
     audio_port_handle_t portId = PolicyAudioPort::getNextUniqueId();
     // Default attributes, default volume priority, not to infer with non raw audio patches.
