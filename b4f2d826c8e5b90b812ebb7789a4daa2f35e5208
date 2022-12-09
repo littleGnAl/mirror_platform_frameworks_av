@@ -77,6 +77,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9def590c_f5f75c81",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmStatus.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-09T18:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e52011bf_926fbe2d",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b4f2d826c8e5b90b812ebb7789a4daa2f35e5208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63e1a7fa_fc300283",
@@ -100,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58037b66_a172e274",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmStatus.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-09T18:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63e1a7fa_fc300283",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "b4f2d826c8e5b90b812ebb7789a4daa2f35e5208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc201edb_6560635a",
@@ -113,6 +161,30 @@
       "writtenOn": "2022-12-09T17:41:46Z",
       "side": 1,
       "message": "nit: const?",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "b4f2d826c8e5b90b812ebb7789a4daa2f35e5208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59837870_63202a59",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmStatus.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-09T18:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc201edb_6560635a",
       "range": {
         "startLine": 36,
         "startChar": 35,
