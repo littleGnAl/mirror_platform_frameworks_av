@@ -266,8 +266,12 @@ struct Codec2Client : public Codec2ConfigurableClient {
 
     // base and/or configurable cannot be null.
     Codec2Client(
-            sp<Base> const& base,
+            sp<HidlBase> const& base,
             sp<IConfigurable> const& configurable,
+            size_t serviceIndex);
+    Codec2Client(
+            std::shared_ptr<AidlBase> const& base,
+            std::shared_ptr<Codec2ConfigurableClient::AidlBase> const& configurable,
             size_t serviceIndex);
 
 protected:
