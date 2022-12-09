@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8939a610_fc12acf8",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea586b84_4c6eeaa6",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8909501c_dc5eb1a0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-09T17:46:06Z",
       "side": 1,
       "message": "ALOGW\n\nI think, in future the HIDL service manager will be removed from devices that only have AIDL HALs.",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 13
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "276a1fd3_f0582c43",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8909501c_dc5eb1a0",
       "range": {
         "startLine": 121,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca960a5_884526f4",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baf26d3f_dbb9ec5d",
+      "range": {
+        "startLine": 133,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 13
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8751c0d_a883365e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-12-09T17:46:06Z",
       "side": 1,
       "message": "Isn\u0027t this returning the same value across two calls? The resulting \u003ciface, sibling\u003e pair must be one of: \u003cDevicesFactory, EffectsFactory\u003e or \u003cEffectsFactory, DevicesFactory\u003e.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 52
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11711250_48dedd17",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "Thanks for point out this bug.",
+      "parentUuid": "a8751c0d_a883365e",
       "range": {
         "startLine": 165,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b05ec7_9eb6c577",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580de600_3de178dd",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a90e18ff_bef545b2",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-12-09T17:46:06Z",
       "side": 1,
       "message": "This is also HIDL-specific, please see https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/common/all-versions/default/Android.bp.",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd00de2_f26e6b53",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90e18ff_bef545b2",
       "range": {
         "startLine": 55,
         "startChar": 9,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a484e2be_f334b028",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b6ea0b_2d33601f",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f61b79f_5f6de64a",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-12-09T17:46:06Z",
       "side": 1,
       "message": "IModule is not equivalent to a DeviceFactory, it\u0027s equivalent to a Device, should not be here. This factory should really either not hold any interface instances, or hold ::aidl::android::hardware::audio::core::IConfig if we must hold onto something.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "ebe71985d2010680492f25e79b89ec8893a887e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d096d49a_e308d0d8",
+        "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T23:22:19Z",
+      "side": 1,
+      "message": "This is mostly for `DevicesFactoryHalAidl::getHalVersion`, changed to IConfig.",
+      "parentUuid": "0f61b79f_5f6de64a",
       "range": {
         "startLine": 44,
         "startChar": 0,
