@@ -16,6 +16,24 @@
       "message": "Just curious, shouldn\u0027t this CL rely on aosp/2319316? The relation chain seems at reverse order.",
       "revId": "8fa6c3fbe63a102c208a84595757c40437615ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17d2ea3_6b278230",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T21:57:28Z",
+      "side": 1,
+      "message": "You are right, this one should rely on aosp/2319316.\nThe reason I have it based on this CL is I was thinking most likely this one need fewer revision than aosp/2319316, which will result in some rebasing. I corrected the relation chain now.",
+      "parentUuid": "b16300e9_c5bc3d78",
+      "revId": "8fa6c3fbe63a102c208a84595757c40437615ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
