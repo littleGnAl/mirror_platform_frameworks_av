@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93099a0_58730b74",
+        "filename": "media/libaudiohal/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T01:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2db2d1b1_6962d7fe",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfa7650e_e24dd033",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-08T22:45:16Z",
       "side": 1,
       "message": "Please remove this.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356e471c_a9cdea27",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T01:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfa7650e_e24dd033",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f315993_567f8f04",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T01:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ce4bd3_e087c206",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 5
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3ac29f_e8a070c8",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "010fd737_9756a5e2",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T01:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3ac29f_e8a070c8",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f8a1735_048decb0",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-12-08T22:45:16Z",
       "side": 1,
       "message": "isCore?",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "2c6126aef27f57f560c4891360748fad396e782b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdadbe78_c8da7f4f",
+        "filename": "media/libaudiohal/include/media/audiohal/FactoryHal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-09T01:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f8a1735_048decb0",
       "range": {
         "startLine": 29,
         "startChar": 31,
