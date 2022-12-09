@@ -16,6 +16,24 @@
       "message": "Picked to http://ag/20689553",
       "revId": "b4f2d826c8e5b90b812ebb7789a4daa2f35e5208",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f62afd6_2777e549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-09T15:52:33Z",
+      "side": 1,
+      "message": "Robert,\nWould it be possible to land this in aosp/master itself?\nThat way it would be easier to make follow up changes.",
+      "parentUuid": "4c682d10_2854e74a",
+      "revId": "b4f2d826c8e5b90b812ebb7789a4daa2f35e5208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
