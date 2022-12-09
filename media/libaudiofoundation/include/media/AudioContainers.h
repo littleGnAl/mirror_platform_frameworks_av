@@ -81,6 +81,19 @@ static inline ChannelMaskSet asOutMask(const ChannelMaskSet& channelMasks) {
     return outMaskSet;
 }
 
+static inline ChannelMaskSet asOutOrIndexMask(const ChannelMaskSet& channelMasks) {
+    ChannelMaskSet outMaskSet;
+    for (const auto &channel : channelMasks) {
+        if (audio_channel_mask_in_to_out(channel) != AUDIO_CHANNEL_INVALID) {
+            outMaskSet.insert(audio_channel_mask_in_to_out(channel));
+        } else if (audio_channel_mask_get_representation(channel)
+                    == AUDIO_CHANNEL_REPRESENTATION_INDEX) {
+            outMaskSet.insert(channel);
+        }
+    }
+    return outMaskSet;
+}
+
 static inline bool isSingleDeviceType(const DeviceTypeSet& deviceTypes,
                                       audio_devices_t deviceType) {
     return deviceTypes.size() == 1 && *(deviceTypes.begin()) == deviceType;
