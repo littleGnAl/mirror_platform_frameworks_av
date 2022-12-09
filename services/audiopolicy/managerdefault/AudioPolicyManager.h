@@ -1002,6 +1002,21 @@ protected:
         void releaseMsdOutputPatches(const DeviceVector& devices);
         bool msdHasPatchesToAllDevices(const AudioDeviceTypeAddrVector& devices);
 
+        static inline std::vector<audio_channel_mask_t> msdSurroundChannelMasks() {
+            // Channel position masks for MSD module, 3D > 2D > 1D ordering (most preferred to least
+            // preferred).
+            std::vector<audio_channel_mask_t> masks = {{
+                AUDIO_CHANNEL_OUT_3POINT1POINT2, AUDIO_CHANNEL_OUT_3POINT0POINT2,
+                AUDIO_CHANNEL_OUT_2POINT1POINT2, AUDIO_CHANNEL_OUT_2POINT0POINT2,
+                AUDIO_CHANNEL_OUT_5POINT1, AUDIO_CHANNEL_OUT_STEREO }};
+            // insert index masks (higher counts most preferred) as preferred over position masks
+            for (int i = 1; i <= AUDIO_CHANNEL_COUNT_MAX; i++) {
+                masks.insert(
+                        masks.begin(), audio_channel_mask_for_index_assignment_from_count(i));
+            }
+            return masks;
+        }
+
         // Overload of setDeviceConnectionState()
         status_t setDeviceConnectionState(audio_devices_t deviceType,
                                           audio_policy_dev_state_t state,
