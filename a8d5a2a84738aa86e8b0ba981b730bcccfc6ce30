@@ -22,6 +22,30 @@
       },
       "revId": "a8d5a2a84738aa86e8b0ba981b730bcccfc6ce30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7a58c2_df67079e",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-10T18:24:59Z",
+      "side": 1,
+      "message": "Yes, actually I should use `AudioHalVersionInfo` here, as this is not a major fix, and internal master already merged in, so I will keep this CL as is, and address it in a followup CL. Thanks.",
+      "parentUuid": "0c6fa6f7_1874d466",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "a8d5a2a84738aa86e8b0ba981b730bcccfc6ce30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
