@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6fa6f7_1874d466",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-10T01:38:31Z",
+      "side": 1,
+      "message": "Consider using a designated initializer:\n\n```\nstatic AudioHalVersion sMinDeviceEffectHalVersion \u003d {.type \u003d AudioHalVersion::Type::HIDL, .major \u003d 6, .minor \u003d 0};\n\n```",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "a8d5a2a84738aa86e8b0ba981b730bcccfc6ce30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
