@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2550abf5_54c4a944",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-10T21:57:02Z",
+      "side": 1,
+      "message": "I was saying that you can replace `version.getType()` with the `halType` variable that you created on line 141, and that you used on line 142. You don\u0027t need to call the method again.",
+      "parentUuid": "dd87ebd5_88c5ff3f",
+      "range": {
+        "startLine": 144,
+        "startChar": 15,
+        "endLine": 144,
+        "endChar": 32
+      },
+      "revId": "db2bc00c53078b547c117d5d40f6363f80b55b3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acee02a3_7ebee8e0",
         "filename": "media/libaudiohal/FactoryHal.cpp",
         "patchSetId": 13
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Same reason as comment for `sDevicesHALInterfaces`",
       "parentUuid": "acee02a3_7ebee8e0",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 39
+      },
+      "revId": "db2bc00c53078b547c117d5d40f6363f80b55b3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77ec649_b994ebea",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2022-12-10T21:57:02Z",
+      "side": 1,
+      "message": "The naming should probably be consistent with what you named it in FactoryHal.h. Mikhail made a comment that it should be \"isCore\" there, and you fixed it there. Maybe also change it here.",
+      "parentUuid": "f25f854e_ddbfeaba",
       "range": {
         "startLine": 154,
         "startChar": 31,
