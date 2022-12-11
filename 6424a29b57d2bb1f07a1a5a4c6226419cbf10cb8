@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae4e5a3e_cdbd3241",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-12-11T22:15:13Z",
+      "side": 1,
+      "message": "I actually tested only using channel index mask 6 because this is the currently supported channel count of the MSD and Primary audio HAL that I was testing with.",
+      "parentUuid": "a2354e14_3af04f18",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "6424a29b57d2bb1f07a1a5a4c6226419cbf10cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5504c641_6535422b",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2022-12-09T06:35:17Z",
       "side": 1,
       "message": "If we insert at the beginning, and we start with i \u003d\u003d FCC_24, the ordering will be in ascending order. If we want preference for higher channel counts over lower channel counts, should the order be reversed?",
+      "range": {
+        "startLine": 1650,
+        "startChar": 16,
+        "endLine": 1650,
+        "endChar": 32
+      },
+      "revId": "6424a29b57d2bb1f07a1a5a4c6226419cbf10cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44983aa4_c0b1c70d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-12-11T22:15:13Z",
+      "side": 1,
+      "message": "Very good point. I overlooked this. Thanks for spotting.",
+      "parentUuid": "e074d445_b4167aab",
       "range": {
         "startLine": 1650,
         "startChar": 16,
