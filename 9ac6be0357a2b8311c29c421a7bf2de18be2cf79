@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee03671e_48adc6a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2022-12-12T17:48:01Z",
+      "side": 1,
+      "message": "The commit message still does not have a \"Bug: \" line.\nMarking unresolved.",
+      "parentUuid": "51854c05_800cf93e",
+      "revId": "9ac6be0357a2b8311c29c421a7bf2de18be2cf79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c48746af_82e7748c",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 1
