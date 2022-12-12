@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e774c4_aafb77b2",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-12T16:42:24Z",
+      "side": 1,
+      "message": "My opinion is that naming in HIDL was confusing since \u0027device\u0027 was used both for HAL modules and individual audio devices. I agree that \u0027core\u0027 would be a better designation for this family of interfaces. But I don\u0027t think naming is critical at this point, we can always change names later. Changing too much in one step can bring surprises.",
+      "parentUuid": "cafdfc2a_5f06d6cc",
+      "range": {
+        "startLine": 63,
+        "startChar": 64,
+        "endLine": 63,
+        "endChar": 85
+      },
+      "revId": "db2bc00c53078b547c117d5d40f6363f80b55b3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaf254d3_ab4baa1c",
