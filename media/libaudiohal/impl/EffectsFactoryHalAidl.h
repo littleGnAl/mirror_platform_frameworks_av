@@ -16,7 +16,13 @@
 
 #pragma once
 
+#include <cstddef>
+#include <memory>
+#include <mutex>
+
+#include <android-base/thread_annotations.h>
 #include <media/audiohal/EffectsFactoryHalInterface.h>
+#include <system/thread_defs.h>
 
 namespace android {
 namespace effect {
@@ -40,8 +46,8 @@ class EffectsFactoryHalAidl final : public EffectsFactoryHalInterface {
                             std::vector<effect_descriptor_t>* descriptors) override;
 
     // Creates an effect engine of the specified type.
-    // To release the effect engine, it is necessary to release references
-    // to the returned effect object.
+    // To release the effect engine, it is necessary to release references to the returned effect
+    // object.
     status_t createEffect(const effect_uuid_t* pEffectUuid, int32_t sessionId, int32_t ioId,
                           int32_t deviceId, sp<EffectHalInterface>* effect) override;
 
@@ -51,12 +57,32 @@ class EffectsFactoryHalAidl final : public EffectsFactoryHalInterface {
     status_t mirrorBuffer(void* external, size_t size,
                           sp<EffectBufferHalInterface>* buffer) override;
 
-    android::detail::AudioHalVersionInfo getHalVersion() const override;
+    detail::AudioHalVersionInfo getHalVersion() const override;
 
   private:
-    std::shared_ptr<IFactory> mEffectsFactory;
+    std::mutex mLock;
+    std::shared_ptr<IFactory> mFactory GUARDED_BY(mLock);
+    uint64_t mEffectIdCounter GUARDED_BY(mLock) = 0; // Align with HIDL (0 is INVALID_ID)
+    std::unique_ptr<std::vector<Descriptor>> mDescList GUARDED_BY(mLock) = nullptr;
+    std::unique_ptr<detail::AudioHalVersionInfo> halVersion = nullptr;
+
     virtual ~EffectsFactoryHalAidl() = default;
+    status_t queryEffectList_l() REQUIRES(mLock);
+    status_t getHalDescriptorWithImplUuid_l(
+            const aidl::android::media::audio::common::AudioUuid& uuid,
+            effect_descriptor_t* pDescriptor) REQUIRES(mLock);
+    status_t getHalDescriptorWithTypeUuid_l(
+            const aidl::android::media::audio::common::AudioUuid& type,
+            std::vector<effect_descriptor_t>* descriptors) REQUIRES(mLock);
 };
+
+#define RETURN_IF_NOT_OK(statement) \
+    do {                            \
+        auto tmp = (statement);     \
+        if (tmp != OK) {            \
+            return tmp;             \
+        }                           \
+    } while (false)
 
 } // namespace effect
 } // namespace android
