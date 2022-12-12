@@ -50,9 +50,9 @@ using InterfaceName = std::pair<std::string, std::string>;
  * This list need to keep sync with AudioHalVersionInfo.VERSIONS in
  * media/java/android/media/AudioHalVersionInfo.java.
  */
-static const std::array<AudioHalVersionInfo, 5> sAudioHALVersions = {
+static const std::array<AudioHalVersionInfo, 6> sAudioHALVersions = {
     // TODO: remove this comment to get AIDL
-    // AudioHalVersionInfo(AudioHalVersionInfo::Type::AIDL, 1, 0),
+    AudioHalVersionInfo(AudioHalVersionInfo::Type::AIDL, 1, 0),
     AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 7, 1),
     AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 7, 0),
     AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 6, 0),
@@ -141,7 +141,7 @@ bool hasHalService(const InterfaceName& interface, const AudioHalVersionInfo& ve
     auto halType = version.getType();
     if (halType == AudioHalVersionInfo::Type::AIDL) {
         return hasAidlHalService(interface, version);
-    } else if (version.getType() == AudioHalVersionInfo::Type::HIDL) {
+    } else if (halType == AudioHalVersionInfo::Type::HIDL) {
         return hasHidlHalService(interface, version);
     } else {
         ALOGE("HalType not supported %s", version.toString().c_str());
@@ -164,9 +164,9 @@ void *createPreferredImpl(bool isDevice) {
     auto siblingInterfaceMap = isDevice ? sEffectsHALInterfaces : sDevicesHALInterfaces;
     auto ifaceVersionIt = findMostRecentVersion(interfaceMap);
     auto siblingVersionIt = findMostRecentVersion(siblingInterfaceMap);
-    if (ifaceVersionIt != sAudioHALVersions.end() &&
-        siblingVersionIt != sAudioHALVersions.end() &&
-        // same major version
+    if (ifaceVersionIt != sAudioHALVersions.end() && siblingVersionIt != sAudioHALVersions.end() &&
+        // same Hal type (HIDL/AIDL) and same major version
+        ifaceVersionIt->getType() == siblingVersionIt->getType() &&
         ifaceVersionIt->getMajorVersion() == siblingVersionIt->getMajorVersion()) {
         void* rawInterface;
         if (createHalService(std::max(*ifaceVersionIt, *siblingVersionIt), isDevice,
