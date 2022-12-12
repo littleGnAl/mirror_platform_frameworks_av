@@ -74,6 +74,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32bf16dc_fb9df5c5",
+        "filename": "media/libaudiofoundation/include/media/AudioContainers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1565664
+      },
+      "writtenOn": "2022-12-12T00:33:18Z",
+      "side": 1,
+      "message": "The code here works for the case if channelMasks contain index mask and out channel mask in an interleaved way as part of the channelMasks. If that\u0027s not expected perhaps it should insert out channel mask or index mask through out the channelMasks iterator.\n\nPerhaps checking by calling isOutMask/peekOutMask can be called which can check for audio_channel_mask_in_to_out(channel) !\u003d AUDIO_CHANNEL_INVALID for first item\nafter which asOutMask can be called here otherwise\niterate through channelMasks as index mask.\n\nThoughts ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "6424a29b57d2bb1f07a1a5a4c6226419cbf10cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5504c641_6535422b",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
