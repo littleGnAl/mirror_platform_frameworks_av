@@ -244,6 +244,7 @@ cc_library_shared {
         "latest_android_hardware_audio_effect_ndk_shared",
     ],
     srcs: [
+        "EffectConversionHelperAidl.cpp",
         "DevicesFactoryHalEntry.cpp",
         "DevicesFactoryHalAidl.cpp",
         "EffectsFactoryHalAidl.cpp",
@@ -251,5 +252,11 @@ cc_library_shared {
     ],
     shared_libs: [
         "libbinder_ndk",
+    ],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wthread-safety",
     ]
 }
