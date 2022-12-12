@@ -43,10 +43,10 @@ using media::audio::common::AudioUuid;
 
 #define VALUE_OR_RETURN_BINDER(x)                                 \
     ({                                                            \
-       auto _tmp = (x);                                           \
-       if (!_tmp.ok()) return Status::fromStatusT(_tmp.error());  \
-       std::move(_tmp.value()); \
-     })
+        auto _tmp = (x);                                          \
+        if (!_tmp.ok()) return Status::fromStatusT(_tmp.error()); \
+        std::move(_tmp.value());                                  \
+    })
 
 #define RETURN_BINDER_IF_ERROR(x)                         \
     {                                                     \
@@ -749,9 +749,8 @@ AudioFlingerClientAdapter::getMicrophones(std::vector<media::MicrophoneInfo>* mi
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
             mDelegate->getMicrophones(&aidlRet)));
     if (microphones != nullptr) {
-        *microphones = VALUE_OR_RETURN_STATUS(
-                convertContainer<std::vector<media::MicrophoneInfo>>(aidlRet,
-                         media::aidl2legacy_MicrophoneInfo));
+        *microphones = VALUE_OR_RETURN_STATUS(convertContainer<std::vector<media::MicrophoneInfo>>(
+                aidlRet, media::aidl2legacy_MicrophoneInfo));
     }
     return OK;
 }

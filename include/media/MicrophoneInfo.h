@@ -72,7 +72,7 @@ public:
     virtual status_t writeToParcelable(MicrophoneInfoData* parcelable) const {
         parcelable->deviceId = mDeviceId;
         parcelable->portId = mPortId;
-        parcelable->type = VALUE_OR_RETURN_STATUS(convertReinterpret<int32_t>(mType));
+        parcelable->type = static_cast<int32_t>(mType);
         parcelable->address = mAddress;
         parcelable->deviceGroup = mDeviceGroup;
         parcelable->indexInTheGroup = mIndexInTheGroup;
@@ -100,7 +100,7 @@ public:
     virtual status_t readFromParcelable(const MicrophoneInfoData& parcelable) {
         mDeviceId = parcelable.deviceId;
         mPortId = parcelable.portId;
-        mType = VALUE_OR_RETURN_STATUS(convertReinterpret<uint32_t>(parcelable.type));
+        mType = static_cast<uint32_t>(parcelable.type);
         mAddress = parcelable.address;
         mDeviceLocation = parcelable.deviceLocation;
         mDeviceGroup = parcelable.deviceGroup;
@@ -208,22 +208,7 @@ private:
     int32_t mDirectionality;
 };
 
-// Conversion routines, according to AidlConversion.h conventions.
-inline ConversionResult<MicrophoneInfo>
-aidl2legacy_MicrophoneInfo(const media::MicrophoneInfoData& aidl) {
-    MicrophoneInfo legacy;
-    RETURN_IF_ERROR(legacy.readFromParcelable(aidl));
-    return legacy;
-}
-
-inline ConversionResult<media::MicrophoneInfoData>
-legacy2aidl_MicrophoneInfo(const MicrophoneInfo& legacy) {
-    media::MicrophoneInfoData aidl;
-    RETURN_IF_ERROR(legacy.writeToParcelable(&aidl));
-    return aidl;
-}
-
 } // namespace media
 } // namespace android
 
-#endif
+#endif  // ANDROID_MICROPHONE_INFO_H

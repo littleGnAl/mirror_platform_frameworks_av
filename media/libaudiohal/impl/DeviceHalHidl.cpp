@@ -90,7 +90,7 @@ status_t DeviceHalHidl::getSupportedDevices(uint32_t*) {
 status_t DeviceHalHidl::initCheck() {
     TIME_CHECK();
     if (mDevice == 0) return NO_INIT;
-    return processReturn("initCheck", mDevice->initCheck());
+    return OK;
 }
 
 status_t DeviceHalHidl::setVoiceVolume(float volume) {

@@ -25,6 +25,7 @@
 #include <utils/Errors.h>
 #include <binder/IInterface.h>
 #include <media/AidlConversion.h>
+#include <media/AidlConversionCpp.h>
 #include <media/AudioClient.h>
 #include <media/AudioCommonTypes.h>
 #include <media/DeviceDescriptorBase.h>
