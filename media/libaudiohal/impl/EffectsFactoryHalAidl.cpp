@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-#include <random>
+#include <algorithm>
+#include <memory>
 #define LOG_TAG "EffectsFactoryHalAidl"
 //#define LOG_NDEBUG 0
 
@@ -22,61 +23,107 @@
 #include <android/binder_manager.h>
 #include <utils/Log.h>
 
+#include "EffectHalAidl.h"
 #include "EffectsFactoryHalAidl.h"
 
 using aidl::android::hardware::audio::effect::IFactory;
+using aidl::android::media::audio::common::AudioUuid;
 using android::detail::AudioHalVersionInfo;
 
 namespace android {
 namespace effect {
 
-EffectsFactoryHalAidl::EffectsFactoryHalAidl(std::shared_ptr<IFactory> effectsFactory) {
+EffectsFactoryHalAidl::EffectsFactoryHalAidl(std::shared_ptr<IFactory> effectsFactory)
+    : EffectConversionHelperAidl(LOG_TAG) {
+    std::lock_guard lg(mLock);
     ALOG_ASSERT(effectsFactory != nullptr, "Provided IEffectsFactory service is NULL");
-    mEffectsFactory = effectsFactory;
+    mFactory = std::move(effectsFactory);
+
+    int32_t versionNumber = 0;
+    if (mFactory && mFactory->getInterfaceVersion(&versionNumber).isOk()) {
+        halVersion = std::make_unique<AudioHalVersionInfo>(
+                AudioHalVersionInfo(AudioHalVersionInfo::Type::AIDL, versionNumber, 0 /* minor */));
+    }
 }
 
 status_t EffectsFactoryHalAidl::queryNumberEffects(uint32_t *pNumEffects) {
     if (pNumEffects == nullptr) {
         return BAD_VALUE;
     }
-    ALOGE("%s not implemented yet", __func__);
-    return INVALID_OPERATION;
+
+    {
+        std::lock_guard lg(mLock);
+        RETURN_IF_NOT_OK(queryEffectList_l());
+        *pNumEffects = mDescList->size();
+    }
+    ALOGI("%s %d", __func__, *pNumEffects);
+    return OK;
 }
 
 status_t EffectsFactoryHalAidl::getDescriptor(uint32_t index, effect_descriptor_t* pDescriptor) {
-    if (index < 0 || pDescriptor == nullptr) {
+    if (pDescriptor == nullptr) {
         return BAD_VALUE;
     }
-    ALOGE("%s not implemented yet", __func__);
-    return INVALID_OPERATION;
+
+    {
+        std::lock_guard lg(mLock);
+        RETURN_IF_NOT_OK(queryEffectList_l());
+
+        auto listSize = mDescList->size();
+        if (index >= listSize) {
+            ALOGE("%s index %d exceed size DescList %zd", __func__, index, listSize);
+            return INVALID_OPERATION;
+        }
+
+        *pDescriptor =
+                VALUE_OR_RETURN_STATUS(aidl2hal_Descriptor_effect_descriptor(mDescList->at(index)));
+    }
+    return OK;
 }
 
-status_t EffectsFactoryHalAidl::getDescriptor(const effect_uuid_t* pEffectUuid,
+status_t EffectsFactoryHalAidl::getDescriptor(const effect_uuid_t* halUuid,
                                               effect_descriptor_t* pDescriptor) {
-    if (pEffectUuid == nullptr || pDescriptor == nullptr) {
+    if (halUuid == nullptr || pDescriptor == nullptr) {
         return BAD_VALUE;
     }
-    ALOGE("%s not implemented yet", __func__);
-    return INVALID_OPERATION;
+
+    AudioUuid uuid = VALUE_OR_RETURN_STATUS(hal2aidl_audio_uuid_t_AudioUuid(*halUuid));
+    std::lock_guard lg(mLock);
+    return getHalDescriptorWithImplUuid_l(uuid, pDescriptor);
 }
 
-status_t EffectsFactoryHalAidl::getDescriptors(const effect_uuid_t* pEffectType,
+status_t EffectsFactoryHalAidl::getDescriptors(const effect_uuid_t* halType,
                                                std::vector<effect_descriptor_t>* descriptors) {
-    if (pEffectType == nullptr || descriptors == nullptr) {
+    if (halType == nullptr || descriptors == nullptr) {
         return BAD_VALUE;
     }
-    ALOGE("%s not implemented yet", __func__);
-    return INVALID_OPERATION;
+
+    AudioUuid type = VALUE_OR_RETURN_STATUS(hal2aidl_audio_uuid_t_AudioUuid(*halType));
+    std::lock_guard lg(mLock);
+    return getHalDescriptorWithTypeUuid_l(type, descriptors);
 }
 
-status_t EffectsFactoryHalAidl::createEffect(const effect_uuid_t* pEffectUuid, int32_t sessionId,
+status_t EffectsFactoryHalAidl::createEffect(const effect_uuid_t* uuid, int32_t sessionId,
                                              int32_t ioId, int32_t deviceId __unused,
                                              sp<EffectHalInterface>* effect) {
-    if (pEffectUuid == nullptr || effect == nullptr) {
+    if (uuid == nullptr || effect == nullptr) {
         return BAD_VALUE;
     }
-    ALOGE("%s not implemented yet %d %d", __func__, sessionId, ioId);
-    return INVALID_OPERATION;
+    ALOGI("%s session %d ioId %d", __func__, sessionId, ioId);
+    AudioUuid aidlUuid = VALUE_OR_RETURN_STATUS(hal2aidl_audio_uuid_t_AudioUuid(*uuid));
+    std::shared_ptr<IEffect> aidlEffect;
+    ndk::ScopedAStatus status;
+    {
+        std::lock_guard lg(mLock);
+        status = mFactory->createEffect(aidlUuid, &aidlEffect);
+    }
+
+    if (!status.isOk() || aidlEffect == nullptr) {
+        ALOGE("%s IFactory::createFactory failed %s UUID %s", __func__,
+              status.getDescription().c_str(), aidlUuid.toString().c_str());
+        return INVALID_OPERATION;
+    }
+    return OK;
 }
 
 status_t EffectsFactoryHalAidl::dumpEffects(int fd) {
@@ -102,16 +149,55 @@ status_t EffectsFactoryHalAidl::mirrorBuffer(void* external, size_t size,
 }
 
 AudioHalVersionInfo EffectsFactoryHalAidl::getHalVersion() const {
-    int32_t versionNumber = 0;
-    if (mEffectsFactory) {
-        if (!mEffectsFactory->getInterfaceVersion(&versionNumber).isOk()) {
-            ALOGE("%s getInterfaceVersion failed", __func__);
-        } else {
-            ALOGI("%s getInterfaceVersion %d", __func__, versionNumber);
+    AudioHalVersionInfo invalid(AudioHalVersionInfo::Type::AIDL, 0, 0);
+    return halVersion ? *halVersion : invalid;
+}
+
+status_t EffectsFactoryHalAidl::queryEffectList_l() {
+    if (!mDescList) {
+        std::vector<Descriptor> list;
+        auto status = mFactory->queryEffects(std::nullopt, std::nullopt, std::nullopt, &list);
+        if (!status.isOk()) {
+            ALOGE("%s IFactory::queryEffects failed %s", __func__, status.getDescription().c_str());
+            return status.getStatus();
         }
+
+        mDescList = std::make_unique<std::vector<Descriptor>>(list);
     }
-    // AIDL does not have minor version, fill 0 for all versions
-    return AudioHalVersionInfo(AudioHalVersionInfo::Type::AIDL, versionNumber);
+    return OK;
+}
+
+status_t EffectsFactoryHalAidl::getHalDescriptorWithImplUuid_l(const AudioUuid& uuid,
+                                                               effect_descriptor_t* pDescriptor) {
+    if (!mDescList) {
+        RETURN_IF_NOT_OK(queryEffectList_l());
+    }
+
+    auto matchIt = std::find_if(mDescList->begin(), mDescList->end(),
+                                 [&](const auto& desc) { return desc.common.id.uuid == uuid; });
+    if (matchIt == mDescList->end()) {
+        ALOGE("%s UUID %s not found", __func__, uuid.toString().c_str());
+        return BAD_VALUE;
+    }
+    *pDescriptor = VALUE_OR_RETURN_STATUS(aidl2hal_Descriptor_effect_descriptor(*matchIt));;
+    return OK;
+}
+
+status_t EffectsFactoryHalAidl::getHalDescriptorWithTypeUuid_l(
+        const AudioUuid& type, std::vector<effect_descriptor_t>* descriptors) {
+    if (!mDescList) {
+        RETURN_IF_NOT_OK(queryEffectList_l());
+    }
+    std::vector<Descriptor> result;
+    std::copy_if(mDescList->begin(), mDescList->end(), std::back_inserter(result),
+                 [&](auto& desc) { return desc.common.id.type == type; });
+    if (result.size() == 0) {
+        ALOGE("%s type UUID %s not found", __func__, type.toString().c_str());
+        return BAD_VALUE;
+    }
+    std::transform(result.begin(), result.end(), std::back_inserter(*descriptors),
+                   [&](auto& desc) { return aidl2hal_Descriptor_effect_descriptor(desc).value(); });
+    return OK;
 }
 
 } // namespace effect
@@ -120,9 +206,11 @@ AudioHalVersionInfo EffectsFactoryHalAidl::getHalVersion() const {
 // exports from a static library are optimized out unless actually used by
 // the shared library. See EffectsFactoryHalEntry.cpp.
 extern "C" void* createIEffectsFactoryImpl() {
-    auto factory = IFactory::fromBinder(
-            ndk::SpAIBinder(AServiceManager_waitForService(IFactory::descriptor)));
-    return factory ? new effect::EffectsFactoryHalAidl(factory) : nullptr;
+    auto serviceName = std::string() + IFactory::descriptor + "/default";
+    auto service = IFactory::fromBinder(
+            ndk::SpAIBinder(AServiceManager_waitForService(serviceName.c_str())));
+    ALOGW("%s fromBinder %s %s", __func__, IFactory::descriptor, service ? "succ" : "fail");
+    return service ? new effect::EffectsFactoryHalAidl(service) : nullptr;
 }
 
 } // namespace android
