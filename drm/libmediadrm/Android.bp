@@ -76,6 +76,10 @@ cc_library {
         "libaidlcommonsupport",
     ],
 
+    whole_static_libs: [
+        "libjsoncpp",
+    ],
+
     export_shared_lib_headers: [
         "android.hardware.drm@1.0",
         "android.hardware.drm@1.1",
