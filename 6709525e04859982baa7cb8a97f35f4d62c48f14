@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf27b2c_29cabd9f",
+        "filename": "media/module/codecs/amrwb/dec/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-13T00:34:05Z",
+      "side": 1,
+      "message": "should this have a (void*) cast on it?",
+      "range": {
+        "startLine": 159,
+        "startChar": 52,
+        "endLine": 159,
+        "endChar": 69
+      },
+      "revId": "6709525e04859982baa7cb8a97f35f4d62c48f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540a4ea9_ac439f86",
+        "filename": "media/module/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-13T00:34:05Z",
+      "side": 1,
+      "message": "i\u0027m not sure here.\nwe never did delete cTrack in the old one -- instead we deleted track.\n\nit may be that cTrack should be left alone.",
+      "range": {
+        "startLine": 446,
+        "startChar": 7,
+        "endLine": 446,
+        "endChar": 21
+      },
+      "revId": "6709525e04859982baa7cb8a97f35f4d62c48f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f306757_a93d8a63",
+        "filename": "media/module/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-13T00:34:05Z",
+      "side": 1,
+      "message": "are we tracking this correctly?\ni don\u0027t see anything that cleans it up.\nI\u0027m not sure that getNextNalUnit() manages that space, or just fills it in.",
+      "range": {
+        "startLine": 200,
+        "startChar": 21,
+        "endLine": 200,
+        "endChar": 34
+      },
+      "revId": "6709525e04859982baa7cb8a97f35f4d62c48f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4660cc_44ac1697",
+        "filename": "media/module/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-13T00:34:05Z",
+      "side": 1,
+      "message": "won\u0027t we get these for free as the corresponding sp\u003c\u003e go out of scope?",
+      "range": {
+        "startLine": 307,
+        "startChar": 4,
+        "endLine": 308,
+        "endChar": 23
+      },
+      "revId": "6709525e04859982baa7cb8a97f35f4d62c48f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461baad4_eae654ee",
+        "filename": "media/module/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-13T00:34:05Z",
+      "side": 1,
+      "message": "does meteDataCopy() going out of scope clear things?\n[this isn\u0027t something you changed, but looking at the scopes and lifetimes\nmakes me wonder]\n\nsince we\u0027re losing a simple pointer",
+      "range": {
+        "startLine": 57,
+        "startChar": 11,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "6709525e04859982baa7cb8a97f35f4d62c48f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82eb7a5d_f301870c",
+        "filename": "media/module/metadatautils/test/MetaDataUtilsTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-13T00:34:05Z",
+      "side": 1,
+      "message": "let\u0027s move this to after the ASSERT_NE() -- we don\u0027t know if we have a\nbuffer to fill at this line, we do know it after the ASSERT_NE()",
+      "range": {
+        "startLine": 413,
+        "startChar": 7,
+        "endLine": 413,
+        "endChar": 62
+      },
+      "revId": "6709525e04859982baa7cb8a97f35f4d62c48f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
