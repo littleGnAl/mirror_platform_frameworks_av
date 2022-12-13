@@ -56,6 +56,30 @@
       },
       "revId": "f6a8ea0edea1e35c9cb8954bc7c939ae5503a7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c9ea53_491280c6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2022-12-13T04:51:20Z",
+      "side": 1,
+      "message": "Ack and resolved in PS6",
+      "parentUuid": "359c4a58_ff08944e",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 25
+      },
+      "revId": "f6a8ea0edea1e35c9cb8954bc7c939ae5503a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
