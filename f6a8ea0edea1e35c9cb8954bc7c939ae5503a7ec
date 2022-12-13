@@ -33,6 +33,29 @@
       "message": "Hi Mikhail, could you please take a look?",
       "revId": "f6a8ea0edea1e35c9cb8954bc7c939ae5503a7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359c4a58_ff08944e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:43:22Z",
+      "side": 1,
+      "message": "I don\u0027t think there is an actual need to keep it here. It\u0027s a common pattern to create complex objects using a lambda:\n\n```\n    static const std::vector\u003caudio_channel_mask_t\u003e channelMasksOrder \u003d [](){\n        ... initialization code ...\n    }();\n}\n```",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 25
+      },
+      "revId": "f6a8ea0edea1e35c9cb8954bc7c939ae5503a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
