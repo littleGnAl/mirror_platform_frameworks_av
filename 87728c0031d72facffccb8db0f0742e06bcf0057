@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2363a0ae_2b095f71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:33:13Z",
+      "side": 1,
+      "message": "I see you have realized the need to have a converter between NDK AIDL backend types and legacy C types. This actually deserves a change on its own, please see my comments.",
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df36c179_29f32e9e",
+        "filename": "media/libaudiohal/AudioHalTest/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:33:13Z",
+      "side": 1,
+      "message": "Similar to frameworks/av/media/libaudioclient/tests/, the name of the directory with tests should be just `tests`.",
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c074da_3618a484",
+        "filename": "media/libaudiohal/AudioHalTest/libAudioHalTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:33:13Z",
+      "side": 1,
+      "message": "The usual convention is to name a file with tests like this: `\u003cname\u003e_tests.cpp`. So, in this case it should be `interface_tests.cpp`.",
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8606833_9e11c106",
+        "filename": "media/libaudiohal/AudioHalTest/libAudioHalTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:33:13Z",
+      "side": 1,
+      "message": "No need to declare this yourself to be able to use `TEST` macros: go/gunitprimer#simple-tests",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd11174f_0b83d97e",
+        "filename": "media/libaudiohal/AudioHalTest/libAudioHalTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:33:13Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like we are looking up by the ID.",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cacfde9_04fa1e37",
+        "filename": "media/libaudiohal/impl/ConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:33:13Z",
+      "side": 1,
+      "message": "We definitely don\u0027t want to end up having a modified copy of frameworks/av/media/libaudioclient/AidlConversion.cpp here--it will be too painful to keep both in sync.\n\nSince NDK backend types mostly differ from the C++ backend types by the namespace prefix, let\u0027s generate both converters from the same source using preprocessor macros. We might want to move AidlConversion.cpp to a dedicated directory under frameworks/av/media.",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c3156c_611489d9",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-13T01:33:13Z",
+      "side": 1,
+      "message": "For standardization, it\u0027s better to use `convertContainer` from frameworks/av/media/libaudioclient/include/media/AidlConversionUtil.h once we extract it and adapt for the NDK backend.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 0
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
