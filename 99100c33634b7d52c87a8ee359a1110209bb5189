@@ -22,6 +22,30 @@
       },
       "revId": "99100c33634b7d52c87a8ee359a1110209bb5189",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a878cf7_b98ec4fb",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2022-12-13T12:28:33Z",
+      "side": 1,
+      "message": "1. Httplive\u0027s APIs are asynchronous in nature. Hence in order to synchronize the flow locks and conditional variables have been added. In this case the fuzzer waits till the HTTP download is complete. The wait_until waits till the conidition is set to TRUE or till the timeout (whichever is earlier).\n2. The wait time is in seconds. However, it is only the max duration. If the download completes earlier, then it would unblock earlier.",
+      "parentUuid": "f2461c89_a8cf037b",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 66
+      },
+      "revId": "99100c33634b7d52c87a8ee359a1110209bb5189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
