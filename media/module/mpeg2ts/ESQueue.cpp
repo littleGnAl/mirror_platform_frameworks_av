@@ -335,6 +335,10 @@ static status_t parseAC4SyncFrame(
     if (bitstreamVersion == 3) {
         bitstreamVersion += readVariableBits(bits, 2);
     }
+    if (bitstreamVersion <= 1) {
+        ALOGE("Bitstream versions less than or equal to 1 not supported.");
+        return ERROR_MALFORMED;
+    }
 
     bits.skipBits(10); // Sequence Counter
 
@@ -347,12 +351,84 @@ static status_t parseAC4SyncFrame(
     }
 
     // ETSI TS 103 190 V1.1.1 Table 82
-    bool fsIndex = bits.getBits(1);
+    bool fsIndex = (bits.getBits(1) == 1);
     uint32_t samplingRate = fsIndex ? 48000 : 44100;
+    bits.skipBits(4);   // frame_rate_index
+    bits.skipBits(1);   // b_iframe_global
+    bool singlePresentation = (bits.getBits(1) == 1);
+    uint32_t numPresentations = 1;
+    if (!singlePresentation) {
+        bool morePresentations = (bits.getBits(1) == 1);
+        if (morePresentations) {
+            numPresentations = readVariableBits(bits, 2) + 2;
+        } else {
+            numPresentations = 0;
+        }
+    }
+    ALOGV("AC4 num presentations = %u", numPresentations);
+
+    uint32_t payloadBase = 0;
+    bool isPayloadBase = (bits.getBits(1) == 1);
+    if (isPayloadBase) {
+        payloadBase = bits.getBits(5) + 1;
+        if (payloadBase == 0x20) {
+            payloadBase += readVariableBits(bits, 3);
+        }
+    }
+
+    bool hasProgramId = (bits.getBits(1) == 1);
+    if (hasProgramId) {
+        bits.skipBits(16);  // short_program_id
+        bool programUuidPresent = (bits.getBits(1) == 1);
+        if (programUuidPresent) {
+            // program_uuid
+            constexpr auto kNumProgramUuidBytes = 16u;
+            bits.skipBits(kNumProgramUuidBytes * 8);
+        }
+    }
+
+    // The first presentation is expected to have the highest AC-4 level so we parse only the first
+    // presentation and return the codecs string corresponding to that via the kKeyCodecsString key.
+    // It is not necessary to return a value for the kKeyAudioPresentationInfo key because that
+    // information is available from the preselection descriptor.
+    uint32_t presentationVersion = 0;
+    uint32_t mdcompat = 0u;
+    {
+        // ac4_presentation_v1_info()
+        uint32_t presentationConfig = 0u;
+        bool isSingleSubstreamGroup = (bits.getBits(1) == 1);
+        if (!isSingleSubstreamGroup) {
+            presentationConfig = bits.getBits(3);
+            if (presentationConfig == 0x7) {
+                presentationConfig += readVariableBits(bits, 2);
+            }
+        }
+        while (true) {
+            bool tmp = (bits.getBits(1) == 1);
+            if (!tmp) {
+                break;
+            }
+            ++presentationVersion;
+        }
+
+        if (!isSingleSubstreamGroup && presentationConfig == 0x6) {
+            // add_emdf_substreams = true
+        } else {
+            LOG_ALWAYS_FATAL_IF(bitstreamVersion == 1, "Bitstream version 1 not supported");
+            mdcompat = bits.getBits(3);
+        }
+    }
 
     if (metaData != NULL) {
         ALOGV("dequeueAccessUnitAC4 Setting mFormat");
+        // Report base AC-4 MIME type and AC-4 bitstream version information in the codecs string.
+        constexpr auto kMaxCodecsStringLength = 32u;
+        char codecsString[kMaxCodecsStringLength] = {0};
+        snprintf(codecsString, kMaxCodecsStringLength, "codecs=ac-4.%02u.%02u.%02u",
+                bitstreamVersion, presentationVersion, mdcompat);
+        ALOGV("AC4 codecs string = %s", codecsString);
         (*metaData)->setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_AC4);
+        (*metaData)->setCString(kKeyCodecsString, codecsString);
         (*metaData)->setInt32(kKeyIsSyncFrame, 1);
         // [FIXME] AC4 channel count is defined per presentation. Provide a default channel count
         // as stereo for the entire stream.
