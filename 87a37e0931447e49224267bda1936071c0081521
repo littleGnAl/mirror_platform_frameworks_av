@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce052075_842c0822",
+        "filename": "media/libeffects/loudness/EffectLoudnessEnhancerAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-14T15:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6a239b_f46f3b4e",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "87a37e0931447e49224267bda1936071c0081521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84abbeab_8430ac16",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-13T15:57:44Z",
       "side": 1,
       "message": "I think you need to lock guard parameters and mCompressor in context in order to apply new gain?\nCan be a TODO as part of the new gain apply logic.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "87a37e0931447e49224267bda1936071c0081521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4731c89e_630e9210",
+        "filename": "media/libeffects/loudness/EffectLoudnessEnhancerAidl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-14T15:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84abbeab_8430ac16",
       "range": {
         "startLine": 94,
         "startChar": 8,
