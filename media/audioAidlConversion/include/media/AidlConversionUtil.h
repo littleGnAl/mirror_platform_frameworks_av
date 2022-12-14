@@ -20,14 +20,35 @@
 #include <type_traits>
 #include <utility>
 
-#include <binder/Enums.h>
+#include <android-base/expected.h>
 #include <binder/Status.h>
 #include <error/Result.h>
+
+#if defined(BACKEND_NDK)
+#include <android/binder_status.h>
+using ndk::enum_range;
+
+namespace aidl {
+#else
+#include <binder/Enums.h>
+using ::android::enum_range;
+#endif
+
+using ::android::base::expected;
+using ::android::base::unexpected;
+using ::android::binder::Status;
+using ::android::status_t;
 
 namespace android {
 
 template <typename T>
-using ConversionResult = error::Result<T>;
+using ConversionResult = ::android::error::Result<T>;
+
+using ::android::BAD_VALUE;
+using ::android::NO_ERROR;
+using ::android::NO_MEMORY;
+using ::android::OK;
+using ::android::UNKNOWN_ERROR;
 
 /**
  * A generic template to safely cast between integral types, respecting limits of the destination
@@ -39,15 +60,15 @@ ConversionResult<To> convertIntegral(From from) {
     // have the signed converted to unsigned and produce wrong results.
     if (std::is_signed_v<From> && !std::is_signed_v<To>) {
         if (from < 0 || from > std::numeric_limits<To>::max()) {
-            return base::unexpected(BAD_VALUE);
+            return unexpected(::android::BAD_VALUE);
         }
     } else if (std::is_signed_v<To> && !std::is_signed_v<From>) {
         if (from > std::numeric_limits<To>::max()) {
-            return base::unexpected(BAD_VALUE);
+            return unexpected(::android::BAD_VALUE);
         }
     } else {
         if (from < std::numeric_limits<To>::min() || from > std::numeric_limits<To>::max()) {
-            return base::unexpected(BAD_VALUE);
+            return unexpected(::android::BAD_VALUE);
         }
     }
     return static_cast<To>(from);
@@ -74,7 +95,7 @@ status_t convertRange(InputIterator start,
     for (InputIterator iter = start; iter != end; ++iter, ++out) {
         *out = VALUE_OR_RETURN_STATUS(itemConversion(*iter));
     }
-    return OK;
+    return ::android::OK;
 }
 
 /**
@@ -94,7 +115,7 @@ status_t convertRangeWithLimit(InputIterator start,
     for (InputIterator iter = start; (iter != last); ++iter, ++out) {
         *out = VALUE_OR_RETURN_STATUS(itemConversion(*iter));
     }
-    return OK;
+    return ::android::OK;
 }
 
 /**
@@ -140,7 +161,7 @@ convertContainers(const InputContainer1& input1, const InputContainer2& input2,
     OutputContainer output;
     auto ins = std::inserter(output, output.begin());
     for (const auto& item1 : input1) {
-        RETURN_IF_ERROR(iter2 != input2.end() ? OK : BAD_VALUE);
+        RETURN_IF_ERROR(iter2 != input2.end() ? ::android::OK : ::android::BAD_VALUE);
         *ins = VALUE_OR_RETURN(itemConversion(item1, *iter2++));
     }
     return output;
@@ -248,7 +269,7 @@ bool bitmaskIsSet(Mask mask, Enum index) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Utilities for working with AIDL unions.
 // UNION_GET(obj, fieldname) returns a ConversionResult<T> containing either the strongly-typed
-//   value of the respective field, or BAD_VALUE if the union is not set to the requested field.
+//   value of the respective field, or ::android::BAD_VALUE if the union is not set to the requested field.
 // UNION_SET(obj, fieldname, value) sets the requested field to the given value.
 
 template<typename T, typename T::Tag tag>
@@ -257,7 +278,7 @@ using UnionFieldType = std::decay_t<decltype(std::declval<T>().template get<tag>
 template<typename T, typename T::Tag tag>
 ConversionResult<UnionFieldType<T, tag>> unionGetField(const T& u) {
     if (u.getTag() != tag) {
-        return base::unexpected(BAD_VALUE);
+        return unexpected(::android::BAD_VALUE);
     }
     return u.template get<tag>();
 }
@@ -275,7 +296,7 @@ namespace aidl_utils {
  */
 template <typename T>
 bool isValidEnum(T value) {
-    constexpr android::enum_range<T> er{};
+    constexpr enum_range<T> er{};
     return std::find(er.begin(), er.end(), value) != er.end();
 }
 
@@ -308,16 +329,16 @@ static inline status_t statusTFromExceptionCode(int32_t exceptionCode) {
     using namespace ::android::binder;
     switch (exceptionCode) {
         case Status::EX_NONE:
-            return OK;
+            return ::android::OK;
         case Status::EX_SECURITY: // Java SecurityException, rethrows locally in Java
-            return PERMISSION_DENIED;
+            return ::android::PERMISSION_DENIED;
         case Status::EX_BAD_PARCELABLE: // Java BadParcelableException, rethrows in Java
         case Status::EX_ILLEGAL_ARGUMENT: // Java IllegalArgumentException, rethrows in Java
         case Status::EX_NULL_POINTER: // Java NullPointerException, rethrows in Java
-            return BAD_VALUE;
+            return ::android::BAD_VALUE;
         case Status::EX_ILLEGAL_STATE: // Java IllegalStateException, rethrows in Java
         case Status::EX_UNSUPPORTED_OPERATION: // Java UnsupportedOperationException, rethrows
-            return INVALID_OPERATION;
+            return ::android::INVALID_OPERATION;
         case Status::EX_HAS_REPLY_HEADER: // Native strictmode violation
         case Status::EX_PARCELABLE: // Java bootclass loader (not standard exception), rethrows
         case Status::EX_NETWORK_MAIN_THREAD: // Java NetworkOnMainThreadException, rethrows
@@ -341,7 +362,7 @@ static inline status_t statusTFromExceptionCode(int32_t exceptionCode) {
  * return_type method(type0 param0, ...)
  */
 static inline status_t statusTFromBinderStatus(const ::android::binder::Status &status) {
-    return status.isOk() ? OK // check OK,
+    return status.isOk() ? ::android::OK // check ::android::OK,
         : status.serviceSpecificErrorCode() // service-side error, not standard Java exception
                                             // (fromServiceSpecificError)
         ?: status.transactionError() // a native binder transaction error (fromStatusT)
@@ -366,13 +387,13 @@ static inline ::android::binder::Status binderStatusFromStatusT(
 
     using namespace ::android::binder;
     switch (status) {
-        case OK:
+        case ::android::OK:
             return Status::ok();
-        case PERMISSION_DENIED: // throw SecurityException on Java side
+        case ::android::PERMISSION_DENIED: // throw SecurityException on Java side
             return Status::fromExceptionCode(Status::EX_SECURITY, emptyIfNull);
-        case BAD_VALUE: // throw IllegalArgumentException on Java side
+        case ::android::BAD_VALUE: // throw IllegalArgumentException on Java side
             return Status::fromExceptionCode(Status::EX_ILLEGAL_ARGUMENT, emptyIfNull);
-        case INVALID_OPERATION: // throw IllegalStateException on Java side
+        case ::android::INVALID_OPERATION: // throw IllegalStateException on Java side
             return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE, emptyIfNull);
     }
 
@@ -387,3 +408,7 @@ static inline ::android::binder::Status binderStatusFromStatusT(
 } // namespace aidl_utils
 
 }  // namespace android
+
+#if defined(BACKEND_NDK)
+}  // namespace aidl
+#endif
