@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d96f61d_0c5ad5ed",
+        "filename": "drm/libmediadrm/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2022-12-14T06:52:17Z",
+      "side": 1,
+      "message": "Maybe consider to use as shared library.",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 19
+      },
+      "revId": "730d621be8e920206ceff9d66094facb556debae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
