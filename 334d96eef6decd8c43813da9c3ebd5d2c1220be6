@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d6cb49_b690954d",
+        "filename": "media/module/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-14T14:56:22Z",
+      "side": 0,
+      "message": "this was just bad in the original, since the while loop at line 264 would have changed the pointer and we\u0027d be deleting/freeing a different address.",
+      "range": {
+        "startLine": 274,
+        "startChar": 10,
+        "endLine": 274,
+        "endChar": 25
+      },
+      "revId": "334d96eef6decd8c43813da9c3ebd5d2c1220be6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
