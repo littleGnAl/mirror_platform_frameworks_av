@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "168be0fd_455e5265",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-12-15T00:40:37Z",
+      "side": 1,
+      "message": "If these tests were not covered by presubmit tests,\ncould some owners help run the test on correct device?\nI have never run these tests before.",
+      "parentUuid": "54722251_7dd98274",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "32e8b69b34e4ef0737faabdbae82672108577c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "07b27ff8_d8132872",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-12-14T14:56:22Z",
       "side": 1,
       "message": "this is a compile time constant size, so we could just allocate it as a \nstack variable and drop one of our pointer constructs.\n\nksmallbuffersize \u003d\u003d 2, so it\u0027s even really really tiny. if it were multiple kbytes, then i\u0027d say keep it on the heap.\n\nprobably name it ...Buffer instead of ...Ptr",
+      "range": {
+        "startLine": 200,
+        "startChar": 7,
+        "endLine": 200,
+        "endChar": 79
+      },
+      "revId": "32e8b69b34e4ef0737faabdbae82672108577c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b043a0_8dbeee03",
+        "filename": "media/module/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-12-15T00:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d550c546_5faef322",
       "range": {
         "startLine": 200,
         "startChar": 7,
