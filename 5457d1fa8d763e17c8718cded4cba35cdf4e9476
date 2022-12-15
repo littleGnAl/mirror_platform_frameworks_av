@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd5d248_68269e9c",
+        "filename": "media/libeffects/downmix/EffectDownmixAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-15T20:48:33Z",
+      "side": 1,
+      "message": "Please move methods with non-trivial bodies into the .cpp file.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "5457d1fa8d763e17c8718cded4cba35cdf4e9476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454c08fe_a5d89314",
+        "filename": "media/libeffects/downmix/EffectDownmixAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-15T20:48:33Z",
+      "side": 1,
+      "message": "I think you can use `std::clamp(value, -1.f, 1.f)` for this.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 89
+      },
+      "revId": "5457d1fa8d763e17c8718cded4cba35cdf4e9476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
