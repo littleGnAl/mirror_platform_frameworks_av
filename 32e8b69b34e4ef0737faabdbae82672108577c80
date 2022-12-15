@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ed585f_68c98102",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-15T02:26:32Z",
+      "side": 1,
+      "message": "presubmit doesn\u0027t run the unit tests because the unit tests want to download\nassets for testing and atest/presubmit disallow that.\n\ni\u0027ll see if I can get a run put together.",
+      "parentUuid": "168be0fd_455e5265",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "32e8b69b34e4ef0737faabdbae82672108577c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "07b27ff8_d8132872",
