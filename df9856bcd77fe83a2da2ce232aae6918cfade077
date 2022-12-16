@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa1cada_3eb39ffe",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-16T21:47:54Z",
+      "side": 1,
+      "message": "how do we reconcile this with the MediaFormat documentation that says:\n\n\u003d\u003d MediaCodec accepts both float and integer values.\n\nI wonder if it should be ceil(value) -- always go to the next one up.\nif we guess a little high, the encoder would still recognize \"i\u0027m not generating as much data as I expected, so I can go ahead and use some extra bits\".\n\nIt may not make much difference if we\u0027re flipping between 29 and 30 fps.\n\nI worry about timelapse -- say a 5x slower video, so we encode a frame every 5 seconds (or 0.2 fps).  both the original and the modification return an integer\nvalue of 0  [0.2 + 0.7 \u003d\u003d .7 and still truncates down to 0]",
+      "range": {
+        "startLine": 392,
+        "startChar": 33,
+        "endLine": 392,
+        "endChar": 47
+      },
+      "revId": "df9856bcd77fe83a2da2ce232aae6918cfade077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
