@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbd6270_8e9b9e1d",
+        "filename": "media/libeffects/downmix/EffectDownmixAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-16T18:43:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd5d248_68269e9c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "5457d1fa8d763e17c8718cded4cba35cdf4e9476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "454c08fe_a5d89314",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-15T20:48:33Z",
       "side": 1,
       "message": "I think you can use `std::clamp(value, -1.f, 1.f)` for this.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 89
+      },
+      "revId": "5457d1fa8d763e17c8718cded4cba35cdf4e9476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65637bd9_0d6bd7e5",
+        "filename": "media/libeffects/downmix/EffectDownmixAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-16T18:43:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454c08fe_a5d89314",
       "range": {
         "startLine": 178,
         "startChar": 0,
