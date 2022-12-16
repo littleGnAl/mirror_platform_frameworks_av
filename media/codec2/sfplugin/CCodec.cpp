@@ -208,7 +208,7 @@ public:
         mNode->setFrameSize(mWidth, mHeight);
 
         // Usage is queried during configure(), so setting it beforehand.
-        OMX_U32 usage = mConfig.mUsage & 0xFFFFFFFF;
+        OMX_U64 usage = mConfig.mUsage;
         (void)mNode->setParameter(
                 (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
                 &usage, sizeof(usage));
@@ -1598,7 +1598,6 @@ void CCodec::createInputSurface() {
         outputFormat = config->mOutputFormat;
         usage = config->mISConfig ? config->mISConfig->mUsage : 0;
     }
-
     sp<PersistentSurface> persistentSurface = CreateCompatibleInputSurface();
     sp<hidl::base::V1_0::IBase> hidlTarget = persistentSurface->getHidlTarget();
     sp<IInputSurface> hidlInputSurface = IInputSurface::castFrom(hidlTarget);
@@ -2011,7 +2010,6 @@ status_t CCodec::setSurface(const sp<Surface> &surface) {
         const std::unique_ptr<Config> &config = *configLocked;
         sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(surface.get());
         status_t err = OK;
-
         if (config->mTunneled && config->mSidebandHandle != nullptr) {
             err = native_window_set_sideband_stream(
                     nativeWindow.get(),

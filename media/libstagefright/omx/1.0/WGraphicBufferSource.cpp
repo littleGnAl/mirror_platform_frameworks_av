@@ -143,7 +143,7 @@ Return<Status> TWGraphicBufferSource::configure(
 
     // use consumer usage bits queried from encoder, but always add
     // HW_VIDEO_ENCODER for backward compatibility.
-    uint32_t  consumerUsage;
+    uint64_t  consumerUsage;
     void *_params = &consumerUsage;
     uint8_t *params = static_cast<uint8_t*>(_params);
     fnStatus = UNKNOWN_ERROR;

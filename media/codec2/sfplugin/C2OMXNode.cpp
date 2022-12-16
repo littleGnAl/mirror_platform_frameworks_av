@@ -225,7 +225,7 @@ status_t C2OMXNode::getParameter(OMX_INDEXTYPE index, void *params, size_t size)
     status_t err = ERROR_UNSUPPORTED;
     switch ((uint32_t)index) {
         case OMX_IndexParamConsumerUsageBits: {
-            OMX_U32 *usage = (OMX_U32 *)params;
+            OMX_U64 *usage = (OMX_U64 *)params;
             *usage = mUsage;
             err = OK;
             break;
@@ -288,10 +288,10 @@ status_t C2OMXNode::setParameter(OMX_INDEXTYPE index, const void *params, size_t
             return OK;
 
         case OMX_IndexParamConsumerUsageBits:
-            if (size != sizeof(OMX_U32)) {
+            if (size != sizeof(OMX_U64)) {
                 return BAD_VALUE;
             }
-            mUsage = *((OMX_U32 *)params);
+            mUsage = *((OMX_U64 *)params);
             return OK;
     }
     return ERROR_UNSUPPORTED;
