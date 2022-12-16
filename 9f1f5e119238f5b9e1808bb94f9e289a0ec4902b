@@ -22,6 +22,30 @@
       },
       "revId": "9f1f5e119238f5b9e1808bb94f9e289a0ec4902b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2d30a8_00bf62d4",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2022-12-16T11:17:49Z",
+      "side": 1,
+      "message": "Aligned order. Initially they were the same but I moved the dtse under DTS_HD only in one place and they got misaligned.",
+      "parentUuid": "1aec31e5_cb1e420d",
+      "range": {
+        "startLine": 1817,
+        "startChar": 0,
+        "endLine": 1819,
+        "endChar": 28
+      },
+      "revId": "9f1f5e119238f5b9e1808bb94f9e289a0ec4902b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
