@@ -22,6 +22,30 @@
       },
       "revId": "df9856bcd77fe83a2da2ce232aae6918cfade077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b13809_f024c651",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-12-16T23:04:35Z",
+      "side": 1,
+      "message": "I originally intend to fix this by one of the following 3 ways:\n1) round of to integer\n2) returning it as float\n3) return it as both int and float\n\nBut considering:\n- Changing it to float is a compatible issue with the current/old apps looking for framerate as integer values\n- this change has been already done on internal branch. So I cherry-picked the same to aosp branch",
+      "parentUuid": "eaa1cada_3eb39ffe",
+      "range": {
+        "startLine": 392,
+        "startChar": 33,
+        "endLine": 392,
+        "endChar": 47
+      },
+      "revId": "df9856bcd77fe83a2da2ce232aae6918cfade077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
