@@ -16,6 +16,24 @@
       "message": "I think you might want to allow Shunkai to land his https://r.android.com/q/topic:%22aidl_conversion_ndk%22 (also upstreaming of what has already been merged) because he has moved these functions to another file.",
       "revId": "0059188de9901b404f1a69467506ffd1fdad9969",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97bdcdad_04c6d1b0",
+        "filename": "media/libaudioclient/AidlConversion.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-12-16T21:18:54Z",
+      "side": 1,
+      "message": "Talked offline. It is okay to merge this first and have Shunkai rebase on this",
+      "parentUuid": "399fdcd0_0534aa8f",
+      "revId": "0059188de9901b404f1a69467506ffd1fdad9969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
