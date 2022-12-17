@@ -923,10 +923,10 @@ sp<MediaPlayerBase> MediaPlayerService::Client::setDataSource_pre(
         {
             for (std::shared_ptr<Codec2Client> const& client :
                     Codec2Client::CreateFromAllServices()) {
-                sp<IBase> base = client->getBase();
-                deathNotifiers.emplace_back(
-                        base, [l = wp<MediaPlayerBase>(p),
-                               name = std::string(client->getServiceName())]() {
+                sp<IBase> hidlBase = client->getHidlBase();
+                ::ndk::SpAIBinder aidlBase = client->getAidlBase();
+                auto onBinderDied = [l = wp<MediaPlayerBase>(p),
+                                     name = std::string(client->getServiceName())]() {
                     sp<MediaPlayerBase> listener = l.promote();
                     if (listener) {
                         ALOGI("Codec2 service \"%s\" died. "
@@ -940,7 +940,12 @@ sp<MediaPlayerBase> MediaPlayerService::Client::setDataSource_pre(
                               "without a death handler.",
                               name.c_str());
                     }
-                });
+                };
+                if (hidlBase) {
+                    deathNotifiers.emplace_back(hidlBase, onBinderDied);
+                } else if (aidlBase.get() != nullptr) {
+                    deathNotifiers.emplace_back(aidlBase, onBinderDied);
+                }
             }
         }
     }
