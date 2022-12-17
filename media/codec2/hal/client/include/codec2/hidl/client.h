@@ -185,8 +185,6 @@ struct Codec2Client : public Codec2ConfigurableClient {
 
     typedef ::aidl::android::hardware::media::c2::IComponentStore AidlBase;
 
-    typedef ::android::hardware::media::c2::V1_0::IConfigurable IConfigurable;
-
     struct Listener;
 
     typedef Codec2ConfigurableClient Configurable;
@@ -275,7 +273,7 @@ struct Codec2Client : public Codec2ConfigurableClient {
     // base and/or configurable cannot be null.
     Codec2Client(
             sp<HidlBase> const& base,
-            sp<IConfigurable> const& configurable,
+            sp<Codec2ConfigurableClient::HidlBase> const& configurable,
             size_t serviceIndex);
     Codec2Client(
             std::shared_ptr<AidlBase> const& base,

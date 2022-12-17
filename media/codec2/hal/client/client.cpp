@@ -1560,10 +1560,11 @@ std::shared_ptr<Codec2Client> Codec2Client::_CreateFromIndex(size_t index) {
     CHECK(baseStore) << "Codec2 service \"" << name << "\""
                         " inaccessible for unknown reasons.";
     LOG(VERBOSE) << "Client to Codec2 service \"" << name << "\" created";
-    Return<sp<IConfigurable>> transResult = baseStore->getConfigurable();
+    Return<sp<c2_hidl::IConfigurable>> transResult = baseStore->getConfigurable();
     CHECK(transResult.isOk()) << "Codec2 service \"" << name << "\""
                                 "does not have IConfigurable.";
-    sp<IConfigurable> configurable = static_cast<sp<IConfigurable>>(transResult);
+    sp<c2_hidl::IConfigurable> configurable =
+        static_cast<sp<c2_hidl::IConfigurable>>(transResult);
     return std::make_shared<Codec2Client>(baseStore, configurable, index);
 }
 
