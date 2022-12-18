@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9282f1b6_c50b0971",
+        "filename": "media/libeffects/loudness/EffectLoudnessEnhancerAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-18T15:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a53ab13d_1f154846",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "a47d724d13dbdc08af191d2523b3e4deecfb8901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4836fbc2_d1d6bcaf",
@@ -70,6 +94,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26bc23de_be4c5149",
+        "filename": "media/libeffects/loudness/EffectLoudnessEnhancerAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-18T15:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4836fbc2_d1d6bcaf",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 23
+      },
+      "revId": "a47d724d13dbdc08af191d2523b3e4deecfb8901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3283869a_7ecda56f",
+        "filename": "media/libeffects/loudness/EffectLoudnessEnhancerAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-18T15:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28478a38_590d94a1",
+      "range": {
+        "startLine": 74,
+        "startChar": 27,
+        "endLine": 74,
+        "endChar": 31
+      },
+      "revId": "a47d724d13dbdc08af191d2523b3e4deecfb8901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "777725cc_978b6575",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4b9d92_3e7f597d",
+        "filename": "media/libeffects/loudness/EffectLoudnessEnhancerAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-18T15:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "777725cc_978b6575",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 40
+      },
+      "revId": "a47d724d13dbdc08af191d2523b3e4deecfb8901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f57a0e_e5c3e3f4",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-12-15T19:25:42Z",
       "side": 1,
       "message": "Please use `std::unique_ptr` to avoid manual lifetime management.",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 43
+      },
+      "revId": "a47d724d13dbdc08af191d2523b3e4deecfb8901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf4f961_af289128",
+        "filename": "media/libeffects/loudness/EffectLoudnessEnhancerAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-18T15:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f57a0e_e5c3e3f4",
       "range": {
         "startLine": 138,
         "startChar": 4,
