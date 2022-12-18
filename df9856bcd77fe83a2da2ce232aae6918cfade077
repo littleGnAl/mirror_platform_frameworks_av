@@ -46,6 +46,30 @@
       },
       "revId": "df9856bcd77fe83a2da2ce232aae6918cfade077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd5b104_0c72b341",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-18T02:10:55Z",
+      "side": 1,
+      "message": "i\u0027d missed that it was a cherry pick when i first wrote my comments.\ngo with this.\nmaybe we want to consider those points for a later set of changes.",
+      "parentUuid": "95b13809_f024c651",
+      "range": {
+        "startLine": 392,
+        "startChar": 33,
+        "endLine": 392,
+        "endChar": 47
+      },
+      "revId": "df9856bcd77fe83a2da2ce232aae6918cfade077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
