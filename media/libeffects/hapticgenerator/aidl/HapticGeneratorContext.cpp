@@ -66,18 +66,32 @@ void HapticGeneratorContext::reset() {
     }
 }
 
-RetCode HapticGeneratorContext::setHgHapticScale(const HapticGenerator::HapticScale& hapticScale) {
-    mParams.mHapticScale = hapticScale;
-    if (hapticScale.scale == HapticGenerator::VibratorScale::MUTE) {
-        mParams.mHapticScales.erase(hapticScale.id);
-    } else {
-        mParams.mHapticScales.emplace(hapticScale.id, hapticScale.scale);
+RetCode HapticGeneratorContext::setHgHapticScales(
+        std::vector<HapticGenerator::HapticScale> hapticScales) {
+    for (auto hapticScale : hapticScales) {
+        if (hapticScale.scale == HapticGenerator::VibratorScale::MUTE) {
+            mParams.mHapticScales.erase(hapticScale.id);
+        } else {
+            if (mParams.mHapticScales.find(hapticScale.id) != mParams.mHapticScales.end()) {
+                mParams.mHapticScales[hapticScale.id] = hapticScale.scale;
+            } else {
+                mParams.mHapticScales.emplace(hapticScale.id, hapticScale.scale);
+            }
+        }
     }
-    mParams.mMaxVibratorScale = hapticScale.scale;
+    mParams.mMaxVibratorScale = HapticGenerator::VibratorScale::MUTE;
     for (const auto& [id, vibratorScale] : mParams.mHapticScales) {
         mParams.mMaxVibratorScale = std::max(mParams.mMaxVibratorScale, vibratorScale);
     }
     return RetCode::SUCCESS;
+}
+
+std::vector<HapticGenerator::HapticScale> HapticGeneratorContext::getHgHapticScales() const {
+    std::vector<HapticGenerator::HapticScale> result;
+    for (const auto& [id, vibratorScale] : mParams.mHapticScales) {
+        result.push_back({id, vibratorScale});
+    }
+    return result;
 }
 
 RetCode HapticGeneratorContext::setHgVibratorInformation(
