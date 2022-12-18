@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92da2650_efadb16c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2022-12-18T20:18:59Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "5c5cb4090ba4a176ab7eaca879257ae3ef99d414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7ad3f7_6570cdfc",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7538,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2022-12-18T20:18:59Z",
+      "side": 1,
+      "message": "Minor: Would be better to have the closing parenthesis after \"kMinNormalCaptureBufferSizeMs\".",
+      "range": {
+        "startLine": 7538,
+        "startChar": 32,
+        "endLine": 7538,
+        "endChar": 33
+      },
+      "revId": "5c5cb4090ba4a176ab7eaca879257ae3ef99d414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
