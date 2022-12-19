@@ -495,6 +495,8 @@ DrmStatus DrmHalAidl::createPlugin(const uint8_t uuid[16], const String8& appPac
 
         if (mInitCheck != OK) {
             mPlugin.reset();
+        } else {
+            reportFrameworkMetrics("mediadrm_new", &uuid[16]);
         }
     }
 
@@ -1154,7 +1156,18 @@ std::string DrmHalAidl::reportPluginMetrics() const {
     return metricsString;
 }
 
-std::string DrmHalAidl::reportFrameworkMetrics(const std::string& pluginMetrics) const {
+std::string DrmHalAidl::reportFrameworkMetrics(const std::string& pluginMetrics,
+                                               const uint8_t uuid[16]) const {
+    if (pluginMetrics == "mediadrm_new") {
+        mediametrics_handle_t handle(mediametrics_create("mediadrm_new"));
+        mediametrics_setInt64(handle, "obj_nonce_msb", mObjNonceMsb);
+        mediametrics_setInt64(handle, "obj_nonce_lsb", mObjNonceLsb);
+        uint64_t uuid2[2] = {};
+        std::memcpy(uuid2, uuid, sizeof(uuid2));
+        mediametrics_setInt64(handle, "uuid_msb", uuid2[0]);
+        mediametrics_setInt64(handle, "uuid_lsb", uuid2[1]);
+        mediametrics_delete(handle);
+    }
     mediametrics_handle_t item(mediametrics_create("mediadrm"));
     mediametrics_setUid(item, mMetrics.GetAppUid());
     String8 vendor;

@@ -19,6 +19,7 @@
 #include <mediadrm/DrmStatus.h>
 #include <mediadrm/IDrmClient.h>
 #include <mediadrm/IDrmMetricsConsumer.h>
+#include <sys/random.h>
 
 #ifndef ANDROID_IDRM_H_
 
@@ -169,10 +170,15 @@ struct IDrm : public virtual RefBase {
     virtual DrmStatus getSupportedSchemes(std::vector<uint8_t> &schemes) const = 0;
 
 protected:
-    IDrm() {}
+    int64_t mObjNonceMsb, mObjNonceLsb;
+    IDrm() {
+        mObjNonceMsb = getrandom((void*) msbBuffer, 8, GRND_NONBLOCK);
+        mObjNonceLsb = getrandom((void*) lsbBuffer, 8, GRND_NONBLOCK);
+    }
 
 private:
     DISALLOW_EVIL_CONSTRUCTORS(IDrm);
+    int64_t msbBuffer[8], lsbBuffer[8];
 };
 
 }  // namespace android

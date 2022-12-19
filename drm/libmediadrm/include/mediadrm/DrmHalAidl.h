@@ -132,7 +132,8 @@ struct DrmHalAidl : public IDrm{
     void cleanup();
     void closeOpenSessions();
     std::string reportPluginMetrics() const;
-    std::string reportFrameworkMetrics(const std::string& pluginMetrics) const;
+    std::string reportFrameworkMetrics(const std::string& pluginMetrics,
+                                       const uint8_t uuid[16] = {}) const;
     DrmStatus getPropertyStringInternal(String8 const& name, String8& value) const;
     DrmStatus getPropertyByteArrayInternal(String8 const& name, Vector<uint8_t>& value) const;
     DISALLOW_EVIL_CONSTRUCTORS(DrmHalAidl);
