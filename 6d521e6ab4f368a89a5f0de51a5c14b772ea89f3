@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "952da980_857b4765",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08792b69_13ba20ae",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f03035d_4fd65d59",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da46088_956a43ca",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f03035d_4fd65d59",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "491edb35_2a85fdcc",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ff66909_d571721a",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d741515_724c468c",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39dd9d3_63f68f9e",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d741515_724c468c",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77cfa43_13b86abf",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "088ff9a0_685da174",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a61f94f_e305c0e3",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8205adb6_aa48a7c6",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a61f94f_e305c0e3",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +228,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8334908_b17a1e8a",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "566e585f_f541a7d9",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b542cab8_5f17215b",
@@ -133,6 +259,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11995bc_7e65963b",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b542cab8_5f17215b",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -154,6 +298,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af20de8_22f5de40",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86b8fa30_a66bdf90",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4dbf695_636433f0",
@@ -167,6 +329,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4237202a_37c4ca25",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4dbf695_636433f0",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -188,6 +368,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0497ff4_96c5e300",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8cb2e3a_455af0e9",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f07e74a3_ada6bf49",
@@ -201,6 +399,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d58598_104b2cdc",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07e74a3_ada6bf49",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -222,6 +438,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d8b0b8_d7c9dd16",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5b04f7_f5883df5",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7c01106_e7a4bfe1",
@@ -235,6 +469,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02214f7_f59996e7",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7c01106_e7a4bfe1",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -256,6 +508,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c838a8_f49051ef",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e73ce2_e5e4e2e3",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9244909d_8c098e89",
@@ -269,6 +539,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c9762e_83f76511",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9244909d_8c098e89",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -290,6 +578,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3844efca_069b2646",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "996f6f1a_198d391e",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394a1a54_43402782",
@@ -303,6 +609,24 @@
       "writtenOn": "2022-12-08T12:57:25Z",
       "side": 1,
       "message": "Check Contents\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. \n Presubmit Lint\n File Bug Documentation\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "985cedd3_efdc6649",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394a1a54_43402782",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -324,6 +648,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8daaccc9_2cf7c6e7",
+        "filename": "media/codec2/components/dtsdec/dts-decoder-c2-wrapper-api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b563b2cf_9d929d7c",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00cbad5d_8ac24f0e",
@@ -341,6 +683,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59477608_dae1e025",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2231,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00cbad5d_8ac24f0e",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18115844_37fcdb95",
@@ -354,6 +714,24 @@
       "writtenOn": "2022-12-08T10:52:07Z",
       "side": 1,
       "message": "We support only one media type per decoder so we\u0027ll have to split this part in multiple decoders (even if they are all mapped to the same library).",
+      "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc688e2d_e89d6be5",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2022-12-19T09:41:29Z",
+      "side": 1,
+      "message": "@dorindrimus@google.com, Added multiple decoder entries for each DTS media type.",
+      "parentUuid": "18115844_37fcdb95",
       "revId": "6d521e6ab4f368a89a5f0de51a5c14b772ea89f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
