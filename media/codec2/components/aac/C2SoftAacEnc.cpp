@@ -198,6 +198,19 @@ void C2SoftAacEnc::onRelease() {
 }
 
 c2_status_t C2SoftAacEnc::onFlush_sm() {
+    if (mSentCodecSpecificData && mAACEncoder)
+    {
+        /*   independent (re)initialization for encoder,
+	 *   encoder's internal input buffer need to be reset,
+	 *   codec internal variable 'nSamplesRead' will be clear
+	 *   by setting codec parameter 'AACENC_CONTROL_STATE' with
+	 *   value 'AACENC_INIT_ALL'.
+	 */
+        if (AACENC_OK != aacEncoder_SetParam(mAACEncoder, AACENC_CONTROL_STATE,
+				AACENC_INIT_ALL)) {
+            ALOGE("Failed to reset AAC encoder");
+        }
+    }
     mSentCodecSpecificData = false;
     mInputSize = 0u;
     mNextFrameTimestampUs.reset();
@@ -600,7 +613,7 @@ void C2SoftAacEnc::process(
         inBufferSize[0] = 0;
     }
 
-    if (inBufferSize[0] > 0) {
+    if (inBufferSize[0] > 0 && inBufferSize[0] <= sizeof(mRemainder)) {
         for (size_t i = 0; i < inBufferSize[0]; ++i) {
             mRemainder[i] = static_cast<uint8_t *>(inBuffer[0])[i];
         }
