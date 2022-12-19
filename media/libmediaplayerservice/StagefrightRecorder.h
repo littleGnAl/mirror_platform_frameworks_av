@@ -28,6 +28,7 @@
 #include <media/hardware/MetadataBufferType.h>
 #include <media/stagefright/foundation/AString.h>
 #include <android/content/AttributionSourceState.h>
+#include <future>
 
 namespace android {
 
@@ -211,8 +212,9 @@ private:
     // depending on the videosource type
     status_t setupMediaSource(sp<MediaSource> *mediaSource);
     status_t setupCameraSource(sp<CameraSource> *cameraSource);
-    status_t setupAudioEncoder(const sp<MediaWriter>& writer);
-    status_t setupVideoEncoder(const sp<MediaSource>& cameraSource, sp<MediaCodecSource> *source);
+    status_t setupAudioEncoder();
+    status_t setupVideoEncoder(const sp<MediaSource>& cameraSource, sp<MediaCodecSource> *source,
+            bool createAsync = false, std::future<status_t> *futureVal = nullptr);
 
     // Encoding parameter handling utilities
     status_t setParameter(const String8 &key, const String8 &value);

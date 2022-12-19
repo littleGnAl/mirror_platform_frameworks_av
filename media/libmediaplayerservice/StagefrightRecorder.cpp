@@ -1586,11 +1586,12 @@ status_t StagefrightRecorder::setupMPEG2TSRecording() {
             return ERROR_UNSUPPORTED;
         }
 
-        status_t err = setupAudioEncoder(writer);
+        status_t err = setupAudioEncoder();
 
         if (err != OK) {
             return err;
         }
+        writer->addSource(mAudioEncoderSource);
     }
 
     if (mVideoSource < VIDEO_SOURCE_LIST_END) {
@@ -1955,7 +1956,8 @@ status_t StagefrightRecorder::setupCameraSource(
 
 status_t StagefrightRecorder::setupVideoEncoder(
         const sp<MediaSource> &cameraSource,
-        sp<MediaCodecSource> *source) {
+        sp<MediaCodecSource> *source,
+        bool createAsync, std::future<status_t> *futureVal) {
     ATRACE_CALL();
     source->clear();
 
@@ -2115,30 +2117,44 @@ status_t StagefrightRecorder::setupVideoEncoder(
         // require dataspace setup even if not using surface input
         format->setInt32("android._using-recorder", 1);
     }
-
-    sp<MediaCodecSource> encoder = MediaCodecSource::Create(
-            mLooper, format, cameraSource, mPersistentSurface, flags);
-    if (encoder == NULL) {
-        ALOGE("Failed to create video encoder");
-        // When the encoder fails to be created, we need
-        // release the camera source due to the camera's lock
-        // and unlock mechanism.
-        if (cameraSource != NULL) {
-            cameraSource->stop();
+    auto createEncoder = [](const sp<ALooper> &looper, const sp<AMessage> &format,
+            const sp<MediaSource> &_cameraSource, sp<MediaCodecSource> *_source,
+            const sp<PersistentSurface> &persistentSurface, uint32_t flags,
+            sp<IGraphicBufferProducer> graphicBufferProducer) -> status_t {
+        sp<MediaCodecSource> encoder = MediaCodecSource::Create(
+                looper, format, _cameraSource, persistentSurface, flags);
+        if (encoder == NULL) {
+            ALOGE("Failed to create video encoder");
+            // When the encoder fails to be created, we need
+            // release the camera source due to the camera's lock
+            // and unlock mechanism.
+            if (_cameraSource != NULL) {
+                _cameraSource->stop();
+            }
+            return UNKNOWN_ERROR;
         }
-        return UNKNOWN_ERROR;
+
+        if (_cameraSource == NULL) {
+            graphicBufferProducer = encoder->getGraphicBufferProducer();
+        }
+
+        *_source = encoder;
+        return OK;
+    };
+    if (createAsync && futureVal) {
+        *futureVal = std::async(std::launch::async, createEncoder,
+            mLooper, format, cameraSource, source, mPersistentSurface,
+            flags, mGraphicBufferProducer);
+        return OK;
     }
 
-    if (cameraSource == NULL) {
-        mGraphicBufferProducer = encoder->getGraphicBufferProducer();
-    }
+    auto err = createEncoder(mLooper, format, cameraSource, source,
+        mPersistentSurface, flags, mGraphicBufferProducer);
 
-    *source = encoder;
-
-    return OK;
+    return err;
 }
 
-status_t StagefrightRecorder::setupAudioEncoder(const sp<MediaWriter>& writer) {
+status_t StagefrightRecorder::setupAudioEncoder() {
     ATRACE_CALL();
     status_t status = BAD_VALUE;
     if (OK != (status = checkAudioEncoderCapabilities())) {
@@ -2163,8 +2179,6 @@ status_t StagefrightRecorder::setupAudioEncoder(const sp<MediaWriter>& writer) {
     if (audioEncoder == NULL) {
         return UNKNOWN_ERROR;
     }
-
-    writer->addSource(audioEncoder);
     mAudioEncoderSource = audioEncoder;
     return OK;
 }
@@ -2172,8 +2186,11 @@ status_t StagefrightRecorder::setupAudioEncoder(const sp<MediaWriter>& writer) {
 status_t StagefrightRecorder::setupMPEG4orWEBMRecording() {
     mWriter.clear();
     mTotalBitRate = 0;
+    sp<MediaCodecSource> videoSource;
+    std::future<status_t> futureVal;
 
     status_t err = OK;
+    status_t errVideo = OK;
     sp<MediaWriter> writer;
     sp<MPEG4Writer> mp4writer;
     if (mOutputFormat == OUTPUT_FORMAT_WEBM) {
@@ -2191,15 +2208,10 @@ status_t StagefrightRecorder::setupMPEG4orWEBMRecording() {
             return err;
         }
 
-        sp<MediaCodecSource> encoder;
-        err = setupVideoEncoder(mediaSource, &encoder);
+        err = setupVideoEncoder(mediaSource, &videoSource, true, &futureVal);
         if (err != OK) {
             return err;
         }
-
-        writer->addSource(encoder);
-        mVideoEncoderSource = encoder;
-        mTotalBitRate += mVideoBitRate;
     }
 
     // Audio source is added at the end if it exists.
@@ -2208,8 +2220,18 @@ status_t StagefrightRecorder::setupMPEG4orWEBMRecording() {
     // disable audio for time lapse recording
     const bool disableAudio = mCaptureFpsEnable && mCaptureFps < mFrameRate;
     if (!disableAudio && mAudioSource != AUDIO_SOURCE_CNT) {
-        err = setupAudioEncoder(writer);
+        err = setupAudioEncoder();
+    }
+    if (mVideoSource < VIDEO_SOURCE_LIST_END) {
+        errVideo = futureVal.get();
+        if (errVideo != OK) return errVideo;
+        writer->addSource(videoSource);
+        mVideoEncoderSource = videoSource;
+        mTotalBitRate += mVideoBitRate;
+    }
+    if (!disableAudio && mAudioSource != AUDIO_SOURCE_CNT) {
         if (err != OK) return err;
+        writer->addSource(mAudioEncoderSource);
         mTotalBitRate += mAudioBitRate;
     }
 
