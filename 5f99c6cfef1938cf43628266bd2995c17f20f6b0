@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e1d378_9dd5f283",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-19T01:17:26Z",
+      "side": 1,
+      "message": "There should be an include for `hardware/interfaces/audio/aidl/common/include/Utils.h`",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "5f99c6cfef1938cf43628266bd2995c17f20f6b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
