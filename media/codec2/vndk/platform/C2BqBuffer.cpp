@@ -430,6 +430,13 @@ private:
         bool dequeueable = false;
         uint32_t waitId;
         if (fence) {
+            auto clearSlot = [bufferNeedsReallocation](sp<GraphicBuffer> &slotBuffer) {
+                /* must discard cached GraphicBuffer references for the slot returned */
+                if (bufferNeedsReallocation && slotBuffer) {
+                    slotBuffer.clear();
+                }
+            };
+
             static constexpr int kFenceWaitTimeMs = 10;
 
             status_t status = fence->wait(kFenceWaitTimeMs);
@@ -447,6 +454,8 @@ private:
                 } else {
                     (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
                 }
+
+                clearSlot(mBuffers[slot]);
                 return C2_BLOCKING;
             }
             if (status != android::NO_ERROR) {
@@ -462,6 +471,8 @@ private:
                 } else {
                     (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
                 }
+
+                clearSlot(mBuffers[slot]);
                 return C2_BAD_VALUE;
             } else if (mRenderCallback) {
                 nsecs_t signalTime = fence->getSignalTime();
