@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7273e8_976cc093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-20T01:32:01Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve realized I missed an issue with abuse of `using` directives.",
+      "revId": "23591234eca15ce5fd09451dff5ab3d7a23afda3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52110206_87b86cc7",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-20T01:32:01Z",
+      "side": 1,
+      "message": "In header files it is preferred to use full class names to avoid name collisions, and avoid `using` directives. It would be even advisable to prepend the name of the namespace with `::`: `::aidl::media::audio::common::AudioChannelLayout`.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "23591234eca15ce5fd09451dff5ab3d7a23afda3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0275c138_01c200a1",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-20T01:32:01Z",
+      "side": 1,
+      "message": "Sorry, I missed this on the first pass. I must note that `using namespace` is generally prohibited, unless used under controlled circumstances (e.g. within a method). Adding it to a header file is not a good idea as it will affect all modules that include this file, and can lead to hard to find errors. Please use full class names.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "23591234eca15ce5fd09451dff5ab3d7a23afda3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
