@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a8a64c_a3f6a397",
+        "filename": "drm/libmediadrm/DrmHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-20T17:13:24Z",
+      "side": 1,
+      "message": "Report metrics in `DrmMetricsLogger`.",
+      "range": {
+        "startLine": 499,
+        "startChar": 12,
+        "endLine": 499,
+        "endChar": 34
+      },
+      "revId": "c39842d0d08e915b7a28f570acc1a85c376711e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579ae83d_520d6564",
+        "filename": "drm/libmediadrm/include/mediadrm/IDrm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-20T17:13:24Z",
+      "side": 1,
+      "message": "Can we create a new implementation of IDrm that instruments another existing IDrm implementation instead?\n\nE.g.\n```\nclass DrmMetricsLogger : public IDrm {\n  // ...\n  sp\u003cIDrm\u003e mImpl;\n}\n```",
+      "revId": "c39842d0d08e915b7a28f570acc1a85c376711e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
