@@ -1451,8 +1451,15 @@ nsecs_t Camera3OutputStream::syncTimestampToDisplayLocked(nsecs_t t) {
         }
         if (std::abs(vsyncTime.expectedPresentationTime - idealPresentT) < minDiff &&
                 vsyncTime.deadlineTimestamp >= currentTime &&
+<<<<<<< TARGET BRANCH (666603 Merge "Merge "Downmix : Add libeffect implementation" am: f1)
                 vsyncTime.expectedPresentationTime >
                 mLastPresentTime + minInterval + biasForShortDelay * kTimelineThresholdNs) {
+=======
+                ((!cameraDisplayInSync && vsyncTime.expectedPresentationTime > minPresentT) ||
+                 (cameraDisplayInSync && vsyncTime.expectedPresentationTime >
+                mLastPresentTime + minInterval +
+                    static_cast<nsecs_t>(biasForShortDelay * kTimelineThresholdNs)))) {
+>>>>>>> SOURCE BRANCH (c7abb6 Merge "Fix an issue that the syncTimestampToDisplayLocked in)
             expectedPresentT = vsyncTime.expectedPresentationTime;
             minDiff = std::abs(vsyncTime.expectedPresentationTime - idealPresentT);
         }
