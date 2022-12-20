@@ -46,6 +46,30 @@
       },
       "revId": "cfd6f3105769eac17691e8de772b838995cc90ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb20aa9_21afae60",
+        "filename": "media/audioaidlconversion/AidlConversionCppNdk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2163,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-20T18:31:03Z",
+      "side": 1,
+      "message": "Yes, that\u0027s because the framework and the HAL share the definition, and unlike C++ headers, we can\u0027t use a preprocessor macro to distinguish between these usages. An alternative approach would be to define two enums: one for the HAL and another for the framework, but this adds more complexity. It\u0027s simpler to ensure that the HAL rejects sys-only values by means of VTS.",
+      "parentUuid": "2d0e1076_f04626e0",
+      "range": {
+        "startLine": 2163,
+        "startChar": 57,
+        "endLine": 2163,
+        "endChar": 80
+      },
+      "revId": "cfd6f3105769eac17691e8de772b838995cc90ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
