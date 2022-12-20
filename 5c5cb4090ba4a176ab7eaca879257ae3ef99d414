@@ -45,6 +45,30 @@
       },
       "revId": "5c5cb4090ba4a176ab7eaca879257ae3ef99d414",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c56a95_377b3f85",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7538,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2022-12-20T04:57:43Z",
+      "side": 1,
+      "message": "Hi Michael,\nI have checked the existing style in this file (eg: https://android-review.googlesource.com/c/platform/frameworks/av/+/2361639/1/services/audioflinger/Threads.cpp#7998)\n\nGoogle don\u0027t seem to follow your suggested style. So I will leave it as it is now.",
+      "parentUuid": "6c7ad3f7_6570cdfc",
+      "range": {
+        "startLine": 7538,
+        "startChar": 32,
+        "endLine": 7538,
+        "endChar": 33
+      },
+      "revId": "5c5cb4090ba4a176ab7eaca879257ae3ef99d414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
