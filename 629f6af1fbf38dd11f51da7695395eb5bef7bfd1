@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c14265_9f09f966",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307624
+      },
+      "writtenOn": "2022-12-21T18:23:09Z",
+      "side": 1,
+      "message": "Nope, we have a large tool that uses the NDK to get HEIC.",
+      "parentUuid": "3fa2ab9a_1f4c2f26",
+      "revId": "629f6af1fbf38dd11f51da7695395eb5bef7bfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66fdd7df_804d933d",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-12-21T18:12:31Z",
       "side": 1,
       "message": "this should get defined in android_media_Utils.h like JPEG_BLOB_ID is: https://cs.android.com/android/platform/superproject/+/master:frameworks/base/media/jni/android_media_Utils.h;drc\u003d0644a5f9844674bf47225f8420c785f788edcbfa;l\u003d63",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "629f6af1fbf38dd11f51da7695395eb5bef7bfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66618fd2_7a865d9b",
+        "filename": "media/ndk/NdkImage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1307624
+      },
+      "writtenOn": "2022-12-21T18:23:09Z",
+      "side": 1,
+      "message": "Happy to do this, but IMO it belongs to a different patch, where the `HEIC_BLOB_ID` defines in frameworks/base/media/jni/android_media_Utils.cpp and frameworks/av/media/ndk/NdkImage.cpp are replaced at the same time.",
+      "parentUuid": "66fdd7df_804d933d",
       "range": {
         "startLine": 30,
         "startChar": 8,
