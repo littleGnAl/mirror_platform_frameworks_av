@@ -284,6 +284,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     // allow tunnel peek behavior to be unspecified for app compatibility
     kParamIndexTunnelPeekMode, // tunnel mode, enum
+
+    // render delay parameter
+    kParamIndexRenderDelay, // uint32
 };
 
 }
@@ -2537,6 +2540,13 @@ C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
 typedef C2StreamParam<C2Info, C2SimpleValueStruct<int32_t>, kParamIndexAverageBlockQuantization>
         C2AndroidStreamAverageBlockQuantizationInfo;
 constexpr char C2_PARAMKEY_AVERAGE_QP[] = "coded.average-qp";
+
+/**
+ * Render delay is the number of additional frames that are doing render at one time by renderer.
+ **/
+// read-only
+typedef C2GlobalParam<C2Tuning, C2Uint32Value, kParamIndexRenderDelay> C2RenderDelayTuning;
+constexpr char C2_PARAMKEY_RENDER_DELAY[] = "algo.render-delay";
 
 /// @}
 
