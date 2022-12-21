@@ -464,6 +464,9 @@ media_status_t WAVSource::read(
     if (err != OK) {
         return err;
     }
+    if (!buffer) {
+        return AMEDIA_ERROR_UNKNOWN;
+    }
 
     // maxBytesToRead may be reduced so that in-place data conversion will fit in buffer size.
     const size_t bufferSize = std::min(buffer->size(), kMaxFrameSize);

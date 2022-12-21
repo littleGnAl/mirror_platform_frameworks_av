@@ -6337,7 +6337,7 @@ media_status_t MPEG4Source::read(
 
         err = mBufferGroup->acquire_buffer(&mBuffer);
 
-        if (err != OK) {
+        if (err != OK || !mBuffer) {
             CHECK(mBuffer == NULL);
             return AMEDIA_ERROR_UNKNOWN;
         }
