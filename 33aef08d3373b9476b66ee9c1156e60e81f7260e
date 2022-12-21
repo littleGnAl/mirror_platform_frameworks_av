@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eccef4aa_4b1da6bb",
+        "filename": "media/libeffects/hapticgenerator/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-21T23:54:28Z",
+      "side": 1,
+      "message": "Shunkai,\nas discussed we will take this up in a follow up CL.\nI have added this comment on https://android-review.googlesource.com/c/platform/frameworks/av/+/2366809 so that it is not lost.",
+      "parentUuid": "d567ea8f_e8e874e0",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "33aef08d3373b9476b66ee9c1156e60e81f7260e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e2a996_5b88eceb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-21T20:34:35Z",
       "side": 1,
       "message": "I think we still need lock to make sure the mParams change in `setParameter()` and access here (and coef access in runProcessingChain) to be protected right?",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "33aef08d3373b9476b66ee9c1156e60e81f7260e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73387a40_5e33bd94",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-21T23:54:28Z",
+      "side": 1,
+      "message": "Shunkai,\nas discussed we will take this up in a follow up CL.\nI have added this comment on https://android-review.googlesource.com/c/platform/frameworks/av/+/2366809 so that it is not lost.",
+      "parentUuid": "f7e2a996_5b88eceb",
       "range": {
         "startLine": 129,
         "startChar": 8,
