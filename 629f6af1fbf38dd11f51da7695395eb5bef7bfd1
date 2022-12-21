@@ -98,6 +98,30 @@
       },
       "revId": "629f6af1fbf38dd11f51da7695395eb5bef7bfd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f0a196_2ab567ee",
+        "filename": "media/ndk/NdkImage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1307624
+      },
+      "writtenOn": "2022-12-21T18:37:09Z",
+      "side": 1,
+      "message": "Something along the lines of:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2366668\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/2366688",
+      "parentUuid": "66618fd2_7a865d9b",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "629f6af1fbf38dd11f51da7695395eb5bef7bfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
