@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2295f2_425ebb91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-21T23:53:45Z",
+      "side": 1,
+      "message": "Comment from Shunkai at\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2362124/comment/d567ea8f_e8e874e0/\n```\nNit: maybe better to put these common part of libhapticgenerator and\nlibhapticgeneratoraidl into a cc_defaults\n```",
+      "revId": "d27b7955554629005332022c0f0a1c017c423945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc5184a_06d3cca3",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-21T23:53:45Z",
+      "side": 1,
+      "message": "Comment from Shunkai at https://android-review.googlesource.com/c/platform/frameworks/av/+/2362124/comment/f7e2a996_5b88eceb/\n\n```\nI think we still need lock to make sure the mParams change in setParameter() and\naccess here (and coef access in runProcessingChain) to be protected right?\n```",
+      "revId": "d27b7955554629005332022c0f0a1c017c423945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
