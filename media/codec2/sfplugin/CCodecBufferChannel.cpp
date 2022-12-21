@@ -1053,6 +1053,7 @@ status_t CCodecBufferChannel::start(
     C2PortActualDelayTuning::input inputDelay(0);
     C2PortActualDelayTuning::output outputDelay(0);
     C2ActualPipelineDelayTuning pipelineDelay(0);
+    C2RenderDelayTuning renderDelay(0);
     C2SecureModeTuning secureMode(C2Config::SM_UNPROTECTED);
 
     c2_status_t err = mComponent->query(
@@ -1065,6 +1066,7 @@ status_t CCodecBufferChannel::start(
                 &inputDelay,
                 &pipelineDelay,
                 &outputDelay,
+                &renderDelay,
                 &secureMode,
             },
             {},
@@ -1081,6 +1083,7 @@ status_t CCodecBufferChannel::start(
     uint32_t inputDelayValue = inputDelay ? inputDelay.value : 0;
     uint32_t pipelineDelayValue = pipelineDelay ? pipelineDelay.value : 0;
     uint32_t outputDelayValue = outputDelay ? outputDelay.value : 0;
+    uint32_t renderDelayValue = renderDelay ? renderDelay.value : 0;
 
     size_t numInputSlots = inputDelayValue + pipelineDelayValue + kSmoothnessFactor;
     size_t numOutputSlots = outputDelayValue + kSmoothnessFactor;
@@ -1390,6 +1393,7 @@ status_t CCodecBufferChannel::start(
         Mutexed<Output>::Locked output(mOutput);
         output->outputDelay = outputDelayValue;
         output->numSlots = numOutputSlots;
+        output->renderDelay = renderDelayValue;
         if (graphic) {
             if (outputSurface || !buffersBoundToCodec) {
                 output->buffers.reset(new GraphicOutputBuffers(mName));
@@ -1773,7 +1777,8 @@ bool CCodecBufferChannel::handleWork(
         }
     }
 
-    std::optional<uint32_t> newInputDelay, newPipelineDelay, newOutputDelay, newReorderDepth;
+    std::optional<uint32_t> newInputDelay, newPipelineDelay, newOutputDelay, newReorderDepth,
+            newRenderDelay;
     std::optional<C2Config::ordinal_key_t> newReorderKey;
     bool needMaxDequeueBufferCountUpdate = false;
     while (!worklet->output.configUpdate.empty()) {
@@ -1859,6 +1864,17 @@ bool CCodecBufferChannel::handleWork(
                 mCCodecCallback->onFirstTunnelFrameReady();
                 break;
             }
+            case C2RenderDelayTuning::CORE_INDEX: {
+                if (param->isGlobal()) {
+                    C2RenderDelayTuning renderDelay(0);
+                    if (renderDelay.updateFrom(*param)) {
+                        ALOGV("[%s] onWorkDone: updating render delay %u", mName,
+                              renderDelay.value);
+                        newRenderDelay = renderDelay.value;
+                    }
+                }
+                break;
+            }
             default:
                 ALOGV("[%s] onWorkDone: unrecognized config update (%08X)",
                       mName, param->index());
@@ -1915,6 +1931,10 @@ bool CCodecBufferChannel::handleWork(
             }
         }
         numOutputSlots = output->numSlots;
+    }
+    if (newRenderDelay) {
+        Mutexed<Output>::Locked output(mOutput);
+        output->renderDelay = newRenderDelay.value();
     }
     if (outputBuffersChanged) {
         mCCodecCallback->onOutputBuffersChanged();
@@ -2151,9 +2171,10 @@ PipelineWatcher::Clock::duration CCodecBufferChannel::elapsed() {
     //                    number of frames.
     size_t n = 0;
     size_t outputDelay = mOutput.lock()->outputDelay;
+    size_t renderDelay = mOutput.lock()->renderDelay;
     {
         Mutexed<Input>::Locked input(mInput);
-        n = input->inputDelay + input->pipelineDelay + outputDelay;
+        n = input->inputDelay + input->pipelineDelay + outputDelay + renderDelay;
     }
     return mPipelineWatcher.lock()->elapsed(PipelineWatcher::Clock::now(), n);
 }
