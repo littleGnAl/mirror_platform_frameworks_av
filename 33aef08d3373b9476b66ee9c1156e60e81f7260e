@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d567ea8f_e8e874e0",
+        "filename": "media/libeffects/hapticgenerator/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-21T20:34:35Z",
+      "side": 1,
+      "message": "Nit: maybe better to put these common part of libhapticgenerator and libhapticgeneratoraidl into a `cc_defaults`",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "33aef08d3373b9476b66ee9c1156e60e81f7260e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e2a996_5b88eceb",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-21T20:34:35Z",
+      "side": 1,
+      "message": "I think we still need lock to make sure the mParams change in `setParameter()` and access here (and coef access in runProcessingChain) to be protected right?",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "33aef08d3373b9476b66ee9c1156e60e81f7260e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
