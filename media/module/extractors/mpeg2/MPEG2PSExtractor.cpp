@@ -703,7 +703,10 @@ media_status_t MPEG2PSExtractor::Track::read(
     mSource->read(&mbuf, (MediaTrack::ReadOptions*) options);
     size_t length = mbuf->range_length();
     MediaBufferHelper *outbuf;
-    mBufferGroup->acquire_buffer(&outbuf, false, length);
+    status_t err = mBufferGroup->acquire_buffer(&outbuf, false, length);
+    if (err != OK || !outbuf) {
+        return AMEDIA_ERROR_UNKNOWN;
+    }
     memcpy(outbuf->data(), mbuf->data(), length);
     outbuf->set_range(0, length);
     *buffer = outbuf;

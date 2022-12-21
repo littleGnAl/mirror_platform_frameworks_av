@@ -799,7 +799,10 @@ media_status_t MatroskaSource::readBlock() {
 
         len += trackInfo->mHeaderLen;
         MediaBufferHelper *mbuf;
-        mBufferGroup->acquire_buffer(&mbuf, false /* nonblocking */, len /* requested size */);
+        status_t err = mBufferGroup->acquire_buffer(&mbuf, false /* nonblocking */, len /* requested size */);
+        if (err != OK || !mbuf) {
+            return AMEDIA_ERROR_UNKNOWN;
+        }
         mbuf->set_range(0, len);
         uint8_t *data = static_cast<uint8_t *>(mbuf->data());
         if (trackInfo->mHeader) {
@@ -832,7 +835,7 @@ media_status_t MatroskaSource::readBlock() {
             }
         }
 
-        status_t err = frame.Read(mExtractor->mReader, data + trackInfo->mHeaderLen);
+        err = frame.Read(mExtractor->mReader, data + trackInfo->mHeaderLen);
         if (err == OK
                 && mExtractor->mIsWebm
                 && trackInfo->mEncrypted) {
@@ -1190,8 +1193,11 @@ media_status_t MatroskaSource::read(
                 // each 4-byte nal size with a 4-byte start code
                 buffer = frame;
             } else {
-                mBufferGroup->acquire_buffer(
+                status_t err = mBufferGroup->acquire_buffer(
                         &buffer, false /* nonblocking */, dstSize /* requested size */);
+                if (err != OK || !buffer) {
+                    return AMEDIA_ERROR_UNKNOWN;
+                }
                 buffer->set_range(0, dstSize);
             }
 
