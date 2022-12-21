@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1813d7e_92439c39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-21T18:48:25Z",
+      "side": 1,
+      "message": "we\u0027d still want a test for this new code.\nIf one doesn\u0027t come with it, integration would wait until we do our own.",
+      "parentUuid": "36c14265_9f09f966",
+      "revId": "629f6af1fbf38dd11f51da7695395eb5bef7bfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66fdd7df_804d933d",
         "filename": "media/ndk/NdkImage.cpp",
         "patchSetId": 1
@@ -113,6 +131,30 @@
       "writtenOn": "2022-12-21T18:37:09Z",
       "side": 1,
       "message": "Something along the lines of:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2366668\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/2366688",
+      "parentUuid": "66618fd2_7a865d9b",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "629f6af1fbf38dd11f51da7695395eb5bef7bfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f237ebbf_25511758",
+        "filename": "media/ndk/NdkImage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-21T18:48:25Z",
+      "side": 1,
+      "message": "i think we should try to share a single routine instead of just sharing a defined constant.\n\nIf we want the only copy to be in the ndk, then we have to resolve the fact that copy is private to AImage.",
       "parentUuid": "66618fd2_7a865d9b",
       "range": {
         "startLine": 30,
