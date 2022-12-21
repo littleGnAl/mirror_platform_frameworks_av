@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc87a47_2d361891",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-21T20:49:30Z",
+      "side": 1,
+      "message": "I think we should also check with `kVolumeCap.maxLevel`\n`static const Volume::Capability kVolumeCap \u003d {.maxLevel \u003d mMaxLevel};`\n\nAs I understand `MAX_LEVEL_DB` and `MIN_LEVEL_DB` will be replaced with Capability definition?\nCan be a TODO to add later (together with placeholder and vts change)",
+      "range": {
+        "startLine": 526,
+        "startChar": 40,
+        "endLine": 526,
+        "endChar": 68
+      },
+      "revId": "2c995069cd75217d464669f86949e2c000ac2b8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
