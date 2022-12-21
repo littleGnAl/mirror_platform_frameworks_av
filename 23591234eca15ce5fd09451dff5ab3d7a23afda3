@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f1e72a_e8e7ce48",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-21T19:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52110206_87b86cc7",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "23591234eca15ce5fd09451dff5ab3d7a23afda3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0275c138_01c200a1",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-12-20T01:32:01Z",
       "side": 1,
       "message": "Sorry, I missed this on the first pass. I must note that `using namespace` is generally prohibited, unless used under controlled circumstances (e.g. within a method). Adding it to a header file is not a good idea as it will affect all modules that include this file, and can lead to hard to find errors. Please use full class names.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "23591234eca15ce5fd09451dff5ab3d7a23afda3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8780c3_4a8b35a1",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-21T19:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0275c138_01c200a1",
       "range": {
         "startLine": 28,
         "startChar": 0,
