@@ -1153,6 +1153,7 @@ status_t CCodecConfig::initialize(
     mSubscribedIndices.emplace(C2ActualPipelineDelayTuning::PARAM_TYPE);
     mSubscribedIndices.emplace(C2PortActualDelayTuning::input::PARAM_TYPE);
     mSubscribedIndices.emplace(C2PortActualDelayTuning::output::PARAM_TYPE);
+    mSubscribedIndices.emplace(C2RenderDelayTuning::PARAM_TYPE);
     // for output buffer array allocation
     mSubscribedIndices.emplace(C2StreamMaxBufferSizeInfo::output::PARAM_TYPE);
     // init data (CSD)

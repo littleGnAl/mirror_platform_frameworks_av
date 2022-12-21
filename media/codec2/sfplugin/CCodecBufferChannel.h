@@ -307,6 +307,7 @@ private:
         std::unique_ptr<OutputBuffers> buffers;
         size_t numSlots;
         uint32_t outputDelay;
+        uint32_t renderDelay;
     };
     Mutexed<Output> mOutput;
     Mutexed<std::list<std::unique_ptr<C2Work>>> mFlushedConfigs;
