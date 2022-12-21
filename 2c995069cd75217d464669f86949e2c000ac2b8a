@@ -22,6 +22,30 @@
       },
       "revId": "2c995069cd75217d464669f86949e2c000ac2b8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e617a31c_86efd9e2",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-21T22:37:40Z",
+      "side": 1,
+      "message": "Done.\nYeah will create CL for adding capabilities and modify vts, default as well as libeffects implementation.",
+      "parentUuid": "cdc87a47_2d361891",
+      "range": {
+        "startLine": 526,
+        "startChar": 40,
+        "endLine": 526,
+        "endChar": 68
+      },
+      "revId": "2c995069cd75217d464669f86949e2c000ac2b8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
