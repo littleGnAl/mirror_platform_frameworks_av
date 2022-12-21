@@ -931,6 +931,9 @@ status_t MyOggExtractor::init() {
         if ((err = _readNextPacket(&packet, /* calcVorbisTimestamp = */ false)) != AMEDIA_OK) {
             return err;
         }
+        if (!packet) {
+            return AMEDIA_ERROR_UNKNOWN;
+        }
         ALOGV("read packet of size %zu\n", packet->range_length());
         err = verifyHeader(packet, /* type = */ i * 2 + 1);
         packet->release();

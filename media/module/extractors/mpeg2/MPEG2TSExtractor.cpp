@@ -187,6 +187,9 @@ media_status_t MPEG2TSSource::read(
     size_t length = mbuf->range_length();
     MediaBufferHelper *outbuf;
     mBufferGroup->acquire_buffer(&outbuf, false, length);
+    if (!outbuf) {
+        return AMEDIA_ERROR_UNKNOWN;
+    }
     memcpy(outbuf->data(), mbuf->data(), length);
     outbuf->set_range(0, length);
     *out = outbuf;
