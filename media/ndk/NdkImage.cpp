@@ -26,9 +26,6 @@
 #include <private/android/AHardwareBufferHelpers.h>
 #include <utils/Log.h>
 
-// Must be in sync with the value in HeicCompositeStream.cpp and android_media_Utils.cpp
-#define CAMERA3_HEIC_BLOB_ID 0x00FE
-
 using namespace android;
 
 #define ALIGN(x, mask) ( ((x) + (mask) - 1) & ~((mask) - 1) )
