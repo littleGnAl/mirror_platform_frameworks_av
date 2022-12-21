@@ -312,7 +312,7 @@ media_status_t AACSource::read(
 
     MediaBufferHelper *buffer;
     status_t err = mBufferGroup->acquire_buffer(&buffer);
-    if (err != OK) {
+    if (err != OK || !buffer) {
         return AMEDIA_ERROR_UNKNOWN;
     }
 
