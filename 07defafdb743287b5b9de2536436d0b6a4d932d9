@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca510fcc_4ed94731",
+        "filename": "media/module/extractors/aac/AACExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-21T23:26:47Z",
+      "side": 1,
+      "message": "i\u0027d have thought that initializing buffer \u003d nullptr here would get\nclang to be quiet.\n\nwe have a bunch of code that follows the existing pattern (usually with an initializer).\n\nis there an annotation we can put somewhere in here (on acquire_buffer() perhaps) that will take care of the warning? it is part of the contract for this api\nthat buffer will be filled appropriately if the routine return OK).",
+      "range": {
+        "startLine": 313,
+        "startChar": 22,
+        "endLine": 313,
+        "endChar": 30
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1414e0b5_8ed8c071",
+        "filename": "media/module/extractors/amr/AMRExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-21T23:26:47Z",
+      "side": 1,
+      "message": "i\u0027m less enamored with this pattern as i look at each time in this CL.\nI realize it\u0027s here to get the compiler to be quiet.\n\nBut it feels like the compiler\u0027s warning message is taking us down a path where we have to make our api\u0027s that have this pattern be referenced with what I\u0027m going to call \"trust but verify\".",
+      "range": {
+        "startLine": 346,
+        "startChar": 9,
+        "endLine": 346,
+        "endChar": 31
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c2060c_0ba558cf",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-12-21T23:26:47Z",
+      "side": 1,
+      "message": "bigger problem is that we ignore the return value here, which tells us whether\nmbuf has been filled in with a useful answer.",
+      "range": {
+        "startLine": 802,
+        "startChar": 6,
+        "endLine": 802,
+        "endChar": 40
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
