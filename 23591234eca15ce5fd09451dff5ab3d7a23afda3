@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "168fc2ea_7a6fa331",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-22T00:29:22Z",
+      "side": 1,
+      "message": "Note: `using` for a concrete class, in the context of a .cpp file is OK. What\u0027s discourages is: `using namespace` almost anywhere and `using` directives in header files. Please see https://google.github.io/styleguide/cppguide.html#Namespaces for more context. Judicious use of `using` results in a cleaner code, but we shouldn\u0027t abuse it because it can easily lead to name clashes at unexpected places.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "23591234eca15ce5fd09451dff5ab3d7a23afda3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52110206_87b86cc7",
