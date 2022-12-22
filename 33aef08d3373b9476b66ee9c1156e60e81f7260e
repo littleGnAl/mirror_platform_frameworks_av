@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "065de131_f2a13262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-12-22T03:33:05Z",
+      "side": 1,
+      "message": "Mikhail, Shunkai,\nPresubmit runs have a warning (unrelated to these CLs) and because of that autosubmit +1 won\u0027t work for these. \nWhen you get a chance, can you please submit these two CLs (aidl_audio_effect_haptic_generator) manually? (We don\u0027t have manual submit permissions).\nThanks.",
+      "revId": "33aef08d3373b9476b66ee9c1156e60e81f7260e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d567ea8f_e8e874e0",
