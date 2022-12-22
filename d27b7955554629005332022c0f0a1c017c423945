@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "315d6cd5_beaefff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-22T15:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e2295f2_425ebb91",
+      "revId": "d27b7955554629005332022c0f0a1c017c423945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efc5184a_06d3cca3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-21T23:53:45Z",
       "side": 1,
       "message": "Comment from Shunkai at https://android-review.googlesource.com/c/platform/frameworks/av/+/2362124/comment/f7e2a996_5b88eceb/\n\n```\nI think we still need lock to make sure the mParams change in setParameter() and\naccess here (and coef access in runProcessingChain) to be protected right?\n```",
+      "revId": "d27b7955554629005332022c0f0a1c017c423945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "973137d6_870f51a5",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2022-12-22T15:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc5184a_06d3cca3",
       "revId": "d27b7955554629005332022c0f0a1c017c423945",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
