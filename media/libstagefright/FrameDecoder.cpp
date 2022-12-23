@@ -539,11 +539,7 @@ sp<AMessage> VideoFrameDecoder::onGetFormatAndSeekOptions(
         return NULL;
     }
 
-    if (dstFormat() == COLOR_Format32bitABGR2101010) {
-        videoFormat->setInt32("color-format", COLOR_FormatYUVP010);
-    } else {
-        videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
-    }
+    videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
 
     // For the thumbnail extraction case, try to allocate single buffer in both
     // input and output ports, if seeking to a sync frame. NOTE: This request may
@@ -555,7 +551,7 @@ sp<AMessage> VideoFrameDecoder::onGetFormatAndSeekOptions(
         videoFormat->setInt32("android._num-output-buffers", 1);
     }
 
-    if (isHDR(videoFormat)) {
+    if (isHDR(videoFormat) || (dstFormat() == COLOR_Format32bitABGR2101010)) {
         *window = initSurface();
         if (*window == NULL) {
             ALOGE("Failed to init surface control for HDR, fallback to non-hdr");
