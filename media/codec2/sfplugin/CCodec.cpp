@@ -208,9 +208,9 @@ public:
         mNode->setFrameSize(mWidth, mHeight);
 
         // Usage is queried during configure(), so setting it beforehand.
-        OMX_U32 usage = mConfig.mUsage & 0xFFFFFFFF;
+        OMX_U64 usage = mConfig.mUsage;
         (void)mNode->setParameter(
-                (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
+                (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits64Type,
                 &usage, sizeof(usage));
 
         return GetStatus(mSource->configure(
