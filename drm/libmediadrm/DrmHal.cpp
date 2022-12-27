@@ -47,7 +47,9 @@ DrmStatus DrmHal::isCryptoSchemeSupported(const uint8_t uuid[16], const String8&
     return mDrmHalHidl->isCryptoSchemeSupported(uuid, mimeType, securityLevel, result);
 }
 
-DrmStatus DrmHal::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
+DrmStatus DrmHal::createPlugin(const uint8_t uuid[16], const String8& appPackageName,
+                               int32_t platform) {
+    (void)platform;
     return mDrmHalAidl->createPlugin(uuid, appPackageName) == OK
                    ? DrmStatus(OK)
                    : mDrmHalHidl->createPlugin(uuid, appPackageName);
