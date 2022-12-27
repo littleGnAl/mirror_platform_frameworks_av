@@ -16,6 +16,29 @@
       "message": "The test failure seems unrelated to this CL:\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI53700010119332545\u0026testResultId\u003dTR76028434672865954",
       "revId": "05b190a4b352142ac7cee35ce4263a723ce06bc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0baa79c_d3e09ac8",
+        "filename": "media/libeffects/visualizer/aidl/VisualizerContext.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-12-27T16:54:09Z",
+      "side": 1,
+      "message": "I think we should give a default value here like we do with the other fields, or at least give this a value in the constructor.  Perhaps it\u0027s a bug to call `capture()` before calling `setDownstreamLatency()`, but it would still be helpful to make that buggy behavior have consistent behavior, instead of using uninitialized memory.\n\nAlso, this comment says \"no mutex\", but `setDownstreamLatency()` looks like it acquires the mutex before setting this field.  I don\u0027t fully know the GUARDED_BY semantics, but is that consistent?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "05b190a4b352142ac7cee35ce4263a723ce06bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
