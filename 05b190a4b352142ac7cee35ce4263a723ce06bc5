@@ -39,6 +39,30 @@
       },
       "revId": "05b190a4b352142ac7cee35ce4263a723ce06bc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ceeeadd_ca236773",
+        "filename": "media/libeffects/visualizer/aidl/VisualizerContext.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-27T18:16:33Z",
+      "side": 1,
+      "message": "Indeed, since `mDownstreamLatency` does not need to be guarded, there should be no lock taking when setting it. The thread assertions feature does not flag \"unnecessary\" access serializations.",
+      "parentUuid": "f0baa79c_d3e09ac8",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "05b190a4b352142ac7cee35ce4263a723ce06bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
