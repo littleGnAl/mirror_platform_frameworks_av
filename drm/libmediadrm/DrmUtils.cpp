@@ -193,7 +193,7 @@ std::vector<std::shared_ptr<IDrmFactoryAidl>> makeDrmFactoriesAidl() {
 }
 
 sp<IDrm> MakeDrm(status_t* pstatus) {
-    return MakeObject<DrmHal>(pstatus);
+    return MakeObject<DrmMetricsLogger>(pstatus);
 }
 
 sp<ICrypto> MakeCrypto(status_t* pstatus) {

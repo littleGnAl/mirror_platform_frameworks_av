@@ -32,6 +32,7 @@
 #include <gui/Surface.h>
 
 #include <android-base/properties.h>
+#include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmUtils.h>
 #include <mediadrm/IDrm.h>
 #include <mediadrm/IDrmClient.h>
@@ -273,7 +274,7 @@ static sp<IDrm> CreateDrmFromUUID(const AMediaUUID uuid) {
         }
     }
 
-    status_t err = drm->createPlugin(uuid, packageName);
+    status_t err = drm->createPlugin(uuid, packageName, DRM_METRIC_NDK);
 
     if (err != OK) {
         return NULL;

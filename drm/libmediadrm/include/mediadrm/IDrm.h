@@ -16,6 +16,7 @@
 
 #include <media/stagefright/foundation/ABase.h>
 #include <media/drm/DrmAPI.h>
+// #include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmStatus.h>
 #include <mediadrm/IDrmClient.h>
 #include <mediadrm/IDrmMetricsConsumer.h>
@@ -47,8 +48,8 @@ struct IDrm : public virtual RefBase {
                                               DrmPlugin::SecurityLevel securityLevel,
                                               bool* result) = 0;
 
-    virtual DrmStatus createPlugin(const uint8_t uuid[16],
-                                   const String8 &appPackageName) = 0;
+    virtual DrmStatus createPlugin(const uint8_t uuid[16], const String8& appPackageName,
+                                   int32_t platform = 1) = 0;
 
     virtual DrmStatus destroyPlugin() = 0;
 
