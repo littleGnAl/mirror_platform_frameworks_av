@@ -213,6 +213,12 @@ public:
                 (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
                 &usage, sizeof(usage));
 
+        // set upper 32 bits usage value
+        usage = ((mConfig.mUsage >> 32) & 0xFFFFFFFF);
+        (void)mNode->setParameter(
+                (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBitsExtended,
+                &usage, sizeof(usage));
+
         return GetStatus(mSource->configure(
                 mOmxNode, static_cast<hardware::graphics::common::V1_0::Dataspace>(mDataSpace)));
     }

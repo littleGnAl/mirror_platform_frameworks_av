@@ -230,6 +230,12 @@ status_t C2OMXNode::getParameter(OMX_INDEXTYPE index, void *params, size_t size)
             err = OK;
             break;
         }
+        case OMX_IndexParamConsumerUsageBitsExtended: {
+            OMX_U32 *usage = (OMX_U32 *)params;
+            *usage = ((mUsage >> 32) & 0xFFFFFFFF);
+            err = OK;
+            break;
+        }
         case OMX_IndexParamPortDefinition: {
             if (size < sizeof(OMX_PARAM_PORTDEFINITIONTYPE)) {
                 return BAD_VALUE;
@@ -292,6 +298,13 @@ status_t C2OMXNode::setParameter(OMX_INDEXTYPE index, const void *params, size_t
                 return BAD_VALUE;
             }
             mUsage = *((OMX_U32 *)params);
+            return OK;
+
+        case OMX_IndexParamConsumerUsageBitsExtended:
+            if (size != sizeof(OMX_U32)) {
+                return BAD_VALUE;
+            }
+            mUsage |= (((OMX_U64)*((OMX_U32 *)params)) << 32);
             return OK;
     }
     return ERROR_UNSUPPORTED;

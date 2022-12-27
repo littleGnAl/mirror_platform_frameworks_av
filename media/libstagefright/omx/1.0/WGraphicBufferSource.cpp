@@ -143,8 +143,8 @@ Return<Status> TWGraphicBufferSource::configure(
 
     // use consumer usage bits queried from encoder, but always add
     // HW_VIDEO_ENCODER for backward compatibility.
-    uint32_t  consumerUsage;
-    void *_params = &consumerUsage;
+    uint32_t  usageBits;
+    void *_params = &usageBits;
     uint8_t *params = static_cast<uint8_t*>(_params);
     fnStatus = UNKNOWN_ERROR;
     IOmxNode::getParameter_cb _hidl_cb(
@@ -157,14 +157,29 @@ Return<Status> TWGraphicBufferSource::configure(
             });
     auto transStatus = omxNode->getParameter(
             static_cast<uint32_t>(OMX_IndexParamConsumerUsageBits),
-            inHidlBytes(&consumerUsage, sizeof(consumerUsage)),
+            inHidlBytes(&usageBits, sizeof(usageBits)),
             _hidl_cb);
     if (!transStatus.isOk()) {
         return toStatus(FAILED_TRANSACTION);
     }
     if (fnStatus != OK) {
-        consumerUsage = 0;
+        usageBits = 0;
     }
+
+    uint64_t  consumerUsage = usageBits;
+    // Get upper 32bits of usage
+    transStatus = omxNode->getParameter(
+        static_cast<uint32_t>(OMX_IndexParamConsumerUsageBitsExtended),
+        inHidlBytes(&usageBits, sizeof(usageBits)),
+        _hidl_cb);
+    if (!transStatus.isOk()) {
+        return toStatus(FAILED_TRANSACTION);
+    }
+    if (fnStatus != OK) {
+        usageBits = 0;
+    }
+
+    consumerUsage |= (((uint64_t)usageBits) << 32);
 
     OMX_PARAM_PORTDEFINITIONTYPE def;
     InitOMXParams(&def);

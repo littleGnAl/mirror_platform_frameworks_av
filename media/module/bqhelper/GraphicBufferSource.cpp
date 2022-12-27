@@ -1155,6 +1155,20 @@ status_t GraphicBufferSource::configure(
         return BAD_VALUE;
     }
 
+    return configure(component, dataSpace, bufferCount,
+            frameWidth, frameHeight, (uint64_t)consumerUsage);
+}
+status_t GraphicBufferSource::configure(
+        const sp<ComponentWrapper>& component,
+        int32_t dataSpace,
+        int32_t bufferCount,
+        uint32_t frameWidth,
+        uint32_t frameHeight,
+        uint64_t consumerUsage) {
+    if (component == NULL) {
+        return BAD_VALUE;
+    }
+
 
     // Call setMaxAcquiredBufferCount without lock.
     // setMaxAcquiredBufferCount could call back to onBuffersReleased
