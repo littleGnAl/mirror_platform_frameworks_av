@@ -123,6 +123,11 @@ Visualizer::ScalingMode VisualizerContext::getScalingMode() {
 
 RetCode VisualizerContext::setDownstreamLatency(int latency) {
     std::lock_guard lg(mMutex);
+    if (latency < 0 || (unsigned)latency > kMaxLatencyMs) {
+        LOG(ERROR) << __func__ << " latency " << latency << " exceed valid range: 0 - "
+                   << kMaxLatencyMs;
+        return RetCode::ERROR_ILLEGAL_PARAMETER;
+    }
     mDownstreamLatency = latency;
     return RetCode::SUCCESS;
 }
