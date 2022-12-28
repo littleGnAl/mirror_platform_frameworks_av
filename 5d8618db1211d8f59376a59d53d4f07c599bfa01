@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e0e7784_385c22d0",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-28T18:16:43Z",
+      "side": 1,
+      "message": "I routinely use `android::internal::ToString` for vectors in interface implementations and their tests. However, this requires including NDK Binder headers: https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ndk/include_cpp/android/binder_to_string.h;l\u003d161;drc\u003da573fd1d8d19989848fd236b230bd0be134fa1eb.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 87
+      },
+      "revId": "5d8618db1211d8f59376a59d53d4f07c599bfa01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
