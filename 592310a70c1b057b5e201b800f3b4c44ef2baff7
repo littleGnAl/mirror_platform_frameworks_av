@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12af678f_7c1867cb",
+        "filename": "media/libeffects/visualizer/aidl/VisualizerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-28T00:44:08Z",
+      "side": 1,
+      "message": "nit: This can be moved down after the check.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "592310a70c1b057b5e201b800f3b4c44ef2baff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
