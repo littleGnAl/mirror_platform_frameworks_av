@@ -22,6 +22,30 @@
       },
       "revId": "898a39fe9d9e110573c5f86a255c566d53832b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "387b8c81_c7f67d75",
+        "filename": "media/libheadtracking/SensorPoseProvider.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-12-28T19:23:03Z",
+      "side": 1,
+      "message": "Good to know the \u0027@\u0027!  The thread name is truncated to \"SensorPoseProvi\" when I use \"$ stacks audioserver\", but this is an implementation detail that could change in the future.",
+      "parentUuid": "8741f7cf_75e4e4d4",
+      "range": {
+        "startLine": 251,
+        "startChar": 29,
+        "endLine": 251,
+        "endChar": 56
+      },
+      "revId": "898a39fe9d9e110573c5f86a255c566d53832b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
