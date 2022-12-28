@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8741f7cf_75e4e4d4",
+        "filename": "media/libheadtracking/SensorPoseProvider.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-12-28T18:12:12Z",
+      "side": 1,
+      "message": "I think, the length of the thread name is truncated to the last 15 characters, unless it has an \u0027@\u0027 inside, or something like that: https://cs.android.com/android/platform/superproject/+/master:system/core/libutils/Threads.cpp;l\u003d97;drc\u003d350289e6f70e8b95bfd748e6ab8c543dbc356035",
+      "range": {
+        "startLine": 251,
+        "startChar": 29,
+        "endLine": 251,
+        "endChar": 56
+      },
+      "revId": "898a39fe9d9e110573c5f86a255c566d53832b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
