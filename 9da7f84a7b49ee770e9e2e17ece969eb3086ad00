@@ -16,6 +16,29 @@
       "message": "lgtm, Jiabin?",
       "revId": "9da7f84a7b49ee770e9e2e17ece969eb3086ad00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbdf82f7_583b7b53",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2894,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-12-28T00:32:57Z",
+      "side": 1,
+      "message": "nit: maybe use a name \"weakPointerThis\" or some such.",
+      "range": {
+        "startLine": 2894,
+        "startChar": 37,
+        "endLine": 2894,
+        "endChar": 52
+      },
+      "revId": "9da7f84a7b49ee770e9e2e17ece969eb3086ad00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
