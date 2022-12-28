@@ -43,6 +43,7 @@
 #include <aidl/android/hardware/drm/LogMessage.h>
 #include <aidl/android/hardware/drm/Status.h>
 #include <aidl/android/hardware/drm/IDrmFactory.h>
+#include <mediadrm/DrmMetricsLogger.h>
 
 using namespace ::android::hardware::drm;
 using ::android::hardware::hidl_vec;
