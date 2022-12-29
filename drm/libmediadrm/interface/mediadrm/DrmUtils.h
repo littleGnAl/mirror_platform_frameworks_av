@@ -22,6 +22,7 @@
 #include <android/hardware/drm/1.4/IDrmPlugin.h>
 #include <android/hardware/drm/1.4/types.h>
 #include <media/stagefright/MediaErrors.h>
+#include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmStatus.h>
 #include <utils/Errors.h>  // for status_t
 #include <utils/Log.h>
