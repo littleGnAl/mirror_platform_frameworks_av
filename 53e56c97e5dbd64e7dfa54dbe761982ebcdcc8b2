@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3425a7f6_ffa47840",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:19:29Z",
+      "side": 1,
+      "message": "API enum definitions can be found in change 2322423 ([stats/enums/media/drm/enums.proto](https://android-review.git.corp.google.com/c/platform/frameworks/proto_logging/+/2322423/2/stats/enums/media/drm/enums.proto#115)).",
+      "parentUuid": "2a5acba5_9531da57",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26b0729d_416ca951",
         "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
         "patchSetId": 1

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06067867_0918cc5a",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:19:29Z",
+      "side": 1,
+      "message": "I think we can avoid reporting the nonce here because each `\"mediadrm_created\"` event already corresponds to a unique MediaDrm object.\n\nHowever, let\u0027s report the uuid in `\"mediadrm_errored\"` events.\n\nI will update the atom definition (change 2322423) in following weeks.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 69
+      },
+      "revId": "bfaf1b68b3935e1f3d9deb2201f67fb9de7389e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
