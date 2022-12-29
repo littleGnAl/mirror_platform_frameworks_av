@@ -47,8 +47,7 @@ struct IDrm : public virtual RefBase {
                                               DrmPlugin::SecurityLevel securityLevel,
                                               bool* result) = 0;
 
-    virtual DrmStatus createPlugin(const uint8_t uuid[16],
-                                   const String8 &appPackageName) = 0;
+    virtual DrmStatus createPlugin(const uint8_t uuid[16], const String8& appPackageName) = 0;
 
     virtual DrmStatus destroyPlugin() = 0;
 

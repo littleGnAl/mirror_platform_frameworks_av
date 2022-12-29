@@ -28,8 +28,7 @@ struct DrmHal : public IDrm {
     virtual DrmStatus initCheck() const;
     virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
                                               DrmPlugin::SecurityLevel securityLevel, bool* result);
-    virtual DrmStatus createPlugin(const uint8_t uuid[16],
-                                   const String8 &appPackageName);
+    virtual DrmStatus createPlugin(const uint8_t uuid[16], const String8& appPackageName);
     virtual DrmStatus destroyPlugin();
     virtual DrmStatus openSession(DrmPlugin::SecurityLevel securityLevel,
             Vector<uint8_t> &sessionId);

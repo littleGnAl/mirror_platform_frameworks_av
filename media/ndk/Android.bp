@@ -148,6 +148,7 @@ cc_library_shared {
         "libui",
         "libmediandk_utils",
         "android.hardware.drm-V1-ndk",
+        "libstatslog",
     ],
 
     export_header_lib_headers: ["jni_headers"],

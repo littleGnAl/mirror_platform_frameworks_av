@@ -32,6 +32,7 @@
 #include <gui/Surface.h>
 
 #include <android-base/properties.h>
+#include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmUtils.h>
 #include <mediadrm/IDrm.h>
 #include <mediadrm/IDrmClient.h>
@@ -253,7 +254,7 @@ static status_t GetAppPackageName(String8 *packageName) {
 }
 
 static sp<IDrm> CreateDrm() {
-    return DrmUtils::MakeDrm();
+    return DrmUtils::MakeDrm(IDRM_NDK);
 }
 
 

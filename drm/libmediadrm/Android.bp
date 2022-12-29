@@ -36,6 +36,7 @@ cc_library {
         "DrmUtils.cpp",
         "DrmHalListener.cpp",
         "DrmStatus.cpp",
+        "DrmMetricsLogger.cpp",
     ],
 
     local_include_dirs: [
@@ -70,6 +71,7 @@ cc_library {
         "libhidlallocatorutils",
         "libhidlbase",
         "android.hardware.drm-V1-ndk",
+        "libstatslog",
     ],
 
     static_libs: [
