@@ -63,6 +63,30 @@
       },
       "revId": "05b190a4b352142ac7cee35ce4263a723ce06bc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6184cd_d531aec9",
+        "filename": "media/libeffects/visualizer/aidl/VisualizerContext.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-29T01:54:32Z",
+      "side": 1,
+      "message": "thanks for the review, addressed in CL:\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2370932/2/media/libeffects/visualizer/aidl/VisualizerContext.h#87",
+      "parentUuid": "1ceeeadd_ca236773",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "05b190a4b352142ac7cee35ce4263a723ce06bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
