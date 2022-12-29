@@ -69,8 +69,7 @@ struct DrmHalHidl : public IDrm,
     virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
                                               DrmPlugin::SecurityLevel level, bool* isSupported);
 
-    virtual DrmStatus createPlugin(const uint8_t uuid[16],
-                                  const String8 &appPackageName);
+    virtual DrmStatus createPlugin(const uint8_t uuid[16], const String8& appPackageName);
 
     virtual DrmStatus destroyPlugin();
 
