@@ -2153,7 +2153,7 @@ PipelineWatcher::Clock::duration CCodecBufferChannel::elapsed() {
     size_t outputDelay = mOutput.lock()->outputDelay;
     {
         Mutexed<Input>::Locked input(mInput);
-        n = input->inputDelay + input->pipelineDelay + outputDelay;
+        n = input->inputDelay + kSmoothnessFactor - 1 + input->pipelineDelay + outputDelay;
     }
     return mPipelineWatcher.lock()->elapsed(PipelineWatcher::Clock::now(), n);
 }
