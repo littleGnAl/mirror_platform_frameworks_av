@@ -1,0 +1,449 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2329b4_636c0cb5",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "```\nssize_t bytes \u003d getrandom(\u0026mObjNonceMsb, sizeof(mObjNonceMsb), GRND_NONBLOCK);\nif (bytes \u003c sizeof(mObjNonceMsb)) {\n  ALOGE(\"getrandom failed: %d\", errno);\n  mInitCheck \u003d ERROR_DRM_RESOURCE_BUSY;\n}\n```\n\nRequires adding new `mInitCheck` member.",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac2a947_cb16c72d",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "Good idea to keep this so we can report `uuid` from other APIs.",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5acba5_9531da57",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "```\nelse {\n  reportMediaDrmErrored(uuid, DRM_API_CREATE_PLUGIN, ...);\n}\n```",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b0729d_416ca951",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "We might want to create different methods for different event types, as each event type entail different fields.\n\nThis one can be called `reportMediaDrmCreated`",
+      "range": {
+        "startLine": 240,
+        "startChar": 23,
+        "endLine": 240,
+        "endChar": 45
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cac621_845d3bfd",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`\"mediadrm_created\"`",
+      "range": {
+        "startLine": 243,
+        "startChar": 58,
+        "endLine": 243,
+        "endChar": 70
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc555e1_15692292",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 72
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3daf13e_846bec4f",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`static_cast\u003cint64_t\u003e(be64toh(uuid2[0]))`",
+      "range": {
+        "startLine": 248,
+        "startChar": 50,
+        "endLine": 248,
+        "endChar": 58
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faea0b2b_4d82c2cc",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`frontend`",
+      "range": {
+        "startLine": 250,
+        "startChar": 39,
+        "endLine": 250,
+        "endChar": 47
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f19dfd_29177784",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`mediametrics_selfRecord(handle);` before delete.",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaeb8e32_2d7016e7",
+        "filename": "drm/libmediadrm/DrmUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "I think a variadic template would work here:\n\n    template \u003ctypename Hal, typename... Ts\u003e\n    Hal* MakeObject(status_t* pstatus, Ts... args) {",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 36
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252a721b_f46fee8f",
+        "filename": "drm/libmediadrm/DrmUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "```\n    auto obj \u003d new Hal(args...);\n```",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f31dc2_4b1da779",
+        "filename": "drm/libmediadrm/DrmUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "Introduce `frontend` or `platform` argument here.",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3445908d_44282365",
+        "filename": "drm/libmediadrm/DrmUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`MakeObject\u003cDrmMetricsLogger\u003e(pstatus, frontend)`",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5888620_500b3d5e",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "After some deliberation I think frontend might be a better term for this enum:\n\n\n    enum IDrmFrontend : int32_t {\n        IDRM_UNKNOWN \u003d 0;\n        IDRM_JNI \u003d 1;\n        IDRM_NDK \u003d 2;\n        IDRM_NUPLAYER \u003d 3;\n    };",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b9b60e_5dbfde19",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`DrmMetricsLogger(IDrmFrontend);`",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec4a602_8e915ca2",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b2c3b2_cf8dba52",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`IDrmFrontend mFrontend;`",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376b1626_998e7cce",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55888f5_8502ecdc",
+        "filename": "drm/libmediadrm/include/mediadrm/IDrm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6fb5386_426813c4",
+        "filename": "drm/libmediadrm/include/mediadrm/IDrm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "Let\u0027s add the `platform` argument (or now I think `frontend` is the better name) to the ctor of `DrmMetricsLogger` instead of adding it to the parent class.",
+      "range": {
+        "startLine": 52,
+        "startChar": 43,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c9b75b_8be6b78f",
+        "filename": "drm/libmediadrm/interface/mediadrm/DrmUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`sp\u003cIDrm\u003e MakeDrm(IDrmFrontend frontend, status_t *pstatus \u003d nullptr);`",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bd8763_d7f960de",
+        "filename": "media/ndk/NdkMediaDrm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "`return DrmUtils::MakeDrm(IDRM_NDK);`",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b97d5c6_f1420d54",
+        "filename": "media/ndk/NdkMediaDrm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2022-12-29T17:09:11Z",
+      "side": 1,
+      "message": "Not needed after above change.",
+      "revId": "53e56c97e5dbd64e7dfa54dbe761982ebcdcc8b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
