@@ -456,7 +456,9 @@ DrmStatus DrmHalAidl::isCryptoSchemeSupported(const uint8_t uuid[16], const Stri
     return DrmStatus(OK);
 }
 
-DrmStatus DrmHalAidl::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
+DrmStatus DrmHalAidl::createPlugin(const uint8_t uuid[16], const String8& appPackageName,
+                                   int32_t platform) {
+    (void)platform;
     Mutex::Autolock autoLock(mLock);
 
     Uuid uuidAidl = DrmUtils::toAidlUuid(uuid);

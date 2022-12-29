@@ -17,11 +17,16 @@
 #ifndef ANDROID_DRMUTILS_H
 #define ANDROID_DRMUTILS_H
 
+#include <aidl/android/hardware/drm/IDrmFactory.h>
+#include <aidl/android/hardware/drm/LogMessage.h>
+#include <aidl/android/hardware/drm/Status.h>
 #include <android/hardware/drm/1.0/ICryptoFactory.h>
 #include <android/hardware/drm/1.0/IDrmFactory.h>
 #include <android/hardware/drm/1.4/IDrmPlugin.h>
 #include <android/hardware/drm/1.4/types.h>
+#include <endian.h>
 #include <media/stagefright/MediaErrors.h>
+#include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmStatus.h>
 #include <utils/Errors.h>  // for status_t
 #include <utils/Log.h>
@@ -35,14 +40,10 @@
 #include <cstring>
 #include <ctime>
 #include <deque>
-#include <endian.h>
 #include <iterator>
 #include <mutex>
 #include <string>
 #include <vector>
-#include <aidl/android/hardware/drm/LogMessage.h>
-#include <aidl/android/hardware/drm/Status.h>
-#include <aidl/android/hardware/drm/IDrmFactory.h>
 
 using namespace ::android::hardware::drm;
 using ::android::hardware::hidl_vec;
