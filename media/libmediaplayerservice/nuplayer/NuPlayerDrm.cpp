@@ -19,9 +19,9 @@
 
 #include "NuPlayerDrm.h"
 
+#include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmUtils.h>
 #include <utils/Log.h>
-
 
 namespace android {
 
@@ -29,7 +29,7 @@ namespace android {
 
 sp<IDrm> NuPlayerDrm::CreateDrm(status_t *pstatus)
 {
-    return DrmUtils::MakeDrm(pstatus);
+    return DrmUtils::MakeDrm(IDRM_NUPLAYER, pstatus);
 }
 
 sp<ICrypto> NuPlayerDrm::createCrypto(status_t *pstatus)
