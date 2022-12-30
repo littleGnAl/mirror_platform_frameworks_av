@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "860cce4d_813cdfb2",
+        "filename": "media/libaudiohal/AudioHalTest/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-30T04:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df36c179_29f32e9e",
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c074da_3618a484",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f60b12_73a185ba",
+        "filename": "media/libaudiohal/AudioHalTest/libAudioHalTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-30T04:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c074da_3618a484",
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8606833_9e11c106",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-12-13T01:33:13Z",
       "side": 1,
       "message": "No need to declare this yourself to be able to use `TEST` macros: go/gunitprimer#simple-tests",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e04464d_cfb3c19b",
+        "filename": "media/libaudiohal/AudioHalTest/libAudioHalTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-30T04:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8606833_9e11c106",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -98,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "153e6f03_8ba04cf0",
+        "filename": "media/libaudiohal/AudioHalTest/libAudioHalTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-30T04:08:30Z",
+      "side": 1,
+      "message": "The naming `ById` is kind of confusing because it was acutally by number (same as audioFlinger use case: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/AudioFlinger.cpp;l\u003d3808?q\u003dqueryNumberEffects\u0026ss\u003dandroid%2Fplatform%2Fsuperproject\u0026start\u003d11)\n\nUpdated the naming.",
+      "parentUuid": "fd11174f_0b83d97e",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cacfde9_04fa1e37",
@@ -121,6 +205,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95ea113_4c75c494",
+        "filename": "media/libaudiohal/impl/ConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-30T04:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cacfde9_04fa1e37",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1c3156c_611489d9",
@@ -134,6 +242,30 @@
       "writtenOn": "2022-12-13T01:33:13Z",
       "side": 1,
       "message": "For standardization, it\u0027s better to use `convertContainer` from frameworks/av/media/libaudioclient/include/media/AidlConversionUtil.h once we extract it and adapt for the NDK backend.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 0
+      },
+      "revId": "87728c0031d72facffccb8db0f0742e06bcf0057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d63c32_22cdb04b",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-12-30T04:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c3156c_611489d9",
       "range": {
         "startLine": 198,
         "startChar": 0,
