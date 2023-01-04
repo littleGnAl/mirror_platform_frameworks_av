@@ -1,0 +1,813 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a27b706_0f99d363",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "These lines can be removed.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 68
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08526fe1_0802d789",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Need to do the same thing for `mObjNonceLsb`",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1044ca6_8f561a41",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Let\u0027s move `mObjNonceMsb` `mObjNonceLsb` initialization here instead, *before* `mImpl-\u003ecreatePlugin(...)`.\n\nIf nonce generation failed, return and log `ERROR_DRM_RESOURCE_BUSY`.\n\nThis way we can remove the `mInitCheck` variable.",
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1f7cd7_9e3af1a5",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "memcpy?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 5
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9f8038_b652f54f",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`__func__`",
+      "range": {
+        "startLine": 68,
+        "startChar": 38,
+        "endLine": 68,
+        "endChar": 89
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5804ead7_b61b7ee2",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "See comments re `mObjNonceMsb` for nonce generation code pattern.\n\nMan page for `getrandom`: https://man7.org/linux/man-pages/man2/getrandom.2.html.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 68
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264c2fe1_e8913acd",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Let\u0027s use local variables.\n\nAlso let\u0027s create a struct to hold these values:\n* nonce msb\n* nonce lsb\n* target level\n* actual level",
+      "range": {
+        "startLine": 87,
+        "startChar": 30,
+        "endLine": 87,
+        "endChar": 58
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70cd0a04_0ade4ccb",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Not sure if storing reference to `sessionId` is safe.\n\nCan we convert it to a local `std::vector`?\n\n```\n    auto v \u003d sessionId.array();\n    std::vector\u003cuint8_t\u003e vec(v, v + sessionId.size());\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "341f4d80_21073854",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "return type is `DrmStatus`\n\n```\nif (status !\u003d OK) {\n  mActualSecurityLevel \u003d kSecurityLevelUnknown;\n}\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cde0f64_1e32663c",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`\u0026mActualSecurityLevel`",
+      "range": {
+        "startLine": 90,
+        "startChar": 78,
+        "endLine": 90,
+        "endChar": 91
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181e248f_dc818a91",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Pass in local session context variables:\n* nonce msb\n* nonce lsb\n* target level\n* actual level",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbea99e_7a913527",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "No need to pass in `sessionId` on `openSession` error. This defaults to empty array in header.",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167a7ba8_32b1902a",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`mUuid`; no need to cast if we make `mUuid` `int64_t` array.",
+      "range": {
+        "startLine": 456,
+        "startChar": 75,
+        "endLine": 456,
+        "endChar": 80
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce59354_fde03461",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Let\u0027s add `mFrontend` to session open metrics.",
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d056408_a44da375",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "session_nonce_msb",
+      "range": {
+        "startLine": 467,
+        "startChar": 35,
+        "endLine": 467,
+        "endChar": 48
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1654eed9_7eafa452",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "session_nonce_lsb",
+      "range": {
+        "startLine": 468,
+        "startChar": 35,
+        "endLine": 468,
+        "endChar": 48
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d289d117_5b3fdcc8",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Don\u0027t think we need this. We can init `mUuid` to zeros, and log them always.",
+      "range": {
+        "startLine": 475,
+        "startChar": 86,
+        "endLine": 475,
+        "endChar": 95
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff36af2a_1230e5e9",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Let\u0027s add `mFrontend` to error metrics.",
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6580c6b8_60e40ef3",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`const char* api`",
+      "range": {
+        "startLine": 475,
+        "startChar": 67,
+        "endLine": 475,
+        "endChar": 84
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b675c42c_d0a5d22d",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "mediadrm_errored",
+      "range": {
+        "startLine": 477,
+        "startChar": 54,
+        "endLine": 477,
+        "endChar": 66
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f87becf8_07386a57",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "session_nonce_msb",
+      "range": {
+        "startLine": 481,
+        "startChar": 39,
+        "endLine": 481,
+        "endChar": 52
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44cef8cd_a38ef315",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "session_nonce_lsb",
+      "range": {
+        "startLine": 482,
+        "startChar": 39,
+        "endLine": 482,
+        "endChar": 52
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76aef291_450e626c",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "mUuid",
+      "range": {
+        "startLine": 487,
+        "startChar": 79,
+        "endLine": 487,
+        "endChar": 84
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8802a1_db0863f3",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "No need to cast if we make `mUuid` `int64_t` array.",
+      "range": {
+        "startLine": 487,
+        "startChar": 50,
+        "endLine": 487,
+        "endChar": 70
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290cce6e_2e882ffe",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "mUuid",
+      "range": {
+        "startLine": 488,
+        "startChar": 79,
+        "endLine": 488,
+        "endChar": 84
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2a2108_93478bf1",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`mediametrics_setInt32` should suffice.",
+      "range": {
+        "startLine": 490,
+        "startChar": 4,
+        "endLine": 490,
+        "endChar": 25
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c7e90f_ccd745d3",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`mediametrics_setCString` when using `__func__`",
+      "range": {
+        "startLine": 491,
+        "startChar": 4,
+        "endLine": 491,
+        "endChar": 25
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a66bb1_2c6e1213",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmHal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Looks like this just formatting changes now. Can we drop this from the patch?",
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594fb07b_fc8590fa",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmHalHidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Drop formatting change?",
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0be3fc6_3dc6841d",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`const char* api` and use `__func__` on call site.",
+      "range": {
+        "startLine": 149,
+        "startChar": 53,
+        "endLine": 149,
+        "endChar": 70
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52852908_f5f25bfe",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`int64_t mUuid[2] \u003d {};`",
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22b1f6e_749b8ffc",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 39
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479b0cf2_bf79b1d1",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`DrmPlugin::SecurityLevel`, move inside `mSessionMap`.",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 11
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139d863f_3e123f76",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "`DrmPlugin::SecurityLevel`, move inside `mSessionMap`",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8153067_2c84c256",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "session context struct",
+      "range": {
+        "startLine": 162,
+        "startChar": 31,
+        "endLine": 162,
+        "endChar": 51
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d533ada4_16421997",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "std::vector\u003cuint8_t\u003e",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced52b51_ae451165",
+        "filename": "drm/libmediadrm/include/mediadrm/IDrm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-04T22:45:42Z",
+      "side": 1,
+      "message": "Drop formatting change?",
+      "revId": "8f33518bd54c48e0012931a99ba80c7a468328f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
