@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f734f344_582f910c",
+        "filename": "media/module/extractors/aac/AACExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2023-01-04T01:19:21Z",
+      "side": 1,
+      "message": "Initializing buffer to nullptr does not help.\nClang-tidy gives warning for this control flow in MediaExtractorPluginHelper.h:\n```\nframeworks/av/media/module/extractors/aac/AACExtractor.cpp:314:20: note: Calling \u0027MediaBufferGroupHelper::acquire_buffer\u0027\n    status_t err \u003d mBufferGroup-\u003eacquire_buffer(\u0026buffer);\n                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nframeworks/av/include/media/MediaExtractorPluginHelper.h:105:13: note: Assuming \u0027ret\u0027 is equal to AMEDIA_OK\n        if (ret \u003d\u003d AMEDIA_OK \u0026\u0026 buf !\u003d nullptr) {\n            ^~~~~~~~~~~~~~~~\nframeworks/av/include/media/MediaExtractorPluginHelper.h:105:13: note: Left side of \u0027\u0026\u0026\u0027 is true \nframeworks/av/include/media/MediaExtractorPluginHelper.h:105:33: note: Assuming the condition is false\n        if (ret \u003d\u003d AMEDIA_OK \u0026\u0026 buf !\u003d nullptr) {\n                                ^~~~~~~~~~~~~~\nframeworks/av/include/media/MediaExtractorPluginHelper.h:105:9: note: Taking false branch\n        if (ret \u003d\u003d AMEDIA_OK \u0026\u0026 buf !\u003d nullptr) {\n        ^\nframeworks/av/include/media/MediaExtractorPluginHelper.h:115:13: note: Null pointer value stored to \u0027buffer\u0027\n            *buffer \u003d nullptr;\n            ^~~~~~~~~~~~~~~~~\n```\nAlthough that is an impossible flow, static analyzer cannot know that without seeing the code in mGroup-\u003eacquire_buffer(...) in MediaExtractorPluginHelper.h.\nHence, to suppress these analyzer warnings, we need to handle the condition where acquire_buffer returns OK and buffer is nullptr.",
+      "parentUuid": "ca510fcc_4ed94731",
+      "range": {
+        "startLine": 313,
+        "startChar": 22,
+        "endLine": 313,
+        "endChar": 30
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1414e0b5_8ed8c071",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c469d266_4b5393ed",
+        "filename": "media/module/extractors/amr/AMRExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2023-01-04T01:19:21Z",
+      "side": 1,
+      "message": "Would the owners/users of acquire_buffer prefer the following rule?\n* Since it always assign nullptr to buffer when the return status is not OK,\n  the test of (err !\u003d OK) can be replaced with (buffer \u003d\u003d nullptr).",
+      "parentUuid": "1414e0b5_8ed8c071",
+      "range": {
+        "startLine": 346,
+        "startChar": 9,
+        "endLine": 346,
+        "endChar": 31
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04c2060c_0ba558cf",
         "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-12-21T23:26:47Z",
       "side": 1,
       "message": "bigger problem is that we ignore the return value here, which tells us whether\nmbuf has been filled in with a useful answer.",
+      "range": {
+        "startLine": 802,
+        "startChar": 6,
+        "endLine": 802,
+        "endChar": 40
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c691bb_e900f496",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2023-01-04T01:19:21Z",
+      "side": 1,
+      "message": "Should we return AMEDIA_ERROR_UNKNOWN if\n  (return_value !\u003d OK || !mbuf)",
+      "parentUuid": "04c2060c_0ba558cf",
       "range": {
         "startLine": 802,
         "startChar": 6,
