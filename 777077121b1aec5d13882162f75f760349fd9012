@@ -50,6 +50,24 @@
       "message": "can FrameDecoder instead check if decoders on the device support P010 color format?",
       "revId": "777077121b1aec5d13882162f75f760349fd9012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77619642_deb19d2e",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-04T06:02:43Z",
+      "side": 1,
+      "message": "I think it is possible, but, it won\u0027t be good. because, the bitDepth should be decided at metaOnly case. but, it doesn\u0027t consider a component which is running for actual frame decoding.\nI mean, the bitDepth should be 8 even though S/W codec supports P010 format if H/W codec cannot supports P010 format.",
+      "parentUuid": "b5c98c3d_35660323",
+      "revId": "777077121b1aec5d13882162f75f760349fd9012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
