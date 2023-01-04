@@ -1,5 +1,40 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1779b5_d5ca892d",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-01-04T18:38:05Z",
+      "side": 1,
+      "message": "And we\u0027d want a `\u0026` here as well.",
+      "revId": "067824d04e33f5b826258d91b408cad7663ef110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d7d3f7_9d2357da",
+        "filename": "media/libeffects/hapticgenerator/aidl/HapticGeneratorContext.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-01-04T18:38:05Z",
+      "side": 1,
+      "message": "I think we want to take this by const reference instead of copy.  That seems our intention with the use of `const`, I think we just missed the `\u0026`.  That is, I think we want:\n\n```\n    RetCode setHgHapticScales(const std::vector\u003cHapticGenerator::HapticScale\u003e\u0026 hapticScales);\n```",
+      "revId": "067824d04e33f5b826258d91b408cad7663ef110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
