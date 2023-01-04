@@ -68,6 +68,24 @@
       "parentUuid": "b5c98c3d_35660323",
       "revId": "777077121b1aec5d13882162f75f760349fd9012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfa884e_32c44c65",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-04T08:00:51Z",
+      "side": 1,
+      "message": "guide code will be as below\n//////////////////////////////\n    if (bitDepth \u003d\u003d 10) {\n        /* b/258355840\n         * 10bit thumbnail is supported since android T launching devices\n         * expecially, OMX doesn\u0027t support COLOR_FormatYUVP010\n         */\n        bool isOk \u003d true;\n        const sp\u003cIMediaCodecList\u003e list \u003d MediaCodecList::getInstance();\n        if (list !\u003d nullptr) {\n            size_t index \u003d 0;\n            for (;;) {\n                ssize_t matchIndex \u003d\n                    list-\u003efindCodecByType(mime, false /* encoder */, index);\n\n                if (matchIndex \u003c 0) {\n                    break;\n                }\n                index \u003d matchIndex + 1;\n\n                const sp\u003cMediaCodecInfo\u003e info \u003d list-\u003egetCodecInfo(matchIndex);\n                if ((info \u003d\u003d nullptr) ||\n                    (MediaCodecList::isSoftwareCodec(AString(info-\u003egetCodecName())))) {\n                    continue;\n                }\n\n                const sp\u003cMediaCodecInfo::Capabilities\u003e caps \u003d\n                        info-\u003egetCapabilitiesFor(mime);\n                if (caps \u003d\u003d nullptr) {\n                    continue;\n                }\n\n                isOk \u003d false;\n                Vector\u003cuint32_t\u003e colors;\n                caps-\u003egetSupportedColorFormats(\u0026colors);\n                for (uint32_t color : colors) {\n                    if (color \u003d\u003d COLOR_FormatYUVP010) {\n                        ALOGE(\"%s supports COLOR_FormatYUVP010.\", info-\u003egetCodecName());\n                        isOk \u003d true;\n                        break;\n                    }\n                }\n            }\n        }\n\n        if (!isOk) {\n            ALOGE(\"COLOR_FormatYUVP010 is not supported at H/W Codec. restrict to 8bit\");\n            bitDepth \u003d 8;\n        }\n    }",
+      "parentUuid": "77619642_deb19d2e",
+      "revId": "777077121b1aec5d13882162f75f760349fd9012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
