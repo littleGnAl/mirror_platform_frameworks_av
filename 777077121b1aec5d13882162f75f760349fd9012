@@ -33,6 +33,23 @@
       "message": "It still requires an approval from one of code owners.\nCould any of code owners do that please?",
       "revId": "777077121b1aec5d13882162f75f760349fd9012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c98c3d_35660323",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-04T01:29:01Z",
+      "side": 1,
+      "message": "can FrameDecoder instead check if decoders on the device support P010 color format?",
+      "revId": "777077121b1aec5d13882162f75f760349fd9012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
