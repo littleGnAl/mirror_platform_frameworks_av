@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a13f90_c4e1b542",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-04T17:44:10Z",
+      "side": 1,
+      "message": "a couple places that we aren\u0027t checking acquire_buffer() return code;\n(we weren\u0027t testing it before this CL -- this CL didn\u0027t drop any testing)\nonce those are included in the corresponding checks, I think this is good to go.",
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca510fcc_4ed94731",
@@ -161,6 +178,76 @@
         "startChar": 6,
         "endLine": 802,
         "endChar": 40
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832ac626_7ae011bf",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-04T17:44:10Z",
+      "side": 1,
+      "message": "yes, please -- get the status from acquire_buffer() and\nthen do the \"if (status !\u003d ok || !mbuf) return AMEDIA_ERROR_UNKNOWN;\" \nconstruct.",
+      "parentUuid": "31c691bb_e900f496",
+      "range": {
+        "startLine": 802,
+        "startChar": 6,
+        "endLine": 802,
+        "endChar": 40
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e04ee76_90baa042",
+        "filename": "media/module/extractors/mpeg2/MPEG2PSExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-04T17:44:10Z",
+      "side": 1,
+      "message": "let\u0027s get a status from acquire_buffer() \nand do if (status !\u003d ok || !outbuf) here....",
+      "range": {
+        "startLine": 707,
+        "startChar": 2,
+        "endLine": 707,
+        "endChar": 18
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48e47c4_bb988321",
+        "filename": "media/module/extractors/mpeg2/MPEG2TSExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-04T17:44:10Z",
+      "side": 1,
+      "message": "collect status returned from acquire_buffer() and use it as part of the \nconditional.",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 18
       },
       "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
