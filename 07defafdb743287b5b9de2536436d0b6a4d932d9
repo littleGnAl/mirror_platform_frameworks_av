@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54242a1f_dc74e5cb",
+        "filename": "media/module/extractors/amr/AMRExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-04T04:36:42Z",
+      "side": 1,
+      "message": "well, i\u0027m wrong:  it seems that acquire_buffer doesn\u0027t make the guarantee that I thought it did:\n\nfrom frameworks/av/media/libstagefright/include/media/stagefright/MediaBufferGroup.h\n\nif (err \u003d\u003d OK \u0026\u0026 acquiredBuf !\u003d nullptr) {\n    *buf \u003d acquiredBuf-\u003ewrap();\n} else {\n    *buf \u003d nullptr;\n}\nreturn translate_error(err);\n            \nwhich does have a path that returns OK but passes back a null pointer.\n\nin light of this, this CL is likely mostly right (the places where we don\u0027t check the return code of acquire_buffer() being something we should rectify as part of this).  I\u0027ll take a look tomorrow.",
+      "parentUuid": "c469d266_4b5393ed",
+      "range": {
+        "startLine": 346,
+        "startChar": 9,
+        "endLine": 346,
+        "endChar": 31
+      },
+      "revId": "07defafdb743287b5b9de2536436d0b6a4d932d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04c2060c_0ba558cf",
         "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
         "patchSetId": 1
