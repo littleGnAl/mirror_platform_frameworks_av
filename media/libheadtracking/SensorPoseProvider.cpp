@@ -270,8 +270,12 @@ class SensorPoseProviderImpl : public SensorPoseProvider {
         initFinished(true);
 
         while (!mQuit) {
+<<<<<<< HEAD   (ca6fd4 Merge "Add libAudioHal AIDL interface placeholder")
             const int ret = mLooper->pollOnce(-1 /* no timeout */, nullptr /* outFd */,
                     nullptr /* outEvents */, nullptr /* outData */);
+=======
+            int ret = mLooper->pollOnce(-1 /* no timeout */, nullptr, nullptr, nullptr);
+>>>>>>> BRANCH (cde04c Merge cherrypicks of [20218634, 20393929] into tm-qpr1-relea)
 
             switch (ret) {
                 case ALOOPER_POLL_WAKE:
