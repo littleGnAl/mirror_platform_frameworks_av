@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3cd981_50aaa155",
+        "filename": "media/module/extractors/mpeg2/MPEG2PSExtractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-06T15:40:40Z",
+      "side": 1,
+      "message": "this does keep us from de-referencing a null pointer.\n\ni\u0027m a little worried about whether this early out causes a problem\nby not invoking mbuf-\u003erelease() as done on line 747.\n\n\nthis seems be spiraling beyond what you had originally signed up for; the good news is that it seems to be exposing some real problems in the areas near these changes.",
+      "range": {
+        "startLine": 707,
+        "startChar": 18,
+        "endLine": 707,
+        "endChar": 30
+      },
+      "revId": "90d2765f770bc25ec8baaa9269e2fb99403e51d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bdbf087_f70cc074",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-06T15:40:40Z",
+      "side": 1,
+      "message": "compare with line 801 where we already were testing tmp.\nand the return value if that fails.\n\ni\u0027m thinking this should be:\nif (err !\u003d OK) return AMEDIA_ERROR_UNKNOWN;\n\nand we let line 801 catch the null pointer case.\ni\u0027d probably also init tmp\u003d nullptr on line 791",
+      "range": {
+        "startLine": 795,
+        "startChar": 27,
+        "endLine": 795,
+        "endChar": 48
+      },
+      "revId": "90d2765f770bc25ec8baaa9269e2fb99403e51d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
