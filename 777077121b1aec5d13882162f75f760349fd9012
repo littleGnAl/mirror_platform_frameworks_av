@@ -86,6 +86,24 @@
       "parentUuid": "77619642_deb19d2e",
       "revId": "777077121b1aec5d13882162f75f760349fd9012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e52938e_35342863",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-06T00:21:21Z",
+      "side": 1,
+      "message": "At the code below (L287-L311) it knows exactly which codecs it would consider when `metaOnly \u003d false`, so I think it would be reasonable to query the codecs at `metaOnly \u003d true` case.",
+      "parentUuid": "adfa884e_32c44c65",
+      "revId": "777077121b1aec5d13882162f75f760349fd9012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
