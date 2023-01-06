@@ -104,6 +104,24 @@
       "parentUuid": "adfa884e_32c44c65",
       "revId": "777077121b1aec5d13882162f75f760349fd9012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58957135_87380e74",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-06T00:30:41Z",
+      "side": 1,
+      "message": "the size of matchingCodecs could be more than 1.\nand, it is possible that S/W codec is preferred an S/W codec may fail to decode a frame. and then, it will try to decode a frame with next codec which will be H/W codec. if H/W codec cannot support P010 format, the problem will be happen.\nthat is why I set the bitDepth to 8bit when H/W codec cannot support P010 format. is this reasonable?",
+      "parentUuid": "5e52938e_35342863",
+      "revId": "777077121b1aec5d13882162f75f760349fd9012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
