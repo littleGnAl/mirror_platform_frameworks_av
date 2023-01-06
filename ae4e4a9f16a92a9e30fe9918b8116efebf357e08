@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47b9859_20af760d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-06T00:39:17Z",
+      "side": 1,
+      "message": "I rebased the changes and please check my comments.",
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c1f5f5_c394e0f0",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-06T00:39:17Z",
+      "side": 1,
+      "message": "regardless of supportability of s/w codec",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 87
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a914a5e9_a1934c5d",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-06T00:39:17Z",
+      "side": 1,
+      "message": "if h/w codec cannot support P010 format",
+      "range": {
+        "startLine": 272,
+        "startChar": 16,
+        "endLine": 272,
+        "endChar": 29
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ead9c2_dec5b478",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-06T00:39:17Z",
+      "side": 1,
+      "message": "set the bitDepth to 8bit",
+      "range": {
+        "startLine": 286,
+        "startChar": 12,
+        "endLine": 286,
+        "endChar": 25
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
