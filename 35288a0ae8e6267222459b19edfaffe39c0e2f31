@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef9ed9b_5b07e106",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-06T02:11:47Z",
+      "side": 1,
+      "message": "nit: Unlike raw pointers, smart pointers initialize with a nullptr by default.",
+      "range": {
+        "startLine": 55,
+        "startChar": 55,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b56252_c77caa80",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-06T02:11:47Z",
+      "side": 1,
+      "message": "Isn\u0027t this effectively an `std::map\u003cint, int\u003e`?",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9449c01d_1df819dd",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-06T02:11:47Z",
+      "side": 1,
+      "message": "This looks almost identical to `setPreEqBand` but calls `getPostEq_l` instead of `getPreEq_l`, and considering the same typo `continue;;` was copied over. Can we use a shared implementation with some parameters for each case?\n\nPerhaps, we can share other validation code as well, so it\u0027s a bit easier to read, and make modifications in future.",
+      "range": {
+        "startLine": 216,
+        "startChar": 35,
+        "endLine": 216,
+        "endChar": 48
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69cc456_8725d2bc",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-06T02:11:47Z",
+      "side": 1,
+      "message": "Can we use an exhaustive switch?",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 9
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
