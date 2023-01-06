@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41d3b13_a95f9367",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-06T23:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef9ed9b_5b07e106",
+      "range": {
+        "startLine": 55,
+        "startChar": 55,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3b56252_c77caa80",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-06T02:11:47Z",
       "side": 1,
       "message": "Isn\u0027t this effectively an `std::map\u003cint, int\u003e`?",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f40444e0_9e5c1a0d",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-06T23:34:51Z",
+      "side": 1,
+      "message": "I was trying to use a pair of channelId and bandId as key, a bit different than `std::map\u003cint, int\u003e`",
+      "parentUuid": "d3b56252_c77caa80",
       "range": {
         "startLine": 149,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73d51fe_347d7c6e",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-06T23:34:51Z",
+      "side": 1,
+      "message": "Done, thanks for the suggestion",
+      "parentUuid": "9449c01d_1df819dd",
+      "range": {
+        "startLine": 216,
+        "startChar": 35,
+        "endLine": 216,
+        "endChar": 48
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d69cc456_8725d2bc",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-06T02:11:47Z",
       "side": 1,
       "message": "Can we use an exhaustive switch?",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 9
+      },
+      "revId": "35288a0ae8e6267222459b19edfaffe39c0e2f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7656fd5_557bc0e1",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-06T23:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69cc456_8725d2bc",
       "range": {
         "startLine": 563,
         "startChar": 0,
