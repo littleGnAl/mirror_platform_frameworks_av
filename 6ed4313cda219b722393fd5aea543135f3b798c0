@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "285719d2_03812438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-09T18:00:38Z",
+      "side": 1,
+      "message": "Looks good in general, minus a few nits. Thanks for resolving all the comments so far.",
+      "revId": "6ed4313cda219b722393fd5aea543135f3b798c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9e63fe_d1caa8c8",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-09T18:00:38Z",
+      "side": 1,
+      "message": "Let\u0027s initialize all members here:\n\n```\nDrmMetricsLogger::DrmMetricsLogger(IDrmFrontend frontend)\n    : mImpl(sp\u003cDrmHal\u003e::make()),\n      mUuid(),\n      mObjNonceMsb(0),\n      mObjNonceLsb(0),\n      mFrontend(frontend) {}\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "6ed4313cda219b722393fd5aea543135f3b798c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313483d6_a9efb793",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-09T18:00:38Z",
+      "side": 1,
+      "message": "nit, `reportMediaDrmSessionOpened`",
+      "range": {
+        "startLine": 448,
+        "startChar": 23,
+        "endLine": 448,
+        "endChar": 48
+      },
+      "revId": "6ed4313cda219b722393fd5aea543135f3b798c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70dc467e_f05a9073",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-09T18:00:38Z",
+      "side": 1,
+      "message": "nit, `\"mediadrm_session_opened\"`",
+      "range": {
+        "startLine": 449,
+        "startChar": 54,
+        "endLine": 449,
+        "endChar": 70
+      },
+      "revId": "6ed4313cda219b722393fd5aea543135f3b798c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea102a5_ca1429dc",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-09T18:00:38Z",
+      "side": 1,
+      "message": "Lock with mutex.",
+      "range": {
+        "startLine": 452,
+        "startChar": 14,
+        "endLine": 452,
+        "endChar": 30
+      },
+      "revId": "6ed4313cda219b722393fd5aea543135f3b798c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecd005b_412407bd",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-09T18:00:38Z",
+      "side": 1,
+      "message": "Lock with mutex.",
+      "range": {
+        "startLine": 470,
+        "startChar": 18,
+        "endLine": 470,
+        "endChar": 34
+      },
+      "revId": "6ed4313cda219b722393fd5aea543135f3b798c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba497e2_f986f7c0",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-09T18:00:38Z",
+      "side": 1,
+      "message": "nit, `mSessionMapMutex`",
+      "range": {
+        "startLine": 159,
+        "startChar": 15,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "6ed4313cda219b722393fd5aea543135f3b798c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
