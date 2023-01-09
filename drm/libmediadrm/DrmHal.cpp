@@ -527,7 +527,12 @@ status_t DrmHal::matchMimeTypeAndSecurityLevel(const sp<IDrmFactory> &factory,
             *isSupported = true;
         } else {
             // isCryptoSchemeSupported(uuid, mimeType)
-            *isSupported = factory->isContentTypeSupported(mimeType.string());
+            auto hResult = factory->isContentTypeSupported(mimeType.string());
+            if (hResult.isOk()) {
+                *isSupported = hResult;
+            } else {
+                return DEAD_OBJECT;
+            }
         }
         return OK;
     } else if (mimeType == "") {
@@ -538,8 +543,13 @@ status_t DrmHal::matchMimeTypeAndSecurityLevel(const sp<IDrmFactory> &factory,
     if (factoryV1_2 == NULL) {
         return ERROR_UNSUPPORTED;
     } else {
-        *isSupported = factoryV1_2->isCryptoSchemeSupported_1_2(uuid,
+        auto hResult = factoryV1_2->isCryptoSchemeSupported_1_2(uuid,
                 mimeType.string(), toHidlSecurityLevel(level));
+        if (hResult.isOk()) {
+            *isSupported = hResult;
+        } else {
+            return DEAD_OBJECT;
+        }
         return OK;
     }
 }
@@ -551,7 +561,8 @@ status_t DrmHal::isCryptoSchemeSupported(const uint8_t uuid[16],
     Mutex::Autolock autoLock(mLock);
     *isSupported = false;
     for (ssize_t i = mFactories.size() - 1; i >= 0; i--) {
-        if (mFactories[i]->isCryptoSchemeSupported(uuid)) {
+        auto hResult = mFactories[i]->isCryptoSchemeSupported(uuid);
+        if (hResult.isOk() && hResult) {
             return matchMimeTypeAndSecurityLevel(mFactories[i],
                     uuid, mimeType, level, isSupported);
         }
