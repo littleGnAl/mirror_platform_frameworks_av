@@ -242,7 +242,7 @@ MediaBufferHelper* MidiEngine::readBuffer() {
     }
     MediaBufferHelper *buffer;
     status_t err = mGroup->acquire_buffer(&buffer);
-    if (err != OK) {
+    if (err != OK || buffer == nullptr) {
         ALOGE("readBuffer: no buffer");
         return NULL;
     }
