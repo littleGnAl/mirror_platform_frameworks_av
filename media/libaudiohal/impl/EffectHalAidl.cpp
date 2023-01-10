@@ -24,24 +24,37 @@
 #include <mediautils/TimeCheck.h>
 #include <utils/Log.h>
 
+#include <system/audio_effects/effect_aec.h>
+#include <system/audio_effects/effect_downmix.h>
+#include <system/audio_effects/effect_dynamicsprocessing.h>
+#include <system/audio_effects/effect_hapticgenerator.h>
+#include <system/audio_effects/effect_ns.h>
+#include <system/audio_effects/effect_spatializer.h>
+#include <system/audio_effects/effect_visualizer.h>
+
 #include "EffectHalAidl.h"
 
 #include <system/audio.h>
-
 #include <aidl/android/hardware/audio/effect/IEffect.h>
 
 using ::aidl::android::hardware::audio::effect::CommandId;
 using ::aidl::android::hardware::audio::effect::Descriptor;
 using ::aidl::android::hardware::audio::effect::IEffect;
-using ::aidl::android::hardware::audio::effect::State;
 using ::aidl::android::hardware::audio::effect::Parameter;
+using ::aidl::android::hardware::audio::effect::State;
+using ::aidl::android::media::audio::common::AudioUuid;
 
 namespace android {
 namespace effect {
 
 EffectHalAidl::EffectHalAidl(const std::shared_ptr<IEffect>& effect, uint64_t effectId,
-                             int32_t sessionId, int32_t ioId)
-    : mEffectId(effectId), mSessionId(sessionId), mIoId(ioId), mEffect(effect) {}
+                             int32_t sessionId, int32_t ioId, const Descriptor& desc)
+    : EffectConversionHelperAidl(effect, sessionId, ioId, desc.common.id.type),
+      mEffectId(effectId),
+      mSessionId(sessionId),
+      mIoId(ioId),
+      mEffect(effect),
+      mDesc(desc) {}
 
 EffectHalAidl::~EffectHalAidl() {}
 
@@ -72,81 +85,24 @@ status_t EffectHalAidl::processReverse() {
     ALOGW("%s not implemented yet", __func__);
     return OK;
 }
+#if 0
 
-status_t EffectHalAidl::handleSetConfig(uint32_t cmdCode, uint32_t cmdSize, void* pCmdData,
-                                        uint32_t* replySize, void* pReplyData) {
-    if (pCmdData == NULL || cmdSize != sizeof(effect_config_t) || replySize == NULL ||
-        *replySize != sizeof(int32_t) || pReplyData == NULL) {
-        ALOGE("%s parameter error code %u", __func__, cmdCode);
-        return BAD_VALUE;
-    }
-
-    *static_cast<int32_t*>(pReplyData) = FAILED_TRANSACTION;
-    memcpy(&mConfig, pCmdData, cmdSize);
-
-    State state;
-    RETURN_IF_BINDER_FAIL(mEffect->getState(&state));
-    // effect not open yet, save settings locally
-    if (state != State::INIT) {
-        effect_config_t* legacyConfig = static_cast<effect_config_t*>(pCmdData);
-        // already open, apply latest settings
-        Parameter aidlParam;
-        Parameter::Common aidlCommon;
-        aidlCommon.input.base =
-                VALUE_OR_RETURN_STATUS(::aidl::android::legacy2aidl_AudioConfigBase_buffer_config_t(
-                        legacyConfig->inputCfg, true /* isInput */));
-        aidlCommon.output.base =
-                VALUE_OR_RETURN_STATUS(::aidl::android::legacy2aidl_AudioConfigBase_buffer_config_t(
-                        legacyConfig->outputCfg, false /* isInput */));
-        aidlCommon.session = mSessionId;
-        aidlCommon.ioHandle = mIoId;
-        Parameter::Id id;
-        id.set<Parameter::Id::commonTag>(Parameter::common);
-        aidlParam.set<Parameter::common>(aidlCommon);
-        RETURN_IF_BINDER_FAIL(mEffect->setParameter(aidlParam));
-    }
-    *(int*)pReplyData = 0;
-    *static_cast<int32_t*>(pReplyData) = OK;
-    return OK;
-}
-
-status_t EffectHalAidl::handleGetConfig(uint32_t cmdCode, uint32_t cmdSize, void* pCmdData,
-                                        uint32_t* replySize, void* pReplyData) {
-    if (pCmdData == NULL || cmdSize == 0 || replySize == NULL ||
-        *replySize != sizeof(effect_config_t) || pReplyData == NULL) {
-        ALOGE("%s parameter error with cmdCode %d", __func__, cmdCode);
-        return BAD_VALUE;
-    }
-
-    *(effect_config_t*)pReplyData = mConfig;
-    return OK;
-}
-
-status_t EffectHalAidl::handleSetParameter(uint32_t cmdCode, uint32_t cmdSize, void* pCmdData,
-                                           uint32_t* replySize, void* pReplyData) {
+status_t EffectHalAidl::handleSetParameter(uint32_t cmdSize, void* pCmdData, uint32_t* replySize,
+                                           void* pReplyData) {
     ALOGW("%s not implemented yet", __func__);
-    if (pCmdData == NULL || cmdSize == 0 || replySize == NULL ||
-        *replySize != sizeof(effect_config_t) || pReplyData == NULL) {
-        ALOGE("%s parameter error with cmdCode %d", __func__, cmdCode);
+    if (*replySize != sizeof(effect_param_t)) {
+        ALOGE("%s parameter replySize error %d", __func__, *replySize);
         return BAD_VALUE;
     }
     return OK;
 }
-
-status_t EffectHalAidl::handleGetParameter(uint32_t cmdCode, uint32_t cmdSize, void* pCmdData,
-                                           uint32_t* replySize, void* pReplyData) {
-    ALOGW("%s not implemented yet", __func__);
-    if (pCmdData == NULL || cmdSize == 0 || replySize == NULL ||
-        *replySize != sizeof(effect_config_t) || pReplyData == NULL) {
-        ALOGE("%s parameter error with cmdCode %d", __func__, cmdCode);
-        return BAD_VALUE;
-    }
-    return OK;
-}
-
+#endif
 status_t EffectHalAidl::command(uint32_t cmdCode, uint32_t cmdSize, void* pCmdData,
                                 uint32_t* replySize, void* pReplyData) {
-    ALOGW("%s code %d not implemented yet", __func__, cmdCode);
+    if (pCmdData == NULL || cmdSize == 0 || replySize == NULL || pReplyData == NULL) {
+        ALOGE("%s parameter error %d %d %p %p", __func__, cmdCode, cmdSize, replySize, pReplyData);
+        return BAD_VALUE;
+    }
     ::ndk::ScopedAStatus status;
     switch (cmdCode) {
         case EFFECT_CMD_INIT: {
@@ -156,35 +112,35 @@ status_t EffectHalAidl::command(uint32_t cmdCode, uint32_t cmdSize, void* pCmdDa
             RETURN_IF_BINDER_FAIL(mEffect->open(common, std::nullopt, &ret));
             return OK;
         }
+        case EFFECT_CMD_SET_CONFIG_REVERSE:
+            return OK; // handleSetConfig(cmdSize, pCmdData, replySize, pReplyData, true /* reverse */);
         case EFFECT_CMD_SET_CONFIG:
-            return handleSetConfig(cmdCode, cmdSize, pCmdData, replySize, pReplyData);
+            return OK; // handleSetConfig(cmdSize, pCmdData, replySize, pReplyData);
+        case EFFECT_CMD_GET_CONFIG_REVERSE:
+            return OK; // handleGetConfig(cmdSize, pCmdData, replySize, pReplyData, true /* reverse */);
         case EFFECT_CMD_GET_CONFIG:
-            return handleGetConfig(cmdCode, cmdSize, pCmdData, replySize, pReplyData);
+            return OK; // handleGetConfig(cmdSize, pCmdData, replySize, pReplyData);
         case EFFECT_CMD_RESET:
-            return mEffect->command(CommandId::RESET).getStatus();
+            return OK; // mEffect->command(CommandId::RESET).getStatus();
         case EFFECT_CMD_ENABLE:
-            return mEffect->command(CommandId::START).getStatus();
+            return OK; // mEffect->command(CommandId::START).getStatus();
         case EFFECT_CMD_DISABLE:
-            return mEffect->command(CommandId::STOP).getStatus();
-        case EFFECT_CMD_SET_PARAM:
-            return handleSetParameter(cmdCode, cmdSize, pCmdData, replySize, pReplyData);
+            return OK; // mEffect->command(CommandId::STOP).getStatus();
         case EFFECT_CMD_SET_PARAM_DEFERRED:
+            FALLTHROUGH_INTENDED;
         case EFFECT_CMD_SET_PARAM_COMMIT:
-            // TODO
+            FALLTHROUGH_INTENDED;
+        case EFFECT_CMD_SET_PARAM:
             return OK;
         case EFFECT_CMD_GET_PARAM:
-            return handleGetParameter(cmdCode, cmdSize, pCmdData, replySize, pReplyData);
+            return OK;
         case EFFECT_CMD_SET_DEVICE:
             return OK;
         case EFFECT_CMD_SET_VOLUME:
             return OK;
         case EFFECT_CMD_SET_AUDIO_MODE:
             return OK;
-        case EFFECT_CMD_SET_CONFIG_REVERSE:
-            return OK;
         case EFFECT_CMD_SET_INPUT_DEVICE:
-            return OK;
-        case EFFECT_CMD_GET_CONFIG_REVERSE:
             return OK;
         case EFFECT_CMD_GET_FEATURE_SUPPORTED_CONFIGS:
             return OK;
@@ -203,7 +159,6 @@ status_t EffectHalAidl::command(uint32_t cmdCode, uint32_t cmdSize, void* pCmdDa
         default:
             return INVALID_OPERATION;
     }
-    return INVALID_OPERATION;
 }
 
 status_t EffectHalAidl::getDescriptor(effect_descriptor_t* pDescriptor) {

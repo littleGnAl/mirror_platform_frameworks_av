@@ -267,7 +267,7 @@ status_t DeviceHalAidl::dump(int __unused, const Vector<String16>& __unused) {
 int32_t DeviceHalAidl::supportsBluetoothVariableLatency(bool* supports __unused) {
     TIME_CHECK();
     ALOGE("%s not implemented yet", __func__);
-    return INVALID_OPERATION;
+    return OK;
 }
 
 } // namespace android

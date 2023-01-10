@@ -29,8 +29,10 @@
 namespace aidl {
 namespace android {
 
+using ::aidl::android::hardware::audio::effect::AcousticEchoCanceler;
 using ::aidl::android::hardware::audio::effect::Descriptor;
 using ::aidl::android::hardware::audio::effect::Flags;
+using ::aidl::android::hardware::audio::effect::Parameter;
 
 using ::android::BAD_VALUE;
 using ::android::base::unexpected;
@@ -238,7 +240,7 @@ ConversionResult<buffer_config_t> aidl2legacy_AudioConfigBase_buffer_config_t(
 }
 
 ConversionResult<media::audio::common::AudioConfigBase>
-legacy2aidl_AudioConfigBase_buffer_config_t(const buffer_config_t& legacy, bool isInput) {
+legacy2aidl_buffer_config_t_AudioConfigBase(const buffer_config_t& legacy, bool isInput) {
     media::audio::common::AudioConfigBase aidl;
 
     if (legacy.mask & EFFECT_CONFIG_SMP_RATE) {
@@ -253,6 +255,55 @@ legacy2aidl_AudioConfigBase_buffer_config_t(const buffer_config_t& legacy, bool 
                 static_cast<audio_format_t>(legacy.format)));
     }
     return aidl;
+}
+
+ConversionResult<Parameter::Specific> getParameterSpecific(const Parameter& aidl) {
+    if (aidl.getTag() != Parameter::specific) {
+        return unexpected(BAD_VALUE);
+    }
+    return aidl.get<Parameter::specific>();
+}
+
+ConversionResult<AcousticEchoCanceler> getParameterSpecificAec(const Parameter& aidl) {
+    const auto& specific = VALUE_OR_RETURN(getParameterSpecific(aidl));
+    if (specific.getTag() != Parameter::Specific::acousticEchoCanceler) {
+        return unexpected(BAD_VALUE);
+    }
+    return specific.get<Parameter::Specific::acousticEchoCanceler>();
+}
+
+ConversionResult<Parameter> legacy2aidl_uint32_echoDelay_Parameter(const uint32_t& legacy) {
+    int delay = VALUE_OR_RETURN(convertReinterpret<int32_t>(legacy));
+    AcousticEchoCanceler aec = AcousticEchoCanceler::make<AcousticEchoCanceler::echoDelayUs>(delay);
+    Parameter::Specific specific =
+            Parameter::Specific::make<Parameter::Specific::acousticEchoCanceler>(aec);
+
+    return Parameter::make<Parameter::specific>(specific);
+}
+
+ConversionResult<Parameter> legacy2aidl_uint32_mobileMode_Parameter(const uint32_t& legacy) {
+    bool mode = VALUE_OR_RETURN(convertIntegral<bool>(legacy));
+    AcousticEchoCanceler aec = AcousticEchoCanceler::make<AcousticEchoCanceler::mobileMode>(mode);
+    Parameter::Specific specific =
+            Parameter::Specific::make<Parameter::Specific::acousticEchoCanceler>(aec);
+
+    return Parameter::make<Parameter::specific>(specific);
+}
+
+ConversionResult<uint32_t> aidl2legacy_Parameter_uint32_echoDelay(const Parameter& aidl) {
+    const auto& aec = VALUE_OR_RETURN(getParameterSpecificAec(aidl));
+    if (aec.getTag() != AcousticEchoCanceler::echoDelayUs) {
+        return unexpected(BAD_VALUE);
+    }
+    return VALUE_OR_RETURN(convertIntegral<uint32_t>(aec.get<AcousticEchoCanceler::echoDelayUs>()));
+}
+
+ConversionResult<uint32_t> aidl2legacy_Parameter_uint32_mobileMode(const Parameter& aidl) {
+    const auto& aec = VALUE_OR_RETURN(getParameterSpecificAec(aidl));
+    if (aec.getTag() != AcousticEchoCanceler::mobileMode) {
+        return unexpected(BAD_VALUE);
+    }
+    return VALUE_OR_RETURN(convertIntegral<uint32_t>(aec.get<AcousticEchoCanceler::mobileMode>()));
 }
 
 }  // namespace android

@@ -19,6 +19,7 @@
 #include <aidl/android/hardware/audio/core/BpModule.h>
 #include <media/audiohal/DeviceHalInterface.h>
 #include <media/audiohal/EffectHalInterface.h>
+#include <system/audio.h>
 
 #include "ConversionHelperAidl.h"
 
@@ -126,6 +127,11 @@ class DeviceHalAidl : public DeviceHalInterface, public ConversionHelperAidl {
     float mVoiceVolume = 0.0f;
     bool mMasterMute = false;
     bool mMicMute = false;
+
+    ::aidl::android::hardware::audio::core::IModule::OpenInputStreamArguments mInputStreamArgs;
+    ::aidl::android::hardware::audio::core::IModule::OpenInputStreamReturn mInputStreamRet;
+    ::aidl::android::hardware::audio::core::IModule::OpenOutputStreamArguments mOutputStreamArgs;
+    ::aidl::android::hardware::audio::core::IModule::OpenOutputStreamReturn mOutputStreamRet;
 
     // Can not be constructed directly by clients.
     explicit DeviceHalAidl(

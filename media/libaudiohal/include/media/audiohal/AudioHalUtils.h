@@ -16,6 +16,11 @@
 
 #pragma once
 
+#include <sstream>
+#include <string>
+#include <system/audio_effect.h>
+
+namespace android::detail {
 #define RETURN_IF_BINDER_FAIL(expr)                                              \
     do {                                                                         \
         const ::ndk::ScopedAStatus _temp_status_ = (expr);                       \
@@ -33,3 +38,14 @@
             return tmp;             \
         }                           \
     } while (false)
+
+inline std::string toString(const effect_param_t& param) {
+    std::ostringstream os;
+    os << "effect_param_t { ";
+    os << "status: " << param.status << ", p: " << param.psize << ", v: " << param.vsize
+       << ", data " << param.data;
+    os << "}";
+    return os.str();
+}
+
+}
