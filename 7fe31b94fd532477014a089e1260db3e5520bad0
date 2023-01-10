@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f71aecbb_a305f20c",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-10T18:00:29Z",
+      "side": 1,
+      "message": "Is it correct that it\u0027s enough for any device in the list to support the effect, not for all of them?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 40
+      },
+      "revId": "7fe31b94fd532477014a089e1260db3e5520bad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
