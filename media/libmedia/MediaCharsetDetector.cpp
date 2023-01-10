@@ -15,11 +15,11 @@
  */
 
 //#define LOG_NDEBUG 0
-#define LOG_TAG "CharacterEncodingDector"
+#define LOG_TAG "MediaCharsetDetector"
 #include <utils/Log.h>
 
-#include <media/CharacterEncodingDetector.h>
 #include "CharacterEncodingDetectorTables.h"
+#include "MediaCharsetDetector.h"
 
 #include <utils/Vector.h>
 #include <media/StringArray.h>
@@ -32,7 +32,7 @@
 
 namespace android {
 
-CharacterEncodingDetector::CharacterEncodingDetector() {
+MediaCharsetDetector::MediaCharsetDetector() {
 
     UErrorCode status = U_ZERO_ERROR;
     mUtf8Conv = ucnv_open("UTF-8", &status);
@@ -62,20 +62,20 @@ CharacterEncodingDetector::CharacterEncodingDetector() {
     }
 }
 
-CharacterEncodingDetector::~CharacterEncodingDetector() {
+MediaCharsetDetector::~MediaCharsetDetector() {
     ucnv_close(mUtf8Conv);
 }
 
-void CharacterEncodingDetector::addTag(const char *name, const char *value) {
+void MediaCharsetDetector::addTag(const char *name, const char *value) {
     mNames.push_back(name);
     mValues.push_back(value);
 }
 
-size_t CharacterEncodingDetector::size() {
+size_t MediaCharsetDetector::size() {
     return mNames.size();
 }
 
-status_t CharacterEncodingDetector::getTag(int index, const char **name, const char**value) {
+status_t MediaCharsetDetector::getTag(int index, const char **name, const char**value) {
     if (index >= mNames.size()) {
         return BAD_VALUE;
     }
@@ -94,7 +94,7 @@ static bool isPrintableAscii(const char *value, size_t len) {
     return true;
 }
 
-void CharacterEncodingDetector::detectAndConvert() {
+void MediaCharsetDetector::detectAndConvert() {
 
     int size = mNames.size();
     ALOGV("%d tags before conversion", size);
@@ -319,7 +319,7 @@ void CharacterEncodingDetector::detectAndConvert() {
  * - signal to the caller whether this match is considered good: confidence > 15, and confidence
  *   delta with the next runner up > 15
  */
-const UCharsetMatch *CharacterEncodingDetector::getPreferred(
+const UCharsetMatch *MediaCharsetDetector::getPreferred(
         const char *input, size_t len,
         const UCharsetMatch** ucma, size_t nummatches,
         bool *goodmatch, int *highestmatch) {
@@ -488,7 +488,7 @@ const UCharsetMatch *CharacterEncodingDetector::getPreferred(
 }
 
 
-bool CharacterEncodingDetector::isFrequent(const uint16_t *values, uint32_t c) {
+bool MediaCharsetDetector::isFrequent(const uint16_t *values, uint32_t c) {
 
     int start = 0;
     int end = 511; // All the tables have 512 entries
