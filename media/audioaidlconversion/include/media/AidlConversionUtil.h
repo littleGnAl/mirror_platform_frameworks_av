@@ -16,13 +16,16 @@
 
 #pragma once
 
+#include <any>
 #include <limits>
 #include <type_traits>
+#include <tuple>
 #include <utility>
 
 #include <android-base/expected.h>
 #include <binder/Status.h>
 #include <error/Result.h>
+#include <system/audio_effect.h>
 
 #if defined(BACKEND_NDK)
 #include <android/binder_auto_utils.h>
@@ -411,6 +414,14 @@ static inline ::android::binder::Status binderStatusFromStatusT(
     return Status::fromServiceSpecificError(status, emptyIfNull);
 }
 
+inline std::string toString(const effect_param_t& param) {
+    std::ostringstream os;
+    os << "effect_param_t { ";
+    os << "status: " << param.status << ", p: " << param.psize << ", v: " << param.vsize
+       << ", data " << param.data;
+    os << "}";
+    return os.str();
+}
 
 } // namespace aidl_utils
 

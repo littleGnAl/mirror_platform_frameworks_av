@@ -21,6 +21,7 @@
 //#define LOG_NDEBUG 0
 
 #include <aidl/android/hardware/audio/effect/IFactory.h>
+#include <error/expected_utils.h>
 #include <android/binder_manager.h>
 #include <media/AidlConversionCppNdk.h>
 #include <media/AidlConversionNdk.h>
@@ -30,6 +31,7 @@
 #include "EffectHalAidl.h"
 #include "EffectsFactoryHalAidl.h"
 
+using aidl::android::aidl_utils::statusTFromBinderStatus;
 using aidl::android::hardware::audio::effect::IFactory;
 using aidl::android::media::audio::common::AudioUuid;
 using android::detail::AudioHalVersionInfo;
@@ -115,19 +117,21 @@ status_t EffectsFactoryHalAidl::createEffect(const effect_uuid_t* uuid, int32_t 
     AudioUuid aidlUuid =
             VALUE_OR_RETURN_STATUS(::aidl::android::legacy2aidl_audio_uuid_t_AudioUuid(*uuid));
     std::shared_ptr<IEffect> aidlEffect;
-    ndk::ScopedAStatus status = mFactory->createEffect(aidlUuid, &aidlEffect);
-    if (!status.isOk() || aidlEffect == nullptr) {
-        ALOGE("%s IFactory::createFactory failed %s UUID %s", __func__,
-              status.getDescription().c_str(), aidlUuid.toString().c_str());
+    Descriptor desc;
+    RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mFactory->createEffect(aidlUuid, &aidlEffect)));
+    if (aidlEffect == nullptr) {
+        ALOGE("%s IFactory::createFactory failed UUID %s", __func__, aidlUuid.toString().c_str());
         return INVALID_OPERATION;
     }
+    RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(aidlEffect->getDescriptor(&desc)));
+
     uint64_t effectId;
     {
         std::lock_guard lg(mLock);
         effectId = ++mEffectIdCounter;
     }
 
-    *effect = new EffectHalAidl(aidlEffect, effectId, sessionId, ioId);
+    *effect = sp<EffectHalAidl>::make(aidlEffect, effectId, sessionId, ioId, desc);
     return OK;
 }
 
