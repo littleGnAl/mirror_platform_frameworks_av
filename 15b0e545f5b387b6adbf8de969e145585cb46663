@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b661c6e_ffb0d750",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/EffectReverb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-10T15:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c9f471_a7a7329e",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "15b0e545f5b387b6adbf8de969e145585cb46663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc442202_f54dcad8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-09T18:16:56Z",
       "side": 1,
       "message": "Can we also define constexpr for these?",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "15b0e545f5b387b6adbf8de969e145585cb46663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55de33c_c7bfbe3b",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-10T15:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc442202_f54dcad8",
       "range": {
         "startLine": 49,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a314126_557785c4",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-10T15:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd45f80_36043397",
+      "range": {
+        "startLine": 132,
+        "startChar": 55,
+        "endLine": 132,
+        "endChar": 66
+      },
+      "revId": "15b0e545f5b387b6adbf8de969e145585cb46663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c351895e_bb6cd909",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb486d6_35869688",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-10T15:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c351895e_bb6cd909",
+      "range": {
+        "startLine": 89,
+        "startChar": 17,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "15b0e545f5b387b6adbf8de969e145585cb46663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0eca7bc_c1394e4f",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-01-09T18:16:56Z",
       "side": 1,
       "message": "Please use `constexpr` when possible",
+      "range": {
+        "startLine": 119,
+        "startChar": 18,
+        "endLine": 119,
+        "endChar": 23
+      },
+      "revId": "15b0e545f5b387b6adbf8de969e145585cb46663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f27ef9ea_7973bb44",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-10T15:10:24Z",
+      "side": 1,
+      "message": "using constexpr here resulted in error, added usage of constexpr where possible.",
+      "parentUuid": "d0eca7bc_c1394e4f",
       "range": {
         "startLine": 119,
         "startChar": 18,
