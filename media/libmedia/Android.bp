@@ -331,6 +331,7 @@ cc_library {
         "mediametadataretriever.cpp",
         "MediaScanner.cpp",
         "MediaScannerClient.cpp",
+        "MediaCharsetDetector.cpp",
         "CharacterEncodingDetector.cpp",
         "IMediaDeathNotifier.cpp",
         "MediaProfiles.cpp",
@@ -384,7 +385,6 @@ cc_library {
     export_shared_lib_headers: [
         "libaudioclient",
         "libbinder",
-        "libandroidicu",
         //"libsonivox",
         "libmedia_omx",
         "framework-permission-aidl-cpp",

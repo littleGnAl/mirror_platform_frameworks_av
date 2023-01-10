@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-#ifndef _CHARACTER_ENCODING_DETECTOR_H
-#define _CHARACTER_ENCODING_DETECTOR_H
+#ifndef _MEDIA_CHARSET_DETECTOR_H
+#define _MEDIA_CHARSET_DETECTOR_H
 
-#include <memory>
 #include <media/mediascanner.h>
+#include <media/StringArray.h>
+
+#include "unicode/ucnv.h"
+#include "unicode/ucsdet.h"
+#include "unicode/ustring.h"
 
 namespace android {
 
-class MediaCharsetDetector;
-
-class CharacterEncodingDetector {
+class MediaCharsetDetector {
 
     public:
-        CharacterEncodingDetector();
-        ~CharacterEncodingDetector();
+        MediaCharsetDetector();
+        ~MediaCharsetDetector();
 
         void addTag(const char *name, const char *value);
         size_t size();
@@ -37,8 +39,24 @@ class CharacterEncodingDetector {
         status_t getTag(int index, const char **name, const char**value);
 
     private:
-        std::unique_ptr<MediaCharsetDetector> mDetector;
+        const UCharsetMatch *getPreferred(
+                const char *input, size_t len,
+                const UCharsetMatch** ucma, size_t matches,
+                bool *goodmatch, int *highestmatch);
+
+        bool isFrequent(const uint16_t *values, uint32_t c);
+
+        // cached name and value strings, for native encoding support.
+        // TODO: replace these with byte blob arrays that don't require the data to be
+        // singlenullbyte-terminated
+        StringArray     mNames;
+        StringArray     mValues;
+
+        UConverter*     mUtf8Conv;
+        const char*     mLocaleEnc;
 };
+
+
 
 };  // namespace android
 
