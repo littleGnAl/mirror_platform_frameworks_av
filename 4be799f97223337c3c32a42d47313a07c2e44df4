@@ -34,6 +34,24 @@
       "parentUuid": "1b9efb45_c8d6c498",
       "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e354f0e_9e32e111",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1965372
+      },
+      "writtenOn": "2023-01-10T13:39:21Z",
+      "side": 1,
+      "message": "1. I think the right fix should be checking for baseStore before creating Codec2Client here.\n\u003d\u003d\u003e\n1. base and basestore are different variables, base is the argument of Codec2ConfigurableClient, it’s type is sp\u003cIConfigurable\u003e\u0026, but basestore is the argument of Codec2Client, it’s type is sp\u003cBase\u003e const\u0026.\nCodec2ConfigurableClient::Codec2ConfigurableClient(const sp\u003cIConfigurable\u003e\u0026 base)\nCodec2Client(sp\u003cBase\u003e const\u0026 base, size_t serviceIndex);\n\n2. the null pointer value of base is come from the return value of lambda function bellow, it can be null if transResult.isOk() \u003d\u003d false in line #620\n      : Configurable{\n\t            [base]() -\u003e sp\u003cIConfigurable\u003e {\n\t                Return\u003csp\u003cIConfigurable\u003e\u003e transResult \u003d\n\t                        base-\u003egetConfigurable();\n\t                return transResult.isOk() ?\n\t                        static_cast\u003csp\u003cIConfigurable\u003e\u003e(transResult) :\n\t                        nullptr;\n\t            }()\n\t        },",
+      "parentUuid": "a65315bd_8cb8c85a",
+      "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
