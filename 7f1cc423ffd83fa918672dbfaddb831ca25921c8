@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ba9d81_d159357a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-10T18:02:21Z",
+      "side": 1,
+      "message": "nit, make second line standalone paragraph, i.e. insert newline before, capitalize, and add period:\n\n```\nMetrics logging IDrm implementation\n\nFor error, createPlugin and OpenSession events.\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 46
+      },
+      "revId": "7f1cc423ffd83fa918672dbfaddb831ca25921c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
