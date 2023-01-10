@@ -18,6 +18,7 @@
 
 #include <media/audiohal/DeviceHalInterface.h>
 #include <media/audiohal/EffectHalInterface.h>
+#include <system/audio.h>
 
 #include <aidl/android/hardware/audio/core/BpModule.h>
 
@@ -86,6 +87,12 @@ class DeviceHalAidl : public DeviceHalInterface {
     // Releases an audio patch.
     status_t releaseAudioPatch(audio_patch_handle_t patch) override;
 
+    // Fills the list of supported attributes for a given audio port.
+    status_t getAudioPort(struct audio_port* port) override;
+
+    // Fills the list of supported attributes for a given audio port.
+    status_t getAudioPort(struct audio_port_v7 *port) override;
+
     // Set audio port configuration.
     status_t setAudioPortConfig(const struct audio_port_config* config) override;
 
@@ -118,13 +125,18 @@ class DeviceHalAidl : public DeviceHalInterface {
     bool mMasterMute = false;
     bool mMicMute = false;
 
+    ::aidl::android::hardware::audio::core::IModule::OpenInputStreamArguments mInputStreamArgs;
+    ::aidl::android::hardware::audio::core::IModule::OpenInputStreamReturn mInputStreamRet;
+    ::aidl::android::hardware::audio::core::IModule::OpenOutputStreamArguments mOutputStreamArgs;
+    ::aidl::android::hardware::audio::core::IModule::OpenOutputStreamReturn mOutputStreamRet;
+
     // Can not be constructed directly by clients.
     explicit DeviceHalAidl(
             const std::shared_ptr<::aidl::android::hardware::audio::core::IModule>& core)
         : mCore(core) {}
 
     // The destructor automatically closes the device.
-    ~DeviceHalAidl();
+    ~DeviceHalAidl() {}
 };
 
 } // namespace android

@@ -55,6 +55,10 @@ class EffectHalAidl : public EffectHalInterface {
 
     uint64_t effectId() const override { return mEffectId; }
 
+    const std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> getIEffect() const {
+        return mEffect;
+    }
+
   private:
     friend class EffectsFactoryHalAidl;
 
