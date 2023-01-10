@@ -45,8 +45,6 @@ status_t DevicesFactoryHalAidl::openDevice(const char *name, sp<DeviceHalInterfa
     if (name == nullptr || device == nullptr) {
         return BAD_VALUE;
     }
-    ALOGE("%s not implemented yet %s", __func__, name);
-    return INVALID_OPERATION;
 
     // TODO: only support primary now ("default" means "primary")
     if (strcmp(name, "primary") != 0) {
@@ -55,8 +53,11 @@ status_t DevicesFactoryHalAidl::openDevice(const char *name, sp<DeviceHalInterfa
                 ndk::SpAIBinder(AServiceManager_waitForService(serviceName.c_str())));
         ALOGW("%s fromBinder %s %s", __func__, IModule::descriptor, service ? "succ" : "fail");
         *device = new DeviceHalAidl(service);
+        return OK;
+    } else {
+        ALOGE("%s not implemented yet %s", __func__, name);
+        return INVALID_OPERATION;
     }
-    return OK;
 }
 
 status_t DevicesFactoryHalAidl::getHalPids(std::vector<pid_t> *pids) {
