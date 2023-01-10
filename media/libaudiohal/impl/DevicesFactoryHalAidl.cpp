@@ -45,17 +45,22 @@ status_t DevicesFactoryHalAidl::openDevice(const char *name, sp<DeviceHalInterfa
     if (name == nullptr || device == nullptr) {
         return BAD_VALUE;
     }
-    ALOGE("%s not implemented yet %s", __func__, name);
-    return INVALID_OPERATION;
 
+    std::string instance;
     // TODO: only support primary now ("default" means "primary")
-    if (strcmp(name, "primary") != 0) {
-        auto serviceName = std::string() + IModule::descriptor + "/default";
-        auto service = IModule::fromBinder(
-                ndk::SpAIBinder(AServiceManager_waitForService(serviceName.c_str())));
-        ALOGW("%s fromBinder %s %s", __func__, IModule::descriptor, service ? "succ" : "fail");
-        *device = new DeviceHalAidl(service);
+    if (strcmp(name, "primary") == 0) {
+        instance = "default";
+    } else if (strcmp(name, "r_submix") == 0) {
+        instance = "r_submix";
+    } else {
+        ALOGE("%s not implemented yet %s", __func__, name);
+        return INVALID_OPERATION;
     }
+    auto serviceName = std::string() + IModule::descriptor + "/" + instance;
+    auto service = IModule::fromBinder(
+            ndk::SpAIBinder(AServiceManager_waitForService(serviceName.c_str())));
+    ALOGW("%s fromBinder %s %s", __func__, IModule::descriptor, service ? "succ" : "fail");
+    *device = new DeviceHalAidl(service);
     return OK;
 }
 
