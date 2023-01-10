@@ -16,7 +16,25 @@
 
 #define LOG_TAG "DeviceHalAidl"
 
+#include <media/AidlConversionCppNdk.h>
+#include <media/AidlConversionNdk.h>
+#include <media/audiohal/AudioHalUtils.h>
+
 #include "DeviceHalAidl.h"
+#include "EffectHalAidl.h"
+
+#include <aidl/android/hardware/audio/core/IModule.h>
+
+using ::aidl::android::media::audio::common::AudioChannelLayout;
+using ::aidl::android::media::audio::common::AudioDevice;
+using ::aidl::android::media::audio::common::AudioPort;
+using ::aidl::android::media::audio::common::AudioSource;
+using ::aidl::android::hardware::audio::core::AudioPatch;
+using ::aidl::android::hardware::audio::core::AudioRoute;
+using ::aidl::android::hardware::audio::core::IModule;
+using ::aidl::android::hardware::audio::effect::IEffect;
+
+namespace android {
 
 status_t DeviceHalAidl::getSupportedDevices(uint32_t* devices) {
     ALOGE("%s not implemented yet devices %p", __func__, devices);
@@ -96,15 +114,27 @@ status_t DeviceHalAidl::openOutputStream(audio_io_handle_t handle, audio_devices
     return OK;
 }
 
-status_t DeviceHalAidl::openInputStream(audio_io_handle_t handle, audio_devices_t devices,
+status_t DeviceHalAidl::openInputStream(audio_io_handle_t __unused, audio_devices_t devices,
                                         struct audio_config* config, audio_input_flags_t flags,
                                         const char* address, audio_source_t source,
                                         audio_devices_t outputDevice,
                                         const char* outputDeviceAddress,
                                         sp<StreamInHalInterface>* inStream) {
-    ALOGE("%s not implemented yet %d %u %u %u %p %s %s %p %d", __func__, handle, devices,
-          outputDevice, flags, config, address, outputDeviceAddress, inStream, source);
-    return OK;
+    AudioSource aidlSource =
+            VALUE_OR_RETURN_STATUS(aidl::android::legacy2aidl_audio_source_t_AudioSource(source));
+    AudioDevice aidlDevice = VALUE_OR_RETURN_STATUS(
+            aidl::android::legacy2aidl_audio_device_AudioDevice(devices, outputDeviceAddress));
+    AudioChannelLayout aidlLayout = VALUE_OR_RETURN_STATUS(
+            aidl::android::legacy2aidl_audio_channel_mask_t_AudioChannelLayout(config->channel_mask,
+                                                                               true /* isInput */));
+    mInputStreamArgs.sinkMetadata.tracks.push_back({.source = aidlSource,
+                                                    .gain = 1, /* unity gain */
+                                                    .destinationDevice = aidlDevice,
+                                                    .channelMask = aidlLayout});
+    // mInputStreamArgs.bufferSizeFrames = getInputBufferSize();
+    ALOGI("%s %u %u %u %p %s %s %p %d", __func__, devices, outputDevice, flags, config, address,
+          outputDeviceAddress, inStream, source);
+    return mCore->openInputStream(mInputStreamArgs, &mInputStreamRet).getStatus();
 }
 
 status_t DeviceHalAidl::supportsAudioPatches(bool* supportsPatches) {
@@ -117,9 +147,22 @@ status_t DeviceHalAidl::createAudioPatch(unsigned int num_sources,
                                          unsigned int num_sinks,
                                          const struct audio_port_config* sinks,
                                          audio_patch_handle_t* patch) {
-    ALOGE("%s not implemented yet %d %p %d %p %p", __func__, num_sources, sources, num_sinks,
-            sinks, patch);
-    return OK;
+    ALOGI("%s %d %p %d %p %p", __func__, num_sources, sources, num_sinks, sinks, patch);
+    AudioPatch inPatch = {.id  = 0 /* create */, }, outPatch;
+    for (unsigned int i = 0; i < num_sources || i < num_sinks; i++) {
+        if (i < num_sources) {
+            inPatch.sourcePortConfigIds.push_back(sources[i].id);
+        }
+        if (i < num_sinks) {
+            inPatch.sinkPortConfigIds.push_back(sinks[i].id);
+        }
+    }
+    auto ret = mCore->setAudioPatch(inPatch, &outPatch);
+    if (ret.isOk()) {
+        *patch = VALUE_OR_RETURN_STATUS(
+                aidl::android::aidl2legacy_int32_t_audio_patch_handle_t(outPatch.id));
+    }
+    return ret.getStatus();
 }
 
 status_t DeviceHalAidl::releaseAudioPatch(audio_patch_handle_t patch) {
@@ -145,8 +188,9 @@ status_t DeviceHalAidl::addDeviceEffect(audio_port_handle_t device, sp<EffectHal
     ALOGE("%s not implemented yet device %d", __func__, device);
     return OK;
 }
+
 status_t DeviceHalAidl::removeDeviceEffect(audio_port_handle_t device,
-                            sp<EffectHalInterface> effect) {
+                                           sp<EffectHalInterface> effect) {
     if (!effect) {
         return BAD_VALUE;
     }
@@ -181,7 +225,28 @@ status_t DeviceHalAidl::dump(int __unused, const Vector<String16>& __unused) {
     return OK;
 };
 
-int32_t DeviceHalAidl::supportsBluetoothVariableLatency(bool* supports __unused) override {
+int32_t DeviceHalAidl::supportsBluetoothVariableLatency(bool* supports __unused) {
     ALOGE("%s not implemented yet", __func__);
-    return INVALID_OPERATION;
+    return OK;
 }
+
+// Fills the list of supported attributes for a given audio port.
+status_t DeviceHalAidl::getAudioPort(struct audio_port* port) {
+    ALOGE("%s not implemented yet port %p", __func__, port);
+    std::vector<AudioPort> ports;
+    const auto& ret = mCore->getAudioPorts(&ports);
+    // TODO
+    ALOGI("%s %s", __func__, ret.getMessage());
+    return OK;
+}
+
+// Fills the list of supported attributes for a given audio port.
+status_t DeviceHalAidl::getAudioPort(struct audio_port_v7 *port) {
+    ALOGE("%s not implemented yet port %p", __func__, port);
+    std::vector<AudioPort> ports;
+    const auto& ret = mCore->getAudioPorts(&ports);
+    ALOGI("%s %s", __func__, ret.getMessage());
+    return OK;
+}
+
+}  // namespace android

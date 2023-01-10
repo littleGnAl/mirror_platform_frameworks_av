@@ -245,6 +245,7 @@ cc_library_shared {
         "latest_android_media_audio_common_types_ndk_shared",
     ],
     srcs: [
+        "DeviceHalAidl.cpp",
         "DevicesFactoryHalEntry.cpp",
         "DevicesFactoryHalAidl.cpp",
         "EffectBufferHalAidl.cpp",
