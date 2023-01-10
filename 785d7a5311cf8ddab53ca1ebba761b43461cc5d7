@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc065ba_c2cc38c1",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbTypes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-10T16:58:39Z",
+      "side": 1,
+      "message": "Could you please move this to where it\u0027s being used: ReverbContext.cpp. Macros are not scoped by namespaces, thus name conflicts are possible if this file gets included into a file which already has this macro defined.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 15
+      },
+      "revId": "785d7a5311cf8ddab53ca1ebba761b43461cc5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
