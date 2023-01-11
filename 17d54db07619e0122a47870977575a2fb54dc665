@@ -85,6 +85,29 @@
       },
       "revId": "17d54db07619e0122a47870977575a2fb54dc665",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283ec51a_8df6f1fc",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T17:11:23Z",
+      "side": 1,
+      "message": "Please also add `cdm_err`, `oem_err`, and `error_context` fields from `DrmStatus`.",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 60
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
