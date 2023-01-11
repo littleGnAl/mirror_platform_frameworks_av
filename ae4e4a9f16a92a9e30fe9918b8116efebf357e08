@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8466f8bd_f2568556",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T00:35:53Z",
+      "side": 1,
+      "message": "please change the var name to `hardwareCodecSupportsP010`",
+      "range": {
+        "startLine": 247,
+        "startChar": 13,
+        "endLine": 247,
+        "endChar": 17
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33c1f5f5_c394e0f0",
         "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
         "patchSetId": 2
@@ -31,6 +54,30 @@
       "writtenOn": "2023-01-06T00:39:17Z",
       "side": 1,
       "message": "regardless of supportability of s/w codec",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 87
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c65ea0de_846fb80e",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T00:35:53Z",
+      "side": 1,
+      "message": "Can you write these into inline comment in the code?",
+      "parentUuid": "33c1f5f5_c394e0f0",
       "range": {
         "startLine": 262,
         "startChar": 20,
@@ -64,6 +111,47 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8ad528_afc59266",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T00:35:53Z",
+      "side": 1,
+      "message": "same here",
+      "parentUuid": "a914a5e9_a1934c5d",
+      "range": {
+        "startLine": 272,
+        "startChar": 16,
+        "endLine": 272,
+        "endChar": 29
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3a4164_20e2a12f",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T00:35:53Z",
+      "side": 1,
+      "message": "what if there are multiple vendor codecs for the same type and only some of those support P010?",
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9ead9c2_dec5b478",
@@ -77,6 +165,30 @@
       "writtenOn": "2023-01-06T00:39:17Z",
       "side": 1,
       "message": "set the bitDepth to 8bit",
+      "range": {
+        "startLine": 286,
+        "startChar": 12,
+        "endLine": 286,
+        "endChar": 25
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6014886_067dfab1",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T00:35:53Z",
+      "side": 1,
+      "message": "same here",
+      "parentUuid": "b9ead9c2_dec5b478",
       "range": {
         "startLine": 286,
         "startChar": 12,
