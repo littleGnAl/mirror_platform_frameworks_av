@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "999aae62_9b322550",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-11T01:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8466f8bd_f2568556",
+      "range": {
+        "startLine": 247,
+        "startChar": 13,
+        "endLine": 247,
+        "endChar": 17
+      },
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c1f5f5_c394e0f0",
@@ -148,6 +172,24 @@
       "writtenOn": "2023-01-11T00:35:53Z",
       "side": 1,
       "message": "what if there are multiple vendor codecs for the same type and only some of those support P010?",
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5023db27_463b7aa8",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-11T01:05:20Z",
+      "side": 1,
+      "message": "it doesn\u0027t guarantee that same component which supports P010 format will be used at L287-L311. so, I mentioned my concerns  similar to your mention.\n\"the size of matchingCodecs could be more than 1.\nand, it is possible that S/W codec is preferred an S/W codec may fail to decode a frame. and then, it will try to decode a frame with next codec which will be H/W codec. if H/W codec cannot support P010 format, the problem will be happen.\nthat is why I set the bitDepth to 8bit when H/W codec cannot support P010 format. is this reasonable?\"",
+      "parentUuid": "da3a4164_20e2a12f",
       "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
