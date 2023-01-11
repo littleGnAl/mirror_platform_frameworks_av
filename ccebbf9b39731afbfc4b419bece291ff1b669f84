@@ -333,6 +333,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232fe8b7_0b870d8a",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:38:50Z",
+      "side": 1,
+      "message": "Sorry, missed this one. I don\u0027t think it\u0027s a big issue, will try to make it a constexpr in a later CL.",
+      "parentUuid": "b92c4754_027bebe2",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6853e929_57ae735d",
