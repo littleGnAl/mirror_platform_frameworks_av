@@ -50,6 +50,23 @@
       "message": "it appears there is an aosp/master version of this at https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2335462\n\nthat\u0027s the one to pursue, not this one.",
       "revId": "1013d69210574ca56542a83e510a6f87157a554b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa2c0c5_80d1a1db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:15:20Z",
+      "side": 1,
+      "message": "`android13-tests-dev` is not the right branch for framework changes",
+      "revId": "1013d69210574ca56542a83e510a6f87157a554b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
