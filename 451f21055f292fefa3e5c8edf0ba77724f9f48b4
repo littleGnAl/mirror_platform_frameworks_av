@@ -22,6 +22,30 @@
       },
       "revId": "451f21055f292fefa3e5c8edf0ba77724f9f48b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cb441c_b8eabd0e",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T17:38:06Z",
+      "side": 1,
+      "message": "Good point! I also prefer to avoid duplication. Moved the definition to TimeCheck.h.",
+      "parentUuid": "f3bba183_6461ad86",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "451f21055f292fefa3e5c8edf0ba77724f9f48b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
