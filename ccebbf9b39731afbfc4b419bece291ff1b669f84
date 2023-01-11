@@ -263,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2f5a69_9eb6bfd2",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:39:53Z",
+      "side": 1,
+      "message": "They can be. I will try to update in the next CL.",
+      "parentUuid": "15e852b4_525ce83a",
+      "range": {
+        "startLine": 58,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49f2640a_c27a6c9b",
