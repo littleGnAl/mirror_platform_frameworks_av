@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80500ec8_8319846f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-11T20:54:04Z",
+      "side": 1,
+      "message": "As my understanding return value of `malloc(0)` is implementation defined, which means you can get nullptr *or* a valid address, I\u0027m not sure if `::read` will behave as expect in case `malloc(0)` gives a valid address, just FYI.",
+      "range": {
+        "startLine": 365,
+        "startChar": 16,
+        "endLine": 365,
+        "endChar": 24
+      },
+      "revId": "57c728b4bd713b3617ea4e18cb8584bd0a21969e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
