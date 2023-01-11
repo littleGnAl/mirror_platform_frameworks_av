@@ -16,6 +16,216 @@
       "message": "shouldn\u0027t be any controversial changes in here,",
       "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e225cb6_2a3f839c",
+        "filename": "media/module/extractors/aac/AACExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406b5ed1_da0ee9ed",
+        "filename": "media/module/extractors/amr/AMRExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "range": {
+        "startLine": 344,
+        "startChar": 28,
+        "endLine": 344,
+        "endChar": 29
+      },
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42c1be6_0a4ed886",
+        "filename": "media/module/extractors/flac/FLACExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78535d79_8c2d9c58",
+        "filename": "media/module/extractors/midi/MidiExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909f3e52_83606c33",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79051f60_2ccf1831",
+        "filename": "media/module/extractors/mp3/MP3Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a99863_7894dcb2",
+        "filename": "media/module/extractors/mpeg2/MPEG2PSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e9bb91_60c354c5",
+        "filename": "media/module/extractors/mpeg2/MPEG2PSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "842ff63c_f8b210b7",
+        "filename": "media/module/extractors/mpeg2/MPEG2TSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c39bf54_905ec7b8",
+        "filename": "media/module/extractors/mpeg2/MPEG2TSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb8b7b3_913bfede",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad931a0b_0d3d82ad",
+        "filename": "media/module/extractors/wav/WAVExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T22:29:31Z",
+      "side": 1,
+      "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
