@@ -16,6 +16,230 @@
       "message": "Andy, could you please review and approve.",
       "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ea5c25_b5365b7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "minor nits.",
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d604df_55914a3c",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "nit: would need to use a lock or an atomic to be officially thread safe.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314a5e73_5e3361ec",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "nit: override?",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce3a675_622ff215",
+        "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "nit: sp\u003cDeviceHalAidl\u003e::make(service)  ... might need to add a friend to get this to work.",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a09db636_0130ef9f",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "nit: i suppose this could be a statement if.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 63
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e852b4_525ce83a",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "i know this is the API but why weren\u0027t these const?",
+      "range": {
+        "startLine": 58,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f2640a_c27a6c9b",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "nit: are these const?  do we modify them?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 36
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92c4754_027bebe2",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "or constexpr?",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6853e929_57ae735d",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "do they need to be public?",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 24
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1b15fb_d7320e35",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-11T20:07:29Z",
+      "side": 1,
+      "message": "nit override here and below.",
+      "range": {
+        "startLine": 231,
+        "startChar": 22,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
