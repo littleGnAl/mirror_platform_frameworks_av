@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95d8bfb2_4a2b89b0",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T21:45:53Z",
+      "side": 1,
+      "message": "To clarify this a bit further: in current shape of the code the value of `hardwareCodecSupportsP010` is determined by the _last_ hardware codec that supports the mime type. If the goal is to ensure at least one hardware codec supports P010, we should break when we see `hardwareCodecSupportsP010 \u003d\u003d true`. If the goal is to ensure all hardware codecs support P010, we should break when we see `hardwareCodecSupportsP010 \u003d\u003d false`.",
+      "parentUuid": "5023db27_463b7aa8",
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9ead9c2_dec5b478",
         "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
         "patchSetId": 2

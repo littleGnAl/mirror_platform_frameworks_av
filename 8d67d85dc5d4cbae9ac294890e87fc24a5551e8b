@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ba226a_24e9485f",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-11T21:45:53Z",
+      "side": 1,
+      "message": "Let\u0027s make this ALOGD, so we know we fall back to 8 bit in the log.",
+      "range": {
+        "startLine": 286,
+        "startChar": 12,
+        "endLine": 286,
+        "endChar": 17
+      },
+      "revId": "8d67d85dc5d4cbae9ac294890e87fc24a5551e8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
