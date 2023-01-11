@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c49a7d_0d92e5ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "Thank you, Andy!",
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10d604df_55914a3c",
@@ -48,6 +65,30 @@
       "writtenOn": "2023-01-11T20:07:29Z",
       "side": 1,
       "message": "nit: would need to use a lock or an atomic to be officially thread safe.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3120f6f_ab20de56",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "I\u0027m going to remove these in the next CL which actually plumbs these calls to AIDL HAL. Since this code is not used anywhere (even on Cuttlefish we still use HIDL HAL), I wouldn\u0027t worry about it now. Added a FIXME.",
+      "parentUuid": "10d604df_55914a3c",
       "range": {
         "startLine": 51,
         "startChar": 4,
@@ -81,6 +122,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12783df2_a3b0ab5e",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "314a5e73_5e3361ec",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce3a675_622ff215",
@@ -104,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e876b26_aa6c57e8",
+        "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce3a675_622ff215",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a09db636_0130ef9f",
@@ -117,6 +206,30 @@
       "writtenOn": "2023-01-11T20:07:29Z",
       "side": 1,
       "message": "nit: i suppose this could be a statement if.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 63
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c662e5_15090ac1",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a09db636_0130ef9f",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -175,6 +288,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6c466963_3891f46d",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "Const indeed, thanks!",
+      "parentUuid": "49f2640a_c27a6c9b",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 36
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b92c4754_027bebe2",
         "filename": "media/libaudiohal/impl/StreamHalAidl.h",
         "patchSetId": 3
@@ -219,6 +356,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37049cdd_8b9d5c0e",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "Don\u0027t know yet, this will be resolved once we actually implement callbacks. Added A FIXME for now.",
+      "parentUuid": "6853e929_57ae735d",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 24
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d1b15fb_d7320e35",
@@ -232,6 +393,30 @@
       "writtenOn": "2023-01-11T20:07:29Z",
       "side": 1,
       "message": "nit override here and below.",
+      "range": {
+        "startLine": 231,
+        "startChar": 22,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "ccebbf9b39731afbfc4b419bece291ff1b669f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc017c6e_806552b5",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-11T20:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1b15fb_d7320e35",
       "range": {
         "startLine": 231,
         "startChar": 22,
