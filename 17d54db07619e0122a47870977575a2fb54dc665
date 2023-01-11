@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14bb34e_a227cd26",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T15:55:39Z",
+      "side": 1,
+      "message": "nit, `const std::vector\u003cuint8_t\u003e\u0026`. This is reported by a linter.",
+      "range": {
+        "startLine": 461,
+        "startChar": 51,
+        "endLine": 461,
+        "endChar": 71
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8f4e34_ab3a2aa1",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T15:55:39Z",
+      "side": 1,
+      "message": "`const DrmStatus\u0026`",
+      "range": {
+        "startLine": 478,
+        "startChar": 45,
+        "endLine": 478,
+        "endChar": 54
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9385618_85e53644",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T15:55:39Z",
+      "side": 1,
+      "message": "`const std::vector\u003cuint8_t\u003e\u0026`",
+      "range": {
+        "startLine": 479,
+        "startChar": 45,
+        "endLine": 479,
+        "endChar": 65
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
