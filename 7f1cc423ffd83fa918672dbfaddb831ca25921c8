@@ -22,6 +22,121 @@
       },
       "revId": "7f1cc423ffd83fa918672dbfaddb831ca25921c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca0bab3_9d276a50",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T03:05:53Z",
+      "side": 1,
+      "message": "Wrap in own scope, otherwise there will be a deadlock in  `reportMediaDrmSessionOpened` because `std::mutex` is not recursive/re-entrant.\n\n\n```\n            {\n                const std::lock_guard\u003cstd::mutex\u003e lock(mSessionMapMutex);\n                mSessionMap.insert({sessionKey, ctx});\n            }\n```",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 50
+      },
+      "revId": "7f1cc423ffd83fa918672dbfaddb831ca25921c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7154ce_471b6806",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T03:05:53Z",
+      "side": 1,
+      "message": "Wrap in scope to avoid deadlock.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 27
+      },
+      "revId": "7f1cc423ffd83fa918672dbfaddb831ca25921c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd4fb70_5bad68f5",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T03:05:53Z",
+      "side": 1,
+      "message": "`\"mediadrm.created\"`\n\nLooks like convention for `mediametrics_*` API is to use `\u0027.\u0027` for namespace (Please see [MediaMetricsService::isContentValid](https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/mediametrics/MediaMetricsService.cpp;bpv\u003d1;bpt\u003d1;l\u003d507?q\u003dframeworks%2Fav%2Fservices%2Fmediametrics%2FMediaMetricsService.cpp\u0026gsn\u003disContentValid\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dc%252B%252B%3Fpath%3Dframeworks%2Fav%2Fservices%2Fmediametrics%2FMediaMetricsService.cpp%239plxQWJqzJBLDg0MnqBl1zfrFxDTmmpW6jijHraxfCE) for reference).",
+      "range": {
+        "startLine": 438,
+        "startChar": 54,
+        "endLine": 438,
+        "endChar": 70
+      },
+      "revId": "7f1cc423ffd83fa918672dbfaddb831ca25921c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72970055_cfbc27eb",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T03:05:53Z",
+      "side": 1,
+      "message": "`\"mediadrm.session_opened\"`",
+      "range": {
+        "startLine": 447,
+        "startChar": 54,
+        "endLine": 447,
+        "endChar": 77
+      },
+      "revId": "7f1cc423ffd83fa918672dbfaddb831ca25921c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea033e2b_cb9ee69c",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-11T03:05:53Z",
+      "side": 1,
+      "message": "`\"mediadrm.errored\"`",
+      "range": {
+        "startLine": 465,
+        "startChar": 54,
+        "endLine": 465,
+        "endChar": 70
+      },
+      "revId": "7f1cc423ffd83fa918672dbfaddb831ca25921c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
