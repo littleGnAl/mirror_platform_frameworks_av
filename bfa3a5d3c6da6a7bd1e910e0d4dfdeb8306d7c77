@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c4160b_61daca5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "all resolved in patcheset 3.",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e225cb6_2a3f839c",
@@ -31,6 +48,24 @@
       "writtenOn": "2023-01-11T22:29:31Z",
       "side": 1,
       "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73381cd_2a672fc6",
+        "filename": "media/module/extractors/aac/AACExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "this one already had it;  a bunch of the others didn\u0027t though.",
+      "parentUuid": "0e225cb6_2a3f839c",
       "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +93,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b2fef6_72437aba",
+        "filename": "media/module/extractors/amr/AMRExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406b5ed1_da0ee9ed",
+      "range": {
+        "startLine": 344,
+        "startChar": 28,
+        "endLine": 344,
+        "endChar": 29
+      },
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e42c1be6_0a4ed886",
@@ -71,6 +130,24 @@
       "writtenOn": "2023-01-11T22:29:31Z",
       "side": 1,
       "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd84825_f8b3a79e",
+        "filename": "media/module/extractors/flac/FLACExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e42c1be6_0a4ed886",
       "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +169,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a33fc892_d2631316",
+        "filename": "media/module/extractors/midi/MidiExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78535d79_8c2d9c58",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "909f3e52_83606c33",
@@ -105,6 +200,24 @@
       "writtenOn": "2023-01-11T22:29:31Z",
       "side": 1,
       "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0129a24a_83ec2237",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "909f3e52_83606c33",
       "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -126,6 +239,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8208b1f3_9117fb76",
+        "filename": "media/module/extractors/mp3/MP3Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79051f60_2ccf1831",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2a99863_7894dcb2",
@@ -139,6 +270,24 @@
       "writtenOn": "2023-01-11T22:29:31Z",
       "side": 1,
       "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2c00c5_418d58ce",
+        "filename": "media/module/extractors/mpeg2/MPEG2PSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a99863_7894dcb2",
       "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -160,6 +309,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "130bceb0_71d1b3d9",
+        "filename": "media/module/extractors/mpeg2/MPEG2PSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42e9bb91_60c354c5",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "842ff63c_f8b210b7",
@@ -173,6 +340,24 @@
       "writtenOn": "2023-01-11T22:29:31Z",
       "side": 1,
       "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37766483_d27f4cec",
+        "filename": "media/module/extractors/mpeg2/MPEG2TSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "842ff63c_f8b210b7",
       "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -194,6 +379,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "184520e0_e26a7e94",
+        "filename": "media/module/extractors/mpeg2/MPEG2TSExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c39bf54_905ec7b8",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb8b7b3_913bfede",
@@ -211,6 +414,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53b9fd8_f6b14734",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done.  also moved packet and err declarations inside of the loop,\nto further limit their scope.",
+      "parentUuid": "cdb8b7b3_913bfede",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad931a0b_0d3d82ad",
@@ -224,6 +445,24 @@
       "writtenOn": "2023-01-11T22:29:31Z",
       "side": 1,
       "message": "nit: ` \u003d nullptr;`",
+      "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "586442e1_4be6a61b",
+        "filename": "media/module/extractors/wav/WAVExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-12T04:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad931a0b_0d3d82ad",
       "revId": "bfa3a5d3c6da6a7bd1e910e0d4dfdeb8306d7c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
