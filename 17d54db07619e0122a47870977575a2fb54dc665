@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d0fe90e_058269fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-12T15:56:51Z",
+      "side": 1,
+      "message": "Added the lint changes in following cl - \nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2383989",
+      "parentUuid": "5550aed7_ef057cb1",
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d14bb34e_a227cd26",
         "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
         "patchSetId": 12
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-11T15:55:39Z",
       "side": 1,
       "message": "nit, `const std::vector\u003cuint8_t\u003e\u0026`. This is reported by a linter.",
+      "range": {
+        "startLine": 461,
+        "startChar": 51,
+        "endLine": 461,
+        "endChar": 71
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2163d208_71936fd5",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-12T15:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14bb34e_a227cd26",
       "range": {
         "startLine": 461,
         "startChar": 51,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cebf209_afb92f4c",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-12T15:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a8f4e34_ab3a2aa1",
+      "range": {
+        "startLine": 478,
+        "startChar": 45,
+        "endLine": 478,
+        "endChar": 54
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9385618_85e53644",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e33aac5_4a521b74",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-12T15:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9385618_85e53644",
+      "range": {
+        "startLine": 479,
+        "startChar": 45,
+        "endLine": 479,
+        "endChar": 65
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "283ec51a_8df6f1fc",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-01-11T17:11:23Z",
       "side": 1,
       "message": "Please also add `cdm_err`, `oem_err`, and `error_context` fields from `DrmStatus`.",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 60
+      },
+      "revId": "17d54db07619e0122a47870977575a2fb54dc665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e31c70_64a71e66",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-12T15:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "283ec51a_8df6f1fc",
       "range": {
         "startLine": 493,
         "startChar": 0,
