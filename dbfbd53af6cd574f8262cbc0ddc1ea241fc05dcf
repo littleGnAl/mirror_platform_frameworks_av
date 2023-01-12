@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5206b0b3_67e9e151",
+        "filename": "media/module/libmediatranscoding/tests/TranscodingSessionController_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-01-12T13:23:40Z",
+      "side": 1,
+      "message": "- On its own this may be very confusing for the reader (the comment isn\u0027t saying much except that this is somehow related to onError!), and they may try to remove it. It would be good to mention what the problem is or link the bug if it\u0027s okay to have bug references in this code.\n- Is 1 ms reliably enough time to avoid the race?",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 17
+      },
+      "revId": "dbfbd53af6cd574f8262cbc0ddc1ea241fc05dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
