@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf48d53_eac56461",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-12T21:17:31Z",
+      "side": 1,
+      "message": "I think there is `UNION_GET` which does this: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/audioaidlconversion/include/media/AidlConversionUtil.h;l\u003d274;drc\u003d4a9797a8cc057fe2b8c73cc05e51c584433d2448",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 1
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e903e9_eb71f2a2",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-12T21:17:31Z",
+      "side": 1,
+      "message": "I would suggest moving these functions to the end (and their declarations in the .h file as well), so that converters are grouped w/o interleaving.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 1
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f06cb37_ddfafab2",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-12T21:17:31Z",
+      "side": 1,
+      "message": "I would suggest grouping conversion functions for the same type in pairs, similar to how it\u0027s done in AidlConversion. Sorry, I forget to point this out for the previous code in this file. I hope the existing code can be re-organized in a separate CL.",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 1
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f23b978_9d07e39c",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-12T21:17:31Z",
+      "side": 1,
+      "message": "I would suggest changing this to `sp\u003cEffectHalAidl\u003e::make`, and for this to work, the `friend class EffectsFactoryHalAidl` declaration has to be changed to `friend class sp\u003cEffectHalAidl\u003e`.",
+      "range": {
+        "startLine": 133,
+        "startChar": 14,
+        "endLine": 133,
+        "endChar": 18
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
