@@ -82,6 +82,12 @@ const DeviceTypeSet& getAudioDeviceOutLeAudioBroadcastSet() {
             std::begin(AUDIO_DEVICE_OUT_BLE_BROADCAST_ARRAY),
             std::end(AUDIO_DEVICE_OUT_BLE_BROADCAST_ARRAY));
     return audioDeviceOutLeAudioUnicastSet;
+
+const DeviceTypeSet& getAudioDeviceOutAllBluetoothSet() {
+    static const DeviceTypeSet audioDeviceOutBluetoothSet = DeviceTypeSet(
+            std::begin(AUDIO_DEVICE_OUT_BLUETOOTH_ARRAY),
+            std::end(AUDIO_DEVICE_OUT_BLUETOOTH_ARRAY));
+    return audioDeviceOutBluetoothSet;
 }
 
 std::string deviceTypesToString(const DeviceTypeSet &deviceTypes) {
