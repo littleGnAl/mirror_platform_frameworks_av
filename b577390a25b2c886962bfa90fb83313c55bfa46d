@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867e56b1_079490b1",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2181,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-01-12T18:54:00Z",
+      "side": 1,
+      "message": "I have a little bit of concern that `setupVideoEncoder` access `this` without lock guards. Assuming the bulk of time is consumed at `MediaCodecSource::Create`, can we limit the scope of the part that is running asynchronously?",
+      "revId": "b577390a25b2c886962bfa90fb83313c55bfa46d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
