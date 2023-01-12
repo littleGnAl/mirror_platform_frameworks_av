@@ -16,6 +16,24 @@
       "message": "Is there any reason, not to use sync_merge?\n(https://developer.android.com/ndk/reference/group/sync#group___sync_1gaacf3feda171ae19eeb29f6dac8faf5bb)",
       "revId": "b69a8eff07e98fdf1bec73c0403a3bcc62ee4e00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04f43a6_bcc67f61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-01-12T21:27:38Z",
+      "side": 1,
+      "message": "This CL may not be stable for the future.\nI\u0027d recommend to use sync_merge instead of this CL, if possible.",
+      "parentUuid": "79954c5f_d1a9e6f1",
+      "revId": "b69a8eff07e98fdf1bec73c0403a3bcc62ee4e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
