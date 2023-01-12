@@ -214,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33f99049_3d7eec53",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-01-12T00:27:24Z",
+      "side": 1,
+      "message": "I modified to check \"hardwareCodecSupportsP010 \u003d\u003d false\"",
+      "parentUuid": "95d8bfb2_4a2b89b0",
+      "revId": "ae4e4a9f16a92a9e30fe9918b8116efebf357e08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9ead9c2_dec5b478",
         "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
         "patchSetId": 2
