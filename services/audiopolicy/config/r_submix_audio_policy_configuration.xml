@@ -17,6 +17,7 @@
 <module name="r_submix" halVersion="2.0">
     <attachedDevices>
         <item>Remote Submix In</item>
+        <item>Remote Submix Out</item>
     </attachedDevices>
     <mixPorts>
         <mixPort name="r_submix output" role="source">
