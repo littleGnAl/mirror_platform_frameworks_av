@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee09c36_496ea0aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-01-13T22:56:32Z",
+      "side": 1,
+      "message": "I now understand this is required due to slice based rendering/decoding.",
+      "parentUuid": "c04f43a6_bcc67f61",
+      "revId": "b69a8eff07e98fdf1bec73c0403a3bcc62ee4e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "524b6edb_c1b2f27b",
@@ -49,6 +67,24 @@
       "writtenOn": "2023-01-12T23:39:03Z",
       "side": 1,
       "message": "I think this is wrong. \nWhen all fences are signalled (or waited successfully), C2_OK should be returned.",
+      "revId": "b69a8eff07e98fdf1bec73c0403a3bcc62ee4e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b97d39a_54871d73",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-01-13T22:56:32Z",
+      "side": 1,
+      "message": "if \"fence[i] signal time \u003c fence[j] signal time when i \u003c j\" holds, please add some comments regarding this.",
+      "parentUuid": "524b6edb_c1b2f27b",
       "revId": "b69a8eff07e98fdf1bec73c0403a3bcc62ee4e00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
