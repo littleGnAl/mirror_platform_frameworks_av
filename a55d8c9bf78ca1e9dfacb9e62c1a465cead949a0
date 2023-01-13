@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867c5f9a_8e900323",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-01-13T15:21:13Z",
+      "side": 1,
+      "message": "Build Warnings\nmacro replacement list should be enclosed in parentheses \n\n#define DTS_DEC_DRC_DEFAULT_REF_LEVEL        -24\n                                             ^\n                                             (  )",
+      "revId": "a55d8c9bf78ca1e9dfacb9e62c1a465cead949a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a82562_f4a6f5d7",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-01-13T15:21:13Z",
+      "side": 1,
+      "message": "Build Warnings\nCall to virtual method \u0027C2SoftDTSDec::onRelease\u0027 during destruction bypasses virtual dispatch [clang-analyzer-optin.cplusplus.VirtualCall] \n\nCall to virtual method \u0027C2SoftDTSDec::onRelease\u0027 during destruction bypasses virtual dispatch [clang-analyzer-optin.cplusplus.VirtualCall]\n    onRelease();\n    ^\n/b/f/w/frameworks/av/media/codec2/components/dtsdec/C2SoftDTSDec.cpp:256:5: note: Call to virtual method \u0027C2SoftDTSDec::onRelease\u0027 during destruction bypasses virtual dispatch\n    onRelease();\n    ^",
+      "revId": "a55d8c9bf78ca1e9dfacb9e62c1a465cead949a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f4209d_ca1c69c0",
+        "filename": "media/codec2/components/dtsdec/C2SoftDTSDec.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-01-13T15:21:13Z",
+      "side": 1,
+      "message": "Build Warnings\nfolding type \u0027unsigned long\u0027 into type \u0027int\u0027 might result in loss of precision \n\n    calOutSize \u003d std::accumulate(decodedSizes.begin(), decodedSizes.end(), 0);\n                 ^",
+      "revId": "a55d8c9bf78ca1e9dfacb9e62c1a465cead949a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
