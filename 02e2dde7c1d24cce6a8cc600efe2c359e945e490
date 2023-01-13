@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a0a0eb_b6ca72c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-13T16:08:13Z",
+      "side": 1,
+      "message": "nit, `cdm_err`, `oem_err`, lower case snake case (with underscores `_` like in `error_context`).",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "02e2dde7c1d24cce6a8cc600efe2c359e945e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
