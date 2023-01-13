@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af560acc_441b1f67",
+        "filename": "media/audioaidlconversion/include/media/AidlConversionUtil.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-13T23:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80e559b_bdf34bc4",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "5840ce148a557d9237e638a6fd22b265023c9201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70512c61_c78742c5",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-13T20:02:51Z",
       "side": 1,
       "message": "HIDL wrapper also has checks for the session and IO ids:\n\n```\nif (sessionId \u003d\u003d AUDIO_SESSION_DEVICE \u0026\u0026 ioId \u003d\u003d AUDIO_IO_HANDLE_NONE) {\n        return INVALID_OPERATION;\n}\n```",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 5
+      },
+      "revId": "5840ce148a557d9237e638a6fd22b265023c9201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af9a27da_4b3eeb4d",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-13T23:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70512c61_c78742c5",
       "range": {
         "startLine": 114,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6243a059_0dbf413d",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-13T23:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c99561c_2e2efff4",
+      "range": {
+        "startLine": 118,
+        "startChar": 35,
+        "endLine": 118,
+        "endChar": 86
+      },
+      "revId": "5840ce148a557d9237e638a6fd22b265023c9201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c3d3c7f_55c873cd",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-13T20:02:51Z",
       "side": 1,
       "message": "I think, `NAME_NOT_FOUND` is what the HIDL adapter uses: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaudiohal/impl/EffectsFactoryHalHidl.cpp;l\u003d191;drc\u003ddca65ce30762c7ef8c90157b112edbbe2186d844",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "5840ce148a557d9237e638a6fd22b265023c9201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168d3085_88fc7157",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-13T23:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3d3c7f_55c873cd",
       "range": {
         "startLine": 124,
         "startChar": 0,
