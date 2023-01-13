@@ -16,6 +16,98 @@
       "message": "Also need to copy over atom definitions.",
       "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534f5fc6_5f8213c4",
+        "filename": "services/mediametrics/iface_statsd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-13T22:10:20Z",
+      "side": 1,
+      "message": "alphabetical order please.\n\nboth within the new entries (2\u00263 should be flipped)\nand where these 3 new ones are placed in the overall list.",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30786957_4aaf1f5e",
+        "filename": "services/mediametrics/include/mediametricsservice/iface_statsd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-13T22:10:20Z",
+      "side": 1,
+      "message": "alphabetical order again.",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9576e8bd_2df910d7",
+        "filename": "services/mediametrics/statsd_drm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-13T22:10:20Z",
+      "side": 1,
+      "message": "worth a comment about why these aren\u0027t wrapped in if(!getInt64() ....) form.\n\nI think I know why, but i have some context here.\nThese break the pattern for how the rest of the fields are gathered, so let\u0027s\ntell the future reader why it\u0027s a different pattern.\n\nIt used to be a \u0027best practice\u0027 (and I think lint tracked it) that when you\nignored a function that returned a value you did:\n\n    (void) functionReturningValue()\n    \nwhich showed that you were deliberately ignoring the value.\n[reading a bit on the web, this has apparently gone out of favor]\n\nthe comment about why we break the pattern -- i still very much want to see that.",
+      "range": {
+        "startLine": 308,
+        "startChar": 3,
+        "endLine": 311,
+        "endChar": 28
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587a73d5_4b759c23",
+        "filename": "services/mediametrics/statsd_drm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-13T22:10:20Z",
+      "side": 1,
+      "message": "similar here -- worth a comment about why we proceed even if cdm_err or oem_err are missing.",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 317,
+        "endChar": 23
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
