@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7078976d_e4f11434",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-01-13T09:12:30Z",
+      "side": 1,
+      "message": "I can see how this makes sense IF there is still a postDrainVideoQueue call pending that needs the current anchor time. How do we know that though? I couldn\u0027t find an obvious code path that makes sure that there is always a postDrainVideoQueue pending at this point. Could you explain a bit more why this change is safe?",
+      "range": {
+        "startLine": 1687,
+        "startChar": 11,
+        "endLine": 1687,
+        "endChar": 30
+      },
+      "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
