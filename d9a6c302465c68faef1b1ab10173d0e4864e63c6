@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a3e4cd_f054afaa",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-13T19:26:30Z",
+      "side": 1,
+      "message": "thanks, that\u0027s helpful",
+      "parentUuid": "eaf48d53_eac56461",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 1
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8e903e9_eb71f2a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-12T21:17:31Z",
       "side": 1,
       "message": "I would suggest moving these functions to the end (and their declarations in the .h file as well), so that converters are grouped w/o interleaving.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 1
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f69da0_3e86e696",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-13T19:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8e903e9_eb71f2a2",
       "range": {
         "startLine": 260,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab537314_b4b07a6c",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-13T19:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f06cb37_ddfafab2",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 1
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f23b978_9d07e39c",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-12T21:17:31Z",
       "side": 1,
       "message": "I would suggest changing this to `sp\u003cEffectHalAidl\u003e::make`, and for this to work, the `friend class EffectsFactoryHalAidl` declaration has to be changed to `friend class sp\u003cEffectHalAidl\u003e`.",
+      "range": {
+        "startLine": 133,
+        "startChar": 14,
+        "endLine": 133,
+        "endChar": 18
+      },
+      "revId": "d9a6c302465c68faef1b1ab10173d0e4864e63c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d713cac_768cba8c",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-13T19:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f23b978_9d07e39c",
       "range": {
         "startLine": 133,
         "startChar": 14,
