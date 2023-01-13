@@ -1286,12 +1286,14 @@ int64_t NuPlayer::Renderer::getRealTimeUs(int64_t mediaTimeUs, int64_t nowUs) {
 
 void NuPlayer::Renderer::onNewAudioMediaTime(int64_t mediaTimeUs) {
     Mutex::Autolock autoLock(mLock);
+
+    setAudioFirstAnchorTimeIfNeeded_l(mediaTimeUs);
+
     // TRICKY: vorbis decoder generates multiple frames with the same
     // timestamp, so only update on the first frame with a given timestamp
     if (mediaTimeUs == mAudioAnchorTimeMediaUs) {
         return;
     }
-    setAudioFirstAnchorTimeIfNeeded_l(mediaTimeUs);
 
     // mNextAudioClockUpdateTimeUs is -1 if we're waiting for audio sink to start
     if (mNextAudioClockUpdateTimeUs == -1) {
