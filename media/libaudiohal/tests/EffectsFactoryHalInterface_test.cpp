@@ -20,6 +20,9 @@
 
 #include <media/audiohal/EffectsFactoryHalInterface.h>
 
+#include <system/audio_effects/effect_aec.h>
+#include <system/audio_effect.h>
+
 #include <gtest/gtest.h>
 #include <utils/RefBase.h>
 
@@ -76,6 +79,20 @@ TEST(libAudioHalTest, getHalVersion) {
 
     auto version = factory->getHalVersion();
     EXPECT_NE(0, version.getMajorVersion());
+}
+
+TEST(libAudioHalTest, agc) {
+    auto factory = EffectsFactoryHalInterface::create();
+    ASSERT_NE(nullptr, factory);
+
+    std::vector<effect_descriptor_t> descs;
+    EXPECT_EQ(OK, factory->getDescriptors(&FX_IID_AEC_, &descs));
+    for (const auto& desc : descs) {
+        ASSERT_EQ(desc.type, FX_IID_AEC_);
+        sp<EffectHalInterface> interface;
+        EXPECT_EQ(OK, factory->createEffect(&desc.uuid, 1 /* sessionId */, 1 /* ioId */,
+                                            1 /* deviceId */, &interface));
+    }
 }
 
 // TODO: b/263986405 Add multi-thread testing
