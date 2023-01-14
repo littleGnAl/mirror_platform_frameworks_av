@@ -122,12 +122,16 @@ class DeviceHalAidl : public DeviceHalInterface, public ConversionHelperAidl {
 
     const std::shared_ptr<::aidl::android::hardware::audio::core::IModule> mModule;
 
+    aidl::android::hardware::audio::core::BpModule::OpenInputStreamReturn mInputRet;
+    aidl::android::hardware::audio::core::BpModule::OpenOutputStreamReturn mOutputRet;
+
     // Can not be constructed directly by clients.
     explicit DeviceHalAidl(
             const std::shared_ptr<::aidl::android::hardware::audio::core::IModule>& module)
             : ConversionHelperAidl("DeviceHalAidl"), mModule(module) {}
 
     ~DeviceHalAidl() override = default;
+    
 };
 
 } // namespace android

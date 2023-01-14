@@ -27,11 +27,13 @@
 #include "StreamHalAidl.h"
 
 using aidl::android::aidl_utils::statusTFromBinderStatus;
-using aidl::android::media::audio::common::AudioMode;
-using aidl::android::media::audio::common::Float;
 using aidl::android::hardware::audio::core::IModule;
+using aidl::android::hardware::audio::core::IStreamIn;
+using aidl::android::hardware::audio::core::IStreamOut;
 using aidl::android::hardware::audio::core::ITelephony;
 using aidl::android::hardware::audio::core::StreamDescriptor;
+using aidl::android::media::audio::common::AudioMode;
+using aidl::android::media::audio::common::Float;
 
 namespace android {
 
@@ -150,7 +152,9 @@ status_t DeviceHalAidl::openOutputStream(
     descriptor.frameSizeBytes = audio_bytes_per_sample(config->format) *
             audio_channel_count_from_out_mask(config->channel_mask);
     descriptor.bufferSizeFrames = 600;
-    *outStream = sp<StreamOutHalAidl>::make(descriptor, nullptr);
+    IModule::OpenOutputStreamArguments args = {.bufferSizeFrames = 600};
+    RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mModule->openOutputStream(args, &mOutputRet)));
+    *outStream = sp<StreamOutHalAidl>::make(mOutputRet.desc, nullptr);
     return OK;
 }
 
@@ -174,6 +178,11 @@ status_t DeviceHalAidl::openInputStream(
             audio_channel_count_from_out_mask(config->channel_mask);
     descriptor.bufferSizeFrames = 600;
     *inStream = sp<StreamInHalAidl>::make(descriptor, nullptr);
+    IModule::OpenInputStreamArguments args = {.bufferSizeFrames = 600};
+    RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mModule->openInputStream(args, &mInputRet)));
+    *inStream = sp<StreamInHalAidl>::make(mInputRet.desc, nullptr);
+    // TODO: convert 
+
     return OK;
 }
 
