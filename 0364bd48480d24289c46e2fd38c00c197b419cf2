@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88fd2d4_e791840e",
+        "filename": "services/mediacodec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-14T02:08:31Z",
+      "side": 1,
+      "message": "for the same reason that we tool mediacodec.policy out of the base system (e.g. it is pulled in by the omx service, so will be there if we want it).\ndo we want to take the same approach here?\n\ne.g. do we need to do anything here?\n\n\nor is this a backstop that makes it illegal to include mediacodec.policy from anywhere it a riscv64 world?  -- so we\u0027ll get a build error?",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 27
+      },
+      "revId": "0364bd48480d24289c46e2fd38c00c197b419cf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
