@@ -6192,12 +6192,19 @@ void AudioFlinger::DirectOutputThread::processVolume_l(Track *track, bool lastTr
         if (left > GAIN_FLOAT_UNITY) {
             left = GAIN_FLOAT_UNITY;
         }
-        left *= v * mMasterBalanceLeft; // DirectOutputThread balance applied as track volume
         right = float_from_gain(gain_minifloat_unpack_right(vlr));
         if (right > GAIN_FLOAT_UNITY) {
             right = GAIN_FLOAT_UNITY;
         }
-        right *= v * mMasterBalanceRight;
+        if ((mAudioFlinger->getMode() == AUDIO_MODE_IN_COMMUNICATION) &&
+                isSingleDeviceType(outDeviceTypes(), AUDIO_DEVICE_OUT_EARPIECE) &&
+                mChannelMask == AUDIO_CHANNEL_OUT_MONO) {
+            left *= v;
+            right *= v;
+        } else {
+            left *= v * mMasterBalanceLeft; // DirectOutputThread balance applied as track volume
+            right *= v * mMasterBalanceRight;
+        }
     }
 
     if (lastTrack) {
