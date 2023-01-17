@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74310107_8ee2c9e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-17T21:53:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be done for AUDIO_DEVICE_OUT_EARPIECE?  And what about AUDIO_DEVICE_OUT_SPEAKER_SAFE?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ffb7e9_24ac2121",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-17T21:53:36Z",
+      "side": 1,
+      "message": "Adding Eric for review.",
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431b3d96_971ce866",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6194,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-17T21:53:36Z",
+      "side": 1,
+      "message": "nit: style has spacing \"if (\".",
+      "range": {
+        "startLine": 6194,
+        "startChar": 4,
+        "endLine": 6194,
+        "endChar": 69
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba823a0_d5833cc9",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6195,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-17T21:53:36Z",
+      "side": 1,
+      "message": "nit: the else is still missing left *\u003d v;",
+      "range": {
+        "startLine": 6195,
+        "startChar": 19,
+        "endLine": 6195,
+        "endChar": 23
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d346c406_722ff48b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6204,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-17T21:53:36Z",
+      "side": 1,
+      "message": "I\u0027m thinking it is better to set MONO mode instead of removing balance, so that we guarantee hearing both channels for speaker safe and earpiece.",
+      "range": {
+        "startLine": 6201,
+        "startChar": 0,
+        "endLine": 6204,
+        "endChar": 5
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
