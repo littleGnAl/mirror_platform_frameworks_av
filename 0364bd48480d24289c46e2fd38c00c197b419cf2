@@ -46,6 +46,30 @@
       },
       "revId": "0364bd48480d24289c46e2fd38c00c197b419cf2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f35a74_216a9247",
+        "filename": "services/mediacodec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-17T19:46:23Z",
+      "side": 1,
+      "message": "This is an alternative to aosp/2388849, which fails to build because the mediapolicy.policy is on system while the omx service is on vendor.  Relying on the `required` property to add the dependency trips the path artifact requirement checks on the system image.",
+      "parentUuid": "a8638e45_fd35a6f5",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 27
+      },
+      "revId": "0364bd48480d24289c46e2fd38c00c197b419cf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
