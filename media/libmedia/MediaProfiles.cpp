@@ -791,7 +791,9 @@ static bool isHighSpeedProfile(camcorder_quality quality) {
 
 void MediaProfiles::initRequiredProfileRefs(const Vector<int>& cameraIds) {
     ALOGV("Number of camera ids: %zu", cameraIds.size());
-    CHECK(cameraIds.size() > 0);
+    if (!cameraIds.size()) {
+        return;
+    }
     mRequiredProfileRefs = new RequiredProfiles[cameraIds.size()];
     for (size_t i = 0, n = cameraIds.size(); i < n; ++i) {
         mRequiredProfileRefs[i].mCameraId = cameraIds[i];
