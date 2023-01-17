@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6bb8c4_ada70c7d",
+        "filename": "services/audiopolicy/config/r_submix_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-17T21:50:10Z",
+      "side": 1,
+      "message": "I remember I have tried doing that previously. The issue was that audioflinger immediately tried opening this output on start, because it automatically opens streams to all attached devices. However, since writing to remote submix is blocked on reading from it by apps, writing wasn\u0027t going as expected. We need to check how this works now, if the issue I mentioned still exists, we might need to re-classify remote submix output as \"detachable\" in device types.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "2e4fa782eceb3913bc0e30cc293b23a3c597a7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
