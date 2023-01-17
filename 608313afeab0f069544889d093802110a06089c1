@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f6d31ee_82e35405",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "remove... audio/vnd.dts.hd implementation will have multiple profiles internally",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9477b44a_7087b0b0",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "each codec needs a unique name...\n\nshould be c2.DTS.audio_decoder.dts.hd",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7424de_671d1707",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "should be OMX.DTS.audio_decoder.dts.hd",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 50
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97e4531_67a77dce",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "remove... audio/vnd.dts.hd implementation will have multiple profiles internally",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c436a3d_496a0930",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "remove... audio/vnd.dts.uhd implementation will have multiple profiles internally",
+      "range": {
+        "startLine": 130,
+        "startChar": 75,
+        "endLine": 130,
+        "endChar": 86
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be64fc26_eb7354fe",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "each codec needs a unique name...\n\nshould be c2.DTS.audio_decoder.dts.uhd",
+      "range": {
+        "startLine": 130,
+        "startChar": 26,
+        "endLine": 130,
+        "endChar": 50
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5e177f_533fa3dc",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "should be OMX.DTS.audio_decoder.dts.uhd",
+      "range": {
+        "startLine": 131,
+        "startChar": 25,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592598a7_4b91c3e3",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-01-17T15:46:05Z",
+      "side": 1,
+      "message": "remove... audio/vnd.dts.uhd implementation will have multiple profiles internally",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "608313afeab0f069544889d093802110a06089c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
