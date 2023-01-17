@@ -1,5 +1,201 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40219ee_98d95369",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "Let\u0027s also save a new `mScheme` string here since uuids in int64_t form can be quite opaque; log `mScheme` as `scheme` in all 3 event types. You can use a map like this:\n\n```\nstd::map\u003cstd::array\u003cint64_t, 2\u003e, std::string\u003e const table \u003d {\n  {{(int64_t)0x6DD8B3C345F44A68, (int64_t)0xBF3A64168D01A4A6}, \"ABV DRM (MoDRM)\"},\n  {{(int64_t)0xF239E769EFA34850, (int64_t)0x9C16A903C6932EFB}, \"Adobe Primetime DRM version 4\"},\n  {{(int64_t)0x616C746963617374, (int64_t)0x2D50726F74656374}, \"Alticast\"},\n  {{(int64_t)0x94CE86FB07FF4F43, (int64_t)0xADB893D2FA968CA2}, \"Apple FairPlay\"},\n  {{(int64_t)0x279FE473512C48FE, (int64_t)0xADE8D176FEE6B40F}, \"Arris Titanium\"},\n  {{(int64_t)0x3D5E6D359B9A41E8, (int64_t)0xB843DD3C6E72C42C}, \"ChinaDRM\"},\n  {{(int64_t)0x3EA8778F77424BF9, (int64_t)0xB18BE834B2ACBD47}, \"Clear Key AES-128\"},\n  {{(int64_t)0xBE58615B19C44684, (int64_t)0x88B3C8C57E99E957}, \"Clear Key SAMPLE-AES\"},\n  {{(int64_t)0xE2719D58A985B3C9, (int64_t)0x781AB030AF78D30E}, \"Clear Key DASH-IF\"},\n  {{(int64_t)0x644FE7B5260F4FAD, (int64_t)0x949A0762FFB054B4}, \"CMLA (OMA DRM)\"},\n  {{(int64_t)0x37C332587B994C7E, (int64_t)0xB15D19AF74482154}, \"Commscope Titanium V3\"},\n  {{(int64_t)0x45D481CB8FE049C0, (int64_t)0xADA9AB2D2455B2F2}, \"CoreCrypt\"},\n  {{(int64_t)0xDCF4E3E362F15818, (int64_t)0x7BA60A6FE33FF3DD}, \"DigiCAP SmartXess\"},\n  {{(int64_t)0x35BF197B530E42D7, (int64_t)0x8B651B4BF415070F}, \"DivX DRM Series 5\"},\n  {{(int64_t)0x80A6BE7E14484C37, (int64_t)0x9E70D5AEBE04C8D2}, \"Irdeto Content Protection\"},\n  {{(int64_t)0x5E629AF538DA4063, (int64_t)0x897797FFBD9902D4}, \"Marlin Adaptive Streaming Simple Profile V1.0\"},\n  {{(int64_t)0x9A04F07998404286, (int64_t)0xAB92E65BE0885F95}, \"Microsoft PlayReady\"},\n  {{(int64_t)0x6A99532D869F5922, (int64_t)0x9A91113AB7B1E2F3}, \"MobiTV DRM\"},\n  {{(int64_t)0xADB41C242DBF4A6D, (int64_t)0x958B4457C0D27B95}, \"Nagra MediaAccess PRM 3.0\"},\n  {{(int64_t)0x1F83E1E86EE94F0D, (int64_t)0xBA2F5EC4E3ED1A66}, \"SecureMedia\"},\n  {{(int64_t)0x992C46E6C4374899, (int64_t)0xB6A050FA91AD0E39}, \"SecureMedia SteelKnot\"},\n  {{(int64_t)0xA68129D3575B4F1A, (int64_t)0x9CBA3223846CF7C3}, \"Synamedia/Cisco/NDS VideoGuard DRM\"},\n  {{(int64_t)0xAA11967FCC014A4A, (int64_t)0x8E99C5D3DDDFEA2D}, \"Unitend DRM (UDRM)\"},\n  {{(int64_t)0x9A27DD82FDE24725, (int64_t)0x8CBC4234AA06EC09}, \"Verimatrix VCAS\"},\n  {{(int64_t)0xB4413586C58CFFB0, (int64_t)0x94A5D4896C1AF6C3}, \"Viaccess-Orca DRM (VODRM)\"},\n  {{(int64_t)0x793B79569F944946, (int64_t)0xA94223E7EF7E44B4}, \"VisionCrypt\"},\n  {{(int64_t)0x1077EFECC0B24D02, (int64_t)0xACE33C1E52E2FB4B}, \"W3C Common PSSH box\"},\n  {{(int64_t)0xEDEF8BA979D64ACE, (int64_t)0xA3C827DCD51D21ED}, \"Widevine Content Protection\"},\n};\n```\n\n(info taken from https://dashif.org/identifiers/content_protection/)",
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5220267e_69f6cad2",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "```\n    mObjNonce \u003d generateNonce(16, __func__);\n    if (!mObjNonce.empty()) {\n      // ...\n    }\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 56
+      },
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba8044b_60b47fdc",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "```\nctx.mNonce \u003d generateNonce(16, __func__);\nif (!ctx.mNonce.empty()) {\n  // ...\n}\n```",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 57
+      },
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fa721b_b244aed6",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "`mediametrics_setCString(handle, \"scheme\", mScheme.c_str());`\n\nHere (`reportMediaDrmCreated`), and also `reportMediaDrmSessionOpened`, `reportMediaDrmErrored`.",
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45dda2cc_50ede49b",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "Log uuid_msb, uuid_lsb here as well.",
+      "range": {
+        "startLine": 461,
+        "startChar": 23,
+        "endLine": 461,
+        "endChar": 50
+      },
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5fd8978_dafaa714",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "`mediametrics_setCString(handle, \"obj_nonce\", mObjNonce.c_str());`\n\nSame for object nonce and session nonce elsewhere.",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 65
+      },
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e206e553_505ab313",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "```\nstd::string DrmMetricsLogger::generateNonce(size_t size, const char* api) {\n    std::vector\u003cuint8_t\u003e buf(size);\n    ssize_t bytes \u003d getrandom(buf.data(), size, GRND_NONBLOCK);\n    if (bytes \u003c size) {\n        ALOGE(\"getrandom failed: %d\", errno);\n        reportMediaDrmErrored(ERROR_DRM_RESOURCE_BUSY, api);\n        return \"\";\n    }\n    android::AString tmp;\n    encodeBase64(buf.data(), size, \u0026tmp);\n    return tmp.c_str();\n}\n```",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 1
+      },
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32a0f6a_f7fad1ec",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "Let\u0027s combine the two `int64_t`s into a base64 encoding of a 16-byte array `std::string mNonce;`\n\nBased on feedback from @nchalko@google.com.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f402f5cb_1d1f5d2b",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-17T22:28:41Z",
+      "side": 1,
+      "message": "Similar to session nonce, `std::string mObjNonce;`",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 39
+      },
+      "revId": "def1b730be70caecdac98bde7d81ebdd7fb078d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
