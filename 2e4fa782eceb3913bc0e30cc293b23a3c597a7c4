@@ -70,6 +70,30 @@
       },
       "revId": "2e4fa782eceb3913bc0e30cc293b23a3c597a7c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f8d8db_c2b866c5",
+        "filename": "services/audiopolicy/config/r_submix_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2023-01-18T17:19:51Z",
+      "side": 1,
+      "message": "I don\u0027t want to change it. The framework already classifies it as a permanently attached device.\nSee\n\nhttp://cs/android/system/hardware/interfaces/media/aidl/android/media/audio/common/AudioDeviceDescription.aidl;l\u003d45;rcl\u003d9dd93d47a6982cc13e7cac666537323fb2800c78\n\nand\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/audioaidlconversion/AidlConversionCppNdk.cpp;l\u003d497;drc\u003d512025079d6dfa902f02b4484ff662b890497f23\n\nMikhail is proposing to fix this, since it is not permanently attached as you said.",
+      "parentUuid": "db99f72c_33e6007f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "2e4fa782eceb3913bc0e30cc293b23a3c597a7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
