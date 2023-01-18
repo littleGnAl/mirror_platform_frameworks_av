@@ -16,6 +16,52 @@
       "message": "This code change is to allow app to query AC-4 decoder capability. One specific use case is to check whether this device supports AC-4 level 4 decoding or not. (All devices in market support up to AC-4 level 3 by now. And Dolby is working with OEM to launch AC-4 level 4 decoder into market in future.)",
       "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6e398e_c3a45c08",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-18T21:28:18Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of these string values? Do they need to match the strings above such as \"ac4-00-00\"?",
+      "range": {
+        "startLine": 587,
+        "startChar": 35,
+        "endLine": 587,
+        "endChar": 45
+      },
+      "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e762c494_c29599ad",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-18T21:28:18Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of these string values? Do they need to match the strings above such as \"ac4-0\"?",
+      "range": {
+        "startLine": 604,
+        "startChar": 32,
+        "endLine": 604,
+        "endChar": 34
+      },
+      "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
