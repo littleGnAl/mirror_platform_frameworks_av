@@ -114,7 +114,10 @@ const MediaProfiles::NameToTagMap MediaProfiles::sAudioEncoderNameMap[] = {
     {"aac",    AUDIO_ENCODER_AAC},
     {"heaac",  AUDIO_ENCODER_HE_AAC},
     {"aaceld", AUDIO_ENCODER_AAC_ELD},
-    {"opus",   AUDIO_ENCODER_OPUS}
+    {"opus",   AUDIO_ENCODER_OPUS},
+    {"flac",   AUDIO_ENCODER_FLAC},
+    {"heaacv1", AUDIO_ENCODER_HE_AAC_V1},
+    {"heaacv2", AUDIO_ENCODER_HE_AAC_V2}
 };
 
 const MediaProfiles::NameToTagMap MediaProfiles::sFileFormatMap[] = {
