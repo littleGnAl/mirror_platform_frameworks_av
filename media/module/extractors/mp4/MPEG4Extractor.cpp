@@ -3315,6 +3315,8 @@ status_t MPEG4Extractor::parseAC4SpecificBox(off64_t offset) {
             ap.mLanguage = presentation.mLanguage;
             if (presentation.mPreVirtualized) {
                 ap.mMasteringIndication = MASTERED_FOR_HEADPHONE;
+            } else if (!presentation.mChannelCoded) {
+                ap.mMasteringIndication = MASTERED_FOR_3D;
             } else {
                 switch (presentation.mChannelMode) {
                     case AC4Parser::AC4Presentation::kChannelMode_Mono:

@@ -376,16 +376,15 @@ bool AC4DSIParser::parse() {
             ALOGV("%u: presentation_key_id = %d\n", presentation, presentation_key_id);
 
             if (ac4_dsi_version == 1) {
-                bool b_presentation_channel_coded = false;
                 if (presentation_version == 0) {
-                    b_presentation_channel_coded = true;
+                    mPresentations[presentation].mChannelCoded = true;
                 } else {
                     CHECK_BITS_LEFT(1);
-                    b_presentation_channel_coded = (mBitReader.getBits(1) == 1);
+                    mPresentations[presentation].mChannelCoded = (mBitReader.getBits(1) == 1);
                 }
                 ALOGV("%u: b_presentation_channel_coded = %s\n", presentation,
-                    BOOLSTR(b_presentation_channel_coded));
-                if (b_presentation_channel_coded) {
+                    BOOLSTR(mPresentations[presentation].mChannelCoded));
+                if (mPresentations[presentation].mChannelCoded) {
                     if (presentation_version == 1 || presentation_version == 2) {
                         CHECK_BITS_LEFT(5);
                         uint32_t dsi_presentation_ch_mode = mBitReader.getBits(5);
@@ -612,8 +611,9 @@ bool AC4DSIParser::parse() {
 
         // we should know this or something is probably wrong
         // with the bitstream (or we don't support it)
-        if (mPresentations[presentation].mChannelMode == -1) {
-            ALOGE("could not determing channel mode of presentation %d", presentation);
+        if (mPresentations[presentation].mChannelCoded &&
+            mPresentations[presentation].mChannelMode == -1) {
+            ALOGE("could not determine channel mode of presentation %d", presentation);
             return false;
         }
     } /* each presentation */
