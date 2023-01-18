@@ -33,6 +33,7 @@ public:
     virtual bool parse() = 0;
 
     struct AC4Presentation {
+        bool mChannelCoded = false;
         int32_t mChannelMode = -1;
         int32_t mProgramID = -1;
         int32_t mGroupIndex = -1;
