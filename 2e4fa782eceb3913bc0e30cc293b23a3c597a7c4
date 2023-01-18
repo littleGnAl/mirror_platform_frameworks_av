@@ -22,6 +22,30 @@
       },
       "revId": "2e4fa782eceb3913bc0e30cc293b23a3c597a7c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59bb7a3_25db1794",
+        "filename": "services/audiopolicy/config/r_submix_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1945984
+      },
+      "writtenOn": "2023-01-18T06:27:37Z",
+      "side": 1,
+      "message": "Tested this CL on HIDL HAL on AOSP and master, and there were no fatal errors, but I was unable to play media. Media is routed to the attached device, which is Remote Submix Out, with this config.\n\n@elaurent@google.com What do you think about reclassifying Remote Submix Out as a detachable device, as Mikhail mentioned above?\nCurrently, we mark it as an attached device by populating the AudioDeviceDescription::connection field with an empty string.\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/audioaidlconversion/AidlConversionCppNdk.cpp;l\u003d497;drc\u003d512025079d6dfa902f02b4484ff662b890497f23",
+      "parentUuid": "4f6bb8c4_ada70c7d",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "2e4fa782eceb3913bc0e30cc293b23a3c597a7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
