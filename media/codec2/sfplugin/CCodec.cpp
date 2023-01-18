@@ -2583,6 +2583,7 @@ void CCodec::initiateReleaseIfStuck() {
             MIMETYPE_AUDIO_MSGSM,
             MIMETYPE_AUDIO_AC3,
             MIMETYPE_AUDIO_EAC3,
+            MIMETYPE_AUDIO_AC4,
 
             MIMETYPE_IMAGE_ANDROID_HEIC,
         };
