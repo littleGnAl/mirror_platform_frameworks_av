@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4841047d_4e998793",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-01-18T03:33:13Z",
+      "side": 1,
+      "message": "Yes, audio balance shouldn\u0027t effect only on earpiece.\nbut we see for voip(weixin), the volume master gain is implemented in acdb(streamRX module \"Volume Control\"), when we set the volume to 0.0 for PCM_CHANNEL_L, master gain will set to 0.0 and \"Volume Control\" have no differentiate for right/left mster gain. This should be a bug for qcom 8450/8475, we will feedback to qcom.\n\nso we disable audio balance when voip for platform compatibility.",
+      "parentUuid": "74310107_8ee2c9e6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "08ffb7e9_24ac2121",
