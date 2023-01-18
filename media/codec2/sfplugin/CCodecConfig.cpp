@@ -528,6 +528,9 @@ void CCodecConfig::initializeStandardParams() {
     add(ConfigMapper(std::string(KEY_FEATURE_) + FEATURE_SecurePlayback,
                      C2_PARAMKEY_SECURE_MODE, "value"));
 
+    add(ConfigMapper(KEY_CODECS_STRING, C2_PARAMKEY_CODECS_STRING, "value")
+        .limitTo(D::CODED));
+
     add(ConfigMapper(KEY_PREPEND_HEADER_TO_SYNC_FRAMES,
                      C2_PARAMKEY_PREPEND_HEADER_MODE, "value")
         .limitTo(D::ENCODER & D::VIDEO)

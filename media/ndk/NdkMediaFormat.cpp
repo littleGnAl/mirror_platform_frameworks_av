@@ -383,6 +383,7 @@ EXPORT const char* AMEDIAFORMAT_KEY_CAPTURE_RATE = "capture-rate";
 EXPORT const char* AMEDIAFORMAT_KEY_CDTRACKNUMBER = "cdtracknum";
 EXPORT const char* AMEDIAFORMAT_KEY_CHANNEL_COUNT = "channel-count";
 EXPORT const char* AMEDIAFORMAT_KEY_CHANNEL_MASK = "channel-mask";
+EXPORT const char* AMEDIAFORMAT_KEY_CODECS_STRING = "codecs-string";
 EXPORT const char* AMEDIAFORMAT_KEY_COLOR_FORMAT = "color-format";
 EXPORT const char* AMEDIAFORMAT_KEY_COLOR_RANGE = "color-range";
 EXPORT const char* AMEDIAFORMAT_KEY_COLOR_STANDARD = "color-standard";

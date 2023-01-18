@@ -1033,6 +1033,11 @@ status_t convertMetaDataToMessage(
         msg->setString("language", lang);
     }
 
+    const char *codecsStr;
+    if (meta->findCString(kKeyCodecsString, &codecsStr)) {
+        msg->setString("codecs-string", codecsStr);
+    }
+
     if (!strncasecmp("video/", mime, 6) ||
             !strncasecmp("image/", mime, 6)) {
         int32_t width, height;
@@ -1837,6 +1842,11 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
     AString lang;
     if (msg->findString("language", &lang)) {
         meta->setCString(kKeyMediaLanguage, lang.c_str());
+    }
+
+    AString codecsStr;
+    if (msg->findString("codecs-string", &codecsStr)) {
+        meta->setCString(kKeyCodecsString, codecsStr.c_str());
     }
 
     if (mime.startsWith("video/") || mime.startsWith("image/")) {

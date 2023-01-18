@@ -778,6 +778,7 @@ inline constexpr char KEY_CA_PRIVATE_DATA[] = "ca-private-data";
 inline constexpr char KEY_CAPTURE_RATE[] = "capture-rate";
 inline constexpr char KEY_CHANNEL_COUNT[] = "channel-count";   // value N, eq to range 1..N
 inline constexpr char KEY_CHANNEL_MASK[] = "channel-mask";
+inline constexpr char KEY_CODECS_STRING[] = "codecs-string";
 inline constexpr char KEY_COLOR_FORMAT[] = "color-format";
 inline constexpr char KEY_COLOR_RANGE[] = "color-range";
 inline constexpr char KEY_COLOR_STANDARD[] = "color-standard";

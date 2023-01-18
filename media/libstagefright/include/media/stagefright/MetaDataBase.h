@@ -296,6 +296,8 @@ enum {
 
     // DVB teletext page number
     kKeyDvbTeletextPageNumber = 'ttxp', // int32_t, DVB teletext page number
+
+    kKeyCodecsString = 'cods',
 };
 
 enum {
