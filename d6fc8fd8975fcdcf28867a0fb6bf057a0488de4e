@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3068f5_03a5f051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-18T03:50:41Z",
+      "side": 1,
+      "message": "KEY_CODECS_STRING has been added as MediaFormat API since Android API 30. (https://developer.android.com/reference/android/media/MediaFormat#KEY_CODECS_STRING)\nBut it is only available in JAVA layer. This code contribution is to add KEY_CODECS_STRING in native layer so that application can set this key-value pair to codec2 component.\nOne specific use case for Dolby is AC-4 decoder gets this info so that it can be configured with different initialize parameters.",
+      "revId": "d6fc8fd8975fcdcf28867a0fb6bf057a0488de4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
