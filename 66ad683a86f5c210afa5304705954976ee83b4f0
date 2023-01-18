@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d201ba_0acaee2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-18T03:30:51Z",
+      "side": 1,
+      "message": "This code change is to allow app to query AC-4 decoder capability. One specific use case is to check whether this device supports AC-4 level 4 decoding or not. (All devices in market support up to AC-4 level 3 by now. And Dolby is working with OEM to launch AC-4 level 4 decoder into market in future.)",
+      "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
