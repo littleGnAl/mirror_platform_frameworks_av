@@ -562,6 +562,54 @@ inline static const char *asString_DolbyVisionLevel(int32_t i, const char *def =
     }
 }
 
+// Profiles and levels for AC-4 Codec, corresponding to the definitions in
+// "The MIME codecs parameter", Annex E.13
+// found at https://www.etsi.org/deliver/etsi_ts/103100_103199/10319002/01.02.01_60/ts_10319002v010201p.pdf
+// profile = ((1 << bitstream_version) << 8) | (1 << presentation_version);
+// level = 1 << mdcompat;
+
+constexpr int32_t AC4BitstreamVersion0 = 0x01;
+constexpr int32_t AC4BitstreamVersion1 = 0x02;
+constexpr int32_t AC4BitstreamVersion2 = 0x04;
+
+constexpr int32_t AC4PresentationVersion0 = 0x01;
+constexpr int32_t AC4PresentationVersion1 = 0x02;
+constexpr int32_t AC4PresentationVersion2 = 0x04;
+
+constexpr int32_t AC4Profile00 = AC4BitstreamVersion0 << 8 | AC4PresentationVersion0;
+constexpr int32_t AC4Profile10 = AC4BitstreamVersion1 << 8 | AC4PresentationVersion0;
+constexpr int32_t AC4Profile11 = AC4BitstreamVersion1 << 8 | AC4PresentationVersion1;
+constexpr int32_t AC4Profile21 = AC4BitstreamVersion2 << 8 | AC4PresentationVersion1;
+constexpr int32_t AC4Profile22 = AC4BitstreamVersion2 << 8 | AC4PresentationVersion2;
+
+inline static const char *asString_AC4Profile(int32_t i, const char *def = "??") {
+    switch (i) {
+        case AC4Profile00: return "ac-4.00.00";
+        case AC4Profile10: return "ac-4.01.00";
+        case AC4Profile11: return "ac-4.01.01";
+        case AC4Profile21: return "ac-4.02.01";
+        case AC4Profile22: return "ac-4.02.02";
+        default:           return def;
+    }
+}
+
+constexpr int32_t AC4Level0 = 0x01;
+constexpr int32_t AC4Level1 = 0x02;
+constexpr int32_t AC4Level2 = 0x04;
+constexpr int32_t AC4Level3 = 0x08;
+constexpr int32_t AC4Level4 = 0x10;
+
+inline static const char *asString_AC4Level(int32_t i, const char *def = "??") {
+    switch (i) {
+        case AC4Level0: return "00";
+        case AC4Level1: return "01";
+        case AC4Level2: return "02";
+        case AC4Level3: return "03";
+        case AC4Level4: return "04";
+        default:        return def;
+    }
+}
+
 constexpr int32_t BITRATE_MODE_CBR = 2;
 constexpr int32_t BITRATE_MODE_CBR_FD = 3;
 constexpr int32_t BITRATE_MODE_CQ = 0;
@@ -729,6 +777,7 @@ constexpr char MIMETYPE_AUDIO_FLAC[] = "audio/flac";
 constexpr char MIMETYPE_AUDIO_MSGSM[] = "audio/gsm";
 constexpr char MIMETYPE_AUDIO_AC3[] = "audio/ac3";
 constexpr char MIMETYPE_AUDIO_EAC3[] = "audio/eac3";
+constexpr char MIMETYPE_AUDIO_AC4[] = "audio/ac4";
 constexpr char MIMETYPE_AUDIO_SCRAMBLED[] = "audio/scrambled";
 
 constexpr char MIMETYPE_IMAGE_ANDROID_HEIC[] = "image/vnd.android.heic";
