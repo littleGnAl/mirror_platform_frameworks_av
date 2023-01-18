@@ -1673,10 +1673,18 @@ status_t MediaCodec::configure(
             mRotationDegrees = 0;
         }
 
+<<<<<<< HEAD   (e9bd2c Merge "TranscodingSessionControllerTest: Allow extra time to)
         if (mMetricsHandle != 0) {
             mediametrics_setInt32(mMetricsHandle, kCodecWidth, mWidth);
             mediametrics_setInt32(mMetricsHandle, kCodecHeight, mHeight);
             mediametrics_setInt32(mMetricsHandle, kCodecRotation, mRotationDegrees);
+=======
+        if (nextMetricsHandle != 0) {
+            mediametrics_setCString(nextMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
+            mediametrics_setInt32(nextMetricsHandle, kCodecWidth, mVideoWidth);
+            mediametrics_setInt32(nextMetricsHandle, kCodecHeight, mVideoHeight);
+            mediametrics_setInt32(nextMetricsHandle, kCodecRotation, mRotationDegrees);
+>>>>>>> CHANGE (0748f7 [PATCH] Sync coding style of MetricsHandle)
             int32_t maxWidth = 0;
             if (format->findInt32("max-width", &maxWidth)) {
                 mediametrics_setInt32(mMetricsHandle, kCodecMaxWidth, maxWidth);
