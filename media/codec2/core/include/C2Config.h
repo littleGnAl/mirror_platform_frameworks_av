@@ -421,6 +421,7 @@ enum : uint32_t {
     _C2_PL_AV1_BASE  = 0x9000,
     _C2_PL_VP8_BASE  = 0xA000,
     _C2_PL_MPEGH_BASE = 0xB000,     // MPEG-H 3D Audio
+    _C2_PL_AC4_BASE  = 0xC000,
 
     C2_PROFILE_LEVEL_VENDOR_START = 0x70000000,
 };
@@ -588,6 +589,13 @@ enum C2Config::profile_t : uint32_t {
     PROFILE_MPEGH_HIGH,                         ///< MPEG-H High
     PROFILE_MPEGH_LC,                           ///< MPEG-H Low-complexity
     PROFILE_MPEGH_BASELINE,                     ///< MPEG-H Baseline
+
+    // AC4 profiles
+    PROFILE_AC4_00 = _C2_PL_AC4_BASE,           ///< AC4 Profile 00.00
+    PROFILE_AC4_10,                             ///< AC4 Profile 01.00
+    PROFILE_AC4_11,                             ///< AC4 Profile 01.01
+    PROFILE_AC4_21,                             ///< AC4 Profile 02.01
+    PROFILE_AC4_22,                             ///< AC4 Profile 02.02
 };
 
 enum C2Config::level_t : uint32_t {
@@ -743,6 +751,13 @@ enum C2Config::level_t : uint32_t {
     LEVEL_MPEGH_3,                              ///< MPEG-H L3
     LEVEL_MPEGH_4,                              ///< MPEG-H L4
     LEVEL_MPEGH_5,                              ///< MPEG-H L5
+
+    // AC4 levels
+    LEVEL_AC4_0 = _C2_PL_AC4_BASE,              ///< AC4 Level 0
+    LEVEL_AC4_1,                                ///< AC4 Level 1
+    LEVEL_AC4_2,                                ///< AC4 Level 2
+    LEVEL_AC4_3,                                ///< AC4 Level 3
+    LEVEL_AC4_4,                                ///< AC4 Level 4
 };
 
 struct C2ProfileLevelStruct {

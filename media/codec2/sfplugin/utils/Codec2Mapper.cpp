@@ -467,6 +467,22 @@ ALookup<C2Config::picture_type_t, int32_t> sPictureType = {
     { C2Config::picture_type_t::B_FRAME,        PICTURE_TYPE_B },
 };
 
+ALookup<C2Config::profile_t, int32_t> sAc4Profiles = {
+    { C2Config::PROFILE_AC4_00, AC4Profile00 },
+    { C2Config::PROFILE_AC4_10, AC4Profile10 },
+    { C2Config::PROFILE_AC4_11, AC4Profile11 },
+    { C2Config::PROFILE_AC4_21, AC4Profile21 },
+    { C2Config::PROFILE_AC4_22, AC4Profile22 },
+};
+
+ALookup<C2Config::level_t, int32_t> sAc4Levels = {
+    { C2Config::LEVEL_AC4_0, AC4Level0 },
+    { C2Config::LEVEL_AC4_1, AC4Level1 },
+    { C2Config::LEVEL_AC4_2, AC4Level2 },
+    { C2Config::LEVEL_AC4_3, AC4Level3 },
+    { C2Config::LEVEL_AC4_4, AC4Level4 },
+};
+
 /**
  * A helper that passes through vendor extension profile and level values.
  */
@@ -720,6 +736,21 @@ private:
     int32_t mBitDepth;
 };
 
+struct Ac4ProfileLevelMapper : ProfileLevelMapperHelper {
+    virtual bool simpleMap(C2Config::level_t from, int32_t *to) {
+        return sAc4Levels.map(from, to);
+    }
+    virtual bool simpleMap(int32_t from, C2Config::level_t *to) {
+        return sAc4Levels.map(from, to);
+    }
+    virtual bool simpleMap(C2Config::profile_t from, int32_t *to) {
+        return sAc4Profiles.map(from, to);
+    }
+    virtual bool simpleMap(int32_t from, C2Config::profile_t *to) {
+        return sAc4Profiles.map(from, to);
+    }
+};
+
 } // namespace
 
 // the default mapper is used for media types that do not support HDR
@@ -753,6 +784,8 @@ C2Mapper::GetProfileLevelMapper(std::string mediaType) {
         return std::make_shared<Vp9ProfileLevelMapper>();
     } else if (mediaType == MIMETYPE_VIDEO_AV1) {
         return std::make_shared<Av1ProfileLevelMapper>();
+    } else if (mediaType == MIMETYPE_AUDIO_AC4) {
+        return std::make_shared<Ac4ProfileLevelMapper>();
     }
     return nullptr;
 }
