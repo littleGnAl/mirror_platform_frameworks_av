@@ -46,6 +46,30 @@
       },
       "revId": "2e4fa782eceb3913bc0e30cc293b23a3c597a7c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db99f72c_33e6007f",
+        "filename": "services/audiopolicy/config/r_submix_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-01-18T09:24:01Z",
+      "side": 1,
+      "message": "The remote submix out should not be attached. It is connected by the APM only when an active capture is detected for the same dynamic audio policy.\nWhy would you like to change this?",
+      "parentUuid": "b59bb7a3_25db1794",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "2e4fa782eceb3913bc0e30cc293b23a3c597a7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
