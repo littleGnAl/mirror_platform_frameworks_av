@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21755910_4b303438",
+        "filename": "media/libmedia/CharacterEncodingDetector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-18T16:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20eb3559_b0bf256f",
+      "revId": "acc0f8653c6f1400306b135140424a420a87e2c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "154ee097_d5b3391b",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aebf3815_162417a0",
+        "filename": "media/libmedia/include/media/CharacterEncodingDetector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-18T16:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "154ee097_d5b3391b",
+      "revId": "acc0f8653c6f1400306b135140424a420a87e2c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "158998ba_0e897b85",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-01-18T16:33:41Z",
       "side": 1,
       "message": "nit: You could use `unique_ptr\u003cMediaCharsetDetector\u003e mDetector`",
+      "revId": "acc0f8653c6f1400306b135140424a420a87e2c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437c3e60_d36aa30f",
+        "filename": "media/libmedia/include/media/CharacterEncodingDetector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-18T16:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158998ba_0e897b85",
       "revId": "acc0f8653c6f1400306b135140424a420a87e2c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
