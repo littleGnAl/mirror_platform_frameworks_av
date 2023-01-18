@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "422a740e_5e0ac446",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6194,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-01-18T02:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431b3d96_971ce866",
+      "range": {
+        "startLine": 6194,
+        "startChar": 4,
+        "endLine": 6194,
+        "endChar": 69
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ba823a0_d5833cc9",
@@ -87,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b631a2_986125bb",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6195,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-01-18T02:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ba823a0_d5833cc9",
+      "range": {
+        "startLine": 6195,
+        "startChar": 19,
+        "endLine": 6195,
+        "endChar": 23
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d346c406_722ff48b",
@@ -100,6 +148,30 @@
       "writtenOn": "2023-01-17T21:53:36Z",
       "side": 1,
       "message": "I\u0027m thinking it is better to set MONO mode instead of removing balance, so that we guarantee hearing both channels for speaker safe and earpiece.",
+      "range": {
+        "startLine": 6201,
+        "startChar": 0,
+        "endLine": 6204,
+        "endChar": 5
+      },
+      "revId": "7b9168aedb45b1bac7b3bf519ced2c166fb44570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a950481_28f734c9",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6204,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-01-18T02:11:31Z",
+      "side": 1,
+      "message": "Yes, but sometimes, users modify audio balance for music using bt/headset and forget resume for voip.\nSo they feedback the earpiece no sound（or sound very low） when use weixin/whatsapp.",
+      "parentUuid": "d346c406_722ff48b",
       "range": {
         "startLine": 6201,
         "startChar": 0,
