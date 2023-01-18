@@ -1391,9 +1391,16 @@ sp<MediaCodecSource> StagefrightRecorder::createAudioSource() {
             format->setString("mime", MEDIA_MIMETYPE_AUDIO_AAC);
             format->setInt32("aac-profile", OMX_AUDIO_AACObjectHE);
             break;
+        case AUDIO_ENCODER_HE_AAC_PS:
+            format->setString("mime", MEDIA_MIMETYPE_AUDIO_AAC);
+            format->setInt32("aac-profile", OMX_AUDIO_AACObjectHE_PS);
+            break;
         case AUDIO_ENCODER_AAC_ELD:
             format->setString("mime", MEDIA_MIMETYPE_AUDIO_AAC);
             format->setInt32("aac-profile", OMX_AUDIO_AACObjectELD);
+            break;
+        case AUDIO_ENCODER_FLAC:
+            format->setString("mime", MEDIA_MIMETYPE_AUDIO_FLAC);
             break;
         case AUDIO_ENCODER_OPUS:
             format->setString("mime", MEDIA_MIMETYPE_AUDIO_OPUS);
@@ -1447,7 +1454,8 @@ status_t StagefrightRecorder::setupAACRecording() {
 
     CHECK(mAudioEncoder == AUDIO_ENCODER_AAC ||
           mAudioEncoder == AUDIO_ENCODER_HE_AAC ||
-          mAudioEncoder == AUDIO_ENCODER_AAC_ELD);
+          mAudioEncoder == AUDIO_ENCODER_AAC_ELD ||
+          mAudioEncoder == AUDIO_ENCODER_HE_AAC_PS);
     CHECK(mAudioSource != AUDIO_SOURCE_CNT);
 
     mWriter = new AACWriter(mOutputFd);
@@ -1566,7 +1574,8 @@ status_t StagefrightRecorder::setupMPEG2TSRecording() {
     if (mAudioSource != AUDIO_SOURCE_CNT) {
         if (mAudioEncoder != AUDIO_ENCODER_AAC &&
             mAudioEncoder != AUDIO_ENCODER_HE_AAC &&
-            mAudioEncoder != AUDIO_ENCODER_AAC_ELD) {
+            mAudioEncoder != AUDIO_ENCODER_AAC_ELD &&
+            mAudioEncoder != AUDIO_ENCODER_HE_AAC_PS) {
             return ERROR_UNSUPPORTED;
         }
 
@@ -2134,7 +2143,9 @@ status_t StagefrightRecorder::setupAudioEncoder(const sp<MediaWriter>& writer) {
         case AUDIO_ENCODER_AMR_WB:
         case AUDIO_ENCODER_AAC:
         case AUDIO_ENCODER_HE_AAC:
+        case AUDIO_ENCODER_HE_AAC_PS:
         case AUDIO_ENCODER_AAC_ELD:
+        case AUDIO_ENCODER_FLAC:
         case AUDIO_ENCODER_OPUS:
             break;
 

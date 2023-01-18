@@ -97,6 +97,8 @@ enum audio_encoder {
     AUDIO_ENCODER_AAC_ELD = 5,
     AUDIO_ENCODER_VORBIS = 6,
     AUDIO_ENCODER_OPUS = 7,
+    AUDIO_ENCODER_HE_AAC_PS = 8,
+    AUDIO_ENCODER_FLAC = 9,
 
     AUDIO_ENCODER_LIST_END // must be the last - used to validate the audio encoder type
 };
