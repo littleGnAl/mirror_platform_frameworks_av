@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e7dd50e_265122ec",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-19T00:36:26Z",
+      "side": 1,
+      "message": "This is used for stagefright command line player and mediaplayerservice dump purpose only. Just for reading by human beings. So it could be any form and easily understood.",
+      "parentUuid": "ba6e398e_c3a45c08",
+      "range": {
+        "startLine": 587,
+        "startChar": 35,
+        "endLine": 587,
+        "endChar": 45
+      },
+      "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e762c494_c29599ad",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-18T21:28:18Z",
       "side": 1,
       "message": "What\u0027s the purpose of these string values? Do they need to match the strings above such as \"ac4-0\"?",
+      "range": {
+        "startLine": 604,
+        "startChar": 32,
+        "endLine": 604,
+        "endChar": 34
+      },
+      "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf2cd71_4b289b33",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-19T00:36:26Z",
+      "side": 1,
+      "message": "This is used for stagefright command line player and mediaplayerservice dump purpose only. Just for reading by human beings. So it could be any form and easily understood.",
+      "parentUuid": "e762c494_c29599ad",
       "range": {
         "startLine": 604,
         "startChar": 32,
