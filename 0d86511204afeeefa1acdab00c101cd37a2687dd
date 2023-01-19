@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10267fc3_6b49fa66",
+        "filename": "media/audioaidlconversion/AidlConversionCppNdk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-19T01:13:47Z",
+      "side": 1,
+      "message": "perhaps REMOTE_SUBMIX is better?\n\nhttps://source.corp.google.com/search?q\u003dsubmix%5C%22\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fandroid-internal:frameworks%2Fav%2F\n\nwe don\u0027t use VIRTUAL in audio, but would this include something else?\n\nhttps://source.corp.google.com/search?q\u003dvirtual%5C%22\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fandroid-internal:frameworks%2Fav%2F",
+      "range": {
+        "startLine": 488,
+        "startChar": 51,
+        "endLine": 488,
+        "endChar": 58
+      },
+      "revId": "0d86511204afeeefa1acdab00c101cd37a2687dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
