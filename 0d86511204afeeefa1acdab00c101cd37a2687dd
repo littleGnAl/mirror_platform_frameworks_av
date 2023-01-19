@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd34e145_b14ed0d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-19T01:43:24Z",
+      "side": 1,
+      "message": "\"Remote submix\" connection type IMO is not better. The same connection type can be used for multiple device types, thus it shouldn\u0027t be specific to a particular device. Other types of software \"devices\" can use this connection type in future.\n\nWe didn\u0027t have a \"virtual\" connection type before because we were not checking that all permanently attached devices (this is decided by their type) are listed in the corresponding section of the APM config. Now that we have added this check, we need to specify that remote submix out is attached \"on demand\".",
+      "tag": "mailMessageId\u003d\u003cCAB6az6EZFckfWGm6nHWn\u003d_DjAFO8yKgZdZkCBE9pSPQAx7KoJw@mail.gmail.com\u003e",
+      "revId": "0d86511204afeeefa1acdab00c101cd37a2687dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10267fc3_6b49fa66",
