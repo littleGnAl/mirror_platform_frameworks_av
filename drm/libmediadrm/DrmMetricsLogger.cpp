@@ -18,6 +18,8 @@
 #define LOG_TAG "DrmMetricsLogger"
 
 #include <media/MediaMetrics.h>
+#include <media/stagefright/foundation/AString.h>
+#include <media/stagefright/foundation/base64.h>
 #include <mediadrm/DrmHal.h>
 #include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmUtils.h>
@@ -34,7 +36,7 @@ std::vector<uint8_t> toStdVec(Vector<uint8_t> const& sessionId) {
 }  // namespace
 
 DrmMetricsLogger::DrmMetricsLogger(IDrmFrontend frontend)
-    : mImpl(sp<DrmHal>::make()), mUuid(), mObjNonceMsb(0), mObjNonceLsb(0), mFrontend(frontend) {}
+    : mImpl(sp<DrmHal>::make()), mUuid(), mObjNonce(), mFrontend(frontend) {}
 
 DrmMetricsLogger::~DrmMetricsLogger() {}
 
@@ -57,9 +59,11 @@ DrmStatus DrmMetricsLogger::isCryptoSchemeSupported(const uint8_t uuid[16], cons
 }
 
 DrmStatus DrmMetricsLogger::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
-    std::memcpy(mUuid, uuid, sizeof(mUuid));
-    if (checkGetRandom(&mObjNonceMsb, __func__) == OK &&
-        checkGetRandom(&mObjNonceLsb, __func__) == OK) {
+    std::memcpy(&mUuid, uuid, sizeof(mUuid));
+    mScheme = *uuid;
+    mUuidSchemeMap.insert({mUuid, mScheme});
+    mObjNonce = generateNonce(16, __func__);
+    if (!mObjNonce.empty()) {
         DrmStatus status = mImpl->createPlugin(uuid, appPackageName);
         if (status == OK) {
             reportMediaDrmCreated();
@@ -73,6 +77,7 @@ DrmStatus DrmMetricsLogger::createPlugin(const uint8_t uuid[16], const String8& 
 
 DrmStatus DrmMetricsLogger::destroyPlugin() {
     DrmStatus status = mImpl->destroyPlugin();
+    mUuidSchemeMap.erase(mUuid);
     if (status != OK) {
         reportMediaDrmErrored(status, __func__);
     }
@@ -82,8 +87,8 @@ DrmStatus DrmMetricsLogger::destroyPlugin() {
 DrmStatus DrmMetricsLogger::openSession(DrmPlugin::SecurityLevel securityLevel,
                                         Vector<uint8_t>& sessionId) {
     SessionContext ctx{};
-    if (checkGetRandom(&ctx.mNonceMsb, __func__) == OK &&
-        checkGetRandom(&ctx.mNonceLsb, __func__) == OK) {
+    ctx.mNonce = generateNonce(16, __func__);
+    if (!ctx.mNonce.empty()) {
         DrmStatus status = mImpl->openSession(securityLevel, sessionId);
         if (status == OK) {
             std::vector<uint8_t> sessionKey = toStdVec(sessionId);
@@ -454,23 +459,25 @@ void DrmMetricsLogger::reportMediaDrmCreated() const {
     mediametrics_setInt64(handle, "uuid_msb", be64toh(mUuid[0]));
     mediametrics_setInt64(handle, "uuid_lsb", be64toh(mUuid[1]));
     mediametrics_setInt32(handle, "frontend", mFrontend);
+    mediametrics_setCString(handle, "scheme", mScheme.c_str());
     mediametrics_selfRecord(handle);
     mediametrics_delete(handle);
 }
 
 void DrmMetricsLogger::reportMediaDrmSessionOpened(const std::vector<uint8_t>& sessionId) const {
     mediametrics_handle_t handle(mediametrics_create("mediadrm.session_opened"));
-    mediametrics_setInt64(handle, "obj_nonce_msb", mObjNonceMsb);
-    mediametrics_setInt64(handle, "obj_nonce_lsb", mObjNonceLsb);
+    mediametrics_setCString(handle, "obj_nonce", mObjNonce.c_str());
+    mediametrics_setInt64(handle, "uuid_msb", be64toh(mUuid[0]));
+    mediametrics_setInt64(handle, "uuid_lsb", be64toh(mUuid[1]));
     const std::lock_guard<std::mutex> lock(mSessionMapMutex);
     auto it = mSessionMap.find(sessionId);
     if (it != mSessionMap.end()) {
-        mediametrics_setInt64(handle, "session_nonce_msb", it->second.mNonceMsb);
-        mediametrics_setInt64(handle, "session_nonce_lsb", it->second.mNonceLsb);
+        mediametrics_setCString(handle, "session_nonce", it->second.mNonce.c_str());
         mediametrics_setInt64(handle, "target_seucrity_level", it->second.mTargetSecurityLevel);
         mediametrics_setInt64(handle, "actual_seucrity_level", it->second.mActualSecurityLevel);
     }
     mediametrics_setInt32(handle, "frontend", mFrontend);
+    mediametrics_setCString(handle, "scheme", mScheme.c_str());
     mediametrics_selfRecord(handle);
     mediametrics_delete(handle);
 }
@@ -478,14 +485,12 @@ void DrmMetricsLogger::reportMediaDrmSessionOpened(const std::vector<uint8_t>& s
 void DrmMetricsLogger::reportMediaDrmErrored(const DrmStatus& error_code, const char* api,
                                              const std::vector<uint8_t>& sessionId) const {
     mediametrics_handle_t handle(mediametrics_create("mediadrm.errored"));
-    mediametrics_setInt64(handle, "obj_nonce_msb", mObjNonceMsb);
-    mediametrics_setInt64(handle, "obj_nonce_lsb", mObjNonceLsb);
+    mediametrics_setCString(handle, "obj_nonce", mObjNonce.c_str());
     if (!sessionId.empty()) {
         const std::lock_guard<std::mutex> lock(mSessionMapMutex);
         auto it = mSessionMap.find(sessionId);
         if (it != mSessionMap.end()) {
-            mediametrics_setInt64(handle, "session_nonce_msb", it->second.mNonceMsb);
-            mediametrics_setInt64(handle, "session_nonce_lsb", it->second.mNonceLsb);
+            mediametrics_setCString(handle, "session_nonce", it->second.mNonce.c_str());
         }
     }
     mediametrics_setInt64(handle, "uuid_msb", be64toh(mUuid[0]));
@@ -496,18 +501,22 @@ void DrmMetricsLogger::reportMediaDrmErrored(const DrmStatus& error_code, const 
     mediametrics_setInt32(handle, "error_context", error_code.getContext());
     mediametrics_setCString(handle, "api", api);
     mediametrics_setInt32(handle, "frontend", mFrontend);
+    mediametrics_setCString(handle, "scheme", mScheme.c_str());
     mediametrics_selfRecord(handle);
     mediametrics_delete(handle);
 }
 
-DrmStatus DrmMetricsLogger::checkGetRandom(int64_t* nonce, const char* api) {
-    ssize_t bytes = getrandom(nonce, sizeof(int64_t), GRND_NONBLOCK);
-    if (bytes < sizeof(int64_t)) {
+std::string DrmMetricsLogger::generateNonce(size_t size, const char* api) {
+    std::vector<uint8_t> buf(size);
+    ssize_t bytes = getrandom(buf.data(), size, GRND_NONBLOCK);
+    if (bytes < size) {
         ALOGE("getrandom failed: %d", errno);
         reportMediaDrmErrored(ERROR_DRM_RESOURCE_BUSY, api);
-        return ERROR_DRM_RESOURCE_BUSY;
+        return "";
     }
-    return OK;
+    android::AString tmp;
+    encodeBase64(buf.data(), size, &tmp);
+    return tmp.c_str();
 }
 
 }  // namespace android
