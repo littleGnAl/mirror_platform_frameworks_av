@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6580e7_f5cbf272",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-19T03:14:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "802c65bc_42b57bfa",
+      "range": {
+        "startLine": 587,
+        "startChar": 35,
+        "endLine": 587,
+        "endChar": 45
+      },
+      "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e762c494_c29599ad",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "The code:\n                    list.add(AStringPrintf(\"% 5u/% 5u (%s/%s)\",\n                            pl.mProfile, pl.mLevel, niceProfile, niceLevel));",
       "parentUuid": "ebf2cd71_4b289b33",
+      "range": {
+        "startLine": 604,
+        "startChar": 32,
+        "endLine": 604,
+        "endChar": 34
+      },
+      "revId": "66ad683a86f5c210afa5304705954976ee83b4f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d46207_6a46d07a",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-19T03:14:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb42e95b_21249500",
       "range": {
         "startLine": 604,
         "startChar": 32,
