@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5f7d3b_2c610567",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-01-19T09:50:05Z",
+      "side": 1,
+      "message": "modifying",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "158b64337bd96edfeeb3205aa9cd11191348494e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f82315_992d8d77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-01-19T09:50:05Z",
+      "side": 1,
+      "message": "cause no sound on earpiece in voip calls.",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "158b64337bd96edfeeb3205aa9cd11191348494e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759f07c8_ac939727",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-01-19T09:50:05Z",
+      "side": 1,
+      "message": "disabled",
+      "range": {
+        "startLine": 13,
+        "startChar": 44,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "158b64337bd96edfeeb3205aa9cd11191348494e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35ca636_c45cbf70",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 6194,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-01-19T09:50:05Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right condition to disable master balance. What is the root cause making that the only the left channel is forwarded to the earpiece in calls? is the audio HAL stream configured in stereo or mono? If mono, then this could be a condition to disable master balance or change its implementation when the HAL output stream is mono.\nIf stereo, the the HAL implementation must be fixed to render properly a downmix of stereo stream to a mono earpiece",
+      "range": {
+        "startLine": 6194,
+        "startChar": 0,
+        "endLine": 6194,
+        "endChar": 72
+      },
+      "revId": "158b64337bd96edfeeb3205aa9cd11191348494e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
