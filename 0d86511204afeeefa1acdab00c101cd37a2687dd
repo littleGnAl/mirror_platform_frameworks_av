@@ -58,6 +58,30 @@
       },
       "revId": "0d86511204afeeefa1acdab00c101cd37a2687dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab7acbd_0d17ad36",
+        "filename": "media/audioaidlconversion/AidlConversionCppNdk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-19T05:50:19Z",
+      "side": 1,
+      "message": "\u003e OK, so virtual means software_device?  Maybe this should be commented somewhere?\n\nPlease see my suggestion on how to explain this here: https://android-review.git.corp.google.com/c/platform/system/hardware/interfaces/+/2393914/1/media/aidl/android/media/audio/common/AudioDeviceDescription.aidl#103",
+      "parentUuid": "10267fc3_6b49fa66",
+      "range": {
+        "startLine": 488,
+        "startChar": 51,
+        "endLine": 488,
+        "endChar": 58
+      },
+      "revId": "0d86511204afeeefa1acdab00c101cd37a2687dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
