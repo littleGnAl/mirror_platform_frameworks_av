@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a47012_ba7a7f85",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-19T20:53:28Z",
+      "side": 1,
+      "message": "Yes, looks good to me, thanks!",
+      "parentUuid": "7d3887e4_c86abd2a",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 42
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e9a32f5_23a09517",
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "The use case of this macro also including `$ClassName$::make`, for example: `UNION_MAKE(aidl::android::hardware::audio::effect::Parameter, specific, agc)`.\nThe first parameter u can be a class name not object.",
       "parentUuid": "d89ef75c_af2933bc",
+      "range": {
+        "startLine": 281,
+        "startChar": 36,
+        "endLine": 281,
+        "endChar": 37
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d44a315_bb654ae9",
+        "filename": "media/audioaidlconversion/include/media/AidlConversionUtil.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-19T20:53:28Z",
+      "side": 1,
+      "message": "Ah, right, sorry for the noise 😊",
+      "parentUuid": "2df61e09_4dd78709",
       "range": {
         "startLine": 281,
         "startChar": 36,
