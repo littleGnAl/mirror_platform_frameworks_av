@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89618dce_6987c724",
+        "filename": "media/codec2/vndk/C2Config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-01-19T20:48:45Z",
+      "side": 1,
+      "message": "All other strings in this enum are direct mappings of the enum name to lower case.\nHowever here, PROFILE_AC4_00 -\u003e \"ac4-00-00\" : i.e. the two numbers after \"PROFILE_AC4_\" are expanded to two digits each. This is likely confusing to reviewers / maintainers not familiar with the codec.\n\nIt raises another idea; rather than the terse PROFILE_AC4_10 (which can be misread as Profile \"10\" / \"ten\", rather than Profile \"one-zero\", and with reference to the more verbose enums in this class, would some alternatives be better?\n\nOption 1: \"C2Config::PROFILE_AC4_0_0\"\nOption 2: \"C2Config::PROFILE_AC4_BITSTREAM_0_PRESENTATION_0\"\nOption 3: \"C2Config::PROFILE_AC4_BITSTREAM_VERSION_0_PRESENTATION_VERSION_0\"\n\nI\u0027m OK with any option, just that it would be better for the string here to more match the enum name, for consistency with other cases.",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "f13f7d1c6d0981e2aa4d1c9f7f9f9931a3a64ef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a4a027a_08855f2b",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 2
