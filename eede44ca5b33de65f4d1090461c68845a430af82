@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53ee08cb_fbbd05f8",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T16:26:36Z",
+      "side": 1,
+      "message": "Sorry, let\u0027s make this a static member instead of global in anonymous namespace, so:\n```\nstd::map\u003cstd::array\u003cint64_t, 2\u003e, std::string\u003e const DrmMetricsLogger::kUuidSchemeMap \u003d {\n  // ...\n};\n```",
+      "parentUuid": "5b1c4d80_afde875b",
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16601c90_6ca9e385",
         "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
         "patchSetId": 1
@@ -43,6 +61,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b85daa4_56774bde",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T16:26:36Z",
+      "side": 1,
+      "message": "nit, for readability:\n\n```\nif (generateNonce(\u0026mObjNonce, kNonceSize, __func__) !\u003d OK) {\n  return ERROR_DRM_RESOURCE_BUSY;\n}\nDrmStatus status \u003d mImpl-\u003ecreatePlugin(uuid, appPackageName);\n// ...\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54460eca_5c35c745",
         "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
         "patchSetId": 1
@@ -59,6 +100,29 @@
         "startChar": 0,
         "endLine": 80,
         "endChar": 32
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd35369_e4100626",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T16:26:36Z",
+      "side": 1,
+      "message": "nit,\n\n```\nif (generateNonce(\u0026ctx.mNonce, kNonceSize, __func__) !\u003d OK) {\n  return ERROR_DRM_RESOURCE_BUSY;\n}\nDrmStatus status \u003d mImpl-\u003eopenSession(securityLevel, sessionId);\n// ...\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 30
       },
       "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -129,6 +193,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "132794d1_61884f84",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T16:26:36Z",
+      "side": 1,
+      "message": "nit, cleanup function signature:\n\n```\nstatus_t DrmMetricsLogger::generateNonce(std::string* out, size_t size, const char* api) {\n    std::vector\u003cuint8_t\u003e buf(size);\n    ssize_t bytes \u003d getrandom(buf.data(), size, GRND_NONBLOCK);\n    if (bytes \u003c size) {\n        ALOGE(\"getrandom failed: %d\", errno);\n        reportMediaDrmErrored(ERROR_DRM_RESOURCE_BUSY, api);\n        return ERROR_DRM_RESOURCE_BUSY;\n    }\n    android::AString tmp;\n    encodeBase64(buf.data(), size, \u0026tmp);\n    out-\u003eassign(tmp.c_str());\n    return OK;\n}\n```",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 1
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26aab59_64630793",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T16:26:36Z",
+      "side": 1,
+      "message": "add nonce size constant:\n```\nstatic const size_t kNonceSize \u003d 16;\n```",
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1d277f0_83439699",
         "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
         "patchSetId": 1
@@ -140,6 +244,30 @@
       "writtenOn": "2023-01-19T15:57:37Z",
       "side": 1,
       "message": "Move to anonymous namespace in cpp as `kUuidSchemeMap`.",
+      "range": {
+        "startLine": 159,
+        "startChar": 50,
+        "endLine": 159,
+        "endChar": 64
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7117fd9f_7b8fa943",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T16:26:36Z",
+      "side": 1,
+      "message": "sorry, let\u0027s make this static and move before member fields, i.e.\n```\nstatic const std::map\u003cstd::array\u003cint64_t, 2\u003e, std::string\u003e kUuidSchemeMap;\n```",
+      "parentUuid": "a1d277f0_83439699",
       "range": {
         "startLine": 159,
         "startChar": 50,
