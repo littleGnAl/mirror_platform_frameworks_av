@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3887e4_c86abd2a",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-19T20:38:17Z",
+      "side": 1,
+      "message": "I think it should be enough for a uint32_t to hold it, so will do a static_cast to uint32_t first, and then check the value with `convertIntegral`.\nLet me know how you think about it.",
+      "parentUuid": "4e49d22e_b05df738",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 42
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e9a32f5_23a09517",
@@ -60,6 +84,30 @@
       "writtenOn": "2023-01-18T19:59:23Z",
       "side": 1,
       "message": "I think, this can be simplified. If we instead make the type of `u` a template parameter, say `P`, then we should be able to refer `P::Specific::Tag` type (maybe with some extra keywords that the compiler would suggest 😊 And that should save us from passing the tag type to the macro.\n\nAnd if we try to pass to this template something that isn\u0027t a Parameter, the attempt to access the Tag type will fail, thus we still have type check in place. If you are super anxious, you can use `std::enable_if` to restrict the type of the argument.",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 95
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f65ac6_be030c80",
+        "filename": "media/audioaidlconversion/include/media/AidlConversionNdk.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-19T20:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e9a32f5_23a09517",
       "range": {
         "startLine": 35,
         "startChar": 22,
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df61e09_4dd78709",
+        "filename": "media/audioaidlconversion/include/media/AidlConversionUtil.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-19T20:38:17Z",
+      "side": 1,
+      "message": "The use case of this macro also including `$ClassName$::make`, for example: `UNION_MAKE(aidl::android::hardware::audio::effect::Parameter, specific, agc)`.\nThe first parameter u can be a class name not object.",
+      "parentUuid": "d89ef75c_af2933bc",
+      "range": {
+        "startLine": 281,
+        "startChar": 36,
+        "endLine": 281,
+        "endChar": 37
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4ea158d_72ff4e04",
@@ -106,6 +178,30 @@
       "writtenOn": "2023-01-18T19:59:23Z",
       "side": 1,
       "message": "Why are we holding it by a reference here? Rules about whether a reference prolongs the lifetime of an object are really complex, and it\u0027s easy to end up with a dangling reference this way: https://en.cppreference.com/w/cpp/language/reference#Dangling_references. Since our wrapper/view is a very simple object, it\u0027s OK to work with it by value.",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 28
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "386be2d5_b0e8d8a6",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-19T20:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ea158d_72ff4e04",
       "range": {
         "startLine": 120,
         "startChar": 4,
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de12acea_df52419d",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-19T20:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24f0eda7_0b0abf4a",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 85
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75a20a12_ae1894d5",
@@ -162,6 +282,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ec4155_797f53bb",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-19T20:38:17Z",
+      "side": 1,
+      "message": "The reason I didn\u0027t use sizeof in `validatePVSize` implementation is there are cases of multiple parameters/values stored in data. In this case we can do `validatePVSize(n*sizeof(uint32_t), n*sizeof(uint32_t)`.",
+      "parentUuid": "75a20a12_ae1894d5",
+      "range": {
+        "startLine": 363,
+        "startChar": 30,
+        "endLine": 363,
+        "endChar": 64
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34d7c8d7_2f52fd10",
@@ -175,6 +319,30 @@
       "writtenOn": "2023-01-18T19:59:23Z",
       "side": 1,
       "message": "Why it\u0027s the `downmix_type_t` and not `int16_t`, or both? I think, it would really be helpful to have a validator which just takes in references to all variables that we intend to use with the packed parameters.",
+      "range": {
+        "startLine": 497,
+        "startChar": 55,
+        "endLine": 497,
+        "endChar": 69
+      },
+      "revId": "d71b5ed1f8657d5b26094fa71deab18bde683891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc4d233_7c3c9575",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-19T20:38:17Z",
+      "side": 1,
+      "message": "Yes this should be int16_t, and similar to the last comment about using reference of variables for size.",
+      "parentUuid": "34d7c8d7_2f52fd10",
       "range": {
         "startLine": 497,
         "startChar": 55,
