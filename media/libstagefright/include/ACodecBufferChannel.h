@@ -68,7 +68,7 @@ public:
 
     // BufferChannelBase interface
     void setCrypto(const sp<ICrypto> &crypto) override;
-    void setDescrambler(const sp<IDescrambler> &descrambler) override;
+    void setDescrambler(const sp<IDescramblerHal>& descrambler) override;
 
     virtual status_t queueInputBuffer(const sp<MediaCodecBuffer> &buffer) override;
     virtual status_t queueSecureInputBuffer(
@@ -156,7 +156,7 @@ private:
     sp<MemoryDealer> makeMemoryDealer(size_t heapSize);
 
     sp<ICrypto> mCrypto;
-    sp<IDescrambler> mDescrambler;
+    sp<IDescramblerHal> mDescrambler;
 
     bool hasCryptoOrDescrambler() {
         return mCrypto != NULL || mDescrambler != NULL;

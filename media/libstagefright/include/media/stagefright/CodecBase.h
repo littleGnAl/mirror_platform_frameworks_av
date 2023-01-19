@@ -45,21 +45,15 @@ struct RenderedFrameInfo;
 class Surface;
 struct ICrypto;
 class IMemory;
+struct IDescramblerHal;
 
 namespace hardware {
 class HidlMemory;
-namespace cas {
-namespace native {
-namespace V1_0 {
-struct IDescrambler;
-}}}
 namespace drm {
 namespace V1_0 {
 struct SharedBuffer;
 }}
 }
-
-using hardware::cas::native::V1_0::IDescrambler;
 
 struct CodecParameterDescriptor {
     std::string name;
@@ -325,7 +319,7 @@ public:
     }
 
     virtual void setCrypto(const sp<ICrypto> &) {}
-    virtual void setDescrambler(const sp<IDescrambler> &) {}
+    virtual void setDescrambler(const sp<IDescramblerHal>&) {}
 
     /**
      * Queue an input buffer into the buffer channel.

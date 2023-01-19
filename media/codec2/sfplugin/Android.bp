@@ -48,6 +48,7 @@ cc_library_shared {
     ],
 
     shared_libs: [
+        "android.hardware.cas-V1-ndk",
         "android.hardware.cas.native@1.0",
         "android.hardware.drm@1.0",
         "android.hardware.media.c2@1.0",
@@ -64,6 +65,7 @@ cc_library_shared {
         "libhidlallocatorutils",
         "libhidlbase",
         "liblog",
+        "libmediacas",
         "libmedia_codeclist",
         "libmedia_omx",
         "libsfplugin_ccodec_utils",
@@ -71,7 +73,7 @@ cc_library_shared {
         "libstagefright_codecbase",
         "libstagefright_foundation",
         "libstagefright_omx",
-	"libstagefright_surface_utils",
+        "libstagefright_surface_utils",
         "libstagefright_xmlparser",
         "libui",
         "libutils",

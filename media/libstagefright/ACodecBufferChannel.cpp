@@ -24,16 +24,16 @@
 
 #include <Codec2BufferUtils.h>
 
-#include <android/hardware/cas/native/1.0/IDescrambler.h>
+#include <IDescramblerHal.h>
 #include <android/hardware/drm/1.0/types.h>
 #include <binder/MemoryDealer.h>
 #include <hidlmemory/FrameworkUtils.h>
+#include <media/MediaCodecBuffer.h>
 #include <media/openmax/OMX_Core.h>
+#include <media/stagefright/MediaCodec.h>
 #include <media/stagefright/foundation/ABuffer.h>
 #include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AUtils.h>
-#include <media/stagefright/MediaCodec.h>
-#include <media/MediaCodecBuffer.h>
 #include <system/window.h>
 
 #include "include/ACodecBufferChannel.h"
@@ -655,7 +655,7 @@ void ACodecBufferChannel::setCrypto(const sp<ICrypto> &crypto) {
     mCrypto = crypto;
 }
 
-void ACodecBufferChannel::setDescrambler(const sp<IDescrambler> &descrambler) {
+void ACodecBufferChannel::setDescrambler(const sp<IDescramblerHal>& descrambler) {
     mDescrambler = descrambler;
 }
 

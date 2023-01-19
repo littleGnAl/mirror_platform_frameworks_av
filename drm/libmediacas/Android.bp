@@ -1,0 +1,60 @@
+//
+// libmediacas
+//
+
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_av_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_av_license"],
+}
+
+cc_library_headers {
+    name: "libmediacas_headers",
+
+    export_include_dirs: [
+        "include"
+    ],
+
+}
+
+cc_library {
+    name: "libmediacas",
+
+    srcs: [
+        "IDescramblerHal.cpp",
+    ],
+
+    local_include_dirs: [
+        "include",
+    ],
+
+    export_include_dirs: [
+        "include"
+    ],
+
+    header_libs: [
+        "libmedia_headers",
+    ],
+
+    shared_libs: [
+        "libbinder_ndk",
+        "libcutils",
+        "libutils",
+        "android.hardware.cas.native@1.0",
+        "libhidlbase",
+        "android.hardware.cas-V1-ndk",
+    ],
+
+    static_libs: [
+        "libnativehelper_lazy",
+        "libaidlcommonsupport",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+    ],
+}

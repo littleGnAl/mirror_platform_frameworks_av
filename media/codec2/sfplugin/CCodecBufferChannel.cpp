@@ -32,25 +32,25 @@
 #include <C2Config.h>
 #include <C2Debug.h>
 
-#include <android/hardware/cas/native/1.0/IDescrambler.h>
-#include <android/hardware/drm/1.0/types.h>
+#include <IDescramblerHal.h>
 #include <android-base/properties.h>
 #include <android-base/stringprintf.h>
+#include <android/hardware/drm/1.0/types.h>
 #include <binder/MemoryBase.h>
 #include <binder/MemoryDealer.h>
 #include <cutils/properties.h>
 #include <gui/Surface.h>
 #include <hidlmemory/FrameworkUtils.h>
+#include <media/MediaCodecBuffer.h>
 #include <media/openmax/OMX_Core.h>
+#include <media/stagefright/MediaCodecConstants.h>
+#include <media/stagefright/SkipCutBuffer.h>
+#include <media/stagefright/SurfaceUtils.h>
 #include <media/stagefright/foundation/ABuffer.h>
 #include <media/stagefright/foundation/ALookup.h>
 #include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AUtils.h>
 #include <media/stagefright/foundation/hexdump.h>
-#include <media/stagefright/MediaCodecConstants.h>
-#include <media/stagefright/SkipCutBuffer.h>
-#include <media/stagefright/SurfaceUtils.h>
-#include <media/MediaCodecBuffer.h>
 #include <mediadrm/ICrypto.h>
 #include <system/window.h>
 
@@ -2176,7 +2176,7 @@ void CCodecBufferChannel::setCrypto(const sp<ICrypto> &crypto) {
     mCrypto = crypto;
 }
 
-void CCodecBufferChannel::setDescrambler(const sp<IDescrambler> &descrambler) {
+void CCodecBufferChannel::setDescrambler(const sp<IDescramblerHal>& descrambler) {
     mDescrambler = descrambler;
 }
 

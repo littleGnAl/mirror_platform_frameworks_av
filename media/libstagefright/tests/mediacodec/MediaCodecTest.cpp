@@ -36,7 +36,7 @@ public:
     ~MockBufferChannel() override = default;
 
     MOCK_METHOD(void, setCrypto, (const sp<ICrypto> &crypto), (override));
-    MOCK_METHOD(void, setDescrambler, (const sp<IDescrambler> &descrambler), (override));
+    MOCK_METHOD(void, setDescrambler, (const sp<IDescramblerHal>& descrambler), (override));
     MOCK_METHOD(status_t, queueInputBuffer, (const sp<MediaCodecBuffer> &buffer), (override));
     MOCK_METHOD(status_t, queueSecureInputBuffer,
             (const sp<MediaCodecBuffer> &buffer,

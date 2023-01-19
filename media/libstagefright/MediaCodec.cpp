@@ -27,13 +27,13 @@
 #include <dlfcn.h>
 
 #include <C2Buffer.h>
+#include <IDescramblerHal.h>
 
 #include "include/SoftwareRenderer.h"
 #include "PlaybackDurationAccumulator.h"
 
 #include <android/binder_manager.h>
 #include <android/content/pm/IPackageManagerNative.h>
-#include <android/hardware/cas/native/1.0/IDescrambler.h>
 #include <android/hardware/media/omx/1.0/IGraphicBufferSource.h>
 
 #include <aidl/android/media/BnResourceManagerClient.h>
@@ -1640,12 +1640,9 @@ status_t MediaCodec::configure(
     return configure(format, nativeWindow, crypto, NULL, flags);
 }
 
-status_t MediaCodec::configure(
-        const sp<AMessage> &format,
-        const sp<Surface> &surface,
-        const sp<ICrypto> &crypto,
-        const sp<IDescrambler> &descrambler,
-        uint32_t flags) {
+status_t MediaCodec::configure(const sp<AMessage>& format, const sp<Surface>& surface,
+                               const sp<ICrypto>& crypto, const sp<IDescramblerHal>& descrambler,
+                               uint32_t flags) {
     sp<AMessage> msg = new AMessage(kWhatConfigure, this);
 
     // TODO: validity check log-session-id: it should be a 32-hex-digit.
@@ -3965,7 +3962,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 descrambler = NULL;
             }
 
-            mDescrambler = static_cast<IDescrambler *>(descrambler);
+            mDescrambler = static_cast<IDescramblerHal*>(descrambler);
             mBufferChannel->setDescrambler(mDescrambler);
 
             format->setInt32("flags", flags);
