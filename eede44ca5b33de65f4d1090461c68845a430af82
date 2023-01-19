@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1c4d80_afde875b",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T15:57:37Z",
+      "side": 1,
+      "message": "Put uuid-scheme map in anonymous namespace as a global constant. It is a map of well-known drm schemes and their uuid from https://dashif.org/identifiers/content_protection/ .\n\n\n```\nstd::map\u003cstd::array\u003cint64_t, 2\u003e, std::string\u003e const kUuidSchemeMap \u003d {\n  {{(int64_t)0x6DD8B3C345F44A68, (int64_t)0xBF3A64168D01A4A6}, \"ABV DRM (MoDRM)\"},\n  {{(int64_t)0xF239E769EFA34850, (int64_t)0x9C16A903C6932EFB}, \"Adobe Primetime DRM version 4\"},\n  {{(int64_t)0x616C746963617374, (int64_t)0x2D50726F74656374}, \"Alticast\"},\n  {{(int64_t)0x94CE86FB07FF4F43, (int64_t)0xADB893D2FA968CA2}, \"Apple FairPlay\"},\n  {{(int64_t)0x279FE473512C48FE, (int64_t)0xADE8D176FEE6B40F}, \"Arris Titanium\"},\n  {{(int64_t)0x3D5E6D359B9A41E8, (int64_t)0xB843DD3C6E72C42C}, \"ChinaDRM\"},\n  {{(int64_t)0x3EA8778F77424BF9, (int64_t)0xB18BE834B2ACBD47}, \"Clear Key AES-128\"},\n  {{(int64_t)0xBE58615B19C44684, (int64_t)0x88B3C8C57E99E957}, \"Clear Key SAMPLE-AES\"},\n  {{(int64_t)0xE2719D58A985B3C9, (int64_t)0x781AB030AF78D30E}, \"Clear Key DASH-IF\"},\n  {{(int64_t)0x644FE7B5260F4FAD, (int64_t)0x949A0762FFB054B4}, \"CMLA (OMA DRM)\"},\n  {{(int64_t)0x37C332587B994C7E, (int64_t)0xB15D19AF74482154}, \"Commscope Titanium V3\"},\n  {{(int64_t)0x45D481CB8FE049C0, (int64_t)0xADA9AB2D2455B2F2}, \"CoreCrypt\"},\n  {{(int64_t)0xDCF4E3E362F15818, (int64_t)0x7BA60A6FE33FF3DD}, \"DigiCAP SmartXess\"},\n  {{(int64_t)0x35BF197B530E42D7, (int64_t)0x8B651B4BF415070F}, \"DivX DRM Series 5\"},\n  {{(int64_t)0x80A6BE7E14484C37, (int64_t)0x9E70D5AEBE04C8D2}, \"Irdeto Content Protection\"},\n  {{(int64_t)0x5E629AF538DA4063, (int64_t)0x897797FFBD9902D4}, \"Marlin Adaptive Streaming Simple Profile V1.0\"},\n  {{(int64_t)0x9A04F07998404286, (int64_t)0xAB92E65BE0885F95}, \"Microsoft PlayReady\"},\n  {{(int64_t)0x6A99532D869F5922, (int64_t)0x9A91113AB7B1E2F3}, \"MobiTV DRM\"},\n  {{(int64_t)0xADB41C242DBF4A6D, (int64_t)0x958B4457C0D27B95}, \"Nagra MediaAccess PRM 3.0\"},\n  {{(int64_t)0x1F83E1E86EE94F0D, (int64_t)0xBA2F5EC4E3ED1A66}, \"SecureMedia\"},\n  {{(int64_t)0x992C46E6C4374899, (int64_t)0xB6A050FA91AD0E39}, \"SecureMedia SteelKnot\"},\n  {{(int64_t)0xA68129D3575B4F1A, (int64_t)0x9CBA3223846CF7C3}, \"Synamedia/Cisco/NDS VideoGuard DRM\"},\n  {{(int64_t)0xAA11967FCC014A4A, (int64_t)0x8E99C5D3DDDFEA2D}, \"Unitend DRM (UDRM)\"},\n  {{(int64_t)0x9A27DD82FDE24725, (int64_t)0x8CBC4234AA06EC09}, \"Verimatrix VCAS\"},\n  {{(int64_t)0xB4413586C58CFFB0, (int64_t)0x94A5D4896C1AF6C3}, \"Viaccess-Orca DRM (VODRM)\"},\n  {{(int64_t)0x793B79569F944946, (int64_t)0xA94223E7EF7E44B4}, \"VisionCrypt\"},\n  {{(int64_t)0x1077EFECC0B24D02, (int64_t)0xACE33C1E52E2FB4B}, \"W3C Common PSSH box\"},\n  {{(int64_t)0xEDEF8BA979D64ACE, (int64_t)0xA3C827DCD51D21ED}, \"Widevine Content Protection\"},\n};\n```",
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16601c90_6ca9e385",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T15:57:37Z",
+      "side": 1,
+      "message": "```\nstd::memcpy(mUuid.data(), uuid, mUuid.size());\nif (kUuidSchemeMap.count(mUuid)) {\n  mScheme \u003d kUuidSchemeMap[mUuid]\n} else {\n  mScheme \u003d \"Other\";\n}\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54460eca_5c35c745",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T15:57:37Z",
+      "side": 1,
+      "message": "Please remove this line.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4a442a_e977bdc4",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T15:57:37Z",
+      "side": 1,
+      "message": "nit, set fields in following order:\n1. scheme\n1. uuid_msb\n1. uuid_lsb\n1. frontend\n1. object_nonce\n\ni.e.\n```\n    mediametrics_handle_t handle(mediametrics_create(\"mediadrm.created\"));\n    mediametrics_setCString(handle, \"scheme\", mScheme.c_str());\n    mediametrics_setInt64(handle, \"uuid_msb\", be64toh(mUuid[0]));\n    mediametrics_setInt64(handle, \"uuid_lsb\", be64toh(mUuid[1]));\n    mediametrics_setInt32(handle, \"frontend\", mFrontend);\n    mediametrics_setCString(handle, \"object_nonce\", mObjNonce.c_str());\n```",
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb70f20_b3009197",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T15:57:37Z",
+      "side": 1,
+      "message": "nit, set fields in consistent order similar to `reportMediaDrmCreated`:\n\n1. scheme\n1. uuid_msb\n1. uuid_lsb\n1. frontend\n1. object_nonce\n1. session_nonce\n1. target_seucrity_level\n1. actual_seucrity_level",
+      "range": {
+        "startLine": 469,
+        "startChar": 37,
+        "endLine": 469,
+        "endChar": 46
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7622dd_97ebdc34",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T15:57:37Z",
+      "side": 1,
+      "message": "nit, set fields in consistent order similar to `reportMediaDrmCreated`/`reportMediaDrmSessionOpened`:\n\n1. scheme\n1. uuid_msb\n1. uuid_lsb\n1. frontend\n1. object_nonce\n1. session_nonce\n1. actual_seucrity_level\n1. api, error_code, cdm_err, oem_err, error_context",
+      "range": {
+        "startLine": 485,
+        "startChar": 23,
+        "endLine": 485,
+        "endChar": 44
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d277f0_83439699",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-19T15:57:37Z",
+      "side": 1,
+      "message": "Move to anonymous namespace in cpp as `kUuidSchemeMap`.",
+      "range": {
+        "startLine": 159,
+        "startChar": 50,
+        "endLine": 159,
+        "endChar": 64
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
