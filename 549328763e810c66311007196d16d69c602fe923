@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f727eae_ddebc436",
+        "filename": "media/libmedia/MediaCharsetDetector.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-20T22:43:11Z",
+      "side": 1,
+      "message": "Nick, this file was renamed and moved media/libmedia/CharacterEncodingDetector.cpp, and the new media/libmedia/CharacterEncodingDetector.cpp is basically a wrapper of this class. I have to move the files in order to avoid exporting the `libandroidicu` headers from libmedia.",
+      "parentUuid": "c10a7242_d9ac89fc",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "549328763e810c66311007196d16d69c602fe923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "791b1418_40d6e584",
         "filename": "media/libmedia/MediaCharsetDetector.h",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-20T21:09:12Z",
       "side": 1,
       "message": "add bug.",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "549328763e810c66311007196d16d69c602fe923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3951ab9e_c75b2709",
+        "filename": "media/libmedia/MediaCharsetDetector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-20T22:43:11Z",
+      "side": 1,
+      "message": "This file and TODO isn\u0027t new, but was renamed and moved from media/libmedia/include/media/CharacterEncodingDetector.h.",
+      "parentUuid": "791b1418_40d6e584",
       "range": {
         "startLine": 50,
         "startChar": 11,
