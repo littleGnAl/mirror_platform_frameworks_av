@@ -160,6 +160,29 @@
       },
       "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da7ab2c_636e0b51",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-20T05:45:08Z",
+      "side": 1,
+      "message": "I checked the ExoPlayer test code. It seems that there is \"codecs\u003d\" in this string. For example, in MediaFormatUtilTest.java\n  @Test\n  public void createMediaFormatFromFormat_withPopulatedFormat_generatesExpectedEntries() {\n    Format format \u003d\n        new Format.Builder()\n            .setAverageBitrate(1)\n            .setChannelCount(2)\n            .setColorInfo(\n                new ColorInfo(\n                    /* colorSpace\u003d */ C.COLOR_SPACE_BT601,\n                    /* colorRange\u003d */ C.COLOR_RANGE_FULL,\n                    /* colorTransfer\u003d */ C.COLOR_TRANSFER_HLG,\n                    new byte[] {3}))\n            .setSampleMimeType(MimeTypes.VIDEO_H264)\n            .setCodecs(\"avc.123\")    // !!!!!! This line\n            .setFrameRate(4)\n......\n    assertThat(mediaFormat.getString(MediaFormat.KEY_CODECS_STRING)).isEqualTo(format.codecs);\n    \nAnother example is in OnDel MPEG-DASH .mpd file,\n      \u003cRepresentation audioSamplingRate\u003d\"48000\" bandwidth\u003d\"68368\" codecs\u003d\"ac-4.02.01.00\" id\u003d\"2\"\u003e            \nSo I think \"codecs\u003d\" should be removed.",
+      "range": {
+        "startLine": 429,
+        "startChar": 60,
+        "endLine": 429,
+        "endChar": 67
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
