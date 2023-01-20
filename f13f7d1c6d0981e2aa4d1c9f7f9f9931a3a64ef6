@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a19091_a4c3a773",
+        "filename": "media/codec2/vndk/C2Config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-20T04:22:50Z",
+      "side": 1,
+      "message": "During the code modification and testing, it seems that option 1 is better. So I will update code based on that.",
+      "parentUuid": "fcc12b22_49a75090",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "f13f7d1c6d0981e2aa4d1c9f7f9f9931a3a64ef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4a027a_08855f2b",
