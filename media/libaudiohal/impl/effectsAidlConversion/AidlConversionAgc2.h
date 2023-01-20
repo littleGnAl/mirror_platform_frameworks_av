@@ -31,6 +31,9 @@ class AidlConversionAgc2 : public EffectConversionHelperAidl {
     ~AidlConversionAgc2() {}
 
   private:
+    static constexpr inline int kDefaultLevelEstimator = 0;     // RMS
+    static constexpr inline int kDefaultSaturationMargin = 2;
+
     status_t setParameter(utils::EffectParamReader& param) override;
     status_t getParameter(utils::EffectParamWriter& param) override;
 };

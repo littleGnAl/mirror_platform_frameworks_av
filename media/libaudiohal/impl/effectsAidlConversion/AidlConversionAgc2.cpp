@@ -55,13 +55,17 @@ status_t AidlConversionAgc2::setParameter(EffectParamReader& param) {
             break;
         }
         case AGC2_PARAM_ADAPT_DIGI_LEVEL_ESTIMATOR: {
-            aidlParam = VALUE_OR_RETURN_STATUS(
-                    aidl::android::legacy2aidl_uint32_levelEstimator_Parameter_agc(value));
+            if (value != kDefaultLevelEstimator) {
+                // only RMS is supported
+                return BAD_VALUE;
+            }
             break;
         }
         case AGC2_PARAM_ADAPT_DIGI_EXTRA_SATURATION_MARGIN: {
-            aidlParam = VALUE_OR_RETURN_STATUS(
-                    aidl::android::legacy2aidl_uint32_saturationMargin_Parameter_agc(value));
+            if (value != kDefaultSaturationMargin) {
+              // extra_staturation_margin_db is no longer configurable in webrtc
+                return BAD_VALUE;
+            }
             break;
         }
         default: {
@@ -92,21 +96,11 @@ status_t AidlConversionAgc2::getParameter(EffectParamWriter& param) {
             break;
         }
         case AGC2_PARAM_ADAPT_DIGI_LEVEL_ESTIMATOR: {
-            Parameter::Id id =
-                    MAKE_SPECIFIC_PARAMETER_ID(AutomaticGainControl, automaticGainControlTag,
-                                               AutomaticGainControl::levelEstimator);
-            RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mEffect->getParameter(id, &aidlParam)));
-            value = VALUE_OR_RETURN_STATUS(
-                    aidl::android::aidl2legacy_Parameter_agc_uint32_levelEstimator(aidlParam));
+            value = kDefaultLevelEstimator;
             break;
         }
         case AGC2_PARAM_ADAPT_DIGI_EXTRA_SATURATION_MARGIN: {
-            Parameter::Id id =
-                    MAKE_SPECIFIC_PARAMETER_ID(AutomaticGainControl, automaticGainControlTag,
-                                               AutomaticGainControl::saturationMarginMb);
-            RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mEffect->getParameter(id, &aidlParam)));
-            value = VALUE_OR_RETURN_STATUS(
-                    aidl::android::aidl2legacy_Parameter_agc_uint32_saturationMargin(aidlParam));
+            value = kDefaultSaturationMargin;
             break;
         }
         default: {

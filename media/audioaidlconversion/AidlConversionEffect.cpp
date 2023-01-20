@@ -270,37 +270,6 @@ ConversionResult<Parameter> legacy2aidl_uint32_fixedDigitalGain_Parameter_agc(ui
                                    gain);
 }
 
-ConversionResult<uint32_t> aidl2legacy_Parameter_agc_uint32_levelEstimator(
-        const Parameter& aidl) {
-    const auto& le = VALUE_OR_RETURN(GET_PARAMETER_SPECIFIC_FIELD(
-            aidl, AutomaticGainControl, automaticGainControl, AutomaticGainControl::levelEstimator,
-            AutomaticGainControl::LevelEstimator));
-    return static_cast<uint32_t>(le);
-}
-
-ConversionResult<Parameter> legacy2aidl_uint32_levelEstimator_Parameter_agc(uint32_t legacy) {
-    if (legacy > (uint32_t) AutomaticGainControl::LevelEstimator::PEAK) {
-        return unexpected(BAD_VALUE);
-    }
-    AutomaticGainControl::LevelEstimator le =
-            static_cast<AutomaticGainControl::LevelEstimator>(legacy);
-    return MAKE_SPECIFIC_PARAMETER(AutomaticGainControl, automaticGainControl, levelEstimator, le);
-}
-
-ConversionResult<uint32_t> aidl2legacy_Parameter_agc_uint32_saturationMargin(
-        const Parameter& aidl) {
-    int saturationMargin = VALUE_OR_RETURN(
-            GET_PARAMETER_SPECIFIC_FIELD(aidl, AutomaticGainControl, automaticGainControl,
-                                         AutomaticGainControl::saturationMarginMb, int));
-    return VALUE_OR_RETURN(convertIntegral<uint32_t>(saturationMargin));
-}
-
-ConversionResult<Parameter> legacy2aidl_uint32_saturationMargin_Parameter_agc(uint32_t legacy) {
-    int saturationMargin = VALUE_OR_RETURN(convertIntegral<int>(legacy));
-    return MAKE_SPECIFIC_PARAMETER(AutomaticGainControl, automaticGainControl, saturationMarginMb,
-                                   saturationMargin);
-}
-
 ConversionResult<uint16_t> aidl2legacy_Parameter_BassBoost_uint16_strengthPm(
         const Parameter& aidl) {
     int strength = VALUE_OR_RETURN(
