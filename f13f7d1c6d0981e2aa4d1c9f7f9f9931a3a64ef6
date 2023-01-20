@@ -45,6 +45,30 @@
       },
       "revId": "f13f7d1c6d0981e2aa4d1c9f7f9f9931a3a64ef6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b49b3a_6b160d1e",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-20T02:33:12Z",
+      "side": 1,
+      "message": "Yes, you are right. Here is the content in dump file:\nMedia type \u0027audio/ac4\u0027:\n  Decoder \"c2.dolby.ac4.decoder\" supports\n    ......\n    profile/levels: [\n        257/   16 (ac-4.00.00/04),\n        513/   16 (ac-4.01.00/04),\n        514/   16 (ac-4.01.01/04),\n       1026/   16 (ac-4.02.01/04),\n       1028/   16 (ac-4.02.02/04) ]\n       \nPlease note that the title of this array is \"profile/levels\" so that I don\u0027t think bitstream_version / presentation version is good here.\n\nBTW, I\u0027ll update the code to include the change in stagefright dump() and mediaplayerservice dump(). Previously, it is an independent commit with Dolby Vision modification. (Dolby Vision forgets to add support in these two functions.) Now, I think it is better split it and put AC-4 part into this commit since both Michael and you have questions on this point.",
+      "parentUuid": "1a4a027a_08855f2b",
+      "range": {
+        "startLine": 604,
+        "startChar": 32,
+        "endLine": 604,
+        "endChar": 34
+      },
+      "revId": "f13f7d1c6d0981e2aa4d1c9f7f9f9931a3a64ef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
