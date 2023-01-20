@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcc12b22_49a75090",
+        "filename": "media/codec2/vndk/C2Config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-20T02:44:32Z",
+      "side": 1,
+      "message": "How about \"C2Config::PROFILE_AC4_00_00\", which is similar as your option 1 and follow other enum name rule?",
+      "parentUuid": "89618dce_6987c724",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "f13f7d1c6d0981e2aa4d1c9f7f9f9931a3a64ef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a4a027a_08855f2b",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 2
