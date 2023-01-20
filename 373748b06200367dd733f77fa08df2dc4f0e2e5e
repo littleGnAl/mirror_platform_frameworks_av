@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a7db51_a1974234",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-20T04:28:57Z",
+      "side": 1,
+      "message": "Michael,\nI am looking into ETSI TS 103 190-2 V1.2.1 (2018-02)\nhttps://www.etsi.org/deliver/etsi_ts/103100_103199/10319002/01.02.01_60/ts_10319002v010201p.pdf\n\nsection 4.6 suggests that,\n\"Decoders conforming to the present document shall be capable of decoding bitstreams where 0 ≤ bitstream_version\n≤ 2.\"\n\nThis seems like opposite to what this statement suggests. But somewhere else I remember reading supported bitstream \u003e\u003d 2.",
+      "range": {
+        "startLine": 339,
+        "startChar": 8,
+        "endLine": 339,
+        "endChar": 75
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1743e8_78cf6940",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-20T04:28:57Z",
+      "side": 1,
+      "message": "run stylecheck here? I think the standard style is 2 spaces before the comment starts.",
+      "range": {
+        "startLine": 356,
+        "startChar": 21,
+        "endLine": 356,
+        "endChar": 24
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00767dfe_1be6a7e1",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-20T04:28:57Z",
+      "side": 1,
+      "message": "assert to check if singlePresenttaoin is 0?\nnumPresentations should be 1 only if singlePresentation\u003d\u003d1.",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 359,
+        "endChar": 34
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97352e63_c2f1ceef",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-20T04:28:57Z",
+      "side": 1,
+      "message": "#Minor. Comment with the style:\n\nb prefix is used while parsing 1 bit but the type is defined as uint32.\n    uint32_t bWaitFrames \u003d bits.getBits(1);\n    if (bWaitFrames) {\n    \n    \nwhereas the new code has mixed variable style: singlePresentation/isPayloadBase/hasProgramId with type as boolean.\n\nShould we follow common convention.",
+      "range": {
+        "startLine": 360,
+        "startChar": 9,
+        "endLine": 360,
+        "endChar": 27
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a7d004_057054df",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-20T04:28:57Z",
+      "side": 1,
+      "message": "Is this scoping required?",
+      "range": {
+        "startLine": 397,
+        "startChar": 4,
+        "endLine": 397,
+        "endChar": 5
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2acc875b_1be65c10",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-20T04:28:57Z",
+      "side": 1,
+      "message": "Line number 338 should have already gated this check.",
+      "range": {
+        "startLine": 418,
+        "startChar": 12,
+        "endLine": 418,
+        "endChar": 31
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c7b52a_c6683970",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-20T04:28:57Z",
+      "side": 1,
+      "message": "Michael,\nI have looked into the spec and don\u0027t find the reason for below style of mimetype reporting described. Where can I find this information?",
+      "range": {
+        "startLine": 426,
+        "startChar": 8,
+        "endLine": 426,
+        "endChar": 31
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
