@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "424de49d_3714183b",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Added the static, removed the const from the declaration of kUuidSchemeMap as it was not accessible inside the createplugin API which is not a const.",
+      "parentUuid": "53ee08cb_fbbd05f8",
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16601c90_6ca9e385",
@@ -49,6 +67,30 @@
       "writtenOn": "2023-01-19T15:57:37Z",
       "side": 1,
       "message": "```\nstd::memcpy(mUuid.data(), uuid, mUuid.size());\nif (kUuidSchemeMap.count(mUuid)) {\n  mScheme \u003d kUuidSchemeMap[mUuid]\n} else {\n  mScheme \u003d \"Other\";\n}\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c61a57a_4d274f60",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16601c90_6ca9e385",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -82,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f544a2_5fe19293",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b85daa4_56774bde",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54460eca_5c35c745",
@@ -95,6 +161,30 @@
       "writtenOn": "2023-01-19T15:57:37Z",
       "side": 1,
       "message": "Please remove this line.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646fa016_43ef8692",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54460eca_5c35c745",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -128,6 +218,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "808adf6c_b78e2c15",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dd35369_e4100626",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40333d2a_dc93d7ee",
@@ -141,6 +255,30 @@
       "writtenOn": "2023-01-19T19:27:49Z",
       "side": 1,
       "message": "`requiresSecureDecoder` is overloaded, so let\u0027s use `requiresSecureDecoderLevel` to differentiate.",
+      "range": {
+        "startLine": 427,
+        "startChar": 38,
+        "endLine": 427,
+        "endChar": 46
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "641d07f6_7f4c400b",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40333d2a_dc93d7ee",
       "range": {
         "startLine": 427,
         "startChar": 38,
@@ -168,6 +306,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55764a59_236c3895",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e4a442a_e977bdc4",
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adb70f20_b3009197",
@@ -181,6 +337,30 @@
       "writtenOn": "2023-01-19T15:57:37Z",
       "side": 1,
       "message": "nit, set fields in consistent order similar to `reportMediaDrmCreated`:\n\n1. scheme\n1. uuid_msb\n1. uuid_lsb\n1. frontend\n1. object_nonce\n1. session_nonce\n1. target_seucrity_level\n1. actual_seucrity_level",
+      "range": {
+        "startLine": 469,
+        "startChar": 37,
+        "endLine": 469,
+        "endChar": 46
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e51b929e_9f308de3",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb70f20_b3009197",
       "range": {
         "startLine": 469,
         "startChar": 37,
@@ -214,6 +394,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f70520e_885fab26",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e7622dd_97ebdc34",
+      "range": {
+        "startLine": 485,
+        "startChar": 23,
+        "endLine": 485,
+        "endChar": 44
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "132794d1_61884f84",
@@ -237,6 +441,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3262a3_e53d9b8b",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132794d1_61884f84",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 1
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d26aab59_64630793",
@@ -250,6 +478,24 @@
       "writtenOn": "2023-01-19T16:26:36Z",
       "side": 1,
       "message": "add nonce size constant:\n```\nstatic const size_t kNonceSize \u003d 16;\n```",
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75feb339_c9f9d9c7",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26aab59_64630793",
       "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -291,6 +537,30 @@
       "side": 1,
       "message": "sorry, let\u0027s make this static and move before member fields, i.e.\n```\nstatic const std::map\u003cstd::array\u003cint64_t, 2\u003e, std::string\u003e kUuidSchemeMap;\n```",
       "parentUuid": "a1d277f0_83439699",
+      "range": {
+        "startLine": 159,
+        "startChar": 50,
+        "endLine": 159,
+        "endChar": 64
+      },
+      "revId": "eede44ca5b33de65f4d1090461c68845a430af82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f620fc3e_75941cda",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-01-20T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7117fd9f_7b8fa943",
       "range": {
         "startLine": 159,
         "startChar": 50,
