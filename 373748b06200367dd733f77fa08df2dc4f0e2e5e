@@ -183,6 +183,30 @@
       },
       "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f7a675_af881049",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-20T06:41:32Z",
+      "side": 1,
+      "message": "The ExoPlayer code is here: https://github.com/google/ExoPlayer/blob/release-v2/library/common/src/test/java/com/google/android/exoplayer2/util/MediaFormatUtilTest.java#L74\nand\nhttps://github.com/google/ExoPlayer/blob/release-v2/library/common/src/test/java/com/google/android/exoplayer2/util/MediaFormatUtilTest.java#L107\n\nOne more example is \nhttps://github.com/google/ExoPlayer/blob/release-v2/library/common/src/main/java/com/google/android/exoplayer2/Format.java#L1345\nIt indicates \"codecs\u003d\" will be added for log output. That is to say, the original format.codecs doesn\u0027t has \"codecs\u003d\" prefix.",
+      "parentUuid": "3da7ab2c_636e0b51",
+      "range": {
+        "startLine": 429,
+        "startChar": 60,
+        "endLine": 429,
+        "endChar": 67
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
