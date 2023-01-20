@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d79ffcdc_344b9251",
+        "filename": "media/libmediaplayerservice/fuzzer/mediarecorder_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-01-20T23:15:51Z",
+      "side": 1,
+      "message": "OUTPUT_FORMAT_MPEG_4\n\nFlac is supported in mp4 writer and not in AAC_ADTS",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 27
+      },
+      "revId": "dce7c07de86af1215c8abf7da49bc4cad06d3faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
