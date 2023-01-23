@@ -37,6 +37,7 @@ cc_defaults {
     static_libs: [
         "android.hardware.common-V2-ndk",
         "libclearkeybase",
+        "libjsoncpp",
     ],
 
     local_include_dirs: ["include"],
