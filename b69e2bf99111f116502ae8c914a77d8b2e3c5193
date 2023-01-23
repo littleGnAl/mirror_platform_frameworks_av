@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e82b5f6_7120bb84",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2023-01-23T09:35:30Z",
+      "side": 1,
+      "message": "seems to be a unused method.",
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a2c9a59_51557c8c",
         "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
         "patchSetId": 1
@@ -43,6 +60,40 @@
         "endLine": 55,
         "endChar": 36
       },
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecca205f_f96e0e42",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2023-01-23T09:35:30Z",
+      "side": 1,
+      "message": "Why is there a need to explicitly \"init\", can be contained from #89 during PreProcessingContext?\n\nI see similar pattern for other effects as well.\n\n@yaoshunkai@google.com can you please check for this?",
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81fa2e0_b4d5afd3",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2023-01-23T09:35:30Z",
+      "side": 1,
+      "message": "list.empty() would be better choice.",
       "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
