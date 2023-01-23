@@ -39,6 +39,30 @@
       },
       "revId": "6634e48d501f740565e808d389e31120ddf06f68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0cc3d69_138ad8ee",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T04:14:53Z",
+      "side": 1,
+      "message": "This value will be sent via key/value pair all the way up to the Android SDK level, where the key is shared amongst other codecs not just AC-4 so a global constant is probably not required. It is also a dynamic value and changes depending on version.",
+      "parentUuid": "bca28b62_e5593c90",
+      "range": {
+        "startLine": 430,
+        "startChar": 60,
+        "endLine": 430,
+        "endChar": 79
+      },
+      "revId": "6634e48d501f740565e808d389e31120ddf06f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
