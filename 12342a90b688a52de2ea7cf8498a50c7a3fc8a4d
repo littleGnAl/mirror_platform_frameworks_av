@@ -34,6 +34,47 @@
       "parentUuid": "73da8898_205950c2",
       "revId": "12342a90b688a52de2ea7cf8498a50c7a3fc8a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a72771_cc42c1b1",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-01-23T22:14:41Z",
+      "side": 1,
+      "message": "Is it possible to change it to your ldap Robert? this will be useful to get notified of issues in the fuzzer in case.",
+      "parentUuid": "33938fbc_fbb840c4",
+      "revId": "12342a90b688a52de2ea7cf8498a50c7a3fc8a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741ae4df_24bccaea",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-01-23T22:14:41Z",
+      "side": 1,
+      "message": "nit: should we use 2023?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "12342a90b688a52de2ea7cf8498a50c7a3fc8a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
