@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24736610_11f3fe8b",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "Since AC-4 bitstreams with bitstream version \u003c 2 will not be used in practice, it doesn\u0027t add any value to support these in this implementation and hence we gate them here to avoid bloating the code. Generally these will be the versions of AC-4 bitstreams used in practice:\n\nac-4.02.01.00 // stereo\nac-4.02.01.01 // 5.1\nac-4.02.01.02 // Atmos CBI\nac-4.02.01.03 // Atmos CBI\nac-4.02.01.04 // Atmos Object\nac-4.02.02.00 // IMS\n\nWhere ac-4.xx.yy.zz represents bitstream version xx, presentation version yy and presentation level zz.",
+      "parentUuid": "f2a7db51_a1974234",
+      "range": {
+        "startLine": 339,
+        "startChar": 8,
+        "endLine": 339,
+        "endChar": 75
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e1743e8_78cf6940",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-20T04:28:57Z",
       "side": 1,
       "message": "run stylecheck here? I think the standard style is 2 spaces before the comment starts.",
+      "range": {
+        "startLine": 356,
+        "startChar": 21,
+        "endLine": 356,
+        "endChar": 24
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e873487_643f30dc",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "I think the rule is \u003e\u003d 2 spaces. I will run cppcheck over the file to ensure I am not introducing any style issues.",
+      "parentUuid": "0e1743e8_78cf6940",
       "range": {
         "startLine": 356,
         "startChar": 21,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdee51d9_5a43199f",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00767dfe_1be6a7e1",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 359,
+        "endChar": 34
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97352e63_c2f1ceef",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-20T04:28:57Z",
       "side": 1,
       "message": "#Minor. Comment with the style:\n\nb prefix is used while parsing 1 bit but the type is defined as uint32.\n    uint32_t bWaitFrames \u003d bits.getBits(1);\n    if (bWaitFrames) {\n    \n    \nwhereas the new code has mixed variable style: singlePresentation/isPayloadBase/hasProgramId with type as boolean.\n\nShould we follow common convention.",
+      "range": {
+        "startLine": 360,
+        "startChar": 9,
+        "endLine": 360,
+        "endChar": 27
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4ce2a0_28de67ab",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "Using bool for these variables is more appropriate from a type safety point of view but I won\u0027t be going back to fix prior code in this CL.",
+      "parentUuid": "97352e63_c2f1ceef",
       "range": {
         "startLine": 360,
         "startChar": 9,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63738738_b5c7ff08",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "Scoping here is to highlight that we are only considering the first presentation but that there could be more presentations present as indicated by the comment above.",
+      "parentUuid": "86a7d004_057054df",
+      "range": {
+        "startLine": 397,
+        "startChar": 4,
+        "endLine": 397,
+        "endChar": 5
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2acc875b_1be65c10",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b94a079f_b4b1db98",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "That\u0027s true, but probably doesn\u0027t hurt to check it within this context.",
+      "parentUuid": "2acc875b_1be65c10",
+      "range": {
+        "startLine": 418,
+        "startChar": 12,
+        "endLine": 418,
+        "endChar": 31
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31c7b52a_c6683970",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -152,6 +296,30 @@
       "writtenOn": "2023-01-20T04:28:57Z",
       "side": 1,
       "message": "Michael,\nI have looked into the spec and don\u0027t find the reason for below style of mimetype reporting described. Where can I find this information?",
+      "range": {
+        "startLine": 426,
+        "startChar": 8,
+        "endLine": 426,
+        "endChar": 31
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d562e6c7_920de4c5",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "If you mean the codecs string, this is based on the format used in the IANA registration of AC-4 MIME type.",
+      "parentUuid": "31c7b52a_c6683970",
       "range": {
         "startLine": 426,
         "startChar": 8,
@@ -199,6 +367,30 @@
       "side": 1,
       "message": "The ExoPlayer code is here: https://github.com/google/ExoPlayer/blob/release-v2/library/common/src/test/java/com/google/android/exoplayer2/util/MediaFormatUtilTest.java#L74\nand\nhttps://github.com/google/ExoPlayer/blob/release-v2/library/common/src/test/java/com/google/android/exoplayer2/util/MediaFormatUtilTest.java#L107\n\nOne more example is \nhttps://github.com/google/ExoPlayer/blob/release-v2/library/common/src/main/java/com/google/android/exoplayer2/Format.java#L1345\nIt indicates \"codecs\u003d\" will be added for log output. That is to say, the original format.codecs doesn\u0027t has \"codecs\u003d\" prefix.",
       "parentUuid": "3da7ab2c_636e0b51",
+      "range": {
+        "startLine": 429,
+        "startChar": 60,
+        "endLine": 429,
+        "endChar": 67
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ee07bd_8d3c1d1d",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-01-23T00:54:35Z",
+      "side": 1,
+      "message": "Thanks for the details Yanning. I will remove the \"codecs\u003d\" prefix.",
+      "parentUuid": "71f7a675_af881049",
       "range": {
         "startLine": 429,
         "startChar": 60,
