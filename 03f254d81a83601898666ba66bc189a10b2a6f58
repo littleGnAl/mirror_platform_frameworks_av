@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e13cdc1_dd09a21a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-23T23:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f41fe3_48c2ff5a",
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "534f5fc6_5f8213c4",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-13T22:10:20Z",
       "side": 1,
       "message": "alphabetical order please.\n\nboth within the new entries (2\u00263 should be flipped)\nand where these 3 new ones are placed in the overall list.",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67300a4e_588b9616",
+        "filename": "services/mediametrics/iface_statsd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-23T23:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "534f5fc6_5f8213c4",
       "range": {
         "startLine": 92,
         "startChar": 10,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23979684_30309d4d",
+        "filename": "services/mediametrics/include/mediametricsservice/iface_statsd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-23T23:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30786957_4aaf1f5e",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9576e8bd_2df910d7",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb18e83c_752a18f9",
+        "filename": "services/mediametrics/statsd_drm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-23T23:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9576e8bd_2df910d7",
+      "range": {
+        "startLine": 308,
+        "startChar": 3,
+        "endLine": 311,
+        "endChar": 28
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "587a73d5_4b759c23",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-01-13T22:10:20Z",
       "side": 1,
       "message": "similar here -- worth a comment about why we proceed even if cdm_err or oem_err are missing.",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 317,
+        "endChar": 23
+      },
+      "revId": "03f254d81a83601898666ba66bc189a10b2a6f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1a26a3_52905e84",
+        "filename": "services/mediametrics/statsd_drm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-23T23:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587a73d5_4b759c23",
       "range": {
         "startLine": 317,
         "startChar": 3,
