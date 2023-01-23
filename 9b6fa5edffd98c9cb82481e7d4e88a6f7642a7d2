@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1950001_594faa6f",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/DrmPlugin.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-23T23:52:26Z",
+      "side": 1,
+      "message": "`err` not in use.",
+      "range": {
+        "startLine": 952,
+        "startChar": 50,
+        "endLine": 952,
+        "endChar": 53
+      },
+      "revId": "9b6fa5edffd98c9cb82481e7d4e88a6f7642a7d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
