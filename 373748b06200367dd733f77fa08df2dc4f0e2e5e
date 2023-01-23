@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "471460e0_1a948c25",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-23T01:04:47Z",
+      "side": 1,
+      "message": "But if we return ERROR_MALFORMED for bitstreamVersion \u003c\u003d 1, doesn\u0027t it break the existing behaviour. We would never support bitstreamVersion \u003c2 in this scenario.\nIs this the expectation?",
+      "parentUuid": "24736610_11f3fe8b",
+      "range": {
+        "startLine": 339,
+        "startChar": 8,
+        "endLine": 339,
+        "endChar": 75
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e1743e8_78cf6940",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think the rule is \u003e\u003d 2 spaces. I will run cppcheck over the file to ensure I am not introducing any style issues.",
       "parentUuid": "0e1743e8_78cf6940",
+      "range": {
+        "startLine": 356,
+        "startChar": 21,
+        "endLine": 356,
+        "endChar": 24
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47803d13_1152e54d",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-23T01:04:47Z",
+      "side": 1,
+      "message": "I remember seeing the warning with \u003e2 spaces. If you see this file overall for such comments, I think all comments has that 2 spacing style.",
+      "parentUuid": "5e873487_643f30dc",
       "range": {
         "startLine": 356,
         "startChar": 21,
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "Using bool for these variables is more appropriate from a type safety point of view but I won\u0027t be going back to fix prior code in this CL.",
       "parentUuid": "97352e63_c2f1ceef",
+      "range": {
+        "startLine": 360,
+        "startChar": 9,
+        "endLine": 360,
+        "endChar": 27
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c755444a_d63c80f7",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1633017
+      },
+      "writtenOn": "2023-01-23T01:04:47Z",
+      "side": 1,
+      "message": "I agree. I think we tried to bring this same logic in last time, but I guess the comment was not to mix the bool/int.\nAnyways we can push it and see what Google engineers think.",
+      "parentUuid": "2e4ce2a0_28de67ab",
       "range": {
         "startLine": 360,
         "startChar": 9,
