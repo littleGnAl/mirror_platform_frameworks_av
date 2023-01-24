@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6fc949_ee0b0c35",
+        "filename": "media/libmedia/MediaCharsetDetector.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-24T12:22:04Z",
+      "side": 1,
+      "message": "\u003e This does not show as a move, see if you can use git mv and revert so this shows as diff.\n\nDone now. I created a separate commit to move the files. in order to show the diff in this CL.\nThis patchset was created with `git mv`, and it doesn\u0027t seem to work.\n\n\u003e But that does not change the fact that this is a lot of code, where are the tests that cover this?\n\nI am not familiar with `libmedia` library, and just to create a simple wrapper in this CL to unblock the `minikin` CL. I can only find very few tests in frameworks/av/media/libmedia/tests/ for a very specific test coverage.",
+      "parentUuid": "29ad8f01_64dad9e0",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "549328763e810c66311007196d16d69c602fe923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "791b1418_40d6e584",
