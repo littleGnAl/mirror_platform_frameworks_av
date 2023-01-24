@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e97f9500_86e53b0b",
+        "filename": "media/libeffects/preprocessing/aidl/EffectPreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-24T06:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b83f9d5_6cc6a6f6",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e82b5f6_7120bb84",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-01-23T09:35:30Z",
       "side": 1,
       "message": "seems to be a unused method.",
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8254e52c_7e753dee",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-24T06:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e82b5f6_7120bb84",
       "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "075445c7_5c080786",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-24T06:15:18Z",
+      "side": 1,
+      "message": "Yeah, we don\u0027t add null pointers in the list. There is no need for the check.",
+      "parentUuid": "4a2c9a59_51557c8c",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecca205f_f96e0e42",
@@ -81,6 +147,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3414bf14_522b9f06",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-24T06:15:18Z",
+      "side": 1,
+      "message": "We can move init functionality in the constructor of context, but in case of failures constructor will still return pointer.\nContext where AudioProcessingModule initialisation has failed is not valid for us and we shouldn\u0027t store it in the list.\nThis approach has better exception handling.",
+      "parentUuid": "ecca205f_f96e0e42",
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f81fa2e0_b4d5afd3",
@@ -94,6 +178,24 @@
       "writtenOn": "2023-01-23T09:35:30Z",
       "side": 1,
       "message": "list.empty() would be better choice.",
+      "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7320aaa1_85352f3e",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-01-24T06:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f81fa2e0_b4d5afd3",
       "revId": "b69e2bf99111f116502ae8c914a77d8b2e3c5193",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
