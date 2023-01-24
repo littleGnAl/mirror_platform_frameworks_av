@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20a8b82_b7bc8385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-24T18:22:56Z",
+      "side": 1,
+      "message": "LGTM modulo comments. Shunkai, PTAL!",
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d039876_09f5f89f",
+        "filename": "media/libeffects/preprocessing/aidl/EffectPreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-24T18:22:56Z",
+      "side": 1,
+      "message": "nit: This isn\u0027t an STL include, should be moved to the Android includes (lines 22–23).",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6caf0f6_1d44ecb4",
+        "filename": "media/libeffects/preprocessing/aidl/EffectPreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-24T18:22:56Z",
+      "side": 1,
+      "message": "Is this one still needed? If yes, it should anyway be moved to the standard includes (the first section).",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391f55d1_1fe8f6da",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-24T18:22:56Z",
+      "side": 1,
+      "message": "As we have established that there must be no null pointers in the vector, this null check seems to be redundant.",
+      "range": {
+        "startLine": 54,
+        "startChar": 18,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
