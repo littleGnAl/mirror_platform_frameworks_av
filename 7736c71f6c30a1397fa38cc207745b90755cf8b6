@@ -66,6 +66,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07c5d1eb_4c3e71e4",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-24T19:00:05Z",
+      "side": 1,
+      "message": "I think we may want to check if the type of effect already enabled at the beginning of this function, same for disable",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef85844_1001afdf",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-24T19:00:05Z",
+      "side": 1,
+      "message": "const, same for other getter functions",
+      "range": {
+        "startLine": 161,
+        "startChar": 63,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9b07ce_3eef17c9",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-24T19:00:05Z",
+      "side": 1,
+      "message": "should we remove the definition in AIDL and remove these methods?",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 51
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8371f3f4_1b04acd3",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-24T19:00:05Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 188,
+        "startChar": 68,
+        "endLine": 188,
+        "endChar": 69
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bd7dfa_b3e83c08",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-24T19:00:05Z",
+      "side": 1,
+      "message": "it looks like the mutex only used in `PreProcessingContext::lvmProcess`, should we have the `mEnabledMsk` and `mProcessedMsk` protected because they were accessed in different thread?",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 21
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d25048_37297656",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-24T19:00:05Z",
+      "side": 1,
+      "message": "I think they will be changed for setCommon(), which we need to override in this class:\nhttps://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/aidl/default/include/effect-impl/EffectContext.h;l\u003d122?q\u003dsetCommon\n\nSame for mInputConfig",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "391f55d1_1fe8f6da",
         "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
         "patchSetId": 2
