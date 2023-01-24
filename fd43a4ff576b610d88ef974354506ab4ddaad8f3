@@ -22,6 +22,30 @@
       },
       "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a783bb3_8e0bdf97",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-01-24T18:13:51Z",
+      "side": 1,
+      "message": "In NuPlayerRenderer, postdrainvideoqueue is called from kWhatDrainVideoQueue. Further in postdrainvideoqueue the msg for kwhatdrainvideoqueue is again scheduled to be posted. thus at any given point postdrainvideoqueue may be pending to posted or getting handled.",
+      "parentUuid": "7078976d_e4f11434",
+      "range": {
+        "startLine": 1687,
+        "startChar": 11,
+        "endLine": 1687,
+        "endChar": 30
+      },
+      "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
