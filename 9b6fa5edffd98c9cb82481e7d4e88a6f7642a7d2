@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ae7c73b_a7fe9365",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/DrmPlugin.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-24T00:09:27Z",
+      "side": 1,
+      "message": "Shall we also add checks for `kOemErrorKey`, `kErrorContextKey` properties here?",
+      "range": {
+        "startLine": 391,
+        "startChar": 32,
+        "endLine": 391,
+        "endChar": 49
+      },
+      "revId": "9b6fa5edffd98c9cb82481e7d4e88a6f7642a7d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1950001_594faa6f",
         "filename": "drm/mediadrm/plugins/clearkey/aidl/DrmPlugin.cpp",
         "patchSetId": 3
@@ -14,6 +37,30 @@
       "writtenOn": "2023-01-23T23:52:26Z",
       "side": 1,
       "message": "`err` not in use.",
+      "range": {
+        "startLine": 952,
+        "startChar": 50,
+        "endLine": 952,
+        "endChar": 53
+      },
+      "revId": "9b6fa5edffd98c9cb82481e7d4e88a6f7642a7d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58421456_65a601ba",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/DrmPlugin.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-01-24T00:09:27Z",
+      "side": 1,
+      "message": "I see it\u0027s for checking `in_value`.",
+      "parentUuid": "e1950001_594faa6f",
       "range": {
         "startLine": 952,
         "startChar": 50,
