@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e408652d_7631bf74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-24T21:00:06Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "72cd068f6f5a21453c5f5ed6979ba99178346811",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7126a6e0_7b7e253a",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-01-24T20:15:25Z",
       "side": 1,
       "message": "should we move this logic to `aidl2legacy_AudioPortConfig_audio_port_config`?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 11
+      },
+      "revId": "72cd068f6f5a21453c5f5ed6979ba99178346811",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34029c02_6d0d8ffd",
+        "filename": "media/libaudioclient/AidlConversion.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-24T21:00:06Z",
+      "side": 1,
+      "message": "It\u0027s actually an intention to disallow the user of `aidl2legacy_AudioPortConfig_audio_port_config` to omit receiving the portId. The reason is that in libaudiohal we actually need to maintain some form of mapping between port configs and the ports they were created for. Whereas, for audio ports send back and forth between framework components, the portId is really not needed thus it can be made optional.",
+      "parentUuid": "7126a6e0_7b7e253a",
       "range": {
         "startLine": 357,
         "startChar": 0,
