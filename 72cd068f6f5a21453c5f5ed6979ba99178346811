@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7126a6e0_7b7e253a",
+        "filename": "media/libaudioclient/AidlConversion.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-24T20:15:25Z",
+      "side": 1,
+      "message": "should we move this logic to `aidl2legacy_AudioPortConfig_audio_port_config`?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 11
+      },
+      "revId": "72cd068f6f5a21453c5f5ed6979ba99178346811",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
