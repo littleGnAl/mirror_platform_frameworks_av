@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82d94900_37251018",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-24T00:37:28Z",
+      "side": 1,
+      "message": "Will do. Thanks.",
+      "parentUuid": "68a72771_cc42c1b1",
+      "revId": "12342a90b688a52de2ea7cf8498a50c7a3fc8a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "741ae4df_24bccaea",
         "filename": "drm/mediadrm/plugins/clearkey/aidl/fuzzer.cpp",
         "patchSetId": 3
@@ -67,6 +85,30 @@
       "writtenOn": "2023-01-23T22:14:41Z",
       "side": 1,
       "message": "nit: should we use 2023?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "12342a90b688a52de2ea7cf8498a50c7a3fc8a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e508adb_b2f75119",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-24T00:37:28Z",
+      "side": 1,
+      "message": "This file was added in 2022, let\u0027s keep it at 2022.",
+      "parentUuid": "741ae4df_24bccaea",
       "range": {
         "startLine": 2,
         "startChar": 17,
