@@ -16,6 +16,52 @@
       "message": "KEY_CODECS_STRING has been added as MediaFormat API since Android API 30. (https://developer.android.com/reference/android/media/MediaFormat#KEY_CODECS_STRING)\nBut it is only available in JAVA layer. This code contribution is to add KEY_CODECS_STRING in native layer so that application can set this key-value pair to codec2 component.\nOne specific use case for Dolby is AC-4 decoder gets this info so that it can be configured with different initialize parameters.",
       "revId": "d6fc8fd8975fcdcf28867a0fb6bf057a0488de4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6397807e_8f7c2cef",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-24T22:21:33Z",
+      "side": 1,
+      "message": "not 100%, but I think that this might need to be in a different place in the list;\nI remember something about these being sorted more by operation than by \u0027order added\u0027. and I think there\u0027s someplace that maps between this enumeration and the strings like \"codec.codecs-string\", so that this enumeration does not have to stay\nin exact order sync with what\u0027s on the other side.\n\nWonsik will know for sure; and we need his approval (or lajos?) for this file.",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 28
+      },
+      "revId": "d6fc8fd8975fcdcf28867a0fb6bf057a0488de4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9426b092_1b7fa57f",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-24T22:21:33Z",
+      "side": 1,
+      "message": "added in R?  that doesn\u0027t feel right.\n\nI think the java key was introduced in R, but we need to document when\nit was added this header file.  Think of this as \"on what devices can we\nuse this variable\" -- that\u0027s going to be api\u003d\u003d34.",
+      "range": {
+        "startLine": 305,
+        "startChar": 64,
+        "endLine": 305,
+        "endChar": 70
+      },
+      "revId": "d6fc8fd8975fcdcf28867a0fb6bf057a0488de4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
