@@ -16,6 +16,24 @@
       "message": "someething\u0027s wrong with this CL.\nit proposes renaming files that seem to already have the new name\nand that have been that way for several years.",
       "revId": "4090d84787b8c89e55a76be8ad6bd53de7c964c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00cd4c35_4cd1b15d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2023-01-25T11:40:42Z",
+      "side": 1,
+      "message": "Hi Ray, I think the confusion stems from the topic+relation chain combination. After a hard look (assuming gerrit supports topics like this one) the change makes sense.\n\nFirst standalone change renames \nmedia/libmedia/CharacterEncodingDetector.cpp to media/libmedia/MediaCharsetDetector.cpp\n\nYou\u0027ll see that the former exists [1] and the latter doesn\u0027t [2].\n\n[1] https://source.corp.google.com/search?q\u003dmedia%2Flibmedia%2FCharacterEncodingDetector.cpp\n[2] https://source.corp.google.com/search?q\u003dmedia%2Flibmedia%2FMediaCharsetDetector.cpp%20\u0026sq\u003d\n\nAnd then the changes on the CL on top (from the relation chain). However, that CL is in the same topic because the interim state between both CLs does not build. I didn\u0027t know this was doable using topics, but the change makes sense if you reason about like this. And the reason it was done this way was to enable a reasonable diff on the child CL.\n\n(My two cents).",
+      "parentUuid": "c75af08a_77af2cda",
+      "revId": "4090d84787b8c89e55a76be8ad6bd53de7c964c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
