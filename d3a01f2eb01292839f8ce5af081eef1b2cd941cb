@@ -22,6 +22,30 @@
       },
       "revId": "d3a01f2eb01292839f8ce5af081eef1b2cd941cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f75afd9_4db9fa5c",
+        "filename": "apex/ld.config.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-01-25T22:48:33Z",
+      "side": 1,
+      "message": "huh, yeah... i actually thought we _did_ have line continuation in there, but you\u0027re right --- we don\u0027t.\n\nbut we do have +\u003d :-)\n\n(check out external/conscrypt/apex/ld.config.txt for example.)",
+      "parentUuid": "83df0cf0_62d574ac",
+      "range": {
+        "startLine": 36,
+        "startChar": 23,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "d3a01f2eb01292839f8ce5af081eef1b2cd941cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
