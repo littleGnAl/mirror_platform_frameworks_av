@@ -104,6 +104,30 @@
       },
       "revId": "99196441185693898ddc9f562bc55a91c586a064",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec1cb9d_99e9f50c",
+        "filename": "services/mediametrics/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-25T20:28:36Z",
+      "side": 1,
+      "message": "@sharaienko@google.com Can you please pick http://ag/20077908 to aosp? Thanks.",
+      "parentUuid": "060fcead_10d8c1c7",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "99196441185693898ddc9f562bc55a91c586a064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
