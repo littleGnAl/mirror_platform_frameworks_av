@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86c725f_93219fa8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-25T19:16:40Z",
+      "side": 1,
+      "message": "missing space after \u0027:\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ef34c4_25c6df73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-25T19:16:40Z",
+      "side": 1,
+      "message": "separate",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d438c96_0906e211",
+        "filename": "media/audioaidlconversion/AidlConversionEffect.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-25T19:16:40Z",
+      "side": 1,
+      "message": "Effect",
+      "range": {
+        "startLine": 19,
+        "startChar": 31,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c55ec7_1c834647",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-25T19:16:40Z",
+      "side": 1,
+      "message": "`buffer_config_t` is defined in `system/audio_effect.h` so I think it should also be moved. WDYT?",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b384e4d_993f4e43",
+        "filename": "media/audioaidlconversion/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-25T19:16:40Z",
+      "side": 1,
+      "message": "Should the name have `_ndk` suffix for consistency?",
+      "range": {
+        "startLine": 154,
+        "startChar": 36,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
