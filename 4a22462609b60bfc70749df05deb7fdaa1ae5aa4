@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6af69c_5b23671b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-25T19:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86c725f_93219fa8",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e3322f_01c120f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-25T19:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ef34c4_25c6df73",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d438c96_0906e211",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-01-25T19:16:40Z",
       "side": 1,
       "message": "Effect",
+      "range": {
+        "startLine": 19,
+        "startChar": 31,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c1cb7a_6b1248d4",
+        "filename": "media/audioaidlconversion/AidlConversionEffect.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-25T19:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d438c96_0906e211",
       "range": {
         "startLine": 19,
         "startChar": 31,
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae7f3ef_11128d69",
+        "filename": "media/audioaidlconversion/AidlConversionNdk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-25T19:54:59Z",
+      "side": 1,
+      "message": "I was thinking put them separate as ndk conversion because AIDL type `media::audio::common::AudioConfigBase` is not specifically for effect HAL so not tied to effect HAL AIDL only, other places can use it without having to load `libaudio_aidl_conversion_effect_ndk`. Pls let me know if this doesn\u0027t make sense.",
+      "parentUuid": "c9c55ec7_1c834647",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b384e4d_993f4e43",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-01-25T19:16:40Z",
       "side": 1,
       "message": "Should the name have `_ndk` suffix for consistency?",
+      "range": {
+        "startLine": 154,
+        "startChar": 36,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "4a22462609b60bfc70749df05deb7fdaa1ae5aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbe501c_3250f66d",
+        "filename": "media/audioaidlconversion/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-01-25T19:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b384e4d_993f4e43",
       "range": {
         "startLine": 154,
         "startChar": 36,
