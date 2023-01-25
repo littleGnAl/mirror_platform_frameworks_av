@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83df0cf0_62d574ac",
+        "filename": "apex/ld.config.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-25T22:36:06Z",
+      "side": 1,
+      "message": "too bad this doesn\u0027t seem to be expressible as\nnamespace....shared_libs \u003d \\\n    libEGL.so \\\n    libGLES.so \\\n    \nI know that\u0027s not something that we want to entangle with this particular change.\nbut it would be nice from the perspective of managing the list.",
+      "range": {
+        "startLine": 36,
+        "startChar": 23,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "d3a01f2eb01292839f8ce5af081eef1b2cd941cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
