@@ -34,6 +34,24 @@
       "parentUuid": "c75af08a_77af2cda",
       "revId": "4090d84787b8c89e55a76be8ad6bd53de7c964c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a7de10_c40ddb76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-25T14:12:54Z",
+      "side": 1,
+      "message": "i see what I did -- i read name change backwards\nI had original and new names swapped.\nso my -1 is in error here.\n\n\nBut I do see uses of the old CharacterEncodingDetector.h in\nframeworks/av/media/libmedia/MediaScannerClient.cpp:#include \u003cmedia/CharacterEncodingDetector.h\u003e\nand\nframeworks/av/media/libmediaplayerservice/StagefrightMetadataRetriever.cpp:#include \u003cmedia/CharacterEncodingDetector.h\u003e\n\nand I don\u0027t see those files updated in this topic.\nwhich has me confused because I would expect missing the updates of those files\nwould have made the build fail -- and treehugger would have then failed.",
+      "parentUuid": "00cd4c35_4cd1b15d",
+      "revId": "4090d84787b8c89e55a76be8ad6bd53de7c964c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
