@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d7149f_5ff26630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "can you please create and add a bug to help track all of these changes relating to AC4?  Thanks!\n\nBug: XYZ",
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f1318c_3b085850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "minor nits.",
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d518c81_0ecfc79d",
+        "filename": "cmds/stagefright/stagefright.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "nit space between : and \"?",
+      "range": {
+        "startLine": 753,
+        "startChar": 108,
+        "endLine": 753,
+        "endChar": 110
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72f1010_8d9f8945",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "is this const?",
+      "range": {
+        "startLine": 470,
+        "startChar": 37,
+        "endLine": 470,
+        "endChar": 38
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da01cd5b_5abff0ae",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "nit: omit virtual and add override.",
+      "range": {
+        "startLine": 740,
+        "startChar": 4,
+        "endLine": 740,
+        "endChar": 11
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee217b47_92ddd28d",
+        "filename": "media/codec2/vndk/C2Config.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "why is this different than \"ac-4.00.00\"?",
+      "range": {
+        "startLine": 153,
+        "startChar": 10,
+        "endLine": 153,
+        "endChar": 21
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e72272_af8bd131",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "nit, can this be constexpr?  ditto on line 602.",
+      "range": {
+        "startLine": 585,
+        "startChar": 14,
+        "endLine": 585,
+        "endChar": 19
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7bc0314_3cb9ab4d",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "nit: would prefer \"profile\" as \"i\" looks like an index.  Ditto with line 602.",
+      "range": {
+        "startLine": 585,
+        "startChar": 54,
+        "endLine": 585,
+        "endChar": 55
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d28c0d5_96bfdbc8",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-01-25T01:09:35Z",
+      "side": 1,
+      "message": "ah, this is ac4 because of legacy reasons I suppose.\n\nnote dup definition here.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/module/foundation/MediaDefs.cpp;drc\u003db9cf377c2b4b73f0574504e1e307fad8c8450bb7;l\u003d60",
+      "range": {
+        "startLine": 780,
+        "startChar": 45,
+        "endLine": 780,
+        "endChar": 48
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
