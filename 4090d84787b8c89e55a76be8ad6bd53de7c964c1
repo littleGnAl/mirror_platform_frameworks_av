@@ -52,6 +52,24 @@
       "parentUuid": "00cd4c35_4cd1b15d",
       "revId": "4090d84787b8c89e55a76be8ad6bd53de7c964c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2442d0_01965c60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-25T14:27:09Z",
+      "side": 1,
+      "message": "`CharacterEncodingDetector` is still here in the next CL, but it becomes a facade / wrapper of MediaCharsetDetector. https://r.android.com/2382649\n\nThus, the usage of CharacterEncodingDetector are still valid, and the build doesn\u0027t fail as shown by treehugger.",
+      "parentUuid": "11a7de10_c40ddb76",
+      "revId": "4090d84787b8c89e55a76be8ad6bd53de7c964c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
