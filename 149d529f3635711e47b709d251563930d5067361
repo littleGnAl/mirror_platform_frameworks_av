@@ -22,6 +22,30 @@
       },
       "revId": "149d529f3635711e47b709d251563930d5067361",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc658a31_008b99a5",
+        "filename": "drm/libmediadrm/DrmHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-01-26T21:29:02Z",
+      "side": 1,
+      "message": "`hResult` is a hidl `Return\u003cbool\u003e` stack object, so we check `hResult.isOk()` first to make sure there is `bool` within the wrapper, than `hResult` is implicit conversion to boolean.",
+      "parentUuid": "22bfbc94_aae85ddb",
+      "range": {
+        "startLine": 550,
+        "startChar": 9,
+        "endLine": 550,
+        "endChar": 39
+      },
+      "revId": "149d529f3635711e47b709d251563930d5067361",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
