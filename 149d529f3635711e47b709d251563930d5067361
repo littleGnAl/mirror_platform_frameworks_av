@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22bfbc94_aae85ddb",
+        "filename": "drm/libmediadrm/DrmHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1038543
+      },
+      "writtenOn": "2023-01-26T21:24:50Z",
+      "side": 1,
+      "message": "What does \"if(hResult)\" check? It looks like it\u0027s checking for a null pointer, so I would expect this to be in the reverse order:\n```\nif (hResult \u0026\u0026 hResult.isOk()) {\n```",
+      "range": {
+        "startLine": 550,
+        "startChar": 9,
+        "endLine": 550,
+        "endChar": 39
+      },
+      "revId": "149d529f3635711e47b709d251563930d5067361",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
