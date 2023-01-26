@@ -70,6 +70,30 @@
       },
       "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1816aa88_8a083316",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-01-26T08:53:42Z",
+      "side": 1,
+      "message": "Thanks, I see what you mean. It\u0027s still not fully clear that this is always guaranteed because the logic in kWhatDrainVideoQueue/postDrainVideoQueue has multiple exit points that don\u0027t schedule a new kWhatDrainVideoQueue message.\n\nIt seems you could check mDrainVideoQueuePending to verify that a message is pending? If you add this to the if condition on L1685, it becomes clear that the change is safe.",
+      "parentUuid": "b05252e9_469a275b",
+      "range": {
+        "startLine": 1687,
+        "startChar": 11,
+        "endLine": 1687,
+        "endChar": 30
+      },
+      "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
