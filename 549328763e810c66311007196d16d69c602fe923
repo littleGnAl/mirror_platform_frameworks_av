@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d058b9_35d9ebc4",
+        "filename": "media/libmedia/MediaCharsetDetector.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2023-01-26T10:13:09Z",
+      "side": 1,
+      "message": "Resolving this comment as the new patchset no longer moves / changes the implementation, but only the header file",
+      "parentUuid": "a1c488e4_f02e1f80",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "549328763e810c66311007196d16d69c602fe923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "791b1418_40d6e584",
