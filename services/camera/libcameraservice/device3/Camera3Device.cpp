@@ -3025,6 +3025,7 @@ status_t Camera3Device::RequestThread::setRepeatingRequests(
 
     unpauseForNewRequests();
 
+    ALOGE("%s: mRepeatingLastFrameNumber reset", __func__);
     mRepeatingLastFrameNumber = hardware::camera2::ICameraDeviceUser::NO_IN_FLIGHT_REPEATING_FRAMES;
     return OK;
 }
@@ -3058,10 +3059,12 @@ status_t Camera3Device::RequestThread::clearRepeatingRequestsLocked(/*out*/int64
     mRepeatingRequests.clear();
     if (lastFrameNumber != NULL) {
         *lastFrameNumber = mRepeatingLastFrameNumber;
+        ALOGE("%s: Return last frame number: %d", __func__, (int32_t) mRepeatingLastFrameNumber);
     }
 
     mInterface->repeatingRequestEnd(mRepeatingLastFrameNumber, streamIds);
 
+    ALOGE("%s: mRepeatingLastFrameNumber reset", __func__);
     mRepeatingLastFrameNumber = hardware::camera2::ICameraDeviceUser::NO_IN_FLIGHT_REPEATING_FRAMES;
     return OK;
 }
@@ -3114,6 +3117,7 @@ status_t Camera3Device::RequestThread::clear(
     if (lastFrameNumber != NULL) {
         *lastFrameNumber = mRepeatingLastFrameNumber;
     }
+    ALOGE("%s: mRepeatingLastFrameNumber reset", __func__);
     mRepeatingLastFrameNumber = hardware::camera2::ICameraDeviceUser::NO_IN_FLIGHT_REPEATING_FRAMES;
     mRequestClearing = true;
     mRequestSignal.signal();
@@ -4240,6 +4244,7 @@ sp<Camera3Device::CaptureRequest>
             // No need to wait any longer
 
             mRepeatingLastFrameNumber = mFrameNumber + requests.size() - 1;
+            ALOGE("%s: mRepeatingLastFrameNumber bump", __func__);
 
             break;
         }
