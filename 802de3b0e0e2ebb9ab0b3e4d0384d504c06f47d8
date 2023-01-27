@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1cdc82b_f94afc75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "into a separate",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3156c1_a737f4dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "Typo: space placement",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81956806_959917d8",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "::aidl",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ece8bee_41581e24",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "Intended?",
+      "range": {
+        "startLine": 289,
+        "startChar": 2,
+        "endLine": 289,
+        "endChar": 3
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3e2c21_28d82eb0",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionAec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "::aidl",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 10
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc0257f_99e2841f",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionAec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "Not needed since we are already inside this namespace, `utils::...` should be sufficient.\n\nThis applies to other source files as well.",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410f54a2_645bf25c",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionAec.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "Are these includes actually used?\n\nThis applies to other new headers as well.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8e031d_6e8678bd",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionDp.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-01-27T20:03:54Z",
+      "side": 1,
+      "message": "\"Dp\" is not very clear. How about \"DynProc\" if we intend to abrreviate?",
+      "range": {
+        "startLine": 32,
+        "startChar": 20,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "802de3b0e0e2ebb9ab0b3e4d0384d504c06f47d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
