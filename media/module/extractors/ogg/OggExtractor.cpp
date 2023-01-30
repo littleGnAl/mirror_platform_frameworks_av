@@ -138,7 +138,7 @@ protected:
     int32_t mHapticChannelCount;
 
     ssize_t readPage(off64_t offset, Page *page);
-    status_t findNextPage(off64_t startOffset, off64_t *pageOffset);
+    status_t findNextPage(off64_t startOffset, off64_t *pageOffset, uint64_t length = 0);
 
     virtual int64_t getTimeUsOfGranule(uint64_t granulePos) const = 0;
 
@@ -343,10 +343,14 @@ media_status_t MyOggExtractor::getFormat(AMediaFormat *meta) const {
 }
 
 status_t MyOggExtractor::findNextPage(
-        off64_t startOffset, off64_t *pageOffset) {
+        off64_t startOffset, off64_t *pageOffset, uint64_t length) {
     *pageOffset = startOffset;
+    off64_t endOffset = startOffset + length;
 
     for (;;) {
+        if (length > 0 && *pageOffset >= endOffset)
+            return (status_t)ERROR_END_OF_STREAM;
+
         char signature[4];
         ssize_t n = mSource->readAt(*pageOffset, &signature, 4);
 
@@ -394,7 +398,7 @@ status_t MyOggExtractor::findPrevGranulePosition(
 
         ALOGV("backing up %lld bytes", (long long)(pageOffset - prevGuess));
 
-        status_t err = findNextPage(prevGuess, &prevPageOffset);
+        status_t err = findNextPage(prevGuess, &prevPageOffset, 5000);
         if (err == ERROR_END_OF_STREAM) {
             // We are at the last page and didn't back off enough;
             // back off 5000 bytes more and try again.
