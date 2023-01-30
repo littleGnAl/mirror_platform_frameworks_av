@@ -39,10 +39,10 @@ class DrmMetricsLogger : public IDrm {
 
     virtual DrmStatus initCheck() const;
 
-    virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+    virtual DrmStatus isCryptoSchemeSupported(const uint8_t uuid[], const String8& mimeType,
                                               DrmPlugin::SecurityLevel securityLevel, bool* result);
 
-    virtual DrmStatus createPlugin(const uint8_t uuid[16], const String8& appPackageName);
+    virtual DrmStatus createPlugin(const uint8_t uuid[], const String8& appPackageName);
 
     virtual DrmStatus destroyPlugin();
 

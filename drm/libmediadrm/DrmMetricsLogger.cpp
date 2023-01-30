@@ -33,6 +33,9 @@ std::vector<uint8_t> toStdVec(Vector<uint8_t> const& sessionId) {
     std::vector<uint8_t> vec(sessionKey, sessionKey + sessionId.size());
     return vec;
 }
+
+const size_t kUuidSize = 16;
+
 }  // namespace
 
 DrmMetricsLogger::DrmMetricsLogger(IDrmFrontend frontend)
@@ -48,7 +51,7 @@ DrmStatus DrmMetricsLogger::initCheck() const {
     return status;
 }
 
-DrmStatus DrmMetricsLogger::isCryptoSchemeSupported(const uint8_t uuid[16], const String8& mimeType,
+DrmStatus DrmMetricsLogger::isCryptoSchemeSupported(const uint8_t uuid[kUuidSize], const String8& mimeType,
                                                     DrmPlugin::SecurityLevel securityLevel,
                                                     bool* result) {
     DrmStatus status = mImpl->isCryptoSchemeSupported(uuid, mimeType, securityLevel, result);
@@ -58,8 +61,8 @@ DrmStatus DrmMetricsLogger::isCryptoSchemeSupported(const uint8_t uuid[16], cons
     return status;
 }
 
-DrmStatus DrmMetricsLogger::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
-    std::memcpy(mUuid.data(), uuid, mUuid.size());
+DrmStatus DrmMetricsLogger::createPlugin(const uint8_t uuid[kUuidSize], const String8& appPackageName) {
+    std::memcpy(mUuid.data(), uuid, kUuidSize);
     if (kUuidSchemeMap.count(mUuid)) {
         mScheme = kUuidSchemeMap.at(mUuid);
     } else {
