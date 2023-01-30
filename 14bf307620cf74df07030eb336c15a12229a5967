@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57faf01_a6564641",
+        "filename": "cmds/stagefright/stagefright.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T07:15:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d518c81_0ecfc79d",
+      "range": {
+        "startLine": 753,
+        "startChar": 108,
+        "endLine": 753,
+        "endChar": 110
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a72f1010_8d9f8945",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-01-25T01:09:35Z",
       "side": 1,
       "message": "is this const?",
+      "range": {
+        "startLine": 470,
+        "startChar": 37,
+        "endLine": 470,
+        "endChar": 38
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2460fc_2615d055",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T07:15:20Z",
+      "side": 1,
+      "message": "Yes, I can add \"const\" here.\n\nThe only problem is other similar structures in this file, e.g. line 386, 413, didn\u0027t use \"const\" either. Should I add \"const\" here for AC-4 profile/level only or your team submits an independent commit to change it for all similar structures?",
+      "parentUuid": "a72f1010_8d9f8945",
       "range": {
         "startLine": 470,
         "startChar": 37,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d258ac3_5a025b16",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T07:15:20Z",
+      "side": 1,
+      "message": "Yes, I can do it.\n\nThe only problem is other similar classes in this file, e.g. line 676, 706, use \"virtual\" and don\u0027t use \"override\" either. Should I change it here for AC-4 only or your team submits an independent commit to change it for all similar classes?",
+      "parentUuid": "da01cd5b_5abff0ae",
+      "range": {
+        "startLine": 740,
+        "startChar": 4,
+        "endLine": 740,
+        "endChar": 11
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee217b47_92ddd28d",
         "filename": "media/codec2/vndk/C2Config.cpp",
         "patchSetId": 4
@@ -117,6 +189,30 @@
       "writtenOn": "2023-01-25T01:09:35Z",
       "side": 1,
       "message": "why is this different than \"ac-4.00.00\"?",
+      "range": {
+        "startLine": 153,
+        "startChar": 10,
+        "endLine": 153,
+        "endChar": 21
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe93a86e_eee0fd86",
+        "filename": "media/codec2/vndk/C2Config.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T07:15:20Z",
+      "side": 1,
+      "message": "I found other strings (from line 28 to line 152) use \"-\" as the separator so that I use \"-\" to keep consistence. And if I use \"-\" as the separator, \"ac-4-00-00\" will be a little tricky since the first \"-\" has different meaning than other two. That\u0027s why I choose to use \"ac4-00-00\".\n\nBTW, AC-4 mimetype is \"audio/ac4\" (no \"-\") so that I think \"ac4-00-00\" should be OK and is not ambiguous.",
+      "parentUuid": "ee217b47_92ddd28d",
       "range": {
         "startLine": 153,
         "startChar": 10,
@@ -175,6 +271,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9e6ef5e_44e1af3e",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T07:15:20Z",
+      "side": 1,
+      "message": "I can change it.\nThe only problem is other similar methods, e.g. line 435, 473, use \"i\" too. Should I use \"profile\" here for AC-4 only or your team submits an independent commit to change \"i\" to \"profile\" for all these methods?",
+      "parentUuid": "f7bc0314_3cb9ab4d",
+      "range": {
+        "startLine": 585,
+        "startChar": 54,
+        "endLine": 585,
+        "endChar": 55
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8069d0_ab9ba5cd",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T07:15:20Z",
+      "side": 1,
+      "message": "If I just change it to constexpr, compiler will report \n\nerror: ISO C++11 does not allow conversion from string literal to \u0027char *\u0027 [-Werror,-Wwritable-strings]\n        case AC4Profile00: return \"ac-4.00.00\";\n......\nframeworks/av/media/libstagefright/include/media/stagefright/MediaCodecConstants.h:609:32: error: cannot initialize return object of type \u0027char *\u0027 with an lvalue of type \u0027const char *\u0027\n        default:        return def;        \n        \nPlease note that the second input parameter type is also \"const char*\" and it may be taken as the return value so that I think current implementation is simple.",
+      "parentUuid": "94e72272_af8bd131",
+      "range": {
+        "startLine": 585,
+        "startChar": 14,
+        "endLine": 585,
+        "endChar": 19
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d28c0d5_96bfdbc8",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 4
@@ -186,6 +330,30 @@
       "writtenOn": "2023-01-25T01:09:35Z",
       "side": 1,
       "message": "ah, this is ac4 because of legacy reasons I suppose.\n\nnote dup definition here.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/module/foundation/MediaDefs.cpp;drc\u003db9cf377c2b4b73f0574504e1e307fad8c8450bb7;l\u003d60",
+      "range": {
+        "startLine": 780,
+        "startChar": 45,
+        "endLine": 780,
+        "endChar": 48
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "835f46c5_818059d7",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T07:15:20Z",
+      "side": 1,
+      "message": "Yes, in mimetype, it is \"audio/ac4\". But in codec string, it is \"ac-4.xx.yy.zz\"",
+      "parentUuid": "2d28c0d5_96bfdbc8",
       "range": {
         "startLine": 780,
         "startChar": 45,
