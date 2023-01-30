@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0db38fc9_4ebf1b45",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T06:08:55Z",
+      "side": 1,
+      "message": "OK, I\u0027ll add Wonsik.",
+      "parentUuid": "6397807e_8f7c2cef",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 28
+      },
+      "revId": "d6fc8fd8975fcdcf28867a0fb6bf057a0488de4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9426b092_1b7fa57f",
         "filename": "media/ndk/include/media/NdkMediaFormat.h",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-24T22:21:33Z",
       "side": 1,
       "message": "added in R?  that doesn\u0027t feel right.\n\nI think the java key was introduced in R, but we need to document when\nit was added this header file.  Think of this as \"on what devices can we\nuse this variable\" -- that\u0027s going to be api\u003d\u003d34.",
+      "range": {
+        "startLine": 305,
+        "startChar": 64,
+        "endLine": 305,
+        "endChar": 70
+      },
+      "revId": "d6fc8fd8975fcdcf28867a0fb6bf057a0488de4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3508fb_68283854",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-01-30T06:08:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9426b092_1b7fa57f",
       "range": {
         "startLine": 305,
         "startChar": 64,
