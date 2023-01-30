@@ -59,7 +59,7 @@ DrmStatus DrmMetricsLogger::isCryptoSchemeSupported(const uint8_t uuid[16], cons
 }
 
 DrmStatus DrmMetricsLogger::createPlugin(const uint8_t uuid[16], const String8& appPackageName) {
-    std::memcpy(mUuid.data(), uuid, mUuid.size());
+    std::memcpy(mUuid.data(), uuid, 16);
     if (kUuidSchemeMap.count(mUuid)) {
         mScheme = kUuidSchemeMap.at(mUuid);
     } else {
