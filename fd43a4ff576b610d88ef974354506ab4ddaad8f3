@@ -118,6 +118,30 @@
       },
       "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a1e22e_d0f93d2c",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-01-30T10:10:12Z",
+      "side": 1,
+      "message": "The changes you\u0027ve done since my last comment don\u0027t necessarily address the issue. In fact, it feels less safe to change mHasVideo because it\u0027s used in many places and can have unintended side effects. Wouldn\u0027t it work it add mDrainVideoQueuePending to the condition on L1688 as suggested above?",
+      "parentUuid": "3d59c837_5d812e7e",
+      "range": {
+        "startLine": 1687,
+        "startChar": 11,
+        "endLine": 1687,
+        "endChar": 30
+      },
+      "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
