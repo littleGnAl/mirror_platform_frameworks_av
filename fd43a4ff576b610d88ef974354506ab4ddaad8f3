@@ -166,6 +166,30 @@
       },
       "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0eca27a_0ddb534b",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-01-31T09:33:22Z",
+      "side": 1,
+      "message": "Yes, thanks for pointing this out. It makes sense to reset mHasVideo to false as suggested. \n\nHowever, I\u0027d still prefer to check for mDrainVideoQueuePending in addition because postDrainVideoQueue isn\u0027t always guaranteed to be handled with a pending message. For example, if someone calls onPause(), any further handling of  postDrainVideoQueue is stopped even if mHasVideo is true.",
+      "parentUuid": "bc505d52_85c89933",
+      "range": {
+        "startLine": 1687,
+        "startChar": 11,
+        "endLine": 1687,
+        "endChar": 30
+      },
+      "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
