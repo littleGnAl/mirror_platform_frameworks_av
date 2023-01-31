@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e60174e_7317afb4",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1557693
+      },
+      "writtenOn": "2023-01-31T18:13:57Z",
+      "side": 1,
+      "message": "Might be useful to add a constant. I see a lot of hard coded UUID size values in the code.",
+      "range": {
+        "startLine": 62,
+        "startChar": 36,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "a890d41e144d7e0de91662b99c7510f35af6e9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
