@@ -142,6 +142,30 @@
       },
       "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc505d52_85c89933",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1970370
+      },
+      "writtenOn": "2023-01-31T02:51:29Z",
+      "side": 1,
+      "message": "Thanks Toni, I think your suggestion to use mDrainVideoQueuePending makes sense.\nBut do you think it is fine to clear mHasVideo flag as well? \nit is only used in 1. to init mVideoScheduler if it is null 2. notify video to clear anchor. Looks like both are safe. And mHasAudio is cleared in the same position, this is logically consistent",
+      "parentUuid": "a3a1e22e_d0f93d2c",
+      "range": {
+        "startLine": 1687,
+        "startChar": 11,
+        "endLine": 1687,
+        "endChar": 30
+      },
+      "revId": "fd43a4ff576b610d88ef974354506ab4ddaad8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
