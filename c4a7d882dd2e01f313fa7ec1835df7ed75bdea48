@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "184b9a46_26f48249",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-01-31T15:02:26Z",
+      "side": 1,
+      "message": "this is the slow piece.\n\nit\u0027s true that the original does an O(n^2) way of backing up, but this\nsmall read compounds the problem by making each of those attempts at backing\nup very expensive.\n\nreading a block of 4k or so here and doing the appropriate scanning through that buffer is likely to make this fast enough that the O(n^2) of the original\nwould not matter",
+      "range": {
+        "startLine": 355,
+        "startChar": 20,
+        "endLine": 355,
+        "endChar": 64
+      },
+      "revId": "c4a7d882dd2e01f313fa7ec1835df7ed75bdea48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a5d2530_1109a5e1",
         "filename": "media/module/extractors/ogg/OggExtractor.cpp",
         "patchSetId": 3
