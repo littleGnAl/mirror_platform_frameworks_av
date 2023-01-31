@@ -62,7 +62,6 @@ cc_library {
         "libstagefright_foundation",
         "libstagefright_httplive",
         "libutils",
-        "packagemanager_aidl-cpp",
     ],
 
     header_libs: [
@@ -76,10 +75,7 @@ cc_library {
         "libstagefright_timedtext",
     ],
 
-    export_shared_lib_headers: [
-        "libmedia",
-        "packagemanager_aidl-cpp",
-    ],
+    export_shared_lib_headers: ["libmedia"],
 
     include_dirs: [
         "frameworks/av/media/libstagefright/rtsp",
