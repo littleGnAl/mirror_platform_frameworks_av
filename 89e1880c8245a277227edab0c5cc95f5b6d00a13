@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1d50a6_c8d34aac",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-02-01T23:18:49Z",
+      "side": 1,
+      "message": "\"at position 0\" is inaccurate and confusing.",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6ab39a_39a1cb79",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-02-01T23:18:49Z",
+      "side": 1,
+      "message": "Use camelCase naming convention.",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2960fc_3ce02baa",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-02-01T23:18:49Z",
+      "side": 1,
+      "message": "The fenceFd is now managed by the Fence and will be closed when the Fence is destroyed, so the fenceFd (also pushed to mlistFds) will be invalid.",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0593aa96_6c03f0c7",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-02-01T23:18:49Z",
+      "side": 1,
+      "message": "Can we merge the fences only when needed? when fd()/wait()/... is called for the first time.",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d8ecf5_fb9a7663",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-02-01T23:18:49Z",
+      "side": 1,
+      "message": "Use camelCase naming convention.",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
