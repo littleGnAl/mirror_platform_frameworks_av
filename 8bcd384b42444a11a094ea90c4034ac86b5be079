@@ -22,6 +22,30 @@
       },
       "revId": "8bcd384b42444a11a094ea90c4034ac86b5be079",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "258b360b_308f8b07",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T22:59:11Z",
+      "side": 1,
+      "message": "Not sure about this one, because it\u0027s a shared_ptr which doesn\u0027t provide much information other than the address.",
+      "parentUuid": "ef85ff67_c9d20a51",
+      "range": {
+        "startLine": 257,
+        "startChar": 54,
+        "endLine": 257,
+        "endChar": 55
+      },
+      "revId": "8bcd384b42444a11a094ea90c4034ac86b5be079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
