@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dfe3b3a_ea93d989",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1988269
+      },
+      "writtenOn": "2023-02-01T02:49:53Z",
+      "side": 1,
+      "message": "when the granule falls on the boundary between\ntwo of these 5000 byte chunks.,the \u0027O\u0027 will fall on the last 3 bytes of 5000,the offset is still in the range of (startOffset + 5000).",
+      "range": {
+        "startLine": 378,
+        "startChar": 8,
+        "endLine": 378,
+        "endChar": 25
+      },
+      "revId": "c4a7d882dd2e01f313fa7ec1835df7ed75bdea48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a5d2530_1109a5e1",
         "filename": "media/module/extractors/ogg/OggExtractor.cpp",
         "patchSetId": 3
@@ -77,6 +100,30 @@
       "writtenOn": "2023-01-31T14:51:24Z",
       "side": 1,
       "message": "this will now miss the granule when it falls on the boundary between\ntwo of these 5000 byte chunks.\n\nthe original would do a lot of scanning if the previous granule is way back in the file;  but it would find the position.\n\nthis version is faster (an o(n) instead of o(n^2) algorithm, but it will miss granules that appear in certain places in the input stream.",
+      "range": {
+        "startLine": 401,
+        "startChar": 63,
+        "endLine": 401,
+        "endChar": 70
+      },
+      "revId": "c4a7d882dd2e01f313fa7ec1835df7ed75bdea48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc9520a_49ba2ef3",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1988269
+      },
+      "writtenOn": "2023-02-01T02:49:53Z",
+      "side": 1,
+      "message": "Thanks for your reply.\nI think it is ok when the granule falls on the boundary between\ntwo of these 5000 byte chunks.\nSee line 374-378, in this case, the \u0027O\u0027 will fall on the last 3 bytes of 5000,the offset is still in the range of (prevGuess + 5000).\nMaybe I express it wrong in commit msg, the 5000 here means the traversal size of offset instead of reading size, actually it will read 5003 bytes at most.",
+      "parentUuid": "4a5d2530_1109a5e1",
       "range": {
         "startLine": 401,
         "startChar": 63,
