@@ -55,9 +55,9 @@ class EffectPreProcessing final : public EffectImpl {
     ndk::ScopedAStatus getParameterAcousticEchoCanceler(const AcousticEchoCanceler::Id& id,
                                                         Parameter::Specific* specific);
 
-    ndk::ScopedAStatus setParameterAutomaticGainControl(const Parameter::Specific& specific);
-    ndk::ScopedAStatus getParameterAutomaticGainControl(const AutomaticGainControl::Id& id,
-                                                        Parameter::Specific* specific);
+    ndk::ScopedAStatus setParameterAutomaticGainControlV2(const Parameter::Specific& specific);
+    ndk::ScopedAStatus getParameterAutomaticGainControlV2(const AutomaticGainControlV2::Id& id,
+                                                          Parameter::Specific* specific);
 
     ndk::ScopedAStatus setParameterNoiseSuppression(const Parameter::Specific& specific);
     ndk::ScopedAStatus getParameterNoiseSuppression(const NoiseSuppression::Id& id,

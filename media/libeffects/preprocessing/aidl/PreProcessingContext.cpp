@@ -46,7 +46,7 @@ RetCode PreProcessingContext::init(const Parameter::Common& common) {
         case PreProcessingEffectType::ACOUSTIC_ECHO_CANCELLATION:
             config.echo_canceller.mobile_mode = true;
             break;
-        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL:
+        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL_V2:
             config.gain_controller2.fixed_digital.gain_db = 0.f;
             break;
         case PreProcessingEffectType::NOISE_SUPPRESSION:
@@ -84,7 +84,7 @@ RetCode PreProcessingContext::enable() {
             mRevEnabledMsk |= typeMsk;
             mRevProcessedMsk = 0;
             break;
-        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL:
+        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL_V2:
             config.gain_controller2.enabled = true;
             break;
         case PreProcessingEffectType::NOISE_SUPPRESSION:
@@ -116,7 +116,7 @@ RetCode PreProcessingContext::disable() {
             mRevEnabledMsk &= ~typeMsk;
             mRevProcessedMsk = 0;
             break;
-        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL:
+        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL_V2:
             config.gain_controller2.enabled = false;
             break;
         case PreProcessingEffectType::NOISE_SUPPRESSION:
@@ -172,8 +172,8 @@ bool PreProcessingContext::getAcousticEchoCancelerMobileMode() const {
     return mMobileMode;
 }
 
-RetCode PreProcessingContext::setAutomaticGainControlDigitalGain(int gain) {
-    if (gain < 0 || gain > kAutomaticGainControlCap.maxFixedDigitalGainMb) {
+RetCode PreProcessingContext::setAutomaticGainControlV2DigitalGain(int gain) {
+    if (gain < 0 || gain > kAutomaticGainControlV2Cap.maxFixedDigitalGainMb) {
         LOG(DEBUG) << __func__ << " illegal digital gain " << gain;
         return RetCode::ERROR_ILLEGAL_PARAMETER;
     }
@@ -185,7 +185,7 @@ RetCode PreProcessingContext::setAutomaticGainControlDigitalGain(int gain) {
     return RetCode::SUCCESS;
 }
 
-int PreProcessingContext::getAutomaticGainControlDigitalGain() const {
+int PreProcessingContext::getAutomaticGainControlV2DigitalGain() const {
     return mDigitalGain;
 }
 

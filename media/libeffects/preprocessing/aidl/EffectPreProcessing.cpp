@@ -28,13 +28,13 @@ using aidl::android::hardware::audio::effect::Descriptor;
 using aidl::android::hardware::audio::effect::EffectPreProcessing;
 using aidl::android::hardware::audio::effect::IEffect;
 using aidl::android::hardware::audio::effect::kAcousticEchoCancelerSwImplUUID;
-using aidl::android::hardware::audio::effect::kAutomaticGainControlSwImplUUID;
+using aidl::android::hardware::audio::effect::kAutomaticGainControlV2SwImplUUID;
 using aidl::android::hardware::audio::effect::kNoiseSuppressionSwImplUUID;
 using aidl::android::hardware::audio::effect::State;
 using aidl::android::media::audio::common::AudioUuid;
 
 bool isPreProcessingUuidSupported(const AudioUuid& uuid) {
-    return (uuid == kAcousticEchoCancelerSwImplUUID || uuid == kAutomaticGainControlSwImplUUID ||
+    return (uuid == kAcousticEchoCancelerSwImplUUID || uuid == kAutomaticGainControlV2SwImplUUID ||
             uuid == kNoiseSuppressionSwImplUUID);
 }
 
@@ -61,8 +61,8 @@ extern "C" binder_exception_t queryEffect(const AudioUuid* in_impl_uuid, Descrip
     }
     if (*in_impl_uuid == kAcousticEchoCancelerSwImplUUID) {
         *_aidl_return = aidl::android::hardware::audio::effect::kAcousticEchoCancelerDesc;
-    } else if (*in_impl_uuid == kAutomaticGainControlSwImplUUID) {
-        *_aidl_return = aidl::android::hardware::audio::effect::kAutomaticGainControlDesc;
+    } else if (*in_impl_uuid == kAutomaticGainControlV2SwImplUUID) {
+        *_aidl_return = aidl::android::hardware::audio::effect::kAutomaticGainControlV2Desc;
     } else if (*in_impl_uuid == kNoiseSuppressionSwImplUUID) {
         *_aidl_return = aidl::android::hardware::audio::effect::kNoiseSuppressionDesc;
     }
@@ -77,10 +77,10 @@ EffectPreProcessing::EffectPreProcessing(const AudioUuid& uuid) {
         mType = PreProcessingEffectType::ACOUSTIC_ECHO_CANCELLATION;
         mDescriptor = &kAcousticEchoCancelerDesc;
         mEffectName = &kAcousticEchoCancelerEffectName;
-    } else if (uuid == kAutomaticGainControlSwImplUUID) {
-        mType = PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL;
-        mDescriptor = &kAutomaticGainControlDesc;
-        mEffectName = &kAutomaticGainControlEffectName;
+    } else if (uuid == kAutomaticGainControlV2SwImplUUID) {
+        mType = PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL_V2;
+        mDescriptor = &kAutomaticGainControlV2Desc;
+        mEffectName = &kAutomaticGainControlV2EffectName;
     } else if (uuid == kNoiseSuppressionSwImplUUID) {
         mType = PreProcessingEffectType::NOISE_SUPPRESSION;
         mDescriptor = &kNoiseSuppressionDesc;
@@ -110,8 +110,8 @@ ndk::ScopedAStatus EffectPreProcessing::setParameterSpecific(const Parameter::Sp
     switch (tag) {
         case Parameter::Specific::acousticEchoCanceler:
             return setParameterAcousticEchoCanceler(specific);
-        case Parameter::Specific::automaticGainControl:
-            return setParameterAutomaticGainControl(specific);
+        case Parameter::Specific::automaticGainControlV2:
+            return setParameterAutomaticGainControlV2(specific);
         case Parameter::Specific::noiseSuppression:
             return setParameterNoiseSuppression(specific);
         default:
@@ -147,15 +147,15 @@ ndk::ScopedAStatus EffectPreProcessing::setParameterAcousticEchoCanceler(
     }
 }
 
-ndk::ScopedAStatus EffectPreProcessing::setParameterAutomaticGainControl(
+ndk::ScopedAStatus EffectPreProcessing::setParameterAutomaticGainControlV2(
         const Parameter::Specific& specific) {
-    auto& param = specific.get<Parameter::Specific::automaticGainControl>();
+    auto& param = specific.get<Parameter::Specific::automaticGainControlV2>();
     auto tag = param.getTag();
 
     switch (tag) {
-        case AutomaticGainControl::fixedDigitalGainMb: {
-            RETURN_IF(mContext->setAutomaticGainControlDigitalGain(
-                              param.get<AutomaticGainControl::fixedDigitalGainMb>()) !=
+        case AutomaticGainControlV2::fixedDigitalGainMb: {
+            RETURN_IF(mContext->setAutomaticGainControlV2DigitalGain(
+                              param.get<AutomaticGainControlV2::fixedDigitalGainMb>()) !=
                               RetCode::SUCCESS,
                       EX_ILLEGAL_ARGUMENT, "digitalGainNotSupported");
             return ndk::ScopedAStatus::ok();
@@ -163,7 +163,7 @@ ndk::ScopedAStatus EffectPreProcessing::setParameterAutomaticGainControl(
         default: {
             LOG(ERROR) << __func__ << " unsupported tag: " << toString(tag);
             return ndk::ScopedAStatus::fromExceptionCodeWithMessage(
-                    EX_ILLEGAL_ARGUMENT, "AutomaticGainControlTagNotSupported");
+                    EX_ILLEGAL_ARGUMENT, "AutomaticGainControlV2TagNotSupported");
         }
     }
 }
@@ -197,9 +197,9 @@ ndk::ScopedAStatus EffectPreProcessing::getParameterSpecific(const Parameter::Id
         case Parameter::Id::acousticEchoCancelerTag:
             return getParameterAcousticEchoCanceler(
                     id.get<Parameter::Id::acousticEchoCancelerTag>(), specific);
-        case Parameter::Id::automaticGainControlTag:
-            return getParameterAutomaticGainControl(
-                    id.get<Parameter::Id::automaticGainControlTag>(), specific);
+        case Parameter::Id::automaticGainControlV2Tag:
+            return getParameterAutomaticGainControlV2(
+                    id.get<Parameter::Id::automaticGainControlV2Tag>(), specific);
         case Parameter::Id::noiseSuppressionTag:
             return getParameterNoiseSuppression(id.get<Parameter::Id::noiseSuppressionTag>(),
                                                 specific);
@@ -239,28 +239,28 @@ ndk::ScopedAStatus EffectPreProcessing::getParameterAcousticEchoCanceler(
     return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus EffectPreProcessing::getParameterAutomaticGainControl(
-        const AutomaticGainControl::Id& id, Parameter::Specific* specific) {
-    RETURN_IF(id.getTag() != AutomaticGainControl::Id::commonTag, EX_ILLEGAL_ARGUMENT,
-              "AutomaticGainControlTagNotSupported");
+ndk::ScopedAStatus EffectPreProcessing::getParameterAutomaticGainControlV2(
+        const AutomaticGainControlV2::Id& id, Parameter::Specific* specific) {
+    RETURN_IF(id.getTag() != AutomaticGainControlV2::Id::commonTag, EX_ILLEGAL_ARGUMENT,
+              "AutomaticGainControlV2TagNotSupported");
     RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
-    AutomaticGainControl param;
+    AutomaticGainControlV2 param;
 
-    auto tag = id.get<AutomaticGainControl::Id::commonTag>();
+    auto tag = id.get<AutomaticGainControlV2::Id::commonTag>();
     switch (tag) {
-        case AutomaticGainControl::fixedDigitalGainMb: {
-            param.set<AutomaticGainControl::fixedDigitalGainMb>(
-                    mContext->getAutomaticGainControlDigitalGain());
+        case AutomaticGainControlV2::fixedDigitalGainMb: {
+            param.set<AutomaticGainControlV2::fixedDigitalGainMb>(
+                    mContext->getAutomaticGainControlV2DigitalGain());
             break;
         }
         default: {
             LOG(ERROR) << __func__ << " unsupported tag: " << toString(tag);
             return ndk::ScopedAStatus::fromExceptionCodeWithMessage(
-                    EX_ILLEGAL_ARGUMENT, "AutomaticGainControlTagNotSupported");
+                    EX_ILLEGAL_ARGUMENT, "AutomaticGainControlV2TagNotSupported");
         }
     }
 
-    specific->set<Parameter::Specific::automaticGainControl>(param);
+    specific->set<Parameter::Specific::automaticGainControlV2>(param);
     return ndk::ScopedAStatus::ok();
 }
 

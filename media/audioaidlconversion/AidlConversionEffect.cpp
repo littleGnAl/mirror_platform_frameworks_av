@@ -30,7 +30,7 @@ namespace aidl {
 namespace android {
 
 using ::aidl::android::hardware::audio::effect::AcousticEchoCanceler;
-using ::aidl::android::hardware::audio::effect::AutomaticGainControl;
+using ::aidl::android::hardware::audio::effect::AutomaticGainControlV2;
 using ::aidl::android::hardware::audio::effect::BassBoost;
 using ::aidl::android::hardware::audio::effect::Descriptor;
 using ::aidl::android::hardware::audio::effect::Downmix;
@@ -260,15 +260,15 @@ ConversionResult<Parameter> legacy2aidl_uint32_mobileMode_Parameter_aec(uint32_t
 ConversionResult<uint32_t> aidl2legacy_Parameter_agc_uint32_fixedDigitalGain(
         const Parameter& aidl) {
     int gain = VALUE_OR_RETURN(
-            GET_PARAMETER_SPECIFIC_FIELD(aidl, AutomaticGainControl, automaticGainControl,
-                                         AutomaticGainControl::fixedDigitalGainMb, int));
+            GET_PARAMETER_SPECIFIC_FIELD(aidl, AutomaticGainControlV2, automaticGainControlV2,
+                                         AutomaticGainControlV2::fixedDigitalGainMb, int));
     return VALUE_OR_RETURN(convertReinterpret<uint32_t>(gain));
 }
 
 ConversionResult<Parameter> legacy2aidl_uint32_fixedDigitalGain_Parameter_agc(uint32_t legacy) {
     int gain = VALUE_OR_RETURN(convertReinterpret<int>(legacy));
-    return MAKE_SPECIFIC_PARAMETER(AutomaticGainControl, automaticGainControl, fixedDigitalGainMb,
-                                   gain);
+    return MAKE_SPECIFIC_PARAMETER(AutomaticGainControlV2, automaticGainControlV2,
+                                   fixedDigitalGainMb, gain);
 }
 
 ConversionResult<uint16_t> aidl2legacy_Parameter_BassBoost_uint16_strengthPm(
