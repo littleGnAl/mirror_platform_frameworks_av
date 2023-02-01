@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2253279_ba41c3d5",
+        "filename": "media/libeffects/preprocessing/aidl/EffectPreProcessing.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-01T19:12:17Z",
+      "side": 1,
+      "message": "nit: Wrapping looks unusual. Please put `mType` on the next line, as on lines 296–297.",
+      "range": {
+        "startLine": 309,
+        "startChar": 70,
+        "endLine": 310,
+        "endChar": 97
+      },
+      "revId": "9bf8aaa3650624eecd3cbaae312738d0db5df29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab84f6c_831fbb24",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-01T19:12:17Z",
+      "side": 1,
+      "message": "Please make a constant for this to avoid repeating the same expression.",
+      "range": {
+        "startLine": 74,
+        "startChar": 23,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "9bf8aaa3650624eecd3cbaae312738d0db5df29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b8c14f_6f472ea5",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-01T19:12:17Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 105,
+        "startChar": 24,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "9bf8aaa3650624eecd3cbaae312738d0db5df29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
