@@ -16,6 +16,24 @@
       "message": "please use `MediaCodecInfo::getAttributes() \u0026 MediaCodecInfo::kFlagIsHardwareAccelerated`; we still need to check the \"c2.\" prefix for the block model to work efficiently.",
       "revId": "6e6f4d98bb6f64e2c468c2b066fa85b3fa9c5dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90903556_7ad76b8a",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1981492
+      },
+      "writtenOn": "2023-02-01T06:01:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cff6a3f5_5f31542b",
+      "revId": "6e6f4d98bb6f64e2c468c2b066fa85b3fa9c5dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
