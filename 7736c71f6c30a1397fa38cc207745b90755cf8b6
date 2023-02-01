@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc2b981_de5eec0d",
+        "filename": "media/libeffects/preprocessing/aidl/EffectPreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d039876_09f5f89f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6caf0f6_1d44ecb4",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-24T18:22:56Z",
       "side": 1,
       "message": "Is this one still needed? If yes, it should anyway be moved to the standard includes (the first section).",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f9094b_fbc80562",
+        "filename": "media/libeffects/preprocessing/aidl/EffectPreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6caf0f6_1d44ecb4",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44ec974_c43bd971",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c5d1eb_4c3e71e4",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aef85844_1001afdf",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-01-24T19:00:05Z",
       "side": 1,
       "message": "const, same for other getter functions",
+      "range": {
+        "startLine": 161,
+        "startChar": 63,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "149d87b5_32e86bac",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef85844_1001afdf",
       "range": {
         "startLine": 161,
         "startChar": 63,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24f610a_7c085db2",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9b07ce_3eef17c9",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 51
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8371f3f4_1b04acd3",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-01-24T19:00:05Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 188,
+        "startChar": 68,
+        "endLine": 188,
+        "endChar": 69
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ab86c5_156dda3f",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8371f3f4_1b04acd3",
       "range": {
         "startLine": 188,
         "startChar": 68,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00f00da_90f0c3f8",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98bd7dfa_b3e83c08",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 21
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53d25048_37297656",
@@ -202,6 +370,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dde567a_d77b3c18",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d25048_37297656",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "391f55d1_1fe8f6da",
@@ -215,6 +407,30 @@
       "writtenOn": "2023-01-24T18:22:56Z",
       "side": 1,
       "message": "As we have established that there must be no null pointers in the vector, this null check seems to be redundant.",
+      "range": {
+        "startLine": 54,
+        "startChar": 18,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "7736c71f6c30a1397fa38cc207745b90755cf8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba74ca1_8f1a2a0c",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-01T09:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "391f55d1_1fe8f6da",
       "range": {
         "startLine": 54,
         "startChar": 18,
