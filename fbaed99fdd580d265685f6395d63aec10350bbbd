@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80984de_bdf44d7f",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab707fb9_25b529fc",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c90a18e_4b4d1a14",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-31T22:12:19Z",
       "side": 1,
       "message": "What\u0027s the expectation from vendors here? Do we want them to override this code in their system overlay? Can we pass the parameter through in some generic way?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15deb97a_64e933c6",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionAec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "I was actually thinking about this as well, most likely I will have a vector or array based vendorExtension placeholder to bypass the unknown parameter types, this way vendors doesn\u0027t need to do anything special inside the framework.\n. I can image there are possible some existing vendor use cases of passing down different data structures in current HIDL interface.\nRight now I can not think of a better way for vendor to do the structured AIDL extension in HAL without changing this conversion logic in libAudioHal.\n\nWould like to learn your thoughts as well.",
+      "parentUuid": "2c90a18e_4b4d1a14",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "534ee528_b8ec6ac0",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionEnvReverb.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Yes I think this CL is already too big, so better commit them and add others in next CL.",
+      "parentUuid": "6fce93b4_048e743b",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8623e3b3_50d83366",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-31T22:12:19Z",
       "side": 1,
       "message": "Redeclaration",
+      "range": {
+        "startLine": 121,
+        "startChar": 12,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda6c07c_401dfcfe",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionEq.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8623e3b3_50d83366",
       "range": {
         "startLine": 121,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5b06c0_0544d0a0",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionHapticGenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Yes, same as last comment",
+      "parentUuid": "5adecca6_2d8eda4e",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4edd28f_447c249f",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-01-31T22:12:19Z",
       "side": 1,
       "message": "Why these are static buffers BTW? Since they only get cleaned on exec startup, this may cause unwanted interactions between tests. I would suggest instantiating these arrays in tests that use them.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 51
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8326d5_f4b59b62",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4edd28f_447c249f",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18519a5_384ae647",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "`class EffectParamCombination` is used in `EffectParamTestTuple`, and the type of the template P and V are not finalized at this time, so I think define `class EffectParamCombination` as template class not a good idea.",
+      "parentUuid": "5c52f5e8_d6184642",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a67f8a5_6d1d4725",
@@ -175,6 +343,30 @@
       "writtenOn": "2023-01-31T22:12:19Z",
       "side": 1,
       "message": "We shouldn\u0027t use verbs for variable or field names, unless it a callable object. I read this as a noun \"set\", and this is confusing.",
+      "range": {
+        "startLine": 184,
+        "startChar": 39,
+        "endLine": 184,
+        "endChar": 42
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc6cb12_849f4257",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a67f8a5_6d1d4725",
       "range": {
         "startLine": 184,
         "startChar": 39,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca87a2a_d8bba643",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4d3502f_35e908e9",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 40
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "727f0a9f_c23595a9",
@@ -221,6 +437,30 @@
       "writtenOn": "2023-01-31T22:12:19Z",
       "side": 1,
       "message": "Cmd",
+      "range": {
+        "startLine": 218,
+        "startChar": 7,
+        "endLine": 218,
+        "endChar": 10
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2af66c4_aa74c38a",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "727f0a9f_c23595a9",
       "range": {
         "startLine": 218,
         "startChar": 7,
@@ -254,6 +494,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b2548e_ab419e17",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Instead of name constants I added inline comment for these, as they are different values to pass in as test parameter",
+      "parentUuid": "18b81126_f62ea800",
+      "range": {
+        "startLine": 227,
+        "startChar": 75,
+        "endLine": 227,
+        "endChar": 79
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d66595ad_b3c475ef",
@@ -277,6 +541,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04ea6b5_d91ea712",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66595ad_b3c475ef",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 57
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f1d01e2_fb0ff94b",
@@ -290,6 +578,30 @@
       "writtenOn": "2023-01-31T22:12:19Z",
       "side": 1,
       "message": "Is this field actually needed?",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 43
+      },
+      "revId": "fbaed99fdd580d265685f6395d63aec10350bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32572d1b_350b66e7",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-01T17:21:59Z",
+      "side": 1,
+      "message": "Yes it\u0027s used in `libAudioHalEffectParamTest()` constructor",
+      "parentUuid": "6f1d01e2_fb0ff94b",
       "range": {
         "startLine": 316,
         "startChar": 0,
