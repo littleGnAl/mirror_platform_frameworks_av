@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34cb1a84_2669dd4b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-02-01T01:51:54Z",
+      "side": 1,
+      "message": "@lajos@google.com, could you help to confirm whether this new key can be put here or should be put to another place? Thanks in advance.",
+      "parentUuid": "198a14c1_e49399d6",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 28
+      },
+      "revId": "d6fc8fd8975fcdcf28867a0fb6bf057a0488de4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9426b092_1b7fa57f",
         "filename": "media/ndk/include/media/NdkMediaFormat.h",
         "patchSetId": 1
