@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef85ff67_c9d20a51",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-01T19:22:04Z",
+      "side": 1,
+      "message": "It would help printing `interface` in case of failure, maybe in the next CL.",
+      "range": {
+        "startLine": 257,
+        "startChar": 54,
+        "endLine": 257,
+        "endChar": 55
+      },
+      "revId": "8bcd384b42444a11a094ea90c4034ac86b5be079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
