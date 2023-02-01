@@ -40,17 +40,18 @@ static const Descriptor kAcousticEchoCancelerDesc = {
         .capability = Capability::make<Capability::acousticEchoCanceler>(kAcousticEchoCancelerCap)};
 
 // Automatic Gain Control 2
-static const AutomaticGainControl::Capability kAutomaticGainControlCap = {
+static const AutomaticGainControlV2::Capability kAutomaticGainControlV2Cap = {
         .maxFixedDigitalGainMb = 90};
-static const std::string kAutomaticGainControlEffectName = "Automatic Gain Control";
-static const Descriptor kAutomaticGainControlDesc = {
-        .common = {.id = {.type = kAutomaticGainControlTypeUUID,
-                          .uuid = kAutomaticGainControlSwImplUUID,
+static const std::string kAutomaticGainControlV2EffectName = "Automatic Gain Control";
+static const Descriptor kAutomaticGainControlV2Desc = {
+        .common = {.id = {.type = kAutomaticGainControlV2TypeUUID,
+                          .uuid = kAutomaticGainControlV2SwImplUUID,
                           .proxy = kEffectNullUuid},
                    .flags = {.type = Flags::Type::PRE_PROC, .deviceIndication = true},
-                   .name = kAutomaticGainControlEffectName,
+                   .name = kAutomaticGainControlV2EffectName,
                    .implementor = "The Android Open Source Project"},
-        .capability = Capability::make<Capability::automaticGainControl>(kAutomaticGainControlCap)};
+        .capability =
+                Capability::make<Capability::automaticGainControlV2>(kAutomaticGainControlV2Cap)};
 
 // Noise suppression
 static const std::string kNoiseSuppressionEffectName = "Noise Suppression";
@@ -64,7 +65,7 @@ static const Descriptor kNoiseSuppressionDesc = {
 
 enum class PreProcessingEffectType {
     ACOUSTIC_ECHO_CANCELLATION,
-    AUTOMATIC_GAIN_CONTROL,
+    AUTOMATIC_GAIN_CONTROL_V2,
     NOISE_SUPPRESSION,
 };
 
@@ -72,8 +73,8 @@ inline std::ostream& operator<<(std::ostream& out, const PreProcessingEffectType
     switch (type) {
         case PreProcessingEffectType::ACOUSTIC_ECHO_CANCELLATION:
             return out << kAcousticEchoCancelerEffectName;
-        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL:
-            return out << kAutomaticGainControlEffectName;
+        case PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL_V2:
+            return out << kAutomaticGainControlV2EffectName;
         case PreProcessingEffectType::NOISE_SUPPRESSION:
             return out << kNoiseSuppressionEffectName;
     }

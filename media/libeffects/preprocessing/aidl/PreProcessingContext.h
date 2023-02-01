@@ -58,8 +58,8 @@ class PreProcessingContext final : public EffectContext {
     RetCode setAcousticEchoCancelerMobileMode(bool mobileMode);
     bool getAcousticEchoCancelerMobileMode() const;
 
-    RetCode setAutomaticGainControlDigitalGain(int gain);
-    int getAutomaticGainControlDigitalGain() const;
+    RetCode setAutomaticGainControlV2DigitalGain(int gain);
+    int getAutomaticGainControlV2DigitalGain() const;
 
     RetCode setNoiseSuppressionLevel(NoiseSuppression::Level level);
     NoiseSuppression::Level getNoiseSuppressionLevel() const;
