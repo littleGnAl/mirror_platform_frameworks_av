@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bde9c5df_f609b08c",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1988269
+      },
+      "writtenOn": "2023-02-01T03:15:17Z",
+      "side": 1,
+      "message": "length \u003d\u003d 0 is just for the compatibility with original version,it means reading to the end of file,I\u0027d rather set default value as -1 if possible.\nI think only findPrevGranulePosition() need to give a non-zero value of length here for the efficiency of backing up, and it is only need to compare between *pageOffset and endOffset,which is meaning this backing-up turn has traversed the new bytes.",
+      "parentUuid": "812afb0a_109b694b",
+      "range": {
+        "startLine": 351,
+        "startChar": 12,
+        "endLine": 351,
+        "endChar": 51
+      },
+      "revId": "c4a7d882dd2e01f313fa7ec1835df7ed75bdea48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "184b9a46_26f48249",
         "filename": "media/module/extractors/ogg/OggExtractor.cpp",
         "patchSetId": 3
