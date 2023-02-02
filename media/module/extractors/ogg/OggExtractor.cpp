@@ -971,11 +971,12 @@ void MyOggExtractor::buildTableOfContents() {
     off64_t offset = mFirstDataOffset;
     Page page;
     ssize_t pageSize;
+    Vector<TOCEntry> toc;
     while ((pageSize = readPage(offset, &page)) > 0) {
-        mTableOfContents.push();
+        toc.push();
 
         TOCEntry &entry =
-            mTableOfContents.editItemAt(mTableOfContents.size() - 1);
+            toc.editItemAt(toc.size() - 1);
 
         entry.mPageOffset = offset;
         entry.mTimeUs = getTimeUsOfGranule(page.mGranulePosition);
@@ -990,20 +991,28 @@ void MyOggExtractor::buildTableOfContents() {
     static const size_t kMaxTOCSize = 8192;
     static const size_t kMaxNumTOCEntries = kMaxTOCSize / sizeof(TOCEntry);
 
-    size_t numerator = mTableOfContents.size();
+    size_t numerator = toc.size();
 
-    if (numerator > kMaxNumTOCEntries) {
-        size_t denom = numerator - kMaxNumTOCEntries;
+    if (numerator <= kMaxNumTOCEntries) {
+        mTableOfContents = toc;
+        return;
+    }
 
-        size_t accum = 0;
-        for (ssize_t i = mTableOfContents.size(); i > 0; --i) {
-            accum += denom;
-            if (accum >= numerator) {
-                mTableOfContents.removeAt(i);
-                accum -= numerator;
-            }
+    Vector<TOCEntry> maxTOC;
+    maxTOC.setCapacity(kMaxNumTOCEntries);
+
+    size_t denom = numerator - kMaxNumTOCEntries;
+    size_t accum = 0;
+    for (ssize_t i = toc.size(); i > 0; --i) {
+        accum += denom;
+        if (accum >= numerator) {
+            accum -= numerator;
+        } else {
+            maxTOC.push(toc.itemAt(i));
         }
     }
+
+    mTableOfContents = maxTOC;
 }
 
 int32_t MyOggExtractor::getPacketBlockSize(MediaBufferHelper *buffer) {
