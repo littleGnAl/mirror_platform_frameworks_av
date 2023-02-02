@@ -22,6 +22,30 @@
       },
       "revId": "e6483dbeb4316dfb2f90707c623844e2ace63f19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef84188_0f1ba79a",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1831229
+      },
+      "writtenOn": "2023-02-02T04:25:50Z",
+      "side": 1,
+      "message": "I suppose it is suggested to set fileSizeBits to INT32_MAX if fpathconf fails as per the above comment. Can we go ahead with fileSizeBits \u003d INT32_MAX without erroring out.",
+      "parentUuid": "bd33eb02_dc1d3d99",
+      "range": {
+        "startLine": 893,
+        "startChar": 8,
+        "endLine": 893,
+        "endChar": 29
+      },
+      "revId": "e6483dbeb4316dfb2f90707c623844e2ace63f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
