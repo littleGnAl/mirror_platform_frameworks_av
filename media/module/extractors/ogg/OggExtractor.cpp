@@ -21,7 +21,7 @@
 #include "OggExtractor.h"
 
 #include <cutils/properties.h>
-#include <utils/Vector.h>
+#include <utils/List.h>
 #include <media/stagefright/DataSourceBase.h>
 #include <media/ExtractorUtils.h>
 #include <media/stagefright/foundation/ABuffer.h>
@@ -133,7 +133,8 @@ protected:
     AMediaFormat *mMeta;
     AMediaFormat *mFileMeta;
 
-    Vector<TOCEntry> mTableOfContents;
+    List<TOCEntry> mTableOfContents;
+    size_t mTableOfContentsSize;
 
     int32_t mHapticChannelCount;
 
@@ -433,12 +434,13 @@ status_t MyOggExtractor::findPrevGranulePosition(
 }
 
 status_t MyOggExtractor::seekToTime(int64_t timeUs) {
+    size_t offsetIdx = 0;
     timeUs -= mSeekPreRollUs;
     if (timeUs < 0) {
         timeUs = 0;
     }
 
-    if (mTableOfContents.isEmpty()) {
+    if (!mTableOfContentsSize) {
         // Perform approximate seeking based on avg. bitrate.
         uint64_t bps = approxBitrate();
         if (bps <= 0) {
@@ -451,31 +453,24 @@ status_t MyOggExtractor::seekToTime(int64_t timeUs) {
         return seekToOffset(pos);
     }
 
-    size_t left = 0;
-    size_t right_plus_one = mTableOfContents.size();
-    while (left < right_plus_one) {
-        size_t center = left + (right_plus_one - left) / 2;
+    List<TOCEntry>::iterator it = mTableOfContents.begin();
+    List<TOCEntry>::iterator end = mTableOfContents.end();
 
-        const TOCEntry &entry = mTableOfContents.itemAt(center);
-
+    for (; it != end; ++it) {
+        const TOCEntry &entry = *it;
+        offsetIdx++;
         if (timeUs < entry.mTimeUs) {
-            right_plus_one = center;
-        } else if (timeUs > entry.mTimeUs) {
-            left = center + 1;
-        } else {
-            left = center;
             break;
         }
     }
 
-    if (left == mTableOfContents.size()) {
-        --left;
+    if (it == end) {
+        it = --end;
     }
-
-    const TOCEntry &entry = mTableOfContents.itemAt(left);
+    const TOCEntry &entry = *it;
 
     ALOGV("seeking to entry %zu / %zu at offset %lld",
-         left, mTableOfContents.size(), (long long)entry.mPageOffset);
+         offsetIdx, mTableOfContentsSize, (long long)entry.mPageOffset);
 
     return seekToOffset(entry.mPageOffset);
 }
@@ -945,6 +940,7 @@ status_t MyOggExtractor::init() {
     }
 
     mFirstDataOffset = mOffset + mCurrentPageSize;
+    mTableOfContentsSize = 0;
 
     off64_t size;
     uint64_t lastGranulePosition;
@@ -972,35 +968,36 @@ void MyOggExtractor::buildTableOfContents() {
     Page page;
     ssize_t pageSize;
     while ((pageSize = readPage(offset, &page)) > 0) {
-        mTableOfContents.push();
 
         TOCEntry &entry =
-            mTableOfContents.editItemAt(mTableOfContents.size() - 1);
+            *mTableOfContents.insert(mTableOfContents.end(), TOCEntry());
 
         entry.mPageOffset = offset;
         entry.mTimeUs = getTimeUsOfGranule(page.mGranulePosition);
 
         offset += (size_t)pageSize;
+        mTableOfContentsSize++;
     }
 
     // Limit the maximum amount of RAM we spend on the table of contents,
     // if necessary thin out the table evenly to trim it down to maximum
     // size.
-
     static const size_t kMaxTOCSize = 8192;
     static const size_t kMaxNumTOCEntries = kMaxTOCSize / sizeof(TOCEntry);
-
     size_t numerator = mTableOfContents.size();
 
     if (numerator > kMaxNumTOCEntries) {
         size_t denom = numerator - kMaxNumTOCEntries;
+        List<TOCEntry>::iterator it = mTableOfContents.end();
+        List<TOCEntry>::iterator begin = mTableOfContents.begin();
 
         size_t accum = 0;
-        for (ssize_t i = mTableOfContents.size(); i > 0; --i) {
+        for(; it != begin; --it) {
             accum += denom;
             if (accum >= numerator) {
-                mTableOfContents.removeAt(i);
+                it = mTableOfContents.erase(it);
                 accum -= numerator;
+                mTableOfContentsSize--;
             }
         }
     }
