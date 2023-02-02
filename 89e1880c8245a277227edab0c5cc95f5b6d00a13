@@ -69,6 +69,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5440f24c_82e91ef7",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-02-02T07:04:04Z",
+      "side": 1,
+      "message": "It doesn\u0027t look good to defer the merged fence creation, as that will require to support multithreading and will make things complex.",
+      "parentUuid": "0593aa96_6c03f0c7",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88d8ecf5_fb9a7663",
