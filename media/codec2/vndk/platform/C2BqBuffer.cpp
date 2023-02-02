@@ -669,6 +669,7 @@ public:
                            uint32_t generation,
                            uint64_t usage,
                            bool bqInformation) {
+        ALOGD("C2OMX usage from configure %llx(%d)", (unsigned long long)usage, bqInformation);
         std::shared_ptr<C2SurfaceSyncMemory> c2SyncMem;
         if (syncHandle) {
             if (!producer) {
