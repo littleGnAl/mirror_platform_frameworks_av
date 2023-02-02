@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd51f4e_1c739b07",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-02-02T17:34:08Z",
+      "side": 1,
+      "message": "changed comment",
+      "parentUuid": "1b1d50a6_c8d34aac",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa6ab39a_39a1cb79",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69af9dfa_8030e000",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-02-02T17:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa6ab39a_39a1cb79",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca2960fc_3ce02baa",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-02-01T23:18:49Z",
       "side": 1,
       "message": "The fenceFd is now managed by the Fence and will be closed when the Fence is destroyed, so the fenceFd (also pushed to mlistFds) will be invalid.",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752e8e4d_0114ef6d",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-02-02T17:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca2960fc_3ce02baa",
       "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -117,6 +171,24 @@
       "writtenOn": "2023-02-01T23:18:49Z",
       "side": 1,
       "message": "Use camelCase naming convention.",
+      "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3cadb9d_a92198a9",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-02-02T17:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d8ecf5_fb9a7663",
       "revId": "89e1880c8245a277227edab0c5cc95f5b6d00a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
