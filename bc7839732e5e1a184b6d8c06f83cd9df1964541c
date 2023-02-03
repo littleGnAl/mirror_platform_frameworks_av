@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8cc70aa_022d709e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-03T23:23:45Z",
+      "side": 1,
+      "message": "Thanks, Shunkai! Could you please approve the downstream patch: ag/21269609. As you can see, there are some conflicts.",
+      "revId": "bc7839732e5e1a184b6d8c06f83cd9df1964541c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91d10cce_c6aa2a41",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-02-03T22:41:10Z",
       "side": 1,
       "message": "nit: do we want to keep this log? Same for several other methods",
+      "range": {
+        "startLine": 350,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 23
+      },
+      "revId": "bc7839732e5e1a184b6d8c06f83cd9df1964541c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d3e20b_0c9342e6",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-03T23:23:45Z",
+      "side": 1,
+      "message": "It\u0027s useful when running framework-level tests to check that the call originating from a test actually got to the HAL level, and wasn\u0027t rejected by the framework. These logs are not emitted unless the define on the line 18 gets uncommented.",
+      "parentUuid": "91d10cce_c6aa2a41",
       "range": {
         "startLine": 350,
         "startChar": 4,
