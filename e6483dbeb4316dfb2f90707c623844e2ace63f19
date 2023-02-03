@@ -46,6 +46,30 @@
       },
       "revId": "e6483dbeb4316dfb2f90707c623844e2ace63f19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36764b4_edd5805a",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-03T15:12:37Z",
+      "side": 1,
+      "message": "need to get the units correct -- it\u0027s not the size, but the number of bits\nso a INT32_MAX value (2147483648) fits in 31 bits.\n\nbut otherwise, yes that\u0027s what is being suggested.",
+      "parentUuid": "5ef84188_0f1ba79a",
+      "range": {
+        "startLine": 893,
+        "startChar": 8,
+        "endLine": 893,
+        "endChar": 29
+      },
+      "revId": "e6483dbeb4316dfb2f90707c623844e2ace63f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
