@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
+#include <MtpFuzzerUtils.h>
 #include <MtpStringBuffer.h>
+#include <MtpTypes.h>
 #include <fuzzer/FuzzedDataProvider.h>
 #include <linux/usbdevice_fs.h>
 #include <sys/mman.h>
 #include <usbhost/usbhost.h>
-#include <MtpTypes.h>
 
 using namespace android;
 constexpr UrbPacketDivisionMode kUrbPacketDivisionModes[] = {FIRST_PACKET_ONLY_HEADER,
@@ -29,7 +30,7 @@ constexpr size_t kMinSize = 0;
 constexpr size_t kMaxSize = 1000;
 constexpr size_t kMaxLength = 1000;
 
-class MtpPacketFuzzerUtils {
+class MtpPacketFuzzerUtils : public MtpFuzzerUtils {
   protected:
     struct usb_request mUsbRequest;
     struct usbdevfs_urb* mUsbDevFsUrb;

@@ -25,6 +25,7 @@ using namespace android;
 class MtpDataPacketFuzzer : MtpPacketFuzzerUtils {
   public:
     MtpDataPacketFuzzer(const uint8_t* data, size_t size) : mFdp(data, size) {
+        mHandle = MtpMockHandle();
         mUsbDevFsUrb = (struct usbdevfs_urb*)malloc(sizeof(struct usbdevfs_urb) +
                                                    sizeof(struct usbdevfs_iso_packet_desc));
     };
@@ -33,10 +34,21 @@ class MtpDataPacketFuzzer : MtpPacketFuzzerUtils {
 
   private:
     FuzzedDataProvider mFdp;
+    MtpMockHandle mHandle;
 };
 
 void MtpDataPacketFuzzer::process() {
     MtpDataPacket mtpDataPacket;
+
+    // Initializing the variables of MtpDataPacket with a vaild read
+    std::vector<uint8_t> packetData = mFdp.ConsumeBytes<uint8_t>(kMaxLength);
+    if (packetData.size() < MTP_CONTAINER_HEADER_SIZE) {
+        packetData.resize(MTP_CONTAINER_HEADER_SIZE, ' ');
+    }
+    packetData.push_back('@');
+    addPackets(&mHandle, packetData.data(), packetData.size());
+    mtpDataPacket.read(&mHandle);
+
     while (mFdp.remaining_bytes() > 0) {
         auto mtpDataAPI = mFdp.PickValueInArray<const std::function<void()>>({
                 [&]() { mtpDataPacket.allocate(mFdp.ConsumeIntegralInRange(kMinSize, kMaxSize)); },

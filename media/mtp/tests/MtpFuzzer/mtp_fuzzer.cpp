@@ -27,9 +27,9 @@
 
 #define LOG_TAG "MtpFuzzer"
 
+#include <MtpFuzzerUtils.h>
 #include "IMtpHandle.h"
 #include "MtpMockDatabase.h"
-#include "MtpMockHandle.h"
 #include "MtpObjectInfo.h"
 #include "MtpServer.h"
 #include "MtpStorage.h"
@@ -46,7 +46,7 @@ const std::string test_path = std::string(source_database) + "TestDir/";
 const std::string kPropertyKey = "sys.fuse.transcode_mtp";
 
 namespace android {
-class MtpMockServer {
+class MtpMockServer : public MtpFuzzerUtils {
   public:
     MtpMockServer(const uint8_t* data, size_t size) : mFdp(data, size) {
         // This is unused in our harness
@@ -113,28 +113,12 @@ class MtpMockServer {
         }
     }
 
-    void addPackets(const uint8_t* data, size_t size) {
-        size_t off = 0;
-        for (size_t i = 0; i < size; ++i) {
-            // A longer delimiter could be used, but this worked in practice
-            if (data[i] == '@') {
-                size_t pktsz = i - off;
-                if (pktsz > 0) {
-                    packet_t pkt = packet_t((unsigned char*)data + off, (unsigned char*)data + i);
-                    // insert into packet buffer
-                    mHandle->add_packet(pkt);
-                    off = i;
-                }
-            }
-        }
-    }
-
     void init(const uint8_t* data, size_t size) {
         std::vector<uint8_t> packetData = mFdp.ConsumeBytes<uint8_t>(
                 mFdp.ConsumeIntegralInRange<int32_t>(kMinDataSizeFactor * size, size));
 
         // Packetize the input stream
-        addPackets(packetData.data(), packetData.size());
+        addPackets(mHandle.get(), packetData.data(), packetData.size());
 
         // Setting the property to true/false to randomly fuzz the PoC depended on it
         base::SetProperty(kPropertyKey, mFdp.ConsumeBool() ? "true" : "false");
