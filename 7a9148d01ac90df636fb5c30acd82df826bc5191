@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f95ed256_7f923469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-03T20:33:54Z",
+      "side": 1,
+      "message": "Please note that aosp/2420552 is also needed so that the framework can open the microphone on Cuttlefish.",
+      "revId": "7a9148d01ac90df636fb5c30acd82df826bc5191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
