@@ -33,6 +33,24 @@
       "message": "Is there no need for an ElementaryStreamQueue::DTS?",
       "revId": "86dd351c8c0417b4a1aaed984146a0dea336d75f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faec1e36_97392b59",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2023-02-06T11:35:32Z",
+      "side": 1,
+      "message": "The dequeue and frame parsing functions used for DTS(Digital Surround) and DTS-HD(LBR) stream types are the same, so I used \u0027ElementaryStreamQueue::DTS_HD\u0027 for DTS type.\n\nNow I think, it is better to have \u0027ElementaryStreamQueue::DTS\u0027 mode value and can group the \u0027DTS\u0027 and \u0027DTS-HD\u0027 modes in the switch case. I will update the code accordingly.",
+      "parentUuid": "87cdbe1b_d74efb53",
+      "revId": "86dd351c8c0417b4a1aaed984146a0dea336d75f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
