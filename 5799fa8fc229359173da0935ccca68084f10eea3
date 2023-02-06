@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b1e2a1_14a3b698",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-06T14:20:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "813dfc57_b2ad0fd0",
+      "range": {
+        "startLine": 357,
+        "startChar": 36,
+        "endLine": 357,
+        "endChar": 44
+      },
+      "revId": "5799fa8fc229359173da0935ccca68084f10eea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1ddf94a_69543523",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-02-06T03:50:09Z",
       "side": 1,
       "message": "typo - amortize",
+      "range": {
+        "startLine": 417,
+        "startChar": 36,
+        "endLine": 417,
+        "endChar": 44
+      },
+      "revId": "5799fa8fc229359173da0935ccca68084f10eea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d6a119_9d02eb8f",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-06T14:20:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ddf94a_69543523",
       "range": {
         "startLine": 417,
         "startChar": 36,
