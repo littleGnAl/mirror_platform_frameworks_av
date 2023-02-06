@@ -16,6 +16,23 @@
       "message": "MPEG2-TS: Added support for extracting DTS, DTS-HD(LBR), and DTS-UHD(Profile-2) descriptor ID from PSI PMT. Also enabled dequeue and parse support for DTS(Digital Surround), DTS-LBR(DTS Express), and DTS:X Profile-2(UHD Profile 2) frame.",
       "revId": "86dd351c8c0417b4a1aaed984146a0dea336d75f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87cdbe1b_d74efb53",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-02-06T11:14:57Z",
+      "side": 1,
+      "message": "Is there no need for an ElementaryStreamQueue::DTS?",
+      "revId": "86dd351c8c0417b4a1aaed984146a0dea336d75f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
