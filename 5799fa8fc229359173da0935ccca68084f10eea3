@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfe02ff_f97923e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-06T03:50:09Z",
+      "side": 1,
+      "message": "patchset 2 to fix the typos",
+      "revId": "5799fa8fc229359173da0935ccca68084f10eea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813dfc57_b2ad0fd0",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-06T03:50:09Z",
+      "side": 1,
+      "message": "typo. amortize",
+      "range": {
+        "startLine": 357,
+        "startChar": 36,
+        "endLine": 357,
+        "endChar": 44
+      },
+      "revId": "5799fa8fc229359173da0935ccca68084f10eea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ddf94a_69543523",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-06T03:50:09Z",
+      "side": 1,
+      "message": "typo - amortize",
+      "range": {
+        "startLine": 417,
+        "startChar": 36,
+        "endLine": 417,
+        "endChar": 44
+      },
+      "revId": "5799fa8fc229359173da0935ccca68084f10eea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
