@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52466a67_a9eff831",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-07T18:20:11Z",
+      "side": 1,
+      "message": "Do we still need to hold the mutex while copying data?",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 9
+      },
+      "revId": "5acc977c5fa7f4496031b16d3767428d341dc048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
