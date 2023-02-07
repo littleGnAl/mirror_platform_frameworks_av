@@ -335,11 +335,15 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         {
             Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
             PipelineWatcher::Clock::time_point now = PipelineWatcher::Clock::now();
+            size_t inputId = size_t(buffer.get());
             for (const std::unique_ptr<C2Work> &work : items) {
                 watcher->onWorkQueued(
+                        inputId,
                         work->input.ordinal.frameIndex.peeku(),
                         std::vector(work->input.buffers),
                         now);
+                // No need to clear the input ID more than once
+                inputId = 0;
             }
         }
         err = mComponent->queue(&items);
@@ -725,15 +729,25 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
         }
     }
     size_t numActiveSlots = 0;
-    while (!mPipelineWatcher.lock()->pipelineFull()) {
-        sp<MediaCodecBuffer> inBuffer;
-        size_t index;
+    sp<MediaCodecBuffer> inBuffer = nullptr;
+    size_t index = SIZE_MAX;
+    while (true) {
+        {
+            Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
+            if (inBuffer != nullptr) {
+                watcher->onInputBufferRequested(size_t(inBuffer.get()));
+            }
+            if (!watcher->pipelineHasRoom()) {
+                break;
+            }
+        }
         {
             Mutexed<Input>::Locked input(mInput);
             numActiveSlots = input->buffers->numActiveSlots();
             if (numActiveSlots >= input->numSlots) {
                 break;
             }
+
             if (!input->buffers->requestNewBuffer(&index, &inBuffer)) {
                 ALOGV("[%s] no new buffer available", mName);
                 break;
@@ -1531,6 +1545,7 @@ status_t CCodecBufferChannel::requestInitialInputBuffers(
             PipelineWatcher::Clock::time_point now = PipelineWatcher::Clock::now();
             for (const std::unique_ptr<C2Work> &work : flushedConfigs) {
                 watcher->onWorkQueued(
+                        0,  // not tracked by the client
                         work->input.ordinal.frameIndex.peeku(),
                         std::vector(work->input.buffers),
                         now);
@@ -1558,6 +1573,7 @@ status_t CCodecBufferChannel::requestInitialInputBuffers(
         minBuffer->setRange(0, 0);
         minBuffer->meta()->clear();
         minBuffer->meta()->setInt64("timeUs", 0);
+        mPipelineWatcher.lock()->onInputBufferRequested(size_t(minBuffer.get()));
         if (queueInputBufferInternal(minBuffer) != OK) {
             ALOGW("[%s] Error while queueing an empty buffer to get CSD",
                   mName);
@@ -1566,8 +1582,15 @@ status_t CCodecBufferChannel::requestInitialInputBuffers(
         clientInputBuffers.erase(minIndex);
     }
 
+    std::vector<size_t> reportedBuffers;
     for (const auto &[index, buffer] : clientInputBuffers) {
         mCallback->onInputBufferAvailable(index, buffer);
+        reportedBuffers.push_back(size_t(buffer.get()));
+    }
+
+    Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
+    for (size_t buffer : reportedBuffers) {
+        watcher->onInputBufferRequested(buffer);
     }
 
     return OK;
