@@ -39,6 +39,53 @@
       },
       "revId": "7cbcdb8cb30c2af68cac52704ccff227327dca33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cd2b4e_9bfcfc85",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-07T14:33:57Z",
+      "side": 1,
+      "message": "agreed.  \nand looking at it using lenOggS, I think i have an off-by-one error here.\n\nwill resolve both of those with the next patchset.",
+      "parentUuid": "1724c194_b6e2adb5",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 2
+      },
+      "revId": "7cbcdb8cb30c2af68cac52704ccff227327dca33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da84a27_9146c35a",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-07T14:33:57Z",
+      "side": 1,
+      "message": "fixing this, thanks to Jiaqing\u0027s comment above.\ns/3/(lenOggS-1)",
+      "range": {
+        "startLine": 458,
+        "startChar": 33,
+        "endLine": 458,
+        "endChar": 37
+      },
+      "revId": "7cbcdb8cb30c2af68cac52704ccff227327dca33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
