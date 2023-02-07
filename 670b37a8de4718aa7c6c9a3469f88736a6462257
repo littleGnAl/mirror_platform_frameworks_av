@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b8ce7d_45621fe8",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-02-07T17:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb76b9d_528c42ed",
+      "revId": "670b37a8de4718aa7c6c9a3469f88736a6462257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f300348_3fe11631",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-02T18:54:09Z",
       "side": 1,
       "message": "The withFence with be destroyed at exit of this scope and fenceFd will become invalid.",
+      "revId": "670b37a8de4718aa7c6c9a3469f88736a6462257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43bd6502_989039a2",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-02-07T17:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f300348_3fe11631",
       "revId": "670b37a8de4718aa7c6c9a3469f88736a6462257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
