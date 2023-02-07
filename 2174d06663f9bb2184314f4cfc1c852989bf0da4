@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278668ee_62d3ea98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-07T20:55:34Z",
+      "side": 1,
+      "message": "It looks like the expensive operation is the thinning when we have more TOCEntries than we want.",
+      "revId": "2174d06663f9bb2184314f4cfc1c852989bf0da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ba3b6f_b9032ba1",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-07T20:55:34Z",
+      "side": 1,
+      "message": "not clear to me why we track this separately.\nwhy wouldn\u0027t we use mTableOfContents.size() to always\nknow this number.",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 32
+      },
+      "revId": "2174d06663f9bb2184314f4cfc1c852989bf0da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef091b86_d663cb7d",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-07T20:55:34Z",
+      "side": 1,
+      "message": "we appear to have traded a binary search for a linear search.\nThat doesn\u0027t appear to be a performance win.",
+      "range": {
+        "startLine": 459,
+        "startChar": 7,
+        "endLine": 459,
+        "endChar": 27
+      },
+      "revId": "2174d06663f9bb2184314f4cfc1c852989bf0da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c55b8cc_20687cac",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-07T20:55:34Z",
+      "side": 1,
+      "message": "what if we don\u0027t try to fix it in place.\nand instead we create a new vector/list of the ones we want to keep\nand then throw all of the other list away.\n\nit does mean that we perform O(N) copies to build the new list\nand O(N) erase() operations to empty the old list.\n\nIt\u0027s still O(N) in the end...\n\nyea, List gives us O(1) removal. but we change search from O(logN) to O(N)",
+      "range": {
+        "startLine": 991,
+        "startChar": 7,
+        "endLine": 991,
+        "endChar": 61
+      },
+      "revId": "2174d06663f9bb2184314f4cfc1c852989bf0da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
