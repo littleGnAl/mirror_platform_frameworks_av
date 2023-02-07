@@ -22,6 +22,30 @@
       },
       "revId": "5acc977c5fa7f4496031b16d3767428d341dc048",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec19a6c_7692eb7a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-07T18:38:24Z",
+      "side": 1,
+      "message": "I\u0027 afraid we need to hold it for now, because the control param member `pEQNB_BandDefinition` is actually a pointer:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/lvm/lib/Bundle/src/LVM_Control.cpp;l\u003d234?q\u003dLVM_GetControlParameters\n\nI think we should remove the pointer in LVM_ControlParams_t: `LVM_EQNB_BandDef_t *`",
+      "parentUuid": "52466a67_a9eff831",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 9
+      },
+      "revId": "5acc977c5fa7f4496031b16d3767428d341dc048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
