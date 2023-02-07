@@ -45,10 +45,27 @@ PipelineWatcher &PipelineWatcher::smoothnessFactor(uint32_t value) {
     return *this;
 }
 
+void PipelineWatcher::onInputBufferRequested(size_t inputId) {
+    auto result = mClientOwnedInputIds.insert(inputId);
+    if (!result.second) {
+        // input ID is already tracked
+        ALOGW("onInputBufferRequested: input %zx is already owned by client per "
+              "our record.", inputId);
+    }
+}
+
 void PipelineWatcher::onWorkQueued(
+        size_t inputId,
         uint64_t frameIndex,
         std::vector<std::shared_ptr<C2Buffer>> &&buffers,
         const Clock::time_point &queuedAt) {
+    if (inputId != 0) {
+        size_t erased = mClientOwnedInputIds.erase(inputId);
+        if (erased == 0) {
+            // input ID was not tracked
+            ALOGW("onWorkQueued: input %zx is not owned by client per our record.", inputId);
+        }
+    }
     ALOGV("onWorkQueued(frameIndex=%llu, buffers(size=%zu), queuedAt=%lld)",
           (unsigned long long)frameIndex,
           buffers.size(),
@@ -97,14 +114,26 @@ void PipelineWatcher::onWorkDone(uint64_t frameIndex) {
 void PipelineWatcher::flush() {
     ALOGV("flush");
     mFramesInPipeline.clear();
+    mClientOwnedInputIds.clear();
 }
 
-bool PipelineWatcher::pipelineFull() const {
-    if (mFramesInPipeline.size() >=
+bool PipelineWatcher::pipelineHasRoom() const {
+    // Determine whether the pipeline needs more input.
+
+    // Case 1: total # of frames in pipeline (including the buffers pending client input)
+    // is larger than all delays + smoothness factor
+    size_t numClientInputBuffers = mClientOwnedInputIds.size();
+    if (numClientInputBuffers + mFramesInPipeline.size() >=
             mInputDelay + mPipelineDelay + mOutputDelay + mSmoothnessFactor) {
-        ALOGV("pipelineFull: too many frames in pipeline (%zu)", mFramesInPipeline.size());
-        return true;
+        ALOGV("pipelineNeedsMoreInput(%u/%u/%u): enough frames in pipeline (%zu) client %zu",
+              mInputDelay, mPipelineDelay, mOutputDelay,
+              mFramesInPipeline.size(), numClientInputBuffers);
+        return false;
     }
+
+    // Case 2: # of frames in pipeline with the input buffer released ---
+    // in other words, frames past the input stage is larger than
+    // pipeline + output delays, plus smoothness factor.
     size_t sizeWithInputReleased = std::count_if(
             mFramesInPipeline.begin(),
             mFramesInPipeline.end(),
@@ -118,20 +147,29 @@ bool PipelineWatcher::pipelineFull() const {
             });
     if (sizeWithInputReleased >=
             mPipelineDelay + mOutputDelay + mSmoothnessFactor) {
-        ALOGV("pipelineFull: too many frames in pipeline, with input released (%zu)",
-              sizeWithInputReleased);
-        return true;
+        ALOGV("pipelineNeedsMoreInput(%u/%u/%u): "
+              "enough frames in pipeline, with input released (%zu)",
+              mInputDelay, mPipelineDelay, mOutputDelay, sizeWithInputReleased);
+        return false;
     }
 
-    size_t sizeWithInputsPending = mFramesInPipeline.size() - sizeWithInputReleased;
+    // Case 3: # of frames in pipeline with the input buffer pending
+    // (including the buffers pending client input) ---
+    // in other words, frames before the output delay is larger than
+    // input + pipeline delays, plus smoothness factor.
+    size_t sizeWithInputsPending =
+        numClientInputBuffers + mFramesInPipeline.size() - sizeWithInputReleased;
     if (sizeWithInputsPending > mPipelineDelay + mInputDelay + mSmoothnessFactor) {
-        ALOGV("pipelineFull: too many inputs pending (%zu) in pipeline, with inputs released (%zu)",
+        ALOGV("pipelineNeedsMoreInput(%u/%u/%u): enough inputs pending (%zu) in pipeline, "
+              "with inputs released (%zu)",
+              mInputDelay, mPipelineDelay, mOutputDelay,
               sizeWithInputsPending, sizeWithInputReleased);
-        return true;
+        return false;
     }
-    ALOGV("pipeline has room (total: %zu, input released: %zu)",
-          mFramesInPipeline.size(), sizeWithInputReleased);
-    return false;
+    ALOGV("pipeline (%u/%u/%u) has room (client %zu, pipeline: %zu, input released: %zu)",
+          mInputDelay, mPipelineDelay, mOutputDelay,
+          numClientInputBuffers, mFramesInPipeline.size(), sizeWithInputReleased);
+    return true;
 }
 
 PipelineWatcher::Clock::duration PipelineWatcher::elapsed(

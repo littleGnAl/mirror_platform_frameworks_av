@@ -20,6 +20,7 @@
 #include <chrono>
 #include <map>
 #include <memory>
+#include <set>
 
 #include <C2Work.h>
 
@@ -65,13 +66,22 @@ public:
     PipelineWatcher &smoothnessFactor(uint32_t value);
 
     /**
+     * An empty input buffer is sent to client to be queued.
+     *
+     * \param inputId   input buffer ID for the client
+     */
+    void onInputBufferRequested(size_t inputId);
+
+    /**
      * Client queued a work item to the component.
      *
+     * \param inputId     input buffer ID for the client; 0 if not tracked
      * \param frameIndex  input frame index of this work
      * \param buffers     input buffers of the queued work item
      * \param queuedAt    time when the client queued the buffer
      */
     void onWorkQueued(
+            size_t inputId,
             uint64_t frameIndex,
             std::vector<std::shared_ptr<C2Buffer>> &&buffers,
             const Clock::time_point &queuedAt);
@@ -100,11 +110,11 @@ public:
     void flush();
 
     /**
-     * \return  true  if pipeline does not need more work items to proceed
-     *                smoothly, considering delays and smoothness factor;
+     * \return  true  if pipeline has room for more work items,
+     *                considering delays and smoothness factor;
      *          false otherwise.
      */
-    bool pipelineFull() const;
+    bool pipelineHasRoom() const;
 
     /**
      * Return elapsed processing time of a work item, nth from the longest
@@ -132,6 +142,7 @@ private:
         const Clock::time_point queuedAt;
     };
     std::map<uint64_t, Frame> mFramesInPipeline;
+    std::set<size_t> mClientOwnedInputIds;
 };
 
 }  // namespace android
