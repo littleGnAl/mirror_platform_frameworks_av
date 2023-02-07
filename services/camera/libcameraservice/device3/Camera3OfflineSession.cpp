@@ -96,7 +96,6 @@ status_t Camera3OfflineSession::dump(int /*fd*/) {
 
 status_t Camera3OfflineSession::disconnect() {
     ATRACE_CALL();
-    disconnectSession();
     return disconnectImpl();
 }
 
@@ -132,6 +131,8 @@ status_t Camera3OfflineSession::disconnectImpl() {
         streams.push_back(mInputStream);
     }
 
+    closeSessionLocked();
+
     FlushInflightReqStates states {
         mId, mOfflineReqsLock, mOfflineReqs, mUseHalBufManager,
         listener, *this, mBufferRecords, *this, mSessionStatsBuilder};
@@ -140,6 +141,7 @@ status_t Camera3OfflineSession::disconnectImpl() {
 
     {
         std::lock_guard<std::mutex> lock(mLock);
+        releaseSessionLocked();
         mOutputStreams.clear();
         mInputStream.clear();
         mStatus = STATUS_CLOSED;
