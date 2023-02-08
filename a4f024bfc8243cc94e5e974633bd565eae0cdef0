@@ -33,6 +33,23 @@
       "message": "re-hug; the previous single failure does not appear to be related to this CL.",
       "revId": "a4f024bfc8243cc94e5e974633bd565eae0cdef0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3784c0_b85786bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1988269
+      },
+      "writtenOn": "2023-02-08T02:55:39Z",
+      "side": 1,
+      "message": "well,i know what this change doing but i can\u0027t confirm the offsets are calculated correctly... offset calculation is annoying and easy to get wrong all the time,that is why i prefer the change#2405716 since it only need to consider 1 offset and it works.\nturn back to this change,in findPrevGranulePosition(),i think maybe pageOffset are enough for backing up, it can replace nextOffset and firstAfter.",
+      "revId": "a4f024bfc8243cc94e5e974633bd565eae0cdef0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
