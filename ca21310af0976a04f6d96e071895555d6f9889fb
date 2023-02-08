@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad32afa_ec9a3144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-08T14:13:12Z",
+      "side": 1,
+      "message": "couple more tweaks.",
+      "revId": "ca21310af0976a04f6d96e071895555d6f9889fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb8b64e_68fc8d33",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-08T14:13:12Z",
+      "side": 1,
+      "message": "i think i\u0027d leave this as mTableOfContents\n\nthe idea being: build it where we want it be, assume that it usually doesn\u0027t need to be trimmed, and most of the time there will be 0 copies.",
+      "range": {
+        "startLine": 979,
+        "startChar": 11,
+        "endLine": 979,
+        "endChar": 18
+      },
+      "revId": "ca21310af0976a04f6d96e071895555d6f9889fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293e6701_cfa71909",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-08T14:13:12Z",
+      "side": 1,
+      "message": "if we build it within mTableOfContents, we don\u0027t need this copy/assignment",
+      "range": {
+        "startLine": 997,
+        "startChar": 5,
+        "endLine": 997,
+        "endChar": 31
+      },
+      "revId": "ca21310af0976a04f6d96e071895555d6f9889fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c081ac4_68da535a",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-08T14:13:12Z",
+      "side": 1,
+      "message": "i think this needs to run forwards instead of backwards.\nfor(i \u003d 0; i \u003c toc.size()-1; i++)\n\notherwise I think we\u0027re reversing the order of the list.\nAnd that would be bad for our binary search algorithm.",
+      "range": {
+        "startLine": 1006,
+        "startChar": 7,
+        "endLine": 1006,
+        "endChar": 45
+      },
+      "revId": "ca21310af0976a04f6d96e071895555d6f9889fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
