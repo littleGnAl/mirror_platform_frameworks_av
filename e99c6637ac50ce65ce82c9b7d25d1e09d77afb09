@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4152bffe_c6cbe809",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-08T00:35:10Z",
+      "side": 1,
+      "message": "But is `Check if a service is declared` means we can connect to this service?",
+      "range": {
+        "startLine": 108,
+        "startChar": 28,
+        "endLine": 108,
+        "endChar": 54
+      },
+      "revId": "e99c6637ac50ce65ce82c9b7d25d1e09d77afb09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
