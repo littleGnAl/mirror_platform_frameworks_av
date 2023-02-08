@@ -46,6 +46,30 @@
       },
       "revId": "e99c6637ac50ce65ce82c9b7d25d1e09d77afb09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b64e25_115a6722",
+        "filename": "media/libaudiohal/FactoryHal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-08T00:50:28Z",
+      "side": 1,
+      "message": "\"We can connect\" depends on many factors: is the service up already, are SELinux policies set up correctly, etc. The thing is—if the vendor has declared that they provide an AIDL service, then we must use it. When we actually attempt to connect to the service, we use `AServiceManager_waitForService` which waits until the service is up. If we can\u0027t connect to it, or it never appears, it\u0027s the problem that the vendor needs to fix on their device.\n\nThe point is—the result of `hasAidlHalService` must reflect the vendor intention, not the fact whether the service is available at this particular moment.",
+      "parentUuid": "4152bffe_c6cbe809",
+      "range": {
+        "startLine": 108,
+        "startChar": 28,
+        "endLine": 108,
+        "endChar": 54
+      },
+      "revId": "e99c6637ac50ce65ce82c9b7d25d1e09d77afb09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
