@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5813ddf4_00a9dcd2",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-08T20:43:10Z",
+      "side": 1,
+      "message": "Thanks for the good catch, should have add a TODO and remove code after return.\nAddressing in aosp/2427174",
+      "parentUuid": "d642e5d4_5353c8d9",
+      "revId": "242521c094672f373b23f7e10d82aded037ed8fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e1c8f8_2d295255",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-02-03T16:38:35Z",
       "side": 1,
       "message": "`value` is unsigned, so...",
+      "revId": "242521c094672f373b23f7e10d82aded037ed8fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e2c30b_9c656335",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionEq.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-08T20:43:10Z",
+      "side": 1,
+      "message": "Yes, this command wasn\u0027t actually implemented and should be deleted for now. Will followup with implementation. Thanks.",
+      "parentUuid": "c3e1c8f8_2d295255",
       "revId": "242521c094672f373b23f7e10d82aded037ed8fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "145a7e68_b78076a0",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionEq.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-08T20:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db91ba25_941ebd4e",
+      "revId": "242521c094672f373b23f7e10d82aded037ed8fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40fb9c99_519c8368",
@@ -82,6 +136,30 @@
       "writtenOn": "2023-02-03T16:38:35Z",
       "side": 1,
       "message": "...we never reach any of this code.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 13
+      },
+      "revId": "242521c094672f373b23f7e10d82aded037ed8fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27796c7e_d4a11d95",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionEq.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-08T20:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fb9c99_519c8368",
       "range": {
         "startLine": 74,
         "startChar": 1,
