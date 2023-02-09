@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52adb3d1_ee21c27d",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-02-09T18:57:53Z",
+      "side": 1,
+      "message": "If we really want to handle sp\u003c\u003e::make() returning null, valid() should also check null for mFence, otherwise it will still crash in CreateMultipleFDSyncFence() \"if (p \u0026\u0026 !p-\u003evalid())\" when sp\u003c\u003e::make() returns null.",
+      "revId": "fef9f77d9b80c603e05686afcd1b575c54d440cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
