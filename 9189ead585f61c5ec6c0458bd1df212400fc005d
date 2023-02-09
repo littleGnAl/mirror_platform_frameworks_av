@@ -16,6 +16,29 @@
       "message": "Done",
       "revId": "9189ead585f61c5ec6c0458bd1df212400fc005d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c38ef210_e71448b2",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-09T13:30:34Z",
+      "side": 1,
+      "message": "this skips the final element, so that final element will always be dropped.\n\nfor (i\u003d0; i \u003c size() ; i++)",
+      "range": {
+        "startLine": 1001,
+        "startChar": 27,
+        "endLine": 1001,
+        "endChar": 59
+      },
+      "revId": "9189ead585f61c5ec6c0458bd1df212400fc005d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
