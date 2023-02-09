@@ -1185,6 +1185,16 @@ status_t convertMetaDataToMessage(
         }
     }
 
+    int32_t profile;
+    if (meta->findInt32(kKeyVideoProfile, &profile)) {
+        msg->setInt32("profile", profile);
+    }
+
+    int32_t level;
+    if (meta->findInt32(kKeyVideoLevel, &level)) {
+        msg->setInt32("level", level);
+    }
+
     int32_t maxInputSize;
     if (meta->findInt32(kKeyMaxInputSize, &maxInputSize)) {
         msg->setInt32("max-input-size", maxInputSize);
@@ -2043,6 +2053,16 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         if (msg->findInt32("haptic-channel-count", &hapticChannelCount)) {
             meta->setInt32(kKeyHapticChannelCount, hapticChannelCount);
         }
+    }
+
+    int32_t profile;
+    if (msg->findInt32("profile", &profile)) {
+        meta->setInt32(kKeyVideoProfile, profile);
+    }
+
+    int32_t level;
+    if (msg->findInt32("level", &level)) {
+        meta->setInt32(kKeyVideoLevel, level);
     }
 
     int32_t maxInputSize;
