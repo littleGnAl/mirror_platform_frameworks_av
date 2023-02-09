@@ -32,8 +32,9 @@ CaptureStateNotifier::~CaptureStateNotifier() {
 
 bool CaptureStateNotifier::RegisterListener(const sp<ICaptureStateListener>& listener) {
     std::lock_guard<std::mutex> _l(mMutex);
-    LOG_ALWAYS_FATAL_IF(mListener != nullptr);
-    LOG_ALWAYS_FATAL_IF(listener == nullptr);
+    // FIXME: needs to move up a layer in the stack ?
+    if (mListener != nullptr) return false;
+    if (listener == nullptr) return false;
 
     ALOGI("Registering a listener");
     sp<IBinder> binder = IInterface::asBinder(listener);
