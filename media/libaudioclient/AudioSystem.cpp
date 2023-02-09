@@ -2492,7 +2492,7 @@ private:
 
 status_t AudioSystem::registerSoundTriggerCaptureStateListener(
         const sp<CaptureStateListener>& listener) {
-    LOG_ALWAYS_FATAL_IF(listener == nullptr);
+    if (listener == nullptr) return UNEXPECTED_NULL;
 
     const sp<IAudioPolicyService>& aps =
             AudioSystem::get_audio_policy_service();
