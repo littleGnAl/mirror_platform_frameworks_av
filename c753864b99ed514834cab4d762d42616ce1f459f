@@ -16,6 +16,29 @@
       "message": "Adding Harish who owns maintenance for this part of the code.",
       "revId": "c753864b99ed514834cab4d762d42616ce1f459f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35810ff5_f2cbedde",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-02-10T20:47:47Z",
+      "side": 1,
+      "message": "we typically do not use macros with control flow, but if so, this would need to be capitalized and be more descriptive about that it returns from the method.\n\ne.g. #define RETURN_ERROR_IF_NOT_ENOUGH_BYTES_LEFT(bitstream, size) \\\n\nusing camelCase suggests it is just a method call, and that would not return out of the function.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 0
+      },
+      "revId": "c753864b99ed514834cab4d762d42616ce1f459f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
