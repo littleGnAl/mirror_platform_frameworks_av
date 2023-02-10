@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa8bc636_8317b466",
+        "filename": "drm/drmserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-10T22:36:07Z",
+      "side": 1,
+      "message": "hey - we might want to take the bugs first, to help triage. This will still be assigned to us given service_fuzzer_defaults, right?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1672405_043d1e09",
+        "filename": "drm/drmserver/DrmManagerService.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-10T22:36:07Z",
+      "side": 1,
+      "message": "I\u0027d recommend making this public, rather than adding a friend class. It would also save from needing the extra class, WDYT?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
