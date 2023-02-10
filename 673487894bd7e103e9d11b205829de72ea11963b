@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70513d4_78326af5",
+        "filename": "drm/drmserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-10T22:57:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "da378f8a_d787b384",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1672405_043d1e09",
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "I am not completely aware about DrmManagerService usage. It appears to be used as singleton. Making it public may cause improper usage in future. I think its better to have a friend class instead of touching the core design.",
       "parentUuid": "e1672405_043d1e09",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce15d986_f7acef89",
+        "filename": "drm/drmserver/DrmManagerService.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-10T22:57:57Z",
+      "side": 1,
+      "message": "Btw - you can see it\u0027s not exported in frameworks/av/drm/drmserver/Android.bp, so we don\u0027t really care about this case too much. As the CL is, I think it makes sense, and the comment I\u0027m making is more about a case where it\u0027s an API.\n\nPart of the risk of friend class is that anyone can create a class called DrmManagerServiceFuzzer and bypass the rules in our tree. We don\u0027t really expect this to happen, but a function with a comment explaining its for testing (or using the PrivateAccessor pattern https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/include/binder/BpBinder.h;l\u003d126;drc\u003d356a022afc20911223066ad92903e5a59699087b) will limit what we expose according to C++ language rules. The \u0027friend class\u0027 actually exposes every internal implementation detail. Again, for this case for drmserver, it doesn\u0027t matter much.\n\nReally - the CL as-is is great. If Robert is happy with it, I\u0027m also happy with it.",
+      "parentUuid": "e54a8000_009d01ad",
       "range": {
         "startLine": 58,
         "startChar": 0,
