@@ -63,6 +63,30 @@
       },
       "revId": "9189ead585f61c5ec6c0458bd1df212400fc005d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef431e1_ccf1430e",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-10T15:49:10Z",
+      "side": 1,
+      "message": "i do not have an issue with that final entry being one of the thinned ones. If that is what the algorithm is supposed to do, then that is fine.\n\nbut i want the  i \u003c size() instead of size()-1  because it highlights that the final entry is dropped by the math, not because we stopped the loop 1 iteration early.",
+      "parentUuid": "50aa8778_fc9c3dd8",
+      "range": {
+        "startLine": 1001,
+        "startChar": 27,
+        "endLine": 1001,
+        "endChar": 59
+      },
+      "revId": "9189ead585f61c5ec6c0458bd1df212400fc005d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
