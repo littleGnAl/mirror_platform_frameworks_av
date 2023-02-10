@@ -39,6 +39,30 @@
       },
       "revId": "c753864b99ed514834cab4d762d42616ce1f459f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6694d976_ed0738d8",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-10T22:24:06Z",
+      "side": 1,
+      "message": "and if we decide to keep it as a macro, we need to make sure that it can not break other control flow:\n\nif (a) \n    thismacro()\nelse\n    something else\n    \nEasiest way to do that is\n\n#define macro()\n    do { ... body of macro ... } while (0)",
+      "parentUuid": "35810ff5_f2cbedde",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 0
+      },
+      "revId": "c753864b99ed514834cab4d762d42616ce1f459f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
