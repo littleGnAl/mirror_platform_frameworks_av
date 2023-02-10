@@ -642,7 +642,7 @@ class Camera3Device :
      *
      * Must be called with mLock and mInterfaceLock held.
      */
-    status_t initializeCommonLocked();
+    status_t initializeCommonLocked(sp<CameraProviderManager> manager);
 
     /**
      * Get the last request submitted to the hal by the request thread.

@@ -305,7 +305,7 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
         }
     }
 
-    return initializeCommonLocked();
+    return initializeCommonLocked(manager);
 }
 
 ::ndk::ScopedAStatus AidlCamera3Device::AidlCameraDeviceCallbacks::processCaptureResult(

@@ -146,7 +146,7 @@ status_t Camera2ClientBase<TClientBase>::initializeImpl(TProviderPtr providerPtr
     res = mDevice->setNotifyCallback(weakThis);
 
     /** Start watchdog thread */
-    mCameraServiceWatchdog = new CameraServiceWatchdog();
+    mCameraServiceWatchdog = new CameraServiceWatchdog(providerPtr->getProviderPids());
     mCameraServiceWatchdog->run("Camera2ClientBaseWatchdog");
 
     return OK;

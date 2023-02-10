@@ -97,6 +97,7 @@ cc_library_shared {
         "hidl/Utils.cpp",
         "utils/CameraServiceProxyWrapper.cpp",
         "utils/CameraThreadState.cpp",
+        "utils/CameraTombstone.cpp",
         "utils/CameraTraces.cpp",
         "utils/AutoConditionLock.cpp",
         "utils/SessionConfigurationUtils.cpp",
@@ -115,6 +116,7 @@ cc_library_shared {
 
     shared_libs: [
         "libbase",
+        "libdebuggerd_client",
         "libdl",
         "libexif",
         "libui",

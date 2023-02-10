@@ -30,6 +30,7 @@
 #include <dlfcn.h>
 #include <future>
 #include <inttypes.h>
+#include <android/binder_libbinder.h>
 #include <android/binder_manager.h>
 #include <android/hidl/manager/1.2/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
@@ -1701,6 +1702,13 @@ status_t CameraProviderManager::tryToInitializeAidlProviderLocked(
         return BAD_VALUE;
     }
 
+    pid_t pid = 0;
+
+    if(AIBinder_toPlatformBinder(interface->asBinder().get())->getDebugPid(&pid) == OK) {
+        std::lock_guard<std::mutex> lock(mProviderPidMapLock);
+        mProviderPidMap[providerInfo->mProviderInstance] = pid;
+    }
+
     AidlProviderInfo *aidlProviderInfo = static_cast<AidlProviderInfo *>(providerInfo.get());
     return aidlProviderInfo->initializeAidlProvider(interface, mDeviceState);
 }
@@ -1716,6 +1724,16 @@ status_t CameraProviderManager::tryToInitializeHidlProviderLocked(
         ALOGW("%s: HIDL Camera provider HAL '%s' is not actually available", __FUNCTION__,
                 providerName.c_str());
         return BAD_VALUE;
+    }
+
+    {
+        pid_t pid = 0;
+
+        interface->getDebugInfo([&pid](const ::android::hidl::base::V1_0::DebugInfo& info) {
+            pid = info.pid;
+        });
+        std::lock_guard<std::mutex> lock(mProviderPidMapLock);
+        mProviderPidMap[providerInfo->mProviderInstance] = pid;
     }
 
     HidlProviderInfo *hidlProviderInfo = static_cast<HidlProviderInfo *>(providerInfo.get());
@@ -1828,6 +1846,8 @@ status_t CameraProviderManager::removeProvider(const std::string& provider) {
         ALOGW("%s: Camera provider HAL with name '%s' is not registered", __FUNCTION__,
                 provider.c_str());
     } else {
+        mProviderPidMap.erase(provider);
+
         // Check if there are any newer camera instances from the same provider and try to
         // initialize.
         for (const auto& providerInfo : mProviders) {
@@ -2005,6 +2025,16 @@ void CameraProviderManager::ProviderInfo::removeAllDevices() {
 
 bool CameraProviderManager::ProviderInfo::isExternalLazyHAL() const {
     return kEnableLazyHal && (mProviderName == kExternalProviderName);
+}
+
+std::vector<pid_t> CameraProviderManager::getProviderPids() {
+    std::lock_guard<std::mutex> lock(mProviderPidMapLock);
+
+    std::vector<pid_t> pids;
+    std::transform(mProviderPidMap.begin(), mProviderPidMap.end(), std::back_inserter(pids),
+              [](std::pair<const std::string, pid_t>& entry) { return entry.second; });
+
+    return pids;
 }
 
 status_t CameraProviderManager::ProviderInfo::dump(int fd, const Vector<String16>&) const {

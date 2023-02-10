@@ -35,6 +35,7 @@
 #include <utils/Thread.h>
 #include <utils/Log.h>
 #include <unordered_map>
+#include <vector>
 
 // Used to wrap the call of interest in start and stop calls
 #define WATCH(toMonitor) watchThread([&]() { return toMonitor;}, gettid())
@@ -50,11 +51,12 @@ namespace android {
 class CameraServiceWatchdog : public Thread {
 
 public:
-    explicit CameraServiceWatchdog() : mPause(true), mMaxCycles(kMaxCycles),
-            mCycleLengthMs(kCycleLengthMs), mEnabled(true) {};
+    explicit CameraServiceWatchdog(std::vector<pid_t> pids) : mPids(pids), mPause(true),
+            mMaxCycles(kMaxCycles), mCycleLengthMs(kCycleLengthMs), mEnabled(true) {};
 
-    explicit CameraServiceWatchdog (size_t maxCycles, uint32_t cycleLengthMs, bool enabled) :
-            mPause(true), mMaxCycles(maxCycles), mCycleLengthMs(cycleLengthMs), mEnabled(enabled)
+    explicit CameraServiceWatchdog(std::vector<pid_t> pids, size_t maxCycles,
+            uint32_t cycleLengthMs, bool enabled) : mPids(pids), mPause(true),
+            mMaxCycles(maxCycles), mCycleLengthMs(cycleLengthMs), mEnabled(enabled)
                     {};
 
     virtual ~CameraServiceWatchdog() {};
@@ -76,7 +78,7 @@ public:
             // Lock for mEnabled
             mEnabledLock.lock();
             sp<CameraServiceWatchdog> tempWatchdog =
-                    new CameraServiceWatchdog(cycles, cycleLength, mEnabled);
+                    new CameraServiceWatchdog(mPids, cycles, cycleLength, mEnabled);
             mEnabledLock.unlock();
 
             status_t status = tempWatchdog->run("CameraServiceWatchdog");
@@ -131,13 +133,14 @@ private:
 
     virtual bool    threadLoop();
 
-    Mutex           mWatchdogLock;      // Lock for condition variable
-    Mutex           mEnabledLock;       // Lock for enabled status
-    Condition       mWatchdogCondition; // Condition variable for stop/start
-    bool            mPause;             // True if tid map is empty
-    uint32_t        mMaxCycles;         // Max cycles
-    uint32_t        mCycleLengthMs;     // Length of time elapsed per cycle
-    bool            mEnabled;           // True if watchdog is enabled
+    Mutex               mWatchdogLock;      // Lock for condition variable
+    Mutex               mEnabledLock;       // Lock for enabled status
+    Condition           mWatchdogCondition; // Condition variable for stop/start
+    std::vector<pid_t>  mPids;
+    bool                mPause;             // True if tid map is empty
+    uint32_t            mMaxCycles;         // Max cycles
+    uint32_t            mCycleLengthMs;     // Length of time elapsed per cycle
+    bool                mEnabled;           // True if watchdog is enabled
 
     std::unordered_map<uint32_t, uint32_t> tidToCycleCounterMap; // Thread Id to cycle counter map
 };
