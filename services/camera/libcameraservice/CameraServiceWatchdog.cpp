@@ -44,6 +44,9 @@ bool CameraServiceWatchdog::threadLoop()
                 ALOGW("CameraServiceWatchdog triggering abort for pid: %d", getpid());
                 // We use abort here so we can get a tombstone for better
                 // debugging.
+                for (pid_t pid : mPids) {
+                    kill(pid, SIGABRT);
+                }
                 abort();
             }
         }
