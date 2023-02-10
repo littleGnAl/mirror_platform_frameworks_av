@@ -16,6 +16,23 @@
       "message": "Dorin, do you have an explanation for render delay, and how it differs from output delay? E.g. why we could not increase output delay for this?",
       "revId": "bbc5a88066e0df68dba1ce522979519aac2c2d25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90310e4_d27a79ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-02-10T20:49:05Z",
+      "side": 1,
+      "message": "Also, if delay is truly needed, please separate core/* file changes from other file changes into a separate CL",
+      "revId": "bbc5a88066e0df68dba1ce522979519aac2c2d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
