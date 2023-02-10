@@ -39,6 +39,30 @@
       },
       "revId": "9189ead585f61c5ec6c0458bd1df212400fc005d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50aa8778_fc9c3dd8",
+        "filename": "media/module/extractors/ogg/OggExtractor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1978000
+      },
+      "writtenOn": "2023-02-10T02:49:33Z",
+      "side": 1,
+      "message": "The final element always makes accum \u003d\u003d numerator.\nEven for (i\u003d0; i \u003c size(); i++), the final element will always be dropped, just like the original code always drop the first element.\nBut I agree that for (i\u003d0; i \u003c size()-1 ; i++) is a bit confusing.\n\nHow about reserve one more element in maxTOC and push the final element after loop quits?\n\nmaxTOC.setCapacity(kMaxNumTOCEntries + 1);\n\nThis changes mTableOfContents.size from 512 to 513, not power of 2, which seems no effect on binary search.",
+      "parentUuid": "c38ef210_e71448b2",
+      "range": {
+        "startLine": 1001,
+        "startChar": 27,
+        "endLine": 1001,
+        "endChar": 59
+      },
+      "revId": "9189ead585f61c5ec6c0458bd1df212400fc005d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
