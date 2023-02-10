@@ -111,7 +111,7 @@ const String8& Camera3Device::getId() const {
     return mId;
 }
 
-status_t Camera3Device::initializeCommonLocked() {
+status_t Camera3Device::initializeCommonLocked(sp<CameraProviderManager> manager) {
 
     /** Start up status tracker thread */
     mStatusTracker = new StatusTracker(this);
@@ -227,7 +227,7 @@ status_t Camera3Device::initializeCommonLocked() {
     mInjectionMethods = createCamera3DeviceInjectionMethods(this);
 
     /** Start watchdog thread */
-    mCameraServiceWatchdog = new CameraServiceWatchdog();
+    mCameraServiceWatchdog = new CameraServiceWatchdog(manager->getProviderPids());
     res = mCameraServiceWatchdog->run("CameraServiceWatchdog");
     if (res != OK) {
         SET_ERR_L("Unable to start camera service watchdog thread: %s (%d)",
