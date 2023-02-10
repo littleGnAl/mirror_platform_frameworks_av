@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e210dfd_ca389061",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-10T22:47:18Z",
+      "side": 1,
+      "message": "Can you also update the exception list in system/sepolicy?",
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa8bc636_8317b466",
         "filename": "drm/drmserver/Android.bp",
         "patchSetId": 4
