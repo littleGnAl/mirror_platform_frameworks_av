@@ -17,6 +17,7 @@
 #define LOG_TAG "CameraServiceWatchdog"
 
 #include "CameraServiceWatchdog.h"
+#include "utils/CameraTombstone.h"
 
 namespace android {
 
@@ -44,6 +45,10 @@ bool CameraServiceWatchdog::threadLoop()
                 ALOGW("CameraServiceWatchdog triggering abort for pid: %d", getpid());
                 // We use abort here so we can get a tombstone for better
                 // debugging.
+                camera3::CameraTombstone::dump(getpid());
+                for (pid_t pid : mPids) {
+                    camera3::CameraTombstone::dump(pid);
+                }
                 abort();
             }
         }
