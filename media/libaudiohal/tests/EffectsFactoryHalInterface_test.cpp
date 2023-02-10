@@ -31,10 +31,13 @@
 #include <system/audio_effects/effect_bassboost.h>
 #include <system/audio_effects/effect_downmix.h>
 #include <system/audio_effects/effect_dynamicsprocessing.h>
+#include <system/audio_effects/effect_hapticgenerator.h>
+#include <system/audio_effects/effect_loudnessenhancer.h>
 #include <system/audio_effect.h>
 
 #include <gtest/gtest.h>
 #include <utils/RefBase.h>
+#include <vibrator/ExternalVibrationUtils.h>
 
 namespace android {
 
@@ -162,7 +165,18 @@ std::vector<EffectParamTestTuple> testPairs = {
         std::make_tuple(SL_IID_DYNAMICSPROCESSING,
                         createEffectParamCombination(
                                 std::array<uint32_t, 2>({DP_PARAM_INPUT_GAIN, 0 /* channel */}),
-                                30 /* gainDb */, sizeof(int32_t) /* returnValueSize */))};
+                                30 /* gainDb */, sizeof(int32_t) /* returnValueSize */)),
+        std::make_tuple(
+                FX_IID_HAPTICGENERATOR,
+                createEffectParamCombination(
+                        HG_PARAM_HAPTIC_INTENSITY,
+                        std::array<uint32_t, 2>(
+                                {1, uint32_t(::android::os::HapticScale::HIGH) /* scale */}),
+                        sizeof(int32_t) /* returnValueSize */)),
+        std::make_tuple(
+                FX_IID_LOUDNESS_ENHANCER,
+                createEffectParamCombination(LOUDNESS_ENHANCER_PARAM_TARGET_GAIN_MB, 5 /* gain */,
+                                             sizeof(int32_t) /* returnValueSize */))};
 
 class libAudioHalEffectParamTest : public ::testing::TestWithParam<EffectParamTestTuple> {
   public:
