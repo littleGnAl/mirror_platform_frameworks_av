@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49fff54b_75df9cb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-02-10T22:50:46Z",
+      "side": 1,
+      "message": "I will follow up with CL.",
+      "parentUuid": "8e210dfd_ca389061",
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa8bc636_8317b466",
         "filename": "drm/drmserver/Android.bp",
         "patchSetId": 4
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da378f8a_d787b384",
+        "filename": "drm/drmserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-02-10T22:50:46Z",
+      "side": 1,
+      "message": "Yeah, our emails are there in defaults. Should I remove this completely from here? Bug assignment based on cc can be different though.",
+      "parentUuid": "aa8bc636_8317b466",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1672405_043d1e09",
         "filename": "drm/drmserver/DrmManagerService.h",
         "patchSetId": 4
@@ -54,6 +96,30 @@
       "writtenOn": "2023-02-10T22:36:07Z",
       "side": 1,
       "message": "I\u0027d recommend making this public, rather than adding a friend class. It would also save from needing the extra class, WDYT?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54a8000_009d01ad",
+        "filename": "drm/drmserver/DrmManagerService.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-02-10T22:50:46Z",
+      "side": 1,
+      "message": "I am not completely aware about DrmManagerService usage. It appears to be used as singleton. Making it public may cause improper usage in future. I think its better to have a friend class instead of touching the core design.",
+      "parentUuid": "e1672405_043d1e09",
       "range": {
         "startLine": 58,
         "startChar": 0,
