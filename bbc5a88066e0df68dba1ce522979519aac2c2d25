@@ -33,6 +33,24 @@
       "message": "Also, if delay is truly needed, please separate core/* file changes from other file changes into a separate CL",
       "revId": "bbc5a88066e0df68dba1ce522979519aac2c2d25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f0afb5_519a20a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-02-13T12:55:08Z",
+      "side": 1,
+      "message": "In my understanding of the problem, a bigger \"outputDelay\" will solve the issue, but will consume too much memory. \"renderDelay\" is practically an allowed configurable \"error margin\" in the stuck pipeline watcher without the side effect of using more memory.",
+      "parentUuid": "66c859ad_55b51194",
+      "revId": "bbc5a88066e0df68dba1ce522979519aac2c2d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
