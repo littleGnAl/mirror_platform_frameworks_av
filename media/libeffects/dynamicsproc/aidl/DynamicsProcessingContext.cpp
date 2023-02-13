@@ -420,9 +420,8 @@ bool DynamicsProcessingContext::validateEngineConfig(
            validateStageEnablement(engine.postEqStage) && validateStageEnablement(engine.mbcStage);
 }
 
-inline bool DynamicsProcessingContext::validateCutoffFrequency(float freq) {
-    return freq >= DynamicsProcessingImpl::kCapability.minCutOffFreq &&
-            freq <= DynamicsProcessingImpl::kCapability.maxCutOffFreq;
+inline bool DynamicsProcessingContext::validateCutoffFrequency(float freq __unused) {
+    return true;
 }
 
 bool DynamicsProcessingContext::validateEqBandConfig(const DynamicsProcessing::EqBandConfig& band,
