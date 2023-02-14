@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ae7563d_d91b75c1",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-14T22:37:05Z",
+      "side": 1,
+      "message": "just add it for the new code, thanks!",
+      "parentUuid": "a088d584_08686d04",
+      "range": {
+        "startLine": 470,
+        "startChar": 37,
+        "endLine": 470,
+        "endChar": 38
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da01cd5b_5abff0ae",
         "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
         "patchSetId": 4
@@ -226,6 +250,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c6c18c0_e845a95a",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-14T22:37:05Z",
+      "side": 1,
+      "message": "Just add it for the new code, thanks!",
+      "parentUuid": "3e6faba3_efd16323",
+      "range": {
+        "startLine": 740,
+        "startChar": 4,
+        "endLine": 740,
+        "endChar": 11
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee217b47_92ddd28d",
         "filename": "media/codec2/vndk/C2Config.cpp",
         "patchSetId": 4
@@ -261,6 +309,30 @@
       "side": 1,
       "message": "I found other strings (from line 28 to line 152) use \"-\" as the separator so that I use \"-\" to keep consistence. And if I use \"-\" as the separator, \"ac-4-00-00\" will be a little tricky since the first \"-\" has different meaning than other two. That\u0027s why I choose to use \"ac4-00-00\".\n\nBTW, AC-4 mimetype is \"audio/ac4\" (no \"-\") so that I think \"ac4-00-00\" should be OK and is not ambiguous.",
       "parentUuid": "ee217b47_92ddd28d",
+      "range": {
+        "startLine": 153,
+        "startChar": 10,
+        "endLine": 153,
+        "endChar": 21
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65866611_56dcb4a8",
+        "filename": "media/codec2/vndk/C2Config.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-14T22:37:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fe93a86e_eee0fd86",
       "range": {
         "startLine": 153,
         "startChar": 10,
@@ -379,6 +451,30 @@
       "side": 1,
       "message": "I didn\u0027t change it this time. I assume it should be done by an independent commit to change it for all these methods.",
       "parentUuid": "e9e6ef5e_44e1af3e",
+      "range": {
+        "startLine": 585,
+        "startChar": 54,
+        "endLine": 585,
+        "endChar": 55
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c11114_b6db22cc",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-14T22:37:05Z",
+      "side": 1,
+      "message": "please just do it for the new code, thanks!",
+      "parentUuid": "6181d12d_a024cdc8",
       "range": {
         "startLine": 585,
         "startChar": 54,
