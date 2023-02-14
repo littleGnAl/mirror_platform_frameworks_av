@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a088d584_08686d04",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-02-14T03:15:27Z",
+      "side": 1,
+      "message": "I didn\u0027t add \"const\" this time. I assume it should be done by an independent commit to change it for all similar structures.",
+      "parentUuid": "8d2460fc_2615d055",
+      "range": {
+        "startLine": 470,
+        "startChar": 37,
+        "endLine": 470,
+        "endChar": 38
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da01cd5b_5abff0ae",
         "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
         "patchSetId": 4
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "Yes, I can do it.\n\nThe only problem is other similar classes in this file, e.g. line 676, 706, use \"virtual\" and don\u0027t use \"override\" either. Should I change it here for AC-4 only or your team submits an independent commit to change it for all similar classes?",
       "parentUuid": "da01cd5b_5abff0ae",
+      "range": {
+        "startLine": 740,
+        "startChar": 4,
+        "endLine": 740,
+        "endChar": 11
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6faba3_efd16323",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-02-14T03:15:27Z",
+      "side": 1,
+      "message": "I neither omit virtual nor add override this time. I assume it should be done by an independent commit to change it for all similar structures.",
+      "parentUuid": "1d258ac3_5a025b16",
       "range": {
         "startLine": 740,
         "startChar": 4,
@@ -312,6 +360,30 @@
         "startChar": 14,
         "endLine": 585,
         "endChar": 19
+      },
+      "revId": "14bf307620cf74df07030eb336c15a12229a5967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6181d12d_a024cdc8",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-02-14T03:15:27Z",
+      "side": 1,
+      "message": "I didn\u0027t change it this time. I assume it should be done by an independent commit to change it for all these methods.",
+      "parentUuid": "e9e6ef5e_44e1af3e",
+      "range": {
+        "startLine": 585,
+        "startChar": 54,
+        "endLine": 585,
+        "endChar": 55
       },
       "revId": "14bf307620cf74df07030eb336c15a12229a5967",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
