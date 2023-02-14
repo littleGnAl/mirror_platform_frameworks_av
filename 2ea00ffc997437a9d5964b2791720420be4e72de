@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4abf1bdf_7658f45a",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionBassBoost.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-14T00:08:53Z",
+      "side": 1,
+      "message": "Perhaps, add an utility function similar to \u0027inRange\u0027 for this?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 48
+      },
+      "revId": "2ea00ffc997437a9d5964b2791720420be4e72de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3177a72_1ae88d4e",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-14T00:08:53Z",
+      "side": 1,
+      "message": "Why can\u0027t we remove it?",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 1
+      },
+      "revId": "2ea00ffc997437a9d5964b2791720420be4e72de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d357eea_c4cb9bed",
+        "filename": "media/libeffects/visualizer/aidl/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-14T00:08:53Z",
+      "side": 1,
+      "message": "An empty vector. Intended?",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "2ea00ffc997437a9d5964b2791720420be4e72de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
