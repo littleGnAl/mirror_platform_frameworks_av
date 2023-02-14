@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0db16c0_d024eb39",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionBassBoost.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-14T16:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4abf1bdf_7658f45a",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 48
+      },
+      "revId": "2ea00ffc997437a9d5964b2791720420be4e72de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3177a72_1ae88d4e",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96843848_1b115c5c",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-14T16:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3177a72_1ae88d4e",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 1
+      },
+      "revId": "2ea00ffc997437a9d5964b2791720420be4e72de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d357eea_c4cb9bed",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-14T00:08:53Z",
       "side": 1,
       "message": "An empty vector. Intended?",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "2ea00ffc997437a9d5964b2791720420be4e72de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a604906_609c31d6",
+        "filename": "media/libeffects/visualizer/aidl/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-14T16:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d357eea_c4cb9bed",
       "range": {
         "startLine": 64,
         "startChar": 19,
