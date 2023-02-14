@@ -176,7 +176,10 @@ std::vector<EffectParamTestTuple> testPairs = {
         std::make_tuple(
                 FX_IID_LOUDNESS_ENHANCER,
                 createEffectParamCombination(LOUDNESS_ENHANCER_PARAM_TARGET_GAIN_MB, 5 /* gain */,
-                                             sizeof(int32_t) /* returnValueSize */))};
+                                             sizeof(int32_t) /* returnValueSize */)),
+        std::make_tuple(FX_IID_NS,
+                        createEffectParamCombination(NS_PARAM_LEVEL, 1 /* level */,
+                                                     sizeof(int32_t) /* returnValueSize */))};
 
 class libAudioHalEffectParamTest : public ::testing::TestWithParam<EffectParamTestTuple> {
   public:
