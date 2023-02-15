@@ -22,6 +22,30 @@
       },
       "revId": "8fbf3fbb3993207dd9c339ac76a0a103ddb68245",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24dee807_d0d05bcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1982117
+      },
+      "writtenOn": "2023-02-15T06:10:59Z",
+      "side": 1,
+      "message": "If the startProviderInterface() fails to link death recipient to a restarted provider instance with lazy HAL enabled, then it tries to remove the provider info from provider manager and return a null interface.\n\nHowever, it provides a provider name not a provider instance [name], when it tries to remove provider info.\n\nSo, it only happens in a quite rare situation where \u0027IBase::linkToDeath()\u0027 or \u0027AIBinder_linkToDeath()\u0027 fails on a newly restarted binder interface.\n\nThanks.",
+      "parentUuid": "e0c8f6b5_2b9e3188",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "8fbf3fbb3993207dd9c339ac76a0a103ddb68245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
