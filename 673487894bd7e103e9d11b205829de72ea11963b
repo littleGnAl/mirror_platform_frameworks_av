@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0ba081_df99e68b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-02-15T19:58:26Z",
+      "side": 1,
+      "message": "Added here: https://android-review.git.corp.google.com/c/platform/system/sepolicy/+/2438893",
+      "parentUuid": "49fff54b_75df9cb5",
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa8bc636_8317b466",
@@ -168,6 +186,30 @@
       "side": 1,
       "message": "Btw - you can see it\u0027s not exported in frameworks/av/drm/drmserver/Android.bp, so we don\u0027t really care about this case too much. As the CL is, I think it makes sense, and the comment I\u0027m making is more about a case where it\u0027s an API.\n\nPart of the risk of friend class is that anyone can create a class called DrmManagerServiceFuzzer and bypass the rules in our tree. We don\u0027t really expect this to happen, but a function with a comment explaining its for testing (or using the PrivateAccessor pattern https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/include/binder/BpBinder.h;l\u003d126;drc\u003d356a022afc20911223066ad92903e5a59699087b) will limit what we expose according to C++ language rules. The \u0027friend class\u0027 actually exposes every internal implementation detail. Again, for this case for drmserver, it doesn\u0027t matter much.\n\nReally - the CL as-is is great. If Robert is happy with it, I\u0027m also happy with it.",
       "parentUuid": "e54a8000_009d01ad",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "673487894bd7e103e9d11b205829de72ea11963b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef563d3e_3675fdb2",
+        "filename": "drm/drmserver/DrmManagerService.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-02-15T19:58:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ce15d986_f7acef89",
       "range": {
         "startLine": 58,
         "startChar": 0,
