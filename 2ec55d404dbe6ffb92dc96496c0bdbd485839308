@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "641a6ed9_aa01c931",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-15T03:54:39Z",
+      "side": 1,
+      "message": "Adding Lajos.  This needs to be merged by tomorrow.",
+      "revId": "2ec55d404dbe6ffb92dc96496c0bdbd485839308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb1c512_630bf912",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-15T03:54:39Z",
+      "side": 1,
+      "message": "nit: we typically put const before the type.  here and on line 478.\n\n    const ALookup\u003cC2Config::profile_t, int32_t\u003e sAc4Profiles \u003d",
+      "range": {
+        "startLine": 470,
+        "startChar": 38,
+        "endLine": 470,
+        "endChar": 43
+      },
+      "revId": "2ec55d404dbe6ffb92dc96496c0bdbd485839308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
