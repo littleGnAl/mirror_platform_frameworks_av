@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f812b5ba_380be06e",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionNoiseSuppression.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-15T01:42:07Z",
+      "side": 1,
+      "message": "It seems somewhat error-prone to me to shadow a variable. Perhaps, prefix the names of the variables defined on the line 73 with `param`, or prefix these ones with `aidl` similar to `setParameter`?",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "9bb8c076fbb20eeb48dfe6baf1adaae2772bf315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
