@@ -16,6 +16,24 @@
       "message": "Thanks for reworking the CL and providing some justification. My biggest concern is that the addition of render delay significantly changes the C2 work model. In the C2 model, output delay marks the # of completed output frames that a component may hold onto before completing a queued work item (via onWorkDone). Tunneled components are modeled as a chained [ [decoder] + [renderer] ], so onWorkDone should only be called when the renderer has rendered the frame. Since the renderer does not alter the output (while also doesn\u0027t return it), it seems that the render delay is really the output delay. We do already have a C2 defined param: pipeline delay that can be used to express additional delay within the component. (In a chained component, the decoder\u0027s output delay + the renderer\u0027s input delay becomes the combined component\u0027s pipeline delay, as the work is essentially pipelined at that stage.) When there is a pipeline delay, the framework may not know exactly how many output buffers need to be allocated for the pipeline, but at most it is the pipeline\u0027s length (delay), so we could set the max frames to be that. We are exploring ways to dynamically detect the required output buffers for a component to automatically reduce memory in the near future.",
       "revId": "df322ef078fb41308178312baccbde501c3c71be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df38068d_a3d06707",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-02-15T18:39:47Z",
+      "side": 1,
+      "message": "Actually, I was a bit confusing just above in the chained component\u0027s delay description. In a regular chained component [ [decoder] + [post processor] ], the decoder\u0027s output delay and the post processor\u0027s input delay effectively becomes the combined component\u0027s pipeline delay as the chained component is a kind of pipeline. For tunneled decoder, the renderer is not generating output, so here the output delay is effectively increased for any delay in the renderer. The decoder\u0027s output delay is meant to service decoder frame reordering required by the spec (so we need to hold onto as many output buffers). If there is additional delay in the renderer, it essentially must increase the number of output buffers we need to hold onto.",
+      "parentUuid": "2319ae6d_7fa82ef2",
+      "revId": "df322ef078fb41308178312baccbde501c3c71be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
