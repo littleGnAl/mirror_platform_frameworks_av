@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb91d68_df70a9ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-16T23:43:25Z",
+      "side": 1,
+      "message": "What is the underlying reason for \u0027Pure virtual function called\u0027 error? Is that because an object which is accessed via an interface has already been destroyed? That should be prevented by a proper strong pointer management. Maybe, there is a missing ownership from the caller? Does it use a raw pointer?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "c266c2473273c75e531f1bba874fe992ebac670c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7004a8_b1af60fb",
+        "filename": "services/audioflinger/PlaybackTracks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-16T23:43:25Z",
+      "side": 1,
+      "message": "I\u0027m opposed to introducing another yet another lock. AudioFlinger and Thread/Track classes are inherently complex, and by introducing a lock at this level it\u0027s very easy to introduce a deadlock due to inconsistent order of lock taking. Until we have a proper static lock analysis in place, the only kind of locks that can be safely added is one protecting some simple data structure. This lock does not satisfy this condition because it\u0027s used across AF and Threads, with arbitrary calls in between.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "c266c2473273c75e531f1bba874fe992ebac670c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
