@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8aa239_aebf9770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-16T00:21:04Z",
+      "side": 1,
+      "message": "Hi Shraddha,\n\nIt looks like this CL wasn\u0027t rebase to aosp/master which have the range parameter changes, also seems vts is failing.\nI will cherry-pick and see if I can fix them.",
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
