@@ -16,6 +16,115 @@
       "message": "Hi Shraddha,\n\nIt looks like this CL wasn\u0027t rebase to aosp/master which have the range parameter changes, also seems vts is failing.\nI will cherry-pick and see if I can fix them.",
       "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3895da_4f4af5f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-16T02:43:58Z",
+      "side": 1,
+      "message": "I think this is WIP, but here are some suggestions which may help with the presubmit failures",
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5a65c8_ac9f97db",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-16T02:43:58Z",
+      "side": 1,
+      "message": "For the parameter VTS failures, you need this line here:\n```\nmCommon \u003d common;\n```",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d72417_6626e087",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-16T02:43:58Z",
+      "side": 1,
+      "message": "For the VTS failures of data processing, I think you need this change here:\n```\n@@ -217,6 +212,8 @@ IEffect::Status PreProcessingContext::lvmProcess(float* in, float* out, int samp\n     std::lock_guard lg(mMutex);\n\n     mProcessedMsk |\u003d (1 \u003c\u003c int(mType));\n+    // webrtc implmentation clear out was_stream_delay_set every time after ProcessStream() call\n+    mAudioProcessingModule-\u003eset_stream_delay_ms(mEchoDelayUs / 1000);\n```",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 39
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c93852d_e8fb80bd",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-16T02:43:58Z",
+      "side": 1,
+      "message": "`revert Stream`\nThis log is same as line#226 which will cause confusion in debugging",
+      "range": {
+        "startLine": 238,
+        "startChar": 35,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b82fff_50478066",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-16T02:43:58Z",
+      "side": 1,
+      "message": "Add default values for them",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
