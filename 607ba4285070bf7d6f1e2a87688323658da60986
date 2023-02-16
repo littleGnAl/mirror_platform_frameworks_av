@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a46a097_17aae37d",
+        "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-02-16T08:43:57Z",
+      "side": 0,
+      "message": "Thanks for the fix! Some questions:\n- It looks like mDone in the sink thread is only set to true on initialization (and then gets set to false immediately before run()) and in run() itself (in which case run() returns and a subsequent start() would reset it to false). So from what I can tell the while loop in run() never exits due to mDone becoming false (and also the while loop is never skipped entirely when run() is called). Does that sound right, and if so should we remove the mDone check to avoid potential confusion about whether the loop can terminate \u0027early\u0027 without writing samples?\n- Are there any regression risks associated with this change? I\u0027m not familiar with the code, but looking at the thread\u0027s run method it seems safe because it should make progress on each loop even while mDone is false.\n- What\u0027s the testing strategy for this? Does it work fine on a real device, and is it worth adding a unit test for this case?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 17
+      },
+      "revId": "607ba4285070bf7d6f1e2a87688323658da60986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
