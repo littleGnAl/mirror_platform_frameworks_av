@@ -954,6 +954,7 @@ void AudioFlinger::PlaybackThread::Track::releaseBuffer(AudioBufferProvider::Buf
 // TODO: compensate for time shift between HW modules.
 void AudioFlinger::PlaybackThread::Track::interceptBuffer(
         const AudioBufferProvider::Buffer& sourceBuffer) {
+    Mutex::Autolock _l(mPatchLock);
     auto start = std::chrono::steady_clock::now();
     const size_t frameCount = sourceBuffer.frameCount;
     if (frameCount == 0) {

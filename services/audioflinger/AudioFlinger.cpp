@@ -3837,6 +3837,7 @@ void AudioFlinger::updateSecondaryOutputsForTrack_l(
         patchTrack->setPeerProxy(patchRecord, true /* holdReference */);
         patchRecord->setPeerProxy(patchTrack, false /* holdReference */);
     }
+    Mutex::Autolock _l(track->mPatchLock);
     track->setTeePatches(std::move(teePatches));
 }
 

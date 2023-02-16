@@ -3548,6 +3548,12 @@ status_t AudioPolicyManager::unregisterPolicyMixes(Vector<AudioMix> mixes)
                         ALOGE("Error making RemoteSubmix device unavailable for mix "
                               "with type %d, address %s", device, address.string());
                     }
+                } else {
+                    // If AUDIO_DEVICE_OUT_REMOTE_SUBMIX is already disconnected,
+                    // it still need checkSecondaryOutputs.
+                    if (device == AUDIO_DEVICE_OUT_REMOTE_SUBMIX) {
+                        checkOutputs = true;
+                    }
                 }
             }
             rSubmixModule->removeOutputProfile(address.c_str());

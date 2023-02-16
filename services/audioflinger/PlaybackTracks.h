@@ -155,6 +155,8 @@ public:
     /** Copy the track metadata in the provided iterator. Thread safe. */
     virtual void    copyMetadataTo(MetadataInserter& backInserter) const;
 
+    Mutex mPatchLock;
+
             /** Return haptic playback of the track is enabled or not, used in mixer. */
             bool    getHapticPlaybackEnabled() const { return mHapticPlaybackEnabled; }
             /** Set haptic playback of the track is enabled or not, should be
