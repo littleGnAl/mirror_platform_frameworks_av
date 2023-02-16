@@ -34,6 +34,24 @@
       "parentUuid": "2319ae6d_7fa82ef2",
       "revId": "df322ef078fb41308178312baccbde501c3c71be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b26b17_1447631a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-02-16T14:01:32Z",
+      "side": 1,
+      "message": "Thanks Lajos for the detailed explanation. In short, could adjusting the pipelineDelay reach the same result without side effects?",
+      "parentUuid": "df38068d_a3d06707",
+      "revId": "df322ef078fb41308178312baccbde501c3c71be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
