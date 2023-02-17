@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afc6440_618b2366",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1320020
+      },
+      "writtenOn": "2023-02-17T01:46:46Z",
+      "side": 1,
+      "message": "is it possible to remove RAW flag and find ports again? if client request voip capture with FAST|RAW|VOIP_TX but HAL didn\u0027t support VOIP with RAW, then input is unable to open.",
+      "revId": "e781fa7fd072abe0e6b8b57843ed88d25194fd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
