@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5cb467_5560acae",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-17T15:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb5a65c8_ac9f97db",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61d72417_6626e087",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-02-16T02:43:58Z",
       "side": 1,
       "message": "For the VTS failures of data processing, I think you need this change here:\n```\n@@ -217,6 +212,8 @@ IEffect::Status PreProcessingContext::lvmProcess(float* in, float* out, int samp\n     std::lock_guard lg(mMutex);\n\n     mProcessedMsk |\u003d (1 \u003c\u003c int(mType));\n+    // webrtc implmentation clear out was_stream_delay_set every time after ProcessStream() call\n+    mAudioProcessingModule-\u003eset_stream_delay_ms(mEchoDelayUs / 1000);\n```",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 39
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b144ffc0_efa192bb",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-17T15:09:53Z",
+      "side": 1,
+      "message": "Done. Thanks, this helped with the VTS failures.",
+      "parentUuid": "61d72417_6626e087",
       "range": {
         "startLine": 219,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465348c5_4d1fc593",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-17T15:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c93852d_e8fb80bd",
+      "range": {
+        "startLine": 238,
+        "startChar": 35,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2b82fff_50478066",
@@ -117,6 +189,30 @@
       "writtenOn": "2023-02-16T02:43:58Z",
       "side": 1,
       "message": "Add default values for them",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "485f71ff0d9a36ae4c848f0a868b3623d0695d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018f77cb_0160a77c",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-02-17T15:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b82fff_50478066",
       "range": {
         "startLine": 92,
         "startChar": 8,
