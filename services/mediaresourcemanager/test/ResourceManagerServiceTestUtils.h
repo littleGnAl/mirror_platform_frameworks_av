@@ -62,6 +62,13 @@ struct TestProcessInfo : public ProcessInfoInterface {
     virtual void removeProcessInfoOverride(int /* pid */) {
     }
 
+    bool isProcessExistent(const std::vector<int32_t>& pids,
+                           std::vector<bool>* states) override {
+        (void)pids;
+        (void)states;
+        return true;
+    }
+
 private:
     DISALLOW_EVIL_CONSTRUCTORS(TestProcessInfo);
 };

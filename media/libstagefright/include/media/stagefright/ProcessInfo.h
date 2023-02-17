@@ -34,6 +34,8 @@ struct ProcessInfo : public ProcessInfoInterface {
     virtual bool isPidUidTrusted(int pid, int uid);
     virtual bool overrideProcessInfo(int pid, int procState, int oomScore);
     virtual void removeProcessInfoOverride(int pid);
+    bool isProcessExistent(const std::vector<int32_t>& pids,
+                           std::vector<bool>* existent) override;
 
 protected:
     virtual ~ProcessInfo();
