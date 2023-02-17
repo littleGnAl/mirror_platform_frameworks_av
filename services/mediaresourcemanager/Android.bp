@@ -17,6 +17,7 @@ filegroup {
         "aidl/android/media/MediaResourceParcel.aidl",
         "aidl/android/media/MediaResourcePolicyParcel.aidl",
         "aidl/android/media/ClientInfoParcel.aidl",
+        "aidl/android/media/ClientConfigParcel.aidl",
     ],
     path: "aidl",
 }
@@ -73,6 +74,8 @@ cc_library {
     name: "libresourcemanagerservice",
 
     srcs: [
+        "ProcessTerminationWatcher.cpp",
+        "ResourceManagerMetrics.cpp",
         "ResourceManagerService.cpp",
         "ResourceObserverService.cpp",
         "ServiceLog.cpp",
