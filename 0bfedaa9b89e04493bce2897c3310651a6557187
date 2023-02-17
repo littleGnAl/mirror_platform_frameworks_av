@@ -16,6 +16,24 @@
       "message": "this is part of vndk, doesn\u0027t it break abi?",
       "revId": "0bfedaa9b89e04493bce2897c3310651a6557187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79521d38_adfa50dc",
+        "filename": "media/module/bqhelper/GraphicBufferSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-02-17T01:12:17Z",
+      "side": 1,
+      "message": "Oh I missed it. In C2 world this is never called from HAL.\nI will check OMX HAL.\n\nIf that\u0027s the case I will separate 64bit configuration path not to break ABI.\nBut this CLs are still testable.",
+      "parentUuid": "e5b0a127_b5592680",
+      "revId": "0bfedaa9b89e04493bce2897c3310651a6557187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
