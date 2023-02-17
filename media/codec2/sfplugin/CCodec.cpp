@@ -877,6 +877,11 @@ void CCodec::configure(const sp<AMessage> &msg) {
                     if (msg->findInt32(KEY_PUSH_BLANK_BUFFERS_ON_STOP, &pushBlankBuffersOnStop)) {
                         config->mPushBlankBuffersOnStop = pushBlankBuffersOnStop == 1;
                     }
+                    // secure compoment default with "push-blank-buffers-on-shutdown" flag
+                    if (!config->mPushBlankBuffersOnStop) {
+                        bool secure = comp->getName().find(".secure") != std::string::npos;
+                        config->mPushBlankBuffersOnStop = secure == true;
+                    }
                 }
             }
             setSurface(surface);
