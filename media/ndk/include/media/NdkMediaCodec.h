@@ -64,6 +64,7 @@ typedef struct AMediaCodecBufferInfo AMediaCodecBufferInfo;
 typedef struct AMediaCodecCryptoInfo AMediaCodecCryptoInfo;
 
 enum {
+    AMEDIACODEC_BUFFER_FLAG_KEY_FRAME = 1,
     AMEDIACODEC_BUFFER_FLAG_CODEC_CONFIG = 2,
     AMEDIACODEC_BUFFER_FLAG_END_OF_STREAM = 4,
     AMEDIACODEC_BUFFER_FLAG_PARTIAL_FRAME = 8,
