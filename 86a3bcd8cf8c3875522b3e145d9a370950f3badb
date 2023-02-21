@@ -16,6 +16,23 @@
       "message": "LGTM, but would like +2 to come from Harish who actually maintains this code. I can add Owner +1 afterwards.",
       "revId": "86a3bcd8cf8c3875522b3e145d9a370950f3badb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ff4887_ea2d723a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-21T16:54:50Z",
+      "side": 1,
+      "message": "Rahul, Dorin,\nWould it be possible to share some clips that can be added in extractor CTS tests?\nWithout adding a test, there won\u0027t be any coverage for this code in the the CTS tests.",
+      "revId": "86a3bcd8cf8c3875522b3e145d9a370950f3badb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
