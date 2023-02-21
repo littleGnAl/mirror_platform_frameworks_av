@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0757b96_9c60e38f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2023-02-21T20:14:38Z",
+      "side": 1,
+      "message": "(cont. from the internal thread)\nLajos, to confirm and to avoid problems down the line:\n\nDo these two methods use a differently-calculated sets of IDs:\n - https://developer.android.com/reference/android/media/CamcorderProfile?hl\u003den#get(int,%20int) (with an integer camera ID)\n - https://developer.android.com/reference/android/media/CamcorderProfile?hl\u003den#getAll(java.lang.String,%20int) (with a string camera ID)\n\nThe old camera API requires camera IDs to be in range 0...N-1 (where N comes out of Camera#getNumberOfCameras()), and I\u0027ve generally assumed the camcorder profile APIs use the same ID space (since they were created at the same time, etc).\n\nThe new camera API allows freeform string IDs, but in practice all internal cameras are still just numbers (external cameras being an exception sometimes). But there\u0027s no requirement for them to be consecutive, so there\u0027s fixup logic in the camera service for the old deprecated API to get a continuous list of IDs.\n\nSo if similar fixup logic is used for the first method here, then great, no problem with this. If the IDs are just used directly for the int-based query, then we can\u0027t have MediaProfiles have a disjoint list, since the int IDs have to keep matching between the camera and camcorder profile APIs.",
+      "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
