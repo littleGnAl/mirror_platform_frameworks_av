@@ -44,6 +44,7 @@ using ::aidl::android::hardware::audio::effect::Flags;
 using ::aidl::android::hardware::audio::effect::Parameter;
 using ::aidl::android::hardware::audio::effect::PresetReverb;
 using ::aidl::android::hardware::audio::effect::VendorExtension;
+using ::aidl::android::hardware::audio::effect::Visualizer;
 using ::aidl::android::media::audio::common::AudioDeviceDescription;
 
 using ::android::BAD_VALUE;
@@ -355,6 +356,54 @@ legacy2aidl_int32_DynamicsProcessing_ResolutionPreference(int32_t legacy) {
 ConversionResult<int32_t> aidl2legacy_DynamicsProcessing_ResolutionPreference_int32(
         DynamicsProcessing::ResolutionPreference aidl) {
     return static_cast<int32_t>(aidl);
+}
+
+ConversionResult<uint32_t> aidl2legacy_Parameter_Visualizer_ScalingMode_uint32(
+        Visualizer::ScalingMode aidl) {
+    switch (aidl) {
+        case Visualizer::ScalingMode::NORMALIZED: {
+            return 0;
+        }
+        case Visualizer::ScalingMode::AS_PLAYED: {
+            return 1;
+        }
+    }
+    return unexpected(BAD_VALUE);
+}
+
+ConversionResult<Visualizer::ScalingMode> legacy2aidl_Parameter_Visualizer_uint32_ScalingMode(
+        uint32_t legacy) {
+    if (legacy == 0) {
+        return Visualizer::ScalingMode::NORMALIZED;
+    } else if (legacy == 1) {
+        return Visualizer::ScalingMode::AS_PLAYED;
+    } else {
+        return unexpected(BAD_VALUE);
+    }
+}
+
+ConversionResult<uint32_t> aidl2legacy_Parameter_Visualizer_MeasurementMode_uint32(
+        Visualizer::MeasurementMode aidl) {
+    switch (aidl) {
+        case Visualizer::MeasurementMode::NONE: {
+            return 0;
+        }
+        case Visualizer::MeasurementMode::PEAK_RMS: {
+            return 1;
+        }
+    }
+    return unexpected(BAD_VALUE);
+}
+
+ConversionResult<Visualizer::MeasurementMode>
+legacy2aidl_Parameter_Visualizer_uint32_MeasurementMode(uint32_t legacy) {
+    if (legacy == 0) {
+        return Visualizer::MeasurementMode::NONE;
+    } else if (legacy == 1) {
+        return Visualizer::MeasurementMode::PEAK_RMS;
+    } else {
+        return unexpected(BAD_VALUE);
+    }
 }
 
 /**
