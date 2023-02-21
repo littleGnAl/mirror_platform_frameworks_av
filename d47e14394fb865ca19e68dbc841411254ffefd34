@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35629dc9_e8585d20",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionEnvReverb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-21T22:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "390bbbdb_811970a8",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 10
+      },
+      "revId": "d47e14394fb865ca19e68dbc841411254ffefd34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2953d84_4f0aa1d2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-21T20:21:08Z",
       "side": 1,
       "message": "I think it would be more canonical to declare `status` in the `if` statement:\n\n`if (status_t status \u003d ...; status !\u003d OK)`",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 9
+      },
+      "revId": "d47e14394fb865ca19e68dbc841411254ffefd34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9490db_fa10250d",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionEnvReverb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-21T22:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2953d84_4f0aa1d2",
       "range": {
         "startLine": 91,
         "startChar": 0,
