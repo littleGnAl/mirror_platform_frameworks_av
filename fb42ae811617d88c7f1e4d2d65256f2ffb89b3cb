@@ -105,6 +105,24 @@
       "message": "In any case, this fix seems reasonable enough, though probably not enough to truly enable non-contiguous camera IDs (and CTS will probably catch this).  So +1 on that basis.",
       "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87d9b76_4f3fbdff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2023-02-21T23:01:36Z",
+      "side": 1,
+      "message": "I am getting another crash and bootloop if XML cannot be parsed:\n\n02-21 14:34:45.381  2488  2488 E MediaProfiles: MediaProfiles::createCamcorderProfile failed to locate quality qvga30\n02-21 14:34:45.381  2488  2488 F MediaProfiles: frameworks/av/media/libmedia/MediaProfiles.cpp:480 CHECK((nCamcorderProfiles \u003d profiles-\u003emCamcorderProfiles.size()) \u003e\u003d 1) failed.\n\nI think it should be ok to merge this one.",
+      "parentUuid": "c595ffb1_ca1fba59",
+      "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
