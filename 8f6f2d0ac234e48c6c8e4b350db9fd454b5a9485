@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90a98a8_e8f06f5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-21T16:13:23Z",
+      "side": 1,
+      "message": "i noticed a couple missing in the codec section; others looked ok as i skimmed.\n\ndo we have a followup planned to convert the use of the literal strings elsewhere in the internals to these constants? Many of those will probably use constants from MediaCodecConstants.h and friends instead of from the NDK headers.",
+      "revId": "8f6f2d0ac234e48c6c8e4b350db9fd454b5a9485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311d8da1_f5a8a3aa",
+        "filename": "media/ndk/include/media/NdkMediaCodec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-21T16:13:23Z",
+      "side": 1,
+      "message": "checking frameworks/base/media/java/android/media/MediaCodec.java\n\nBUFFER_FLAG_MUXER_DATA \u003d 16;\nBUFFER_FLAG_DECODE_ONLY \u003d 32;\n\nlet\u0027s get those too.\n\nand verify frameworks/av/media/libstagefright/include/media/stagefright/MediaCodecConstants.h\nit seems most are there, but I don\u0027t think DECODE_ONLY is included.",
+      "revId": "8f6f2d0ac234e48c6c8e4b350db9fd454b5a9485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
