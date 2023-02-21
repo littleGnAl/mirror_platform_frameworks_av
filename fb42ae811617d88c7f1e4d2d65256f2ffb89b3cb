@@ -70,6 +70,24 @@
       "parentUuid": "ed71ce5d_35cfd25a",
       "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c595ffb1_ca1fba59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2023-02-21T22:52:13Z",
+      "side": 1,
+      "message": "Ok, that I think means the camera IDs (for internal cameras anyway) have to remain contiguous, or the various APIs won\u0027t refer to the same cameras consistently with the same ID.  CTS would (hopefully) also fail, when it tries to use the numbering from Camera.getNumberOfCameras to index into CamcorderProfiles.\n\nIs there a specific owner for the profiles API on media team right now? It\u0027d be nice to get this fixed in the long term so devices aren\u0027t restricted by what long-deprecated APIs require.",
+      "parentUuid": "9f5c8bcf_d8600175",
+      "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
