@@ -88,6 +88,23 @@
       "parentUuid": "9f5c8bcf_d8600175",
       "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707a49cf_91bb0890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2023-02-21T22:58:33Z",
+      "side": 1,
+      "message": "In any case, this fix seems reasonable enough, though probably not enough to truly enable non-contiguous camera IDs (and CTS will probably catch this).  So +1 on that basis.",
+      "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
