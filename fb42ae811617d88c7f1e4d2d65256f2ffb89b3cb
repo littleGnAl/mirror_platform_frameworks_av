@@ -52,6 +52,24 @@
       "parentUuid": "ed71ce5d_35cfd25a",
       "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5c8bcf_d8600175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-02-21T22:47:59Z",
+      "side": 1,
+      "message": "I checked the code and it seems that we now support cameraIds in most places, except for the default instance (when the XML could not be parsed, and there we set cameraIds to 0)\n\nthe get(int, int) and get(string, int) uses the same ID. MediaProfiles only support integer IDs, so we convert the string to int.",
+      "parentUuid": "ed71ce5d_35cfd25a",
+      "revId": "fb42ae811617d88c7f1e4d2d65256f2ffb89b3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
