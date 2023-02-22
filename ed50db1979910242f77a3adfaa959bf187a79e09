@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b31db1_92c001d8",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-22T23:56:12Z",
+      "side": 1,
+      "message": "I think we need to reset `mMemory` as otherwise it will be holding the file descriptor. Alternatively, you can try using a temporary local `ScopedFileDescriptor` first, and then move it into `mMemory` on success.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a830403b_178df057",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-22T23:56:12Z",
+      "side": 1,
+      "message": "It seems that both `update` and `commit` can be implemented using a function which takes two pointers and size.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 47
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c43438_211d49d0",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-22T23:56:12Z",
+      "side": 1,
+      "message": "Is this how it\u0027s expected to be implemented—initializing FMQs on every call to `process`? Note that the amount of work to set up an FMQ is non-negligible: https://cs.android.com/android/platform/superproject/+/master:system/libfmq/include/fmq/MessageQueueBase.h;l\u003d573;drc\u003dcaabd536e8fea82b888902f359b33e637267966c.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 85
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c624ddd_80299533",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-22T23:56:12Z",
+      "side": 1,
+      "message": "Should we add `TIME_CHECK` here?",
+      "range": {
+        "startLine": 228,
+        "startChar": 37,
+        "endLine": 228,
+        "endChar": 38
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
