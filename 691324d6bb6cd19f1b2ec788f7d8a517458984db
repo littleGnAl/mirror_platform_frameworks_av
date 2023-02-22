@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bf41f14_9f1d1b1d",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-22T16:31:46Z",
+      "side": 1,
+      "message": "this is already defined in internal branches at a different line\n\nFew options:\n1. Cherry-pick the change from internal branches to aosp that defines this constant. and then rebase this CL on that.\n\n2. Remove DECODE_ONLY change from this CL and add a separate CL internal to define NDK constant for this.\n\n3. Upload a CL in partner gerrit.\n\nRay,\nCan you please review and suggest which of the above is your preferred option?\nThanks.",
+      "revId": "691324d6bb6cd19f1b2ec788f7d8a517458984db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0fbc6cd_54f11c8d",
         "filename": "media/ndk/include/media/NdkMediaCodec.h",
         "patchSetId": 3
