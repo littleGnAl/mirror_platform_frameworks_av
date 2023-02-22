@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4d79799_d73cfb0c",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-22T17:06:31Z",
+      "side": 1,
+      "message": "my priority is that the upcoming U release have these included.\nI\u0027m willing to aosp/master to get the fix after U releases.\n\nthat seems to imply making the change in partner, which will have all the U work included and have us cherry pick the new definitions from partner back to udc-dev.",
+      "parentUuid": "6bf41f14_9f1d1b1d",
+      "revId": "691324d6bb6cd19f1b2ec788f7d8a517458984db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0fbc6cd_54f11c8d",
         "filename": "media/ndk/include/media/NdkMediaCodec.h",
         "patchSetId": 3
