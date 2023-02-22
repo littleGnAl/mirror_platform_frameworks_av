@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c448f83a_22d9dd11",
+        "filename": "drm/libmediadrm/DrmSessionManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-02-22T20:47:53Z",
+      "side": 1,
+      "message": "nit: line too long",
+      "revId": "1653acda69ead8720d527d93c641e80de486e182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2fcfaf_d780ad1f",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-02-22T20:47:53Z",
+      "side": 1,
+      "message": "nit: idVector",
+      "range": {
+        "startLine": 673,
+        "startChar": 22,
+        "endLine": 673,
+        "endChar": 28
+      },
+      "revId": "1653acda69ead8720d527d93c641e80de486e182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
