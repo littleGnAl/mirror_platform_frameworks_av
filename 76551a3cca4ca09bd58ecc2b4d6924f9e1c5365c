@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8950ee53_204584d5",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-02-22T21:08:13Z",
+      "side": 1,
+      "message": "(1) yes, please create a separate CL for just the core/* files. you can add the other CLs on top.\n\n(2) please add comments linking to where AC4 bitstream_version/presentation_version/mdcompat is specified.\n\nThen describe how AC4 profiles are using bistream_version/presentation_version (and maybe why?).\n\nSimilarly describe that AC4 mdcompat has very similar meaning to level.\n\n(3) the question is whether we need to plan for a new profile in between these values, e.g. 1_3. It is fine if it is not, but we would like profiles values to be properly ordered, and since profile is derived from a pair of ints, there is a chance that 1_3 will become greater than 2_2.\n\nSince I am not familiar with AC4 bitstream/presentation versions, I am not sure if a new presentation version can be added to bitstream version 0 or 1.",
+      "parentUuid": "b3457510_3d9ba1f5",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 19
+      },
+      "revId": "76551a3cca4ca09bd58ecc2b4d6924f9e1c5365c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d3c8c26_93632857",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 8
