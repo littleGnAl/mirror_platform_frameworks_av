@@ -33,6 +33,24 @@
       "message": "Rahul, Dorin,\nWould it be possible to share some clips that can be added in extractor CTS tests?\nWithout adding a test, there won\u0027t be any coverage for this code in the the CTS tests.",
       "revId": "86a3bcd8cf8c3875522b3e145d9a370950f3badb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0ca260_8f678f60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938941
+      },
+      "writtenOn": "2023-02-22T11:09:56Z",
+      "side": 1,
+      "message": "@harish.mahendrakar@ittiam.com\nThanks for reviewing the code.\n\nYou could use the below-listed URLs to validate the CL.\nPlease be informed that these URLs are not for publicize. \n\nStream Type: DTS:X 5.1.4\nURL: https://secured.streamdts.com/dtsx/dtsx/hls/ts/callout/index.m3u8\n\nStream Type: DTS:X 5.1\nURL: https://secured.streamdts.com/dtsx/dtsx/hls/ts/callout51/index.m3u8\n\nStream Type: DTS Digital Surround 5.1\nURL: https://secured.streamdts.com/dtsx/dtsc/hls/ts/callout/index.m3u8\n\nStream Type: DTS Express 5.1\nURL: https://secured.streamdts.com/dtsx/dtse/hls/ts/callout/index.m3u8",
+      "parentUuid": "e2ff4887_ea2d723a",
+      "revId": "86a3bcd8cf8c3875522b3e145d9a370950f3badb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
