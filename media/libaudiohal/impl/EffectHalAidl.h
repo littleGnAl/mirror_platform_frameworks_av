@@ -16,11 +16,13 @@
 
 #pragma once
 
+#include <memory>
+
 #include <aidl/android/hardware/audio/effect/IEffect.h>
 #include <aidl/android/hardware/audio/effect/IFactory.h>
+#include <fmq/AidlMessageQueue.h>
 #include <media/audiohal/EffectHalInterface.h>
 #include <system/audio_effect.h>
-#include <memory>
 
 #include "EffectConversionHelperAidl.h"
 
@@ -29,6 +31,14 @@ namespace effect {
 
 class EffectHalAidl : public EffectHalInterface {
   public:
+    typedef ::android::AidlMessageQueue<
+            ::aidl::android::hardware::audio::effect::IEffect::Status,
+            ::aidl::android::hardware::common::fmq::SynchronizedReadWrite>
+            StatusMQ;
+    typedef ::android::AidlMessageQueue<
+            float, ::aidl::android::hardware::common::fmq::SynchronizedReadWrite>
+            DataMQ;
+
     // Set the input buffer.
     status_t setInBuffer(const sp<EffectBufferHalInterface>& buffer) override;
 
@@ -62,6 +72,9 @@ class EffectHalAidl : public EffectHalInterface {
     const std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> getIEffect() const {
         return mEffect;
     }
+
+    // for TIME_CHECK
+    const std::string getClassName() const { return "EffectHalAidl"; }
 
   private:
     friend class sp<EffectHalAidl>;
