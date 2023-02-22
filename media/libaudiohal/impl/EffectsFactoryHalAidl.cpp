@@ -20,11 +20,11 @@
 #define LOG_TAG "EffectsFactoryHalAidl"
 //#define LOG_NDEBUG 0
 
-#include <aidl/android/hardware/audio/effect/IFactory.h>
 #include <error/expected_utils.h>
 #include <android/binder_manager.h>
 #include <media/AidlConversionCppNdk.h>
 #include <media/AidlConversionEffect.h>
+#include <mediautils/TimeCheck.h>
 #include <system/audio.h>
 #include <utils/Log.h>
 
@@ -52,6 +52,7 @@ EffectsFactoryHalAidl::EffectsFactoryHalAidl(std::shared_ptr<IFactory> effectsFa
 }
 
 status_t EffectsFactoryHalAidl::queryNumberEffects(uint32_t *pNumEffects) {
+    TIME_CHECK();
     if (pNumEffects == nullptr) {
         return BAD_VALUE;
     }
@@ -66,6 +67,7 @@ status_t EffectsFactoryHalAidl::queryNumberEffects(uint32_t *pNumEffects) {
 }
 
 status_t EffectsFactoryHalAidl::getDescriptor(uint32_t index, effect_descriptor_t* pDescriptor) {
+    TIME_CHECK();
     if (pDescriptor == nullptr) {
         return BAD_VALUE;
     }
@@ -86,6 +88,7 @@ status_t EffectsFactoryHalAidl::getDescriptor(uint32_t index, effect_descriptor_
 
 status_t EffectsFactoryHalAidl::getDescriptor(const effect_uuid_t* halUuid,
                                               effect_descriptor_t* pDescriptor) {
+    TIME_CHECK();
     if (halUuid == nullptr || pDescriptor == nullptr) {
         return BAD_VALUE;
     }
@@ -97,6 +100,7 @@ status_t EffectsFactoryHalAidl::getDescriptor(const effect_uuid_t* halUuid,
 
 status_t EffectsFactoryHalAidl::getDescriptors(const effect_uuid_t* halType,
                                                std::vector<effect_descriptor_t>* descriptors) {
+    TIME_CHECK();
     if (halType == nullptr || descriptors == nullptr) {
         return BAD_VALUE;
     }
@@ -109,6 +113,7 @@ status_t EffectsFactoryHalAidl::getDescriptors(const effect_uuid_t* halType,
 status_t EffectsFactoryHalAidl::createEffect(const effect_uuid_t* uuid, int32_t sessionId,
                                              int32_t ioId, int32_t deviceId __unused,
                                              sp<EffectHalInterface>* effect) {
+    TIME_CHECK();
     if (uuid == nullptr || effect == nullptr) {
         return BAD_VALUE;
     }
@@ -139,20 +144,19 @@ status_t EffectsFactoryHalAidl::createEffect(const effect_uuid_t* uuid, int32_t 
 }
 
 status_t EffectsFactoryHalAidl::dumpEffects(int fd) {
-    ALOGE("%s not implemented yet, fd %d", __func__, fd);
-    return INVALID_OPERATION;
+    TIME_CHECK();
+    // TODO: add proxy dump here because AIDL service EffectFactory doesn't have proxy handle
+    return mFactory->dump(fd, nullptr, 0);
 }
 
 status_t EffectsFactoryHalAidl::allocateBuffer(size_t size, sp<EffectBufferHalInterface>* buffer) {
     ALOGI("%s size %zu buffer %p", __func__, size, buffer);
-    // Buffer doesn't allocated here for AIDL, instead each effect open will return I/O data FMQ.
     return EffectBufferHalAidl::allocate(size, buffer);
 }
 
 status_t EffectsFactoryHalAidl::mirrorBuffer(void* external, size_t size,
                                              sp<EffectBufferHalInterface>* buffer) {
     ALOGI("%s extern %p size %zu buffer %p", __func__, external, size, buffer);
-    // TODO: implement with FMQ
     return EffectBufferHalAidl::mirror(external, size, buffer);
 }
 
@@ -161,6 +165,7 @@ AudioHalVersionInfo EffectsFactoryHalAidl::getHalVersion() const {
 }
 
 status_t EffectsFactoryHalAidl::queryEffectList_l() {
+    TIME_CHECK();
     if (!mDescList) {
         std::vector<Descriptor> list;
         auto status = mFactory->queryEffects(std::nullopt, std::nullopt, std::nullopt, &list);
@@ -176,6 +181,7 @@ status_t EffectsFactoryHalAidl::queryEffectList_l() {
 
 status_t EffectsFactoryHalAidl::getHalDescriptorWithImplUuid_l(const AudioUuid& uuid,
                                                                effect_descriptor_t* pDescriptor) {
+    TIME_CHECK();
     if (pDescriptor == nullptr) {
         return BAD_VALUE;
     }
@@ -197,6 +203,7 @@ status_t EffectsFactoryHalAidl::getHalDescriptorWithImplUuid_l(const AudioUuid& 
 
 status_t EffectsFactoryHalAidl::getHalDescriptorWithTypeUuid_l(
         const AudioUuid& type, std::vector<effect_descriptor_t>* descriptors) {
+    TIME_CHECK();
     if (descriptors == nullptr) {
         return BAD_VALUE;
     }
