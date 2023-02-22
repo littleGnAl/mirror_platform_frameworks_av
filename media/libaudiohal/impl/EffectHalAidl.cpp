@@ -136,24 +136,59 @@ status_t EffectHalAidl::createAidlConversion(
 }
 
 status_t EffectHalAidl::setInBuffer(const sp<EffectBufferHalInterface>& buffer) {
-    if (buffer == nullptr) {
-        return BAD_VALUE;
-    }
-    ALOGW("%s not implemented yet", __func__);
+    mInBuffer = buffer;
     return OK;
 }
 
 status_t EffectHalAidl::setOutBuffer(const sp<EffectBufferHalInterface>& buffer) {
-    if (buffer == nullptr) {
-        return BAD_VALUE;
-    }
-    ALOGW("%s not implemented yet", __func__);
+    mOutBuffer = buffer;
     return OK;
 }
 
+
+// write to input FMQ here, wait for statusMQ STATUS_OK, and read from output FMQ
 status_t EffectHalAidl::process() {
     ALOGW("%s not implemented yet", __func__);
-    // write to input FMQ here, and wait for statusMQ STATUS_OK
+    const auto& retParam = mConversion->getEffectReturnParam();
+    std::unique_ptr<StatusMQ> statusQ(std::make_unique<StatusMQ>(retParam.statusMQ));
+    std::unique_ptr<DataMQ> inputQ(std::make_unique<DataMQ>(retParam.inputDataMQ));
+    std::unique_ptr<DataMQ> outputQ(std::make_unique<DataMQ>(retParam.outputDataMQ));
+    if (!statusQ->isValid() || !inputQ->isValid() || !outputQ->isValid()) {
+        ALOGE("%s got invalid FMQ", __func__);
+        return BAD_VALUE;
+    }
+
+    size_t availableSize = inputQ->availableToWrite();
+    size_t rSize = std::min(availableSize, mInBuffer->getSize());
+    if (rSize == 0) {
+        ALOGW("%s not able to write, buffer size %zu, avail %zu", __func__, mInBuffer->getSize(),
+              availableSize);
+        return INVALID_OPERATION;
+    }
+    if (!inputQ->writeBlocking((float*)mInBuffer->ptr(), rSize / sizeof(float))) {
+        ALOGW("%s failed to write %zu into inputQ", __func__, rSize);
+        return FAILED_TRANSACTION;
+    }
+
+    IEffect::Status retStatus{};
+    if (!statusQ->readBlocking(&retStatus, 1) || retStatus.status != OK) {
+        ALOGW("%s read status %d failed", __func__, retStatus.status);
+        return FAILED_TRANSACTION;
+    }
+
+    availableSize = outputQ->availableToWrite();
+    size_t wSize = std::min(availableSize, mOutBuffer->getSize());
+    if (wSize == 0) {
+        ALOGW("%s not able to read, buffer size %zu, available %zu", __func__,
+              mOutBuffer->getSize(), availableSize);
+        return INVALID_OPERATION;
+    }
+    if (!outputQ->readBlocking((float*)mOutBuffer->ptr(), wSize / sizeof(float))) {
+        ALOGW("%s failed to read %zu from outputQ", __func__, wSize);
+        return FAILED_TRANSACTION;
+    }
+
+    ALOGD("%s %s consumed %zu produced %zu", __func__, mDesc.common.name.c_str(), rSize, wSize);
     return OK;
 }
 
@@ -165,14 +200,16 @@ status_t EffectHalAidl::processReverse() {
 
 status_t EffectHalAidl::command(uint32_t cmdCode, uint32_t cmdSize, void* pCmdData,
                                 uint32_t* replySize, void* pReplyData) {
+    TIME_CHECK();
     return mConversion
                    ? mConversion->handleCommand(cmdCode, cmdSize, pCmdData, replySize, pReplyData)
                    : INVALID_OPERATION;
 }
 
 status_t EffectHalAidl::getDescriptor(effect_descriptor_t* pDescriptor) {
-    ALOGW("%s %p", __func__, pDescriptor);
+    TIME_CHECK();
     if (pDescriptor == nullptr) {
+        ALOGE("%s null descriptor pointer", __func__);
         return BAD_VALUE;
     }
     Descriptor aidlDesc;
@@ -184,12 +221,13 @@ status_t EffectHalAidl::getDescriptor(effect_descriptor_t* pDescriptor) {
 }
 
 status_t EffectHalAidl::close() {
+    TIME_CHECK();
     return statusTFromBinderStatus(mEffect->close());
 }
 
 status_t EffectHalAidl::dump(int fd) {
-    ALOGW("%s not implemented yet, fd %d", __func__, fd);
-    return OK;
+    ALOGD("%s dump %s with fd %d", __func__, mDesc.common.name.c_str(), fd);
+    return mEffect->dump(fd, nullptr, 0);
 }
 
 } // namespace effect

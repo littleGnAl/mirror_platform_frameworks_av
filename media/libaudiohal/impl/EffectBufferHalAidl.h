@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include <aidl/android/hardware/common/Ashmem.h>
+
 #include <media/audiohal/EffectBufferHalInterface.h>
 #include <system/audio_effect.h>
 
@@ -47,6 +49,7 @@ class EffectBufferHalAidl : public EffectBufferHalInterface {
     const size_t mBufferSize;
     bool mFrameCountChanged;
     void* mExternalData;
+    aidl::android::hardware::common::Ashmem mMemory;
     audio_buffer_t mAudioBuffer;
 
     // Can not be constructed directly by clients.
