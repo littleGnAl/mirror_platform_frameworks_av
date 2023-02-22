@@ -33,6 +33,24 @@
       "message": "checking frameworks/base/media/java/android/media/MediaCodec.java\n\nBUFFER_FLAG_MUXER_DATA \u003d 16;\nBUFFER_FLAG_DECODE_ONLY \u003d 32;\n\nlet\u0027s get those too.\n\nand verify frameworks/av/media/libstagefright/include/media/stagefright/MediaCodecConstants.h\nit seems most are there, but I don\u0027t think DECODE_ONLY is included.",
       "revId": "8f6f2d0ac234e48c6c8e4b350db9fd454b5a9485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12024a6d_61d360de",
+        "filename": "media/ndk/include/media/NdkMediaCodec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1962427
+      },
+      "writtenOn": "2023-02-22T05:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "311d8da1_f5a8a3aa",
+      "revId": "8f6f2d0ac234e48c6c8e4b350db9fd454b5a9485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
