@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d896cfc1_e37585a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-22T16:21:02Z",
+      "side": 1,
+      "message": "sorry.... 1 last change.",
+      "revId": "691324d6bb6cd19f1b2ec788f7d8a517458984db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fbc6cd_54f11c8d",
+        "filename": "media/ndk/include/media/NdkMediaCodec.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-02-22T16:21:02Z",
+      "side": 1,
+      "message": "let\u0027s keep this list in numeric order.\n\nit\u0027s confusing with one list in alpha order (in the other file)\nand with this one in numeric order.\nbut, I want is to preserve the orderings that each of them already had in place.\n\n[if i were doing this from scratch, my preference would have been numeric\norder so that I can easily figure out which values are taken... but i\u0027m not doing this from scratch.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "691324d6bb6cd19f1b2ec788f7d8a517458984db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
