@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a25f411_8dd5958f",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1962427
+      },
+      "writtenOn": "2023-02-22T16:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33e89259_bb857f59",
+      "range": {
+        "startLine": 872,
+        "startChar": 20,
+        "endLine": 873,
+        "endChar": 45
+      },
+      "revId": "153a67cc47e822e098a07b194be6b81d741893e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3dd8eaa_9b8af0d1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-22T15:40:21Z",
       "side": 1,
       "message": "this appears to be in the wrong place.\nprobably should be near line 137\n\ni\u0027m not sure why we have the keys split into two separate groups.",
+      "range": {
+        "startLine": 239,
+        "startChar": 53,
+        "endLine": 239,
+        "endChar": 68
+      },
+      "revId": "153a67cc47e822e098a07b194be6b81d741893e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b04d6c_63764c51",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1962427
+      },
+      "writtenOn": "2023-02-22T16:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3dd8eaa_9b8af0d1",
       "range": {
         "startLine": 239,
         "startChar": 53,
