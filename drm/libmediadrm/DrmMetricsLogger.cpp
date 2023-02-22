@@ -24,6 +24,8 @@
 #include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmUtils.h>
 
+#include <endian.h>
+
 namespace android {
 
 namespace {
@@ -63,6 +65,8 @@ DrmStatus DrmMetricsLogger::isCryptoSchemeSupported(const uint8_t uuid[IDRM_UUID
 DrmStatus DrmMetricsLogger::createPlugin(const uint8_t uuid[IDRM_UUID_SIZE],
                                          const String8& appPackageName) {
     std::memcpy(mUuid.data(), uuid, IDRM_UUID_SIZE);
+    mUuid[0] = betoh64(mUuid[0]);
+    mUuid[1] = betoh64(mUuid[1]);
     if (kUuidSchemeMap.count(mUuid)) {
         mScheme = kUuidSchemeMap.at(mUuid);
     } else {
