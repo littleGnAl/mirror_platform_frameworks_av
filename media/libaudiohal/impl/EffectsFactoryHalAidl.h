@@ -20,6 +20,7 @@
 #include <memory>
 #include <mutex>
 
+#include <aidl/android/hardware/audio/effect/IFactory.h>
 #include <android-base/thread_annotations.h>
 #include <media/audiohal/EffectsFactoryHalInterface.h>
 #include <system/thread_defs.h>
