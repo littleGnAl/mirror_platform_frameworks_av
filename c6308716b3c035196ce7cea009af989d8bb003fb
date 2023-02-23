@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd84e3a9_a4b98098",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-23T23:35:56Z",
+      "side": 1,
+      "message": "nit: could be static?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "c6308716b3c035196ce7cea009af989d8bb003fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
