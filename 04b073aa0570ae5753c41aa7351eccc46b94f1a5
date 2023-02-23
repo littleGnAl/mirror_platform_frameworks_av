@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0737749a_7c6a0972",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionVisualizer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-02-23T21:22:31Z",
+      "side": 1,
+      "message": "Do we want to initialize this field to a consistent value in the constructor?  As is, if `visualizerCapture()` gets called without `getParameter()` having gotten a VISUALIZER_PARAM_CAPTURE_SIZE, then we\u0027ll use uninitialized memory and have inconsistent and difficult to debug behavior.  Even if it\u0027s a bug to call in that way, I think we\u0027d prefer to have a consistent bug that\u0027s easier to chase.",
+      "revId": "04b073aa0570ae5753c41aa7351eccc46b94f1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
