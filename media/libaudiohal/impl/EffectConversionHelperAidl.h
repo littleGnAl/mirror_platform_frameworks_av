@@ -30,9 +30,9 @@ class EffectConversionHelperAidl {
     status_t handleCommand(uint32_t cmdCode, uint32_t cmdSize, void* pCmdData, uint32_t* replySize,
                            void* pReplyData);
     virtual ~EffectConversionHelperAidl() {}
-    const ::aidl::android::hardware::audio::effect::IEffect::OpenEffectReturn&
+    const ::aidl::android::hardware::audio::effect::IEffect::OpenEffectReturn*
     getEffectReturnParam() const {
-        return mOpenReturn;
+        return &mOpenReturn;
     }
 
   protected:
@@ -57,6 +57,7 @@ class EffectConversionHelperAidl {
     const aidl::android::media::audio::common::AudioFormatDescription kDefaultFormatDescription = {
             .type = aidl::android::media::audio::common::AudioFormatType::PCM,
             .pcm = aidl::android::media::audio::common::PcmType::FLOAT_32_BIT};
+    const bool mIsProxyEffect;
 
     static constexpr int kDefaultframeCount = 0x100;
 

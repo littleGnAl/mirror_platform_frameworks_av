@@ -31,6 +31,7 @@
 #include <utils/Log.h>
 
 #include "EffectHalAidl.h"
+#include "EffectProxy.h"
 
 #include <aidl/android/hardware/audio/effect/IEffect.h>
 
@@ -199,15 +200,23 @@ status_t EffectHalAidl::command(uint32_t cmdCode, uint32_t cmdSize, void* pCmdDa
         return INVALID_OPERATION;
     }
 
+    // get the FMQs when open(CMD_INIT), and proxy change (CMD_OFFLOAD)
     status_t ret = mConversion->handleCommand(cmdCode, cmdSize, pCmdData, replySize, pReplyData);
-    // update FMQs when effect open successfully
-    if (ret == OK && cmdCode == EFFECT_CMD_INIT) {
-        const auto& retParam = mConversion->getEffectReturnParam();
-        mStatusQ = std::make_unique<StatusMQ>(retParam.statusMQ);
-        mInputQ = std::make_unique<DataMQ>(retParam.inputDataMQ);
-        mOutputQ = std::make_unique<DataMQ>(retParam.outputDataMQ);
+    if (ret == OK && (cmdCode == EFFECT_CMD_INIT || cmdCode == EFFECT_CMD_OFFLOAD)) {
+        const IEffect::OpenEffectReturn* retParam = [&]() {
+            if (cmdCode == EFFECT_CMD_INIT) {
+                return mConversion->getEffectReturnParam();
+            } else {
+                // get FMQ from the effect proxy
+                auto proxy = std::static_pointer_cast<EffectProxy>(mEffect);
+                return proxy->getEffectReturnParam();
+            }
+        }();
+        mStatusQ = std::make_unique<StatusMQ>(retParam->statusMQ);
+        mInputQ = std::make_unique<DataMQ>(retParam->inputDataMQ);
+        mOutputQ = std::make_unique<DataMQ>(retParam->outputDataMQ);
         if (!mStatusQ->isValid() || !mInputQ->isValid() || !mOutputQ->isValid()) {
-            ALOGE("%s return with invalid FMQ", __func__);
+            ALOGE("%s return with invalid FMQ %s", __func__, retParam->toString().c_str());
             return NO_INIT;
         }
     }
