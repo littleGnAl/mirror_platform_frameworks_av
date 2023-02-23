@@ -29,6 +29,7 @@
 #include <utils/Log.h>
 
 #include "EffectConversionHelperAidl.h"
+#include "EffectProxy.h"
 
 namespace android {
 namespace effect {
@@ -72,7 +73,9 @@ EffectConversionHelperAidl::EffectConversionHelperAidl(
       mIoId(ioId),
       mDesc(desc),
       mEffect(std::move(effect)),
-      mIsInputStream(mDesc.common.flags.type == Flags::Type::PRE_PROC) {
+      mIsInputStream(mDesc.common.flags.type == Flags::Type::PRE_PROC),
+      mIsProxyEffect(mDesc.common.id.proxy.has_value() &&
+                     mDesc.common.id.proxy.value() == mDesc.common.id.uuid) {
     mCommon.session = sessionId;
     mCommon.ioHandle = ioId;
     mCommon.input = mCommon.output = kDefaultAudioConfig;
@@ -294,7 +297,17 @@ status_t EffectConversionHelperAidl::handleSetOffload(uint32_t cmdSize, const vo
               pReplyData);
         return BAD_VALUE;
     }
-    // TODO: handle this after effectproxy implemented in libaudiohal
+    effect_offload_param_t* offload = (effect_offload_param_t*)pCmdData;
+    // only send to proxy to update active sub-effect
+    if (mIsProxyEffect) {
+        RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
+                std::static_pointer_cast<EffectProxy>(mEffect)->setActiveSubEffect(
+                        /* checker for EffectProxy, choose HWACC flag in offload mode */
+                        [&](const Descriptor& desc) {
+                            return offload->isOffload == (desc.common.flags.hwAcceleratorMode ==
+                                                          Flags::HardwareAccelerator::TUNNEL);
+                        })));
+    }
     return *static_cast<int32_t*>(pReplyData) = OK;
 }
 
