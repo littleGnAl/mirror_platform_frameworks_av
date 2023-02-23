@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5644b1cc_d8e23bd0",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T02:21:54Z",
+      "side": 1,
+      "message": "Yes I misunderstood the last comment and missed the fd close, sorry about that",
+      "parentUuid": "8dc5ad2c_198f2f16",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2a9bbe5_6535d0df",
