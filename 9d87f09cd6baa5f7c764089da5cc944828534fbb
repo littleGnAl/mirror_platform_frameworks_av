@@ -34,6 +34,24 @@
       "parentUuid": "deaf7eee_dcd4ab26",
       "revId": "9d87f09cd6baa5f7c764089da5cc944828534fbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19422c0_b2c87906",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T20:46:19Z",
+      "side": 1,
+      "message": "Yes, good point, we have made some improvement/fix on TIME_CHECK, but it\u0027s good idea to align with HIDL as first step and re-visit later.\nThanks for the review.",
+      "parentUuid": "d7851fcc_29cf3e43",
+      "revId": "9d87f09cd6baa5f7c764089da5cc944828534fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
