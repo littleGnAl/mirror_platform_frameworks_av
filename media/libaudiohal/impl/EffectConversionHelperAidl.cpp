@@ -29,6 +29,7 @@
 #include <utils/Log.h>
 
 #include "EffectConversionHelperAidl.h"
+#include "EffectProxy.h"
 
 namespace android {
 namespace effect {
@@ -36,6 +37,7 @@ namespace effect {
 using ::aidl::android::aidl_utils::statusTFromBinderStatus;
 using ::aidl::android::hardware::audio::effect::CommandId;
 using ::aidl::android::hardware::audio::effect::Descriptor;
+using ::aidl::android::hardware::audio::effect::Flags;
 using ::aidl::android::hardware::audio::effect::Parameter;
 using ::aidl::android::media::audio::common::AudioDeviceDescription;
 using ::aidl::android::media::audio::common::AudioMode;
@@ -67,7 +69,12 @@ const std::map<uint32_t /* effect_command_e */, EffectConversionHelperAidl::Comm
 EffectConversionHelperAidl::EffectConversionHelperAidl(
         std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
         int32_t sessionId, int32_t ioId, const Descriptor& desc)
-    : mSessionId(sessionId), mIoId(ioId), mDesc(desc), mEffect(std::move(effect)) {
+    : mSessionId(sessionId),
+      mIoId(ioId),
+      mDesc(desc),
+      mEffect(std::move(effect)),
+      mIsProxyEffect(mDesc.common.id.proxy.has_value() &&
+                     mDesc.common.id.proxy.value() == mDesc.common.id.uuid) {
     mCommon.session = sessionId;
     mCommon.ioHandle = ioId;
     mCommon.input = mCommon.output = kDefaultAudioConfig;
@@ -273,7 +280,17 @@ status_t EffectConversionHelperAidl::handleSetOffload(uint32_t cmdSize, const vo
               pReplyData);
         return BAD_VALUE;
     }
-    // TODO: handle this after effectproxy implemented in libaudiohal
+    effect_offload_param_t* offload = (effect_offload_param_t*)pCmdData;
+    // only send to proxy to update active sub-effect
+    if (mIsProxyEffect) {
+        RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
+                std::static_pointer_cast<EffectProxy>(mEffect)->setActiveSubEffect(
+                        /* checker for EffectProxy, choose HWACC flag in offload mode */
+                        [&](const Descriptor& desc) {
+                            return offload->isOffload == (desc.common.flags.hwAcceleratorMode ==
+                                                          Flags::HardwareAccelerator::TUNNEL);
+                        })));
+    }
     return *static_cast<int32_t*>(pReplyData) = OK;
 }
 
