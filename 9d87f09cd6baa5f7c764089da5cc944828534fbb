@@ -16,6 +16,24 @@
       "message": "having TIME_CHECK calls in process / frequently called functions can impact the permformance as seen in past. Earlier these calls were disabled for HIDL.\ncan we follow the same here?",
       "revId": "9d87f09cd6baa5f7c764089da5cc944828534fbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7851fcc_29cf3e43",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-23T17:53:36Z",
+      "side": 1,
+      "message": "Agree, we should check which calls did not have TIME_CHECK in the HIDL wrapper due to performance issues.",
+      "parentUuid": "deaf7eee_dcd4ab26",
+      "revId": "9d87f09cd6baa5f7c764089da5cc944828534fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
