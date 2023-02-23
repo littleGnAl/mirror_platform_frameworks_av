@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b62e000_8ad580a2",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91188770_2f4d17f8",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00b31db1_92c001d8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-22T23:56:12Z",
       "side": 1,
       "message": "I think we need to reset `mMemory` as otherwise it will be holding the file descriptor. Alternatively, you can try using a temporary local `ScopedFileDescriptor` first, and then move it into `mMemory` on success.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d34504fd_a935221b",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00b31db1_92c001d8",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c133bf_28f9efcc",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2a9bbe5_6535d0df",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c4b8af_1de8ebf0",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-23T00:12:19Z",
       "side": 1,
       "message": "doesn\u0027t mmap already initialize to zero?",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 50
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6177f077_662d84bc",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c4b8af_1de8ebf0",
       "range": {
         "startLine": 76,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2013d64_d25d57d8",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a830403b_178df057",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 47
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf87a1d4_327ff799",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3bbcdd2_16c8e18c",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Please refer to this code, `init()` will only be call from a temporary object `tempBuffer` before return:\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2449888/4/media/libaudiohal/impl/EffectBufferHalAidl.cpp#42",
+      "parentUuid": "bf87a1d4_327ff799",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "228a016e_b448b300",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-02-23T00:12:19Z",
       "side": 1,
       "message": "nit: is this const?",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7d9646_a6602e8c",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "228a016e_b448b300",
       "range": {
         "startLine": 34,
         "startChar": 26,
@@ -209,6 +377,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "917837f0_de720f50",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aada358e_af20ae5e",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 85
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c624ddd_80299533",
@@ -222,6 +414,30 @@
       "writtenOn": "2023-02-22T23:56:12Z",
       "side": 1,
       "message": "Should we add `TIME_CHECK` here?",
+      "range": {
+        "startLine": 228,
+        "startChar": 37,
+        "endLine": 228,
+        "endChar": 38
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07429049_833c845d",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c624ddd_80299533",
       "range": {
         "startLine": 228,
         "startChar": 37,
@@ -255,6 +471,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "375e88e9_188a46fb",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3877d12_fdbfe604",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 76
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b8f0583_2c2a3bf6",
@@ -268,6 +508,30 @@
       "writtenOn": "2023-02-23T00:12:19Z",
       "side": 1,
       "message": "nit: C++ \"using\" is more common now.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c1f5d9_861d8ca6",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-23T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b8f0583_2c2a3bf6",
       "range": {
         "startLine": 34,
         "startChar": 4,
