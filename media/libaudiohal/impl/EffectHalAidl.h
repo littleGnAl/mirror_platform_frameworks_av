@@ -83,6 +83,7 @@ class EffectHalAidl : public EffectHalInterface {
     const int32_t mSessionId;
     const int32_t mIoId;
     const ::aidl::android::hardware::audio::effect::Descriptor mDesc;
+
     std::unique_ptr<EffectConversionHelperAidl> mConversion;
     std::unique_ptr<StatusMQ> mStatusQ;
     std::unique_ptr<DataMQ> mInputQ, mOutputQ;
