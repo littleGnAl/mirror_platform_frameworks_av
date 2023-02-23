@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d6c8af_5f707bd2",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-23T02:01:23Z",
+      "side": 1,
+      "message": "I think `NO_INIT` is more appropriate here. `FAILED_TRANSACTION` is intended to be used by the Binder framework for indicating issues with RPC calls, clients normally do not use it.",
+      "range": {
+        "startLine": 213,
+        "startChar": 19,
+        "endLine": 213,
+        "endChar": 37
+      },
+      "revId": "f8370792a175dddbfd6f5a1f84d4bf29c22de729",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dc5ad2c_198f2f16",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-23T02:01:23Z",
+      "side": 1,
+      "message": "If we create a file descriptor, and never close it, it\u0027s a leak. In PS5, we still don\u0027t close it in case when mmap call has failed. That\u0027s why I was proposing to use  a local (on stack) ScopedFileDescriptor, it will close the fd unless it has been moved to `mMemory`.",
+      "parentUuid": "d34504fd_a935221b",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "ed50db1979910242f77a3adfaa959bf187a79e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2a9bbe5_6535d0df",
         "filename": "media/libaudiohal/impl/EffectBufferHalAidl.cpp",
         "patchSetId": 4
