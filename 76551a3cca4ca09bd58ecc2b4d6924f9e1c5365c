@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48c64687_cbc25b28",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-02-23T09:55:23Z",
+      "side": 1,
+      "message": "(1) OK, I\u0027ll submit a separate CL.\n(2) OK.\n(3) Understood. For current AC-4 product-level encoder, bitstream_version is fixed to 2. bitstream_version \u003d 0 support has already been removed. bitstream_version \u003d 1 is never used in real product. As far as bitstream_version \u003d 2,\n  -- 02.01 for channel-based, channel-based immersive, and object-based audio\n  -- 02.02 for Immersive Stereo content\n\nSo I think current order is safe since there is no new 00.xx, 01.xx added in future. \n\nI agree that we must be very careful if there is a new bitstream_version \u003d 3 is defined in future since there could be a 02.03 is added after that. But there is no any plan to define them inside Dolby by now.\n\nI\u0027m double confirming with Dolby AC-4 architect (AC-4 codec owner) about above points.",
+      "parentUuid": "8950ee53_204584d5",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 19
+      },
+      "revId": "76551a3cca4ca09bd58ecc2b4d6924f9e1c5365c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d3c8c26_93632857",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 8
