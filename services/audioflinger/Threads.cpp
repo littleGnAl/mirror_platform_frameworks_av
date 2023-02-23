@@ -9335,6 +9335,9 @@ status_t AudioFlinger::RecordThread::createAudioPatch_l(const struct audio_patch
     }
 
     if (mInput->audioHwDev->supportsAudioPatches()) {
+        if (*handle == AUDIO_PATCH_HANDLE_NONE) {
+            *handle = (audio_patch_handle_t)mAudioFlinger->nextUniqueId(AUDIO_UNIQUE_ID_USE_PATCH);
+        }
         sp<DeviceHalInterface> hwDevice = mInput->audioHwDev->hwDevice();
         status = hwDevice->createAudioPatch(patch->num_sources,
                                             patch->sources,
