@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deaf7eee_dcd4ab26",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2023-02-23T07:58:35Z",
+      "side": 1,
+      "message": "having TIME_CHECK calls in process / frequently called functions can impact the permformance as seen in past. Earlier these calls were disabled for HIDL.\ncan we follow the same here?",
+      "revId": "9d87f09cd6baa5f7c764089da5cc944828534fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
