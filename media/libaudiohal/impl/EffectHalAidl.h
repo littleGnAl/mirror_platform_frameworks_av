@@ -83,6 +83,8 @@ class EffectHalAidl : public EffectHalInterface {
     const int32_t mSessionId;
     const int32_t mIoId;
     const ::aidl::android::hardware::audio::effect::Descriptor mDesc;
+    const bool mIsProxyEffect;
+
     std::unique_ptr<EffectConversionHelperAidl> mConversion;
     std::unique_ptr<StatusMQ> mStatusQ;
     std::unique_ptr<DataMQ> mInputQ, mOutputQ;
@@ -99,7 +101,8 @@ class EffectHalAidl : public EffectHalInterface {
             const std::shared_ptr<::aidl::android::hardware::audio::effect::IFactory>& factory,
             const std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect>& effect,
             uint64_t effectId, int32_t sessionId, int32_t ioId,
-            const ::aidl::android::hardware::audio::effect::Descriptor& desc);
+            const ::aidl::android::hardware::audio::effect::Descriptor& desc,
+            bool isProxyEffect);
     bool setEffectReverse(bool reverse);
 
     // The destructor automatically releases the effect.

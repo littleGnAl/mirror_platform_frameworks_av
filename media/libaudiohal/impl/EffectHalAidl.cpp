@@ -31,6 +31,7 @@
 #include <utils/Log.h>
 
 #include "EffectHalAidl.h"
+#include "EffectProxy.h"
 
 #include <aidl/android/hardware/audio/effect/IEffect.h>
 
@@ -65,19 +66,21 @@ EffectHalAidl::EffectHalAidl(
         const std::shared_ptr<::aidl::android::hardware::audio::effect::IFactory>& factory,
         const std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect>& effect,
         uint64_t effectId, int32_t sessionId, int32_t ioId,
-        const ::aidl::android::hardware::audio::effect::Descriptor& desc)
+        const ::aidl::android::hardware::audio::effect::Descriptor& desc, bool isProxyEffect)
     : mFactory(factory),
       mEffect(effect),
       mEffectId(effectId),
       mSessionId(sessionId),
       mIoId(ioId),
-      mDesc(desc) {
+      mDesc(desc),
+      mIsProxyEffect(isProxyEffect) {
     createAidlConversion(effect, sessionId, ioId, desc);
 }
 
 EffectHalAidl::~EffectHalAidl() {
-    if (mFactory) {
-        mFactory->destroyEffect(mEffect);
+    if (mEffect) {
+        mIsProxyEffect ? std::static_pointer_cast<EffectProxy>(mEffect)->destroy()
+                       : mFactory->destroyEffect(mEffect);
     }
 }
 
@@ -203,15 +206,23 @@ status_t EffectHalAidl::command(uint32_t cmdCode, uint32_t cmdSize, void* pCmdDa
         return INVALID_OPERATION;
     }
 
+    // get the FMQs for each open (EFFECT_CMD_INIT), and proxy change (EFFECT_CMD_OFFLOAD)
     status_t ret = mConversion->handleCommand(cmdCode, cmdSize, pCmdData, replySize, pReplyData);
-    // update FMQs when effect open successfully
-    if (ret == OK && cmdCode == EFFECT_CMD_INIT) {
-        const auto& retParam = mConversion->getEffectReturnParam();
-        mStatusQ = std::make_unique<StatusMQ>(retParam.statusMQ);
-        mInputQ = std::make_unique<DataMQ>(retParam.inputDataMQ);
-        mOutputQ = std::make_unique<DataMQ>(retParam.outputDataMQ);
+    if (ret == OK &&
+        (cmdCode == EFFECT_CMD_INIT || (mIsProxyEffect && cmdCode == EFFECT_CMD_OFFLOAD))) {
+        const IEffect::OpenEffectReturn* retParam =
+                (cmdCode == EFFECT_CMD_INIT)
+                        ? mConversion->getEffectReturnParam()
+                        : std::static_pointer_cast<EffectProxy>(mEffect)->getEffectReturnParam();
+        if (!retParam) {
+            ALOGE("%s no valid OpenEffectReturn parameter", __func__);
+            return NO_INIT;
+        }
+        mStatusQ = std::make_unique<StatusMQ>(retParam->statusMQ);
+        mInputQ = std::make_unique<DataMQ>(retParam->inputDataMQ);
+        mOutputQ = std::make_unique<DataMQ>(retParam->outputDataMQ);
         if (!mStatusQ->isValid() || !mInputQ->isValid() || !mOutputQ->isValid()) {
-            ALOGE("%s return with invalid FMQ", __func__);
+            ALOGE("%s return with invalid FMQ %s", __func__, retParam->toString().c_str());
             return NO_INIT;
         }
     }

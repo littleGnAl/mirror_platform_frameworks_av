@@ -76,3 +76,9 @@ cc_library_headers {
 
     export_include_dirs: ["include"],
 }
+
+cc_library_headers {
+    name: "libaudiohalimpl_headers",
+
+    export_include_dirs: ["impl"],
+}
