@@ -255,6 +255,7 @@ cc_library_shared {
         "EffectConversionHelperAidl.cpp",
         "EffectBufferHalAidl.cpp",
         "EffectHalAidl.cpp",
+        "EffectProxy.cpp",
         "effectsAidlConversion/AidlConversionAec.cpp",
         "effectsAidlConversion/AidlConversionAgc1.cpp",
         "effectsAidlConversion/AidlConversionAgc2.cpp",
@@ -295,4 +296,9 @@ cc_library_shared {
         "-Wthread-safety",
         "-DBACKEND_NDK",
     ],
+}
+
+filegroup {
+    name: "effectProxySrc",
+    srcs: ["EffectProxy.cpp"],
 }
