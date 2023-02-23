@@ -421,6 +421,7 @@ enum : uint32_t {
     _C2_PL_AV1_BASE  = 0x9000,
     _C2_PL_VP8_BASE  = 0xA000,
     _C2_PL_MPEGH_BASE = 0xB000,     // MPEG-H 3D Audio
+    _C2_PL_AC4_BASE  = 0xC000,
 
     C2_PROFILE_LEVEL_VENDOR_START = 0x70000000,
 };
@@ -588,6 +589,16 @@ enum C2Config::profile_t : uint32_t {
     PROFILE_MPEGH_HIGH,                         ///< MPEG-H High
     PROFILE_MPEGH_LC,                           ///< MPEG-H Low-complexity
     PROFILE_MPEGH_BASELINE,                     ///< MPEG-H Baseline
+
+    // AC-4 profiles
+    // Below profiles are labelled “AC-4 Profile xx.yy” where xx is the bitstream_version
+    // and yy is the presentation_version as described in "The MIME codecs parameter", Annex E.13
+    // found at https://www.etsi.org/deliver/etsi_ts/103100_103199/10319002/01.02.01_60/ts_10319002v010201p.pdf
+    PROFILE_AC4_0_0 = _C2_PL_AC4_BASE,          ///< AC-4 Profile 00.00
+    PROFILE_AC4_1_0,                            ///< AC-4 Profile 01.00
+    PROFILE_AC4_1_1,                            ///< AC-4 Profile 01.01
+    PROFILE_AC4_2_1,                            ///< AC-4 Profile 02.01
+    PROFILE_AC4_2_2,                            ///< AC-4 Profile 02.02
 };
 
 enum C2Config::level_t : uint32_t {
@@ -743,6 +754,16 @@ enum C2Config::level_t : uint32_t {
     LEVEL_MPEGH_3,                              ///< MPEG-H L3
     LEVEL_MPEGH_4,                              ///< MPEG-H L4
     LEVEL_MPEGH_5,                              ///< MPEG-H L5
+
+    // AC-4 levels
+    // Below levels are labelled “AC-4 Level zz” where zz is the mdcompat as described in
+    // "The MIME codecs parameter", Annex E.13
+    // found at https://www.etsi.org/deliver/etsi_ts/103100_103199/10319002/01.02.01_60/ts_10319002v010201p.pdf
+    LEVEL_AC4_0 = _C2_PL_AC4_BASE,              ///< AC-4 Level 00
+    LEVEL_AC4_1,                                ///< AC-4 Level 01
+    LEVEL_AC4_2,                                ///< AC-4 Level 02
+    LEVEL_AC4_3,                                ///< AC-4 Level 03
+    LEVEL_AC4_4,                                ///< AC-4 Level 04
 };
 
 struct C2ProfileLevelStruct {
