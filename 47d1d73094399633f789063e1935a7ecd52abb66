@@ -39,6 +39,30 @@
       },
       "revId": "47d1d73094399633f789063e1935a7ecd52abb66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cee77fe_526ff562",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-24T17:39:06Z",
+      "side": 1,
+      "message": "Since this assumption is important both here and when removing the patch, I think it\u0027s worth having it in both places. Locality helps understanding, and in the case of static asserts costs nothing. But thanks for checking!",
+      "parentUuid": "bec61b63_b0ab0f34",
+      "range": {
+        "startLine": 563,
+        "startChar": 4,
+        "endLine": 563,
+        "endChar": 48
+      },
+      "revId": "47d1d73094399633f789063e1935a7ecd52abb66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
