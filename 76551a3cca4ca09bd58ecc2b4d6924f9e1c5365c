@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be2f5ab7_977d1a46",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-02-24T10:00:34Z",
+      "side": 1,
+      "message": "The new code submit is under internal review. (New description about AC-4 profile and level.) Plan to submit it on next Monday.",
+      "parentUuid": "f97bde80_1b2f741c",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 19
+      },
+      "revId": "76551a3cca4ca09bd58ecc2b4d6924f9e1c5365c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d3c8c26_93632857",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 8
