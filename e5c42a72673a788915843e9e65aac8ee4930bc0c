@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71f2423_2a91c138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-24T20:48:46Z",
+      "side": 1,
+      "message": "Thank you very much for your corrections, David!",
+      "revId": "e5c42a72673a788915843e9e65aac8ee4930bc0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e636bfc_6ead3cca",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "Correct the code snippet.\n\n`return OK` should be at the end of `if (state \u003d\u003d StreamDescriptor::State::IDLE)` scope.\n\n\n```\n            if (state \u003d\u003d StreamDescriptor::State::IDLE) {\n                if (status_t status \u003d\n                        sendCommand(makeHalCommand\u003cHalCommand::Tag::burst\u003e(0), reply);\n                        status !\u003d OK) {\n                    return status;\n                }\n                state \u003d getState();\n                if (state !\u003d StreamDescriptor::State::ACTIVE) {\n                    ALOGE(\"%s: unexpected stream state: %s (expected PAUSED)\",\n                            __func__, toString(state).c_str());\n                    return INVALID_OPERATION;\n                }\n                return OK;\n            }\n           \n```",
       "parentUuid": "c9d9eed1_e4daff35",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 340,
+        "endChar": 13
+      },
+      "revId": "e5c42a72673a788915843e9e65aac8ee4930bc0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71742c74_37faed2e",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-24T20:48:46Z",
+      "side": 1,
+      "message": "\u003e 1. In the IDLE state, when the HAL gets a burst command, the state machine should go to either the ACTIVE or the TRANSFERRING state. I think in this scenario it should go to the ACTIVE state.\n\nMy bad. I had read the wrong line in the state machine description. Indeed, a \u0027burst\u0027 from IDLE goes either to ACTIVE or TRANSFERRING. Since the size of the burst is 0, it\u0027s a \"full write\", thus it should go to ACTIVE. \n\n\u003e 2. The argument reply might be a nullptr. Using state \u003d getState() to get the state.\n\nThanks for reminding about this! I think, a more optimal solution is to use a local Reply object in the case when the caller did not provide one, this saves an RPC call to the HAL.\n\n\u003e return OK should be at the end of if (state \u003d\u003d StreamDescriptor::State::IDLE) scope.\n\nAgree.",
+      "parentUuid": "d2f19094_189968d1",
       "range": {
         "startLine": 327,
         "startChar": 12,
