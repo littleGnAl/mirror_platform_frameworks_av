@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19166db8_5da2d560",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-24T22:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8f52d1f_b664e9e2",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2297ba9d_cbfc0e89",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-02-24T19:53:48Z",
       "side": 1,
       "message": "nit: extra spaces.\n\nMaybe skip 11025 and 22050 (they are uncommon).",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a23ffb1_8ed425e4",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-24T22:12:02Z",
+      "side": 1,
+      "message": "as discussed, retained 11025 to test some uncommon cases.",
+      "parentUuid": "2297ba9d_cbfc0e89",
       "range": {
         "startLine": 47,
         "startChar": 47,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ab7769_7524e321",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-24T22:12:02Z",
+      "side": 1,
+      "message": "runtime now is about 5 seconds (down from 150+ seconds earlier).\nKeeping this as 4.",
+      "parentUuid": "f5ab0c88_36b9cb8d",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1ff9007_8508fa15",
@@ -100,6 +172,24 @@
       "writtenOn": "2023-02-24T19:53:48Z",
       "side": 1,
       "message": "nit: extra line.",
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4d2cc3_5691dfac",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-24T22:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ff9007_8508fa15",
       "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
