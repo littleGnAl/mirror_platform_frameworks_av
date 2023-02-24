@@ -46,6 +46,30 @@
       },
       "revId": "e5c42a72673a788915843e9e65aac8ee4930bc0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f19094_189968d1",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-02-24T09:08:11Z",
+      "side": 1,
+      "message": "Correct the code snippet.\n\n`return OK` should be at the end of `if (state \u003d\u003d StreamDescriptor::State::IDLE)` scope.\n\n\n```\n            if (state \u003d\u003d StreamDescriptor::State::IDLE) {\n                if (status_t status \u003d\n                        sendCommand(makeHalCommand\u003cHalCommand::Tag::burst\u003e(0), reply);\n                        status !\u003d OK) {\n                    return status;\n                }\n                state \u003d getState();\n                if (state !\u003d StreamDescriptor::State::ACTIVE) {\n                    ALOGE(\"%s: unexpected stream state: %s (expected PAUSED)\",\n                            __func__, toString(state).c_str());\n                    return INVALID_OPERATION;\n                }\n                return OK;\n            }\n           \n```",
+      "parentUuid": "c9d9eed1_e4daff35",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 340,
+        "endChar": 13
+      },
+      "revId": "e5c42a72673a788915843e9e65aac8ee4930bc0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
