@@ -22,6 +22,30 @@
       },
       "revId": "c6308716b3c035196ce7cea009af989d8bb003fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0cf21a_6c14c297",
+        "filename": "media/libaudiohal/impl/EffectBufferHalAidl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-24T00:30:32Z",
+      "side": 1,
+      "message": "The implementation access `mBufferSize` so can not be static, please checkout:\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2449888/9/media/libaudiohal/impl/EffectBufferHalAidl.cpp#118",
+      "parentUuid": "bd84e3a9_a4b98098",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "c6308716b3c035196ce7cea009af989d8bb003fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
