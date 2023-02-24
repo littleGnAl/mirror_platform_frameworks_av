@@ -22,6 +22,30 @@
       },
       "revId": "e5c42a72673a788915843e9e65aac8ee4930bc0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d9eed1_e4daff35",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-02-24T03:36:49Z",
+      "side": 1,
+      "message": "Note: I add `return OK` at the end of the scope to avoid send a start command in ACTIVE state.",
+      "parentUuid": "1e636bfc_6ead3cca",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 340,
+        "endChar": 13
+      },
+      "revId": "e5c42a72673a788915843e9e65aac8ee4930bc0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
