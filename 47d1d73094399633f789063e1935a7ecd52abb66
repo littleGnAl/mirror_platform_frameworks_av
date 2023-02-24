@@ -16,6 +16,29 @@
       "message": "Shunkai, could you please review and approve. Rios has checked that the fix works for him.",
       "revId": "47d1d73094399633f789063e1935a7ecd52abb66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec61b63_b0ab0f34",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-24T17:23:48Z",
+      "side": 1,
+      "message": "nit: do we need this assert here because the usage has been removed, maybe one assert (line#631) is enough?",
+      "range": {
+        "startLine": 563,
+        "startChar": 4,
+        "endLine": 563,
+        "endChar": 48
+      },
+      "revId": "47d1d73094399633f789063e1935a7ecd52abb66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
