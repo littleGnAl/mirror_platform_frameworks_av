@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c42962e_6c182dfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-24T19:53:48Z",
+      "side": 1,
+      "message": "Thanks, some suggestions.",
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f52d1f_b664e9e2",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-24T19:53:48Z",
+      "side": 1,
+      "message": "MONO, STEREO, 5POINT1, 7POINT1POINT4, AUDIO_CHANNEL_OUT_22POINT2",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2297ba9d_cbfc0e89",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-24T19:53:48Z",
+      "side": 1,
+      "message": "nit: extra spaces.\n\nMaybe skip 11025 and 22050 (they are uncommon).",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5ab0c88_36b9cb8d",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-24T19:53:48Z",
+      "side": 1,
+      "message": "1 and 2?",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ff9007_8508fa15",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-02-24T19:53:48Z",
+      "side": 1,
+      "message": "nit: extra line.",
+      "revId": "0a623c02d3d324708f4ae1d586b449fae9e7e1b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
