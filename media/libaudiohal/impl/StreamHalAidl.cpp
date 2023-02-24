@@ -323,6 +323,22 @@ status_t StreamHalAidl::resume(StreamDescriptor::Reply* reply) {
     if (mIsInput) {
         return sendCommand(makeHalCommand<HalCommand::Tag::burst>(0), reply);
     } else {
+        if (mContext.isAsynchronous()) {
+            // Handle pause-flush-resume sequence by moving from IDLE to PAUSED.
+            const auto state = getState();
+            if (state == StreamDescriptor::State::IDLE) {
+                if (status_t status =
+                        sendCommand(makeHalCommand<HalCommand::Tag::burst>(0), reply);
+                        status != OK) {
+                    return status;
+                }
+                if (reply->state != StreamDescriptor::State::PAUSED) {
+                    ALOGE("%s: unexpected stream state: %s (expected PAUSED)",
+                            __func__, toString(reply->state).c_str());
+                    return INVALID_OPERATION;
+                }
+            }
+        }
         return sendCommand(makeHalCommand<HalCommand::Tag::start>(), reply);
     }
 }
@@ -514,6 +530,10 @@ status_t StreamOutHalAidl::getNextWriteTimestamp(int64_t *timestamp __unused) {
 status_t StreamOutHalAidl::setCallback(wp<StreamOutHalInterfaceCallback> callback) {
     TIME_CHECK();
     if (!mStream) return NO_INIT;
+    if (!mContext.isAsynchronous()) {
+        ALOGE("%s: the callback is intended for asynchronous streams only", __func__);
+        return INVALID_OPERATION;
+    }
     if (auto broker = mCallbackBroker.promote(); broker != nullptr) {
         if (auto cb = callback.promote(); cb != nullptr) {
             broker->setStreamOutCallback(this, cb);
