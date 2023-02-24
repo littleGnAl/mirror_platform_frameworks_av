@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f97bde80_1b2f741c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-02-24T01:35:02Z",
+      "side": 1,
+      "message": "As far as (3), I got the confirmation from AC-4 codec owner. \"For bitstream version 1 there will not be a higher presentation version than 1. We do not maintain bitstream version o or bitstream version 1 any further.\"",
+      "parentUuid": "48c64687_cbc25b28",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 19
+      },
+      "revId": "76551a3cca4ca09bd58ecc2b4d6924f9e1c5365c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d3c8c26_93632857",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
         "patchSetId": 8
