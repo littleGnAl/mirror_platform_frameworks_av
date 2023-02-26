@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6421ea54_c15051f3",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-26T17:08:02Z",
+      "side": 1,
+      "message": "moved to partner gerrit https://partner-android-review.googlesource.com/c/platform/frameworks/av/+/2401502",
+      "parentUuid": "c4d79799_d73cfb0c",
+      "revId": "691324d6bb6cd19f1b2ec788f7d8a517458984db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0fbc6cd_54f11c8d",
@@ -66,6 +84,30 @@
       "writtenOn": "2023-02-22T16:21:02Z",
       "side": 1,
       "message": "let\u0027s keep this list in numeric order.\n\nit\u0027s confusing with one list in alpha order (in the other file)\nand with this one in numeric order.\nbut, I want is to preserve the orderings that each of them already had in place.\n\n[if i were doing this from scratch, my preference would have been numeric\norder so that I can easily figure out which values are taken... but i\u0027m not doing this from scratch.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "691324d6bb6cd19f1b2ec788f7d8a517458984db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f741d1_bdcfa994",
+        "filename": "media/ndk/include/media/NdkMediaCodec.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-26T17:08:02Z",
+      "side": 1,
+      "message": "changed in the CL in partner gerrit",
+      "parentUuid": "a0fbc6cd_54f11c8d",
       "range": {
         "startLine": 70,
         "startChar": 3,
