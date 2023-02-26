@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901e4bf0_283a064e",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-02-26T20:52:48Z",
+      "side": 1,
+      "message": "Do we need to explain what this format represents? e.g. Add another sentence to the above paragraph: \"The profiles below are defined in the format xx.yy where xx is the bitstream_version and yy is the presentation_version.\"",
+      "range": {
+        "startLine": 601,
+        "startChar": 65,
+        "endLine": 601,
+        "endChar": 70
+      },
+      "revId": "ffd917c5595d91ff19d8cbd25ab71a710ef1a548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
