@@ -87,6 +87,29 @@
       "parentUuid": "d7d26f0d_d3bd4dfc",
       "revId": "86a3bcd8cf8c3875522b3e145d9a370950f3badb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7b5210_fa95600b",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-26T20:39:44Z",
+      "side": 1,
+      "message": "this seems to be present only in MediaDefs.cpp (done in an earlier change)\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/module/foundation/MediaDefs.cpp;l\u003d75?q\u003dMEDIA_MIMETYPE_AUDIO_DTS_UHD_P2\n\nMediaFormat.java only defines \nMIMETYPE_AUDIO_DTS_UHD \u003d \"audio/vnd.dts.uhd\";\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/media/java/android/media/MediaFormat.java;l\u003d191?q\u003daudio%2Fvnd.dts.uhd\n\nMIMETYPE_AUDIO_DTS_UHD (MediaFormat.java) was defined in Android T and MEDIA_MIMETYPE_AUDIO_DTS_UHD_P2 is recently added\n\nWould it be possible to get these to be consistent (i.e. add UHD_P1 and UHD_P2 to MediaFormat.java)?",
+      "range": {
+        "startLine": 673,
+        "startChar": 46,
+        "endLine": 673,
+        "endChar": 77
+      },
+      "revId": "86a3bcd8cf8c3875522b3e145d9a370950f3badb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
