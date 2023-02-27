@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18709042_6557b067",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-02-27T06:22:37Z",
+      "side": 1,
+      "message": "AC-4",
+      "range": {
+        "startLine": 593,
+        "startChar": 7,
+        "endLine": 593,
+        "endChar": 10
+      },
+      "revId": "ffd917c5595d91ff19d8cbd25ab71a710ef1a548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1944e2b3_0a470cea",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 2
@@ -19,6 +42,53 @@
         "startChar": 7,
         "endLine": 594,
         "endChar": 82
+      },
+      "revId": "ffd917c5595d91ff19d8cbd25ab71a710ef1a548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38396ba_f298c533",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-02-27T06:22:37Z",
+      "side": 1,
+      "message": "\"Below profiles are labelled “AC4 Profile xx.yy” where xx is the bitstream_version and yy is presentation_version as described in\n\"The MIME codecs parameter\", Annex E.13\nfound at https://www.etsi.org/deliver/etsi_ts/103100_103199/10319002/01.02.01_60/ts_10319002v010201p.pdf\"",
+      "parentUuid": "1944e2b3_0a470cea",
+      "range": {
+        "startLine": 594,
+        "startChar": 7,
+        "endLine": 594,
+        "endChar": 82
+      },
+      "revId": "ffd917c5595d91ff19d8cbd25ab71a710ef1a548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627d7cd7_25b9fdb7",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-02-27T06:22:37Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 31
       },
       "revId": "ffd917c5595d91ff19d8cbd25ab71a710ef1a548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -49,6 +119,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fbfa8a8_1371628a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-02-27T06:22:37Z",
+      "side": 1,
+      "message": "AC-4",
+      "range": {
+        "startLine": 762,
+        "startChar": 7,
+        "endLine": 762,
+        "endChar": 10
+      },
+      "revId": "ffd917c5595d91ff19d8cbd25ab71a710ef1a548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9749de27_fa096557",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 2
@@ -60,6 +153,30 @@
       "writtenOn": "2023-02-26T20:58:25Z",
       "side": 1,
       "message": "This is not the right section. Perhaps: \"Corresponding to the \"Bitstream Syntax\" Section found at ...\"",
+      "range": {
+        "startLine": 763,
+        "startChar": 7,
+        "endLine": 764,
+        "endChar": 16
+      },
+      "revId": "ffd917c5595d91ff19d8cbd25ab71a710ef1a548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96da4177_ac9ea96f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2023-02-27T06:22:37Z",
+      "side": 1,
+      "message": "Below levels are labelled “AC-4 Level z” where z is the presentation_level as described in\n\"The MIME codecs parameter\", Annex E.13\nfound at https://www.etsi.org/deliver/etsi_ts/103100_103199/10319002/01.02.01_60/ts_10319002v010201p.pdf",
+      "parentUuid": "9749de27_fa096557",
       "range": {
         "startLine": 763,
         "startChar": 7,
