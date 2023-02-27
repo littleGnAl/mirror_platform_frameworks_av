@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5872a11e_6bccf020",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-27T22:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce8eca47_84bf4c78",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 5
+      },
+      "revId": "98869e31e5fede52bf321d1a239cea59437b361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab5da96d_cb124b05",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8216aa5_5c95e58d",
+        "filename": "media/libaudiohal/impl/EffectProxy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-27T22:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab5da96d_cb124b05",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 81
+      },
+      "revId": "98869e31e5fede52bf321d1a239cea59437b361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba96b405_841f1707",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-25T02:14:33Z",
       "side": 1,
       "message": "Please capitalize since it\u0027s a type name.",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "98869e31e5fede52bf321d1a239cea59437b361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebbbe47_66e50915",
+        "filename": "media/libaudiohal/impl/EffectProxy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-27T22:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba96b405_841f1707",
       "range": {
         "startLine": 55,
         "startChar": 10,
@@ -116,6 +188,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d975dde7_9cf7122c",
+        "filename": "media/libaudiohal/impl/EffectProxy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-27T22:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b446e38_feef7f1d",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "98869e31e5fede52bf321d1a239cea59437b361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "984de0f8_5b235f68",
+        "filename": "media/libaudiohal/impl/EffectProxy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-27T22:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a6d4dff_72def960",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "98869e31e5fede52bf321d1a239cea59437b361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cea8518_b5cc0459",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8ae577_34035db7",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-27T22:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cea8518_b5cc0459",
+      "range": {
+        "startLine": 82,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 40
+      },
+      "revId": "98869e31e5fede52bf321d1a239cea59437b361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eae7d02_5028ab90",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-02-25T02:14:33Z",
       "side": 1,
       "message": "mEffectCount?",
+      "range": {
+        "startLine": 77,
+        "startChar": 17,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "98869e31e5fede52bf321d1a239cea59437b361d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986d40ac_4247229d",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-27T22:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eae7d02_5028ab90",
       "range": {
         "startLine": 77,
         "startChar": 17,
