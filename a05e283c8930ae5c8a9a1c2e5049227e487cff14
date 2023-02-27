@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e95464f7_76e5e6f9",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-27T23:41:32Z",
+      "side": 1,
+      "message": "`mIsProxyEffect(mDesc.common.id.proxy.has_value() \u0026\u0026 mDesc.common.id.proxy.value() \u003d\u003d mDesc.common.id.uuid)` will do the job. Lambdas need to be used when there is a need for local storage or loops.",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5d8a64_18a539d3",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-27T23:41:32Z",
+      "side": 1,
+      "message": "No need to make a copy. `effect_offload_param_t* offload \u003d static_cast\u003ceffect_offload_param_t*\u003e(pCmdData)` should work.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 71
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7dc8baf_20efb885",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-27T23:41:32Z",
+      "side": 1,
+      "message": "nit: Curious what is the benefit of using a lambda here versus the conditional operator (`?:`).",
+      "range": {
+        "startLine": 206,
+        "startChar": 52,
+        "endLine": 206,
+        "endChar": 59
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e7f78a_9557aab3",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-27T23:41:32Z",
+      "side": 1,
+      "message": "Do we need to call `close` on the effect? If it\u0027s the case, then we can make a method and use it both here and in the destructor.",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe5f32e_e8db5250",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-27T23:41:32Z",
+      "side": 1,
+      "message": "Should we clear the map afterwards, or at least set `sub.second.first` to null?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 9
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49150834_192db968",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-02-27T23:41:32Z",
+      "side": 1,
+      "message": "This fragment also seems to be repeated over and over again, please make it a function.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 9
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
