@@ -274,6 +274,11 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         }
     }
 
+    // thumbnail extracting typically get one frame at a time,
+    // so set kKeyFrameRate to 1 then reduce memory resource consumption
+    int32_t thumbnailFrameRate = 1;
+    format->setInt32(kKeyFrameRate, thumbnailFrameRate);
+
     MediaCodecList::findMatchingCodecs(
             mime,
             false, /* encoder */
@@ -404,6 +409,11 @@ sp<IMemory> StagefrightMetadataRetriever::getFrameInternal(
         ALOGE("getFrameInternal: convertMetaDataToMessage() failed, unable to extract frame");
         return NULL;
     }
+
+    // thumbnail extracting typically get one frame at a time,
+    // so set kKeyFrameRate to 1 then reduce memory resource consumption
+    int32_t thumbnailFrameRate = 1;
+    format->setInt32(kKeyFrameRate, thumbnailFrameRate);
 
     Vector<AString> matchingCodecs;
     MediaCodecList::findMatchingCodecs(
