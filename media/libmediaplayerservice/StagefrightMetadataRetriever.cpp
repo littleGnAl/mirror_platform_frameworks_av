@@ -213,6 +213,7 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         trackMeta->setCString(kKeyMIMEType, mime);
     }
 
+
     sp<AMessage> format = new AMessage;
     status_t err = convertMetaDataToMessage(trackMeta, &format);
     if (err != OK) {
@@ -394,6 +395,11 @@ sp<IMemory> StagefrightMetadataRetriever::getFrameInternal(
         ALOGE("video track has no mime information.");
         return NULL;
     }
+
+    // thumbnail extracting typically get one frame at a time,
+    // so set kKeyFrameRate to 1 then reduce memory resource consumption
+    int32_t thumbnailFrameRate = 1;
+    trackMeta->setInt32(kKeyFrameRate, thumbnailFrameRate);
 
     bool preferhw = property_get_bool(
             "media.stagefright.thumbnail.prefer_hw_codecs", false);
