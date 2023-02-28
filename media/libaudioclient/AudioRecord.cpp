@@ -1106,6 +1106,7 @@ status_t AudioRecord::obtainBuffer(Buffer* audioBuffer, const struct timespec *r
                         // Return a DEAD_OBJECT error and let the caller recreate.
                         tryCounter = 0;
                     } else {
+                        usleep(600000);
                         status = restoreRecord_l("obtainBuffer");
                     }
                     if (status != NO_ERROR) {
@@ -1265,6 +1266,7 @@ nsecs_t AudioRecord::processAudioBuffer()
 
     // Check for track invalidation
     if (flags & CBLK_INVALID) {
+        usleep(600000);
         (void) restoreRecord_l("processAudioBuffer");
         mLock.unlock();
         // Run again immediately, but with a new IAudioRecord
