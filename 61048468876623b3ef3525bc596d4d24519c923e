@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "993f9c4c_e4434d37",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-28T22:46:25Z",
+      "side": 1,
+      "message": "not sure about general guidelines for Android codebase.\nstd::clamp() has been used in few other places in frameworks/av/media",
+      "parentUuid": "d6f28619_ae00565f",
+      "range": {
+        "startLine": 357,
+        "startChar": 27,
+        "endLine": 357,
+        "endChar": 37
+      },
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca6dde37_53c1e1bd",
         "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
         "patchSetId": 6
@@ -142,6 +166,24 @@
       "writtenOn": "2023-02-28T21:56:52Z",
       "side": 1,
       "message": "I don\u0027t see this being used to set anything in the libvpx encoder. Am I missing something?",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe17b84_67e50b61",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-02-28T22:46:25Z",
+      "side": 1,
+      "message": "this is used to mMaxQuantizer and mMinQuantizer at\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1740757/6/media/codec2/components/vpx/C2SoftVpxEnc.cpp#546\n\nthese are then used to configure the encoder parameters at https://android-review.googlesource.com/c/platform/frameworks/av/+/1740757/6/media/codec2/components/vpx/C2SoftVpxEnc.cpp#682",
+      "parentUuid": "3d073a29_e1443d65",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
