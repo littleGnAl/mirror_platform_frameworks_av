@@ -34,6 +34,24 @@
       "parentUuid": "e5b0a127_b5592680",
       "revId": "0bfedaa9b89e04493bce2897c3310651a6557187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0aca916_936b36fe",
+        "filename": "media/module/bqhelper/GraphicBufferSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-02-28T23:27:40Z",
+      "side": 1,
+      "message": "This does not seem to break abi.\nsince it is never used from HAL.",
+      "parentUuid": "79521d38_adfa50dc",
+      "revId": "0bfedaa9b89e04493bce2897c3310651a6557187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
