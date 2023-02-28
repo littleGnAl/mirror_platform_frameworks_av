@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2acc2229_51552fa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "Is there plans to integrate the same logic into ExoPlayer\u0027s TS extractor as well?",
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f49d8dc_3d4b7ee8",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "I don\u0027t see much advantage of using this macro. In my opinion it makes the code unreadable at some instances. For consistency, we should either use this macro at all places in this file or not use at all.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "871e2d0f_bedcc700",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "Function name should be lowerCamelCase as per go/androidcstyleguide. Please also fix other function names.",
+      "range": {
+        "startLine": 372,
+        "startChar": 16,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68733ae_3de0960b",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "I believe parsing logic can be made more readable by using line breaks correctly. For example you can look at above method parseEAC3SyncFrame.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 36
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6223602_bb854e53",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "I think line break can be used here to segregate between different parts of code. For example, there can be a line break introduced after the constants is defined and one after initialisation is done. This will make the code more readable. Same can be applied to methods below.",
+      "range": {
+        "startLine": 383,
+        "startChar": 2,
+        "endLine": 387,
+        "endChar": 31
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0dc6e36_64360eb1",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this check here and can be moved as an else part to the if condition below. \n\nif (dtshdSyncWord \u003d\u003d DTSHD_SYNC_CORE_16BIT_BE) { // DTS Digital Surround Header\n} else if (dtshdSyncWord \u003d\u003d DTSHD_SYNC_EXSS_16BIT_BE) { // DTS Express(LBR) Header\n} else {\n    return ERROR_MALFORMED;\n}",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 395,
+        "endChar": 5
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293fa75f_3abc22c0",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "Can we define these variables when initialising instead of doing it like this.\n\nFor example:\nuint32_t frameSize \u003d bits.getBits(14) + 1; \nunit32_t amode \u003d bits.getBits(6);\nunit32_t freqIndex \u003d bits.getBits(4);",
+      "range": {
+        "startLine": 398,
+        "startChar": 8,
+        "endLine": 398,
+        "endChar": 43
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd24eb5_2fa23071",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-02-28T17:02:43Z",
+      "side": 1,
+      "message": "Links to the document like this, can also be added at other places where applicable. It makes debugging the code way faster.",
+      "range": {
+        "startLine": 591,
+        "startChar": 34,
+        "endLine": 591,
+        "endChar": 76
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
