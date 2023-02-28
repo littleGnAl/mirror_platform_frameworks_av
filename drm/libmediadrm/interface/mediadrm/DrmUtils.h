@@ -105,7 +105,7 @@ template <typename... Args>
 void LogToBuffer(android_LogPriority level, const uint8_t uuid[16], const char *fmt, Args... args) {
     uint64_t uuid2[2] = {};
     std::memcpy(uuid2, uuid, sizeof(uuid2));
-    std::string uuidFmt("uuid=[%lx %lx] ");
+    std::string uuidFmt("uuid=[%l" PRIx64 " %l" PRIx64 "] ");
     uuidFmt += fmt;
     LogToBuffer(level, uuidFmt.c_str(), htobe64(uuid2[0]), htobe64(uuid2[1]), args...);
 }
