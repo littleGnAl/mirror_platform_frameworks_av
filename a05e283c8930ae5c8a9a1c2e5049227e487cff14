@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "260f1c02_3f165031",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-28T01:14:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e95464f7_76e5e6f9",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d5d8a64_18a539d3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-27T23:41:32Z",
       "side": 1,
       "message": "No need to make a copy. `effect_offload_param_t* offload \u003d static_cast\u003ceffect_offload_param_t*\u003e(pCmdData)` should work.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 71
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb00587b_ab3cb5b0",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-28T01:14:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d5d8a64_18a539d3",
       "range": {
         "startLine": 286,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15acfd03_72ed9bb1",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-28T01:14:51Z",
+      "side": 1,
+      "message": "This code came from when I was trying to get a const reference of `OpenEffectReturn`, yes I should update to remove the lambda now.",
+      "parentUuid": "f7dc8baf_20efb885",
+      "range": {
+        "startLine": 206,
+        "startChar": 52,
+        "endLine": 206,
+        "endChar": 59
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51e7f78a_9557aab3",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-27T23:41:32Z",
       "side": 1,
       "message": "Do we need to call `close` on the effect? If it\u0027s the case, then we can make a method and use it both here and in the destructor.",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9438d275_e1845e1a",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-28T01:14:51Z",
+      "side": 1,
+      "message": "Not here, because effects were just created (not open yet).\nBut I add a `destroy()` method to do this job.",
+      "parentUuid": "51e7f78a_9557aab3",
       "range": {
         "startLine": 88,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ee289c_665570fa",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-28T01:14:51Z",
+      "side": 1,
+      "message": "I think we still want to keep the map, because this interface not suppose to impacting other interface (addSubEffect), but you are right I need set the `sub.second.first` to null.",
+      "parentUuid": "0fe5f32e_e8db5250",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 9
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49150834_192db968",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-02-27T23:41:32Z",
       "side": 1,
       "message": "This fragment also seems to be repeated over and over again, please make it a function.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 9
+      },
+      "revId": "a05e283c8930ae5c8a9a1c2e5049227e487cff14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d20bca_9705cc60",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-02-28T01:14:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49150834_192db968",
       "range": {
         "startLine": 135,
         "startChar": 0,
