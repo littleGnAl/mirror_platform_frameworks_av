@@ -466,6 +466,9 @@ void DrmMetricsLogger::reportMediaDrmCreated() const {
     mediametrics_setInt64(handle, "uuid_lsb", mUuid[1]);
     mediametrics_setInt32(handle, "frontend", mFrontend);
     mediametrics_setCString(handle, "object_nonce", mObjNonce.c_str());
+    String8 version;
+    DrmStatus status = getPropertyString(String8("version"), version);
+    mediametrics_setCString(handle, "apex_version", version.c_str());
     mediametrics_selfRecord(handle);
     mediametrics_delete(handle);
 }
