@@ -87,6 +87,63 @@
       "parentUuid": "67f2defe_247d2831",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f28619_ae00565f",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-02-28T21:56:52Z",
+      "side": 1,
+      "message": "is C++17 generally allowed in the Android codebase now?",
+      "range": {
+        "startLine": 357,
+        "startChar": 27,
+        "endLine": 357,
+        "endChar": 37
+      },
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca6dde37_53c1e1bd",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-02-28T21:56:52Z",
+      "side": 1,
+      "message": "these could be defined in the cpp file.",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d073a29_e1443d65",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-02-28T21:56:52Z",
+      "side": 1,
+      "message": "I don\u0027t see this being used to set anything in the libvpx encoder. Am I missing something?",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
