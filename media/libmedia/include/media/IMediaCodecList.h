@@ -41,6 +41,11 @@ public:
             const char *type, bool encoder, size_t startIndex = 0) const = 0;
 
     virtual ssize_t findCodecByName(const char *name) const = 0;
+
+    virtual status_t getFlags(
+            const std::vector<std::string> &names,
+            const std::vector<std::string> &defaults,
+            std::vector<std::string> *values) const = 0;
 };
 
 // ----------------------------------------------------------------------------

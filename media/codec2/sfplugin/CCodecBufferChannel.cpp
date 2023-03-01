@@ -25,6 +25,7 @@
 #include <atomic>
 #include <list>
 #include <numeric>
+#include <regex>
 
 #include <C2AllocatorGralloc.h>
 #include <C2PlatformSupport.h>
@@ -179,10 +180,14 @@ CCodecBufferChannel::~CCodecBufferChannel() {
 }
 
 void CCodecBufferChannel::setComponent(
-        const std::shared_ptr<Codec2Client::Component> &component) {
+        const std::shared_ptr<Codec2Client::Component> &component,
+        bool trackClientInput) {
     mComponent = component;
-    mComponentName = component->getName() + StringPrintf("#%d", int(uintptr_t(component.get()) % 997));
+    mComponentName = component->getName() +
+            StringPrintf("#%d", int(uintptr_t(component.get()) % 997));
     mName = mComponentName.c_str();
+    mTrackClientInput = trackClientInput;
+    ALOGI("[%s] track client input %s", mName, mTrackClientInput ? "enabled" : "disabled");
 }
 
 status_t CCodecBufferChannel::setInputSurface(
@@ -335,7 +340,7 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         {
             Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
             PipelineWatcher::Clock::time_point now = PipelineWatcher::Clock::now();
-            size_t inputId = size_t(buffer.get());
+            size_t inputId = mTrackClientInput ? size_t(buffer.get()) : 0;
             for (const std::unique_ptr<C2Work> &work : items) {
                 watcher->onWorkQueued(
                         inputId,
@@ -734,7 +739,7 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
     while (true) {
         {
             Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
-            if (inBuffer != nullptr) {
+            if (mTrackClientInput && inBuffer != nullptr) {
                 watcher->onInputBufferRequested(size_t(inBuffer.get()));
             }
             if (!watcher->pipelineHasRoom()) {
@@ -1575,7 +1580,9 @@ status_t CCodecBufferChannel::requestInitialInputBuffers(
         minBuffer->setRange(0, 0);
         minBuffer->meta()->clear();
         minBuffer->meta()->setInt64("timeUs", 0);
-        mPipelineWatcher.lock()->onInputBufferRequested(size_t(minBuffer.get()));
+        if (mTrackClientInput) {
+            mPipelineWatcher.lock()->onInputBufferRequested(size_t(minBuffer.get()));
+        }
         if (queueInputBufferInternal(minBuffer) != OK) {
             ALOGW("[%s] Error while queueing an empty buffer to get CSD",
                   mName);
@@ -1590,9 +1597,11 @@ status_t CCodecBufferChannel::requestInitialInputBuffers(
         reportedBuffers.push_back(size_t(buffer.get()));
     }
 
-    Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
-    for (size_t buffer : reportedBuffers) {
-        watcher->onInputBufferRequested(buffer);
+    if (mTrackClientInput) {
+        Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
+        for (size_t buffer : reportedBuffers) {
+            watcher->onInputBufferRequested(buffer);
+        }
     }
 
     return OK;

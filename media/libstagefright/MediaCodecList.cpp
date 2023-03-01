@@ -37,6 +37,7 @@
 #include <media/stagefright/OmxInfoBuilder.h>
 #include <media/stagefright/PersistentSurface.h>
 
+#include <server_configurable_flags/get_flags.h>
 #include <sys/stat.h>
 #include <utils/threads.h>
 
@@ -313,6 +314,25 @@ size_t MediaCodecList::countCodecs() const {
 
 const sp<AMessage> MediaCodecList::getGlobalSettings() const {
     return mGlobalSettings;
+}
+
+status_t MediaCodecList::getFlags(
+        const std::vector<std::string> &names,
+        const std::vector<std::string> &defaults,
+        std::vector<std::string> *values) const {
+    if (values == nullptr) {
+        return BAD_VALUE;
+    }
+    if (names.size() != defaults.size()) {
+        return BAD_VALUE;
+    }
+    values->clear();
+    for (size_t i = 0; i < names.size(); ++i) {
+        std::string value = server_configurable_flags::GetServerConfigurableFlag(
+                "media_native", names[i], defaults[i]);
+        values->push_back(value);
+    }
+    return OK;
 }
 
 //static

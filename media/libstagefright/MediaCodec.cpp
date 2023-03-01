@@ -1610,6 +1610,7 @@ status_t MediaCodec::init(const AString &name) {
     mCodec->setCallback(
             std::unique_ptr<CodecBase::CodecCallback>(
                     new CodecCallback(new AMessage(kWhatCodecNotify, this))));
+    mCodec->setCodecList(MediaCodecList::getInstance());
     mBufferChannel = mCodec->getBufferChannel();
     mBufferChannel->setCallback(
             std::unique_ptr<CodecBase::BufferCallback>(
