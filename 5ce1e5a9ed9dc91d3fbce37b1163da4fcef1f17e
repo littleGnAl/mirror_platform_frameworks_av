@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe6e3600_2fe43344",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "It seems that creating new macros is discouraged due to various reasons(yaqs/7366664134424788992). Would at least recommend to use a project-specific prefix in the name.",
+      "parentUuid": "e26d2a97_b77820cb",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "871e2d0f_bedcc700",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 16
@@ -172,6 +196,30 @@
         "startChar": 0,
         "endLine": 372,
         "endChar": 36
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b533e5e7_e61d8358",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "I understand how previously we have written AC3 and EAC3 in all caps which is incorrect. go/cstyle#General_Naming_Rules states: For names written in mixed case (also sometimes referred to as \"camel case\" or \"Pascal case\"), in which the first letter of each word is capitalized, prefer to capitalize abbreviations as single words, e.g., StartRpc() rather than StartRPC().\n\nIn the case of DTSHD or DTSUHD it is hard to know when one word ends and the other starts. I would recommend following the convention here.",
+      "parentUuid": "f5e3c1cc_f31d9d03",
+      "range": {
+        "startLine": 372,
+        "startChar": 16,
+        "endLine": 372,
+        "endChar": 35
       },
       "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

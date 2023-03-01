@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0063f2e_5d913973",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "Thank you for making the changes. The code is much more readable now.",
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f383336_f93121fc",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "Blank line not required here. Ditto for other functions below.\n\ngo/cstyle#Vertical_Whitespace states resist starting functions with a blank line.",
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2925e0_226a5775",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "We don\u0027t need this here as isLBR is already initialised as false.",
+      "range": {
+        "startLine": 414,
+        "startChar": 8,
+        "endLine": 414,
+        "endChar": 22
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c234ab39_03be0d0f",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "Should we only check bits we are going to read inside this if condition. I think we should move checking the 1 bit after the if condition is over.",
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49376e5_28817b60",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "First letter should be small.",
+      "range": {
+        "startLine": 577,
+        "startChar": 16,
+        "endLine": 577,
+        "endChar": 38
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48fce4db_f60ea7ae",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "Can we replace this check with: if (isSyncFrameFlag) directly and remove the variable bACIDsPresentFlag as we don\u0027t use it currently elsewhere.",
+      "range": {
+        "startLine": 740,
+        "startChar": 12,
+        "endLine": 740,
+        "endChar": 29
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847533b9_17d70a22",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1962660
+      },
+      "writtenOn": "2023-03-01T16:58:24Z",
+      "side": 1,
+      "message": "Also names of these functions should start with a small letter. Ditto for below function.",
+      "range": {
+        "startLine": 788,
+        "startChar": 16,
+        "endLine": 788,
+        "endChar": 43
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
