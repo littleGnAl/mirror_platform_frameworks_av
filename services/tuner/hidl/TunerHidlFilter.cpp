@@ -611,7 +611,7 @@ sp<HidlIFilter> TunerHidlFilter::getHalFilter() {
 bool TunerHidlFilter::getHidlAvStreamType(const AvStreamType avStreamType, HidlAvStreamType& type) {
     if (isAudioFilter()) {
         AudioStreamType audio = avStreamType.get<AvStreamType::audio>();
-        if (static_cast<int32_t>(audio) > static_cast<int32_t>(HidlAudioStreamType::DRA)) {
+        if (static_cast<int32_t>(audio) > static_cast<int32_t>(HidlAudioStreamType::AAC_HE_LATM)) {
             return false;
         }
         type.audio(static_cast<HidlAudioStreamType>(audio));
