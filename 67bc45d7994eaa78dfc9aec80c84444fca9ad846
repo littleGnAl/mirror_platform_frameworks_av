@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3bb3528_9ab7cc1d",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-01T18:30:17Z",
+      "side": 1,
+      "message": "`getPropertyString(String8(\"version\"), mVersion)` so we can log an error in case `getPropertyString` fails.",
+      "revId": "67bc45d7994eaa78dfc9aec80c84444fca9ad846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d554b58_f31c8653",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-01T18:30:17Z",
+      "side": 1,
+      "message": "`\"version\"`",
+      "range": {
+        "startLine": 470,
+        "startChar": 37,
+        "endLine": 470,
+        "endChar": 49
+      },
+      "revId": "67bc45d7994eaa78dfc9aec80c84444fca9ad846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1f44af_f756dd13",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-01T18:30:17Z",
+      "side": 1,
+      "message": "`\"version\"`",
+      "range": {
+        "startLine": 481,
+        "startChar": 37,
+        "endLine": 481,
+        "endChar": 49
+      },
+      "revId": "67bc45d7994eaa78dfc9aec80c84444fca9ad846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd248cb_85db6f86",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-01T18:30:17Z",
+      "side": 1,
+      "message": "`\"version\"`",
+      "range": {
+        "startLine": 501,
+        "startChar": 37,
+        "endLine": 501,
+        "endChar": 49
+      },
+      "revId": "67bc45d7994eaa78dfc9aec80c84444fca9ad846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
