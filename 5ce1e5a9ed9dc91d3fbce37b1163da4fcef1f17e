@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85b16d86_9b5397f5",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-01T17:17:14Z",
+      "side": 1,
+      "message": "We do use macros in media code when it makes the code easier to maintain / read.",
+      "parentUuid": "fe6e3600_2fe43344",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "871e2d0f_bedcc700",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 16
@@ -215,6 +239,30 @@
       "side": 1,
       "message": "I understand how previously we have written AC3 and EAC3 in all caps which is incorrect. go/cstyle#General_Naming_Rules states: For names written in mixed case (also sometimes referred to as \"camel case\" or \"Pascal case\"), in which the first letter of each word is capitalized, prefer to capitalize abbreviations as single words, e.g., StartRpc() rather than StartRPC().\n\nIn the case of DTSHD or DTSUHD it is hard to know when one word ends and the other starts. I would recommend following the convention here.",
       "parentUuid": "f5e3c1cc_f31d9d03",
+      "range": {
+        "startLine": 372,
+        "startChar": 16,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e2a993_846deb0c",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-01T17:17:14Z",
+      "side": 1,
+      "message": "Note that stagefright/media C++ code follows/ed the capitalization rule of capital first letter for static methods, although we don\u0027t judiciously enforce it.\n\nBTW, this would be ParseDtsHdSyncFrame but many other instances keep the all-caps, so we strive for consistence here.",
+      "parentUuid": "b533e5e7_e61d8358",
       "range": {
         "startLine": 372,
         "startChar": 16,
