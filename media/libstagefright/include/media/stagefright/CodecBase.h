@@ -27,6 +27,7 @@
 
 #include <media/hardware/CryptoAPI.h>
 #include <media/hardware/HardwareAPI.h>
+#include <media/IMediaCodecList.h>
 #include <media/MediaCodecInfo.h>
 #include <media/stagefright/foundation/AHandler.h>
 #include <media/stagefright/foundation/ColorUtils.h>
@@ -220,6 +221,9 @@ struct CodecBase : public AHandler, /* static */ ColorUtils {
     inline void setCallback(std::unique_ptr<CodecCallback> &&callback) {
         mCallback = std::move(callback);
     }
+    inline void setCodecList(const sp<IMediaCodecList> &codecList) {
+        mCodecList = codecList;
+    }
     virtual std::shared_ptr<BufferChannelBase> getBufferChannel() = 0;
 
     virtual void initiateAllocateComponent(const sp<AMessage> &msg) = 0;
@@ -298,6 +302,7 @@ protected:
     virtual ~CodecBase() = default;
 
     std::unique_ptr<CodecCallback> mCallback;
+    sp<IMediaCodecList> mCodecList;
 
 private:
     DISALLOW_EVIL_CONSTRUCTORS(CodecBase);
