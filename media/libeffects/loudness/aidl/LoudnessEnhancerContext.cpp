@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#define LOG_TAG "LoudnessEnhancerContext"
+
 #include "LoudnessEnhancerContext.h"
 
 namespace aidl::android::hardware::audio::effect {
@@ -22,7 +24,6 @@ LoudnessEnhancerContext::LoudnessEnhancerContext(int statusDepth, const Paramete
     : EffectContext(statusDepth, common) {
     LOG(DEBUG) << __func__;
     mState = LOUDNESS_ENHANCER_STATE_UNINITIALIZED;
-    mSampleRate = common.input.base.sampleRate;
     init_params();
 }
 
@@ -53,7 +54,7 @@ void LoudnessEnhancerContext::reset() {
         std::lock_guard lg(mMutex);
         if (mCompressor != nullptr) {
             // Get samplingRate from input
-            mCompressor->Initialize(targetAmp, mSampleRate);
+            mCompressor->Initialize(targetAmp, mCommon.input.base.sampleRate);
         }
     }
 }
@@ -74,6 +75,8 @@ IEffect::Status LoudnessEnhancerContext::lvmProcess(float* in, float* out, int s
     RETURN_VALUE_IF(getInputFrameSize() != getOutputFrameSize(), status, "FrameSizeMismatch");
     auto frameSize = getInputFrameSize();
     RETURN_VALUE_IF(0 == frameSize, status, "zeroFrameSize");
+    status = {STATUS_INVALID_OPERATION, 0, 0};
+    RETURN_VALUE_IF(mState != LOUDNESS_ENHANCER_STATE_ACTIVE, status, "stateNotActive");
 
     LOG(DEBUG) << __func__ << " start processing";
     {
@@ -83,21 +86,22 @@ IEffect::Status LoudnessEnhancerContext::lvmProcess(float* in, float* out, int s
         constexpr float inverseScale = 1.f / scale;
         const float inputAmp = pow(10, mGain / 2000.0f) * scale;
         float leftSample, rightSample;
+
         if (mCompressor != nullptr) {
-            for (int inIdx = 0; inIdx < samples; inIdx += 2) {
+            for (int inIdx = 0; inIdx < mCommon.input.frameCount; inIdx++) {
                 // makeup gain is applied on the input of the compressor
-                leftSample = inputAmp * in[inIdx];
-                rightSample = inputAmp * in[inIdx + 1];
+                leftSample = inputAmp * in[2*inIdx];
+                rightSample = inputAmp * in[2*inIdx + 1];
                 mCompressor->Compress(&leftSample, &rightSample);
-                in[inIdx] = leftSample * inverseScale;
-                in[inIdx + 1] = rightSample * inverseScale;
+                in[2*inIdx] = leftSample * inverseScale;
+                in[2*inIdx + 1] = rightSample * inverseScale;
             }
         } else {
-            for (int inIdx = 0; inIdx < samples; inIdx += 2) {
-                leftSample = inputAmp * in[inIdx];
-                rightSample = inputAmp * in[inIdx + 1];
-                in[inIdx] = leftSample * inverseScale;
-                in[inIdx + 1] = rightSample * inverseScale;
+            for (int inIdx = 0; inIdx < mCommon.input.frameCount; inIdx++) {
+                leftSample = inputAmp * in[2*inIdx];
+                rightSample = inputAmp * in[2*inIdx + 1];
+                in[2*inIdx] = leftSample * inverseScale;
+                in[2*inIdx + 1] = rightSample * inverseScale;
             }
         }
         bool accumulate = false;
@@ -122,7 +126,7 @@ void LoudnessEnhancerContext::init_params() {
     {
         std::lock_guard lg(mMutex);
         mCompressor = std::make_unique<le_fx::AdaptiveDynamicRangeCompression>();
-        mCompressor->Initialize(targetAmp, mSampleRate);
+        mCompressor->Initialize(targetAmp, mCommon.input.base.sampleRate);
     }
     mState = LOUDNESS_ENHANCER_STATE_INITIALIZED;
 }

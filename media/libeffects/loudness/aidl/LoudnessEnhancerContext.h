@@ -47,7 +47,6 @@ class LoudnessEnhancerContext final : public EffectContext {
   private:
     std::mutex mMutex;
     LoudnessEnhancerState mState;
-    int mSampleRate;
     int mGain;
     // In this implementation, there is no coupling between the compression on the left and right
     // channels
