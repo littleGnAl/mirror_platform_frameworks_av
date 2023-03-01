@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd11adf5_1b0dffbd",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-01T16:55:54Z",
+      "side": 1,
+      "message": "Is this TODO still relevant?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7628c0fa40e31e5e1bbebfb7ef800235242711a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247ecb45_43bdeb51",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-01T16:55:54Z",
+      "side": 1,
+      "message": "Are we absolutely sure that `handleSetConfig` will never be used in capture (audio input) scenarios?",
+      "range": {
+        "startLine": 156,
+        "startChar": 56,
+        "endLine": 156,
+        "endChar": 61
+      },
+      "revId": "7628c0fa40e31e5e1bbebfb7ef800235242711a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
