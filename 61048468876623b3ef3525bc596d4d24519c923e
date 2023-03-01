@@ -138,6 +138,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f0bad20_074cfb2f",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-03-01T01:12:48Z",
+      "side": 1,
+      "message": "with c++11 this can be std::min({iMax, pMax, bMax)});",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2fd9bf_920199d1",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-03-01T01:12:48Z",
+      "side": 1,
+      "message": "these can be `else if ...` since only one is possible.",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca6dde37_53c1e1bd",
         "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
         "patchSetId": 6
@@ -184,6 +218,24 @@
       "side": 1,
       "message": "this is used to mMaxQuantizer and mMinQuantizer at\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1740757/6/media/codec2/components/vpx/C2SoftVpxEnc.cpp#546\n\nthese are then used to configure the encoder parameters at https://android-review.googlesource.com/c/platform/frameworks/av/+/1740757/6/media/codec2/components/vpx/C2SoftVpxEnc.cpp#682",
       "parentUuid": "3d073a29_e1443d65",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be99c84_badaadff",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-03-01T01:12:48Z",
+      "side": 1,
+      "message": "\u003e this is used to mMaxQuantizer and mMinQuantizer at\n\u003e https://android-review.googlesource.com/c/platform/frameworks/av/+/1740757/6/media/codec2/components/vpx/C2SoftVpxEnc.cpp#546\n\u003e \n\u003e these are then used to configure the encoder parameters at https://android-review.googlesource.com/c/platform/frameworks/av/+/1740757/6/media/codec2/components/vpx/C2SoftVpxEnc.cpp#682\n\nThe configuration is only updated based on a change in bitrate though. Was this intended to allow for changes to per-frame qp? The P/B paths won\u0027t have any effect right now.",
+      "parentUuid": "dfe17b84_67e50b61",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
