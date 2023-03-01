@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9b6170f_a0a3573d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "I believe it should be done, but I\u0027ll let @tonihei@google.com coordinate what needs to be done and how.",
+      "parentUuid": "2acc2229_51552fa4",
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f49d8dc_3d4b7ee8",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 16
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-28T17:02:43Z",
       "side": 1,
       "message": "I don\u0027t see much advantage of using this macro. In my opinion it makes the code unreadable at some instances. For consistency, we should either use this macro at all places in this file or not use at all.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26d2a97_b77820cb",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "I have to respectful disagree a bit here 😊. This macro replaces 4 lines of code. The DTS parsing is actually more complex and lengthier than the EAC3 one. Using the macro shortens the boilerplate code, adds more safety checks and with the additional break lines separation it\u0027s readable. This is the first time it was needed and introduced, if we want to use it in other parts of the file, sure, but it should be done in a separate CL and not mix DTS implementation with refactor. Will keep it for now.",
+      "parentUuid": "1f49d8dc_3d4b7ee8",
       "range": {
         "startLine": 365,
         "startChar": 0,
@@ -87,6 +129,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e3c1cc_f31d9d03",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "Done. DTSHD AND DTSUHD are bitstream names, similar with AC3 and EAC3, left them uppercase.",
+      "parentUuid": "871e2d0f_bedcc700",
+      "range": {
+        "startLine": 372,
+        "startChar": 16,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5819a380_a6ecaad0",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b68733ae_3de0960b",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 36
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6223602_bb854e53",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-02-28T17:02:43Z",
       "side": 1,
       "message": "I think line break can be used here to segregate between different parts of code. For example, there can be a line break introduced after the constants is defined and one after initialisation is done. This will make the code more readable. Same can be applied to methods below.",
+      "range": {
+        "startLine": 383,
+        "startChar": 2,
+        "endLine": 387,
+        "endChar": 31
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b858e0_ec081835",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "Done. Added line breaks to improve readability.",
+      "parentUuid": "b6223602_bb854e53",
       "range": {
         "startLine": 383,
         "startChar": 2,
@@ -133,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9cc6d18_1dc9540c",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0dc6e36_64360eb1",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 395,
+        "endChar": 5
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "293fa75f_3abc22c0",
@@ -156,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e296e8_2e69f045",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "293fa75f_3abc22c0",
+      "range": {
+        "startLine": 398,
+        "startChar": 8,
+        "endLine": 398,
+        "endChar": 43
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fd24eb5_2fa23071",
@@ -169,6 +331,30 @@
       "writtenOn": "2023-02-28T17:02:43Z",
       "side": 1,
       "message": "Links to the document like this, can also be added at other places where applicable. It makes debugging the code way faster.",
+      "range": {
+        "startLine": 591,
+        "startChar": 34,
+        "endLine": 591,
+        "endChar": 76
+      },
+      "revId": "5ce1e5a9ed9dc91d3fbce37b1163da4fcef1f17e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef722740_03f5de25",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-01T14:19:08Z",
+      "side": 1,
+      "message": "Atm, I have no other references available, but Xperi can add them if they think are useful.",
+      "parentUuid": "5fd24eb5_2fa23071",
       "range": {
         "startLine": 591,
         "startChar": 34,
