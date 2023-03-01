@@ -238,6 +238,24 @@
       "parentUuid": "dfe17b84_67e50b61",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2305b1_3594e624",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-03-01T01:23:35Z",
+      "side": 1,
+      "message": "James,\n\nIntention is to limit the max and min QP used by the encoder.\n\nWe see that mCodecConfiguration-\u003erc_max_quantizer and mCodecConfiguration-\u003erc_min_quantizer are the two parameters that can be used to control max and min qp in the vpx encoder library.\n\nSince the library takes only one min and max, we are taking minimum of the I/P/B Max QP values and setting rc_max_quantizer with this. (similarly taking maximum of min QP values and setting rc_min_quantizer).\n\nmCodecConfiguration-\u003erc_max_quantizer and mCodecConfiguration-\u003erc_min_quantizer are set before calling vpx_codec_enc_init().\n\n\nIs the above way to configure min and max qp to the library incorrect?\nAre rc_max_quantizer and rc_min_quantizer only used for I frame qp in the library?\n\nPlease correct us, if the above understanding is wrong.\nThanks.",
+      "parentUuid": "2be99c84_badaadff",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
