@@ -139,8 +139,7 @@ status_t EffectConversionHelperAidl::handleGetParameter(uint32_t cmdSize, const 
     return ret;
 }
 
-status_t EffectConversionHelperAidl::handleSetConfig(uint32_t cmdSize,
-                                                     const void* pCmdData __unused,
+status_t EffectConversionHelperAidl::handleSetConfig(uint32_t cmdSize, const void* pCmdData,
                                                      uint32_t* replySize, void* pReplyData) {
     if (!replySize || *replySize != sizeof(int) || !pReplyData ||
         cmdSize != sizeof(effect_config_t)) {
@@ -148,7 +147,23 @@ status_t EffectConversionHelperAidl::handleSetConfig(uint32_t cmdSize,
     }
 
     // TODO: need to implement setConfig with setParameter(common)
-    return *static_cast<int32_t*>(pReplyData) = OK;
+    effect_config_t* config = (effect_config_t*)pCmdData;
+    Parameter::Common aidlCommon = {
+            .session = mSessionId,
+            .ioHandle = mIoId,
+            .input = {.base = VALUE_OR_RETURN_STATUS(
+                              ::aidl::android::legacy2aidl_buffer_config_t_AudioConfigBase(
+                                      config->inputCfg, false))},
+            .output = {.base = VALUE_OR_RETURN_STATUS(
+                               ::aidl::android::legacy2aidl_buffer_config_t_AudioConfigBase(
+                                       config->outputCfg, false))}};
+
+    Parameter aidlParam = UNION_MAKE(Parameter, common, aidlCommon);
+
+    status_t ret = statusTFromBinderStatus(mEffect->setParameter(aidlParam));
+    EffectParamWriter writer(*(effect_param_t*)pReplyData);
+    writer.setStatus(ret);
+    return ret;
 }
 
 status_t EffectConversionHelperAidl::handleGetConfig(uint32_t cmdSize __unused,
