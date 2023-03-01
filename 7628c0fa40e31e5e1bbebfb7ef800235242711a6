@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "146ab7f4_aa5bf554",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-01T22:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd11adf5_1b0dffbd",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7628c0fa40e31e5e1bbebfb7ef800235242711a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "247ecb45_43bdeb51",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-01T16:55:54Z",
       "side": 1,
       "message": "Are we absolutely sure that `handleSetConfig` will never be used in capture (audio input) scenarios?",
+      "range": {
+        "startLine": 156,
+        "startChar": 56,
+        "endLine": 156,
+        "endChar": 61
+      },
+      "revId": "7628c0fa40e31e5e1bbebfb7ef800235242711a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2ec7db_5b4b78cd",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-01T22:18:29Z",
+      "side": 1,
+      "message": "Good point, adding mIsInputStream which checks effect descriptor types",
+      "parentUuid": "247ecb45_43bdeb51",
       "range": {
         "startLine": 156,
         "startChar": 56,
