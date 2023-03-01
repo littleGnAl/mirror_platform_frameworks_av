@@ -97,7 +97,9 @@ public:
     /**
      * Set the component object for buffer processing.
      */
-    void setComponent(const std::shared_ptr<Codec2Client::Component> &component);
+    void setComponent(
+            const std::shared_ptr<Codec2Client::Component> &component,
+            bool trackClientInput);
 
     /**
      * Set output graphic surface for rendering.
@@ -338,6 +340,7 @@ private:
     MetaMode mMetaMode;
 
     Mutexed<PipelineWatcher> mPipelineWatcher;
+    bool mTrackClientInput;
 
     std::atomic_bool mInputMetEos;
     std::once_flag mRenderWarningFlag;

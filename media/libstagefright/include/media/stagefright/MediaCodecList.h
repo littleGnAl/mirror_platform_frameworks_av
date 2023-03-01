@@ -58,6 +58,11 @@ struct MediaCodecList : public BnMediaCodecList {
 
     virtual const sp<AMessage> getGlobalSettings() const;
 
+    virtual status_t getFlags(
+            const std::vector<std::string> &names,
+            const std::vector<std::string> &defaults,
+            std::vector<std::string> *values) const;
+
     // to be used by MediaPlayerService alone
     static sp<IMediaCodecList> getLocalInstance();
 

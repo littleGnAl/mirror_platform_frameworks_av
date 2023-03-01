@@ -33,6 +33,7 @@ enum {
     GET_GLOBAL_SETTINGS,
     FIND_CODEC_BY_TYPE,
     FIND_CODEC_BY_NAME,
+    GET_FLAGS,
 };
 
 class BpMediaCodecList: public BpInterface<IMediaCodecList>
@@ -101,6 +102,28 @@ public:
         data.writeCString(name);
         remote()->transact(FIND_CODEC_BY_NAME, data, &reply);
         return static_cast<ssize_t>(reply.readInt32());
+    }
+
+    virtual status_t getFlags(
+            const std::vector<std::string> &names,
+            const std::vector<std::string> &defaults,
+            std::vector<std::string> *values) const {
+        if (values == nullptr) {
+            return BAD_VALUE;
+        }
+        if (names.size() != defaults.size()) {
+            return BAD_VALUE;
+        }
+
+        Parcel data, reply;
+        data.writeInterfaceToken(IMediaCodecList::getInterfaceDescriptor());
+        data.writeUtf8VectorAsUtf16Vector(names);
+        data.writeUtf8VectorAsUtf16Vector(defaults);
+        status_t err = remote()->transact(GET_FLAGS, data, &reply);
+        if (err != OK) {
+            return err;
+        }
+        return reply.readUtf8VectorFromUtf16Vector(values);
     }
 };
 
@@ -186,6 +209,28 @@ status_t BnMediaCodecList::onTransact(
             }
             reply->writeInt32(index);
             return NO_ERROR;
+        }
+        break;
+
+        case GET_FLAGS:
+        {
+            CHECK_INTERFACE(IMediaCodecList, data, reply);
+            std::vector<std::string> names;
+            std::vector<std::string> defaults;
+            std::vector<std::string> values;
+            status_t err = data.readUtf8VectorFromUtf16Vector(&names);
+            if (err != OK) {
+                return err;
+            }
+            err = data.readUtf8VectorFromUtf16Vector(&defaults);
+            if (err != OK) {
+                return err;
+            }
+            err = getFlags(names, defaults, &values);
+            if (err == OK) {
+                err = reply->writeUtf8VectorAsUtf16Vector(values);
+            }
+            return err;
         }
         break;
 

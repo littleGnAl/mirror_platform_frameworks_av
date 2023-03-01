@@ -18,6 +18,7 @@
 #define LOG_TAG "CCodec"
 #include <utils/Log.h>
 
+#include <regex>
 #include <sstream>
 #include <thread>
 
@@ -760,7 +761,15 @@ void CCodec::allocate(const sp<MediaCodecInfo> &codecInfo) {
         return;
     }
     ALOGI("Created component [%s]", componentName.c_str());
-    mChannel->setComponent(comp);
+    std::vector<std::string> flags;
+    mCodecList->getFlags({"pipeline_track_client_input_comp_regex"}, {".*"}, &flags);
+
+    std::string compRegex = flags[0];
+    std::regex re(compRegex);
+    std::smatch m;
+    bool trackClientInput = std::regex_match(comp->getName(), m, re);
+
+    mChannel->setComponent(comp, trackClientInput);
     auto setAllocated = [this, comp, client] {
         Mutexed<State>::Locked state(mState);
         if (state->get() != ALLOCATING) {
