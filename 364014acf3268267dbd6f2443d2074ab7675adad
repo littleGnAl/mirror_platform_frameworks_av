@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac6a1f5_f891646f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-01T17:19:49Z",
+      "side": 1,
+      "message": "Since the dependent CL (aosp/2461558) has merge conflict, I will cherry-pick this change on udc-dev branch directly",
+      "revId": "364014acf3268267dbd6f2443d2074ab7675adad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
