@@ -256,6 +256,24 @@
       "parentUuid": "2be99c84_badaadff",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e81e353_8cc56330",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-03-01T02:10:51Z",
+      "side": 1,
+      "message": "\u003e James,\n\u003e \n\u003e Intention is to limit the max and min QP used by the encoder.\n\u003e \n\u003e We see that mCodecConfiguration-\u003erc_max_quantizer and mCodecConfiguration-\u003erc_min_quantizer are the two parameters that can be used to control max and min qp in the vpx encoder library.\n\u003e \n\u003e Since the library takes only one min and max, we are taking minimum of the I/P/B Max QP values and setting rc_max_quantizer with this. (similarly taking maximum of min QP values and setting rc_min_quantizer).\n\u003e \n\u003e mCodecConfiguration-\u003erc_max_quantizer and mCodecConfiguration-\u003erc_min_quantizer are set before calling vpx_codec_enc_init().\n\u003e \n\u003e \n\u003e Is the above way to configure min and max qp to the library incorrect?\n\u003e Are rc_max_quantizer and rc_min_quantizer only used for I frame qp in the library?\n\u003e \n\nThe quantizers are used for all frames and can be set with a configuration update, SVC also allows per-layer quantizers. See some examples in webrtc:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/video_coding/codecs/vp8/libvpx_vp8_encoder.cc;l\u003d370;drc\u003da09f21b2074b8058f92714eaa426b7a72fd85570\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/video_coding/codecs/vp8/libvpx_vp8_encoder.cc;l\u003d1033;drc\u003da09f21b2074b8058f92714eaa426b7a72fd85570\n\n\u003e Please correct us, if the above understanding is wrong.\n\u003e Thanks.",
+      "parentUuid": "7c2305b1_3594e624",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
