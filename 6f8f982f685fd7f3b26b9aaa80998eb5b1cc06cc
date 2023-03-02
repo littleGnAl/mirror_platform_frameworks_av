@@ -16,6 +16,29 @@
       "message": "hi all, on low memory devices，if audio recorder app is recording for a long time，and then user open firefox 、tiktok apps which need lots of memory，the recorder app maybe freeze by the system and set to PROCESS_STATE_UNKNOWN status by AMS OomAdjuster。\nif user start camera app to record video，the camera will popup window which tips fail to open camera。\nThe reason is that AudioFlinger can\u0027t open mic for camera as mic is opened by audio recorder app, and can\u0027t share audio recorder\u0027s mic to camera as audio recorder app\u0027s status is a invalid PROCESS_STATE_UNKNOWN now, so AudioFlinger close the mic , camera thread and audio recorder thread in mediaserver process will try to open mic again at almost the same time, but always audio recorder thread open first. After 3 times retry in AudioRecord::restoreRecord_l function, the camera report failed finally.\nTo avoid the foreground camera record fail, here the solution is try to let the background app\u0027s record thread open mic more slowly with sleep 600ms.",
       "revId": "6f8f982f685fd7f3b26b9aaa80998eb5b1cc06cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b4fcc0_ec4ce1b2",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-02T08:38:02Z",
+      "side": 1,
+      "message": "please explain into more details what this delay helps fixing.\nUsually fixes using a delay are not robust and do not address the root cause.\nWe need to understand exactly what the problem is.",
+      "range": {
+        "startLine": 1111,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 39
+      },
+      "revId": "6f8f982f685fd7f3b26b9aaa80998eb5b1cc06cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
