@@ -2016,7 +2016,6 @@ ssize_t AudioFlinger::PlaybackThread::OutputTrack::write(void* data, uint32_t fr
 {
     Buffer *pInBuffer;
     Buffer inBuffer;
-    bool outputBufferFull = false;
     inBuffer.frameCount = frames;
     inBuffer.raw = data;
 
@@ -2046,7 +2045,6 @@ ssize_t AudioFlinger::PlaybackThread::OutputTrack::write(void* data, uint32_t fr
                 ALOGV("%s(%d): thread %d no more output buffers; status %d",
                         __func__, mId,
                         (int)mThreadIoHandle, status);
-                outputBufferFull = true;
                 break;
             }
             uint32_t waitTimeMs = (uint32_t)ns2ms(systemTime() - startTime);

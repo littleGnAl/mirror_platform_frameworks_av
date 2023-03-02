@@ -380,4 +380,5 @@ TEST(DistortionMapperTest, CompareToOpenCV) {
                 << "(" << rawCoords[i] << ", " << rawCoords[i + 1] << ") != ("
                 << expCoords[i] << ", " << expCoords[i + 1] << ")";
     }
+    (void) res;
 }

@@ -5864,6 +5864,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
     if (pauseAudioWatchdog && mAudioWatchdog != 0) {
         mAudioWatchdog->pause();
     }
+#else
+    (void) pauseAudioWatchdog;
 #endif
 
     // Now perform the deferred reset on fast tracks that have stopped
@@ -7669,6 +7671,7 @@ AudioFlinger::RecordThread::RecordThread(const sp<AudioFlinger>& audioFlinger,
 #endif
 
         mFastTrackAvail = true;
+        (void) index;
     }
 #ifdef TEE_SINK
     mTee.set(mInputSource->format(), NBAIO_Tee::TEE_FLAG_INPUT_THREAD);
@@ -9162,6 +9165,7 @@ bool AudioFlinger::RecordThread::checkForNewParameter_l(const String8& keyValueP
             }
         }
     }
+    (void) channelMask;
 
     return reconfig;
 }
