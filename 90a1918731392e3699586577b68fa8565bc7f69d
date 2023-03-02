@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3724f8d7_5a6dec02",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-02T22:26:41Z",
+      "side": 1,
+      "message": "This assumption that the input/output are always stereo—is it enforced anywhere by the plugin?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae2d87d_1546ccc0",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-02T22:26:41Z",
+      "side": 1,
+      "message": "This name is now misleading since it\u0027s not a direct index into `in` but rather index / 2. Please rename, or keep the old approach, just multiply the framecount by the number of samples per frame.",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
