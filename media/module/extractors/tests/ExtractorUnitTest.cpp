@@ -348,6 +348,7 @@ void randomSeekTest(MediaTrackHelper *track, int64_t clipDuration) {
                     << "received " << timeStamp << ", list of input seek timestamps ["
                     << seekPtsString << "]";
         }
+        (void) status;
         delete options;
     }
 }
