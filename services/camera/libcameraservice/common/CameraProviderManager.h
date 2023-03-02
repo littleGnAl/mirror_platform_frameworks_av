@@ -563,16 +563,14 @@ private:
             virtual status_t getCameraInfo(hardware::CameraInfo *info) const = 0;
             virtual bool isAPI1Compatible() const = 0;
             virtual status_t dumpState(int fd) = 0;
-            virtual status_t getCameraCharacteristics(bool overrideForPerfClass,
-                    CameraMetadata *characteristics) const {
-                (void) overrideForPerfClass;
-                (void) characteristics;
+            virtual status_t getCameraCharacteristics(
+                    [[maybe_unused]] bool overrideForPerfClass,
+                    [[maybe_unused]] CameraMetadata *characteristics) const {
                 return INVALID_OPERATION;
             }
-            virtual status_t getPhysicalCameraCharacteristics(const std::string& physicalCameraId,
-                    CameraMetadata *characteristics) const {
-                (void) physicalCameraId;
-                (void) characteristics;
+            virtual status_t getPhysicalCameraCharacteristics(
+                    [[maybe_unused]] const std::string& physicalCameraId,
+                    [[maybe_unused]] CameraMetadata *characteristics) const {
                 return INVALID_OPERATION;
             }
 

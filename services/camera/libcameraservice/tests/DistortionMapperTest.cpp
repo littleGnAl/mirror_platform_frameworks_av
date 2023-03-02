@@ -355,7 +355,7 @@ TEST(DistortionMapperTest, LargeTransform) {
 #include "DistortionMapperTest_OpenCvData.h"
 
 TEST(DistortionMapperTest, CompareToOpenCV) {
-    status_t res;
+    [[maybe_unused]] status_t res;
 
     float bigDistortion[] = {0.1, -0.003, 0.004, 0.02, 0.01};
 
