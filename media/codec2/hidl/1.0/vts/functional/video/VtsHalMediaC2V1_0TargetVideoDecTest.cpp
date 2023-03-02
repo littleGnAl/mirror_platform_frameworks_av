@@ -962,6 +962,7 @@ TEST_P(Codec2VideoDecHidlTest, DecodeTestEmptyBuffersInserted) {
             eleInfo >> timestamp;
             codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
         }
+        (void) codecConfig;
         Info.push_back({bytesCount, flags, timestamp});
         frameId++;
     }
@@ -1014,7 +1015,6 @@ TEST_P(Codec2VideoDecCsdInputTests, CSDFlushTest) {
     std::ifstream eleStream;
     eleStream.open(mInputFile, std::ifstream::binary);
     ASSERT_EQ(eleStream.is_open(), true);
-    bool flushedDecoder = false;
     bool signalEOS = false;
     bool keyFrame = false;
     bool flushCsd = std::get<2>(GetParam());
@@ -1033,7 +1033,6 @@ TEST_P(Codec2VideoDecCsdInputTests, CSDFlushTest) {
 
         err = mComponent->flush(C2Component::FLUSH_COMPONENT, &flushedWork);
         ASSERT_EQ(err, C2_OK);
-        flushedDecoder = true;
         waitOnInputConsumption(mQueueLock, mQueueCondition, mWorkQueue,
                                MAX_INPUT_BUFFERS - flushedWork.size());
         ASSERT_NO_FATAL_FAILURE(

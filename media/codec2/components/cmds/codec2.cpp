@@ -274,6 +274,7 @@ void SimplePlayer::play(const sp<IMediaSource> &source) {
                         0);
                 IGraphicBufferProducer::QueueBufferOutput qbo;
                 err = igbp->queueBuffer(slot, qbi, &qbo);
+                (void) err;
             }
 
             work->input.buffers.clear();
