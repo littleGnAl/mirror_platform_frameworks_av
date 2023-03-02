@@ -686,11 +686,13 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
     eleInfo.open(mInfoFile);
     ASSERT_EQ(eleInfo.is_open(), true) << mInputFile << " - file not found";
     android::Vector<FrameInfo> Info;
+
     int bytesCount = 0;
     uint32_t frameId = 0;
     uint32_t flags = 0;
     uint32_t timestamp = 0;
     bool codecConfig = false;
+
     // This test introduces empty CSD after every 20th frame
     // and empty input frames at an interval of 5 frames.
     while (1) {
@@ -706,7 +708,9 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
             eleInfo >> timestamp;
             codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
         }
-        Info.push_back({bytesCount, flags, timestamp});
+        if (!codecConfig) {
+            Info.push_back({bytesCount, flags, timestamp});
+        }
         frameId++;
     }
     eleInfo.close();
