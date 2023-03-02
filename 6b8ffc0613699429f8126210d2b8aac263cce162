@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35443a25_0a804fd0",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-02T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f383336_f93121fc",
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d2925e0_226a5775",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-03-01T16:58:24Z",
       "side": 1,
       "message": "We don\u0027t need this here as isLBR is already initialised as false.",
+      "range": {
+        "startLine": 414,
+        "startChar": 8,
+        "endLine": 414,
+        "endChar": 22
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b61d3c5_5b2a1035",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-02T10:10:55Z",
+      "side": 1,
+      "message": "Acknowledged. It\u0027s true that it\u0027s redundant, but I think it helps with readability and clarity of the intent of the if branch. I can remove it if you strongly believe it should be removed, but I would prefer to leave it for a bit more code resilience and as said, readability.",
+      "parentUuid": "7d2925e0_226a5775",
       "range": {
         "startLine": 414,
         "startChar": 8,
@@ -93,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6db38d5_9765ee47",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-02T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b0d38e4_d5c4719c",
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a49376e5_28817b60",
@@ -106,6 +166,30 @@
       "writtenOn": "2023-03-01T16:58:24Z",
       "side": 1,
       "message": "First letter should be small.",
+      "range": {
+        "startLine": 577,
+        "startChar": 16,
+        "endLine": 577,
+        "endChar": 38
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "813931cb_c6d8cc73",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-02T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a49376e5_28817b60",
       "range": {
         "startLine": 577,
         "startChar": 16,
@@ -139,6 +223,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd55452f_f0e9eb2d",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-02T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48fce4db_f60ea7ae",
+      "range": {
+        "startLine": 740,
+        "startChar": 12,
+        "endLine": 740,
+        "endChar": 29
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "847533b9_17d70a22",
@@ -152,6 +260,30 @@
       "writtenOn": "2023-03-01T16:58:24Z",
       "side": 1,
       "message": "Also names of these functions should start with a small letter. Ditto for below function.",
+      "range": {
+        "startLine": 788,
+        "startChar": 16,
+        "endLine": 788,
+        "endChar": 43
+      },
+      "revId": "6b8ffc0613699429f8126210d2b8aac263cce162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "520a05b7_186bc670",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-02T10:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "847533b9_17d70a22",
       "range": {
         "startLine": 788,
         "startChar": 16,
