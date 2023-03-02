@@ -1107,7 +1107,7 @@ void AudioFlinger::EffectModule::addEffectToHal_l()
             return;
         }
 
-        (void)getCallback()->addEffectToHal(mEffectInterface);
+        (void) getCallback()->addEffectToHal(mEffectInterface);
         mAddedToHal = true;
     }
 }
@@ -1369,7 +1369,7 @@ void AudioFlinger::EffectModule::setInBuffer(const sp<EffectBufferHalInterface>&
                 || size > mInConversionBuffer->getSize())) {
             mInConversionBuffer.clear();
             ALOGV("%s: allocating mInConversionBuffer %zu", __func__, size);
-            (void)getCallback()->allocateHalBuffer(size, &mInConversionBuffer);
+            (void) getCallback()->allocateHalBuffer(size, &mInConversionBuffer);
         }
         if (mInConversionBuffer != nullptr) {
             mInConversionBuffer->setFrameCount(inFrameCount);
@@ -1413,7 +1413,7 @@ void AudioFlinger::EffectModule::setOutBuffer(const sp<EffectBufferHalInterface>
                 || size > mOutConversionBuffer->getSize())) {
             mOutConversionBuffer.clear();
             ALOGV("%s: allocating mOutConversionBuffer %zu", __func__, size);
-            (void)getCallback()->allocateHalBuffer(size, &mOutConversionBuffer);
+            (void) getCallback()->allocateHalBuffer(size, &mOutConversionBuffer);
         }
         if (mOutConversionBuffer != nullptr) {
             mOutConversionBuffer->setFrameCount(outFrameCount);
@@ -1731,7 +1731,7 @@ void AudioFlinger::EffectModule::dump(int fd, const Vector<String16>& args)
 
     if (mEffectInterface != 0) {
         dprintf(fd, "\tEffect ID %d HAL dump:\n", mId);
-        (void)mEffectInterface->dump(fd);
+        (void) mEffectInterface->dump(fd);
     }
 
     if (locked) {
@@ -2655,7 +2655,7 @@ void AudioFlinger::EffectChain::resetVolume_l()
     if ((mLeftVolume != UINT_MAX) && (mRightVolume != UINT_MAX)) {
         uint32_t left = mLeftVolume;
         uint32_t right = mRightVolume;
-        (void)setVolume_l(&left, &right, true);
+        (void) setVolume_l(&left, &right, true);
     }
 }
 

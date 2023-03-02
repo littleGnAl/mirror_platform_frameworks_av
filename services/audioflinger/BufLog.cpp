@@ -118,7 +118,7 @@ BufLogStream::BufLogStream(unsigned int id,
     mByteCount = 0;
     mPaused = false;
     if (tag != NULL) {
-        (void)audio_utils_strlcpy(mTag, tag);
+        (void) audio_utils_strlcpy(mTag, tag);
     } else {
         mTag[0] = 0;
     }

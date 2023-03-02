@@ -967,7 +967,7 @@ void AudioFlinger::ThreadBase::dump(int fd, const Vector<String16>& args)
     if (dumpAll || type() == SPATIALIZER) {
         const std::string sched = mThreadSnapshot.toString();
         if (!sched.empty()) {
-            (void)write(fd, sched.c_str(), sched.size());
+            (void) write(fd, sched.c_str(), sched.size());
         }
     }
 }
@@ -2265,7 +2265,7 @@ void AudioFlinger::PlaybackThread::dumpInternals_l(int fd, const Vector<String16
     }
     if (output != nullptr) {
         dprintf(fd, "  Hal stream dump:\n");
-        (void)output->stream->dump(fd, args);
+        (void) output->stream->dump(fd, args);
     }
 }
 
@@ -3099,7 +3099,7 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
     // For sink buffer size, we use the frame size from the downstream sink to avoid problems
     // with non PCM formats for compressed music, e.g. AAC, and Offload threads.
     const size_t sinkBufferSize = mNormalFrameCount * mFrameSize;
-    (void)posix_memalign(&mSinkBuffer, 32, sinkBufferSize);
+    (void) posix_memalign(&mSinkBuffer, 32, sinkBufferSize);
 
     // We resize the mMixerBuffer according to the requirements of the sink buffer which
     // drives the output.
@@ -3109,7 +3109,7 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
         mMixerBufferFormat = AUDIO_FORMAT_PCM_FLOAT; // no longer valid: AUDIO_FORMAT_PCM_16_BIT.
         mMixerBufferSize = mNormalFrameCount * mixerChannelCount
                 * audio_bytes_per_sample(mMixerBufferFormat);
-        (void)posix_memalign(&mMixerBuffer, 32, mMixerBufferSize);
+        (void) posix_memalign(&mMixerBuffer, 32, mMixerBufferSize);
     }
     free(mEffectBuffer);
     mEffectBuffer = NULL;
@@ -3117,7 +3117,7 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
         mEffectBufferFormat = EFFECT_BUFFER_FORMAT;
         mEffectBufferSize = mNormalFrameCount * mixerChannelCount
                 * audio_bytes_per_sample(mEffectBufferFormat);
-        (void)posix_memalign(&mEffectBuffer, 32, mEffectBufferSize);
+        (void) posix_memalign(&mEffectBuffer, 32, mEffectBufferSize);
     }
 
     if (mType == SPATIALIZER) {
@@ -3125,7 +3125,7 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
         mPostSpatializerBuffer = nullptr;
         mPostSpatializerBufferSize = mNormalFrameCount * mChannelCount
                 * audio_bytes_per_sample(mEffectBufferFormat);
-        (void)posix_memalign(&mPostSpatializerBuffer, 32, mPostSpatializerBufferSize);
+        (void) posix_memalign(&mPostSpatializerBuffer, 32, mPostSpatializerBufferSize);
     }
 
     mHapticChannelMask = static_cast<audio_channel_mask_t>(mChannelMask & AUDIO_CHANNEL_HAPTIC_ALL);
@@ -3293,7 +3293,7 @@ bool AudioFlinger::PlaybackThread::isValidSyncEvent(const sp<SyncEvent>& event) 
 }
 
 void AudioFlinger::PlaybackThread::threadLoop_removeTracks(
-        const Vector< sp<Track> >& tracksToRemove)
+        __attribute__((unused)) const Vector< sp<Track> >& tracksToRemove)
 {
     // Miscellaneous track cleanup when removed from the active list,
     // called without Thread lock but synchronized with threadLoop processing.
@@ -3304,8 +3304,6 @@ void AudioFlinger::PlaybackThread::threadLoop_removeTracks(
             addBatteryData(IMediaPlayerService::kBatteryDataAudioFlingerStop);
         }
     }
-#else
-    (void)tracksToRemove; // suppress unused warning
 #endif
 }
 
@@ -4805,7 +4803,7 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
             free(mSinkBuffer);
             mFrameSize = audio_bytes_per_frame(mChannelCount + mHapticChannelCount, mFormat);
             const size_t sinkBufferSize = mNormalFrameCount * mFrameSize;
-            (void)posix_memalign(&mSinkBuffer, 32, sinkBufferSize);
+            (void) posix_memalign(&mSinkBuffer, 32, sinkBufferSize);
         }
 
         // create a MonoPipe to connect our submix to FastMixer
@@ -5166,7 +5164,7 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
         Vector< sp<Track> > *tracksToRemove)
 {
     // clean up deleted track ids in AudioMixer before allocating new tracks
-    (void)mTracks.processDeletedTrackIds([this](int trackId) {
+    (void) mTracks.processDeletedTrackIds([this](int trackId) {
         // for each trackId, destroy it in the AudioMixer
         if (mAudioMixer->exists(trackId)) {
             mAudioMixer->destroy(trackId);
@@ -5829,7 +5827,7 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
     }
 
     // Push the new FastMixer state if necessary
-    bool pauseAudioWatchdog = false;
+    [[maybe_unused]] bool pauseAudioWatchdog = false;
     if (didModify) {
         state->mFastTracksGen++;
         // if the fast mixer was active, but now there are no fast tracks, then put it in cold idle
@@ -6218,7 +6216,7 @@ void AudioFlinger::DirectOutputThread::processVolume_l(Track *track, bool lastTr
                 uint32_t vl = (uint32_t)(left * (1 << 24));
                 uint32_t vr = (uint32_t)(right * (1 << 24));
                 // Direct/Offload effect chains set output volume in setVolume_l().
-                (void)mEffectChains[0]->setVolume_l(&vl, &vr);
+                (void) mEffectChains[0]->setVolume_l(&vl, &vr);
             } else {
                 // otherwise we directly set the volume.
                 setVolumeForOutput_l(left, right);
@@ -7570,7 +7568,7 @@ AudioFlinger::RecordThread::RecordThread(const sp<AudioFlinger>& audioFlinger,
     size_t numCounterOffers = 0;
     const NBAIO_Format offers[1] = {Format_from_SR_C(mSampleRate, mChannelCount, mFormat)};
 #if !LOG_NDEBUG
-    ssize_t index =
+    [[maybe_unused]] ssize_t index =
 #else
     (void)
 #endif
@@ -7621,7 +7619,7 @@ AudioFlinger::RecordThread::RecordThread(const sp<AudioFlinger>& audioFlinger,
         Pipe *pipe = new Pipe(pipeFramesP2, format, pipeBuffer);
         const NBAIO_Format offers[1] = {format};
         size_t numCounterOffers = 0;
-        ssize_t index = pipe->negotiate(offers, 1, NULL, numCounterOffers);
+        [[maybe_unused]] ssize_t index = pipe->negotiate(offers, 1, NULL, numCounterOffers);
         ALOG_ASSERT(index == 0);
         mPipeSink = pipe;
         PipeReader *pipeReader = new PipeReader(*pipe);
@@ -8102,7 +8100,7 @@ reacquire_wakelock:
         mFramesRead += framesRead;
 
 #ifdef TEE_SINK
-        (void)mTee.write((uint8_t*)mRsmpInBuffer + rear * mFrameSize, framesRead);
+        (void) mTee.write((uint8_t*)mRsmpInBuffer + rear * mFrameSize, framesRead);
 #endif
         // If destination is non-contiguous, we now correct for reading past end of buffer.
         {
@@ -8874,7 +8872,7 @@ void AudioFlinger::RecordThread::dumpInternals_l(int fd, const Vector<String16>&
 
     if (input != nullptr) {
         dprintf(fd, "  Hal stream dump:\n");
-        (void)input->stream->dump(fd);
+        (void) input->stream->dump(fd);
     }
 
     dprintf(fd, "  Fast capture thread: %s\n", hasFastCapture() ? "yes" : "no");
@@ -9089,7 +9087,7 @@ bool AudioFlinger::RecordThread::checkForNewParameter_l(const String8& keyValueP
     audio_format_t reqFormat = mFormat;
     uint32_t samplingRate = mSampleRate;
     // TODO this may change if we want to support capture from HDMI PCM multi channel (e.g on TVs).
-    audio_channel_mask_t channelMask = audio_channel_in_mask_from_count(mChannelCount);
+    [[maybe_unused]] audio_channel_mask_t channelMask = audio_channel_in_mask_from_count(mChannelCount);
 
     AudioParameter param = AudioParameter(keyValuePair);
     int value;
@@ -9404,14 +9402,14 @@ int32_t AudioFlinger::RecordThread::getOldestFront_l()
     for (size_t i = 0; i < mTracks.size(); i++) {
         int32_t front = mTracks[i]->mResamplerBufferProvider->getFront();
         int32_t filled;
-        (void)__builtin_sub_overflow(mRsmpInRear, front, &filled);
+        (void) __builtin_sub_overflow(mRsmpInRear, front, &filled);
         if (filled > maxFilled) {
             oldestFront = front;
             maxFilled = filled;
         }
     }
     if (maxFilled > mRsmpInFrames) {
-        (void)__builtin_sub_overflow(mRsmpInRear, mRsmpInFrames, &oldestFront);
+        (void) __builtin_sub_overflow(mRsmpInRear, mRsmpInFrames, &oldestFront);
     }
     return oldestFront;
 }
@@ -9486,7 +9484,7 @@ void AudioFlinger::RecordThread::resizeInputBuffer_l(int32_t maxSharedAudioHisto
     mRsmpInFramesOA = mRsmpInFramesP2 + mFrameCount - 1;
 
     void *rsmpInBuffer;
-    (void)posix_memalign(&rsmpInBuffer, 32, mRsmpInFramesOA * mFrameSize);
+    (void) posix_memalign(&rsmpInBuffer, 32, mRsmpInFramesOA * mFrameSize);
     // if posix_memalign fails, will segv here.
     memset(rsmpInBuffer, 0, mRsmpInFramesOA * mFrameSize);
 

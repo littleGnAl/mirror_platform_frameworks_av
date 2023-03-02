@@ -79,8 +79,6 @@ FastMixer::FastMixer(audio_io_handle_t parentIoHandle)
     mMasterMono(false),
     mThreadIoHandle(parentIoHandle)
 {
-    (void)mThreadIoHandle; // prevent unused warning, see C++17 [[maybe_unused]]
-
     // FIXME pass sInitial as parameter to base class constructor, and make it static local
     mPrevious = &sInitial;
     mCurrent = &sInitial;
@@ -279,12 +277,12 @@ void FastMixer::onStateChange()
             const size_t mixerFrameSize = mSinkChannelCount
                     * audio_bytes_per_sample(mMixerBufferFormat);
             mMixerBufferSize = mixerFrameSize * frameCount;
-            (void)posix_memalign(&mMixerBuffer, 32, mMixerBufferSize);
+            (void) posix_memalign(&mMixerBuffer, 32, mMixerBufferSize);
             const size_t sinkFrameSize = mSinkChannelCount
                     * audio_bytes_per_sample(mFormat.mFormat);
             if (sinkFrameSize > mixerFrameSize) { // need a sink buffer
                 mSinkBufferSize = sinkFrameSize * frameCount;
-                (void)posix_memalign(&mSinkBuffer, 32, mSinkBufferSize);
+                (void) posix_memalign(&mSinkBuffer, 32, mSinkBufferSize);
             }
             mPeriodNs = (frameCount * 1000000000LL) / mSampleRate;    // 1.00
             mUnderrunNs = (frameCount * 1750000000LL) / mSampleRate;  // 1.75

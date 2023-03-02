@@ -1244,7 +1244,7 @@ void AudioFlinger::PlaybackThread::Track::flush()
         // Otherwise the flush would not be done until the track is resumed.
         // Requires FastTrack removal be BLOCK_UNTIL_ACKED
         if (playbackThread->mActiveTracks.indexOf(this) < 0) {
-            (void)mServerProxy->flushBufferIfNeeded();
+            (void) mServerProxy->flushBufferIfNeeded();
         }
 
         if (isOffloaded()) {
@@ -2016,7 +2016,6 @@ ssize_t AudioFlinger::PlaybackThread::OutputTrack::write(void* data, uint32_t fr
 {
     Buffer *pInBuffer;
     Buffer inBuffer;
-    bool outputBufferFull = false;
     inBuffer.frameCount = frames;
     inBuffer.raw = data;
 
@@ -2046,7 +2045,6 @@ ssize_t AudioFlinger::PlaybackThread::OutputTrack::write(void* data, uint32_t fr
                 ALOGV("%s(%d): thread %d no more output buffers; status %d",
                         __func__, mId,
                         (int)mThreadIoHandle, status);
-                outputBufferFull = true;
                 break;
             }
             uint32_t waitTimeMs = (uint32_t)ns2ms(systemTime() - startTime);
@@ -2853,7 +2851,7 @@ void AudioFlinger::RecordThread::PatchRecord::releaseBuffer(Proxy::Buffer* buffe
 static std::unique_ptr<void, decltype(free)*> allocAligned(size_t alignment, size_t size)
 {
     void *ptr = nullptr;
-    (void)posix_memalign(&ptr, alignment, size);
+    (void) posix_memalign(&ptr, alignment, size);
     return std::unique_ptr<void, decltype(free)*>(ptr, free);
 }
 

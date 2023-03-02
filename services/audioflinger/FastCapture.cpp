@@ -135,7 +135,7 @@ void FastCapture::onStateChange()
             //       implementation; it would be better to have normal capture thread allocate for
             //       us to avoid blocking here and to prevent possible priority inversion
             size_t bufferSize = frameCount * Format_frameSize(mFormat);
-            (void)posix_memalign(&mReadBuffer, 32, bufferSize);
+            (void) posix_memalign(&mReadBuffer, 32, bufferSize);
             memset(mReadBuffer, 0, bufferSize); // if posix_memalign fails, will segv here.
             mPeriodNs = (frameCount * 1000000000LL) / mSampleRate;      // 1.00
             mUnderrunNs = (frameCount * 1750000000LL) / mSampleRate;    // 1.75

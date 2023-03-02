@@ -1458,7 +1458,7 @@ status_t AudioFlinger::setMicMute(bool state)
     for (size_t i = 0; i < mAudioHwDevs.size(); i++) {
         sp<DeviceHalInterface> dev = mAudioHwDevs.valueAt(i)->hwDevice();
         if (dev != primaryDev) {
-            (void)dev->setMicMute(state);
+            (void) dev->setMicMute(state);
         }
     }
     mHardwareStatus = AUDIO_HW_IDLE;
@@ -4585,12 +4585,9 @@ bool AudioFlinger::updateOrphanEffectChains(const sp<AudioFlinger::EffectModule>
 // ----------------------------------------------------------------------------
 
 status_t AudioFlinger::onTransactWrapper(TransactionCode code,
-                                         const Parcel& data,
-                                         uint32_t flags,
+                                         __attribute__((unused)) const Parcel& data,
+                                         __attribute__((unused)) uint32_t flags,
                                          const std::function<status_t()>& delegate) {
-    (void) data;
-    (void) flags;
-
     // make sure transactions reserved to AudioPolicyManager do not come from other processes
     switch (code) {
         case TransactionCode::SET_STREAM_VOLUME:

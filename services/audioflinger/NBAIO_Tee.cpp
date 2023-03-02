@@ -86,7 +86,7 @@ public:
         : mThreadPool(pool)
         , mPrefix(prefix)
     {
-        (void)setDirectory(directory);
+        (void) setDirectory(directory);
     }
 
     /** returns filename of created audio file, else empty string on failure. */
@@ -129,7 +129,7 @@ private:
         LOG_ALWAYS_FATAL_IF(strftime(fileTime, sizeof(fileTime), "%Y%m%d_%H%M%S_", &tm) == 0,
             "incorrect fileTime buffer");
         char msec[4];
-        (void)snprintf(msec, sizeof(msec), "%03d", (int)(tv.tv_usec / 1000));
+        (void) snprintf(msec, sizeof(msec), "%03d", (int)(tv.tv_usec / 1000));
         return mPrefix + fileTime + msec + suffix + ".wav";
     }
 
@@ -296,7 +296,7 @@ status_t AudioFileHandler::setDirectory(const std::string &directory)
         }
         files.emplace_back(result->d_name);
     }
-    (void)closedir(dir);
+    (void) closedir(dir);
 
     // OPTIMIZATION: we don't need to stat each file, the filenames names are
     // already (roughly) ordered by creation date.  we use std::deque instead
@@ -319,7 +319,7 @@ status_t AudioFileHandler::setDirectory(const std::string &directory)
     }
 
     if (toRemove > 0) { // launch a clean in background.
-        (void)mThreadPool.launch(
+        (void) mThreadPool.launch(
                 std::string("cleaning ") + directory, [this]() { return clean(); });
     }
     return NO_ERROR;
@@ -349,7 +349,7 @@ status_t AudioFileHandler::clean(std::string *directory)
     std::string dirp = dir + "/";
     // remove files outside of lock for better concurrency.
     for (const auto &file : filesToRemove) {
-        (void)unlink((dirp + file).c_str());
+        (void) unlink((dirp + file).c_str());
     }
 
     // return the directory if requested.
@@ -497,7 +497,7 @@ status_t AudioFileHandler::createInternal(
     sf_close(sf);
     free(buffer);
     if (total == 0) {
-        (void)unlink(path.c_str());
+        (void) unlink(path.c_str());
         return NOT_ENOUGH_DATA;
     }
 

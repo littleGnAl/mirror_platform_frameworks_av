@@ -246,7 +246,7 @@ private:
 
         void write(const void *buffer, size_t frameCount) {
             if (!mEnabled.load() || frameCount == 0) return;
-            (void)mSinkSource.first->write(buffer, frameCount);
+            (void) mSinkSource.first->write(buffer, frameCount);
             mDataReady.store(true);
         }
 

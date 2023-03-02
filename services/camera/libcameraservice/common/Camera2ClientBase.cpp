@@ -379,50 +379,37 @@ void Camera2ClientBase<TClientBase>::notifyIdleWithUserTag(
 }
 
 template <typename TClientBase>
-void Camera2ClientBase<TClientBase>::notifyShutter(const CaptureResultExtras& resultExtras,
-                                                   nsecs_t timestamp) {
-    (void)resultExtras;
-    (void)timestamp;
-
+void Camera2ClientBase<TClientBase>::notifyShutter(
+                __attribute__((unused)) const CaptureResultExtras& resultExtras,
+                __attribute__((unused)) nsecs_t timestamp) {
     ALOGV("%s: Shutter notification for request id %" PRId32 " at time %" PRId64,
             __FUNCTION__, resultExtras.requestId, timestamp);
 }
 
 template <typename TClientBase>
-void Camera2ClientBase<TClientBase>::notifyAutoFocus(uint8_t newState,
-                                                     int triggerId) {
-    (void)newState;
-    (void)triggerId;
-
+void Camera2ClientBase<TClientBase>::notifyAutoFocus(__attribute__((unused)) uint8_t newState,
+                                                     __attribute__((unused)) int triggerId) {
     ALOGV("%s: Autofocus state now %d, last trigger %d",
           __FUNCTION__, newState, triggerId);
 
 }
 
 template <typename TClientBase>
-void Camera2ClientBase<TClientBase>::notifyAutoExposure(uint8_t newState,
-                                                        int triggerId) {
-    (void)newState;
-    (void)triggerId;
-
+void Camera2ClientBase<TClientBase>::notifyAutoExposure(__attribute__((unused)) uint8_t newState,
+                                                        __attribute__((unused)) int triggerId) {
     ALOGV("%s: Autoexposure state now %d, last trigger %d",
             __FUNCTION__, newState, triggerId);
 }
 
 template <typename TClientBase>
-void Camera2ClientBase<TClientBase>::notifyAutoWhitebalance(uint8_t newState,
-                                                            int triggerId) {
-    (void)newState;
-    (void)triggerId;
-
+void Camera2ClientBase<TClientBase>::notifyAutoWhitebalance(__attribute__((unused)) uint8_t newState,
+                                                            __attribute__((unused)) int triggerId) {
     ALOGV("%s: Auto-whitebalance state now %d, last trigger %d",
             __FUNCTION__, newState, triggerId);
 }
 
 template <typename TClientBase>
-void Camera2ClientBase<TClientBase>::notifyPrepared(int streamId) {
-    (void)streamId;
-
+void Camera2ClientBase<TClientBase>::notifyPrepared(__attribute__((unused)) int streamId) {
     ALOGV("%s: Stream %d now prepared",
             __FUNCTION__, streamId);
 }
@@ -434,9 +421,8 @@ void Camera2ClientBase<TClientBase>::notifyRequestQueueEmpty() {
 }
 
 template <typename TClientBase>
-void Camera2ClientBase<TClientBase>::notifyRepeatingRequestError(long lastFrameNumber) {
-    (void)lastFrameNumber;
-
+void Camera2ClientBase<TClientBase>::notifyRepeatingRequestError(
+            __attribute__((unused)) long lastFrameNumber) {
     ALOGV("%s: Repeating request was stopped. Last frame number is %ld",
             __FUNCTION__, lastFrameNumber);
 }
