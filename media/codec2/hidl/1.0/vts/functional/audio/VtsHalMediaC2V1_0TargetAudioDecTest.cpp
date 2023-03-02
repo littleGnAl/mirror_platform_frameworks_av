@@ -706,7 +706,9 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
             eleInfo >> timestamp;
             codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
         }
-        Info.push_back({bytesCount, flags, timestamp});
+        if (!codecConfig) {
+            Info.push_back({bytesCount, flags, timestamp});
+        }
         frameId++;
     }
     eleInfo.close();
