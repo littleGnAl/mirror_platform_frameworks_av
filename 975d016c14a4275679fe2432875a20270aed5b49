@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1005702_c4ab58b7",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-03T17:22:54Z",
+      "side": 1,
+      "message": "Should this case be handled by `getDeviceForInputSource`? Looking at its code, it seems that the situation when a nullptr returned is not considered to be normal. There is a special handling for a missing communication device when in call: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/enginedefault/src/Engine.cpp;l\u003d529;drc\u003d4f7ed41a1220706d7944b4c2fbafc598c32f603f. Why doesn\u0027t it work? Perhaps, the fix should be applied to that part?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "975d016c14a4275679fe2432875a20270aed5b49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
