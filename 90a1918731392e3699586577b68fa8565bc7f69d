@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53c45baf_db32f019",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-03T02:29:46Z",
+      "side": 1,
+      "message": "Shunkai, that\u0027s frame size in bytes. This code does not operate on byte arrays, but rather on arrays of samples. What we need to use here is android::hardware::audio::common::getChannelCount to see how many samples are in a frame. However, it seems that we already know the answer since we hardcode that is must be stereo. So we can leave increments by 2 which the original code was using. However, we likely need to assert somewhere that the effect indeed receives a data stream for 2 channels (see my comment above).",
+      "parentUuid": "b1f6d52a_14cd7c71",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b81a8da_b319e71a",
         "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.h",
         "patchSetId": 1
