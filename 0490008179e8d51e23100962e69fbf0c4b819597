@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6148068_669bf383",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-03T00:58:15Z",
+      "side": 1,
+      "message": "Yes, and I think line#96 only clear the interface when `destroyEffect` success",
+      "parentUuid": "942ac571_fe06dc2d",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 43
+      },
+      "revId": "0490008179e8d51e23100962e69fbf0c4b819597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32a71aee_ca9df91a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-01T16:20:13Z",
       "side": 1,
       "message": "I don\u0027t understand why we do not open the mActiveSub",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 82
+      },
+      "revId": "0490008179e8d51e23100962e69fbf0c4b819597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c747f13c_be34d13c",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-03T00:58:15Z",
+      "side": 1,
+      "message": "Good catch, that was a copy-paste error, thanks.",
+      "parentUuid": "32a71aee_ca9df91a",
       "range": {
         "startLine": 133,
         "startChar": 0,
