@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f32896d_7e87a37e",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-03T01:17:28Z",
+      "side": 1,
+      "message": "Ideally mState should be `GUARDED_BY(mMutex)`, please state change is not in same thread as this data consuming.\nSee:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.h;l\u003d76",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3724f8d7_5a6dec02",
         "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
         "patchSetId": 1
@@ -42,6 +65,53 @@
         "startChar": 21,
         "endLine": 91,
         "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f6d52a_14cd7c71",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-03T01:17:28Z",
+      "side": 1,
+      "message": "+1, I think there is a method to get framesize:\n```\nauto frameSize \u003d android::hardware::audio::common::getFrameSizeInBytes(\n                 common.input.base.format, common.input.base.channelMask);\n```\n\nAnd I think we need be careful about using `mCommon.input.frameCount` directly for loop boundary here, because the size of `float *in` is from FMQ which is the parameter `int samples`, so I think you may want to do something like: `std::min(samples, inputSamples)`",
+      "parentUuid": "6ae2d87d_1546ccc0",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b81a8da_b319e71a",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-03T01:17:28Z",
+      "side": 1,
+      "message": "Please add default value",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 13
       },
       "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
