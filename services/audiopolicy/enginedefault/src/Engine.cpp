@@ -163,8 +163,12 @@ void Engine::filterOutputDevicesForStrategy(legacy_strategy strategy,
         //   - cannot route from voice call RX OR
         //   - audio HAL version is < 3.0 and TX device is on the primary HW module
         if (getPhoneState() == AUDIO_MODE_IN_CALL) {
-            audio_devices_t txDevice = getDeviceForInputSource(
-                    AUDIO_SOURCE_VOICE_COMMUNICATION)->type();
+            sp<DeviceDescriptor> txDevice =
+                    getDeviceForInputSource(AUDIO_SOURCE_VOICE_COMMUNICATION);
+            audio_devices_t txDeviceType = AUDIO_DEVICE_NONE;
+            if (txDevice != nullptr) {
+                txDeviceType = txDevice->type();
+            }
             sp<AudioOutputDescriptor> primaryOutput = outputs.getPrimaryOutput();
             LOG_ALWAYS_FATAL_IF(primaryOutput == nullptr, "Primary output not found");
             DeviceVector availPrimaryInputDevices =
@@ -179,14 +183,13 @@ void Engine::filterOutputDevicesForStrategy(legacy_strategy strategy,
             availPrimaryOutputDevices.add(
                     availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_HEARING_AID));
 
-            if ((availableInputDevices.getDevice(AUDIO_DEVICE_IN_TELEPHONY_RX,
-                                                 String8(""), AUDIO_FORMAT_DEFAULT) == nullptr) ||
-                ((availPrimaryInputDevices.getDevice(
-                        txDevice, String8(""), AUDIO_FORMAT_DEFAULT) != nullptr) &&
+            if ((availableInputDevices.getDevice(AUDIO_DEVICE_IN_TELEPHONY_RX, String8(""),
+                                                 AUDIO_FORMAT_DEFAULT) == nullptr) ||
+                ((availPrimaryInputDevices.getDevice(txDeviceType, String8(""),
+                                                     AUDIO_FORMAT_DEFAULT) != nullptr) &&
                  (primaryOutput->getPolicyAudioPort()->getModuleVersionMajor() < 3))) {
                 availableOutputDevices = availPrimaryOutputDevices;
             }
-
         }
         // Do not use A2DP devices when in call but use them when not in call
         // (e.g for voice mail playback)
