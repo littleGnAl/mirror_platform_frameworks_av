@@ -39,6 +39,30 @@
       },
       "revId": "6f8f982f685fd7f3b26b9aaa80998eb5b1cc06cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a78e49a5_d1126fb0",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1993856
+      },
+      "writtenOn": "2023-03-03T07:36:28Z",
+      "side": 1,
+      "message": "hi Eric, i have draw a figure at https://photos.app.goo.gl/iBaaMS6ezxBBkx4JA for your reference . If AudioServer close mic, two threads in MediaServer process will check the record status and try to open mic . One is AudioRecorder app\u0027s thread, which will open mic almost immediately in it\u0027s thread loop. The other is called from mediaRecord.start to AudioRecord::start through binder ipc. \ncode for camera\u0027s AudioRecord::start :\nstatus_t AudioRecord::start(\n    if (flags \u0026 CBLK_INVALID) {\n        status \u003d restoreRecord_l(\"start\");\n    }\n\nstatus_t AudioRecord::restoreRecord_l(const char *from) {\n    const int INITIAL_RETRIES \u003d 3;\n    int retries \u003d INITIAL_RETRIES;\nretry:\n    result \u003d createRecord_l(position);\n    if (result !\u003d NO_ERROR) {\n        if (--retries \u003e 0) {\n            // leave time for an eventual race condition to clear before retrying\n            usleep(500000);\n            goto retry;\nAudioRecord::start has a usleep(500000) , so add a usleep(600000) to try to let the first thread open mic after camera.",
+      "parentUuid": "51b4fcc0_ec4ce1b2",
+      "range": {
+        "startLine": 1111,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 39
+      },
+      "revId": "6f8f982f685fd7f3b26b9aaa80998eb5b1cc06cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
