@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "153b67b9_5f35011c",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-03T04:33:05Z",
+      "side": 1,
+      "message": "Yes, in this case `getFrameSizeInBytes` doesn\u0027t help.\nIt looks like we don\u0027t have the assertion for channel number anywhere.\n\nThe loop boundary `for (int inIdx \u003d 0; inIdx \u003c mCommon.input.frameCount; inIdx++)` needs change because it does not check the input parameter `int samples`.",
+      "parentUuid": "53c45baf_db32f019",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b81a8da_b319e71a",
         "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.h",
         "patchSetId": 1
