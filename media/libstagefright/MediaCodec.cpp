@@ -5621,6 +5621,9 @@ status_t MediaCodec::setParameters(const sp<AMessage> &params) {
 }
 
 status_t MediaCodec::onSetParameters(const sp<AMessage> &params) {
+    if (mComponentName.empty()) {
+        return OK;
+    }
     updateLowLatency(params);
     mapFormat(mComponentName, params, nullptr, false);
     updateTunnelPeek(params);
