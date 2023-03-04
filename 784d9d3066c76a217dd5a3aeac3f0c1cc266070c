@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e06296_1833b671",
+        "filename": "media/libaudiohal/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-04T02:24:26Z",
+      "side": 1,
+      "message": "Since HAL implementation headers depend on libaudiohal_headers, I would recommend expressing this dependency here. A header library can depend on and re-export headers from other header libraries, see an example here: http://cs/android-internal/frameworks/native/libs/binder/Android.bp.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "784d9d3066c76a217dd5a3aeac3f0c1cc266070c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f0bcea_683e7870",
+        "filename": "media/libaudiohal/tests/EffectProxy_test.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-04T02:24:26Z",
+      "side": 1,
+      "message": "Please make an enum for tuple member names.",
+      "range": {
+        "startLine": 122,
+        "startChar": 35,
+        "endLine": 122,
+        "endChar": 36
+      },
+      "revId": "784d9d3066c76a217dd5a3aeac3f0c1cc266070c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
