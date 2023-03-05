@@ -87,6 +87,23 @@
       "parentUuid": "d0c03d7b_33244102",
       "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9614c2_e414c3cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-03-05T06:24:34Z",
+      "side": 1,
+      "message": "Remove level check from codec support check\n\nChange-Id: I0453cd67356ae4815aae56292c988b1c3f4973c9\n\nabove change fixed this bug.",
+      "revId": "e6a8017a883c477971141118fe0e665a1acdd06b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
