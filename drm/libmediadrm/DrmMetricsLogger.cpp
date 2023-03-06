@@ -41,6 +41,51 @@ DrmMetricsLogger::DrmMetricsLogger(IDrmFrontend frontend)
 
 DrmMetricsLogger::~DrmMetricsLogger() {}
 
+DrmStatus MediaErrorToJavaError(status_t err) {
+#define STATUS_CASE(status) \
+    case status: \
+        return J##status
+
+    switch (err) {
+        STATUS_CASE(ERROR_DRM_UNKNOWN);
+        STATUS_CASE(ERROR_DRM_NO_LICENSE);
+        STATUS_CASE(ERROR_DRM_LICENSE_EXPIRED);
+        STATUS_CASE(ERROR_DRM_RESOURCE_BUSY);
+        STATUS_CASE(ERROR_DRM_INSUFFICIENT_OUTPUT_PROTECTION);
+        STATUS_CASE(ERROR_DRM_SESSION_NOT_OPENED);
+        STATUS_CASE(ERROR_DRM_CANNOT_HANDLE);
+        STATUS_CASE(ERROR_DRM_INSUFFICIENT_SECURITY);
+        STATUS_CASE(ERROR_DRM_FRAME_TOO_LARGE);
+        STATUS_CASE(ERROR_DRM_SESSION_LOST_STATE);
+        STATUS_CASE(ERROR_DRM_CERTIFICATE_MALFORMED);
+        STATUS_CASE(ERROR_DRM_CERTIFICATE_MISSING);
+        STATUS_CASE(ERROR_DRM_CRYPTO_LIBRARY);
+        STATUS_CASE(ERROR_DRM_GENERIC_OEM);
+        STATUS_CASE(ERROR_DRM_GENERIC_PLUGIN);
+        STATUS_CASE(ERROR_DRM_INIT_DATA);
+        STATUS_CASE(ERROR_DRM_KEY_NOT_LOADED);
+        STATUS_CASE(ERROR_DRM_LICENSE_PARSE);
+        STATUS_CASE(ERROR_DRM_LICENSE_POLICY);
+        STATUS_CASE(ERROR_DRM_LICENSE_RELEASE);
+        STATUS_CASE(ERROR_DRM_LICENSE_REQUEST_REJECTED);
+        STATUS_CASE(ERROR_DRM_LICENSE_RESTORE);
+        STATUS_CASE(ERROR_DRM_LICENSE_STATE);
+        STATUS_CASE(ERROR_DRM_MEDIA_FRAMEWORK);
+        STATUS_CASE(ERROR_DRM_PROVISIONING_CERTIFICATE);
+        STATUS_CASE(ERROR_DRM_PROVISIONING_CONFIG);
+        STATUS_CASE(ERROR_DRM_PROVISIONING_PARSE);
+        STATUS_CASE(ERROR_DRM_PROVISIONING_REQUEST_REJECTED);
+        STATUS_CASE(ERROR_DRM_PROVISIONING_RETRY);
+        STATUS_CASE(ERROR_DRM_RESOURCE_CONTENTION);
+        STATUS_CASE(ERROR_DRM_SECURE_STOP_RELEASE);
+        STATUS_CASE(ERROR_DRM_STORAGE_READ);
+        STATUS_CASE(ERROR_DRM_STORAGE_WRITE);
+        STATUS_CASE(ERROR_DRM_ZERO_SUBSAMPLES);
+#undef STATUS_CASE
+    }
+    return static_cast<DrmStatus>(err);
+}
+
 DrmStatus DrmMetricsLogger::initCheck() const {
     DrmStatus status = mImpl->initCheck();
     if (status != OK) {
@@ -71,7 +116,7 @@ DrmStatus DrmMetricsLogger::createPlugin(const uint8_t uuid[IDRM_UUID_SIZE],
         mScheme = "Other";
     }
     if (generateNonce(&mObjNonce, kNonceSize, __func__) != OK) {
-        return ERROR_DRM_RESOURCE_BUSY;
+        return MediaErrorToJavaError(ERROR_DRM_RESOURCE_BUSY);
     }
     DrmStatus status = mImpl->createPlugin(uuid, appPackageName);
     if (status == OK) {
@@ -94,7 +139,7 @@ DrmStatus DrmMetricsLogger::openSession(DrmPlugin::SecurityLevel securityLevel,
                                         Vector<uint8_t>& sessionId) {
     SessionContext ctx{};
     if (generateNonce(&ctx.mNonce, kNonceSize, __func__) != OK) {
-        return ERROR_DRM_RESOURCE_BUSY;
+        return MediaErrorToJavaError(ERROR_DRM_RESOURCE_BUSY);
     }
     DrmStatus status = mImpl->openSession(securityLevel, sessionId);
     if (status == OK) {
@@ -518,8 +563,8 @@ DrmStatus DrmMetricsLogger::generateNonce(std::string* out, size_t size, const c
     ssize_t bytes = getrandom(buf.data(), size, GRND_NONBLOCK);
     if (bytes < size) {
         ALOGE("getrandom failed: %d", errno);
-        reportMediaDrmErrored(ERROR_DRM_RESOURCE_BUSY, api);
-        return ERROR_DRM_RESOURCE_BUSY;
+        reportMediaDrmErrored(MediaErrorToJavaError(ERROR_DRM_RESOURCE_BUSY), api);
+        return MediaErrorToJavaError(ERROR_DRM_RESOURCE_BUSY);
     }
     android::AString tmp;
     encodeBase64(buf.data(), size, &tmp);
