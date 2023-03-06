@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3f5085_d8395d12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-06T21:43:25Z",
+      "side": 1,
+      "message": "nit: I understand that this is a cherry-pick, but perhaps this is too specific information here, and the doc is not public. We could just say \"...avoid unnecessary overhead of handling stale messages.\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 152
+      },
+      "revId": "e0601bedc8adf9d70c6c0fc2c608968b4e65b072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "994ac501_4631b8ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-06T21:43:25Z",
+      "side": 1,
+      "message": "Do we need a Merged-in?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "e0601bedc8adf9d70c6c0fc2c608968b4e65b072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
