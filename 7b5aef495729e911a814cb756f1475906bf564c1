@@ -16,6 +16,24 @@
       "message": "I might be forgetting something, but I thought Shuzhen\u0027s addition here https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/camera/libcameraservice/CameraServiceWatchdog.cpp;l\u003d47?q\u003dframeworks%2Fav%2Fservices%2Fcamera%2Flibcameraservice%2FCameraServiceWatchdog.cpp already did this ?",
       "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b76759_d23d8158",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-06T17:34:50Z",
+      "side": 1,
+      "message": "`abort()` creates a tombstone for the cameraserver itself.\nHowever, we are missing information about the Camera HAL.\n\nAs the watchdog on `close()`, `flush()` is mostly caused by the HAL deadlock, we need a stacktrace of the Camera HAL to debug with.\n\nThis change will print out stacktrace of the cameraserver and HAL (camera provider server) to the platform log by talking with the debuggerd.",
+      "parentUuid": "a35b7ae7_a3a9a051",
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
