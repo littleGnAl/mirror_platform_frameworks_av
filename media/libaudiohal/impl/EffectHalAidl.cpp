@@ -153,6 +153,7 @@ status_t EffectHalAidl::setOutBuffer(const sp<EffectBufferHalInterface>& buffer)
 
 // write to input FMQ here, wait for statusMQ STATUS_OK, and read from output FMQ
 status_t EffectHalAidl::process() {
+    ALOGW("%s about to process %s", __func__, mDesc.common.name.c_str());
     size_t available = mInputQ->availableToWrite();
     size_t floatsToWrite = std::min(available, mInBuffer->getSize() / sizeof(float));
     if (floatsToWrite == 0) {
@@ -179,8 +180,11 @@ status_t EffectHalAidl::process() {
               mOutBuffer->getSize() / sizeof(float), available);
         return INVALID_OPERATION;
     }
-    if (!mOutputQ->read((float*)mOutBuffer->ptr(), floatsToRead)) {
-        ALOGW("%s failed to read %zu from outputQ", __func__, floatsToRead);
+    // always read floating point data for AIDL
+    if (!mOutBuffer->audioBuffer() ||
+        !mOutputQ->read(mOutBuffer->audioBuffer()->f32, floatsToRead)) {
+        ALOGW("%s failed to read %zu from outputQ to audioBuffer %p", __func__, floatsToRead,
+              mOutBuffer->audioBuffer());
         return INVALID_OPERATION;
     }
 
@@ -205,7 +209,9 @@ status_t EffectHalAidl::command(uint32_t cmdCode, uint32_t cmdSize, void* pCmdDa
 
     status_t ret = mConversion->handleCommand(cmdCode, cmdSize, pCmdData, replySize, pReplyData);
     // update FMQs when effect open successfully
-    if (ret == OK && cmdCode == EFFECT_CMD_INIT) {
+    // TODO: avoid checking FMQ if offload
+    if (ret == OK && cmdCode == EFFECT_CMD_SET_CONFIG && mStatusQ == nullptr &&
+        mInputQ == nullptr && mOutputQ == nullptr) {
         const auto& retParam = mConversion->getEffectReturnParam();
         mStatusQ = std::make_unique<StatusMQ>(retParam.statusMQ);
         mInputQ = std::make_unique<DataMQ>(retParam.inputDataMQ);

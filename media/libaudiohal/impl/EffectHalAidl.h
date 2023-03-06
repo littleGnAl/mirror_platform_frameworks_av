@@ -84,11 +84,10 @@ class EffectHalAidl : public EffectHalInterface {
     const int32_t mIoId;
     const ::aidl::android::hardware::audio::effect::Descriptor mDesc;
     std::unique_ptr<EffectConversionHelperAidl> mConversion;
-    std::unique_ptr<StatusMQ> mStatusQ;
-    std::unique_ptr<DataMQ> mInputQ, mOutputQ;
+    std::unique_ptr<StatusMQ> mStatusQ = nullptr;
+    std::unique_ptr<DataMQ> mInputQ = nullptr, mOutputQ = nullptr;
 
     sp<EffectBufferHalInterface> mInBuffer, mOutBuffer;
-    effect_config_t mConfig;
 
     status_t createAidlConversion(
             std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
