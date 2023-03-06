@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a683578a_6d19ddee",
+        "filename": "media/audioaidlconversion/AidlConversionEffect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-06T22:31:39Z",
+      "side": 1,
+      "message": "Probably can use `RETURN_IF_ERROR`: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/liberror/include/error/expected_utils.h;l\u003d75;drc\u003d4e0dcac2623aa66bc3229d43331da75288ba3e92",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 5
+      },
+      "revId": "9a627f79aa31d77ccf6c3e39d10b667343ab1964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
