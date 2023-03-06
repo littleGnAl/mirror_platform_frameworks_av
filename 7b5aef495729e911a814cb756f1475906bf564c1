@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "afbe72ca_b0c83e36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "nit: tombstone",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a35b7ae7_a3a9a051",
@@ -32,6 +55,185 @@
       "side": 1,
       "message": "`abort()` creates a tombstone for the cameraserver itself.\nHowever, we are missing information about the Camera HAL.\n\nAs the watchdog on `close()`, `flush()` is mostly caused by the HAL deadlock, we need a stacktrace of the Camera HAL to debug with.\n\nThis change will print out stacktrace of the cameraserver and HAL (camera provider server) to the platform log by talking with the debuggerd.",
       "parentUuid": "a35b7ae7_a3a9a051",
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26db2ca2_0b5a3909",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "Ack, thanks for the context.",
+      "parentUuid": "40b76759_d23d8158",
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9f2f0e_a68667ed",
+        "filename": "services/camera/libcameraservice/CameraServiceWatchdog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "will adding this give us 2 tombstones for cameraserver ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 57
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a857eae4_ea55f4f7",
+        "filename": "services/camera/libcameraservice/CameraServiceWatchdog.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "const std::vector\u003cpid_t\u003e \u0026 ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 51,
+        "endLine": 54,
+        "endChar": 57
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa4bfb2_224067cb",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "nit: if (",
+      "range": {
+        "startLine": 1707,
+        "startChar": 4,
+        "endLine": 1707,
+        "endChar": 6
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3564f02_7c3affb6",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "I\u0027m guessing this can be left out of scope ?",
+      "range": {
+        "startLine": 1730,
+        "startChar": 6,
+        "endLine": 1734,
+        "endChar": 11
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61955af_1506a610",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "do we need to lock mProviderPidMapLock here ?",
+      "range": {
+        "startLine": 1849,
+        "startChar": 6,
+        "endLine": 1849,
+        "endChar": 40
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d107a3c1_809a2fc2",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "if pids are going to be unique (they\u0027ll get removed each time a provider is removed) - could we use an std::set\u003cpid_t\u003e instead ?",
+      "range": {
+        "startLine": 2033,
+        "startChar": 28,
+        "endLine": 2036,
+        "endChar": 0
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24f4349_11cded13",
+        "filename": "services/camera/libcameraservice/utils/CameraTombstone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-03-06T18:17:07Z",
+      "side": 1,
+      "message": "nit: TOMB",
+      "range": {
+        "startLine": 17,
+        "startChar": 34,
+        "endLine": 17,
+        "endChar": 37
+      },
       "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
