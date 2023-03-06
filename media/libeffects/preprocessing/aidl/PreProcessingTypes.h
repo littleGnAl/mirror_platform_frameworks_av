@@ -34,9 +34,9 @@ static const std::vector<Range::AcousticEchoCancelerRange> kAcousticEchoCanceler
         MAKE_RANGE(AcousticEchoCanceler, AcousticEchoCanceler::echoDelayUs, 0, 500)};
 static const Capability kAcousticEchoCancelerCap = {.range = kAcousticEchoCancelerRanges};
 static const Descriptor kAcousticEchoCancelerDesc = {
-        .common = {.id = {.type = kAcousticEchoCancelerTypeUUID,
-                          .uuid = kAcousticEchoCancelerSwImplUUID,
-                          .proxy = kEffectNullUuid},
+        .common = {.id = {.type = AcousticEchoCancelerTypeUUID(),
+                          .uuid = AcousticEchoCancelerSwImplUUID(),
+                          .proxy = EffectNullUUID()},
                    .flags = {.type = Flags::Type::PRE_PROC, .deviceIndication = true},
                    .name = kAcousticEchoCancelerEffectName,
                    .implementor = "The Android Open Source Project"},
@@ -49,9 +49,9 @@ static const std::vector<Range::AutomaticGainControlV1Range> kAutomaticGainContr
         MAKE_RANGE(AutomaticGainControlV1, AutomaticGainControlV1::maxCompressionGainDb, 0, 9000)};
 static const Capability kAutomaticGainControlV1Cap = {.range = kAutomaticGainControlV1Ranges};
 static const Descriptor kAutomaticGainControlV1Desc = {
-        .common = {.id = {.type = kAutomaticGainControlV1TypeUUID,
-                          .uuid = kAutomaticGainControlV1SwImplUUID,
-                          .proxy = kEffectNullUuid},
+        .common = {.id = {.type = AutomaticGainControlV1TypeUUID(),
+                          .uuid = AutomaticGainControlV1SwImplUUID(),
+                          .proxy = EffectNullUUID()},
                    .flags = {.type = Flags::Type::PRE_PROC, .deviceIndication = true},
                    .name = kAutomaticGainControlV1EffectName,
                    .implementor = "The Android Open Source Project"},
@@ -69,9 +69,9 @@ const std::vector<Range::AutomaticGainControlV2Range> kAutomaticGainControlV2Ran
                    AutomaticGainControlV2::LevelEstimator::RMS)};
 static const Capability kAutomaticGainControlV2Cap = {.range = kAutomaticGainControlV2Ranges};
 static const Descriptor kAutomaticGainControlV2Desc = {
-        .common = {.id = {.type = kAutomaticGainControlV2TypeUUID,
-                          .uuid = kAutomaticGainControlV2SwImplUUID,
-                          .proxy = kEffectNullUuid},
+        .common = {.id = {.type = AutomaticGainControlV2TypeUUID(),
+                          .uuid = AutomaticGainControlV2SwImplUUID(),
+                          .proxy = EffectNullUUID()},
                    .flags = {.type = Flags::Type::PRE_PROC, .deviceIndication = true},
                    .name = kAutomaticGainControlV2EffectName,
                    .implementor = "The Android Open Source Project"},
@@ -80,9 +80,9 @@ static const Descriptor kAutomaticGainControlV2Desc = {
 // Noise suppression
 static const std::string kNoiseSuppressionEffectName = "Noise Suppression";
 static const Descriptor kNoiseSuppressionDesc = {
-        .common = {.id = {.type = kNoiseSuppressionTypeUUID,
-                          .uuid = kNoiseSuppressionSwImplUUID,
-                          .proxy = kEffectNullUuid},
+        .common = {.id = {.type = NoiseSuppressionTypeUUID(),
+                          .uuid = NoiseSuppressionSwImplUUID(),
+                          .proxy = EffectNullUUID()},
                    .flags = {.type = Flags::Type::PRE_PROC, .deviceIndication = true},
                    .name = kNoiseSuppressionEffectName,
                    .implementor = "The Android Open Source Project"}};

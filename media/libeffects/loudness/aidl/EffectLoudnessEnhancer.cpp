@@ -22,14 +22,14 @@
 
 using aidl::android::hardware::audio::effect::Descriptor;
 using aidl::android::hardware::audio::effect::IEffect;
-using aidl::android::hardware::audio::effect::kLoudnessEnhancerImplUUID;
 using aidl::android::hardware::audio::effect::LoudnessEnhancerImpl;
+using aidl::android::hardware::audio::effect::LoudnessEnhancerImplUUID;
 using aidl::android::hardware::audio::effect::State;
 using aidl::android::media::audio::common::AudioUuid;
 
 extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
                                            std::shared_ptr<IEffect>* instanceSpp) {
-    if (!in_impl_uuid || *in_impl_uuid != kLoudnessEnhancerImplUUID) {
+    if (!in_impl_uuid || *in_impl_uuid != LoudnessEnhancerImplUUID()) {
         LOG(ERROR) << __func__ << "uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -44,7 +44,7 @@ extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
 }
 
 extern "C" binder_exception_t queryEffect(const AudioUuid* in_impl_uuid, Descriptor* _aidl_return) {
-    if (!in_impl_uuid || *in_impl_uuid != kLoudnessEnhancerImplUUID) {
+    if (!in_impl_uuid || *in_impl_uuid != LoudnessEnhancerImplUUID()) {
         LOG(ERROR) << __func__ << "uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -56,8 +56,8 @@ namespace aidl::android::hardware::audio::effect {
 
 const std::string LoudnessEnhancerImpl::kEffectName = "Loudness Enhancer";
 const Descriptor LoudnessEnhancerImpl::kDescriptor = {
-        .common = {.id = {.type = kLoudnessEnhancerTypeUUID,
-                          .uuid = kLoudnessEnhancerImplUUID,
+        .common = {.id = {.type = LoudnessEnhancerTypeUUID(),
+                          .uuid = LoudnessEnhancerImplUUID(),
                           .proxy = std::nullopt},
                    .flags = {.type = Flags::Type::INSERT, .insert = Flags::Insert::FIRST},
                    .name = LoudnessEnhancerImpl::kEffectName,

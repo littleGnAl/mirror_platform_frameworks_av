@@ -24,19 +24,21 @@
 
 #include "EffectPreProcessing.h"
 
+using aidl::android::hardware::audio::effect::AcousticEchoCancelerSwImplUUID;
+using aidl::android::hardware::audio::effect::AutomaticGainControlV1SwImplUUID;
+using aidl::android::hardware::audio::effect::AutomaticGainControlV2SwImplUUID;
+using aidl::android::hardware::audio::effect::NoiseSuppressionSwImplUUID;
+
 using aidl::android::hardware::audio::effect::Descriptor;
 using aidl::android::hardware::audio::effect::EffectPreProcessing;
 using aidl::android::hardware::audio::effect::IEffect;
-using aidl::android::hardware::audio::effect::kAcousticEchoCancelerSwImplUUID;
-using aidl::android::hardware::audio::effect::kAutomaticGainControlV1SwImplUUID;
-using aidl::android::hardware::audio::effect::kAutomaticGainControlV2SwImplUUID;
-using aidl::android::hardware::audio::effect::kNoiseSuppressionSwImplUUID;
 using aidl::android::hardware::audio::effect::State;
 using aidl::android::media::audio::common::AudioUuid;
 
 bool isPreProcessingUuidSupported(const AudioUuid& uuid) {
-    return (uuid == kAcousticEchoCancelerSwImplUUID || uuid == kAutomaticGainControlV1SwImplUUID ||
-            uuid == kAutomaticGainControlV2SwImplUUID || uuid == kNoiseSuppressionSwImplUUID);
+    return (uuid == AcousticEchoCancelerSwImplUUID() ||
+            uuid == AutomaticGainControlV1SwImplUUID() ||
+            uuid == AutomaticGainControlV2SwImplUUID() || uuid == NoiseSuppressionSwImplUUID());
 }
 
 extern "C" binder_exception_t createEffect(const AudioUuid* uuid,
@@ -60,13 +62,13 @@ extern "C" binder_exception_t queryEffect(const AudioUuid* in_impl_uuid, Descrip
         LOG(ERROR) << __func__ << "uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
-    if (*in_impl_uuid == kAcousticEchoCancelerSwImplUUID) {
+    if (*in_impl_uuid == AcousticEchoCancelerSwImplUUID()) {
         *_aidl_return = aidl::android::hardware::audio::effect::kAcousticEchoCancelerDesc;
-    } else if (*in_impl_uuid == kAutomaticGainControlV1SwImplUUID) {
+    } else if (*in_impl_uuid == AutomaticGainControlV1SwImplUUID()) {
         *_aidl_return = aidl::android::hardware::audio::effect::kAutomaticGainControlV1Desc;
-    } else if (*in_impl_uuid == kAutomaticGainControlV2SwImplUUID) {
+    } else if (*in_impl_uuid == AutomaticGainControlV2SwImplUUID()) {
         *_aidl_return = aidl::android::hardware::audio::effect::kAutomaticGainControlV2Desc;
-    } else if (*in_impl_uuid == kNoiseSuppressionSwImplUUID) {
+    } else if (*in_impl_uuid == NoiseSuppressionSwImplUUID()) {
         *_aidl_return = aidl::android::hardware::audio::effect::kNoiseSuppressionDesc;
     }
     return EX_NONE;
@@ -76,19 +78,19 @@ namespace aidl::android::hardware::audio::effect {
 
 EffectPreProcessing::EffectPreProcessing(const AudioUuid& uuid) {
     LOG(DEBUG) << __func__ << uuid.toString();
-    if (uuid == kAcousticEchoCancelerSwImplUUID) {
+    if (uuid == AcousticEchoCancelerSwImplUUID()) {
         mType = PreProcessingEffectType::ACOUSTIC_ECHO_CANCELLATION;
         mDescriptor = &kAcousticEchoCancelerDesc;
         mEffectName = &kAcousticEchoCancelerEffectName;
-    } else if (uuid == kAutomaticGainControlV1SwImplUUID) {
+    } else if (uuid == AutomaticGainControlV1SwImplUUID()) {
         mType = PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL_V1;
         mDescriptor = &kAutomaticGainControlV1Desc;
         mEffectName = &kAutomaticGainControlV1EffectName;
-    } else if (uuid == kAutomaticGainControlV2SwImplUUID) {
+    } else if (uuid == AutomaticGainControlV2SwImplUUID()) {
         mType = PreProcessingEffectType::AUTOMATIC_GAIN_CONTROL_V2;
         mDescriptor = &kAutomaticGainControlV2Desc;
         mEffectName = &kAutomaticGainControlV2EffectName;
-    } else if (uuid == kNoiseSuppressionSwImplUUID) {
+    } else if (uuid == NoiseSuppressionSwImplUUID()) {
         mType = PreProcessingEffectType::NOISE_SUPPRESSION;
         mDescriptor = &kNoiseSuppressionDesc;
         mEffectName = &kNoiseSuppressionEffectName;

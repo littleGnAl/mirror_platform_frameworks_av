@@ -22,14 +22,14 @@
 
 using aidl::android::hardware::audio::effect::Descriptor;
 using aidl::android::hardware::audio::effect::DownmixImpl;
+using aidl::android::hardware::audio::effect::DownmixImplUUID;
+using aidl::android::hardware::audio::effect::DownmixTypeUUID;
 using aidl::android::hardware::audio::effect::IEffect;
-using aidl::android::hardware::audio::effect::kDownmixImplUUID;
-using aidl::android::hardware::audio::effect::kDownmixTypeUUID;
 using aidl::android::media::audio::common::AudioUuid;
 
 extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
                                            std::shared_ptr<IEffect>* instanceSpp) {
-    if (!in_impl_uuid || *in_impl_uuid != kDownmixImplUUID) {
+    if (!in_impl_uuid || *in_impl_uuid != DownmixImplUUID()) {
         LOG(ERROR) << __func__ << "uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -44,7 +44,7 @@ extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
 }
 
 extern "C" binder_exception_t queryEffect(const AudioUuid* in_impl_uuid, Descriptor* _aidl_return) {
-    if (!in_impl_uuid || *in_impl_uuid != kDownmixImplUUID) {
+    if (!in_impl_uuid || *in_impl_uuid != DownmixImplUUID()) {
         LOG(ERROR) << __func__ << "uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -57,7 +57,7 @@ namespace aidl::android::hardware::audio::effect {
 const std::string DownmixImpl::kEffectName = "Multichannel Downmix To Stereo";
 const Descriptor DownmixImpl::kDescriptor = {
         .common = {
-                .id = {.type = kDownmixTypeUUID, .uuid = kDownmixImplUUID, .proxy = std::nullopt},
+                .id = {.type = DownmixTypeUUID(), .uuid = DownmixImplUUID(), .proxy = std::nullopt},
                 .flags = {.type = Flags::Type::INSERT, .insert = Flags::Insert::FIRST},
                 .name = DownmixImpl::kEffectName,
                 .implementor = "The Android Open Source Project"}};

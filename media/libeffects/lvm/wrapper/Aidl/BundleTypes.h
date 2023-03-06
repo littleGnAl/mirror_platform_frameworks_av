@@ -82,9 +82,9 @@ const std::vector<Range::EqualizerRange> kEqRanges = {
         MAKE_RANGE(Equalizer, centerFreqMh, std::vector<int>({1}), std::vector<int>({}))};
 static const Capability kEqCap = {.range = kEqRanges};
 static const std::string kEqualizerEffectName = "EqualizerBundle";
-static const Descriptor kEqualizerDesc = {.common = {.id = {.type = kEqualizerTypeUUID,
-                                                            .uuid = kEqualizerBundleImplUUID,
-                                                            .proxy = kEqualizerProxyUUID},
+static const Descriptor kEqualizerDesc = {.common = {.id = {.type = EqualizerTypeUUID(),
+                                                            .uuid = EqualizerBundleImplUUID(),
+                                                            .proxy = EqualizerProxyUUID()},
                                                      .flags = {.type = Flags::Type::INSERT,
                                                                .insert = Flags::Insert::FIRST,
                                                                .volume = Flags::Volume::CTRL},
@@ -97,9 +97,9 @@ static const std::vector<Range::BassBoostRange> kBassBoostRanges = {
         MAKE_RANGE(BassBoost, strengthPm, 0, mMaxStrengthSupported)};
 static const Capability kBassBoostCap = {.range = kBassBoostRanges};
 static const std::string kBassBoostEffectName = "Dynamic Bass Boost";
-static const Descriptor kBassBoostDesc = {.common = {.id = {.type = kBassBoostTypeUUID,
-                                                            .uuid = kBassBoostBundleImplUUID,
-                                                            .proxy = kBassBoostProxyUUID},
+static const Descriptor kBassBoostDesc = {.common = {.id = {.type = BassBoostTypeUUID(),
+                                                            .uuid = BassBoostBundleImplUUID(),
+                                                            .proxy = BassBoostProxyUUID()},
                                                      .flags = {.type = Flags::Type::INSERT,
                                                                .insert = Flags::Insert::FIRST,
                                                                .volume = Flags::Volume::CTRL,
@@ -116,9 +116,9 @@ static const Capability kVirtualizerCap = {.range = kVirtualizerRanges};
 static const std::string kVirtualizerEffectName = "Virtualizer";
 
 static const Descriptor kVirtualizerDesc = {
-        .common = {.id = {.type = kVirtualizerTypeUUID,
-                          .uuid = kVirtualizerBundleImplUUID,
-                          .proxy = kVirtualizerProxyUUID},
+        .common = {.id = {.type = VirtualizerTypeUUID(),
+                          .uuid = VirtualizerBundleImplUUID(),
+                          .proxy = VirtualizerProxyUUID()},
                    .flags = {.type = Flags::Type::INSERT,
                              .insert = Flags::Insert::LAST,
                              .volume = Flags::Volume::CTRL,
@@ -133,8 +133,8 @@ static const std::vector<Range::VolumeRange> kVolumeRanges = {
         MAKE_RANGE(Volume, levelDb, -9600, 0)};
 static const Capability kVolumeCap = {.range = kVolumeRanges};
 static const std::string kVolumeEffectName = "Volume";
-static const Descriptor kVolumeDesc = {.common = {.id = {.type = kVolumeTypeUUID,
-                                                         .uuid = kVolumeBundleImplUUID,
+static const Descriptor kVolumeDesc = {.common = {.id = {.type = VolumeTypeUUID(),
+                                                         .uuid = VolumeBundleImplUUID(),
                                                          .proxy = std::nullopt},
                                                   .flags = {.type = Flags::Type::INSERT,
                                                             .insert = Flags::Insert::LAST,

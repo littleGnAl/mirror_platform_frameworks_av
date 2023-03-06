@@ -50,8 +50,8 @@ static const Capability kEnvReverbCap = {
 
 // NXP SW auxiliary environmental reverb
 static const std::string kAuxEnvReverbEffectName = "Auxiliary Environmental Reverb";
-static const Descriptor kAuxEnvReverbDesc = {.common = {.id = {.type = kEnvReverbTypeUUID,
-                                                               .uuid = kAuxEnvReverbImplUUID,
+static const Descriptor kAuxEnvReverbDesc = {.common = {.id = {.type = EnvReverbTypeUUID(),
+                                                               .uuid = AuxEnvReverbImplUUID(),
                                                                .proxy = std::nullopt},
                                                         .flags = {.type = Flags::Type::AUXILIARY},
                                                         .cpuLoad = kCpuLoadARM9E,
@@ -62,8 +62,8 @@ static const Descriptor kAuxEnvReverbDesc = {.common = {.id = {.type = kEnvRever
 
 // NXP SW insert environmental reverb
 static const std::string kInsertEnvReverbEffectName = "Insert Environmental Reverb";
-static const Descriptor kInsertEnvReverbDesc = {.common = {.id = {.type = kEnvReverbTypeUUID,
-                                                                  .uuid = kInsertEnvReverbImplUUID,
+static const Descriptor kInsertEnvReverbDesc = {.common = {.id = {.type = EnvReverbTypeUUID(),
+                                                                  .uuid = InsertEnvReverbImplUUID(),
                                                                   .proxy = std::nullopt},
                                                            .flags = {.type = Flags::Type::INSERT,
                                                                      .insert = Flags::Insert::FIRST,
@@ -85,8 +85,8 @@ static const Capability kPresetReverbCap = {
 // NXP SW auxiliary preset reverb
 static const std::string kAuxPresetReverbEffectName = "Auxiliary Preset Reverb";
 static const Descriptor kAuxPresetReverbDesc = {
-        .common = {.id = {.type = kPresetReverbTypeUUID,
-                          .uuid = kAuxPresetReverbImplUUID,
+        .common = {.id = {.type = PresetReverbTypeUUID(),
+                          .uuid = AuxPresetReverbImplUUID(),
                           .proxy = std::nullopt},
                    .flags = {.type = Flags::Type::AUXILIARY},
                    .cpuLoad = kCpuLoadARM9E,
@@ -98,8 +98,8 @@ static const Descriptor kAuxPresetReverbDesc = {
 // NXP SW insert preset reverb
 static const std::string kInsertPresetReverbEffectName = "Insert Preset Reverb";
 static const Descriptor kInsertPresetReverbDesc = {
-        .common = {.id = {.type = kPresetReverbTypeUUID,
-                          .uuid = kInsertPresetReverbImplUUID,
+        .common = {.id = {.type = PresetReverbTypeUUID(),
+                          .uuid = InsertPresetReverbImplUUID(),
                           .proxy = std::nullopt},
                    .flags = {.type = Flags::Type::INSERT,
                              .insert = Flags::Insert::FIRST,

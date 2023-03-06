@@ -23,13 +23,13 @@
 
 using aidl::android::hardware::audio::effect::Descriptor;
 using aidl::android::hardware::audio::effect::HapticGeneratorImpl;
+using aidl::android::hardware::audio::effect::HapticGeneratorImplUUID;
 using aidl::android::hardware::audio::effect::IEffect;
-using aidl::android::hardware::audio::effect::kHapticGeneratorImplUUID;
 using aidl::android::media::audio::common::AudioUuid;
 
 extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
                                            std::shared_ptr<IEffect>* instanceSpp) {
-    if (!in_impl_uuid || *in_impl_uuid != kHapticGeneratorImplUUID) {
+    if (!in_impl_uuid || *in_impl_uuid != HapticGeneratorImplUUID()) {
         LOG(ERROR) << __func__ << "uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -44,7 +44,7 @@ extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
 }
 
 extern "C" binder_exception_t queryEffect(const AudioUuid* in_impl_uuid, Descriptor* _aidl_return) {
-    if (!in_impl_uuid || *in_impl_uuid != kHapticGeneratorImplUUID) {
+    if (!in_impl_uuid || *in_impl_uuid != HapticGeneratorImplUUID()) {
         LOG(ERROR) << __func__ << "uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -56,8 +56,8 @@ namespace aidl::android::hardware::audio::effect {
 
 const std::string HapticGeneratorImpl::kEffectName = "Haptic Generator";
 const Descriptor HapticGeneratorImpl::kDescriptor = {
-        .common = {.id = {.type = kHapticGeneratorTypeUUID,
-                          .uuid = kHapticGeneratorImplUUID,
+        .common = {.id = {.type = HapticGeneratorTypeUUID(),
+                          .uuid = HapticGeneratorImplUUID(),
                           .proxy = std::nullopt},
                    .flags = {.type = Flags::Type::INSERT, .insert = Flags::Insert::FIRST},
                    .name = HapticGeneratorImpl::kEffectName,
