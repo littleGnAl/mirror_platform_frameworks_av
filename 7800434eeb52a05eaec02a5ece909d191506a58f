@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76c4da7_3148fb11",
+        "filename": "media/codec2/vndk/C2Config.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-06T23:48:20Z",
+      "side": 1,
+      "message": "nit: should these be ac4-00 to be consistent with the ETSI docs (and other asString methods)?",
+      "range": {
+        "startLine": 269,
+        "startChar": 11,
+        "endLine": 273,
+        "endChar": 16
+      },
+      "revId": "7800434eeb52a05eaec02a5ece909d191506a58f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
