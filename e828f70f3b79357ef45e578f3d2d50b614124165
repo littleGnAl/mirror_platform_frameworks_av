@@ -95,6 +95,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39efbbb7_a7355fd6",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T18:09:44Z",
+      "side": 1,
+      "message": "The return values, such as parameters, or status will be overwritten by another effect.",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 5
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ceea095c_8dedc344",
         "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
         "patchSetId": 10
