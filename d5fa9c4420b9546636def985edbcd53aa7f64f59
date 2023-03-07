@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ccf9d9_afb09362",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-03-07T02:00:27Z",
+      "side": 1,
+      "message": "this isn\u0027t a clean approach.\nCan we try std::map?",
+      "revId": "d5fa9c4420b9546636def985edbcd53aa7f64f59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
