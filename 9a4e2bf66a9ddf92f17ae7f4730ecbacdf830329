@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575745ef_964f4070",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T13:13:32Z",
+      "side": 0,
+      "message": "We need to return BAD_VALUE if `result.empty()` to avoid that caller accesses the descriptors vector.",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 5
+      },
+      "revId": "9a4e2bf66a9ddf92f17ae7f4730ecbacdf830329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
