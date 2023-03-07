@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d406a779_40b3d22b",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T05:41:04Z",
+      "side": 1,
+      "message": "Do we need to take care of the state of the effect? Does the framework re-config the buffers when moving the effect chain?",
+      "range": {
+        "startLine": 165,
+        "startChar": 45,
+        "endLine": 165,
+        "endChar": 49
+      },
+      "revId": "116ef6b828df22c21f4406629029200ee73ca08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7bd52b8_411c6b92",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T05:41:04Z",
+      "side": 1,
+      "message": "The mCommon has been sent by open interface. Why do we need to send it again?",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 86
+      },
+      "revId": "116ef6b828df22c21f4406629029200ee73ca08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9044934_b1d124f5",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T05:41:04Z",
+      "side": 1,
+      "message": "Do we also read from `audioBuffer()-\u003ef32`?",
+      "range": {
+        "startLine": 164,
+        "startChar": 24,
+        "endLine": 164,
+        "endChar": 48
+      },
+      "revId": "116ef6b828df22c21f4406629029200ee73ca08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
