@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a278c703_a33c79ea",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-07T20:21:36Z",
+      "side": 1,
+      "message": "This can be simply `int`.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "e486a47241560a97d65f723f2cd0dc405372beb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa10312e_fc06fc7a",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-07T20:21:36Z",
+      "side": 1,
+      "message": "translate to java definitions, i.e. `MAX` should be 6 instead of 1.",
+      "range": {
+        "startLine": 529,
+        "startChar": 66,
+        "endLine": 529,
+        "endChar": 97
+      },
+      "revId": "e486a47241560a97d65f723f2cd0dc405372beb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2945c76d_4a1d77f9",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-07T20:21:36Z",
+      "side": 1,
+      "message": "translate to java defs.",
+      "range": {
+        "startLine": 530,
+        "startChar": 63,
+        "endLine": 530,
+        "endChar": 94
+      },
+      "revId": "e486a47241560a97d65f723f2cd0dc405372beb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fddb12_02ba1869",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-07T20:21:36Z",
+      "side": 1,
+      "message": "translate to java defs.",
+      "range": {
+        "startLine": 549,
+        "startChar": 60,
+        "endLine": 549,
+        "endChar": 91
+      },
+      "revId": "e486a47241560a97d65f723f2cd0dc405372beb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
