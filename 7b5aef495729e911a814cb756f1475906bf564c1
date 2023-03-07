@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0cd80e77_e4d362a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "afbe72ca_b0c83e36",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a35b7ae7_a3a9a051",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -100,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49066bba_7a34d358",
+        "filename": "services/camera/libcameraservice/CameraServiceWatchdog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "`camera3::CameraTombstone::dump(getpid());` will print out stacktrace to platform log. So, I have only one tomestones, but multiple (cameraserver + camera provider server) stacktrace in platform log.\n\nI\u0027ve updated the description of the change more accurately.",
+      "parentUuid": "2a9f2f0e_a68667ed",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 57
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a857eae4_ea55f4f7",
@@ -113,6 +161,30 @@
       "writtenOn": "2023-03-06T18:17:07Z",
       "side": 1,
       "message": "const std::vector\u003cpid_t\u003e \u0026 ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 51,
+        "endLine": 54,
+        "endChar": 57
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "686d3cb6_71ade575",
+        "filename": "services/camera/libcameraservice/CameraServiceWatchdog.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "Acknowledged. Change to `const std::set\u003cpid_t\u003e \u0026`",
+      "parentUuid": "a857eae4_ea55f4f7",
       "range": {
         "startLine": 54,
         "startChar": 51,
@@ -146,6 +218,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5730d9_48aea304",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5aa4bfb2_224067cb",
+      "range": {
+        "startLine": 1707,
+        "startChar": 4,
+        "endLine": 1707,
+        "endChar": 6
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3564f02_7c3affb6",
@@ -159,6 +255,30 @@
       "writtenOn": "2023-03-06T18:17:07Z",
       "side": 1,
       "message": "I\u0027m guessing this can be left out of scope ?",
+      "range": {
+        "startLine": 1730,
+        "startChar": 6,
+        "endLine": 1734,
+        "endChar": 11
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc8cad3_62e15258",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "Yes. they can be out of scope. Changing this to check return value.",
+      "parentUuid": "d3564f02_7c3affb6",
       "range": {
         "startLine": 1730,
         "startChar": 6,
@@ -192,6 +312,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a30a4f57_2399b888",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "Yes. need to lock mProviderPidMapLock.",
+      "parentUuid": "f61955af_1506a610",
+      "range": {
+        "startLine": 1849,
+        "startChar": 6,
+        "endLine": 1849,
+        "endChar": 40
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d107a3c1_809a2fc2",
@@ -215,6 +359,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5917385_19577c0b",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "Yes. process ids are unique. std::set\u003cpid_t\u003e seems more natural.",
+      "parentUuid": "d107a3c1_809a2fc2",
+      "range": {
+        "startLine": 2033,
+        "startChar": 28,
+        "endLine": 2036,
+        "endChar": 0
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e24f4349_11cded13",
@@ -228,6 +396,30 @@
       "writtenOn": "2023-03-06T18:17:07Z",
       "side": 1,
       "message": "nit: TOMB",
+      "range": {
+        "startLine": 17,
+        "startChar": 34,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "7b5aef495729e911a814cb756f1475906bf564c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee9e2f6_cbb821f3",
+        "filename": "services/camera/libcameraservice/utils/CameraTombstone.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-07T13:06:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e24f4349_11cded13",
       "range": {
         "startLine": 17,
         "startChar": 34,
