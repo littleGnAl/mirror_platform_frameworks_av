@@ -22,6 +22,30 @@
       },
       "revId": "d99e2205b8afaae4ec0e21b5adb026ae449aa5f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86711c9_890c9d97",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5625,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-07T09:45:51Z",
+      "side": 1,
+      "message": "Changed to an error code. Let me know if there is a better suited one. thanks!",
+      "parentUuid": "d9a44a22_5c18b687",
+      "range": {
+        "startLine": 5625,
+        "startChar": 14,
+        "endLine": 5625,
+        "endChar": 18
+      },
+      "revId": "d99e2205b8afaae4ec0e21b5adb026ae449aa5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
