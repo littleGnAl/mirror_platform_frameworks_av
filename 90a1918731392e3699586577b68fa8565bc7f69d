@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5233676_c26c0586",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-03-07T17:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f32896d_7e87a37e",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3724f8d7_5a6dec02",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-02T22:26:41Z",
       "side": 1,
       "message": "This assumption that the input/output are always stereo—is it enforced anywhere by the plugin?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8180e24_f4028ded",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-03-07T17:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3724f8d7_5a6dec02",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -142,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda4284f_ec812a07",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-03-07T17:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "153b67b9_5f35011c",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b81a8da_b319e71a",
@@ -155,6 +227,30 @@
       "writtenOn": "2023-03-03T01:17:28Z",
       "side": 1,
       "message": "Please add default value",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "90a1918731392e3699586577b68fa8565bc7f69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc9f324_53c45c6a",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-03-07T17:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b81a8da_b319e71a",
       "range": {
         "startLine": 50,
         "startChar": 8,
