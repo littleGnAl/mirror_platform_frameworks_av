@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4631cb66_355ec9bc",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T16:25:46Z",
+      "side": 1,
+      "message": "The effect proxy doesn\u0027t save the return from the open function, so checking the data queues gets failed.",
+      "range": {
+        "startLine": 214,
+        "startChar": 16,
+        "endLine": 215,
+        "endChar": 61
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8216a3d5_3e94efe8",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T16:25:46Z",
+      "side": 1,
+      "message": "Can we skip this check for offload effects?",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 9
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58025496_a15b8982",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T16:25:46Z",
+      "side": 1,
+      "message": "Should we save the return from s/w effects?",
+      "range": {
+        "startLine": 126,
+        "startChar": 64,
+        "endLine": 126,
+        "endChar": 67
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7635e2b9_9502dc98",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T16:25:46Z",
+      "side": 1,
+      "message": "I think we should set offloadIndication as true if there is an offload effect in the proxy. libeffectproxy does this to let the effect module know this effect supports offload processing.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/proxy/EffectProxy.cpp;l\u003d368-372",
+      "range": {
+        "startLine": 157,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 32
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ceea095c_8dedc344",
         "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
         "patchSetId": 10
@@ -14,6 +106,30 @@
       "writtenOn": "2023-03-07T10:24:18Z",
       "side": 1,
       "message": "why is the factory also directly exposing effects that are managed by a proxy ?\nCould we hide them from the framework?\nCurrent implementation seems to rely on createEffect() to return the proxy in priority over the individual effect for a given UUID.\nOr do I miss something?\nWhat is the point of returning all effects as we do not want apps to dictly instantiate effects that are part of a proxy?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 65
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402c209b_481502fa",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1763691
+      },
+      "writtenOn": "2023-03-07T16:25:46Z",
+      "side": 1,
+      "message": "Agree with Eric.",
+      "parentUuid": "ceea095c_8dedc344",
       "range": {
         "startLine": 87,
         "startChar": 0,
