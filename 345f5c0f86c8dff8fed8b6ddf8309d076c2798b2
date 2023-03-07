@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "248f61b0_fbefac66",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-07T18:20:53Z",
+      "side": 1,
+      "message": "This seems suspicious to me. If there is any method which runs concurrently with the destructor, it will have issues accessing both `mMutex` and `mState` from deallocated memory—a classic example of use-after-free (UAF). Note that it might not fail in a \"regular\" build, however it will definitely fail in a build which enforces UAF checks.\n\nIf the above suspicion is true, we need to understand why some code accesses the object as it is being destroyed. Normally, for refcounted objects the destruction only happens after the last reference has been released by clients, which means the only way they could access the object is by a raw pointer or reference that they have obtained some time before. This is also a dangerous behavior.\n\nThus, either this code isn\u0027t needed, or there is some problem that it tries to work around.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "345f5c0f86c8dff8fed8b6ddf8309d076c2798b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ece12ba_0af816c0",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-07T18:20:53Z",
+      "side": 1,
+      "message": "I think it would be helpful to print the actual value of channelCount.",
+      "range": {
+        "startLine": 123,
+        "startChar": 71,
+        "endLine": 123,
+        "endChar": 72
+      },
+      "revId": "345f5c0f86c8dff8fed8b6ddf8309d076c2798b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
