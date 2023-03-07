@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05fa1d5_e3553301",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-03-07T14:46:54Z",
+      "side": 1,
+      "message": "saying \"timing\" makes it seem like a race condition.\n\nthis feels like calling setParameters() before configure() might generate the same problems. no race involved.\nor maybe \"setParameters() before a successful configure()\" is the proper description.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "c025f64fbdf12adbc31879f57a90dcba945ef8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db3ba11_32555d07",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5624,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-03-07T14:46:54Z",
+      "side": 1,
+      "message": "i have the impression that this is meant to say \"has the codec been initialized successfully\" or \"is it in one of the initialized states\".\n\nso the intent might be better expressed with a comparison of mState than by the proposed comparing of the component name.\n\n[i do see that the return was changed from OK to NO_INIT -- which is good, since we\u0027re marking it as an error; and that is a bit of a sign that perhaps we should be looking at mState...]",
+      "range": {
+        "startLine": 5624,
+        "startChar": 7,
+        "endLine": 5624,
+        "endChar": 33
+      },
+      "revId": "c025f64fbdf12adbc31879f57a90dcba945ef8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
