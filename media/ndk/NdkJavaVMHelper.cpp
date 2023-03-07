@@ -19,22 +19,29 @@
 #include "NdkJavaVMHelperPriv.h"
 #include <utils/Log.h>
 
+#include <mutex>
+
 namespace android {
 
 // static
 JNIEnv *NdkJavaVMHelper::getJNIEnv() {
-    JNIEnv *env;
-    jsize nVMs;
-    JavaVM *vm;
+    static JNIEnv *env;
 
-    int status = JNI_GetCreatedJavaVMs(&vm, 1, &nVMs);
-    if (status != JNI_OK || nVMs == 0 || vm == NULL) {
-        ALOGE("Failed to get JVM instance");
-        return NULL;
-    } else if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
-        ALOGE("Failed to get JNIEnv for JavaVM: %p", vm);
-        return NULL;
-    }
+    static std::once_flag sGetOnce;
+
+    std::call_once(sGetOnce, [&](){
+        jsize nVMs;
+        JavaVM *vm;
+
+        int status = JNI_GetCreatedJavaVMs(&vm, 1, &nVMs);
+        if (status != JNI_OK || nVMs == 0 || vm == NULL) {
+            ALOGD("Failed to get JVM instance");
+            return NULL;
+        } else if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+            ALOGD("Failed to get JNIEnv for JavaVM: %p", vm);
+            return NULL;
+        }
+    });
 
     return env;
 }
