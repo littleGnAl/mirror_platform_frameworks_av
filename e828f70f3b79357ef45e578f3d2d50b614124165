@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceea095c_8dedc344",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-07T10:24:18Z",
+      "side": 1,
+      "message": "why is the factory also directly exposing effects that are managed by a proxy ?\nCould we hide them from the framework?\nCurrent implementation seems to rely on createEffect() to return the proxy in priority over the individual effect for a given UUID.\nOr do I miss something?\nWhat is the point of returning all effects as we do not want apps to dictly instantiate effects that are part of a proxy?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 65
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
