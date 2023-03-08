@@ -63,6 +63,30 @@
       },
       "revId": "d71716507f02e4d40df325c7351e10fb11015264",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7a14db_90cfbbc1",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5868,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-03-08T18:29:12Z",
+      "side": 1,
+      "message": "Prefer not to **change** the space after (void) in the audio files.  Can you please leave that as-is for the audio files. It is a casting operator, precedence level 3, which is subjective whether a space is there or not.  (Generally precedence level 5 or lower requires a space).\n\nhttps://en.cppreference.com/w/cpp/language/operator_precedence",
+      "parentUuid": "d3b8a5b4_1801acd8",
+      "range": {
+        "startLine": 5868,
+        "startChar": 0,
+        "endLine": 5868,
+        "endChar": 30
+      },
+      "revId": "d71716507f02e4d40df325c7351e10fb11015264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

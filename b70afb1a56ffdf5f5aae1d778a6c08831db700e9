@@ -16,6 +16,52 @@
       "message": "Some format issues (TABs should be SPACEs) have been identified when reviewing with the web page.\n\nA new version will be uploaded for files in the folder below:\nservices/camera/libcameraservice",
       "revId": "b70afb1a56ffdf5f5aae1d778a6c08831db700e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf9ad14_bf9ea814",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3296,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-03-08T18:29:12Z",
+      "side": 1,
+      "message": "nit: why not use [[maybe_unused]] here?  It is a C++17 standard attribute, thus would be preferrential to the language extension \\_\\_attribute__.\n\nhttps://en.cppreference.com/w/cpp/language/attributes\n\nIf you want to enforce unused you can comment out the name /* tracksToRemove */).",
+      "range": {
+        "startLine": 3296,
+        "startChar": 7,
+        "endLine": 3296,
+        "endChar": 31
+      },
+      "revId": "b70afb1a56ffdf5f5aae1d778a6c08831db700e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9187428_d60fbbd4",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 9090,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-03-08T18:29:12Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 9090,
+        "startChar": 0,
+        "endLine": 9090,
+        "endChar": 104
+      },
+      "revId": "b70afb1a56ffdf5f5aae1d778a6c08831db700e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
