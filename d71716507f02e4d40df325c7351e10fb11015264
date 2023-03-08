@@ -39,6 +39,30 @@
       },
       "revId": "d71716507f02e4d40df325c7351e10fb11015264",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b8a5b4_1801acd8",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5868,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-08T09:39:58Z",
+      "side": 1,
+      "message": "Hi Andy/Henry/Eddy, thanks for the review comments. I would agree it\u0027s better to have some cleaner way for the updates.\n\nA new version has been uploaded for this patch to fix the issue mentioned by the review comments. Meanwhile we also cleaned the format/style issue with the \"(void)\" before function calls (for some cases there is a SPACE after \"(void)\" but for some other cases there is not).\n\nCould you please help to perform another review, to see if we have anything more to improve, or too much has been done by cleaning the format/style issue?\n\nThanks a lot.",
+      "parentUuid": "570c0c55_7e69d8c4",
+      "range": {
+        "startLine": 5868,
+        "startChar": 0,
+        "endLine": 5868,
+        "endChar": 30
+      },
+      "revId": "d71716507f02e4d40df325c7351e10fb11015264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
