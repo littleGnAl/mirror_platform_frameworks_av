@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e819fb0_9edf9f1a",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-03-08T01:22:27Z",
+      "side": 1,
+      "message": "is there a better error code?  the content is not technically malformed.\nthe plan is that it will be unsupported.  ERROR_UNSUPPORTED seems a more\nappropriate value.",
+      "range": {
+        "startLine": 340,
+        "startChar": 15,
+        "endLine": 340,
+        "endChar": 30
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

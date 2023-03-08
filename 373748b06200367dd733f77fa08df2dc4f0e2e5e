@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9786ad58_5f78f7c6",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-03-08T01:22:27Z",
+      "side": 1,
+      "message": "where are we documenting that bitstream version 0/1 are going to be unsupported.\nI\u0027m unwilling to have this be the only place that it is marked unsupported;\nIt needs to be documented, in what will end up in the API documentation\non developer.android.com, that we are only going to support bitstreamversion \u003e\u003d 2",
+      "parentUuid": "95553341_7b524dc7",
+      "range": {
+        "startLine": 339,
+        "startChar": 8,
+        "endLine": 339,
+        "endChar": 75
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e1743e8_78cf6940",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
