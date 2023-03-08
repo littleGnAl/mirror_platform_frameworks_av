@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5daf9e40_ba86a279",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-08T02:11:59Z",
+      "side": 1,
+      "message": "They are saved in mSubEffects",
+      "parentUuid": "4631cb66_355ec9bc",
+      "range": {
+        "startLine": 214,
+        "startChar": 16,
+        "endLine": 215,
+        "endChar": 61
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8216a3d5_3e94efe8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-07T16:25:46Z",
       "side": 1,
       "message": "Can we skip this check for offload effects?",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 9
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f255e624_5fe195b7",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-08T02:11:59Z",
+      "side": 1,
+      "message": "Move this check to process() before access, offload effect won\u0027t access them",
+      "parentUuid": "8216a3d5_3e94efe8",
       "range": {
         "startLine": 224,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e72b16_cbb2362a",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-08T02:11:59Z",
+      "side": 1,
+      "message": "They are saved into tuple `mSubEffects`",
+      "parentUuid": "58025496_a15b8982",
+      "range": {
+        "startLine": 126,
+        "startChar": 64,
+        "endLine": 126,
+        "endChar": 67
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7635e2b9_9502dc98",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a299183_df832227",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-08T02:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7635e2b9_9502dc98",
+      "range": {
+        "startLine": 157,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 32
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39efbbb7_a7355fd6",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-03-07T18:09:44Z",
       "side": 1,
       "message": "The return values, such as parameters, or status will be overwritten by another effect.",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 5
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3dbb1b_5efbe463",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-08T02:11:59Z",
+      "side": 1,
+      "message": "Good catch, although parameter/state should be applied to all sub-effects, we\u0027d better only reply the active sub-effect parameters here.",
+      "parentUuid": "39efbbb7_a7355fd6",
       "range": {
         "startLine": 205,
         "startChar": 4,
@@ -153,6 +273,30 @@
       "side": 1,
       "message": "Agree with Eric.",
       "parentUuid": "ceea095c_8dedc344",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 65
+      },
+      "revId": "e828f70f3b79357ef45e578f3d2d50b614124165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9787799d_087f08de",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-08T02:11:59Z",
+      "side": 1,
+      "message": "My original thoughts was to expose all effects (including sub-effects) to application, so there are options to directly open a sub-effect, or open a proxy.\nIf you look at `mUuidProxyMap`, sub-effect UUID is not in it, so if an application create a sub-effect directly, it will go to AIDL IFactory interface instead of EffectProxy.create().\n\nThe latest revision filtered out sub-effects from factory result now.",
+      "parentUuid": "402c209b_481502fa",
       "range": {
         "startLine": 87,
         "startChar": 0,
