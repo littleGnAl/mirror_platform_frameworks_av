@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e722454b_d8dc9596",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-08T08:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15856105_9308e3d5",
+      "revId": "b93e733c8bede7d88821245159d4aacf7531bfb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "426a20f4_b44531a1",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b66883b3_3e2de998",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-08T08:20:26Z",
+      "side": 1,
+      "message": "Added mVersion in SessionContext, added mVersion8 to use it in reportMediaDrmCreated as not able to map the SessionContext struct in createPlugin.",
+      "parentUuid": "426a20f4_b44531a1",
+      "revId": "b93e733c8bede7d88821245159d4aacf7531bfb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db1eaf0c_62ceafd4",
         "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
         "patchSetId": 4
@@ -48,6 +84,24 @@
       "writtenOn": "2023-03-07T19:42:39Z",
       "side": 1,
       "message": "nit, `std::string` to be consistent; use `String8` as local variable.",
+      "revId": "b93e733c8bede7d88821245159d4aacf7531bfb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90486b7a_08202052",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-08T08:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db1eaf0c_62ceafd4",
       "revId": "b93e733c8bede7d88821245159d4aacf7531bfb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
