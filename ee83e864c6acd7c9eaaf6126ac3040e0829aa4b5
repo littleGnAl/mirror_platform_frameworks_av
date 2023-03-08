@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff4f713_ae72670b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-08T22:24:14Z",
+      "side": 1,
+      "message": "CCodec is the next step. ACodec is not planned (as we deprecated OMX)",
+      "parentUuid": "24e742fe_46bc266c",
+      "revId": "ee83e864c6acd7c9eaaf6126ac3040e0829aa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77016bbd_73cb518b",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-08T01:24:04Z",
       "side": 1,
       "message": "How about here?\nAnd also this ALOGI can be ALOGE?",
+      "range": {
+        "startLine": 5317,
+        "startChar": 12,
+        "endLine": 5317,
+        "endChar": 23
+      },
+      "revId": "ee83e864c6acd7c9eaaf6126ac3040e0829aa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b04685_34dade8a",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 5317,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-08T22:24:14Z",
+      "side": 1,
+      "message": "Log to be done when we extend to the CCodec. The idea is to log where we have the most context.",
+      "parentUuid": "77016bbd_73cb518b",
       "range": {
         "startLine": 5317,
         "startChar": 12,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7faf90_344c0a23",
+        "filename": "media/libstagefright/include/media/stagefright/CodecErrorLog.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-08T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bf89270_6697d40d",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "ee83e864c6acd7c9eaaf6126ac3040e0829aa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7302987b_67a1a38a",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-03-08T01:24:04Z",
       "side": 1,
       "message": "nit: can be a const function",
+      "range": {
+        "startLine": 301,
+        "startChar": 26,
+        "endLine": 301,
+        "endChar": 39
+      },
+      "revId": "ee83e864c6acd7c9eaaf6126ac3040e0829aa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "672219e4_03a5b943",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-08T22:24:14Z",
+      "side": 1,
+      "message": "Since this method returns non-const ref to a member variable, the method cannot be declared const.",
+      "parentUuid": "7302987b_67a1a38a",
       "range": {
         "startLine": 301,
         "startChar": 26,
