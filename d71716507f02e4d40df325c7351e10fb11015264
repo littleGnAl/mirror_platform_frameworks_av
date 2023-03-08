@@ -16,6 +16,29 @@
       "message": "Hi Henry, thanks for reviewing the changes. There seems to be 2 TreeHugger test failures but I am not able to see the details as an external developer. Could you please help to check if the failures are related with the changes? Thanks.",
       "revId": "d71716507f02e4d40df325c7351e10fb11015264",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570c0c55_7e69d8c4",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5868,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-03-08T03:42:20Z",
+      "side": 1,
+      "message": "nit: would prefer using [[maybe_unused]] at the variable declaration than (void) xyz because it is less likely to become stale in a large function.",
+      "range": {
+        "startLine": 5868,
+        "startChar": 0,
+        "endLine": 5868,
+        "endChar": 30
+      },
+      "revId": "d71716507f02e4d40df325c7351e10fb11015264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
