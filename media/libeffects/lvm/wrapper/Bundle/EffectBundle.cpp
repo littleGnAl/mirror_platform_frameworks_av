@@ -213,11 +213,11 @@ extern "C" int EffectCreate(const effect_uuid_t* uuid, int32_t sessionId,
     pContext = new EffectContext;
 
     // If this is the first create in this session
-    if (GlobalSessionMemory[sessionNo].bBundledEffectsEnabled == LVM_FALSE) {
+    if (GlobalSessionMemory[sessionNo].cBundledEffectsEnableCount == 0) {
         ALOGV("\tEffectCreate - This is the first effect in current sessionId %d sessionNo %d",
               sessionId, sessionNo);
 
-        GlobalSessionMemory[sessionNo].bBundledEffectsEnabled = LVM_TRUE;
+        GlobalSessionMemory[sessionNo].cBundledEffectsEnableCount = 1;
         GlobalSessionMemory[sessionNo].pBundledContext = new BundledEffectContext;
         newBundle = true;
 
@@ -271,6 +271,7 @@ extern "C" int EffectCreate(const effect_uuid_t* uuid, int32_t sessionId,
         ALOGV("\tEffectCreate - Assigning memory for previously created effect on sessionNo %d",
               sessionNo);
         pContext->pBundledContext = GlobalSessionMemory[sessionNo].pBundledContext;
+        GlobalSessionMemory[sessionNo].cBundledEffectsEnableCount += 1;
     }
     ALOGV("\tEffectCreate - pBundledContext is %p", pContext->pBundledContext);
 
@@ -310,6 +311,7 @@ extern "C" int EffectCreate(const effect_uuid_t* uuid, int32_t sessionId,
         pContext->EffectType = LVM_VOLUME;
     } else {
         ALOGV("\tLVM_ERROR : EffectCreate() invalid UUID");
+        GlobalSessionMemory[sessionNo].cBundledEffectsEnableCount -= 1;
         ret = -EINVAL;
         goto exit;
     }
@@ -318,7 +320,7 @@ exit:
     if (ret != 0) {
         if (pContext != NULL) {
             if (newBundle) {
-                GlobalSessionMemory[sessionNo].bBundledEffectsEnabled = LVM_FALSE;
+                GlobalSessionMemory[sessionNo].cBundledEffectsEnableCount = 0;
                 SessionIndex[sessionNo] = LVM_UNUSED_SESSION;
                 delete pContext->pBundledContext;
             }
@@ -343,6 +345,7 @@ extern "C" int EffectRelease(effect_handle_t handle) {
     }
 
     SessionContext* pSessionContext = &GlobalSessionMemory[pContext->pBundledContext->SessionNo];
+    pSessionContext->cBundledEffectsEnableCount -= 1;
 
     // Clear the instantiated flag for the effect
     // protect agains the case where an effect is un-instantiated without being disabled
@@ -379,6 +382,7 @@ extern "C" int EffectRelease(effect_handle_t handle) {
             pContext->pBundledContext->NumberEffectsEnabled--;
         }
     } else {
+        pSessionContext->cBundledEffectsEnableCount += 1;
         ALOGV("\tLVM_ERROR : EffectRelease : Unsupported effect\n\n\n\n\n\n\n");
     }
     effectInDrain &= ~(1 << pContext->EffectType);  // no need to drain if released
@@ -391,7 +395,8 @@ extern "C" int EffectRelease(effect_handle_t handle) {
     if ((pSessionContext->bBassInstantiated == LVM_FALSE) &&
         (pSessionContext->bVolumeInstantiated == LVM_FALSE) &&
         (pSessionContext->bEqualizerInstantiated == LVM_FALSE) &&
-        (pSessionContext->bVirtualizerInstantiated == LVM_FALSE)) {
+        (pSessionContext->bVirtualizerInstantiated == LVM_FALSE) &&
+        pSessionContext->cBundledEffectsEnableCount == 0) {
         // Clear the SessionIndex
         for (int i = 0; i < LVM_MAX_SESSIONS; i++) {
             if (SessionIndex[i] == pContext->pBundledContext->SessionId) {
@@ -452,7 +457,7 @@ extern "C" int EffectGetDescriptor(const effect_uuid_t* uuid, effect_descriptor_
 void LvmGlobalBundle_init() {
     ALOGV("\tLvmGlobalBundle_init start");
     for (int i = 0; i < LVM_MAX_SESSIONS; i++) {
-        GlobalSessionMemory[i].bBundledEffectsEnabled = LVM_FALSE;
+        GlobalSessionMemory[i].cBundledEffectsEnableCount = 0;
         GlobalSessionMemory[i].bVolumeInstantiated = LVM_FALSE;
         GlobalSessionMemory[i].bEqualizerInstantiated = LVM_FALSE;
         GlobalSessionMemory[i].bBassInstantiated = LVM_FALSE;
