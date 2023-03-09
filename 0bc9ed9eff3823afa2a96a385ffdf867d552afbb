@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf5642c_f5e123e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "Thanks, Wonsik. I have a few nits. Mainly that it would be great to get a consistent set of messages that are unlikely to change and easy to recognize regardless of the actual call, unless the error is returned from a previous call (where we would need to refer to that.)",
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e083eb8e_55b130d8",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "is this a fatal error? it seems to just return",
+      "range": {
+        "startLine": 953,
+        "startChar": 0,
+        "endLine": 953,
+        "endChar": 62
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf92ab5_16d539b9",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "nit: this seems to be unrelated to the change",
+      "range": {
+        "startLine": 1228,
+        "startChar": 26,
+        "endLine": 1228,
+        "endChar": 30
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5568dcce_bc5dfe64",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "should mErrorLog also log? We don\u0027t do it everywhere, but I am seeing a pattern.",
+      "range": {
+        "startLine": 1598,
+        "startChar": 0,
+        "endLine": 1598,
+        "endChar": 92
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95481515_6321f8ee",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "this may be more readable as \u0027from %s HAL\u0027",
+      "range": {
+        "startLine": 1600,
+        "startChar": 52,
+        "endLine": 1600,
+        "endChar": 59
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4491f11_ba4d0424",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4007,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "nit: Can we be consistent with the invalid state message?\n\nBefore we said \"Invalid to call [in X state]; only valid in Y state\"\n\nHere we say \"*Callback* can only be set at Y state; currently [in X state]\"\n\nIt may be easier to parse for developers.",
+      "range": {
+        "startLine": 4007,
+        "startChar": 72,
+        "endLine": 4007,
+        "endChar": 85
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0566c233_a6337e05",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "if mErrorLog was/exposed a stringstream, we could just \u003c\u003c into it without needing to create a new string.\n\nThough it needs to be mutex protected...",
+      "range": {
+        "startLine": 4225,
+        "startChar": 16,
+        "endLine": 4225,
+        "endChar": 25
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86002146_176f7c53",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 5858,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-09T14:26:18Z",
+      "side": 1,
+      "message": "should we use calls to mark the states, e.g. after flush()?\n\nWhat is \"executing states\" then?",
+      "range": {
+        "startLine": 5858,
+        "startChar": 30,
+        "endLine": 5858,
+        "endChar": 46
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
