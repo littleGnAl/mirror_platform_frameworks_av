@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c719b560_ed336b60",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-09T07:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cadf502f_84fc3a52",
+      "range": {
+        "startLine": 89,
+        "startChar": 42,
+        "endLine": 89,
+        "endChar": 50
+      },
+      "revId": "23eacad51bb00bc95020e1179858974647e443af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b88473a_ffbd281a",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-09T07:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2689438_f80e59ab",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "23eacad51bb00bc95020e1179858974647e443af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69e59d11_23b6f002",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-08T17:55:43Z",
       "side": 1,
       "message": "```\ncase k##status: \\\n  return J##status\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "23eacad51bb00bc95020e1179858974647e443af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9bcace_f616489a",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-09T07:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69e59d11_23b6f002",
       "range": {
         "startLine": 91,
         "startChar": 9,
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cadbc2d_e3cb282e",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-09T07:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27bfbe4c_2e495ca2",
+      "range": {
+        "startLine": 95,
+        "startChar": 20,
+        "endLine": 95,
+        "endChar": 41
+      },
+      "revId": "23eacad51bb00bc95020e1179858974647e443af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "582feb82_ff5b6e83",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-03-08T17:55:43Z",
       "side": 1,
       "message": "Call these `JSecurityLevel*` to avoid naming conflicts.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "23eacad51bb00bc95020e1179858974647e443af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c28f0d_20b9d182",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-09T07:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "582feb82_ff5b6e83",
       "range": {
         "startLine": 66,
         "startChar": 4,
