@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d521ca52_1700382b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-09T23:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e083eb8e_55b130d8",
+      "range": {
+        "startLine": 953,
+        "startChar": 0,
+        "endLine": 953,
+        "endChar": 62
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edf92ab5_16d539b9",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-09T14:26:18Z",
       "side": 1,
       "message": "nit: this seems to be unrelated to the change",
+      "range": {
+        "startLine": 1228,
+        "startChar": 26,
+        "endLine": 1228,
+        "endChar": 30
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11386f59_8756f142",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-09T23:01:52Z",
+      "side": 1,
+      "message": "Reverted",
+      "parentUuid": "edf92ab5_16d539b9",
       "range": {
         "startLine": 1228,
         "startChar": 26,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e6de5d_0c1e8d1d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-09T23:01:52Z",
+      "side": 1,
+      "message": "Added log",
+      "parentUuid": "5568dcce_bc5dfe64",
+      "range": {
+        "startLine": 1598,
+        "startChar": 0,
+        "endLine": 1598,
+        "endChar": 92
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95481515_6321f8ee",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ed0b25_4ed6c857",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-09T23:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95481515_6321f8ee",
+      "range": {
+        "startLine": 1600,
+        "startChar": 52,
+        "endLine": 1600,
+        "endChar": 59
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4491f11_ba4d0424",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-03-09T14:26:18Z",
       "side": 1,
       "message": "nit: Can we be consistent with the invalid state message?\n\nBefore we said \"Invalid to call [in X state]; only valid in Y state\"\n\nHere we say \"*Callback* can only be set at Y state; currently [in X state]\"\n\nIt may be easier to parse for developers.",
+      "range": {
+        "startLine": 4007,
+        "startChar": 72,
+        "endLine": 4007,
+        "endChar": 85
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "264aef83_54ab330e",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4007,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-09T23:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4491f11_ba4d0424",
       "range": {
         "startLine": 4007,
         "startChar": 72,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bed76897_0ceaf68b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-09T23:01:52Z",
+      "side": 1,
+      "message": "Yeah had the same thought but it looked easier this way because of mutex protection.",
+      "parentUuid": "0566c233_a6337e05",
+      "range": {
+        "startLine": 4225,
+        "startChar": 16,
+        "endLine": 4225,
+        "endChar": 25
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86002146_176f7c53",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 7
@@ -169,6 +313,30 @@
       "writtenOn": "2023-03-09T14:26:18Z",
       "side": 1,
       "message": "should we use calls to mark the states, e.g. after flush()?\n\nWhat is \"executing states\" then?",
+      "range": {
+        "startLine": 5858,
+        "startChar": 30,
+        "endLine": 5858,
+        "endChar": 46
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90cc527_17bbdbec",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 5858,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-09T23:01:52Z",
+      "side": 1,
+      "message": "The state names are according to https://developer.android.com/reference/android/media/MediaCodec#states\n\nSome states have multiple ways to get there, so I think it\u0027s easier to use the name directly.",
+      "parentUuid": "86002146_176f7c53",
       "range": {
         "startLine": 5858,
         "startChar": 30,
