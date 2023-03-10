@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a01d817_6cc28447",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-10T02:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28f39ad2_e53904a2",
+      "range": {
+        "startLine": 258,
+        "startChar": 9,
+        "endLine": 258,
+        "endChar": 24
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a94c4278_7638f23f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-10T01:41:33Z",
       "side": 1,
       "message": "Since these names are effectively global in the Android tree, perhaps we should use a more specific name, something like `audio_effectproxy_src_files`?",
+      "range": {
+        "startLine": 302,
+        "startChar": 11,
+        "endLine": 302,
+        "endChar": 25
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c664a504_62c3bab0",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-10T02:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a94c4278_7638f23f",
       "range": {
         "startLine": 302,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0972ef56_678a4151",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-10T02:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e947df_7968e58a",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 13
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59e87fe4_8dc46d4c",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-10T01:41:33Z",
       "side": 1,
       "message": "Should it be `EffectProxyTest` (w/o `s`) to match the test target name?",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "881d6b5c_350cb5c8",
+        "filename": "media/libaudiohal/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-10T02:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59e87fe4_8dc46d4c",
       "range": {
         "startLine": 55,
         "startChar": 11,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c9f2a0_48eff68a",
+        "filename": "media/libaudiohal/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-10T02:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b28dbe93_3ed61889",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80c0f5e1_8f88258f",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15393952_fbc06371",
+        "filename": "media/libaudiohal/tests/EffectProxy_test.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-10T02:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c0f5e1_8f88258f",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 86
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e686c83_ba1d19c9",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-03-10T01:41:33Z",
       "side": 1,
       "message": "Instead of asserting in every test, should we assert here?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c79af1_05545b85",
+        "filename": "media/libaudiohal/tests/EffectProxy_test.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-10T02:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e686c83_ba1d19c9",
       "range": {
         "startLine": 56,
         "startChar": 0,
