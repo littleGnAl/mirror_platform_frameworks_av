@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67e51fe_1fa3b55d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-03-10T02:28:45Z",
+      "side": 1,
+      "message": "getImageInternal no need to set kKeyFrameRate, because image, such as .heic does not has this key.\nonly getFrameInternal for video, set kKeyFrameRate 1.",
+      "revId": "b4543239d77d76547aa58a28ff44b024e3851680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
