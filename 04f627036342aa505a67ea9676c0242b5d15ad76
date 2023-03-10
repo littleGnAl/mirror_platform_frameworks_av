@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f39ad2_e53904a2",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-10T01:41:33Z",
+      "side": 1,
+      "message": "Should `:effectProxySrc` be used here? Imagine a new file needs to be listed in `effectProxySrc`, do you think it will need to be added here?",
+      "range": {
+        "startLine": 258,
+        "startChar": 9,
+        "endLine": 258,
+        "endChar": 24
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a94c4278_7638f23f",
+        "filename": "media/libaudiohal/impl/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-10T01:41:33Z",
+      "side": 1,
+      "message": "Since these names are effectively global in the Android tree, perhaps we should use a more specific name, something like `audio_effectproxy_src_files`?",
+      "range": {
+        "startLine": 302,
+        "startChar": 11,
+        "endLine": 302,
+        "endChar": 25
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e947df_7968e58a",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-10T01:41:33Z",
+      "side": 1,
+      "message": "Should these logs be ALOGE instead?",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 13
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e87fe4_8dc46d4c",
+        "filename": "media/libaudiohal/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-10T01:41:33Z",
+      "side": 1,
+      "message": "Should it be `EffectProxyTest` (w/o `s`) to match the test target name?",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28dbe93_3ed61889",
+        "filename": "media/libaudiohal/tests/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-10T01:41:33Z",
+      "side": 1,
+      "message": "These should be shared. Static linkage should be used for the code which directly relates to the test, so that if the test finds bug in the code, and code gets fixed, the test gets it w/o touching anything else on the system disk.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c0f5e1_8f88258f",
+        "filename": "media/libaudiohal/tests/EffectProxy_test.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-10T01:41:33Z",
+      "side": 1,
+      "message": "This does not seem to align with the behavior of VTS tests (https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/aidl/vts/VtsHalAudioEffectFactoryTargetTest.cpp;l\u003d281;drc\u003dc12e0821e69ed60622804b7cdf2b952caba161b4). I think it should be the same.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 86
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e686c83_ba1d19c9",
+        "filename": "media/libaudiohal/tests/EffectProxy_test.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-10T01:41:33Z",
+      "side": 1,
+      "message": "Instead of asserting in every test, should we assert here?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "04f627036342aa505a67ea9676c0242b5d15ad76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
