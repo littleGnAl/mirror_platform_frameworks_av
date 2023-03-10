@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b7ba81_958a7b97",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3296,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-10T01:27:33Z",
+      "side": 1,
+      "message": "When reading the legacy code as learning material, there are cases using \"__attribute__((unused))\". But I realized it\u0027s better to use \"[[maybe_unused]]\" after your reminder. All the related changes with this patch have been updated.\n\nFor local variables which are not used we would comment or removed them. Here it\u0027s in the function interface so I would choose to not comment/remove it at the moment as a conservative approach.",
+      "parentUuid": "abf9ad14_bf9ea814",
+      "range": {
+        "startLine": 3296,
+        "startChar": 7,
+        "endLine": 3296,
+        "endChar": 31
+      },
+      "revId": "b70afb1a56ffdf5f5aae1d778a6c08831db700e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9187428_d60fbbd4",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-08T18:29:12Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 9090,
+        "startChar": 0,
+        "endLine": 9090,
+        "endChar": 104
+      },
+      "revId": "b70afb1a56ffdf5f5aae1d778a6c08831db700e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4efc528_d4b036d6",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 9090,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-10T01:27:33Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "e9187428_d60fbbd4",
       "range": {
         "startLine": 9090,
         "startChar": 0,

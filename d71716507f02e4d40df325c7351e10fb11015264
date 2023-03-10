@@ -87,6 +87,30 @@
       },
       "revId": "d71716507f02e4d40df325c7351e10fb11015264",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18b0c7a_7d2e5f2d",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5868,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-10T01:27:33Z",
+      "side": 1,
+      "message": "The cast \"(void)\" related changes have been rolled back and leave the space issue as is.",
+      "parentUuid": "ec7a14db_90cfbbc1",
+      "range": {
+        "startLine": 5868,
+        "startChar": 0,
+        "endLine": 5868,
+        "endChar": 30
+      },
+      "revId": "d71716507f02e4d40df325c7351e10fb11015264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
