@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8dd63bd_01ffcc04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "505b4c2c_d7180743",
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604e377e_ee2690b8",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-09T16:45:00Z",
       "side": 1,
       "message": "This line is redundant.",
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b280349_4c2a431f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "604e377e_ee2690b8",
       "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2023-03-09T18:01:02Z",
       "side": 1,
       "message": "Caught some typo/type errors. Let\u0027s fix as part of this change.",
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16893002_d0a22b2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d93a428_c34aa584",
       "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -105,6 +159,54 @@
       "writtenOn": "2023-03-09T18:01:02Z",
       "side": 1,
       "message": "mediametrics_setInt**32**",
+      "range": {
+        "startLine": 548,
+        "startChar": 8,
+        "endLine": 548,
+        "endChar": 29
+      },
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76d60c7_e6f0a16e",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b52b54c_9fc5f6ca",
+      "range": {
+        "startLine": 548,
+        "startChar": 39,
+        "endLine": 548,
+        "endChar": 63
+      },
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47acac0_ad216e0d",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4743c308_ca00f203",
       "range": {
         "startLine": 548,
         "startChar": 8,
@@ -161,6 +263,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8920fc00_91bccddc",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b64a9bf_dad8211b",
+      "range": {
+        "startLine": 550,
+        "startChar": 39,
+        "endLine": 550,
+        "endChar": 60
+      },
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc93db0_39fe099e",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67fc5a70_63579edb",
+      "range": {
+        "startLine": 550,
+        "startChar": 8,
+        "endLine": 550,
+        "endChar": 29
+      },
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3508b3f9_cfa9a6c0",
@@ -202,6 +352,54 @@
         "startChar": 43,
         "endLine": 570,
         "endChar": 57
+      },
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8c6d3a_bb47f48c",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26830807_533757ae",
+      "range": {
+        "startLine": 570,
+        "startChar": 43,
+        "endLine": 570,
+        "endChar": 57
+      },
+      "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fbe8b5_632ba1c1",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-03-10T06:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3508b3f9_cfa9a6c0",
+      "range": {
+        "startLine": 570,
+        "startChar": 12,
+        "endLine": 570,
+        "endChar": 33
       },
       "revId": "67eb3ec20b50a2edb8e05127ee5f83638e0d3fc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
