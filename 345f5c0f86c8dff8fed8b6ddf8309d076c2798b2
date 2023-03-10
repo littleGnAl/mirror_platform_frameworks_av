@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24e0381_c75ede8a",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-03-10T10:58:57Z",
+      "side": 1,
+      "message": "Done. Based on reference from DynamicProcessing I have removed the lines.",
+      "parentUuid": "248f61b0_fbefac66",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "345f5c0f86c8dff8fed8b6ddf8309d076c2798b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ece12ba_0af816c0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-07T18:20:53Z",
       "side": 1,
       "message": "I think it would be helpful to print the actual value of channelCount.",
+      "range": {
+        "startLine": 123,
+        "startChar": 71,
+        "endLine": 123,
+        "endChar": 72
+      },
+      "revId": "345f5c0f86c8dff8fed8b6ddf8309d076c2798b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "767acc75_7ee01c95",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-03-10T10:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ece12ba_0af816c0",
       "range": {
         "startLine": 123,
         "startChar": 71,
