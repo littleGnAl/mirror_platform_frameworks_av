@@ -331,35 +331,23 @@ class C2SoftHevcEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
             { LEVEL_HEVC_MAIN_6_2, 4278190080, 35651584, 240000000 },
         };
 
-        uint64_t samples = size.v.width * size.v.height;
+        uint64_t cbs = ((size.v.width + 63) / 64) * ((size.v.height + 63) / 64);
+        uint64_t samples = cbs * 64 * 64;
         uint64_t samplesPerSec = samples * frameRate.v.value;
 
         // Check if the supplied level meets the MB / bitrate requirements. If
         // not, update the level with the lowest level meeting the requirements.
-
         bool found = false;
-        // By default needsUpdate = false in case the supplied level does meet
-        // the requirements.
-        bool needsUpdate = false;
         for (const LevelLimits &limit : kLimits) {
             if (samples <= limit.samples && samplesPerSec <= limit.samplesPerSec &&
                     bitrate.v.value <= limit.bitrate) {
-                // This is the lowest level that meets the requirements, and if
-                // we haven't seen the supplied level yet, that means we don't
-                // need the update.
-                if (needsUpdate) {
-                    ALOGD("Given level %x does not cover current configuration: "
-                          "adjusting to %x", me.v.level, limit.level);
+                // This is the lowest level that meets the requirements
+                if (me.v.level != limit.level) {
+                    ALOGW("Given level %x is being adjusted to %x", me.v.level, limit.level);
                     me.set().level = limit.level;
                 }
                 found = true;
                 break;
-            }
-            if (me.v.level == limit.level) {
-                // We break out of the loop when the lowest feasible level is
-                // found. The fact that we're here means that our level doesn't
-                // meet the requirement and needs to be updated.
-                needsUpdate = true;
             }
         }
         if (!found) {
