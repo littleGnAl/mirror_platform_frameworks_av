@@ -83,12 +83,17 @@ std::shared_ptr<C2Buffer> PipelineWatcher::onInputBufferReleased(
     return buffer;
 }
 
-void PipelineWatcher::onWorkDone(uint64_t frameIndex) {
+void PipelineWatcher::onWorkDone(uint64_t frameIndex, bool tunneled) {
     ALOGV("onWorkDone(frameIndex=%llu)", (unsigned long long)frameIndex);
     auto it = mFramesInPipeline.find(frameIndex);
     if (it == mFramesInPipeline.end()) {
-        ALOGD("onWorkDone: frameIndex not found (%llu); ignored",
-              (unsigned long long)frameIndex);
+        if (!tunneled) {
+            ALOGD("onWorkDone: frameIndex not found (%llu); ignored",
+                  (unsigned long long)frameIndex);
+        } else {
+            ALOGV("onWorkDone: frameIndex not found (%llu); ignored",
+                  (unsigned long long)frameIndex);
+        }
         return;
     }
     (void)mFramesInPipeline.erase(it);

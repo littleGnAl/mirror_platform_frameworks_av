@@ -347,7 +347,7 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
     if (err != C2_OK) {
         Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
         for (const std::unique_ptr<C2Work> &work : items) {
-            watcher->onWorkDone(work->input.ordinal.frameIndex.peeku());
+            watcher->onWorkDone(work->input.ordinal.frameIndex.peeku(), mTunneled);
         }
     } else {
         Mutexed<Input>::Locked input(mInput);
@@ -1727,14 +1727,14 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
         for (const std::unique_ptr<C2Work> &work : flushedWork) {
             uint64_t frameIndex = work->input.ordinal.frameIndex.peeku();
             if (!(work->input.flags & C2FrameData::FLAG_CODEC_CONFIG)) {
-                watcher->onWorkDone(frameIndex);
+                watcher->onWorkDone(frameIndex, mTunneled);
                 continue;
             }
             if (work->input.buffers.empty()
                     || work->input.buffers.front() == nullptr
                     || work->input.buffers.front()->data().linearBlocks().empty()) {
                 ALOGD("[%s] no linear codec config data found", mName);
-                watcher->onWorkDone(frameIndex);
+                watcher->onWorkDone(frameIndex, mTunneled);
                 continue;
             }
             std::unique_ptr<C2Work> copy(new C2Work);
@@ -1754,7 +1754,7 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
                     work->input.infoBuffers.end());
             copy->worklets.emplace_back(new C2Worklet);
             configs.push_back(std::move(copy));
-            watcher->onWorkDone(frameIndex);
+            watcher->onWorkDone(frameIndex, mTunneled);
             ALOGV("[%s] stashed flushed codec config data", mName);
         }
     }
@@ -1847,7 +1847,7 @@ bool CCodecBufferChannel::handleWork(
             || !(work->worklets.front()->output.flags &
                  C2FrameData::FLAG_INCOMPLETE))) {
         mPipelineWatcher.lock()->onWorkDone(
-                work->input.ordinal.frameIndex.peeku());
+                work->input.ordinal.frameIndex.peeku(), mTunneled);
     }
 
     // NOTE: MediaCodec usage supposedly have only one worklet

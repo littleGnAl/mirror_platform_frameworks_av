@@ -92,7 +92,7 @@ public:
      *
      * \param frameIndex  input frame index
      */
-    void onWorkDone(uint64_t frameIndex);
+    void onWorkDone(uint64_t frameIndex, bool tunneled);
 
     /**
      * Flush the pipeline.
