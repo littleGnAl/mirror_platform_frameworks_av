@@ -34,6 +34,23 @@
       "parentUuid": "6c1acb7e_7cf33427",
       "revId": "9027f1e31c153ae28bb2e725ef14227cc2f6e836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "596f3ea4_702ac4cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-11T03:08:43Z",
+      "side": 1,
+      "message": "It seems the std::move() issues with module tuner had been fixed by Zijun Zhao some days before. So we only have to take care of audioflinger and libcameraservice.",
+      "revId": "9027f1e31c153ae28bb2e725ef14227cc2f6e836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
