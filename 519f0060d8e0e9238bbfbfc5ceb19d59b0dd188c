@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42942daf_c45ef2ad",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-03-11T15:01:07Z",
+      "side": 1,
+      "message": "let us retain the old logic where it supports a level higher than what is configured. there is no need to change that behavior now.\n\nwhat we need is to clip me.set().level to LEVEL_HEVC_MAIN_5_2 here.",
+      "revId": "519f0060d8e0e9238bbfbfc5ceb19d59b0dd188c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
