@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0499050_a1b8f9e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-11T15:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2adeb0d_f690170d",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "4d00b826e5dfcb72fac5257dfb79f99dc2fc07d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1b657d1_fac5e5fc",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da751cd_e2b554f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-11T15:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1b657d1_fac5e5fc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "4d00b826e5dfcb72fac5257dfb79f99dc2fc07d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aecf4591_e552b077",
@@ -60,6 +108,24 @@
       "writtenOn": "2023-03-11T15:03:56Z",
       "side": 1,
       "message": "limit me.set().level to LEVEL_AVC_5 here.\n\nlet us retain the old logic of supporting higher than required level application has configured that whatever reason.",
+      "revId": "4d00b826e5dfcb72fac5257dfb79f99dc2fc07d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33790774_792540b9",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-11T15:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aecf4591_e552b077",
       "revId": "4d00b826e5dfcb72fac5257dfb79f99dc2fc07d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
