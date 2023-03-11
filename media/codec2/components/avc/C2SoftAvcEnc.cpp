@@ -329,31 +329,17 @@ public:
 
         // Check if the supplied level meets the MB / bitrate requirements. If
         // not, update the level with the lowest level meeting the requirements.
-
         bool found = false;
-        // By default needsUpdate = false in case the supplied level does meet
-        // the requirements. For Level 1b, we want to update the level anyway,
-        // so we set it to true in that case.
-        bool needsUpdate = (me.v.level == LEVEL_AVC_1B);
         for (const LevelLimits &limit : kLimits) {
             if (mbs <= limit.mbs && mbsPerSec <= limit.mbsPerSec &&
                     bitrate.v.value <= limit.bitrate) {
-                // This is the lowest level that meets the requirements, and if
-                // we haven't seen the supplied level yet, that means we don't
-                // need the update.
-                if (needsUpdate) {
-                    ALOGD("Given level %x does not cover current configuration: "
-                          "adjusting to %x", me.v.level, limit.level);
+                // This is the lowest level that meets the requirements
+                if (me.v.level != limit.level) {
+                    ALOGW("Given level %x is being adjusted to %x", me.v.level, limit.level);
                     me.set().level = limit.level;
                 }
                 found = true;
                 break;
-            }
-            if (me.v.level == limit.level) {
-                // We break out of the loop when the lowest feasible level is
-                // found. The fact that we're here means that our level doesn't
-                // meet the requirement and needs to be updated.
-                needsUpdate = true;
             }
         }
         if (!found) {
