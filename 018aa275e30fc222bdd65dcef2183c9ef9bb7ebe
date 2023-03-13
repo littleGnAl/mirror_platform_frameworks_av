@@ -16,6 +16,69 @@
       "message": "hi all，please have a review for this bug",
       "revId": "018aa275e30fc222bdd65dcef2183c9ef9bb7ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded2898a_56bc95df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-13T16:46:27Z",
+      "side": 1,
+      "message": "I think, Shunkai has more context on this.",
+      "revId": "018aa275e30fc222bdd65dcef2183c9ef9bb7ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51a233f_1bc7cd21",
+        "filename": "media/libeffects/lvm/wrapper/Bundle/EffectBundle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-13T16:46:27Z",
+      "side": 1,
+      "message": "Can use `+\u003d 1` for consistency. It will be easier to find all places where the count is being increased.",
+      "range": {
+        "startLine": 220,
+        "startChar": 66,
+        "endLine": 220,
+        "endChar": 69
+      },
+      "revId": "018aa275e30fc222bdd65dcef2183c9ef9bb7ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99af013f_ab042c59",
+        "filename": "media/libeffects/lvm/wrapper/Bundle/EffectBundle.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-13T16:46:27Z",
+      "side": 1,
+      "message": "Using \u0027char\u0027 for counters is something we would do on an 8-bit CPU 😊. The compiler will align the fields anyway, and this field will effectively use 4 bytes.",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 8
+      },
+      "revId": "018aa275e30fc222bdd65dcef2183c9ef9bb7ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
