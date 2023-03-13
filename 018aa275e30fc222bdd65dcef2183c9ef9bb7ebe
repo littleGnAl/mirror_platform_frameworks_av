@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a7b9c3_ad358b0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-13T17:12:40Z",
+      "side": 1,
+      "message": "Given that outside of the VTS context, the audio framework is responsible for the locking and thread safety when accessing the effect HAL, shouldn\u0027t this be the responsibility of the VTS test implementation? \nI don\u0027t think we ever requested the effect implementations to be thread safe.",
+      "revId": "018aa275e30fc222bdd65dcef2183c9ef9bb7ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f51a233f_1bc7cd21",
