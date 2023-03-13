@@ -100,4 +100,8 @@ cc_test {
             "signed-integer-overflow",
         ],
     },
+    data: [
+        ":https:/storage.googleapis.com/android_media/frameworks/av/media/extractors/tests/extractor-1.4.zip?unzip=true",
+    ],
+    per_testcase_directory: true,
 }
