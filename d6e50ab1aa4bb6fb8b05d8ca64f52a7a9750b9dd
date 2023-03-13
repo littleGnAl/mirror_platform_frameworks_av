@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "32d052e7_cd2d0084",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-13T14:53:31Z",
+      "side": 1,
+      "message": "Addressed in aosp/2480056.",
+      "parentUuid": "9ad830d2_571247f0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 143
+      },
+      "revId": "d6e50ab1aa4bb6fb8b05d8ca64f52a7a9750b9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8da72ac5_bb54a4bc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
