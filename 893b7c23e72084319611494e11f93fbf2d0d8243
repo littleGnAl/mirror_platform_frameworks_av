@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f466a72_01039551",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-13T23:35:30Z",
+      "side": 1,
+      "message": "I\u0027m waiting for the downstream version of the dependant CL to be absorbed by internal master, then I can kick off presubmit for this one. At least, it was working for me locally on the internal master.",
+      "revId": "893b7c23e72084319611494e11f93fbf2d0d8243",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
