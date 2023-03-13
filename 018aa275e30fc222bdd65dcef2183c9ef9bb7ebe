@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bba66a2_da0db427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-13T17:31:32Z",
+      "side": 1,
+      "message": "I agree that VTS test should have threading behavior similar to the framework\u0027s. Normally the HAL only has a single client, and method calls made via Binder are serialized if invoked by the client from the same thread. Thus, it is assumed that the interface implementation may avoid serialization internally, and unless the AIDL of the interface states that it\u0027s OK to use it from multiple threads, the client should not assume so, and serialize on its side.\n\nIf there are other ways to access the implementation, requirements to the thread-safe implementation should be stated somewhere. This is an example for the core HAL: https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/aidl/android/hardware/audio/core/StreamDescriptor.aidl;l\u003d30;drc\u003d30301a42c76f82485c657f66bcdd0654564e5c9e",
+      "parentUuid": "a1a7b9c3_ad358b0e",
+      "revId": "018aa275e30fc222bdd65dcef2183c9ef9bb7ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f51a233f_1bc7cd21",
