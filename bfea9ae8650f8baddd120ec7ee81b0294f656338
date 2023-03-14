@@ -16,6 +16,46 @@
       "message": "done",
       "revId": "bfea9ae8650f8baddd120ec7ee81b0294f656338",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7abcb0d_7b399cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-14T03:46:32Z",
+      "side": 1,
+      "message": "Thanks for submitting the CL!\nI\u0027m afraid I need to understand this bug 272310212 more, if the issue was caused by previous test case didn\u0027t cleanup the state correctly (release the bundle effect context), adding a reference counter seems to be a work-around to me.\nIs there a way to reproduce this? If yes I will try to find some time this week to reproduce and get back to you. Thanks.",
+      "revId": "bfea9ae8650f8baddd120ec7ee81b0294f656338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912c0d83_56ee13d0",
+        "filename": "media/libeffects/lvm/wrapper/Bundle/EffectBundle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-14T03:46:32Z",
+      "side": 1,
+      "message": "nit: I think we should merge  line#220 line#274 and update `nBundledEffectsEnableCount` only when success, less chance to get wrong with error handling logic.\nSame for the `nBundledEffectsEnableCount -\u003d 1` in EffectRelease",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 70
+      },
+      "revId": "bfea9ae8650f8baddd120ec7ee81b0294f656338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
