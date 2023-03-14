@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406c3c93_6e65bb0b",
+        "filename": "media/libeffects/loudness/aidl/LoudnessEnhancerContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-14T18:51:32Z",
+      "side": 1,
+      "message": "Note: this was moved to `aidl` namespace, please see https://r.android.com/c/platform/hardware/interfaces/+/2480537/3/audio/aidl/common/include/Utils.h.",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 96
+      },
+      "revId": "33840c0c114c5e0d234ca2f63abc7046065de702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
