@@ -60,32 +60,135 @@ namespace aidl::android::hardware::audio::effect {
 
 const std::string DynamicsProcessingImpl::kEffectName = "DynamicsProcessing";
 
-const DynamicsProcessing::EqBandConfig DynamicsProcessingImpl::kEqBandConfigMin =
+static const Range::DynamicsProcessingRange kEngineConfigRange = {
+        .min = DynamicsProcessing::make<
+                DynamicsProcessing::engineArchitecture>(DynamicsProcessing::EngineArchitecture(
+                {.resolutionPreference =
+                         DynamicsProcessing::ResolutionPreference::FAVOR_FREQUENCY_RESOLUTION,
+                 .preferredProcessingDurationMs = 0,
+                 .preEqStage = {.inUse = false, .bandCount = 0},
+                 .postEqStage = {.inUse = false, .bandCount = 0},
+                 .mbcStage = {.inUse = false, .bandCount = 0},
+                 .limiterInUse = false})),
+        .max = DynamicsProcessing::make<
+                DynamicsProcessing::engineArchitecture>(DynamicsProcessing::EngineArchitecture(
+                {.resolutionPreference =
+                         DynamicsProcessing::ResolutionPreference::FAVOR_FREQUENCY_RESOLUTION,
+                 .preferredProcessingDurationMs = std::numeric_limits<float>::max(),
+                 .preEqStage = {.inUse = true, .bandCount = std::numeric_limits<int>::max()},
+                 .postEqStage = {.inUse = true, .bandCount = std::numeric_limits<int>::max()},
+                 .mbcStage = {.inUse = true, .bandCount = std::numeric_limits<int>::max()},
+                 .limiterInUse = true}))};
+
+static const DynamicsProcessing::ChannelConfig kChannelConfigMin =
+        DynamicsProcessing::ChannelConfig({.channel = 0, .enable = false});
+
+static const DynamicsProcessing::ChannelConfig kChannelConfigMax =
+        DynamicsProcessing::ChannelConfig(
+                {.channel = std::numeric_limits<int>::max(), .enable = true});
+
+static const Range::DynamicsProcessingRange kPreEqChannelConfigRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::preEq>({kChannelConfigMin}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::preEq>({kChannelConfigMax})};
+
+static const Range::DynamicsProcessingRange kPostEqChannelConfigRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::postEq>({kChannelConfigMin}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::postEq>({kChannelConfigMax})};
+
+static const Range::DynamicsProcessingRange kMbcChannelConfigRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::mbc>({kChannelConfigMin}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::mbc>({kChannelConfigMax})};
+
+static const DynamicsProcessing::EqBandConfig kEqBandConfigMin =
         DynamicsProcessing::EqBandConfig({.channel = 0,
                                           .band = 0,
                                           .enable = false,
                                           .cutoffFrequencyHz = 220,
-                                          .gainDb = std::numeric_limits<float>::min()});
-const DynamicsProcessing::EqBandConfig DynamicsProcessingImpl::kEqBandConfigMax =
+                                          .gainDb = -std::numeric_limits<float>::max()});
+
+static const DynamicsProcessing::EqBandConfig kEqBandConfigMax =
         DynamicsProcessing::EqBandConfig({.channel = std::numeric_limits<int>::max(),
                                           .band = std::numeric_limits<int>::max(),
                                           .enable = true,
                                           .cutoffFrequencyHz = 20000,
                                           .gainDb = std::numeric_limits<float>::max()});
-const Range::DynamicsProcessingRange DynamicsProcessingImpl::kPreEqBandRange = {
-        .min = DynamicsProcessing::make<DynamicsProcessing::preEqBand>(
-                {DynamicsProcessingImpl::kEqBandConfigMin}),
-        .max = DynamicsProcessing::make<DynamicsProcessing::preEqBand>(
-                {DynamicsProcessingImpl::kEqBandConfigMax})};
-const Range::DynamicsProcessingRange DynamicsProcessingImpl::kPostEqBandRange = {
-        .min = DynamicsProcessing::make<DynamicsProcessing::postEqBand>(
-                {DynamicsProcessingImpl::kEqBandConfigMin}),
-        .max = DynamicsProcessing::make<DynamicsProcessing::postEqBand>(
-                {DynamicsProcessingImpl::kEqBandConfigMax})};
-const Range DynamicsProcessingImpl::kRange =
-        Range::make<Range::dynamicsProcessing>({DynamicsProcessingImpl::kPreEqBandRange});
 
-const Capability DynamicsProcessingImpl::kCapability = {.range = {DynamicsProcessingImpl::kRange}};
+static const Range::DynamicsProcessingRange kPreEqBandConfigRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::preEqBand>({kEqBandConfigMin}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::preEqBand>({kEqBandConfigMax})};
+
+static const Range::DynamicsProcessingRange kPostEqBandConfigRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::postEqBand>({kEqBandConfigMin}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::postEqBand>({kEqBandConfigMax})};
+
+static const Range::DynamicsProcessingRange kMbcBandConfigRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::mbcBand>(
+                {DynamicsProcessing::MbcBandConfig(
+                        {.channel = 0,
+                         .band = 0,
+                         .enable = false,
+                         .cutoffFrequencyHz = 220,
+                         .attackTimeMs = 0,
+                         .releaseTimeMs = 0,
+                         .ratio = 0,
+                         .thresholdDb = -std::numeric_limits<float>::max(),
+                         .kneeWidthDb = 0,
+                         .noiseGateThresholdDb = -std::numeric_limits<float>::max(),
+                         .expanderRatio = 0,
+                         .preGainDb = -std::numeric_limits<float>::max(),
+                         .postGainDb = -std::numeric_limits<float>::max()})}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::mbcBand>(
+                {DynamicsProcessing::MbcBandConfig(
+                        {.channel = std::numeric_limits<int>::max(),
+                         .band = std::numeric_limits<int>::max(),
+                         .enable = true,
+                         .cutoffFrequencyHz = 20000,
+                         .attackTimeMs = std::numeric_limits<float>::max(),
+                         .releaseTimeMs = std::numeric_limits<float>::max(),
+                         .ratio = std::numeric_limits<float>::max(),
+                         .thresholdDb = 0,
+                         .kneeWidthDb = std::numeric_limits<float>::max(),
+                         .noiseGateThresholdDb = 0,
+                         .expanderRatio = std::numeric_limits<float>::max(),
+                         .preGainDb = std::numeric_limits<float>::max(),
+                         .postGainDb = std::numeric_limits<float>::max()})})};
+
+static const Range::DynamicsProcessingRange kInputGainRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::inputGain>(
+                {DynamicsProcessing::InputGain(
+                        {.channel = 0, .gainDb = -std::numeric_limits<float>::max()})}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::inputGain>(
+                {DynamicsProcessing::InputGain({.channel = std::numeric_limits<int>::max(),
+                                                .gainDb = std::numeric_limits<float>::max()})})};
+
+static const Range::DynamicsProcessingRange kLimiterRange = {
+        .min = DynamicsProcessing::make<DynamicsProcessing::limiter>(
+                {DynamicsProcessing::LimiterConfig(
+                        {.channel = 0,
+                         .enable = false,
+                         .linkGroup = std::numeric_limits<int>::min(),
+                         .attackTimeMs = 0,
+                         .releaseTimeMs = 0,
+                         .ratio = 0,
+                         .thresholdDb = std::numeric_limits<float>::min(),
+                         .postGainDb = std::numeric_limits<float>::min()})}),
+        .max = DynamicsProcessing::make<DynamicsProcessing::limiter>(
+                {DynamicsProcessing::LimiterConfig(
+                        {.channel = std::numeric_limits<int>::max(),
+                         .enable = true,
+                         .linkGroup = std::numeric_limits<int>::max(),
+                         .attackTimeMs = std::numeric_limits<float>::max(),
+                         .releaseTimeMs = std::numeric_limits<float>::max(),
+                         .ratio = std::numeric_limits<float>::max(),
+                         .thresholdDb = 0,
+                         .postGainDb = std::numeric_limits<float>::max()})})};
+
+const std::vector<Range::DynamicsProcessingRange> kRanges = {
+        kEngineConfigRange,     kPreEqChannelConfigRange, kPostEqChannelConfigRange,
+        kMbcChannelConfigRange, kPreEqBandConfigRange,    kPostEqBandConfigRange,
+        kMbcBandConfigRange,    kInputGainRange,          kLimiterRange};
+
+const Capability DynamicsProcessingImpl::kCapability = {.range = kRanges};
 
 const Descriptor DynamicsProcessingImpl::kDescriptor = {
         .common = {.id = {.type = kDynamicsProcessingTypeUUID,
@@ -156,14 +259,182 @@ ndk::ScopedAStatus DynamicsProcessingImpl::commandImpl(CommandId command) {
     }
 }
 
+bool DynamicsProcessingImpl::isInputGainConfigInRange(
+        const std::vector<DynamicsProcessing::InputGain>& cfgs,
+        const DynamicsProcessing::InputGain& min, const DynamicsProcessing::InputGain& max) {
+    for (auto cfg : cfgs) {
+        if (!isInLimits(cfg.channel, min.channel, max.channel)) return false;
+        if (!isInLimits(cfg.gainDb, min.gainDb, max.gainDb)) return false;
+    }
+    return true;
+}
+
+bool DynamicsProcessingImpl::isLimiterConfigInRange(
+        const std::vector<DynamicsProcessing::LimiterConfig>& cfgs,
+        const DynamicsProcessing::LimiterConfig& min,
+        const DynamicsProcessing::LimiterConfig& max) {
+    for (auto cfg : cfgs) {
+        if (!isInLimits(cfg.channel, min.channel, max.channel)) return false;
+        if (!isInLimits(cfg.linkGroup, min.linkGroup, max.linkGroup)) return false;
+        if (!isInLimits(cfg.attackTimeMs, min.attackTimeMs, max.attackTimeMs)) return false;
+        if (!isInLimits(cfg.releaseTimeMs, min.releaseTimeMs, max.releaseTimeMs)) return false;
+        if (!isInLimits(cfg.ratio, min.ratio, max.ratio)) return false;
+        if (!isInLimits(cfg.thresholdDb, min.thresholdDb, max.thresholdDb)) return false;
+        if (!isInLimits(cfg.postGainDb, min.postGainDb, max.postGainDb)) return false;
+    }
+    return true;
+}
+
+bool DynamicsProcessingImpl::isMbcBandConfigInRange(
+        const std::vector<DynamicsProcessing::MbcBandConfig>& cfgs,
+        const DynamicsProcessing::MbcBandConfig& min,
+        const DynamicsProcessing::MbcBandConfig& max) {
+    for (auto cfg : cfgs) {
+        if (!isInLimits(cfg.channel, min.channel, max.channel)) return false;
+        if (!isInLimits(cfg.band, min.band, max.band)) return false;
+        if (!isInLimits(cfg.cutoffFrequencyHz, min.cutoffFrequencyHz, max.cutoffFrequencyHz)) {
+            return false;
+        }
+        if (!isInLimits(cfg.attackTimeMs, min.attackTimeMs, max.attackTimeMs)) return false;
+        if (!isInLimits(cfg.releaseTimeMs, min.releaseTimeMs, max.releaseTimeMs)) return false;
+        if (!isInLimits(cfg.ratio, min.ratio, max.ratio)) return false;
+        if (!isInLimits(cfg.thresholdDb, min.thresholdDb, max.thresholdDb)) return false;
+        if (!isInLimits(cfg.kneeWidthDb, min.kneeWidthDb, max.kneeWidthDb)) return false;
+        if (!isInLimits(cfg.noiseGateThresholdDb, min.noiseGateThresholdDb,
+                        max.noiseGateThresholdDb)) {
+            return false;
+        }
+        if (!isInLimits(cfg.expanderRatio, min.expanderRatio, max.expanderRatio)) return false;
+        if (!isInLimits(cfg.preGainDb, min.preGainDb, max.preGainDb)) return false;
+        if (!isInLimits(cfg.postGainDb, min.postGainDb, max.postGainDb)) return false;
+    }
+    return true;
+}
+
+bool DynamicsProcessingImpl::isEqBandConfigInRange(
+        const std::vector<DynamicsProcessing::EqBandConfig>& cfgs,
+        const DynamicsProcessing::EqBandConfig& min, const DynamicsProcessing::EqBandConfig& max) {
+    for (auto cfg : cfgs) {
+        if (!isInLimits(cfg.channel, min.channel, max.channel)) return false;
+        if (!isInLimits(cfg.band, min.band, max.band)) return false;
+        if (!isInLimits(cfg.cutoffFrequencyHz, min.cutoffFrequencyHz, max.cutoffFrequencyHz))
+            return false;
+        if (!isInLimits(cfg.gainDb, min.gainDb, max.gainDb)) return false;
+    }
+    return true;
+}
+
+bool DynamicsProcessingImpl::isChannelConfigInRange(
+        const std::vector<DynamicsProcessing::ChannelConfig>& cfgs,
+        const DynamicsProcessing::ChannelConfig& min,
+        const DynamicsProcessing::ChannelConfig& max) {
+    for (auto cfg : cfgs) {
+        if (!isInLimits(cfg.channel, min.channel, max.channel)) return false;
+    }
+    return true;
+}
+
+bool DynamicsProcessingImpl::isEngineConfigInRange(
+        const DynamicsProcessing::EngineArchitecture& cfg,
+        const DynamicsProcessing::EngineArchitecture& min,
+        const DynamicsProcessing::EngineArchitecture& max) {
+    if (!isInLimits(cfg.resolutionPreference, min.resolutionPreference, max.resolutionPreference)) {
+        return false;
+    }
+    if (!isInLimits(cfg.preferredProcessingDurationMs, min.preferredProcessingDurationMs,
+                    max.preferredProcessingDurationMs)) {
+        return false;
+    }
+    if (!isInLimits(cfg.preEqStage.bandCount, min.preEqStage.bandCount, max.preEqStage.bandCount)) {
+        return false;
+    }
+    if (!isInLimits(cfg.postEqStage.bandCount, min.postEqStage.bandCount,
+                    max.postEqStage.bandCount)) {
+        return false;
+    }
+    if (!isInLimits(cfg.mbcStage.bandCount, min.mbcStage.bandCount, max.mbcStage.bandCount)) {
+        return false;
+    }
+    return true;
+}
+
+int DynamicsProcessingImpl::locateMinMaxForTag(DynamicsProcessing::Tag tag) {
+    for (int i = 0; i < kRanges.size(); i++) {
+        if (tag == kRanges[i].min.getTag() && tag == kRanges[i].max.getTag()) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+bool DynamicsProcessingImpl::isParamInRange(const Parameter::Specific& specific) {
+    auto& dp = specific.get<Parameter::Specific::dynamicsProcessing>();
+    auto tag = dp.getTag();
+    int i = locateMinMaxForTag(tag);
+    if (i == -1) return true;
+
+    switch (tag) {
+        case DynamicsProcessing::engineArchitecture: {
+            return isEngineConfigInRange(
+                    dp.get<DynamicsProcessing::engineArchitecture>(),
+                    kRanges[i].min.get<DynamicsProcessing::engineArchitecture>(),
+                    kRanges[i].max.get<DynamicsProcessing::engineArchitecture>());
+        }
+        case DynamicsProcessing::preEq: {
+            return isChannelConfigInRange(dp.get<DynamicsProcessing::preEq>(),
+                                        kRanges[i].min.get<DynamicsProcessing::preEq>()[0],
+                                        kRanges[i].max.get<DynamicsProcessing::preEq>()[0]);
+        }
+        case DynamicsProcessing::postEq: {
+            return isChannelConfigInRange(dp.get<DynamicsProcessing::postEq>(),
+                                        kRanges[i].min.get<DynamicsProcessing::postEq>()[0],
+                                        kRanges[i].max.get<DynamicsProcessing::postEq>()[0]);
+        }
+        case DynamicsProcessing::mbc: {
+            return isChannelConfigInRange(dp.get<DynamicsProcessing::mbc>(),
+                                        kRanges[i].min.get<DynamicsProcessing::mbc>()[0],
+                                        kRanges[i].max.get<DynamicsProcessing::mbc>()[0]);
+        }
+        case DynamicsProcessing::preEqBand: {
+            return isEqBandConfigInRange(dp.get<DynamicsProcessing::preEqBand>(),
+                                       kRanges[i].min.get<DynamicsProcessing::preEqBand>()[0],
+                                       kRanges[i].max.get<DynamicsProcessing::preEqBand>()[0]);
+        }
+        case DynamicsProcessing::postEqBand: {
+            return isEqBandConfigInRange(dp.get<DynamicsProcessing::postEqBand>(),
+                                       kRanges[i].min.get<DynamicsProcessing::postEqBand>()[0],
+                                       kRanges[i].max.get<DynamicsProcessing::postEqBand>()[0]);
+        }
+        case DynamicsProcessing::mbcBand: {
+            return isMbcBandConfigInRange(dp.get<DynamicsProcessing::mbcBand>(),
+                                        kRanges[i].min.get<DynamicsProcessing::mbcBand>()[0],
+                                        kRanges[i].max.get<DynamicsProcessing::mbcBand>()[0]);
+        }
+        case DynamicsProcessing::limiter: {
+            return isLimiterConfigInRange(dp.get<DynamicsProcessing::limiter>(),
+                                        kRanges[i].min.get<DynamicsProcessing::limiter>()[0],
+                                        kRanges[i].max.get<DynamicsProcessing::limiter>()[0]);
+        }
+        case DynamicsProcessing::inputGain: {
+            return isInputGainConfigInRange(dp.get<DynamicsProcessing::inputGain>(),
+                                          kRanges[i].min.get<DynamicsProcessing::inputGain>()[0],
+                                          kRanges[i].max.get<DynamicsProcessing::inputGain>()[0]);
+        }
+        default: {
+            return true;
+        }
+    }
+    return true;
+}
+
 ndk::ScopedAStatus DynamicsProcessingImpl::setParameterSpecific(
         const Parameter::Specific& specific) {
     RETURN_IF(Parameter::Specific::dynamicsProcessing != specific.getTag(), EX_ILLEGAL_ARGUMENT,
               "EffectNotSupported");
     RETURN_IF(!mContext, EX_NULL_POINTER, "nullContext");
 
+    RETURN_IF(!isParamInRange(specific), EX_ILLEGAL_ARGUMENT, "outOfRange");
     auto& param = specific.get<Parameter::Specific::dynamicsProcessing>();
-    // TODO: check range here, dynamicsProcessing need customized method for nested parameters.
     auto tag = param.getTag();
 
     switch (tag) {
