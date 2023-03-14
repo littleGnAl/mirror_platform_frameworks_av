@@ -51,14 +51,42 @@ class DynamicsProcessingImpl final : public EffectImpl {
     std::string getEffectName() override { return kEffectName; }
 
   private:
-    static const DynamicsProcessing::EqBandConfig kEqBandConfigMin;
-    static const DynamicsProcessing::EqBandConfig kEqBandConfigMax;
-    static const Range::DynamicsProcessingRange kPreEqBandRange;
-    static const Range::DynamicsProcessingRange kPostEqBandRange;
-    static const Range kRange;
     std::shared_ptr<DynamicsProcessingContext> mContext;
     ndk::ScopedAStatus getParameterDynamicsProcessing(const DynamicsProcessing::Tag& tag,
                                                       Parameter::Specific* specific);
+
+    template <typename T>
+    bool isInRange(const T& value, const T& low, const T& high) {
+        return (value >= low) && (value <= high);
+    }
+    template <typename T, std::size_t... Is>
+    bool isTupleInRange(const T& test, const T& min, const T& max, std::index_sequence<Is...>) {
+        return (isInRange(std::get<Is>(test), std::get<Is>(min), std::get<Is>(max)) && ...);
+    }
+    template <typename T, std::size_t TupSize = std::tuple_size_v<T>>
+    bool isTupleInRange(const T& test, const T& min, const T& max) {
+        return isTupleInRange(test, min, max, std::make_index_sequence<TupSize>{});
+    }
+    int locateMinMaxForTag(DynamicsProcessing::Tag tag);
+    bool isParamInRange(const Parameter::Specific& specific);
+    bool isEngineConfigInRange(const DynamicsProcessing::EngineArchitecture& cfg,
+                               const DynamicsProcessing::EngineArchitecture& min,
+                               const DynamicsProcessing::EngineArchitecture& max);
+    bool isChannelConfigInRange(const std::vector<DynamicsProcessing::ChannelConfig>& cfgs,
+                                const DynamicsProcessing::ChannelConfig& min,
+                                const DynamicsProcessing::ChannelConfig& max);
+    bool isEqBandConfigInRange(const std::vector<DynamicsProcessing::EqBandConfig>& cfgs,
+                               const DynamicsProcessing::EqBandConfig& min,
+                               const DynamicsProcessing::EqBandConfig& max);
+    bool isMbcBandConfigInRange(const std::vector<DynamicsProcessing::MbcBandConfig>& cfgs,
+                                const DynamicsProcessing::MbcBandConfig& min,
+                                const DynamicsProcessing::MbcBandConfig& max);
+    bool isLimiterConfigInRange(const std::vector<DynamicsProcessing::LimiterConfig>& cfgs,
+                                const DynamicsProcessing::LimiterConfig& min,
+                                const DynamicsProcessing::LimiterConfig& max);
+    bool isInputGainConfigInRange(const std::vector<DynamicsProcessing::InputGain>& cfgs,
+                                  const DynamicsProcessing::InputGain& min,
+                                  const DynamicsProcessing::InputGain& max);
 };
 
 }  // namespace aidl::android::hardware::audio::effect
