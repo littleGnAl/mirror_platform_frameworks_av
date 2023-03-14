@@ -16,6 +16,24 @@
       "message": "I\u0027m curious what makes this logged frequently?",
       "revId": "c27783685a7baa6eef9f641f2042769ca00cffe7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7674740_43826287",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-03-14T18:21:09Z",
+      "side": 1,
+      "message": "According to the Mediatek analysis:\n```\n[Issue analysis]\nC2 HAL has little work using for transforming information when video use passthrough and tunnel playback, which causes c2 HAL has to create dummy work and the below log will be printed always\nALOGD(\"onWorkDone: frameIndex not found (%llu); ignored\", (unsigned long long)frameIndex);\n```",
+      "parentUuid": "d6e4e5a9_5eac340d",
+      "revId": "c27783685a7baa6eef9f641f2042769ca00cffe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
