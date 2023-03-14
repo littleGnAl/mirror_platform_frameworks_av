@@ -122,9 +122,6 @@ class DynamicsProcessingContext final : public EffectContext {
     inline bool validateCutoffFrequency(float freq);
     inline bool validateChannel(int ch, int maxCh) { return ch >= 0 && ch < maxCh; }
     inline bool validateBand(int band, int maxBand) { return band >= 0 && band < maxBand; }
-    inline bool validateTime(int time) { return time >= 0; }
-    inline bool validateRatio(int ratio) { return ratio >= 0; }
-    inline bool validateBandDb(int db) { return db <= 0; }
 };
 
 }  // namespace aidl::android::hardware::audio::effect

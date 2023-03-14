@@ -52,14 +52,22 @@ class DynamicsProcessingImpl final : public EffectImpl {
     std::string getEffectName() override { return kEffectName; }
 
   private:
-    static const DynamicsProcessing::EqBandConfig kEqBandConfigMin;
-    static const DynamicsProcessing::EqBandConfig kEqBandConfigMax;
-    static const Range::DynamicsProcessingRange kPreEqBandRange;
-    static const Range::DynamicsProcessingRange kPostEqBandRange;
-    static const Range kRange;
     std::shared_ptr<DynamicsProcessingContext> mContext;
     ndk::ScopedAStatus getParameterDynamicsProcessing(const DynamicsProcessing::Tag& tag,
                                                       Parameter::Specific* specific);
+
+    int locateMinMaxForTag(DynamicsProcessing::Tag tag);
+    bool isParamInRange(const Parameter::Specific& specific);
+    bool isEngineConfigValid(const DynamicsProcessing::EngineArchitecture& cfg,
+                             const DynamicsProcessing::EngineArchitecture& min,
+                             const DynamicsProcessing::EngineArchitecture& max);
+    bool isChannelConfigValid(const std::vector<DynamicsProcessing::ChannelConfig>& cfgs,
+                              const DynamicsProcessing::ChannelConfig& min,
+                              const DynamicsProcessing::ChannelConfig& max);
+    template <typename T>
+    bool isInLimits(const T& value, const T& low, const T& high) {
+        return !(value < low) && (value < high);
+    }
 };
 
 }  // namespace aidl::android::hardware::audio::effect

@@ -416,8 +416,7 @@ bool DynamicsProcessingContext::validateStageEnablement(
 
 bool DynamicsProcessingContext::validateEngineConfig(
         const DynamicsProcessing::EngineArchitecture& engine) {
-    return engine.preferredProcessingDurationMs >= 0 &&
-           validateStageEnablement(engine.preEqStage) &&
+    return validateStageEnablement(engine.preEqStage) &&
            validateStageEnablement(engine.postEqStage) && validateStageEnablement(engine.mbcStage);
 }
 
@@ -428,18 +427,12 @@ bool DynamicsProcessingContext::validateEqBandConfig(const DynamicsProcessing::E
 
 bool DynamicsProcessingContext::validateMbcBandConfig(const DynamicsProcessing::MbcBandConfig& band,
                                                       int maxChannel, int maxBand) {
-    return validateChannel(band.channel, maxChannel) && validateBand(band.band, maxBand) &&
-           validateTime(band.attackTimeMs) && validateTime(band.releaseTimeMs) &&
-           validateRatio(band.ratio) && validateBandDb(band.thresholdDb) &&
-           validateBandDb(band.kneeWidthDb) && validateBandDb(band.noiseGateThresholdDb) &&
-           validateRatio(band.expanderRatio);
+    return validateChannel(band.channel, maxChannel) && validateBand(band.band, maxBand);
 }
 
 bool DynamicsProcessingContext::validateLimiterConfig(
         const DynamicsProcessing::LimiterConfig& limiter, int maxChannel) {
-    return validateChannel(limiter.channel, maxChannel) && validateTime(limiter.attackTimeMs) &&
-           validateTime(limiter.releaseTimeMs) && validateRatio(limiter.ratio) &&
-           validateBandDb(limiter.thresholdDb);
+    return validateChannel(limiter.channel, maxChannel);
 }
 
 bool DynamicsProcessingContext::validateInputGainConfig(const DynamicsProcessing::InputGain& gain,
