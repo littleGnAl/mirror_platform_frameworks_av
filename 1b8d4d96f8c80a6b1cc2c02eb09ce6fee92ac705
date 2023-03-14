@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f89f7dc_3cefd287",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-03-14T21:27:16Z",
+      "side": 1,
+      "message": "Is this because we only have one buffer for now?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 28
+      },
+      "revId": "1b8d4d96f8c80a6b1cc2c02eb09ce6fee92ac705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7c2fd6_3fa1dac4",
+        "filename": "media/codec2/sfplugin/PipelineWatcher.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-03-14T21:27:16Z",
+      "side": 1,
+      "message": "This only means that the output is full. But the component may be able to consume more input. So doen\u0027t that mean pipeline as a whole has more room?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 80
+      },
+      "revId": "1b8d4d96f8c80a6b1cc2c02eb09ce6fee92ac705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
