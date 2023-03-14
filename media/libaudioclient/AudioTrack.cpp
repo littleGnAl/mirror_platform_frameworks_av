@@ -878,8 +878,7 @@ status_t AudioTrack::start()
         if (status == DEAD_OBJECT) {
             flags |= CBLK_INVALID;
         }
-    }
-    if (flags & CBLK_INVALID) {
+    } else {
         status = restoreTrack_l("start");
     }
 
