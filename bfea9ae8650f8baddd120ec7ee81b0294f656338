@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90d8aad_6c1ba424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993856
+      },
+      "writtenOn": "2023-03-14T04:41:16Z",
+      "side": 1,
+      "message": "yes it can be reproduce with the loop-test.sh script attached in the bug, you can have a try",
+      "parentUuid": "f7abcb0d_7b399cf3",
+      "revId": "bfea9ae8650f8baddd120ec7ee81b0294f656338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "912c0d83_56ee13d0",
