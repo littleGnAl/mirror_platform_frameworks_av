@@ -16,6 +16,23 @@
       "message": "Hi Andy, as discussed here we have this separate new patch. Could you please help to review it? The changes are (should be) the same with the Audio part of patch 2471904. Thanks a lot.\n\nPrevious patch:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2471904",
       "revId": "537412fa2d7b4b10bfa7b992bc52397e0da74076",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3af962e_31dc3a4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-15T15:56:12Z",
+      "side": 1,
+      "message": "Hi Andy, the test result looks ok but still not perfect. Anyway I am not able to check the result as an external developer. Could you please help with that? Thanks.",
+      "revId": "537412fa2d7b4b10bfa7b992bc52397e0da74076",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
