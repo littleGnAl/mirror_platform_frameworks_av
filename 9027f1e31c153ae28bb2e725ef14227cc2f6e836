@@ -51,6 +51,23 @@
       "message": "It seems the std::move() issues with module tuner had been fixed by Zijun Zhao some days before. So we only have to take care of audioflinger and libcameraservice.",
       "revId": "9027f1e31c153ae28bb2e725ef14227cc2f6e836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943baecd_69f8181a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-15T12:04:24Z",
+      "side": 1,
+      "message": "The changes have been split into separate patches for audioflinger/libcameraservice as below (uploaded just now):\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2489103\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2489104\n\nThe tuner part had been fixed by the patch below (by Zijun Zhao already):\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2468420\n\nSo we would abandon this patch. Thanks for your help.",
+      "revId": "9027f1e31c153ae28bb2e725ef14227cc2f6e836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
