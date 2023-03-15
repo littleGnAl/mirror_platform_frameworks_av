@@ -16,6 +16,24 @@
       "message": "Merged and test 1500 times with loop-test.sh script in 3 hours, no crash found.\nAlso will continue test the whole night to ensure it works.",
       "revId": "0adf01408f7affb6be1193431bc1d30a05ffad40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d48e8c_1b2118be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993856
+      },
+      "writtenOn": "2023-03-15T02:01:29Z",
+      "side": 1,
+      "message": "hi shunkai，no crash find after test with script in 20 hours loop more than 10000 times。",
+      "parentUuid": "b612ebc2_c7fdd53d",
+      "revId": "0adf01408f7affb6be1193431bc1d30a05ffad40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
