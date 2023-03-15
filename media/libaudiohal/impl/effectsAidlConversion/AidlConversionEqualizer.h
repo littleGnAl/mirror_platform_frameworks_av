@@ -22,24 +22,22 @@
 namespace android {
 namespace effect {
 
-class AidlConversionAgc1 : public EffectConversionHelperAidl {
+class AidlConversionEqualizer : public EffectConversionHelperAidl {
   public:
-    AidlConversionAgc1(std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
-                       int32_t sessionId, int32_t ioId,
-                       const ::aidl::android::hardware::audio::effect::Descriptor& desc)
+    AidlConversionEqualizer(
+            std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
+            int32_t sessionId, int32_t ioId,
+            const ::aidl::android::hardware::audio::effect::Descriptor& desc)
         : EffectConversionHelperAidl(effect, sessionId, ioId, desc) {}
-    ~AidlConversionAgc1() {}
+    ~AidlConversionEqualizer() {}
 
   private:
-    status_t setParameterLevel(utils::EffectParamReader& param);
-    status_t setParameterGain(utils::EffectParamReader& param);
-    status_t setParameterLimiterEnable(utils::EffectParamReader& param);
     status_t setParameter(utils::EffectParamReader& param) override;
-
-    status_t getParameterLevel(utils::EffectParamWriter& param);
-    status_t getParameterGain(utils::EffectParamWriter& param);
-    status_t getParameterLimiterEnable(utils::EffectParamWriter& param);
     status_t getParameter(utils::EffectParamWriter& param) override;
+    ConversionResult<::aidl::android::hardware::audio::effect::Parameter> getAidlParameter(
+            ::aidl::android::hardware::audio::effect::Equalizer::Tag tag);
+    ConversionResult<int32_t> getParameterPreset();
+    ConversionResult<std::string> getParameterPresetName(utils::EffectParamWriter& param);
 };
 
 }  // namespace effect

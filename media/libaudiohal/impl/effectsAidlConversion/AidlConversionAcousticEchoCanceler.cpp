@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <cstring>
 #include <optional>
-#define LOG_TAG "AidlConversionAec"
+#define LOG_TAG "AidlConversionAcousticEchoCanceler"
 //#define LOG_NDEBUG 0
 
 #include <error/expected_utils.h>
@@ -27,7 +27,7 @@
 
 #include <utils/Log.h>
 
-#include "AidlConversionAec.h"
+#include "AidlConversionAcousticEchoCanceler.h"
 
 namespace android {
 namespace effect {
@@ -41,7 +41,7 @@ using ::android::status_t;
 using utils::EffectParamReader;
 using utils::EffectParamWriter;
 
-status_t AidlConversionAec::setParameter(EffectParamReader& param) {
+status_t AidlConversionAcousticEchoCanceler::setParameter(EffectParamReader& param) {
     uint32_t type, value = 0;
     if (!param.validateParamValueSize(sizeof(uint32_t), sizeof(uint32_t)) ||
         OK != param.readFromParameter(&type) ||
@@ -78,7 +78,7 @@ status_t AidlConversionAec::setParameter(EffectParamReader& param) {
     return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
-status_t AidlConversionAec::getParameter(EffectParamWriter& param) {
+status_t AidlConversionAcousticEchoCanceler::getParameter(EffectParamWriter& param) {
     uint32_t type = 0;
     if (!param.validateParamValueSize(sizeof(uint32_t), sizeof(uint32_t)) ||
         OK != param.readFromParameter(&type)) {

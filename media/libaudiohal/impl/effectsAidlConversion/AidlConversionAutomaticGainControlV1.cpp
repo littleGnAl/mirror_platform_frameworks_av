@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <cstring>
 #include <optional>
-#define LOG_TAG "AidlConversionAgc1"
+#define LOG_TAG "AidlConversionAutomaticGainControlV1"
 //#define LOG_NDEBUG 0
 
 #include <error/expected_utils.h>
@@ -27,7 +27,7 @@
 
 #include <utils/Log.h>
 
-#include "AidlConversionAgc1.h"
+#include "AidlConversionAutomaticGainControlV1.h"
 
 namespace android {
 namespace effect {
@@ -41,7 +41,7 @@ using ::android::status_t;
 using utils::EffectParamReader;
 using utils::EffectParamWriter;
 
-status_t AidlConversionAgc1::setParameterLevel(EffectParamReader& param) {
+status_t AidlConversionAutomaticGainControlV1::setParameterLevel(EffectParamReader& param) {
     int16_t level;
     RETURN_STATUS_IF_ERROR(param.readFromValue(&level));
     Parameter aidlParam = MAKE_SPECIFIC_PARAMETER(AutomaticGainControlV1, automaticGainControlV1,
@@ -49,7 +49,7 @@ status_t AidlConversionAgc1::setParameterLevel(EffectParamReader& param) {
     return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
-status_t AidlConversionAgc1::setParameterGain(EffectParamReader& param) {
+status_t AidlConversionAutomaticGainControlV1::setParameterGain(EffectParamReader& param) {
     int16_t gain;
     RETURN_STATUS_IF_ERROR(param.readFromValue(&gain));
     Parameter aidlParam = MAKE_SPECIFIC_PARAMETER(AutomaticGainControlV1, automaticGainControlV1,
@@ -57,7 +57,7 @@ status_t AidlConversionAgc1::setParameterGain(EffectParamReader& param) {
     return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
-status_t AidlConversionAgc1::setParameterLimiterEnable(EffectParamReader& param) {
+status_t AidlConversionAutomaticGainControlV1::setParameterLimiterEnable(EffectParamReader& param) {
     bool enable;
     RETURN_STATUS_IF_ERROR(param.readFromValue(&enable));
     Parameter aidlParam = MAKE_SPECIFIC_PARAMETER(AutomaticGainControlV1, automaticGainControlV1,
@@ -65,7 +65,7 @@ status_t AidlConversionAgc1::setParameterLimiterEnable(EffectParamReader& param)
     return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
-status_t AidlConversionAgc1::setParameter(EffectParamReader& param) {
+status_t AidlConversionAutomaticGainControlV1::setParameter(EffectParamReader& param) {
     uint32_t type = 0;
     if (OK != param.readFromParameter(&type)) {
         ALOGE("%s invalid param %s", __func__, param.toString().c_str());
@@ -98,7 +98,7 @@ status_t AidlConversionAgc1::setParameter(EffectParamReader& param) {
     }
 }
 
-status_t AidlConversionAgc1::getParameterLevel(EffectParamWriter& param) {
+status_t AidlConversionAutomaticGainControlV1::getParameterLevel(EffectParamWriter& param) {
     Parameter::Id id = MAKE_SPECIFIC_PARAMETER_ID(AutomaticGainControlV1, automaticGainControlV1Tag,
                                                   AutomaticGainControlV1::targetPeakLevelDbFs);
     Parameter aidlParam;
@@ -109,7 +109,7 @@ status_t AidlConversionAgc1::getParameterLevel(EffectParamWriter& param) {
     return param.writeToValue(&level);
 }
 
-status_t AidlConversionAgc1::getParameterGain(EffectParamWriter& param) {
+status_t AidlConversionAutomaticGainControlV1::getParameterGain(EffectParamWriter& param) {
     Parameter::Id id = MAKE_SPECIFIC_PARAMETER_ID(AutomaticGainControlV1, automaticGainControlV1Tag,
                                                   AutomaticGainControlV1::maxCompressionGainDb);
     Parameter aidlParam;
@@ -120,7 +120,7 @@ status_t AidlConversionAgc1::getParameterGain(EffectParamWriter& param) {
     return param.writeToValue(&gain);
 }
 
-status_t AidlConversionAgc1::getParameterLimiterEnable(EffectParamWriter& param) {
+status_t AidlConversionAutomaticGainControlV1::getParameterLimiterEnable(EffectParamWriter& param) {
     Parameter::Id id = MAKE_SPECIFIC_PARAMETER_ID(AutomaticGainControlV1, automaticGainControlV1Tag,
                                                   AutomaticGainControlV1::enableLimiter);
     Parameter aidlParam;
@@ -131,7 +131,7 @@ status_t AidlConversionAgc1::getParameterLimiterEnable(EffectParamWriter& param)
     return param.writeToValue(&enable);
 }
 
-status_t AidlConversionAgc1::getParameter(EffectParamWriter& param) {
+status_t AidlConversionAutomaticGainControlV1::getParameter(EffectParamWriter& param) {
     uint32_t type = 0;
     if (OK != param.readFromParameter(&type)) {
         ALOGE("%s invalid param %s", __func__, param.toString().c_str());
