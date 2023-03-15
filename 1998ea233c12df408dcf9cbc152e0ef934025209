@@ -50,6 +50,46 @@
       "message": "LGTM but I don\u0027t want to approve unilaterally.",
       "revId": "1998ea233c12df408dcf9cbc152e0ef934025209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8007277_927a3566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-03-15T17:25:58Z",
+      "side": 1,
+      "message": "LGTM. one minor nit.",
+      "revId": "1998ea233c12df408dcf9cbc152e0ef934025209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5879747_66675f9c",
+        "filename": "services/camera/libcameraservice/tests/DistortionMapperTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-03-15T17:25:58Z",
+      "side": 1,
+      "message": "nit: can we simple remove this line as well as its usage on line 373?",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 358,
+        "endChar": 34
+      },
+      "revId": "1998ea233c12df408dcf9cbc152e0ef934025209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
