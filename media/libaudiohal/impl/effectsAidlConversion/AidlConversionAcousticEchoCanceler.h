@@ -22,13 +22,14 @@
 namespace android {
 namespace effect {
 
-class AidlConversionAec : public EffectConversionHelperAidl {
+class AidlConversionAcousticEchoCanceler : public EffectConversionHelperAidl {
   public:
-    AidlConversionAec(std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
-                      int32_t sessionId, int32_t ioId,
-                      const ::aidl::android::hardware::audio::effect::Descriptor& desc)
+    AidlConversionAcousticEchoCanceler(
+            std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
+            int32_t sessionId, int32_t ioId,
+            const ::aidl::android::hardware::audio::effect::Descriptor& desc)
         : EffectConversionHelperAidl(effect, sessionId, ioId, desc) {}
-    ~AidlConversionAec() {}
+    ~AidlConversionAcousticEchoCanceler() {}
 
   private:
     status_t setParameter(utils::EffectParamReader& param) override;

@@ -22,16 +22,23 @@
 namespace android {
 namespace effect {
 
-class AidlConversionAgc2 : public EffectConversionHelperAidl {
+class AidlConversionAutomaticGainControlV1 : public EffectConversionHelperAidl {
   public:
-    AidlConversionAgc2(std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
+    AidlConversionAutomaticGainControlV1(std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
                        int32_t sessionId, int32_t ioId,
                        const ::aidl::android::hardware::audio::effect::Descriptor& desc)
         : EffectConversionHelperAidl(effect, sessionId, ioId, desc) {}
-    ~AidlConversionAgc2() {}
+    ~AidlConversionAutomaticGainControlV1() {}
 
   private:
+    status_t setParameterLevel(utils::EffectParamReader& param);
+    status_t setParameterGain(utils::EffectParamReader& param);
+    status_t setParameterLimiterEnable(utils::EffectParamReader& param);
     status_t setParameter(utils::EffectParamReader& param) override;
+
+    status_t getParameterLevel(utils::EffectParamWriter& param);
+    status_t getParameterGain(utils::EffectParamWriter& param);
+    status_t getParameterLimiterEnable(utils::EffectParamWriter& param);
     status_t getParameter(utils::EffectParamWriter& param) override;
 };
 

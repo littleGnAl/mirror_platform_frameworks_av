@@ -46,7 +46,7 @@ using ::android::status_t;
 using utils::EffectParamReader;
 using utils::EffectParamWriter;
 
-status_t AidlConversionDp::setParameter(EffectParamReader& param) {
+status_t AidlConversionDynamicsProcessing::setParameter(EffectParamReader& param) {
     uint32_t type = 0;
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&type));
     Parameter aidlParam;
@@ -129,7 +129,7 @@ status_t AidlConversionDp::setParameter(EffectParamReader& param) {
     return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
-status_t AidlConversionDp::getParameter(EffectParamWriter& param) {
+status_t AidlConversionDynamicsProcessing::getParameter(EffectParamWriter& param) {
     uint32_t type = 0;
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&type));
     Parameter aidlParam;
@@ -221,7 +221,7 @@ status_t AidlConversionDp::getParameter(EffectParamWriter& param) {
 }
 
 ConversionResult<DynamicsProcessing::ChannelConfig>
-AidlConversionDp::readChannelConfigFromParam(EffectParamReader& param) {
+AidlConversionDynamicsProcessing::readChannelConfigFromParam(EffectParamReader& param) {
     int32_t enable, channel;
     RETURN_IF_ERROR(param.readFromParameter(&channel));
     RETURN_IF_ERROR(param.readFromValue(&enable));
@@ -231,7 +231,7 @@ AidlConversionDp::readChannelConfigFromParam(EffectParamReader& param) {
 }
 
 ConversionResult<DynamicsProcessing::EqBandConfig>
-AidlConversionDp::readEqBandConfigFromParam(EffectParamReader& param) {
+AidlConversionDynamicsProcessing::readEqBandConfigFromParam(EffectParamReader& param) {
     DynamicsProcessing::EqBandConfig config;
     int32_t enable;
     RETURN_IF_ERROR(param.readFromParameter(&config.channel));
@@ -245,7 +245,7 @@ AidlConversionDp::readEqBandConfigFromParam(EffectParamReader& param) {
 }
 
 ConversionResult<DynamicsProcessing::MbcBandConfig>
-AidlConversionDp::readMbcBandConfigFromParam(EffectParamReader& param) {
+AidlConversionDynamicsProcessing::readMbcBandConfigFromParam(EffectParamReader& param) {
     DynamicsProcessing::MbcBandConfig config;
     int32_t enable;
     RETURN_IF_ERROR(param.readFromParameter(&config.channel));
@@ -267,7 +267,7 @@ AidlConversionDp::readMbcBandConfigFromParam(EffectParamReader& param) {
 }
 
 ConversionResult<DynamicsProcessing::LimiterConfig>
-AidlConversionDp::readLimiterConfigFromParam(EffectParamReader& param) {
+AidlConversionDynamicsProcessing::readLimiterConfigFromParam(EffectParamReader& param) {
     DynamicsProcessing::LimiterConfig config;
     int32_t enable, inUse;
     RETURN_IF_ERROR(param.readFromParameter(&config.channel));
@@ -285,7 +285,7 @@ AidlConversionDp::readLimiterConfigFromParam(EffectParamReader& param) {
 }
 
 ConversionResult<DynamicsProcessing::EngineArchitecture>
-AidlConversionDp::readEngineArchitectureFromParam(EffectParamReader& param) {
+AidlConversionDynamicsProcessing::readEngineArchitectureFromParam(EffectParamReader& param) {
     DynamicsProcessing::EngineArchitecture engine;
     int32_t variant, preEqInUse, mbcInUse, postEqInUse, limiterInUse;
     RETURN_IF_ERROR(param.readFromValue(&variant));
@@ -307,7 +307,7 @@ AidlConversionDp::readEngineArchitectureFromParam(EffectParamReader& param) {
     return engine;
 }
 
-status_t AidlConversionDp::getChannelConfig(DynamicsProcessing::Tag tag, EffectParamWriter& param) {
+status_t AidlConversionDynamicsProcessing::getChannelConfig(DynamicsProcessing::Tag tag, EffectParamWriter& param) {
     int32_t channel;
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&channel));
 
@@ -361,7 +361,7 @@ status_t AidlConversionDp::getChannelConfig(DynamicsProcessing::Tag tag, EffectP
     return BAD_VALUE;
 }
 
-status_t AidlConversionDp::getEqBandConfig(DynamicsProcessing::Tag tag, EffectParamWriter& param) {
+status_t AidlConversionDynamicsProcessing::getEqBandConfig(DynamicsProcessing::Tag tag, EffectParamWriter& param) {
     int32_t channel, band;
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&channel));
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&band));
@@ -396,7 +396,7 @@ status_t AidlConversionDp::getEqBandConfig(DynamicsProcessing::Tag tag, EffectPa
     return BAD_VALUE;
 }
 
-status_t AidlConversionDp::getMbcBandConfig(EffectParamWriter& param) {
+status_t AidlConversionDynamicsProcessing::getMbcBandConfig(EffectParamWriter& param) {
     int32_t channel, band;
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&channel));
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&band));
@@ -431,7 +431,7 @@ status_t AidlConversionDp::getMbcBandConfig(EffectParamWriter& param) {
     return BAD_VALUE;
 }
 
-status_t AidlConversionDp::getLimiterConfig(EffectParamWriter& param) {
+status_t AidlConversionDynamicsProcessing::getLimiterConfig(EffectParamWriter& param) {
     int32_t channel;
     RETURN_STATUS_IF_ERROR(param.readFromParameter(&channel));
     Parameter aidlParam;

@@ -22,13 +22,14 @@
 namespace android {
 namespace effect {
 
-class AidlConversionDp : public EffectConversionHelperAidl {
+class AidlConversionDynamicsProcessing : public EffectConversionHelperAidl {
   public:
-    AidlConversionDp(std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
-                     int32_t sessionId, int32_t ioId,
-                     const ::aidl::android::hardware::audio::effect::Descriptor& desc)
+    AidlConversionDynamicsProcessing(
+            std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
+            int32_t sessionId, int32_t ioId,
+            const ::aidl::android::hardware::audio::effect::Descriptor& desc)
         : EffectConversionHelperAidl(effect, sessionId, ioId, desc) {}
-    ~AidlConversionDp() {}
+    ~AidlConversionDynamicsProcessing() {}
 
   private:
     aidl::android::hardware::audio::effect::DynamicsProcessing::EngineArchitecture mEngine;

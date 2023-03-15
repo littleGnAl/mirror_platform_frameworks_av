@@ -27,7 +27,7 @@
 
 #include <utils/Log.h>
 
-#include "AidlConversionEq.h"
+#include "AidlConversionEqualizer.h"
 
 namespace android {
 namespace effect {
@@ -43,7 +43,7 @@ using ::android::status_t;
 using utils::EffectParamReader;
 using utils::EffectParamWriter;
 
-status_t AidlConversionEq::setParameter(EffectParamReader& param) {
+status_t AidlConversionEqualizer::setParameter(EffectParamReader& param) {
     uint32_t type;
     if (OK != param.readFromParameter(&type)) {
         ALOGE("%s invalid param %s", __func__, param.toString().c_str());
@@ -112,20 +112,20 @@ status_t AidlConversionEq::setParameter(EffectParamReader& param) {
     return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
-ConversionResult<Parameter> AidlConversionEq::getAidlParameter(Equalizer::Tag tag) {
+ConversionResult<Parameter> AidlConversionEqualizer::getAidlParameter(Equalizer::Tag tag) {
     Parameter aidlParam;
     Parameter::Id id = MAKE_SPECIFIC_PARAMETER_ID(Equalizer, equalizerTag, tag);
     RETURN_IF_ERROR(statusTFromBinderStatus(mEffect->getParameter(id, &aidlParam)));
     return aidlParam;
 }
 
-ConversionResult<int32_t> AidlConversionEq::getParameterPreset() {
+ConversionResult<int32_t> AidlConversionEqualizer::getParameterPreset() {
     Parameter aidlParam = VALUE_OR_RETURN_STATUS(getAidlParameter(Equalizer::preset));
     return VALUE_OR_RETURN_STATUS(GET_PARAMETER_SPECIFIC_FIELD(aidlParam, Equalizer, equalizer,
                                                                Equalizer::preset, int32_t));
 }
 
-ConversionResult<std::string> AidlConversionEq::getParameterPresetName(
+ConversionResult<std::string> AidlConversionEqualizer::getParameterPresetName(
         EffectParamWriter& param) {
     int32_t presetIdx;
     if (OK != param.readFromParameter(&presetIdx)) {
@@ -143,7 +143,7 @@ ConversionResult<std::string> AidlConversionEq::getParameterPresetName(
     return unexpected(BAD_VALUE);
 }
 
-status_t AidlConversionEq::getParameter(EffectParamWriter& param) {
+status_t AidlConversionEqualizer::getParameter(EffectParamWriter& param) {
     uint32_t type = 0;
     if (OK != param.readFromParameter(&type)) {
         param.setStatus(BAD_VALUE);

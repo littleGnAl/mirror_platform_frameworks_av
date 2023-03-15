@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <cstring>
 #include <optional>
-#define LOG_TAG "AidlConversionAgc2"
+#define LOG_TAG "AidlConversionAutomaticGainControlV2"
 //#define LOG_NDEBUG 0
 
 #include <error/expected_utils.h>
@@ -27,7 +27,7 @@
 
 #include <utils/Log.h>
 
-#include "AidlConversionAgc2.h"
+#include "AidlConversionAutomaticGainControlV2.h"
 
 namespace android {
 namespace effect {
@@ -41,7 +41,7 @@ using ::android::status_t;
 using utils::EffectParamReader;
 using utils::EffectParamWriter;
 
-status_t AidlConversionAgc2::setParameter(EffectParamReader& param) {
+status_t AidlConversionAutomaticGainControlV2::setParameter(EffectParamReader& param) {
     uint32_t type = 0, value = 0;
     if (!param.validateParamValueSize(sizeof(uint32_t), sizeof(uint32_t)) ||
         OK != param.readFromParameter(&type) || OK != param.readFromValue(&value)) {
@@ -78,7 +78,7 @@ status_t AidlConversionAgc2::setParameter(EffectParamReader& param) {
     return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
-status_t AidlConversionAgc2::getParameter(EffectParamWriter& param) {
+status_t AidlConversionAutomaticGainControlV2::getParameter(EffectParamWriter& param) {
     uint32_t type = 0, value = 0;
     if (!param.validateParamValueSize(sizeof(uint32_t), sizeof(uint32_t)) ||
         OK != param.readFromParameter(&type)) {
