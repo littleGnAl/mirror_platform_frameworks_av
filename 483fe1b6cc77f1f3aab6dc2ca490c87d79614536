@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d882b6ad_cf14fc27",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-16T17:54:51Z",
+      "side": 1,
+      "message": "Can we break this into 2 lines (more than 100 characters)?\n\nbool isHWEnc \u003d (attr \u0026 MediaCodecInfo::kFlagIsHardwareAccelerated) \u0026\u0026 \n               codecName.startsWith(\"c2.qti\");",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 113
+      },
+      "revId": "483fe1b6cc77f1f3aab6dc2ca490c87d79614536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
