@@ -52,6 +52,29 @@
       "parentUuid": "6a127b5f_4b60c9b8",
       "revId": "b577390a25b2c886962bfa90fb83313c55bfa46d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd62f915_219f8069",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-16T18:04:14Z",
+      "side": 1,
+      "message": "Do we still do this if setupAudioEncoder has failed in line#2191?",
+      "range": {
+        "startLine": 2196,
+        "startChar": 8,
+        "endLine": 2198,
+        "endChar": 39
+      },
+      "revId": "b577390a25b2c886962bfa90fb83313c55bfa46d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
