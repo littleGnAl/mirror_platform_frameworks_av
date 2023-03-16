@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffd73a3_9647d22c",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-16T18:12:09Z",
+      "side": 1,
+      "message": "- Looking at the implementation, is this still right \u003d\u003d\u003e \"or -1 if the fence has already been signaled or invalid index is called(\\todo or abandoned).\"\n\n- This line can be broken into 2 lines to avoid \u003e 100 characters per line",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 102
+      },
+      "revId": "c509687671ecb85771aa2b3a0f181ad9a3c3ec3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84293541_b9d072e3",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-16T18:12:09Z",
+      "side": 1,
+      "message": "nit: nh-\u003edata[i] \u003d nativefds[i];",
+      "range": {
+        "startLine": 255,
+        "startChar": 12,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "c509687671ecb85771aa2b3a0f181ad9a3c3ec3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
