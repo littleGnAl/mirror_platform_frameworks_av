@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8cd9e7_211235c7",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/CryptoPlugin.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-17T19:44:31Z",
+      "side": 1,
+      "message": "```\n            status \u003d Status::ERROR_DRM_SESSION_NOT_OPENED;\n```\nOr some other error code?",
+      "revId": "8d7d0e69ef5c2c316adbd6cffc5430f75bfe523e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
