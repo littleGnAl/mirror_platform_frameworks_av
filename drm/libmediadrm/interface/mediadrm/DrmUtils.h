@@ -251,13 +251,11 @@ status_t GetLogMessages(const sp<U> &obj, Vector<::V1_4::LogMessage> &logs) {
         LOG2BW("Cannot cast %s obj to %s plugin", U::descriptor, T::descriptor);
     }
 
-    ::V1_4::Status err{};
     std::vector<::V1_4::LogMessage> pluginLogs;
     ::V1_4::IDrmPlugin::getLogMessages_cb cb = [&](
             ::V1_4::Status status,
             hidl_vec<::V1_4::LogMessage> hLogs) {
         if (::V1_4::Status::OK != status) {
-            err = status;
             return;
         }
         pluginLogs.assign(hLogs.data(), hLogs.data() + hLogs.size());
