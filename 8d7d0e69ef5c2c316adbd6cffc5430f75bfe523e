@@ -16,6 +16,24 @@
       "message": "```\n            status \u003d Status::ERROR_DRM_SESSION_NOT_OPENED;\n```\nOr some other error code?",
       "revId": "8d7d0e69ef5c2c316adbd6cffc5430f75bfe523e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89964c05_84dc68d9",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/CryptoPlugin.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-03-17T20:31:20Z",
+      "side": 1,
+      "message": "The error code will fail a few cts tests that depends on initializing with an empty session. We should work on this in a separate bug.",
+      "parentUuid": "cf8cd9e7_211235c7",
+      "revId": "8d7d0e69ef5c2c316adbd6cffc5430f75bfe523e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
