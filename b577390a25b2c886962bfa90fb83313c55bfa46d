@@ -146,6 +146,30 @@
       },
       "revId": "b577390a25b2c886962bfa90fb83313c55bfa46d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe4a657_b45e8504",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-17T16:16:10Z",
+      "side": 1,
+      "message": "I am thinking whether its meaningful to error out (in case of setting up audio encoder failed already) here or wait until line#2201.\nI don\u0027t have a strong preference, but a question to think about.",
+      "parentUuid": "68da9f3e_7e3cb12a",
+      "range": {
+        "startLine": 2196,
+        "startChar": 8,
+        "endLine": 2198,
+        "endChar": 39
+      },
+      "revId": "b577390a25b2c886962bfa90fb83313c55bfa46d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
