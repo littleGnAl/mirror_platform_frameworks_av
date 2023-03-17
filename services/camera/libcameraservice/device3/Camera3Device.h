@@ -352,6 +352,8 @@ class Camera3Device :
     // Flag indicating is the current active stream configuration is constrained high speed.
     bool                       mIsConstrainedHighSpeedConfiguration;
 
+    static const bool          kBatchSizeLimitEnabled;
+
     /**** Scope for mLock ****/
 
     class HalInterface : public camera3::Camera3StreamBufferFreedListener,
@@ -643,6 +645,15 @@ class Camera3Device :
      * Must be called with mLock and mInterfaceLock held.
      */
     status_t initializeCommonLocked();
+
+    /**
+     * Update capture request list so that each batch size honors the batch_size_max report from
+     * the HAL. Set the batch size to output stream for buffer operations.
+     *
+     * Must be called with mLock held.
+     */
+    void applyMaxBatchSizeLocked(RequestList* requestList,
+                                 const sp<camera3::Camera3OutputStreamInterface>& stream);
 
     /**
      * Get the last request submitted to the hal by the request thread.
