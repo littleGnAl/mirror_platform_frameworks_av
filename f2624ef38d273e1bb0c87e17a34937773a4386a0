@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2588fc85_2e2ca222",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330244
+      },
+      "writtenOn": "2023-03-19T09:38:31Z",
+      "side": 1,
+      "message": "Is this \"clear feature\" behavior observed while testing with AFT (Android File Transfer) or any other specific applications?\nAs I know, MTP is not supported at Mac OS layer, thus it might be a specific behavior from application layer.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "f2624ef38d273e1bb0c87e17a34937773a4386a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
