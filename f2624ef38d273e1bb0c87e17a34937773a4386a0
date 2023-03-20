@@ -22,6 +22,30 @@
       },
       "revId": "f2624ef38d273e1bb0c87e17a34937773a4386a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee72573a_baf23b96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1901900
+      },
+      "writtenOn": "2023-03-20T18:15:13Z",
+      "side": 1,
+      "message": "Yes, it is based on application specific behavior.  I believe in the case we debugged this on, it was with the Samsung Smart Switch app.  However, there should be no limitation on if the application issues a clear ep halt or not.  Normally, hosts can issue this at any time to ensure that the endpoint is back to the default state.  IMO, I don\u0027t believe the application is wrong in issuing the clear EP HALT.",
+      "parentUuid": "2588fc85_2e2ca222",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "f2624ef38d273e1bb0c87e17a34937773a4386a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
