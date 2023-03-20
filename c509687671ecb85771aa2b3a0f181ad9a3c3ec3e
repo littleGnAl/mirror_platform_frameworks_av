@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6aa56f_6238f4de",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-20T15:20:59Z",
+      "side": 1,
+      "message": "Updated comments",
+      "parentUuid": "0ffd73a3_9647d22c",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 102
+      },
+      "revId": "c509687671ecb85771aa2b3a0f181ad9a3c3ec3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84293541_b9d072e3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-16T18:12:09Z",
       "side": 1,
       "message": "nit: nh-\u003edata[i] \u003d nativefds[i];",
+      "range": {
+        "startLine": 255,
+        "startChar": 12,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "c509687671ecb85771aa2b3a0f181ad9a3c3ec3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e99052_a3ad2492",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-20T15:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84293541_b9d072e3",
       "range": {
         "startLine": 255,
         "startChar": 12,
