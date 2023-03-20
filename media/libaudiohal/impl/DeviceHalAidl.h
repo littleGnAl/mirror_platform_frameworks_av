@@ -21,6 +21,7 @@
 #include <vector>
 
 #include <aidl/android/hardware/audio/core/BpModule.h>
+#include <aidl/android/hardware/audio/core/sounddose/BpSoundDose.h>
 #include <android-base/thread_annotations.h>
 #include <media/audiohal/DeviceHalInterface.h>
 #include <media/audiohal/EffectHalInterface.h>
