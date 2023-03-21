@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b61b2d8_c5c46b30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993856
+      },
+      "writtenOn": "2023-03-21T06:05:27Z",
+      "side": 1,
+      "message": "Hi Eric, use Mutex::Autolock also can resolve the problem. I will try to explain it more clearly.\n\nProblem Description:\nWhen the recorder records in the background for a long time, and then a large application like Douyin or a browser is opened. When the camera is used to record a video, there is a chance that the camera will report an error:\n01-31 16:29:15.943 13396 13396 E CAM_VideoModule: Could not start media recorder.\n01-31 16:29:15.943 13396 13396 E CAM_VideoModule: java.lang.RuntimeException: start failed.\n01-31 16:29:15.943 13396 13396 E CAM_VideoModule: at android.media.MediaRecorder.start(Native Method)\n\nProblem Cause:\nWhen the recorder records in the background for a long time, due to memory reasons, AMS may perform operations such as caching and recycling.\nWhen recording a video with the camera, the recorder is initialized and tries to open the mic for recording. The underlying AudioFlinger will try to reuse the mic opened by the recorder for the camera.\nAudioFlinger will receive a notification from AMS through onUidStateChanged, knowing that the recorder app is already unstable and cannot reuse the mic, so it will close the mic. That\u0027s the reason why camera can\u0027t reuse recorder app\u0027s mic.\nAfter closing the mic, the recorder thread in medieserver immediately resumes from processAudioBuffer or obtainBuffer, and obtains the mic through AudioRecord::restoreRecord_l again.\nThen the camera calls the start function of mediaRecorder, and when it judges that initialization has failed before, it enters AudioRecord::restoreRecord_l again to obtain the mic.\nDue to the same reason, the creation fails again. AudioFlinger closes the mic, and the camera thread sleeps for 500ms in restoreRecord_l, while the recorder thread in medieserver resumes from processAudioBuffer or obtainBuffer and obtains the mic again.\n\nAfter 500ms sleep, the camera start to try to obtain mic again, and fail again due to the same reason, then sleep the next 500ms. AudioFlinger close mic again, and recorder thread resumes from processAudioBuffer or obtainBuffer immediately, and obtains the mic. \n\nAfter trying 3 times, the camera fails to restoreRecord_l and reports an error in the upper-level camera.\n\nSolution:\nAdd a mutex lock in restoreRecord_l to ensure that the foreground application can use the mic first.\nWhen the camera calls the start function of mediaRecorder and judges that initialization has failed before, it enters AudioRecord::restoreRecord_l again to obtain the mic, and the mutex lock is activated.\nDue to the same reason, the creation fails again, and AudioFlinger closes the mic. The camera thread sleeps for 500ms in restoreRecord_l, while the recorder thread immediately resumes from processAudioBuffer or obtainBuffer and tries to obtain the mic through restoreRecord_l. Since restoreRecord_l has been occupied by the camera, the recorder thread starts waiting for the camera to release the lock.\nAfter 500ms, the camera try to use the mic to creates a recorder again. Since the mic has been closed before, the camera successfully obtains the mic this time, and then exits restoreRecord_l and releases the lock to start normal video recording.\nAfter the camera releases the lock, the recorder thread ends the waiting on the lock and obtains the mic. Since AudioFlinger judges that the mic occupied by the camera can be reused, the recorder starts to reuse the camera\u0027s mic.",
+      "revId": "3131554e7a86f57c5955480552a6f43bdf1d2b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
