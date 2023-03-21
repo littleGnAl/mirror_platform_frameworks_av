@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d0377b2_2d974081",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-21T15:59:16Z",
+      "side": 1,
+      "message": "I think this one is not addressed:\n \n1. Looking at the implementation, is this still right \u003d\u003d\u003e \"or -1 if the fence has already been signaled or invalid index is called(\\todo or abandoned).\"\n\n2. This line can be broken into 2 lines to avoid \u003e 100 characters per line",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 102
+      },
+      "revId": "49577606393068b4bb7b3faaf71ba04819ac467b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
