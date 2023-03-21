@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20f5f15_c73ebede",
+        "filename": "media/codec2/components/cmds/codec2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-21T11:07:38Z",
+      "side": 1,
+      "message": "If there is the error we would output the error message and stop further actions which could be meaningless.",
+      "parentUuid": "432ad445_ee657272",
+      "range": {
+        "startLine": 264,
+        "startChar": 23,
+        "endLine": 264,
+        "endChar": 26
+      },
+      "revId": "5e69e4152f1e1f21213e5c988d3fb7a4180c1740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2761bfb_5c704ee6",
@@ -88,6 +112,30 @@
       "writtenOn": "2023-03-21T02:50:40Z",
       "side": 1,
       "message": "feels like there\u0027s an opportunity to recognize whether the queueBuffer()\nfailed (err !\u003d ok)  and do something about it.",
+      "range": {
+        "startLine": 276,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 27
+      },
+      "revId": "5e69e4152f1e1f21213e5c988d3fb7a4180c1740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b3eb3f_03f5e30d",
+        "filename": "media/codec2/components/cmds/codec2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-21T11:07:38Z",
+      "side": 1,
+      "message": "We will take the opportunity to recognize whether the queueBuffer() fails and print the error message.",
+      "parentUuid": "e2761bfb_5c704ee6",
       "range": {
         "startLine": 276,
         "startChar": 15,
@@ -121,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8a1d2a_03831d37",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-21T11:07:38Z",
+      "side": 1,
+      "message": "That was a mistake. We will check codecConfig and skip info push back if necessary.",
+      "parentUuid": "208ef2f9_0a10a154",
+      "range": {
+        "startLine": 965,
+        "startChar": 15,
+        "endLine": 965,
+        "endChar": 26
+      },
+      "revId": "5e69e4152f1e1f21213e5c988d3fb7a4180c1740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd80310c_8ef6eeb3",
@@ -144,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "815d627b_a412c45e",
+        "filename": "media/module/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-21T11:07:38Z",
+      "side": 1,
+      "message": "Yes we should check it.",
+      "parentUuid": "cd80310c_8ef6eeb3",
+      "range": {
+        "startLine": 336,
+        "startChar": 7,
+        "endLine": 336,
+        "endChar": 24
+      },
+      "revId": "5e69e4152f1e1f21213e5c988d3fb7a4180c1740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8afaade6_48d33fe7",
@@ -157,6 +253,30 @@
       "writtenOn": "2023-03-21T02:50:40Z",
       "side": 1,
       "message": "doesn\u0027t feel correct to add this just so that it\u0027s used somewhere.",
+      "range": {
+        "startLine": 351,
+        "startChar": 13,
+        "endLine": 351,
+        "endChar": 22
+      },
+      "revId": "5e69e4152f1e1f21213e5c988d3fb7a4180c1740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72736e91_6c43b055",
+        "filename": "media/module/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-21T11:07:38Z",
+      "side": 1,
+      "message": "We use assert for the status.",
+      "parentUuid": "8afaade6_48d33fe7",
       "range": {
         "startLine": 351,
         "startChar": 13,
