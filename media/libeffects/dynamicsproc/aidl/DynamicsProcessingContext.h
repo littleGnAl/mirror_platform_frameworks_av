@@ -112,8 +112,12 @@ class DynamicsProcessingContext final : public EffectContext {
 
     bool validateStageEnablement(const DynamicsProcessing::StageEnablement& enablement);
     bool validateEngineConfig(const DynamicsProcessing::EngineArchitecture& engine);
+    bool validateEqBandConfig(const std::vector<DynamicsProcessing::EqBandConfig>& bands,
+                              int maxChannel, int maxBand);
     bool validateEqBandConfig(const DynamicsProcessing::EqBandConfig& band, int maxChannel,
                               int maxBand);
+    bool validateMbcBandConfig(const std::vector<DynamicsProcessing::MbcBandConfig>& bands,
+                               int maxChannel, int maxBand);
     bool validateMbcBandConfig(const DynamicsProcessing::MbcBandConfig& band, int maxChannel,
                                int maxBand);
     bool validateLimiterConfig(const DynamicsProcessing::LimiterConfig& limiter, int maxChannel);
