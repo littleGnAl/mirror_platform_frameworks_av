@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c55e5ab_a21ab95d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993856
+      },
+      "writtenOn": "2023-03-22T03:22:05Z",
+      "side": 1,
+      "message": "In addition, our testers use the command bellow to test VTS every week:\n./vts-tradefed run commandAndExit vts --logcat-on-failure --bugreport-on-failure\nand change the bug repeat times from Occasional to Sometimes.",
+      "parentUuid": "a73e563d_9a90ffec",
+      "revId": "bfea9ae8650f8baddd120ec7ee81b0294f656338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "912c0d83_56ee13d0",
