@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73e563d_9a90ffec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993856
+      },
+      "writtenOn": "2023-03-22T02:39:17Z",
+      "side": 1,
+      "message": "Hi Shunkai，everytime the android.hardware.audio.service crashed，the system will reboot it and reboot audioserver process at the same time. You can find the audioserver process pid is changed in elog.1 and elog.2 attached in the bug，so the test script needn\u0027t to reboot audioserver. Also you can have a test that when android.hardware.audio.service is killed manually， both android.hardware.audio.service and audioserver will reboot automaticly.\n\nOur testers run CTS/VTS cases every week. During the running of the VTS test suite, our testers have reported this issue multiple times. As it was an intermittent problem, in order to reproduce the testers\u0027 observation, the script was written to conduct stress testing and reproduce the testers\u0027 problem.\n\nI do not have the account to access the comment you give out. \nThe crash is not from the test script , but is a real exist problem from VTS. I agree that the crash will almost not happend if user run their music apps with effect, as users do not have the opportunity to frequently create and release effects through the app，so the problem almost will not happen in real world.\n\nThe carsh maybe only comes from the vts test. So do we need to fix the crash from vts test?",
+      "parentUuid": "b9a29b99_b9681dda",
+      "revId": "bfea9ae8650f8baddd120ec7ee81b0294f656338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "912c0d83_56ee13d0",
