@@ -282,7 +282,7 @@ status_t GetLogMessages(const sp<U> &obj, Vector<::V1_4::LogMessage> &logs) {
               });
 
     logs.appendVector(allLogs);
-    return toStatusT(err);
+    return OK;
 }
 
 std::string GetExceptionMessage(const DrmStatus & err, const char *defaultMsg,
