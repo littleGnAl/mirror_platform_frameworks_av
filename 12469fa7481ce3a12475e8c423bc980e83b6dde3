@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5955b989_2b18c2ba",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "Just to confirm: This function can return list of -1 in some cases right?",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fc7f2b_26980734",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "Just confirming - Does native_handle_create fails if nativefds.size() is 0?",
+      "range": {
+        "startLine": 248,
+        "startChar": 51,
+        "endLine": 248,
+        "endChar": 67
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92280a13_ab89922a",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "nit: since its a constructor, I don\u0027t think this is necessary.",
+      "range": {
+        "startLine": 265,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 28
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac64171_65219987",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "nit: This can be const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 271,
+        "startChar": 18,
+        "endLine": 271,
+        "endChar": 35
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84860248_41d6cd56",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "nit: since its a constructor, I don\u0027t think this is necessary.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 28
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f87e31d_32ede8fb",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "this can be changed to\n} else if (!p-\u003evalid()) {",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 31
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c392c6e_27c6a971",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "nit: const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 328,
+        "startChar": 51,
+        "endLine": 328,
+        "endChar": 67
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd81128d_f86a50d7",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \u003e 0 ?",
+      "range": {
+        "startLine": 330,
+        "startChar": 24,
+        "endLine": 330,
+        "endChar": 26
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a244ebd5_37488e0a",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "this can be changed to\n} else if (!p-\u003evalid()) {",
+      "range": {
+        "startLine": 337,
+        "startChar": 8,
+        "endLine": 338,
+        "endChar": 31
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b798387_da616f07",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 1,
+      "message": "nit: const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

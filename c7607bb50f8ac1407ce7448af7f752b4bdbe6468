@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f3a33d_f8aa605b",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-23T16:05:25Z",
+      "side": 0,
+      "message": "Don\u0027t we have to check for this condition anymore?\nI think we should still do something like:\nif (!nh || nh-\u003enumFds \u003c 1 || nh-\u003enumInts \u003c 1) {",
+      "range": {
+        "startLine": 241,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 9
+      },
+      "revId": "c7607bb50f8ac1407ce7448af7f752b4bdbe6468",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
