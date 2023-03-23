@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9238924d_fd18402f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1965242
+      },
+      "writtenOn": "2023-03-23T09:17:45Z",
+      "side": 1,
+      "message": "Hi,\nThis patch make oneway call become true oneway call. It makes no side effect. Please help review, thks.",
+      "parentUuid": "db50dd2f_3df2c455",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74827f0b_70bf2235",
         "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
         "patchSetId": 2
