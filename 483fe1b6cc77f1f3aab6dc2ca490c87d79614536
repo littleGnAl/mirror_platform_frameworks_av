@@ -22,6 +22,30 @@
       },
       "revId": "483fe1b6cc77f1f3aab6dc2ca490c87d79614536",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54300f8d_8a0e2bb8",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1981492
+      },
+      "writtenOn": "2023-03-23T04:14:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d882b6ad_cf14fc27",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 113
+      },
+      "revId": "483fe1b6cc77f1f3aab6dc2ca490c87d79614536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
