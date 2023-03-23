@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2bcdad2_0506d60c",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-23T22:41:42Z",
+      "side": 1,
+      "message": "Sorry I meant \"we can NOT use generated parcelable comparison operators\"",
+      "parentUuid": "b7a560a7_0c59b703",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dfcacf6_3fc4d7c2",
         "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
         "patchSetId": 5
