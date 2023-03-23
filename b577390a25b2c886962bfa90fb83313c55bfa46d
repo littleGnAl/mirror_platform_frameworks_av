@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65919d6f_b04a8878",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2181,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-23T18:23:58Z",
+      "side": 1,
+      "message": "I don\u0027t agree that the concern is addressed. I would like to see refactoring of setupVideoEncoder so that `this` is not accessed concurrently.",
+      "parentUuid": "5a45741f_ac5a388a",
+      "revId": "b577390a25b2c886962bfa90fb83313c55bfa46d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd62f915_219f8069",
         "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
         "patchSetId": 3
