@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7a560a7_0c59b703",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-23T22:40:08Z",
+      "side": 1,
+      "message": "I\u0027m afraid we can use generated parcelable comparison operators for some structures directly, take the ChannelConfig as example:\n```\n    parcelable ChannelConfig {\n        int channel;\n        boolean enable;\n    }\n```\n\nIf we have:\n```\nmin \u003d {.channel \u003d 0, .enable \u003d false};\nmax \u003d {.channel \u003d 5, .enable \u003d false};\ntarget \u003d {.channel \u003d 3, .enable \u003d true}; // should be out of range because `enable` field should not exceed max (false).\n```\n\nWhat we want with min/max is: the channel ID valid range is [0, 5] and the enable field valid range is [false, false], but in this case target will be in range of [min, max] with generated parcelable comparison, because the std::tie comparison will follow the lexicographical order and just skip the `.enable` field.\nLet me know if this make sense.",
+      "parentUuid": "cdf04a37_d000e8bb",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dfcacf6_3fc4d7c2",
         "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
         "patchSetId": 5
@@ -90,6 +114,46 @@
         "endLine": 439,
         "endChar": 1
       },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e066819_871175ec",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-23T22:40:08Z",
+      "side": 1,
+      "message": "If we put the range check inside `setLimiter`, we need to check the return code here. Same for other setters.",
+      "range": {
+        "startLine": 535,
+        "startChar": 12,
+        "endLine": 535,
+        "endChar": 26
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7210d2_99d6c2b4",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-23T22:40:08Z",
+      "side": 1,
+      "message": "remove the empty line, same for other files",
       "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
