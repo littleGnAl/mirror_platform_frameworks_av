@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdf04a37_d000e8bb",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-23T19:15:26Z",
+      "side": 1,
+      "message": "Sorry, I probably got the definition of the lexicographical order wrong. If we consider `124 \u003c 134`, that\u0027s because `1 \u003c 1 \u003d\u003d f, 2 \u003c 3 \u003d\u003d t` so it\u0027s a logical OR operation, not AND. But I think we can still use generated comparators:\n\n```\n...\n    (low.f1 \u003c\u003d s.f1 \u0026\u0026 low.f2 \u003c\u003d s.f2) \u0026\u0026 (s.f1 \u003c\u003d f1.high \u0026\u0026 f2 \u003c\u003d f2.high)\n\u003c\u003d\u003e !(!(low.f1 \u003c\u003d s.f1 \u0026\u0026 low.f2 \u003c\u003d s.f2) || !(s.f1 \u003c\u003d f1.high \u0026\u0026 f2 \u003c\u003d f2.high))\n\u003c\u003d\u003e !((low.f1 \u003e s.f1 || low.f2 \u003e s.f2) || (s.f1 \u003e f1.high || f2 \u003e f2.high))\n\u003c\u003d\u003e !(low \u003e s || s \u003e high)\n```\n\nThus, in this case, it should be `if (min \u003e cfg || cfg \u003e max) return false`",
+      "parentUuid": "78a2ac06_76f490b5",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dfcacf6_3fc4d7c2",
         "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
         "patchSetId": 5
