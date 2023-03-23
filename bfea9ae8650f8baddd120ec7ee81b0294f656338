@@ -160,6 +160,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da1169b_ed3651c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993856
+      },
+      "writtenOn": "2023-03-23T02:18:45Z",
+      "side": 1,
+      "message": "Seems stop audiosever do not work, still crashed. The test scrip with stop audioserver attached in the bug also.\nIt has been previously analyzed that the cause of the crash was due to the VTS effect case, which a large number of effects were created and released in a short period of time via the HIDL interface.",
+      "parentUuid": "68cb4a56_d79fa07b",
+      "revId": "bfea9ae8650f8baddd120ec7ee81b0294f656338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "912c0d83_56ee13d0",
