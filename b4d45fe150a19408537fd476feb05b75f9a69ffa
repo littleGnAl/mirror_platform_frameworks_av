@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00b9a65_e3c3e924",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-24T19:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "984c25bd_06230a2e",
+      "range": {
+        "startLine": 68,
+        "startChar": 54,
+        "endLine": 68,
+        "endChar": 72
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35371c82_b168cad9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-24T16:28:58Z",
       "side": 1,
       "message": "this is only valid during the enumeration phase before the sub effects are known.\nSee effectProxy.cpp:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/proxy/EffectProxy.cpp;l\u003d33?q\u003dEffectProxy.cpp",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "535e04d5_97411bcb",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-24T19:07:25Z",
+      "side": 1,
+      "message": "Updated with the actual active effect descriptor if we have one",
+      "parentUuid": "35371c82_b168cad9",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5beb11_5ed16b3b",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-24T19:07:25Z",
+      "side": 1,
+      "message": "right, thanks!",
+      "parentUuid": "e81c9cb0_8ba3d8c5",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 18
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e253583_88c4f9da",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0d1b4e_1e2c159f",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-24T19:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e253583_88c4f9da",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "405cc98b_a79ea305",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-03-24T16:28:58Z",
       "side": 1,
       "message": "setOffloadParam() ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbc4464_4f085c94",
+        "filename": "media/libaudiohal/impl/EffectProxy.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-24T19:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "405cc98b_a79ea305",
       "range": {
         "startLine": 73,
         "startChar": 7,
