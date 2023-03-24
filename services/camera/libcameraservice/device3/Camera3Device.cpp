@@ -2059,6 +2059,7 @@ sp<Camera3Device::CaptureRequest> Camera3Device::createCaptureRequest(
 
     sp<CaptureRequest> newRequest = new CaptureRequest();
     newRequest->mSettingsList = request;
+    status_t res;
 
     camera_metadata_entry_t inputStreams =
             newRequest->mSettingsList.begin()->metadata.find(ANDROID_REQUEST_INPUT_STREAMS);
@@ -2071,9 +2072,18 @@ sp<Camera3Device::CaptureRequest> Camera3Device::createCaptureRequest(
         }
 
         if (mInputStream->isConfiguring()) {
-            SET_ERR_L("%s: input stream %d is not configured!",
-                    __FUNCTION__, mInputStream->getId());
-            return NULL;
+            bool streamReConfigured = false;
+            res = mInputStream->finishConfiguration(&streamReConfigured);
+            if (res != OK) {
+                CLOGE("Can't finish configuring input stream %d: %s (%d)",
+                        mInputStream->getId(), strerror(-res), res);
+                cancelStreamsConfigurationLocked();
+                return NULL;
+            }
+
+            if (streamReConfigured) {
+                mInterface->onStreamReConfigured(mInputStream->getId());
+            }
         }
         // Check if stream prepare is blocking requests.
         if (mInputStream->isBlockedByPrepare()) {
@@ -2114,10 +2124,20 @@ sp<Camera3Device::CaptureRequest> Camera3Device::createCaptureRequest(
         }
 
         if (stream->isConfiguring()) {
-            SET_ERR_L("%s: stream %d is not configured!", __FUNCTION__, stream->getId());
-            return NULL;
+            bool streamReConfigured = false;
+            res = stream->finishConfiguration(&streamReConfigured);
+            if (res != OK) {
+                CLOGE("Can't finish configuring output stream %d: %s (%d)",
+                        stream->getId(), strerror(-res), res);
+                cancelStreamsConfigurationLocked();
+                return NULL;
+            }
+
+            if (streamReConfigured) {
+                mInterface->onStreamReConfigured(stream->getId());
+            }
         }
-        // Check if stream prepare is blocking requests.
+
         if (stream->isBlockedByPrepare()) {
             CLOGE("Request references an output stream that's being prepared!");
             return NULL;
@@ -2442,47 +2462,6 @@ status_t Camera3Device::configureStreamsLocked(int operatingMode,
         SET_ERR_L("Unable to configure streams with HAL: %s (%d)",
                 strerror(-res), res);
         return res;
-    }
-
-    // Finish all stream configuration immediately.
-    // TODO: Try to relax this later back to lazy completion, which should be
-    // faster
-
-    if (mInputStream != NULL && mInputStream->isConfiguring()) {
-        bool streamReConfigured = false;
-        res = mInputStream->finishConfiguration(&streamReConfigured);
-        if (res != OK) {
-            CLOGE("Can't finish configuring input stream %d: %s (%d)",
-                    mInputStream->getId(), strerror(-res), res);
-            cancelStreamsConfigurationLocked();
-            if ((res == NO_INIT || res == DEAD_OBJECT) && mInputStream->isAbandoned()) {
-                return DEAD_OBJECT;
-            }
-            return BAD_VALUE;
-        }
-        if (streamReConfigured) {
-            mInterface->onStreamReConfigured(mInputStream->getId());
-        }
-    }
-
-    for (size_t i = 0; i < mOutputStreams.size(); i++) {
-        sp<Camera3OutputStreamInterface> outputStream = mOutputStreams[i];
-        if (outputStream->isConfiguring() && !outputStream->isConsumerConfigurationDeferred()) {
-            bool streamReConfigured = false;
-            res = outputStream->finishConfiguration(&streamReConfigured);
-            if (res != OK) {
-                CLOGE("Can't finish configuring output stream %d: %s (%d)",
-                        outputStream->getId(), strerror(-res), res);
-                cancelStreamsConfigurationLocked();
-                if ((res == NO_INIT || res == DEAD_OBJECT) && outputStream->isAbandoned()) {
-                    return DEAD_OBJECT;
-                }
-                return BAD_VALUE;
-            }
-            if (streamReConfigured) {
-                mInterface->onStreamReConfigured(outputStream->getId());
-            }
-        }
     }
 
     mRequestThread->setComposerSurface(composerSurfacePresent);
