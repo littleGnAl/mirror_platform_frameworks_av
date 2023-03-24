@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984c25bd_06230a2e",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-24T16:28:58Z",
+      "side": 1,
+      "message": "setOffloadParam",
+      "range": {
+        "startLine": 68,
+        "startChar": 54,
+        "endLine": 68,
+        "endChar": 72
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35371c82_b168cad9",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-24T16:28:58Z",
+      "side": 1,
+      "message": "this is only valid during the enumeration phase before the sub effects are known.\nSee effectProxy.cpp:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/proxy/EffectProxy.cpp;l\u003d33?q\u003dEffectProxy.cpp",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81c9cb0_8ba3d8c5",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-24T16:28:58Z",
+      "side": 1,
+      "message": "if effect is null it should also be considered as an error and we should close() other sub effects like we do in case of open error.\nThis should not happen given create() should have failed in this case but we must protect against programming errors.",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 18
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e253583_88c4f9da",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-24T16:28:58Z",
+      "side": 1,
+      "message": "the effect proxy normally returns the descriptor of the active sub effect.\nmSubFlags does not have the correct flags but the default flags that are only used by the factory before the sub effects are loaded.\nSee EffectProxy.cpp:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/proxy/EffectProxy.cpp;l\u003d364?q\u003dEffectProxy.cpp",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405cc98b_a79ea305",
+        "filename": "media/libaudiohal/impl/EffectProxy.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-24T16:28:58Z",
+      "side": 1,
+      "message": "setOffloadParam() ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "b4d45fe150a19408537fd476feb05b75f9a69ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
