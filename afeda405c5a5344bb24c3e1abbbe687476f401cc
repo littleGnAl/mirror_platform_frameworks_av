@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "706ba857_330918e9",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-24T00:05:27Z",
+      "side": 1,
+      "message": "OK, I see the problem. However, we don\u0027t have to hand-roll checks for each structure in order to solve it. The only thing we need is a tuple with pointers to the fields, everything else can be generated using templates. Please consider this example implementation (https://godbolt.org/z/49b17K19r):\n\n```\n#include \u003ctuple\u003e\n\nstruct St {\n    int a;\n    float f;\n    bool b;\n};\n\ntemplate\u003ctypename P, typename S, std::size_t I\u003d0\u003e  // P is a tuple of field pointers for S\nbool eachMemberLessOrEqual(const P\u0026 p, const S\u0026 a, const S\u0026 b) {\n    if constexpr (I \u003e\u003d std::tuple_size_v\u003cP\u003e) { \n        return true;\n    } else {\n        auto fieldPtr \u003d std::get\u003cI\u003e(p);\n        return (a.*fieldPtr \u003c\u003d b.*fieldPtr) \u0026\u0026 eachMemberLessOrEqual\u003cP, S, I+1\u003e(p, a, b);\n    }\n}\n\ntemplate\u003ctypename P, typename S\u003e\nbool isInRange(const P\u0026 p, const S\u0026 s, const S\u0026 min, const S\u0026 max) {\n    return eachMemberLessOrEqual(p, min, s) \u0026\u0026 eachMemberLessOrEqual(p, s, max); \n}\n\nstatic constexpr auto kStFields \u003d std::make_tuple(\u0026St::a, \u0026St::f, \u0026St::b);\n\nint main(int, char**, char**) {\n    const St min{0, 0.0, false};\n    const St max{5, 10.0, false};\n    const St outOfRange{3, 5.0, true};\n    const St inRange{3, 5.0, false};\n    return isInRange(kStFields, outOfRange, min, max);  // false\n    //return isInRange(kStFields, inRange, min, max);  // true\n}\n```",
+      "parentUuid": "a2bcdad2_0506d60c",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dfcacf6_3fc4d7c2",
         "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
         "patchSetId": 5
