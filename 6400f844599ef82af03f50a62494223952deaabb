@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d511349_ae42a41a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-24T22:43:25Z",
+      "side": 1,
+      "message": "The idea with making tuples of values is even more straightforward than my initial proposal, thanks for coming up with it!",
+      "revId": "6400f844599ef82af03f50a62494223952deaabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6189137_246ff47e",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-24T22:43:25Z",
+      "side": 1,
+      "message": "Why not `min`? If it\u0027s intentional, please add a comment about the reason.",
+      "range": {
+        "startLine": 109,
+        "startChar": 52,
+        "endLine": 109,
+        "endChar": 86
+      },
+      "revId": "6400f844599ef82af03f50a62494223952deaabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87db5af7_6fea1fbc",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-24T22:43:25Z",
+      "side": 1,
+      "message": "Declaring the return type wouldn\u0027t be needed if we use `std::make_tuple` instead of an initializer list in the body.",
+      "range": {
+        "startLine": 267,
+        "startChar": 60,
+        "endLine": 267,
+        "endChar": 90
+      },
+      "revId": "6400f844599ef82af03f50a62494223952deaabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb2ffdf_7e87289d",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-24T22:43:25Z",
+      "side": 1,
+      "message": "This loop can also be templatized and reused in all these functions.",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "6400f844599ef82af03f50a62494223952deaabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
