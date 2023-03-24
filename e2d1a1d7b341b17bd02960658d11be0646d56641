@@ -34,6 +34,29 @@
       "parentUuid": "68500a50_fb1cc11c",
       "revId": "e2d1a1d7b341b17bd02960658d11be0646d56641",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5549286c_a92ab16c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 6203,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-24T19:21:09Z",
+      "side": 1,
+      "message": "those lines are common with 6205 - 6206, this could be factored in.\n\nAlso isSingleDeviceType(outDeviceTypes(), AUDIO_DEVICE_OUT_EARPIECE) is not a strong condition and can be removed. What is important here is AUDIO_CHANNEL_OUT_MONO and maybe more importantly channel count \u003d\u003d 1:\n\nsuggestion:\nleft *\u003d v;\nright *\u003d v;         \nif (mAudioFlinger-\u003egetMode() !\u003d AUDIO_MODE_IN_COMMUNICATION  \n      || audio_channel_count_from_out_mask(mChannelMask) \u003e 1) {\n   left *\u003d mMasterBalanceLeft; // DirectOutputThread balance applied as track volume\n   right *\u003d mMasterBalanceRight;\n}",
+      "range": {
+        "startLine": 6202,
+        "startChar": 12,
+        "endLine": 6203,
+        "endChar": 23
+      },
+      "revId": "e2d1a1d7b341b17bd02960658d11be0646d56641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
