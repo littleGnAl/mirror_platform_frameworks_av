@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "219688cc_eb99ae55",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-24T08:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "706ba857_330918e9",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dfcacf6_3fc4d7c2",
@@ -133,6 +157,30 @@
       "writtenOn": "2023-03-23T18:18:38Z",
       "side": 1,
       "message": "If we name it \"isInRange\", this will be consistent with the names for particular parameter checks.",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6a4098_d6c2650e",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-24T08:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dfcacf6_3fc4d7c2",
       "range": {
         "startLine": 60,
         "startChar": 9,
@@ -166,6 +214,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aafc5ac_2e96a9fa",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-24T08:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a566eb8_5941d935",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 1
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e066819_871175ec",
@@ -189,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd47d43b_01068b66",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-24T08:52:56Z",
+      "side": 1,
+      "message": "This is not mContext-\u003esetLimiter(...). This is dp-\u003esetLimiter(...). These are all void functions.",
+      "parentUuid": "3e066819_871175ec",
+      "range": {
+        "startLine": 535,
+        "startChar": 12,
+        "endLine": 535,
+        "endChar": 26
+      },
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a7210d2_99d6c2b4",
@@ -202,6 +298,24 @@
       "writtenOn": "2023-03-23T22:40:08Z",
       "side": 1,
       "message": "remove the empty line, same for other files",
+      "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1d4827_28cc15f4",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessingContext.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-24T08:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a7210d2_99d6c2b4",
       "revId": "afeda405c5a5344bb24c3e1abbbe687476f401cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
