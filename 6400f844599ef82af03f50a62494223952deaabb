@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31e8e648_48687c4f",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-25T00:56:37Z",
+      "side": 1,
+      "message": "Gain varies from [-inf, inf]. \nIts a quirk with float min. \nhttps://en.cppreference.com/w/cpp/types/numeric_limits/min\nWe can use std::numeric_limits\u003cfloat\u003e::lowest().",
+      "parentUuid": "d6189137_246ff47e",
+      "range": {
+        "startLine": 109,
+        "startChar": 52,
+        "endLine": 109,
+        "endChar": 86
+      },
+      "revId": "6400f844599ef82af03f50a62494223952deaabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87db5af7_6fea1fbc",
         "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-24T22:43:25Z",
       "side": 1,
       "message": "Declaring the return type wouldn\u0027t be needed if we use `std::make_tuple` instead of an initializer list in the body.",
+      "range": {
+        "startLine": 267,
+        "startChar": 60,
+        "endLine": 267,
+        "endChar": 90
+      },
+      "revId": "6400f844599ef82af03f50a62494223952deaabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "771ac681_4c4115b1",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-25T00:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87db5af7_6fea1fbc",
       "range": {
         "startLine": 267,
         "startChar": 60,
@@ -77,6 +125,30 @@
       "writtenOn": "2023-03-24T22:43:25Z",
       "side": 1,
       "message": "This loop can also be templatized and reused in all these functions.",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "6400f844599ef82af03f50a62494223952deaabb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb64235_0d593b9b",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-25T00:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abb2ffdf_7e87289d",
       "range": {
         "startLine": 270,
         "startChar": 0,
