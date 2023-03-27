@@ -34,6 +34,24 @@
       "parentUuid": "8b6bc783_a48092c2",
       "revId": "532549279f69446a033b8a611e7f277635787f3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3686ccc_c0466f15",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1883619
+      },
+      "writtenOn": "2023-03-27T16:18:03Z",
+      "side": 1,
+      "message": "I did add the capability in the XML.\nThe setup is done.\nThe error we see here is when we try to encode the PCM data. \nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/components/aac/C2SoftAacEnc.cpp;l\u003d342",
+      "parentUuid": "1188483b_834985c4",
+      "revId": "532549279f69446a033b8a611e7f277635787f3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
