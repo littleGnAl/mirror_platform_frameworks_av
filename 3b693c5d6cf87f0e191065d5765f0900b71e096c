@@ -34,6 +34,23 @@
       "parentUuid": "a629903a_e8590d82",
       "revId": "3b693c5d6cf87f0e191065d5765f0900b71e096c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf2fb6c_68257b77",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-03-27T22:18:30Z",
+      "side": 1,
+      "message": "Can we disable this only for tunneled case?",
+      "revId": "3b693c5d6cf87f0e191065d5765f0900b71e096c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
