@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8038b3b3_acb4a827",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "1. the size of nativefds will not be 0 since we are creating from fds \u003e 0\n2. native_handle_create fails for \u003c 0",
+      "parentUuid": "c2fc7f2b_26980734",
+      "range": {
+        "startLine": 248,
+        "startChar": 51,
+        "endLine": 248,
+        "endChar": 67
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92280a13_ab89922a",
@@ -60,6 +84,30 @@
       "writtenOn": "2023-03-23T16:05:25Z",
       "side": 1,
       "message": "nit: since its a constructor, I don\u0027t think this is necessary.",
+      "range": {
+        "startLine": 265,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 28
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361f8934_d99f54f6",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "only for safe keeping",
+      "parentUuid": "92280a13_ab89922a",
       "range": {
         "startLine": 265,
         "startChar": 8,
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4677e13d_eafea6f7",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac64171_65219987",
+      "range": {
+        "startLine": 271,
+        "startChar": 18,
+        "endLine": 271,
+        "endChar": 35
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84860248_41d6cd56",
@@ -106,6 +178,30 @@
       "writtenOn": "2023-03-23T16:05:25Z",
       "side": 1,
       "message": "nit: since its a constructor, I don\u0027t think this is necessary.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 28
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d0d3b4_b594fc61",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "for safe side",
+      "parentUuid": "84860248_41d6cd56",
       "range": {
         "startLine": 272,
         "startChar": 0,
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30857b2_c1ee4a6e",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f87e31d_32ede8fb",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 31
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c392c6e_27c6a971",
@@ -152,6 +272,30 @@
       "writtenOn": "2023-03-23T16:05:25Z",
       "side": 1,
       "message": "nit: const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 328,
+        "startChar": 51,
+        "endLine": 328,
+        "endChar": 67
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6416b559_73a67b28",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c392c6e_27c6a971",
       "range": {
         "startLine": 328,
         "startChar": 51,
@@ -185,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e590854a_5fa5bfcb",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd81128d_f86a50d7",
+      "range": {
+        "startLine": 330,
+        "startChar": 24,
+        "endLine": 330,
+        "endChar": 26
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a244ebd5_37488e0a",
@@ -208,6 +376,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f1eb18_0a3ca2de",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a244ebd5_37488e0a",
+      "range": {
+        "startLine": 337,
+        "startChar": 8,
+        "endLine": 338,
+        "endChar": 31
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b798387_da616f07",
@@ -221,6 +413,30 @@
       "writtenOn": "2023-03-23T16:05:25Z",
       "side": 1,
       "message": "nit: const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e27f2b_b14ea9d3",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b798387_da616f07",
       "range": {
         "startLine": 57,
         "startChar": 45,
