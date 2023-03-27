@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc44809_b1594c5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-27T15:17:32Z",
+      "side": 1,
+      "message": "There is no relationship between the test file format and the effect processing format.\nThe audio flinger mixer will convert from pcm 16 to float before the effect is processed.\nCan you explain the problem you are trying to solve?",
+      "revId": "8ef9c5d5fe756cbd5117cd802ecd27f3f4221af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
