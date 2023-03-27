@@ -16,6 +16,24 @@
       "message": "Although core lib of aac seems to have HE AAC PS capability.(https://cs.android.com/android/platform/superproject/+/master:external/aac/libAACenc/include/aacenc_lib.h)\n\nsomehow i got this error here\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/components/aac/C2SoftAacEnc.cpp;l\u003d342",
       "revId": "532549279f69446a033b8a611e7f277635787f3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1188483b_834985c4",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2023-03-27T14:29:21Z",
+      "side": 1,
+      "message": "It seems your device is missing aac_ps from AudioEncoderCap list, you need to add it in media_profiles.xml. \nThis CL is adding aac_ps in sunfish device:\nhttps://android-review.googlesource.com/c/device/google/sunfish/+/2425457",
+      "parentUuid": "8b6bc783_a48092c2",
+      "revId": "532549279f69446a033b8a611e7f277635787f3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
