@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cae31948_f29e28a4",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-27T20:56:14Z",
+      "side": 1,
+      "message": "`F` can also be passed in by a constant reference.",
+      "range": {
+        "startLine": 71,
+        "startChar": 80,
+        "endLine": 71,
+        "endChar": 86
+      },
+      "revId": "e79b64d74e68d0bc425709d92b3f24d70425e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090ff173_4b7f259c",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-03-27T20:56:14Z",
+      "side": 1,
+      "message": "We can express this via `std::all_of`:\n\n```\nreturn std::all_of(cfgs.begin(), cfgs.end(), [\u0026](const auto\u0026 cfg){ return isTupleInRange(...); });\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "e79b64d74e68d0bc425709d92b3f24d70425e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6d47e78_f7a19c74",
         "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
         "patchSetId": 8
