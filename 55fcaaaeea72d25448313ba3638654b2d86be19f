@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35428e22_a5b9b17c",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-03-27T23:53:13Z",
+      "side": 1,
+      "message": "nit: remove redundant space",
+      "range": {
+        "startLine": 104,
+        "startChar": 74,
+        "endLine": 104,
+        "endChar": 76
+      },
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5498f7b_322210de",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-03-27T23:53:13Z",
+      "side": 1,
+      "message": "nit: retFds",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b53eac_bcf50d66",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-03-27T23:53:13Z",
+      "side": 1,
+      "message": "nit: nativeFds",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd917d7d_525ec6ff",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-03-27T23:53:13Z",
+      "side": 1,
+      "message": "need to close the fds returned from fds()",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcdfa11_ab6a3026",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-03-27T23:53:13Z",
+      "side": 1,
+      "message": "0 is a valid fd. a valid fd \u003e\u003d 0.\nIf there is any invalid fd, shall we just return error?",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642dcc7b_4f05d70f",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-03-27T23:53:13Z",
+      "side": 1,
+      "message": "nit: fence file fds",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f7625d_0107b84a",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-03-27T23:53:13Z",
+      "side": 1,
+      "message": "nit?: CreateMultipleFdSyncFence",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
