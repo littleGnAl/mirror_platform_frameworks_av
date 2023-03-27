@@ -16,6 +16,24 @@
       "message": "Do we expect folks to subclass `EffectProxy` and possibly override `close()`?  If so, this destructor might not end up doing what we\u0027d want.  Specifically, since we\u0027re in the destructor here, we\u0027re not going to use the virtual version of `close()`, but rather `EffectProxy::close()`.\n\nIf we don\u0027t want folks subclassing `EffectProxy`, we can help future-proof this by declaring it `final` in the header.  Or just declare `close()` `final`.",
       "revId": "5c7183433119fbf7ba7a5cec522e95bb1795b536",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a412d2_497c8d1c",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-03-27T17:53:38Z",
+      "side": 1,
+      "message": "The EffectProxy class should not be inheritance, adding final declaration in cl: aosp/2509715, thanks",
+      "parentUuid": "37dc3cf1_88e8c915",
+      "revId": "5c7183433119fbf7ba7a5cec522e95bb1795b536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
