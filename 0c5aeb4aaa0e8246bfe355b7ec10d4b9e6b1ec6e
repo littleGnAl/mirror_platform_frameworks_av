@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27733f45_ba2c88a3",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-03-27T15:13:01Z",
+      "side": 1,
+      "message": "This will break camera apps which have a UI to select the audio recording input.\n\nIf tik tok wants to use the external mic by default when connected, they should implement their own logic",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 75
+      },
+      "revId": "0c5aeb4aaa0e8246bfe355b7ec10d4b9e6b1ec6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
