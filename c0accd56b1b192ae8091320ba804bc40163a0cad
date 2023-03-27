@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de07352c_06abfbff",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-27T16:25:45Z",
+      "side": 1,
+      "message": "I think this can be const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 271,
+        "startChar": 18,
+        "endLine": 271,
+        "endChar": 40
+      },
+      "revId": "c0accd56b1b192ae8091320ba804bc40163a0cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1407635f_5e9d06eb",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-27T16:25:45Z",
+      "side": 1,
+      "message": "nit: replace the TAB with spaces",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 1
+      },
+      "revId": "c0accd56b1b192ae8091320ba804bc40163a0cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ad8472_70db12d1",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-27T16:25:45Z",
+      "side": 1,
+      "message": "I think this can be const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 331,
+        "startChar": 51,
+        "endLine": 331,
+        "endChar": 73
+      },
+      "revId": "c0accd56b1b192ae8091320ba804bc40163a0cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da67c203_bf8141cd",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-03-27T16:25:45Z",
+      "side": 1,
+      "message": "I think this can be const std::vector\u003cint\u003e\u0026",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 67
+      },
+      "revId": "c0accd56b1b192ae8091320ba804bc40163a0cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
