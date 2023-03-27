@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dbd8d66_0033fdf6",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-27T06:58:54Z",
+      "side": 1,
+      "message": "Yes This function can return list of -1 in some cases  if fences has already been signaled",
+      "parentUuid": "5955b989_2b18c2ba",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "12469fa7481ce3a12475e8c423bc980e83b6dde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2fc7f2b_26980734",
