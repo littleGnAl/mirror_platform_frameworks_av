@@ -22,6 +22,30 @@
       },
       "revId": "34f6e90a270b988f98b5c1e4654f17ae454597ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13ee26b_ba7b7951",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-28T21:51:27Z",
+      "side": 1,
+      "message": "This is the scope block for the lock_guard resource. lock_guard would be freed after the block exits.",
+      "parentUuid": "0a837052_62ea9aee",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 5
+      },
+      "revId": "34f6e90a270b988f98b5c1e4654f17ae454597ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
