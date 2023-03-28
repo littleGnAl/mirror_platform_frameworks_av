@@ -70,6 +70,24 @@
       "parentUuid": "a3686ccc_c0466f15",
       "revId": "532549279f69446a033b8a611e7f277635787f3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a118527c_9ad13c16",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2023-03-28T07:05:04Z",
+      "side": 1,
+      "message": "It is tested on cuttlefish device.",
+      "parentUuid": "f44c2c35_257046ab",
+      "revId": "532549279f69446a033b8a611e7f277635787f3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
