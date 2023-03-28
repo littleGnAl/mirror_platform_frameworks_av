@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436b6411_88ca2563",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-28T10:40:07Z",
+      "side": 1,
+      "message": "Hi Ray, do you have some time to continue the discussion here?\n\nThe test file VtsHalMediaC2V1_0TargetAudioDecTest.cpp has been checked for the history. The first version of it was in 2019-06-03 by Pawin so we would say it\u0027s not yet some acient code. But anyway it looks like the author Pawin is no longer available (at least when adding the reviewer). I also tried to run the test case with atest command but it says some device is needed (which but I don\u0027t have, and acloud also failed for some reason).\n\nThen I studied the implementation of the test cases with this test file. I looks like we are testing different decoding scenarios. Then with this test case DecodeTestEmptyBuffersInserted we are trying to insert some empty input frames and also some empty CSD frames into the regular frames read from the data file. After all the frames are buffered, the decode function is called and then we check if the received/decoded frame number is the same with the buffered frame number (regular+empty+empty CSD).\n\nSo from the test scenario I think we would need to buffer all the frames and try to decode them. So the flag codecConfig should be useless here and we only need to remove it (and the related calculation).\n\nIf the understanding above is okay we would upload a new version to review. Thanks.",
+      "revId": "ada49b7d338c103d00a66fb2daff7bd9369c5fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "429f0454_c4f7cefc",
