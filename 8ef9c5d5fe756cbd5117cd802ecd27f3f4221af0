@@ -16,6 +16,24 @@
       "message": "There is no relationship between the test file format and the effect processing format.\nThe audio flinger mixer will convert from pcm 16 to float before the effect is processed.\nCan you explain the problem you are trying to solve?",
       "revId": "8ef9c5d5fe756cbd5117cd802ecd27f3f4221af0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb804be_b1913867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1996885
+      },
+      "writtenOn": "2023-03-28T08:07:17Z",
+      "side": 1,
+      "message": "We didn\u0027t see the conversion happen properly. The following trace can show the data in the float buffer is invalid (zero).\n11-09 17:17:39.747  2949   540 15751 V EffectVisualizer: Visualizer_process FLOAT Channel count\u003d2 smp\u003d0.000000\nWith the BUILD_FLOAT disabled, we can see valid data in the INT buffer.\n11-09 17:19:49.805  2949   545 16661 V EffectVisualizer: Visualizer_process INT smp\u003d23\nDetails can be found in the ticket.\nhttps://partnerissuetracker.corp.google.com/issues/261140795",
+      "parentUuid": "7dc44809_b1594c5f",
+      "revId": "8ef9c5d5fe756cbd5117cd802ecd27f3f4221af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
