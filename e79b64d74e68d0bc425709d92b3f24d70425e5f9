@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70351e93_0447bc21",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-28T00:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae31948_f29e28a4",
+      "range": {
+        "startLine": 71,
+        "startChar": 80,
+        "endLine": 71,
+        "endChar": 86
+      },
+      "revId": "e79b64d74e68d0bc425709d92b3f24d70425e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "090ff173_4b7f259c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b374584_1398e22b",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-28T00:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "090ff173_4b7f259c",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "e79b64d74e68d0bc425709d92b3f24d70425e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6d47e78_f7a19c74",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-27T17:25:15Z",
       "side": 1,
       "message": "Can we move these to a common place?",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "e79b64d74e68d0bc425709d92b3f24d70425e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01465002_a6806386",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-03-28T00:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d47e78_f7a19c74",
       "range": {
         "startLine": 58,
         "startChar": 4,
