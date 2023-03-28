@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20696a02_5480ac73",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-28T09:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35428e22_a5b9b17c",
+      "range": {
+        "startLine": 104,
+        "startChar": 74,
+        "endLine": 104,
+        "endChar": 76
+      },
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5498f7b_322210de",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e007c6_61060c40",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-28T09:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5498f7b_322210de",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b53eac_bcf50d66",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-03-27T23:53:13Z",
       "side": 1,
       "message": "nit: nativeFds",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83bf2e96_9a127dad",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-28T09:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b53eac_bcf50d66",
       "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +152,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c4e799_940fd146",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-28T09:32:58Z",
+      "side": 1,
+      "message": "Done\nchecking if fenceFd \u003c 0 continue. \nif one of the FD in the list is invalid still others could be valid so not returning error.",
+      "parentUuid": "bfcdfa11_ab6a3026",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "642dcc7b_4f05d70f",
@@ -109,6 +187,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb432114_2d769e33",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-28T09:32:58Z",
+      "side": 1,
+      "message": "Vector of file descriptors for fence",
+      "parentUuid": "642dcc7b_4f05d70f",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4f7625d_0107b84a",
@@ -122,6 +218,24 @@
       "writtenOn": "2023-03-27T23:53:13Z",
       "side": 1,
       "message": "nit?: CreateMultipleFdSyncFence",
+      "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d5f5a4_e370a657",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-03-28T09:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f7625d_0107b84a",
       "revId": "55fcaaaeea72d25448313ba3638654b2d86be19f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
