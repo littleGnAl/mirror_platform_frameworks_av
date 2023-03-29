@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f55843a_73e6abdb",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-03-29T16:51:47Z",
+      "side": 1,
+      "message": "I don\u0027t know the lifetime of the mediadrm object, so it\u0027s hard to judge the impact. it is a behavioral change since the old code always removed it from the map even if the session didn\u0027t close successfully.\n\nFile a bug to revisit this to:\nfigure out impact of this accumulation,\ndecide about adding an API to clean them out,\nand doing whatever work comes from that.\nrefence the bug here in the gerrit record\nreference the bug with a TODO in the code:\n  TODO(b/#) how to reclaim sessions from the map if the close fails",
+      "parentUuid": "fd59140e_249a1241",
+      "range": {
+        "startLine": 201,
+        "startChar": 7,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "051e4b3f38514b9ce2aa894ab5dc58676dfa7dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e5516c_dada064a",
         "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
         "patchSetId": 2
