@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "504427ed_2f5516fc",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-29T09:01:21Z",
+      "side": 1,
+      "message": "Good suggestion. It should be \"false\".",
+      "parentUuid": "429f0454_c4f7cefc",
+      "range": {
+        "startLine": 709,
+        "startChar": 94,
+        "endLine": 709,
+        "endChar": 97
+      },
+      "revId": "ada49b7d338c103d00a66fb2daff7bd9369c5fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "134aa41e_c908b838",
@@ -94,6 +118,30 @@
       "writtenOn": "2023-03-21T19:27:51Z",
       "side": 1,
       "message": "false, not 0. since it\u0027s a bool.",
+      "range": {
+        "startLine": 963,
+        "startChar": 92,
+        "endLine": 963,
+        "endChar": 97
+      },
+      "revId": "ada49b7d338c103d00a66fb2daff7bd9369c5fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f69a03f_6f0eaaf6",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-03-29T09:01:21Z",
+      "side": 1,
+      "message": "Good suggestion. It should be \"false\".",
+      "parentUuid": "d5e781e8_0041b4d9",
       "range": {
         "startLine": 963,
         "startChar": 92,
