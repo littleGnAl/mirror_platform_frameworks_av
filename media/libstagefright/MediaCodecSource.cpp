@@ -547,11 +547,28 @@ status_t MediaCodecSource::initEncoder() {
             mEncoderActivityNotify = new AMessage(kWhatEncoderActivity, mReflector);
             mEncoder->setCallback(mEncoderActivityNotify);
 
+            uint32_t flags = MediaCodec::CONFIGURE_FLAG_ENCODE;
+            if (mIsVideo && (mFlags & FLAG_USE_SURFACE_INPUT)) {
+                sp<MediaCodecInfo> mediaCodecInfo;
+                typename std::underlying_type<MediaCodecInfo::Attributes>::type attr = 0;
+                err = mEncoder->getCodecInfo(&mediaCodecInfo);
+                if (err == OK) {
+                    attr = mediaCodecInfo->getAttributes();
+                } else {
+                    return err;
+                }
+                AString codecName = matchingCodecs[ix];
+                bool isHWEnc = (attr & MediaCodecInfo::kFlagIsHardwareAccelerated) &&
+                                codecName.startsWith("c2.qti");
+                flags |= (isHWEnc ? MediaCodec::CONFIGURE_FLAG_USE_BLOCK_MODEL : 0);
+
+            }
+
             err = mEncoder->configure(
                         mOutputFormat,
                         NULL /* nativeWindow */,
                         NULL /* crypto */,
-                        MediaCodec::CONFIGURE_FLAG_ENCODE);
+                        flags);
 
             if (err == OK) {
                 break;
