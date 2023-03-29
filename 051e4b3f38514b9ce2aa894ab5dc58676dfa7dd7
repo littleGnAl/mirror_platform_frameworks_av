@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd59140e_249a1241",
+        "filename": "drm/libmediadrm/DrmMetricsLogger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-29T16:36:59Z",
+      "side": 1,
+      "message": "You are correct, if a session failed to close, we assume it is still open. The entries in the map will linger until the java MediaDrm object goes away.\n\nI don\u0027t think we have an API to check with the HAL whether a session is open or not. We can consider adding this session garbage collect feature in future releases.",
+      "parentUuid": "2bebc714_0733c874",
+      "range": {
+        "startLine": 201,
+        "startChar": 7,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "051e4b3f38514b9ce2aa894ab5dc58676dfa7dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e5516c_dada064a",
         "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-29T11:59:19Z",
       "side": 1,
       "message": "does this table need to be kept in sync with any other table,\nmaybe off in the statsd/metrics side of things?\n\nif so, let\u0027s add a comment pointing in that direction.\n\nif it\u0027s purely internal to the mediadrm module, then we don\u0027t need such.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "051e4b3f38514b9ce2aa894ab5dc58676dfa7dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa0cf1d_5c2e49f5",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmMetricsLogger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-03-29T16:36:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57e5516c_dada064a",
       "range": {
         "startLine": 29,
         "startChar": 2,
