@@ -300,6 +300,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "701bc7fe_289b78d2",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-30T21:11:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bed76897_0ceaf68b",
+      "range": {
+        "startLine": 4225,
+        "startChar": 16,
+        "endLine": 4225,
+        "endChar": 25
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86002146_176f7c53",
@@ -337,6 +361,30 @@
       "side": 1,
       "message": "The state names are according to https://developer.android.com/reference/android/media/MediaCodec#states\n\nSome states have multiple ways to get there, so I think it\u0027s easier to use the name directly.",
       "parentUuid": "86002146_176f7c53",
+      "range": {
+        "startLine": 5858,
+        "startChar": 30,
+        "endLine": 5858,
+        "endChar": 46
+      },
+      "revId": "0bc9ed9eff3823afa2a96a385ffdf867d552afbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2801e3cc_b342a1da",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 5858,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-30T21:11:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b90cc527_17bbdbec",
       "range": {
         "startLine": 5858,
         "startChar": 30,
