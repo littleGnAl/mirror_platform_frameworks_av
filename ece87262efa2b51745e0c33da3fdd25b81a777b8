@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8a9bb5_3429ddd1",
+        "filename": "media/libstagefright/CodecErrorLog.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-03-30T21:13:06Z",
+      "side": 1,
+      "message": "nit: I feel that most of our codec errors are LOGW at most, but we can look at that more holistically later.",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "ece87262efa2b51745e0c33da3fdd25b81a777b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
