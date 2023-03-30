@@ -32,6 +32,7 @@ enum ExtendedC2ParamIndexKind : C2Param::type_index_t {
     kParamIndexVendorInt32 = C2Param::TYPE_INDEX_VENDOR_START,
     kParamIndexVendorInt64,
     kParamIndexVendorString,
+    kParamIndexVendorBlob,
 };
 
 typedef C2PortParam<C2Info, C2Int32Value, kParamIndexVendorInt32> C2PortVendorInt32Info;
@@ -46,6 +47,10 @@ typedef C2PortParam<C2Info, C2StringValue, kParamIndexVendorString> C2PortVendor
 constexpr char C2_PARAMKEY_VENDOR_STRING[] = "example.string";
 constexpr char KEY_VENDOR_STRING[] = "vendor.example.string.value";
 
+typedef C2StreamParam<C2Info, C2BlobValue, kParamIndexVendorBlob> C2StreamVendorBlobInfo;
+constexpr char C2_PARAMKEY_VENDOR_BLOB[] = "example.blob";
+constexpr char KEY_VENDOR_BLOB[] = "vendor.example.blob.value";
+
 }  // namespace
 
 namespace android {
@@ -55,6 +60,7 @@ public:
     constexpr static int32_t kCodec2Int32 = 0xC0DEC2;
     constexpr static int64_t kCodec2Int64 = 0xC0DEC2C0DEC2ll;
     constexpr static char kCodec2Str[] = "codec2";
+    constexpr static uint8_t kCodec2Blob[] = { 0xC0, 0xDE, 0xC2, 'c', 'o', 'd', 'e', 'c', '2' };
 
     CCodecConfigTest()
         : mReflector{std::make_shared<C2ReflectorHelper>()} {
@@ -199,6 +205,14 @@ public:
                         .build());
 
                 addParameter(
+                        DefineParam(mBlobOutput, C2_PARAMKEY_VENDOR_BLOB)
+                        .withDefault(decltype(mBlobOutput)::element_type::AllocShared(
+                                0 /* flexCount */, 0u /* stream */))
+                        .withFields({C2F(mBlobOutput, m.value).any()})
+                        .withSetter(Setter<decltype(mBlobOutput)::element_type>)
+                        .build());
+
+                addParameter(
                         DefineParam(mPixelAspectRatio, C2_PARAMKEY_PIXEL_ASPECT_RATIO)
                         .withDefault(new C2StreamPixelAspectRatioInfo::output(0u, 1, 1))
                         .withFields({
@@ -249,6 +263,7 @@ public:
             std::shared_ptr<C2PortVendorInt32Info::input> mInt32Input;
             std::shared_ptr<C2StreamVendorInt64Info::output> mInt64Output;
             std::shared_ptr<C2PortVendorStringInfo::input> mStringInput;
+            std::shared_ptr<C2StreamVendorBlobInfo::output> mBlobOutput;
             std::shared_ptr<C2StreamPixelAspectRatioInfo::output> mPixelAspectRatio;
             std::shared_ptr<C2StreamBitrateInfo::input> mInputBitrate;
             std::shared_ptr<C2StreamBitrateInfo::output> mOutputBitrate;
@@ -298,12 +313,14 @@ TEST_F(CCodecConfigTest, SetVendorParam) {
     format->setInt32(KEY_VENDOR_INT32, kCodec2Int32);
     format->setInt64(KEY_VENDOR_INT64, kCodec2Int64);
     format->setString(KEY_VENDOR_STRING, kCodec2Str);
+    format->setBuffer(KEY_VENDOR_BLOB, sp<ABuffer>::make(
+            (void *)kCodec2Blob, sizeof(kCodec2Blob)));
 
     std::vector<std::unique_ptr<C2Param>> configUpdate;
     ASSERT_EQ(OK, mConfig.getConfigUpdateFromSdkParams(
             mConfigurable, format, D::ALL, C2_MAY_BLOCK, &configUpdate));
 
-    ASSERT_EQ(3u, configUpdate.size());
+    ASSERT_EQ(4u, configUpdate.size());
     C2PortVendorInt32Info::input *i32 =
         FindParam<std::remove_pointer<decltype(i32)>::type>(configUpdate);
     ASSERT_NE(nullptr, i32);
@@ -318,6 +335,12 @@ TEST_F(CCodecConfigTest, SetVendorParam) {
         FindParam<std::remove_pointer<decltype(str)>::type>(configUpdate);
     ASSERT_NE(nullptr, str);
     ASSERT_STREQ(kCodec2Str, str->m.value);
+
+    C2StreamVendorBlobInfo::output *blob =
+        FindParam<std::remove_pointer<decltype(blob)>::type>(configUpdate);
+    ASSERT_NE(nullptr, blob);
+    ASSERT_EQ(sizeof(kCodec2Blob), blob->flexCount());
+    ASSERT_EQ(0, memcmp(blob->m.value, kCodec2Blob, sizeof(kCodec2Blob))) << *blob;
 }
 
 TEST_F(CCodecConfigTest, VendorParamUpdate_Unsubscribed) {
@@ -332,9 +355,12 @@ TEST_F(CCodecConfigTest, VendorParamUpdate_Unsubscribed) {
     C2StreamVendorInt64Info::output i64(0u, kCodec2Int64);
     std::unique_ptr<C2PortVendorStringInfo::input> str =
         C2PortVendorStringInfo::input::AllocUnique(strlen(kCodec2Str) + 1, kCodec2Str);
+    std::unique_ptr<C2StreamVendorBlobInfo::output> blob =
+        C2StreamVendorBlobInfo::output::AllocUnique(kCodec2Blob, 0u /* stream */);
     configUpdate.push_back(C2Param::Copy(i32));
     configUpdate.push_back(C2Param::Copy(i64));
     configUpdate.push_back(std::move(str));
+    configUpdate.push_back(std::move(blob));
 
     // The vendor parameters are not yet subscribed
     ASSERT_FALSE(mConfig.updateConfiguration(configUpdate, D::ALL));
@@ -356,6 +382,12 @@ TEST_F(CCodecConfigTest, VendorParamUpdate_Unsubscribed) {
             << "mInputFormat = " << mConfig.mInputFormat->debugString().c_str();
     ASSERT_FALSE(mConfig.mOutputFormat->findString(KEY_VENDOR_STRING, &vendorString))
             << "mOutputFormat = " << mConfig.mOutputFormat->debugString().c_str();
+
+    sp<ABuffer> vendorBlob;
+    ASSERT_FALSE(mConfig.mInputFormat->findBuffer(KEY_VENDOR_BLOB, &vendorBlob))
+            << "mInputFormat = " << mConfig.mInputFormat->debugString().c_str();
+    ASSERT_FALSE(mConfig.mOutputFormat->findBuffer(KEY_VENDOR_BLOB, &vendorBlob))
+            << "mOutputFormat = " << mConfig.mOutputFormat->debugString().c_str();
 }
 
 TEST_F(CCodecConfigTest, VendorParamUpdate_AllSubscribed) {
@@ -373,9 +405,12 @@ TEST_F(CCodecConfigTest, VendorParamUpdate_AllSubscribed) {
     C2StreamVendorInt64Info::output i64(0u, kCodec2Int64);
     std::unique_ptr<C2PortVendorStringInfo::input> str =
         C2PortVendorStringInfo::input::AllocUnique(strlen(kCodec2Str) + 1, kCodec2Str);
+    std::unique_ptr<C2StreamVendorBlobInfo::output> blob =
+        C2StreamVendorBlobInfo::output::AllocUnique(kCodec2Blob, 0u /* stream */);
     configUpdate.push_back(C2Param::Copy(i32));
     configUpdate.push_back(C2Param::Copy(i64));
     configUpdate.push_back(std::move(str));
+    configUpdate.push_back(std::move(blob));
 
     ASSERT_TRUE(mConfig.updateConfiguration(configUpdate, D::ALL));
 
@@ -399,6 +434,15 @@ TEST_F(CCodecConfigTest, VendorParamUpdate_AllSubscribed) {
     ASSERT_STREQ(kCodec2Str, vendorString.c_str());
     ASSERT_FALSE(mConfig.mOutputFormat->findString(KEY_VENDOR_STRING, &vendorString))
             << "mOutputFormat = " << mConfig.mOutputFormat->debugString().c_str();
+
+    sp<ABuffer> vendorBlob;
+    ASSERT_FALSE(mConfig.mInputFormat->findBuffer(KEY_VENDOR_BLOB, &vendorBlob))
+            << "mInputFormat = " << mConfig.mInputFormat->debugString().c_str();
+    ASSERT_TRUE(mConfig.mOutputFormat->findBuffer(KEY_VENDOR_BLOB, &vendorBlob))
+            << "mOutputFormat = " << mConfig.mOutputFormat->debugString().c_str();
+    ASSERT_EQ(sizeof(kCodec2Blob), vendorBlob->size());
+    ASSERT_EQ(0, memcmp(vendorBlob->data(), kCodec2Blob, sizeof(kCodec2Blob)))
+            << "mOutputFormat = " << mConfig.mOutputFormat->debugString().c_str();
 }
 
 TEST_F(CCodecConfigTest, VendorParamUpdate_PartiallySubscribed) {
@@ -421,10 +465,13 @@ TEST_F(CCodecConfigTest, VendorParamUpdate_PartiallySubscribed) {
     C2StreamVendorInt64Info::output i64(0u, kCodec2Int64);
     std::unique_ptr<C2PortVendorStringInfo::input> str =
         C2PortVendorStringInfo::input::AllocUnique(strlen(kCodec2Str) + 1, kCodec2Str);
+    std::unique_ptr<C2StreamVendorBlobInfo::output> blob =
+        C2StreamVendorBlobInfo::output::AllocUnique(kCodec2Blob, 0u /* stream */);
     configUpdate.clear();
     configUpdate.push_back(C2Param::Copy(i32));
     configUpdate.push_back(C2Param::Copy(i64));
     configUpdate.push_back(std::move(str));
+    configUpdate.push_back(std::move(blob));
 
     // Only example.i32 should be updated
     ASSERT_TRUE(mConfig.updateConfiguration(configUpdate, D::ALL));
@@ -446,6 +493,12 @@ TEST_F(CCodecConfigTest, VendorParamUpdate_PartiallySubscribed) {
     ASSERT_FALSE(mConfig.mInputFormat->findString(KEY_VENDOR_STRING, &vendorString))
             << "mInputFormat = " << mConfig.mInputFormat->debugString().c_str();
     ASSERT_FALSE(mConfig.mOutputFormat->findString(KEY_VENDOR_STRING, &vendorString))
+            << "mOutputFormat = " << mConfig.mOutputFormat->debugString().c_str();
+
+    sp<ABuffer> vendorBlob;
+    ASSERT_FALSE(mConfig.mInputFormat->findBuffer(KEY_VENDOR_BLOB, &vendorBlob))
+            << "mInputFormat = " << mConfig.mInputFormat->debugString().c_str();
+    ASSERT_FALSE(mConfig.mOutputFormat->findBuffer(KEY_VENDOR_BLOB, &vendorBlob))
             << "mOutputFormat = " << mConfig.mOutputFormat->debugString().c_str();
 }
 
