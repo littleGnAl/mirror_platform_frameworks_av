@@ -134,7 +134,7 @@ class DrmFuzzer {
 };
 
 bool DrmFuzzer::initDrm() {
-    mDrm = new DrmHal();
+    mDrm = sp<DrmHal>::make();
     if (!mDrm) {
         return false;
     }
@@ -178,7 +178,7 @@ void DrmFuzzer::invokeDrmOpenSession() {
 void DrmFuzzer::invokeDrmCloseSession() { mDrm->closeSession(mSessionId); }
 
 void DrmFuzzer::invokeDrmSetListener() {
-    sp<DrmListener> listener = new DrmListener();
+    sp<DrmListener> listener = sp<DrmListener>::make();
     mDrm->setListener(listener);
 }
 
@@ -328,7 +328,7 @@ void DrmFuzzer::invokeDrmOfflineLicenseAPI() {
 }
 
 bool DrmFuzzer::initCrypto() {
-    mCrypto = new CryptoHal();
+    mCrypto =  sp<CryptoHal>::make();
     if (!mCrypto) {
         return false;
     }
@@ -373,7 +373,7 @@ void DrmFuzzer::invokeCryptoDecrypt(const uint8_t *data) {
     }
 
     size_t heapSize = totalSize * 2;
-    sp<MemoryDealer> dealer = new MemoryDealer(heapSize, "DrmFuzzerMemory");
+    sp<MemoryDealer> dealer = sp<MemoryDealer>::make(heapSize, "DrmFuzzerMemory");
     if (!dealer) {
         return;
     }
