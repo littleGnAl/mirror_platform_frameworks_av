@@ -41,8 +41,26 @@
 #include <media/MediaCodecBuffer.h>
 #include <android/native_window.h>
 
-using namespace android;
+/*
+ * __USE_FILE_OFFSET64 changes the type of off_t in LP32, which changes the ABI
+ * of these declarations to  not match the platform. In that case, define these
+ * APIs in terms of int32_t instead. Passing an off_t in this situation will
+ * result in silent truncation unless the user builds with -Wconversion, but the
+ * only alternative it to not expose them at all for this configuration, which
+ * makes the whole API unusable.
+ *
+ * https://github.com/android-ndk/ndk/issues/459
+ */
+#if defined(__USE_FILE_OFFSET64) && !defined(__LP64__)
+#define _off_t_compat int32_t
+#else
+#define _off_t_compat off_t
+#endif  /* defined(__USE_FILE_OFFSET64) && !defined(__LP64__) */
+static_assert(sizeof(_off_t_compat) == sizeof(long),
+              "_off_t_compat does not match the NDK ABI. See "
+              "https://github.com/android-ndk/ndk/issues/459.");
 
+using namespace android;
 
 static media_status_t translate_error(status_t err) {
 
@@ -724,7 +742,7 @@ uint8_t* AMediaCodec_getOutputBuffer(AMediaCodec *mData, size_t idx, size_t *out
 
 EXPORT
 media_status_t AMediaCodec_queueInputBuffer(AMediaCodec *mData,
-        size_t idx, off_t offset, size_t size, uint64_t time, uint32_t flags) {
+        size_t idx, _off_t_compat offset, size_t size, uint64_t time, uint32_t flags) {
 
     AString errorMsg;
     status_t ret = mData->mCodec->queueInputBuffer(idx, offset, size, time, flags, &errorMsg);
@@ -917,7 +935,7 @@ EXPORT
 media_status_t AMediaCodec_queueSecureInputBuffer(
         AMediaCodec* codec,
         size_t idx,
-        off_t offset,
+        _off_t_compat offset,
         AMediaCodecCryptoInfo* crypto,
         uint64_t time,
         uint32_t flags) {
