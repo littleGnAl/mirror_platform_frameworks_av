@@ -1145,15 +1145,15 @@ status_t HeicCompositeStream::processCompletedInputFrame(int64_t frameNumber,
 
     off_t fSize = lseek(inputFrame.fileFd, 0, SEEK_END);
     if (static_cast<size_t>(fSize) > mMaxHeicBufferSize - sizeof(CameraBlob)) {
-        ALOGE("%s: Error: MediaMuxer output size %ld is larger than buffer sizer %zu",
-                __FUNCTION__, fSize, mMaxHeicBufferSize - sizeof(CameraBlob));
+        ALOGE("%s: Error: MediaMuxer output size %jd is larger than buffer sizer %zu",
+                __FUNCTION__, static_cast<intmax_t>(fSize), mMaxHeicBufferSize - sizeof(CameraBlob));
         return BAD_VALUE;
     }
 
     lseek(inputFrame.fileFd, 0, SEEK_SET);
     ssize_t bytesRead = read(inputFrame.fileFd, dstBuffer, fSize);
     if (bytesRead < fSize) {
-        ALOGE("%s: Only %zd of %ld bytes read", __FUNCTION__, bytesRead, fSize);
+        ALOGE("%s: Only %zd of %jd bytes read", __FUNCTION__, bytesRead, static_cast<intmax_t>(fSize));
         return BAD_VALUE;
     }
 
