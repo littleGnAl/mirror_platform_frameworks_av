@@ -123,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "264d51e2_acc0fcc9",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 2000678
+      },
+      "writtenOn": "2023-04-01T23:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134aa41e_c908b838",
+      "range": {
+        "startLine": 711,
+        "startChar": 7,
+        "endLine": 711,
+        "endChar": 27
+      },
+      "revId": "ada49b7d338c103d00a66fb2daff7bd9369c5fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5e781e8_0041b4d9",
@@ -183,6 +207,30 @@
       "writtenOn": "2023-03-21T19:27:51Z",
       "side": 1,
       "message": "same questions as I pointed out in AudioDecTest -- \n\nI think the effect of this is \"drop all csd/config info from the stream\" and\nreplace it with our empty-config-every-20.  I don\u0027t know if this is the desired\nbehavior.",
+      "range": {
+        "startLine": 965,
+        "startChar": 13,
+        "endLine": 965,
+        "endChar": 24
+      },
+      "revId": "ada49b7d338c103d00a66fb2daff7bd9369c5fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a57b6451_9e1cd2bf",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 2000678
+      },
+      "writtenOn": "2023-04-01T23:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cfa134f_8a35f850",
       "range": {
         "startLine": 965,
         "startChar": 13,
