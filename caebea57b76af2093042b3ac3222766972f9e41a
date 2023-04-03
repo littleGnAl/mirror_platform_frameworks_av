@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d6d386_498d3699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-04-03T09:36:06Z",
+      "side": 1,
+      "message": "Hi Ray/Lajos/Sungtak, we have a previous patch as below and the changes (several modules involed) there have been basically reviewed.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2468381\n\nSince part of the above patch are still being discussed, we are breaking it into pieces and taking the obviously correct piece here.\n\nCould you please help to review it? The changes are (should be) the same with the codec2 part (excluding the test case related changes) with patch 2468381. Thanks a lot.",
+      "revId": "caebea57b76af2093042b3ac3222766972f9e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
