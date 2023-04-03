@@ -334,6 +334,8 @@ void randomSeekTest(MediaTrackHelper *track, int64_t clipDuration) {
 
         MediaBufferHelper *buffer = nullptr;
         status = track->read(&buffer, options);
+        ASSERT_EQ(OK, status) << "Failed to read the track";
+
         if (buffer) {
             AMediaFormat *metaData = buffer->meta_data();
             int64_t timeStamp = 0;
