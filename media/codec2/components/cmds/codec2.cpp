@@ -262,6 +262,10 @@ void SimplePlayer::play(const sp<IMediaSource> &source) {
                 native_handle_delete(grallocHandle);
 
                 status_t err = igbp->attachBuffer(&slot, buffer);
+                if (err != OK) {
+                    fprintf(stderr, "attachBuffer() failed with error %d (0x%08x)\n", err, err);
+                    return;
+                }
 
                 IGraphicBufferProducer::QueueBufferInput qbi(
                         (work->worklets.front()->output.ordinal.timestamp * 1000ll).peekll(),
@@ -272,8 +276,13 @@ void SimplePlayer::play(const sp<IMediaSource> &source) {
                         0,
                         Fence::NO_FENCE,
                         0);
+
                 IGraphicBufferProducer::QueueBufferOutput qbo;
                 err = igbp->queueBuffer(slot, qbi, &qbo);
+                if (err != OK) {
+                    fprintf(stderr, "queueBuffer() failed with error %d (0x%08x)\n", err, err);
+                    return;
+                }
             }
 
             work->input.buffers.clear();

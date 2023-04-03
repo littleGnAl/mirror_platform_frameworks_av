@@ -1273,9 +1273,7 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
 
     /* Allocating Memory for Mem Records */
     {
-        WORD32 total_size;
         iv_mem_rec_t *ps_mem_rec;
-        total_size = 0;
         ps_mem_rec = mMemRecords;
 
         for (size_t i = 0; i < mNumMemRecords; i++) {
@@ -1287,7 +1285,6 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
                 return C2_CORRUPTED;
 
             }
-            total_size += ps_mem_rec->u4_mem_size;
 
             ps_mem_rec++;
         }
