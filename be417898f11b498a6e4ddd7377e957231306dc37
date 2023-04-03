@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "023b3178_7a573ae5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-04-03T09:23:40Z",
+      "side": 1,
+      "message": "Hi Ray, as discussed recently we have this separate new patch for frameworks/av/media/module. Could you please help to review it? The changes are (should be) the same with the codecs and extractor part under \"module\" with patch 2468381. Thanks a lot.\n\nPrevious patch:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2468381",
+      "revId": "be417898f11b498a6e4ddd7377e957231306dc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
