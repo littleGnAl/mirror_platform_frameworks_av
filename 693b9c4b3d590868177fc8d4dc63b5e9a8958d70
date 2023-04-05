@@ -39,6 +39,30 @@
       },
       "revId": "693b9c4b3d590868177fc8d4dc63b5e9a8958d70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10fae47a_561485dc",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Enc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-04-05T18:50:30Z",
+      "side": 1,
+      "message": "Ray if the media type is mpeg4, then level can take on one of the 3 values present in the profileLevelSetter() method. Those 3 values are checked here in if-else(s) and mapped to mpeg4h263 lib constants and sent during initEncoder call.\n\nMpeg4h263 aosp implementation does not have h263 specific level constants. So i cannot map the LEVEL_H263_xx of ProfileLevelSetter() to library specific values and send it. So i am sending what was sent earlier which is CORE_PROFILE_LEVEL2. The constants are not present because h263 specification does not signal profile and level information in the bitstream directly. It relies on external means (itu h.245 protocol for instance) to send the same which currently android does not do.\n\nWhy Core profile level 2. This is the largest level supported by library. Basing on the configured params (wd, ht, bitrate, fps, vbv delay) a supported level is chosen that is \u003c\u003d CORE_PROFILE_LEVEL2. If it cant be chosen then configure fails.",
+      "parentUuid": "768caef3_d20958a8",
+      "range": {
+        "startLine": 287,
+        "startChar": 7,
+        "endLine": 287,
+        "endChar": 84
+      },
+      "revId": "693b9c4b3d590868177fc8d4dc63b5e9a8958d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
