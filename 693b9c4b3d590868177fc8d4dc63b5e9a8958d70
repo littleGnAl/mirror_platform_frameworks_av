@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbeb0a6d_b999c3d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-04-05T14:12:07Z",
+      "side": 1,
+      "message": "i think ok other than the CORE_PROFILE_LEVEL2 bits where I commented.",
+      "revId": "693b9c4b3d590868177fc8d4dc63b5e9a8958d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768caef3_d20958a8",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Enc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-04-05T14:12:07Z",
+      "side": 1,
+      "message": "we can come out of this block with type \u003d\u003d CORE_PROFILE_LEVEL2\nand that\u0027s not something we that the parameters allow us to set.\nwhich makes this feel incomplete; seems like it needs an \u0027else\u0027 at the\nend of the chain.\n\nalso seems to me that we need some equivalent code for the H263 side of things.\n\nI don\u0027t see that we\u0027re allowed to say CORE_PROFILE_LEVEL2 as a parameter value\nin any of the addParameter() clauses for this file, so not sure that we should\nhave it here at all.",
+      "range": {
+        "startLine": 287,
+        "startChar": 7,
+        "endLine": 287,
+        "endChar": 84
+      },
+      "revId": "693b9c4b3d590868177fc8d4dc63b5e9a8958d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
