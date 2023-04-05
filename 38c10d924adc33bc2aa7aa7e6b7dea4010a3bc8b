@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e4653d_77cd2c8f",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Enc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-04-05T06:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f910a4f_943794b1",
+      "range": {
+        "startLine": 209,
+        "startChar": 14,
+        "endLine": 209,
+        "endChar": 26
+      },
+      "revId": "38c10d924adc33bc2aa7aa7e6b7dea4010a3bc8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09467e42_15643bc5",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-04T19:05:26Z",
       "side": 1,
       "message": "this is better phrased as:\nif (me.v.level\u003d\u003dLEVEL_MP4V_0B) { needsUpdate \u003d true; }\n\nthis is a better pattern because we can do:\n\nneeds\u003d false\n#if config1\nif (cond1) needs\u003dtrue\nif (cond2) needs\u003dtrue\n#endif\n#if config2\nif (cond3) needs\u003dtrue;\n#endif",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 52
+      },
+      "revId": "38c10d924adc33bc2aa7aa7e6b7dea4010a3bc8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f71c3ad_2c2ec391",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Enc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-04-05T06:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09467e42_15643bc5",
       "range": {
         "startLine": 232,
         "startChar": 8,
