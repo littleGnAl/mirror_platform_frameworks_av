@@ -16,6 +16,24 @@
       "message": "Can we compute isHWEnc only when mIsVideo \u0026\u0026 (mFlags \u0026 FLAG_USE_SURFACE_INPUT)?",
       "revId": "91f178138f37b1bbf0b2935ec9aa2d87275f4a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33b9729_4a305c2b",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1981492
+      },
+      "writtenOn": "2023-04-06T07:34:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "abe6f7a8_88e78afe",
+      "revId": "91f178138f37b1bbf0b2935ec9aa2d87275f4a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
