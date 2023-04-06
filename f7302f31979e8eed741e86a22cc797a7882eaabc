@@ -16,6 +16,40 @@
       "message": "@all - can you please review the change",
       "revId": "f7302f31979e8eed741e86a22cc797a7882eaabc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591bed3e_cc2fa268",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-04-06T20:25:30Z",
+      "side": 1,
+      "message": "remove this todo line. The returned fds must be compatible with gralloc.",
+      "revId": "f7302f31979e8eed741e86a22cc797a7882eaabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99dffc2_5ed5222b",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1951780
+      },
+      "writtenOn": "2023-04-06T20:25:30Z",
+      "side": 1,
+      "message": "Discussed with Lajos, we could keep fds() out of C2Fence (as this is global), move it to android::_ExtractFdsFromC2Fence in C2FenceFactory.h",
+      "revId": "f7302f31979e8eed741e86a22cc797a7882eaabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
