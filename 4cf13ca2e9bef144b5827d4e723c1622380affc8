@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984505f8_ea6fa46b",
+        "filename": "media/libmedia/IMediaMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1869780
+      },
+      "writtenOn": "2023-04-07T01:51:55Z",
+      "side": 0,
+      "message": "Does removing this statement affect how many data bytes are sent back?",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 30
+      },
+      "revId": "4cf13ca2e9bef144b5827d4e723c1622380affc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
