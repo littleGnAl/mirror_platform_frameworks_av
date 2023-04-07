@@ -52,6 +52,24 @@
       "parentUuid": "f7674740_43826287",
       "revId": "c27783685a7baa6eef9f641f2042769ca00cffe7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854b6a27_b506ab1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2023-04-07T01:15:57Z",
+      "side": 1,
+      "message": "Could we know the reason?\nIt seems only happen when vendor using dummy work. not care tunnel or non-tunnel.\nAlso it seems no tunnel flag in PipelineWatcher.",
+      "parentUuid": "dd85c952_ff805372",
+      "revId": "c27783685a7baa6eef9f641f2042769ca00cffe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
