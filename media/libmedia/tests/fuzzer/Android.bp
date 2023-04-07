@@ -17,3 +17,15 @@ cc_fuzz {
     "libbinder",
   ],
 }
+
+cc_fuzz {
+  name: "media_player_service_fuzzer",
+  defaults: ["service_fuzzer_defaults"],
+  srcs: [
+    "media_player_service_fuzzer.cpp",
+  ],
+  shared_libs: [
+    "libmedia",
+    "liblog",
+  ],
+}
