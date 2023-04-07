@@ -22,6 +22,30 @@
       },
       "revId": "4cf13ca2e9bef144b5827d4e723c1622380affc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df6a465a_4163f4ef",
+        "filename": "media/libmedia/IMediaMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-04-07T02:15:28Z",
+      "side": 0,
+      "message": "it affects how much data goes from client to service.\nbut looking at setSchedPolicy() that used to be at line 52 \nthis is where that policy was consumed.\n\nwe\u0027ve removed all the sendSchedPolicy() calls, where we inserted the into the parcel on the client side\nand we\u0027ve removed all the matching setSchedPolicy() calls which is where we\npulled that data from the parcel on the service side.\n\nI believe that covers it all. I was worried about getting those mismatched in\nsome way, but I managed to convince myself we are keeping the send/rcv sizes and contents in sync.\n\nif I did get it wrong, that data is always at the back of the parcel, so if it\nis still there somehow, it would just be un-read data. Which is not as bad as \nhaving it in the middle of the parcel and having the parsing all messed up.\nStill not ideal, but it wouldn\u0027t break the semantics of the requests.\n\nand I don\u0027t see anywhere that it impacts the data coming back from the service at the end of the transaction.",
+      "parentUuid": "984505f8_ea6fa46b",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 30
+      },
+      "revId": "4cf13ca2e9bef144b5827d4e723c1622380affc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
