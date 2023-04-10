@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e5daec1_2e9adf23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1983885
+      },
+      "writtenOn": "2023-04-10T04:34:29Z",
+      "side": 1,
+      "message": "Hi Ray, to follow the previous suggestion, we are breaking the patch into pieces and have submited 2 new patches as part of them.\n\nDo you have some time to take a look at the new patches (as below)? Thanks a lot.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2519776\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2519777",
+      "parentUuid": "6cb50a18_497f63e8",
+      "revId": "ada49b7d338c103d00a66fb2daff7bd9369c5fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "429f0454_c4f7cefc",
