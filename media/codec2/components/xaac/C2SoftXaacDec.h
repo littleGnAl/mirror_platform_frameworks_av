@@ -68,6 +68,9 @@ private:
     enum {
         kOutputDrainBufferSize      = 2048 * MAX_CHANNEL_COUNT * MAX_NUM_BLOCKS,
     };
+    enum {
+        kNumDelayBlocksMax          = 8,
+    };
 
     std::shared_ptr<IntfImpl> mIntf;
     void* mXheaacCodecHandle;
@@ -89,6 +92,13 @@ private:
     int8_t* mDrcOutBuf;
     int32_t mMpegDDRCPresent;
     int32_t mDRCFlag;
+    bool mIsDRCInitialized;
+    float prevtargetref;
+    int32_t preveffecttype;
+    float prevloudness;
+    int32_t prevalbummode;
+    float prevboost;
+    float prevattenuation;
 
     Vector<void*> mMemoryVec;
     Vector<void*> mDrcMemoryVec;
@@ -97,9 +107,10 @@ private:
     size_t mOutputBufferCount __unused;
     bool mSignalledOutputEos;
     bool mSignalledError;
+    size_t mOutputPortDelay;
     char* mOutputDrainBuffer;
     uint32_t mOutputDrainBufferWritePos;
-
+    std::unique_ptr<short[]> mOutputDelayRingBuffer;
     IA_ERRORCODE initDecoder();
     IA_ERRORCODE setDrcParameter();
     IA_ERRORCODE configflushDecode();
@@ -112,7 +123,8 @@ private:
     IA_ERRORCODE deInitXAACDecoder();
     IA_ERRORCODE initMPEGDDDrc();
     IA_ERRORCODE deInitMPEGDDDrc();
-    IA_ERRORCODE configXAACDecoder(uint8_t* inBuffer, uint32_t inBufferLength);
+    IA_ERRORCODE configXAACDecoder(uint8_t* inBuffer, uint32_t inBufferLength,
+                                   int* i_bytes_consumed);
     int configMPEGDDrc();
     IA_ERRORCODE decodeXAACStream(uint8_t* inBuffer,
                          uint32_t inBufferLength,
@@ -122,7 +134,9 @@ private:
     IA_ERRORCODE setXAACDRCInfo(int32_t drcCut, int32_t drcBoost,
                                 int32_t drcRefLevel, int32_t drcHeavyCompression,
                                 int32_t drEffectType);
-
+    char mInFile[200];
+    struct timeval mTimeStart;
+    struct timeval mTimeEnd;
     C2_DO_NOT_COPY(C2SoftXaacDec);
 };
 
