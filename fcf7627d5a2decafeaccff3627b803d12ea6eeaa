@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8442af7b_e343021e",
+        "filename": "media/libeffects/dynamicsproc/aidl/DynamicsProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-11T19:19:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure we actually need to go over the audible range. The primary purposes of using higher sampling rates is to reduce the noise floor by spreading it over larger frequency domain, and to reduce latency. Regardless of the sampling rate, the signal energy remains in the human hearing range. Since dynamics processing is intended for audible sounds only, IMO there is no real need to increase the allowed band range.",
+      "range": {
+        "startLine": 115,
+        "startChar": 63,
+        "endLine": 115,
+        "endChar": 69
+      },
+      "revId": "fcf7627d5a2decafeaccff3627b803d12ea6eeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
