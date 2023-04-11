@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55f65e4_564ecb25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2023-04-11T00:43:05Z",
+      "side": 1,
+      "message": "Thanks, but this isn\u0027t really correct, since I\u0027m last-resort for any media subdirectory, and the media folks are last-resort for any camera subdirectory in frameworks/av. And probably nobody besides the camera and media folks know which is which.\n\nSo to properly express this we basically need to get rid of this top-level OWNERS and make each subdirectory have the right last-resort notes.",
+      "revId": "96894e38d507e51fa8bbea6bbc95c9fd6af1213d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
