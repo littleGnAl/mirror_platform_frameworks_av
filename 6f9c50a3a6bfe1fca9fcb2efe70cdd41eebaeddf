@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88cf2702_0de4cd61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-12T19:10:19Z",
+      "side": 1,
+      "message": "Thanks, Jiabin! I\u0027m surprised this behavior wasn\u0027t the case before 😊",
+      "revId": "6f9c50a3a6bfe1fca9fcb2efe70cdd41eebaeddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d74561c_2b0aae38",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7756,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-12T19:10:19Z",
+      "side": 1,
+      "message": "More canonical approach is to make `channelMasks` an `std::optional` set.",
+      "range": {
+        "startLine": 7756,
+        "startChar": 0,
+        "endLine": 7756,
+        "endChar": 47
+      },
+      "revId": "6f9c50a3a6bfe1fca9fcb2efe70cdd41eebaeddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
