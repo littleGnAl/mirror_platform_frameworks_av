@@ -15,8 +15,8 @@
  */
 
 #include <mediadrm/DrmStatus.h>
+#include <mediadrm/MetricsErrored.h>
 #include <mediadrm/IDrm.h>
-#include <sys/random.h>
 #include <map>
 #include <mutex>
 
@@ -24,51 +24,6 @@
 #define DRM_METRICS_LOGGER_H
 
 namespace android {
-
-// Keep enums in sync with frameworks/proto_logging/stats/enums/media/drm/enums.proto
-
-enum {
-    ENUM_DRM_UNKNOWN = 0,
-    ENUM_DRM_NO_LICENSE = 1,
-    ENUM_DRM_LICENSE_EXPIRED = 2,
-    ENUM_DRM_RESOURCE_BUSY = 3,
-    ENUM_DRM_INSUFFICIENT_OUTPUT_PROTECTION = 4,
-    ENUM_DRM_SESSION_NOT_OPENED = 5,
-    ENUM_DRM_CANNOT_HANDLE = 6,
-    ENUM_DRM_INSUFFICIENT_SECURITY = 7,
-    ENUM_DRM_FRAME_TOO_LARGE = 8,
-    ENUM_DRM_SESSION_LOST_STATE = 9,
-    ENUM_DRM_CERTIFICATE_MALFORMED = 10,
-    ENUM_DRM_CERTIFICATE_MISSING = 11,
-    ENUM_DRM_CRYPTO_LIBRARY = 12,
-    ENUM_DRM_GENERIC_OEM = 13,
-    ENUM_DRM_GENERIC_PLUGIN = 14,
-    ENUM_DRM_INIT_DATA = 15,
-    ENUM_DRM_KEY_NOT_LOADED = 16,
-    ENUM_DRM_LICENSE_PARSE = 17,
-    ENUM_DRM_LICENSE_POLICY = 18,
-    ENUM_DRM_LICENSE_RELEASE = 19,
-    ENUM_DRM_LICENSE_REQUEST_REJECTED = 20,
-    ENUM_DRM_LICENSE_RESTORE = 21,
-    ENUM_DRM_LICENSE_STATE = 22,
-    ENUM_DRM_MEDIA_FRAMEWORK = 23,
-    ENUM_DRM_PROVISIONING_CERTIFICATE = 24,
-    ENUM_DRM_PROVISIONING_CONFIG = 25,
-    ENUM_DRM_PROVISIONING_PARSE = 26,
-    ENUM_DRM_PROVISIONING_REQUEST_REJECTED = 27,
-    ENUM_DRM_PROVISIONING_RETRY = 28,
-    ENUM_DRM_RESOURCE_CONTENTION = 29,
-    ENUM_DRM_SECURE_STOP_RELEASE = 30,
-    ENUM_DRM_STORAGE_READ = 31,
-    ENUM_DRM_STORAGE_WRITE = 32,
-    ENUM_DRM_ZERO_SUBSAMPLES = 33,
-    ENUM_DRM_INVALID_STATE = 34,
-    ENUM_BAD_VALUE = 35,
-    ENUM_DRM_NOT_PROVISIONED = 36,
-    ENUM_DRM_DEVICE_REVOKED = 37,
-    ENUM_DRM_DECRYPT = 38,
-    ENUM_DEAD_OBJECT = 39,
-};
 
 enum {
     JSecurityLevelUnknown = 0,
@@ -78,13 +33,6 @@ enum {
     JSecurityLevelHwSecureDecode = 4,
     JSecurityLevelHwSecureAll = 5,
     JSecurityLevelMax = 6,
-};
-
-struct SessionContext {
-    std::string mNonce;
-    DrmPlugin::SecurityLevel mTargetSecurityLevel;
-    DrmPlugin::SecurityLevel mActualSecurityLevel;
-    std::string mVersion;
 };
 
 class DrmMetricsLogger : public IDrm {
@@ -208,8 +156,6 @@ class DrmMetricsLogger : public IDrm {
             const DrmStatus& error_code, const char* api,
             const std::vector<uint8_t>& sessionId = std::vector<uint8_t>()) const;
 
-    DrmStatus generateNonce(std::string* out, size_t size, const char* api);
-
   private:
     static const size_t kNonceSize = 16;
     static const std::map<std::array<int64_t, 2>, std::string> kUuidSchemeMap;
@@ -221,6 +167,7 @@ class DrmMetricsLogger : public IDrm {
     std::map<std::vector<uint8_t>, SessionContext> mSessionMap;
     mutable std::mutex mSessionMapMutex;
     IDrmFrontend mFrontend;
+    MetricsErrored mMetricsError;
     DISALLOW_EVIL_CONSTRUCTORS(DrmMetricsLogger);
 };
 

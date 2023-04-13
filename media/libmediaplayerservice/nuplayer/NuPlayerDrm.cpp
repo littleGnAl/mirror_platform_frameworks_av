@@ -34,7 +34,7 @@ sp<IDrm> NuPlayerDrm::CreateDrm(status_t *pstatus)
 sp<ICrypto> NuPlayerDrm::createCrypto(status_t *pstatus)
 {
 
-    return DrmUtils::MakeCrypto(pstatus);
+    return DrmUtils::MakeCrypto(IDRM_NUPLAYER, pstatus);
 }
 
 Vector<DrmUUID> NuPlayerDrm::parsePSSH(const void *pssh, size_t psshsize)
