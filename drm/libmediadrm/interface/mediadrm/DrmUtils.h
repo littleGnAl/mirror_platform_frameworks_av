@@ -22,6 +22,7 @@
 #include <android/hardware/drm/1.4/IDrmPlugin.h>
 #include <android/hardware/drm/1.4/types.h>
 #include <media/stagefright/MediaErrors.h>
+#include <mediadrm/CryptoMetricsLogger.h>
 #include <mediadrm/DrmMetricsLogger.h>
 #include <mediadrm/DrmStatus.h>
 #include <utils/Errors.h>  // for status_t
@@ -123,7 +124,7 @@ bool UseDrmService();
 
 sp<IDrm> MakeDrm(IDrmFrontend frontend = IDRM_JNI, status_t* pstatus = nullptr);
 
-sp<ICrypto> MakeCrypto(status_t *pstatus = nullptr);
+sp<ICrypto> MakeCrypto(IDrmFrontend frontend = IDRM_JNI, status_t *pstatus = nullptr);
 
 template<typename BA, typename PARCEL>
 void WriteByteArray(PARCEL &obj, const BA &vec) {

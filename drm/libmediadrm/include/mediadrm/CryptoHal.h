@@ -18,6 +18,7 @@
 #define CRYPTO_HAL_H_
 
 #include <mediadrm/ICrypto.h>
+#include <mediadrm/CryptoMetricsLogger.h>
 #include <utils/KeyedVector.h>
 #include <utils/threads.h>
 
@@ -55,5 +56,6 @@ private:
 };
 
 }  // namespace android
+
 
 #endif  // CRYPTO_HAL_H_

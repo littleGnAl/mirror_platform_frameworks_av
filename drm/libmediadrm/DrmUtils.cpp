@@ -196,8 +196,8 @@ sp<IDrm> MakeDrm(IDrmFrontend frontend, status_t* pstatus) {
     return MakeObject<DrmMetricsLogger>(pstatus, frontend);
 }
 
-sp<ICrypto> MakeCrypto(status_t* pstatus) {
-    return MakeObject<CryptoHal>(pstatus);
+sp<ICrypto> MakeCrypto(IDrmFrontend frontend, status_t* pstatus) {
+    return MakeObject<CryptoMetricsLogger>(pstatus, frontend);
 }
 
 std::vector<sp<::V1_0::IDrmFactory>> MakeDrmFactories(const uint8_t uuid[16]) {

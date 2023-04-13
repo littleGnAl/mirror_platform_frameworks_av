@@ -37,6 +37,8 @@ cc_library {
         "DrmHalListener.cpp",
         "DrmStatus.cpp",
         "DrmMetricsLogger.cpp",
+        "MetricsErrored.cpp",
+        "CryptoMetricsLogger.cpp",
     ],
 
     local_include_dirs: [
