@@ -60,7 +60,7 @@ static const std::array<AudioHalVersionInfo, 5> sAudioHALVersions = {
     AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 4, 0),
 };
 
-static const std::map<AudioHalVersionInfo::Type, InterfaceName> sDevicesHALInterfaces = {
+static const std::map<AudioHalVersionInfo::Type, InterfaceName> sCoreHalInterface = {
         {AudioHalVersionInfo::Type::AIDL, std::make_pair("android.hardware.audio.core", "IModule")},
         {AudioHalVersionInfo::Type::HIDL,
          std::make_pair("android.hardware.audio", "IDevicesFactory")},
@@ -160,8 +160,8 @@ void *createPreferredImpl(bool isDevice) {
                             });
     };
 
-    auto interfaceMap = isDevice ? sDevicesHALInterfaces : sEffectsHALInterfaces;
-    auto siblingInterfaceMap = isDevice ? sEffectsHALInterfaces : sDevicesHALInterfaces;
+    auto interfaceMap = isDevice ? sCoreHalInterface : sEffectsHALInterfaces;
+    auto siblingInterfaceMap = isDevice ? sEffectsHALInterfaces : sCoreHalInterface;
     auto ifaceVersionIt = findMostRecentVersion(interfaceMap);
     auto siblingVersionIt = findMostRecentVersion(siblingInterfaceMap);
     if (ifaceVersionIt != sAudioHALVersions.end() && siblingVersionIt != sAudioHALVersions.end() &&
