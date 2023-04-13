@@ -16,6 +16,7 @@
 
 //#define LOG_NDEBUG 0
 #define LOG_TAG "CryptoHal"
+
 #include <mediadrm/CryptoHal.h>
 #include <mediadrm/CryptoHalHidl.h>
 #include <mediadrm/CryptoHalAidl.h>
