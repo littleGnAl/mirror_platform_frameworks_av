@@ -1133,7 +1133,6 @@ void CCodec::configure(const sp<AMessage> &msg) {
         int32_t usingRecorder;
         if (msg->findInt32("android._using-recorder", &usingRecorder) && usingRecorder) {
             android_dataspace dataSpace = HAL_DATASPACE_BT709;
-            int32_t width, height;
             if (msg->findInt32("width", &width)
                     && msg->findInt32("height", &height)) {
                 ColorAspects aspects;
