@@ -16,6 +16,24 @@
       "message": "Just to note, ab/ doesn\u0027t show any merge paths from android13-gsi outside of tm-gsi builds of various sorts, so DO NOT MERGE is likely unnecessary. But in theory, shouldn\u0027t be a problem either.",
       "revId": "ca2f900cab120f5367e82641c62c1e93a2592f5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8290a0e_672541a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-04-15T01:15:24Z",
+      "side": 1,
+      "message": "+1. I left the \"DO NOT MERGE\" in there because the source CL has it already in the subject. :)",
+      "parentUuid": "08a5e340_69695770",
+      "revId": "ca2f900cab120f5367e82641c62c1e93a2592f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
