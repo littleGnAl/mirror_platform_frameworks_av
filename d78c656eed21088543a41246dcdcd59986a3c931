@@ -70,6 +70,30 @@
       },
       "revId": "d78c656eed21088543a41246dcdcd59986a3c931",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62bc8f19_cb48b513",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-04-16T14:11:45Z",
+      "side": 0,
+      "message": "Hi, Ray\n\nDo you think it is necessary to add config-\u003emDomain \u0026 (Config::IS_IMAGE | Config::IS_VIDEO) in Line 1134.\nother Domain, such as Audio, no need to set dataspace.\n\nThanks",
+      "parentUuid": "d6d2e6b7_99e0c81e",
+      "range": {
+        "startLine": 1137,
+        "startChar": 2,
+        "endLine": 1138,
+        "endChar": 59
+      },
+      "revId": "d78c656eed21088543a41246dcdcd59986a3c931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
