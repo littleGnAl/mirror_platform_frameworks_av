@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0f87df_f21396d6",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-04-16T13:45:07Z",
+      "side": 1,
+      "message": "Hi, Ray\n\nLine 915 \u0026 919 guarantee that there are height/width parameters in msg.\ncould you review it?\n\nThanks",
+      "revId": "13113e812758cd8ccf28f19c8002abb5d72ecba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

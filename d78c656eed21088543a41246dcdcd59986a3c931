@@ -22,6 +22,30 @@
       },
       "revId": "d78c656eed21088543a41246dcdcd59986a3c931",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82d330b_109c4343",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-04-16T13:45:07Z",
+      "side": 0,
+      "message": "Hi, Ray\n\nLine 915 \u0026 919 guarantee that there are height/width parameters in msg.\ncould you review it?\n\nThanks",
+      "parentUuid": "9fe6fcf4_e50ee4d1",
+      "range": {
+        "startLine": 1137,
+        "startChar": 2,
+        "endLine": 1138,
+        "endChar": 59
+      },
+      "revId": "d78c656eed21088543a41246dcdcd59986a3c931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
