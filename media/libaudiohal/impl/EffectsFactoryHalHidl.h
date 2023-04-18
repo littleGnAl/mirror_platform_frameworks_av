@@ -17,6 +17,7 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include PATH(android/hardware/audio/effect/FILE_VERSION/IEffectsFactory.h)
 #include <media/audiohal/EffectsFactoryHalInterface.h>
@@ -62,9 +63,15 @@ class EffectsFactoryHalHidl final : public EffectsFactoryHalInterface,
 
     android::detail::AudioHalVersionInfo getHalVersion() const override;
 
+    std::vector<effectsConfig::InputStream> getPreProcessings() const override;
+    std::vector<effectsConfig::OutputStream> getPostProcessings() const override;
+    std::vector<effectsConfig::DeviceEffects> getDeviceProcessings() const override;
+    std::pair<status_t, int> getEffectParsingResult() const override;
+
   private:
     sp<IEffectsFactory> mEffectsFactory;
     std::unique_ptr<EffectDescriptorCache> mCache;
+    const effectsConfig::ParsingResult mEffectConfigParseResult;
 };
 
 } // namespace effect
