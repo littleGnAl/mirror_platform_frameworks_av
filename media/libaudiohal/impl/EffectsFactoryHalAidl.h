@@ -62,6 +62,11 @@ class EffectsFactoryHalAidl final : public EffectsFactoryHalInterface {
 
     detail::AudioHalVersionInfo getHalVersion() const override;
 
+    std::vector<effectsConfig::InputStream> getPreProcessings() const override;
+    std::vector<effectsConfig::OutputStream> getPostProcessings() const override;
+    std::vector<effectsConfig::DeviceEffects> getDeviceProcessings() const override;
+    std::pair<status_t, int> getEffectParsingResult() const override;
+
   private:
     const std::shared_ptr<IFactory> mFactory;
     const detail::AudioHalVersionInfo mHalVersion;
