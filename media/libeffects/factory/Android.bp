@@ -39,6 +39,7 @@ cc_library_shared {
     header_libs: [
         "libaudioeffects",
         "libeffects_headers",
+        "liberror_headers",
     ],
     export_header_lib_headers: ["libeffects_headers"],
 }
