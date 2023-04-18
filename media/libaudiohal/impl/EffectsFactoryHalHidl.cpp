@@ -78,7 +78,9 @@ EffectDescriptorCache::QueryResult EffectDescriptorCache::queryAllDescriptors(
 }
 
 EffectsFactoryHalHidl::EffectsFactoryHalHidl(sp<IEffectsFactory> effectsFactory)
-        : EffectConversionHelperHidl("EffectsFactory"), mCache(new EffectDescriptorCache) {
+    : EffectConversionHelperHidl("EffectsFactory"),
+      mCache(new EffectDescriptorCache),
+      mEffectConfigParseResult(effectsConfig::parse()) {
     ALOG_ASSERT(effectsFactory != nullptr, "Provided IEffectsFactory service is NULL");
     mEffectsFactory = std::move(effectsFactory);
 }
@@ -226,6 +228,32 @@ status_t EffectsFactoryHalHidl::mirrorBuffer(void* external, size_t size,
 
 AudioHalVersionInfo EffectsFactoryHalHidl::getHalVersion() const {
     return AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, MAJOR_VERSION, MINOR_VERSION);
+}
+
+std::vector<effectsConfig::InputStream> EffectsFactoryHalHidl::getPreProcessings() const {
+    if (mEffectConfigParseResult.parsedConfig == nullptr) {
+        return {};
+    }
+    return mEffectConfigParseResult.parsedConfig->preprocess;
+}
+
+std::vector<effectsConfig::OutputStream> EffectsFactoryHalHidl::getPostProcessings() const {
+    if (mEffectConfigParseResult.parsedConfig == nullptr) {
+        return {};
+    }
+    return mEffectConfigParseResult.parsedConfig->postprocess;
+}
+
+std::vector<effectsConfig::DeviceEffects> EffectsFactoryHalHidl::getDeviceProcessings() const {
+    if (mEffectConfigParseResult.parsedConfig == nullptr) {
+        return {};
+    }
+    return mEffectConfigParseResult.parsedConfig->deviceprocess;
+}
+
+std::pair<status_t, int> EffectsFactoryHalHidl::getEffectParsingResult() const {
+    return {mEffectConfigParseResult.parsedConfig ? NO_ERROR : BAD_VALUE,
+            mEffectConfigParseResult.nbSkippedElement};
 }
 
 } // namespace effect

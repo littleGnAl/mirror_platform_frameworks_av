@@ -32,3 +32,9 @@ cc_library {
 
     export_include_dirs: ["include"],
 }
+
+cc_library_headers {
+    name: "libeffectsconfig_headers",
+
+    export_include_dirs: ["include"],
+}
