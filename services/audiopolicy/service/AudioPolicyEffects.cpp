@@ -41,25 +41,24 @@ using content::AttributionSourceState;
 // AudioPolicyEffects Implementation
 // ----------------------------------------------------------------------------
 
-AudioPolicyEffects::AudioPolicyEffects()
-{
-    status_t loadResult = loadAudioEffectXmlConfig();
+AudioPolicyEffects::AudioPolicyEffects(const sp<EffectsFactoryHalInterface>& effectsFactoryHal) {
+    // load xml config with effectsFactoryHal
+    status_t loadResult = loadAudioEffectConfig(effectsFactoryHal);
     if (loadResult == NO_ERROR) {
-        mDefaultDeviceEffectFuture = std::async(
-                    std::launch::async, &AudioPolicyEffects::initDefaultDeviceEffects, this);
+        mDefaultDeviceEffectFuture =
+                std::async(std::launch::async, &AudioPolicyEffects::initDefaultDeviceEffects, this);
     } else if (loadResult < 0) {
         ALOGW("Failed to load XML effect configuration, fallback to .conf");
         // load automatic audio effect modules
         if (access(AUDIO_EFFECT_VENDOR_CONFIG_FILE, R_OK) == 0) {
-            loadAudioEffectConfig(AUDIO_EFFECT_VENDOR_CONFIG_FILE);
+            loadAudioEffectConfigLegacy(AUDIO_EFFECT_VENDOR_CONFIG_FILE);
         } else if (access(AUDIO_EFFECT_DEFAULT_CONFIG_FILE, R_OK) == 0) {
-            loadAudioEffectConfig(AUDIO_EFFECT_DEFAULT_CONFIG_FILE);
+            loadAudioEffectConfigLegacy(AUDIO_EFFECT_DEFAULT_CONFIG_FILE);
         }
     } else if (loadResult > 0) {
         ALOGE("Effect config is partially invalid, skipped %d elements", loadResult);
     }
 }
-
 
 AudioPolicyEffects::~AudioPolicyEffects()
 {
@@ -907,10 +906,19 @@ status_t AudioPolicyEffects::loadEffects(cnode *root, Vector <EffectDesc *>& eff
     return NO_ERROR;
 }
 
-status_t AudioPolicyEffects::loadAudioEffectXmlConfig() {
-    auto result = effectsConfig::parse();
-    if (result.parsedConfig == nullptr) {
-        return -ENOENT;
+status_t AudioPolicyEffects::loadAudioEffectConfig(
+        const sp<EffectsFactoryHalInterface>& effectsFactoryHal) {
+    if (!effectsFactoryHal) {
+        ALOGE("%s Null EffectsFactoryHalInterface", __func__);
+        return UNEXPECTED_NULL;
+    }
+
+    const auto& result = effectsFactoryHal->getEffectParsingResult();
+    // An error status means audio_effects.xml config file parse failure (in HIDL),
+    // IFactory::queryProcessing failure (in AIDL)
+    if (result.first != NO_ERROR) {
+        ALOGE("%s EffectFactory failed to parse config: %d", __func__, result.first);
+        return result.first;
     }
 
     auto loadProcessingChain = [](auto& processingChain, auto& streams) {
@@ -924,9 +932,8 @@ status_t AudioPolicyEffects::loadAudioEffectXmlConfig() {
         }
     };
 
-    auto loadDeviceProcessingChain = [](auto &processingChain, auto& devicesEffects) {
+    auto loadDeviceProcessingChain = [](auto& processingChain, auto& devicesEffects) {
         for (auto& deviceProcess : processingChain) {
-
             auto effectDescs = std::make_unique<EffectDescVector>();
             for (auto& effect : deviceProcess.effects) {
                 effectDescs->mEffects.add(
@@ -938,17 +945,23 @@ status_t AudioPolicyEffects::loadAudioEffectXmlConfig() {
         }
     };
 
-    loadProcessingChain(result.parsedConfig->preprocess, mInputSources);
-    loadProcessingChain(result.parsedConfig->postprocess, mOutputStreams);
+    const auto preprocessing = effectsFactoryHal->getPreProcessings();
+    loadProcessingChain(preprocessing, mInputSources);
+    const auto postprocessing = effectsFactoryHal->getPostProcessings();
+    loadProcessingChain(postprocessing, mOutputStreams);
+
     {
         Mutex::Autolock _l(mLock);
-        loadDeviceProcessingChain(result.parsedConfig->deviceprocess, mDeviceEffects);
+        const auto deviceprocessing = effectsFactoryHal->getDeviceProcessings();
+        loadDeviceProcessingChain(deviceprocessing, mDeviceEffects);
     }
-    // Casting from ssize_t to status_t is probably safe, there should not be more than 2^31 errors
-    return result.nbSkippedElement;
+
+    // Return the number of skipped elements in HIDL, in AIDL this information is not available so
+    // always return 0
+    return result.second;
 }
 
-status_t AudioPolicyEffects::loadAudioEffectConfig(const char *path)
+status_t AudioPolicyEffects::loadAudioEffectConfigLegacy(const char *path)
 {
     cnode *root;
     char *data;

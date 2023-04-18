@@ -269,6 +269,26 @@ bool EffectsFactoryHalAidl::isProxyEffect(const AudioUuid& uuid) const {
     return 0 != mUuidProxyMap.count(uuid);
 }
 
+std::vector<effectsConfig::InputStream> EffectsFactoryHalAidl::getPreProcessings() const {
+    ALOGW("%s not implemented yet", __func__);
+    return {};
+}
+
+std::vector<effectsConfig::OutputStream> EffectsFactoryHalAidl::getPostProcessings() const {
+    ALOGW("%s not implemented yet", __func__);
+    return {};
+}
+
+std::vector<effectsConfig::DeviceEffects> EffectsFactoryHalAidl::getDeviceProcessings() const {
+    ALOGW("%s not implemented yet", __func__);
+    return {};
+}
+
+std::pair<status_t, int> EffectsFactoryHalAidl::getEffectParsingResult() const {
+    ALOGW("%s not implemented yet", __func__);
+    return {NO_ERROR, 0};
+}
+
 } // namespace effect
 
 // When a shared library is built from a static library, even explicit
