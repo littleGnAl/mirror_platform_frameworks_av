@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2785c2_9fa55dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T22:01:36Z",
+      "side": 1,
+      "message": "Some minor nits.",
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e755f44_d67f8c8d",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T22:01:36Z",
+      "side": 1,
+      "message": "nit: do you want to have a constexpr INVALID_EFFECT_PROCESSING or some such?",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530f773c_ae1ff3fa",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T22:01:36Z",
+      "side": 1,
+      "message": "nit: this seems like an odd name, I wouldn\u0027t expect what this contains.  EffectCategories?  EffectConfigurations?",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7349a6e_10f7fe82",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T22:01:36Z",
+      "side": 1,
+      "message": "nit: document the default value of this (size_t 0?)",
+      "range": {
+        "startLine": 82,
+        "startChar": 64,
+        "endLine": 82,
+        "endChar": 66
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38dd25b_41672176",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T22:01:36Z",
+      "side": 1,
+      "message": "nit: device?",
+      "range": {
+        "startLine": 85,
+        "startChar": 31,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88000b7b_a512822e",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T22:01:36Z",
+      "side": 1,
+      "message": "nit: will",
+      "range": {
+        "startLine": 43,
+        "startChar": 49,
+        "endLine": 43,
+        "endChar": 53
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
