@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6720873f_4394e297",
+        "filename": "media/libaudiohal/include/media/audiohal/EffectsFactoryHalInterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-19T16:51:45Z",
+      "side": 1,
+      "message": "Would it be easier to define a struct or a tuple of vectors in `EffectsConfig.h` and just have one method which returns all this data in one set? AFAIK, currently the framework just calls each of these methods in succession.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 87
+      },
+      "revId": "be88724107d8ffcfbeb89077cb62c6d267859aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2f9ed20_a5539ded",
+        "filename": "media/libaudiohal/include/media/audiohal/EffectsFactoryHalInterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-19T16:51:45Z",
+      "side": 1,
+      "message": "Does `skipped elements` part make any sense if the status isn\u0027t OK? If it\u0027s not used in this case then I would recommend using `android::error::Result`: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/liberror/include/error/Result.h",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 79
+      },
+      "revId": "be88724107d8ffcfbeb89077cb62c6d267859aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3af799_ad5ed979",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-19T16:51:45Z",
+      "side": 1,
+      "message": "This also needs to be updated.",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 54
+      },
+      "revId": "be88724107d8ffcfbeb89077cb62c6d267859aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48313414_e9b97778",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-19T16:51:45Z",
+      "side": 1,
+      "message": "This likely needs to be updated :)",
+      "range": {
+        "startLine": 39,
+        "startChar": 39,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "be88724107d8ffcfbeb89077cb62c6d267859aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
