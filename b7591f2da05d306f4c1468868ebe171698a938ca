@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ced7ee_59467011",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T02:03:01Z",
+      "side": 1,
+      "message": "nit: no need to change here, but in the future might want any of these const?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501f1547_33df7f3f",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T02:03:01Z",
+      "side": 1,
+      "message": "nit: this const?",
+      "range": {
+        "startLine": 941,
+        "startChar": 2,
+        "endLine": 941,
+        "endChar": 4
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d43cab2_11543a68",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T02:03:01Z",
+      "side": 1,
+      "message": "nit: please comment on what is returned here, as it is not a status.",
+      "range": {
+        "startLine": 952,
+        "startChar": 10,
+        "endLine": 952,
+        "endChar": 25
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "495d1659_87adeee2",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T02:03:01Z",
+      "side": 1,
+      "message": "nit: const ref here and on line 230.",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d53d86_2d6b6cd3",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T02:03:01Z",
+      "side": 1,
+      "message": "why can\u0027t we instantiate AudioPolicy without effects?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 90
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5471a285_1161441b",
+        "filename": "services/audiopolicy/service/Spatializer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-19T02:03:01Z",
+      "side": 1,
+      "message": "nit: pass by const ref?",
+      "range": {
+        "startLine": 99,
+        "startChar": 34,
+        "endLine": 99,
+        "endChar": 65
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
