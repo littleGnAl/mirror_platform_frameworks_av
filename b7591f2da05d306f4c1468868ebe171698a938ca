@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5593ab19_3c27f12a",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T02:39:30Z",
+      "side": 1,
+      "message": "\u003e nit: no need to change here, but in the future might want any of these const?\n\nWill address this in followup CL.",
+      "parentUuid": "13ced7ee_59467011",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "501f1547_33df7f3f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-19T02:03:01Z",
       "side": 1,
       "message": "nit: this const?",
+      "range": {
+        "startLine": 941,
+        "startChar": 2,
+        "endLine": 941,
+        "endChar": 4
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48768915_aa3076bd",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T02:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "501f1547_33df7f3f",
       "range": {
         "startLine": 941,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "584ce265_023f3798",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T02:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d43cab2_11543a68",
+      "range": {
+        "startLine": 952,
+        "startChar": 10,
+        "endLine": 952,
+        "endChar": 25
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "495d1659_87adeee2",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-04-19T02:03:01Z",
       "side": 1,
       "message": "nit: const ref here and on line 230.",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4efc0b_08ed3466",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T02:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "495d1659_87adeee2",
       "range": {
         "startLine": 48,
         "startChar": 28,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98c43d2_9b8005f3",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T02:39:30Z",
+      "side": 1,
+      "message": "Good point, I shouldn\u0027t introduce this dependency.",
+      "parentUuid": "12d53d86_2d6b6cd3",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 90
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5471a285_1161441b",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-04-19T02:03:01Z",
       "side": 1,
       "message": "nit: pass by const ref?",
+      "range": {
+        "startLine": 99,
+        "startChar": 34,
+        "endLine": 99,
+        "endChar": 65
+      },
+      "revId": "b7591f2da05d306f4c1468868ebe171698a938ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31274ce1_b499068a",
+        "filename": "services/audiopolicy/service/Spatializer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T02:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5471a285_1161441b",
       "range": {
         "startLine": 99,
         "startChar": 34,
