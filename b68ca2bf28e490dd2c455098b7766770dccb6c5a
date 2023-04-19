@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4addfa35_e20ce23d",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T22:38:12Z",
+      "side": 1,
+      "message": "Good idea, defined a macro in EffectsFactoryHalInterface for this, I think constexpr need to be literal type",
+      "parentUuid": "2e755f44_d67f8c8d",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "530f773c_ae1ff3fa",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-19T22:01:36Z",
       "side": 1,
       "message": "nit: this seems like an odd name, I wouldn\u0027t expect what this contains.  EffectCategories?  EffectConfigurations?",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4ceb5a_b3b08f06",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T22:38:12Z",
+      "side": 1,
+      "message": "discussed offline, this is in `effectsConfig` namespace, so didn\u0027t repeat `config`, and because it\u0027s only for the pre/post/device processing, so adding `processings` in naming.",
+      "parentUuid": "530f773c_ae1ff3fa",
       "range": {
         "startLine": 80,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5964ee44_8d0d8304",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T22:38:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7349a6e_10f7fe82",
+      "range": {
+        "startLine": 82,
+        "startChar": 64,
+        "endLine": 82,
+        "endChar": 66
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d38dd25b_41672176",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a94ddc_f22075c5",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T22:38:12Z",
+      "side": 1,
+      "message": "Aligning the name with what we have in `struct Config`, please see line#101.",
+      "parentUuid": "d38dd25b_41672176",
+      "range": {
+        "startLine": 85,
+        "startChar": 31,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88000b7b_a512822e",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-04-19T22:01:36Z",
       "side": 1,
       "message": "nit: will",
+      "range": {
+        "startLine": 43,
+        "startChar": 49,
+        "endLine": 43,
+        "endChar": 53
+      },
+      "revId": "b68ca2bf28e490dd2c455098b7766770dccb6c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "749238a9_acd1b397",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-19T22:38:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88000b7b_a512822e",
       "range": {
         "startLine": 43,
         "startChar": 49,
