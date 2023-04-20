@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7937260b_78f32901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2023-04-20T22:48:34Z",
+      "side": 1,
+      "message": "Checked that we are able to re-use the saved device instance on Cuttlefish with Hal downgraded to HIDL ver. 3.2",
+      "revId": "f33ccfaf70dcfbf55a5ae88d8b00bd4b9b7bb6b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
