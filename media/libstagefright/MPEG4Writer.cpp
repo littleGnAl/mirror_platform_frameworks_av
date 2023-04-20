@@ -556,6 +556,7 @@ void MPEG4Writer::initInternal(int fd, bool isFirstSession) {
     mResetStatus = OK;
     mPreAllocFirstTime = true;
     mPrevAllTracksTotalMetaDataSizeEstimate = 0;
+    mHasDovi = false;
 
     // Following variables only need to be set for the first recording session.
     // And they will stay the same for all the recording sessions.
@@ -699,6 +700,7 @@ status_t MPEG4Writer::addSource(const sp<MediaSource> &source) {
         // So we let the creation of the new track now and
         // assign FourCC codes later using getDoviFourCC()
         ALOGV("Add source mime '%s'", mime);
+        mHasDovi = true;
     } else if (Track::getFourCCForMime(mime) == NULL) {
         ALOGE("Unsupported mime '%s'", mime);
         return ERROR_UNSUPPORTED;
@@ -1541,6 +1543,15 @@ void MPEG4Writer::writeFtypBox(MetaData *param) {
             writeFourcc("isom");
             writeFourcc("mp42");
         }
+    }
+
+    // The brand ‘dby1’ should be used in the compatible_brands field to indicate that the file
+    // is compliant with all Dolby Extensions. For details, refer to
+    // https://professional.dolby.com/siteassets/content-creation/dolby-vision-for-content-creators/dolby_vision_bitstreams_within_the_iso_base_media_file_format_dec2017.pdf
+    // Chapter 7, Dolby Vision Files
+    if((fileType == OUTPUT_FORMAT_MPEG_4) && mHasDovi) {
+        ALOGV("Write brand 'dby1' as compatible_brands field to ftyp box.");
+        writeFourcc("dby1");
     }
 
     endBox();
