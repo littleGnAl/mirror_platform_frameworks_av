@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f2dc94_47b4e4eb",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-04-20T04:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591bed3e_cc2fa268",
+      "revId": "f7302f31979e8eed741e86a22cc797a7882eaabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b99dffc2_5ed5222b",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-04-06T20:25:30Z",
       "side": 1,
       "message": "Discussed with Lajos, we could keep fds() out of C2Fence (as this is global), move it to android::_ExtractFdsFromC2Fence in C2FenceFactory.h",
+      "revId": "f7302f31979e8eed741e86a22cc797a7882eaabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e2e3cd_1a3fc7db",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-04-20T04:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99dffc2_5ed5222b",
       "revId": "f7302f31979e8eed741e86a22cc797a7882eaabc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
