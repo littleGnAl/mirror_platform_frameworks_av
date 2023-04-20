@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98022c66_ec2706da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-04-20T03:27:17Z",
+      "side": 1,
+      "message": "This contribution adds Dolby Vision branding info into MPEG-4 ftyp box based on the requirement in https://professional.dolby.com/siteassets/content-creation/dolby-vision-for-content-creators/dolby_vision_bitstreams_within_the_iso_base_media_file_format_dec2017.pdf, chapter 7. If there is no this branding info, some Android TV devices will reject to play Dolby Vision stream.",
+      "revId": "c7a3b942fe1ea40bfb5f4088c465d8f5ac549502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
