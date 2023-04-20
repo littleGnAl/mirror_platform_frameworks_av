@@ -238,6 +238,9 @@ private:
     std::map<uint32_t, ItemInfo> mItems;
     Vector<ItemProperty> mProperties;
 
+    // Dolby Vision writing
+    bool mHasDovi;
+
     // Writer thread handling
     status_t startWriterThread();
     status_t stopWriterThread();
