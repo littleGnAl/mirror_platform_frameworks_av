@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f182bfaf_f841541d",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-04-20T17:23:53Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"Implemetation\" -- should it be \"Implementation\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"Implemetation\" -- should it be \"Implementation\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "afc13c2e7feff208c3d83e74a1be22d004ba3040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6803f1_5310cc85",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-04-20T17:23:53Z",
+      "side": 1,
+      "message": "nit:\nif (fence.mImpl) {\n    retFds \u003d fence.mImpl-\u003efds();\n}",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 311,
+        "endChar": 36
+      },
+      "revId": "afc13c2e7feff208c3d83e74a1be22d004ba3040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13d0793_0a18c694",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-04-20T17:23:53Z",
+      "side": 1,
+      "message": "nit: update the documentation with input argument and also align it.\n\n/*\n * Create a list of fds from fence\n *\n * \\param fence\n *\n * \\return a vector of fds otherwise return vector of size 0\n*/",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "afc13c2e7feff208c3d83e74a1be22d004ba3040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
