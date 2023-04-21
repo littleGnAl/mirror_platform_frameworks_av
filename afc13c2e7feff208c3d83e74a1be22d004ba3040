@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed9ab22_ebf0bd09",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-04-21T03:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f182bfaf_f841541d",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "afc13c2e7feff208c3d83e74a1be22d004ba3040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a6803f1_5310cc85",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc0d0f85_33e4d21c",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-04-21T03:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6803f1_5310cc85",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 311,
+        "endChar": 36
+      },
+      "revId": "afc13c2e7feff208c3d83e74a1be22d004ba3040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d13d0793_0a18c694",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-20T17:23:53Z",
       "side": 1,
       "message": "nit: update the documentation with input argument and also align it.\n\n/*\n * Create a list of fds from fence\n *\n * \\param fence\n *\n * \\return a vector of fds otherwise return vector of size 0\n*/",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "afc13c2e7feff208c3d83e74a1be22d004ba3040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc9f5433_4d75dd41",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-04-21T03:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13d0793_0a18c694",
       "range": {
         "startLine": 23,
         "startChar": 0,
