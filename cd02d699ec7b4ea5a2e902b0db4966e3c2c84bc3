@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6d6bc8_52711788",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-04-21T11:57:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cda6c5bc_64460b98",
+      "range": {
+        "startLine": 1549,
+        "startChar": 39,
+        "endLine": 1549,
+        "endChar": 40
+      },
+      "revId": "cd02d699ec7b4ea5a2e902b0db4966e3c2c84bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23a624ea_5aeb8d70",
@@ -108,6 +132,30 @@
       "writtenOn": "2023-04-21T11:32:25Z",
       "side": 1,
       "message": "If we rename this to mHasDolbyVision then\n1. variable name will be much more clear.\n2. Additional comment can be removed.\n\nApologies for not suggesting this earlier.",
+      "range": {
+        "startLine": 242,
+        "startChar": 9,
+        "endLine": 242,
+        "endChar": 17
+      },
+      "revId": "cd02d699ec7b4ea5a2e902b0db4966e3c2c84bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "198a5ed5_9236413c",
+        "filename": "media/libstagefright/include/media/stagefright/MPEG4Writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-04-21T11:57:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "23a624ea_5aeb8d70",
       "range": {
         "startLine": 242,
         "startChar": 9,
