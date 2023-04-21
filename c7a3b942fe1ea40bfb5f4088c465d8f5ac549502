@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58ecdb9_f3deffe2",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-04-21T01:47:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2b582360_7b9c14d1",
+      "range": {
+        "startLine": 1552,
+        "startChar": 4,
+        "endLine": 1552,
+        "endChar": 56
+      },
+      "revId": "c7a3b942fe1ea40bfb5f4088c465d8f5ac549502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fdbc545_d26a6f79",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-20T16:04:27Z",
       "side": 1,
       "message": "The logging seems unnecessary.",
+      "range": {
+        "startLine": 1553,
+        "startChar": 8,
+        "endLine": 1553,
+        "endChar": 76
+      },
+      "revId": "c7a3b942fe1ea40bfb5f4088c465d8f5ac549502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa59e3a9_d046a7b7",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-04-21T01:47:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9fdbc545_d26a6f79",
       "range": {
         "startLine": 1553,
         "startChar": 8,
