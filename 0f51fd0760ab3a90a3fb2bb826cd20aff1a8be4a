@@ -46,6 +46,30 @@
       },
       "revId": "0f51fd0760ab3a90a3fb2bb826cd20aff1a8be4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f3d12e_55c1e631",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-04-21T07:42:01Z",
+      "side": 1,
+      "message": "Sorry, I thought the FIXME what about doing what this CL does but no: this CL returns early but before we were already returning position 0 and OK if getRenderPosition returned dspFrames \u003d 0 on error.",
+      "parentUuid": "780386a6_dab56d6a",
+      "range": {
+        "startLine": 1726,
+        "startChar": 15,
+        "endLine": 1726,
+        "endChar": 20
+      },
+      "revId": "0f51fd0760ab3a90a3fb2bb826cd20aff1a8be4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
