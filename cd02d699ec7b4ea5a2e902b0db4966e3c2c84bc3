@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa99aab_a72c7e4d",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 2003661
+      },
+      "writtenOn": "2023-04-21T11:32:25Z",
+      "side": 1,
+      "message": "IMO the URL link should not be wrapped.\n@tonihei@google.com Can you please confirm on this?",
+      "range": {
+        "startLine": 1548,
+        "startChar": 11,
+        "endLine": 1548,
+        "endChar": 177
+      },
+      "revId": "cd02d699ec7b4ea5a2e902b0db4966e3c2c84bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda6c5bc_64460b98",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 2003661
+      },
+      "writtenOn": "2023-04-21T11:32:25Z",
+      "side": 1,
+      "message": "nit: Full stop at the end.",
+      "range": {
+        "startLine": 1549,
+        "startChar": 39,
+        "endLine": 1549,
+        "endChar": 40
+      },
+      "revId": "cd02d699ec7b4ea5a2e902b0db4966e3c2c84bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a624ea_5aeb8d70",
+        "filename": "media/libstagefright/include/media/stagefright/MPEG4Writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 2003661
+      },
+      "writtenOn": "2023-04-21T11:32:25Z",
+      "side": 1,
+      "message": "If we rename this to mHasDolbyVision then\n1. variable name will be much more clear.\n2. Additional comment can be removed.\n\nApologies for not suggesting this earlier.",
+      "range": {
+        "startLine": 242,
+        "startChar": 9,
+        "endLine": 242,
+        "endChar": 17
+      },
+      "revId": "cd02d699ec7b4ea5a2e902b0db4966e3c2c84bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
