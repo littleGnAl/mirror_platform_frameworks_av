@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42df1aa_911e815c",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-21T15:54:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9d712328_e6b6b792",
+      "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "944b5534_c47e3690",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Good catch!  Normally the compiler would catch this but the ALOG_ASSERT here is only enabled on LOG_NDEBUG 0 as I recall.",
       "parentUuid": "944b5534_c47e3690",
+      "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66623438_292ae897",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-21T15:54:23Z",
+      "side": 1,
+      "message": "Thanks, working on a new CL for this.",
+      "parentUuid": "e90d556d_c0be2d82",
       "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
