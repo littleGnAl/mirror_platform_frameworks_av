@@ -50,6 +50,24 @@
       "message": "...but then reference `effectsFactory` in this assert.  Presumably we\u0027d want to change this assert to reference `mEffectsFactory` instead.",
       "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90d556d_c0be2d82",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-21T15:52:34Z",
+      "side": 1,
+      "message": "Good catch!  Normally the compiler would catch this but the ALOG_ASSERT here is only enabled on LOG_NDEBUG 0 as I recall.",
+      "parentUuid": "944b5534_c47e3690",
+      "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
