@@ -1,5 +1,57 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9cbd85_b528a90e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-04-21T15:04:39Z",
+      "side": 1,
+      "message": "It looks like this has already been reverted, but in case we try to reland this, and folks didn\u0027t realize this, it looks like there\u0027s a use-after-move bug.",
+      "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d712328_e6b6b792",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-04-21T15:04:39Z",
+      "side": 1,
+      "message": "We std::move `effectsFactory` here...",
+      "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944b5534_c47e3690",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-04-21T15:04:39Z",
+      "side": 1,
+      "message": "...but then reference `effectsFactory` in this assert.  Presumably we\u0027d want to change this assert to reference `mEffectsFactory` instead.",
+      "revId": "bfb9b0d1a32c88496fad9d3a3048df50bf8a5161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
