@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3cbd9b7_03d0cf59",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-04-21T11:34:32Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure what you mean. The URL looks wrapped in the Gerrit UI, but it\u0027s all on one single line of code as far as I can tell.",
+      "parentUuid": "9aa99aab_a72c7e4d",
+      "range": {
+        "startLine": 1548,
+        "startChar": 11,
+        "endLine": 1548,
+        "endChar": 177
+      },
+      "revId": "cd02d699ec7b4ea5a2e902b0db4966e3c2c84bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cda6c5bc_64460b98",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 2
