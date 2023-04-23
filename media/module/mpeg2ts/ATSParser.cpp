@@ -545,7 +545,7 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
 
         info.mAudioPresentations.clear();
         bool hasStreamCA = false;
-        while (ES_info_length > 2 && infoBytesRemaining >= 0) {
+        while (ES_info_length >= 2 && infoBytesRemaining >= 0) {
             unsigned descriptor_tag = br->getBits(8);
             ALOGV("      tag = 0x%02x", descriptor_tag);
 
