@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0b38db_4113dd73",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-04-24T08:54:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d44441_678ceeb8",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 46
+      },
+      "revId": "99100c33634b7d52c87a8ee359a1110209bb5189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a61a248_1205ac6e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-14T22:37:01Z",
       "side": 1,
       "message": "what is the need for const_cast here? You can move filePtr into this scope or pass as argument directly.",
+      "range": {
+        "startLine": 233,
+        "startChar": 16,
+        "endLine": 233,
+        "endChar": 36
+      },
+      "revId": "99100c33634b7d52c87a8ee359a1110209bb5189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6424e733_ad08a77f",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-04-24T08:54:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a61a248_1205ac6e",
       "range": {
         "startLine": 233,
         "startChar": 16,
