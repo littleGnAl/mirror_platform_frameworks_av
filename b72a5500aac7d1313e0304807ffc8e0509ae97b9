@@ -16,6 +16,29 @@
       "message": "Cherry-pick from internal ag/22316568, one line conflict resolution.",
       "revId": "b72a5500aac7d1313e0304807ffc8e0509ae97b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "928fa5d3_83f36a1b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6064,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-04-25T18:07:40Z",
+      "side": 1,
+      "message": "conflict resolution here.",
+      "range": {
+        "startLine": 6064,
+        "startChar": 0,
+        "endLine": 6064,
+        "endChar": 28
+      },
+      "revId": "b72a5500aac7d1313e0304807ffc8e0509ae97b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
