@@ -670,7 +670,7 @@ void C2CompIntfTest::testMain(std::shared_ptr<C2ComponentInterface> intf,
 TEST_F(C2CompIntfTest, C2V4L2CodecIntf) {
 
     // Read a shared object library.
-    void* compLib = dlopen("system/lib/libv4l2_codec2.so", RTLD_NOW);
+    static void* compLib = dlopen("system/lib/libv4l2_codec2.so", RTLD_NOW);
 
     if (!compLib) {
         printf("Cannot open library: %s.\n", dlerror());
