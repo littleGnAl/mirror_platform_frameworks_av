@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9eaaaafd_df87fdd2",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-04-25T18:34:17Z",
+      "side": 1,
+      "message": "Please consider Lajos\u0027s comment below.\nmBase being null does not mean any HIDL transaction failure.\nSo the proper log might be \n\"Codec2ConfigurableClient creation failure.\" or something.\n\nAnd in this case we\u0027d better return nullptr object.",
+      "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33b11bc0_e2bfd715",
         "filename": "media/codec2/hidl/client/client.cpp",
         "patchSetId": 1
