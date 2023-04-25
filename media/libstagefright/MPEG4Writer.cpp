@@ -492,7 +492,11 @@ private:
     Track &operator=(const Track &);
 };
 
-MPEG4Writer::MPEG4Writer(int fd) {
+MPEG4Writer::MPEG4Writer(int fd)
+    : mIsFirstChunk(false),
+      mDone(false),
+      mThread(NULL),
+      mDriftTimeUs(0) {
     initInternal(dup(fd), true /*isFirstSession*/);
 }
 
