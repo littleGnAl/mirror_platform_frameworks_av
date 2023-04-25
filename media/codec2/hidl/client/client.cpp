@@ -673,6 +673,10 @@ c2_status_t Codec2Client::createComponent(
                 if (status != C2_OK) {
                     return;
                 }
+                if (!c) {
+                    status = C2_CORRUPTED;
+                    return;
+                }
                 *component = std::make_shared<Codec2Client::Component>(c);
                 hidlListener->component = *component;
             });
@@ -689,6 +693,10 @@ c2_status_t Codec2Client::createComponent(
                 if (status != C2_OK) {
                     return;
                 }
+                if (!c) {
+                    status = C2_CORRUPTED;
+                    return;
+                }
                 *component = std::make_shared<Codec2Client::Component>(c);
                 hidlListener->component = *component;
             });
@@ -702,6 +710,10 @@ c2_status_t Codec2Client::createComponent(
                     const sp<hardware::media::c2::V1_0::IComponent>& c) {
                 status = static_cast<c2_status_t>(s);
                 if (status != C2_OK) {
+                    return;
+                }
+                if (!c) {
+                    status = C2_CORRUPTED;
                     return;
                 }
                 *component = std::make_shared<Codec2Client::Component>(c);
@@ -753,6 +765,10 @@ c2_status_t Codec2Client::createInterface(
                 if (status != C2_OK) {
                     return;
                 }
+                if (!i) {
+                  status = C2_CORRUPTED;
+                  return;
+                }
                 *interface = std::make_shared<Interface>(i);
             });
     if (!transStatus.isOk()) {
@@ -782,6 +798,10 @@ c2_status_t Codec2Client::createInputSurface(
                     const sp<IInputSurface>& i) {
                 status = static_cast<c2_status_t>(s);
                 if (status != C2_OK) {
+                    return;
+                }
+                if (!i) {
+                    status = C2_CORRUPTED;
                     return;
                 }
                 *inputSurface = std::make_shared<InputSurface>(i);
@@ -1301,6 +1321,10 @@ c2_status_t Codec2Client::Component::createBlockPool(
                                << status << ".";
                     return;
                 }
+                if (!c) {
+                    status = C2_CORRUPTED;
+                    return;
+                }
                 *blockPoolId = static_cast<C2BlockPool::local_id_t>(pId);
                 *configurable = std::make_shared<Configurable>(c);
             });
@@ -1623,6 +1647,10 @@ c2_status_t Codec2Client::Component::connectToInputSurface(
                                << status << ".";
                     return;
                 }
+                if (!c) {
+                    status = C2_CORRUPTED;
+                    return;
+                }
                 *connection = std::make_shared<InputSurfaceConnection>(c);
             });
     if (!transStatus.isOk()) {
@@ -1645,6 +1673,10 @@ c2_status_t Codec2Client::Component::connectToOmxInputSurface(
                 if (status != C2_OK) {
                     LOG(DEBUG) << "connectToOmxInputSurface -- call failed: "
                                << status << ".";
+                    return;
+                }
+                if (!c) {
+                    status = C2_CORRUPTED;
                     return;
                 }
                 *connection = std::make_shared<InputSurfaceConnection>(c);
