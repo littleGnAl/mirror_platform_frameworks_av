@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d702e8a2_f05de1a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-04-25T19:12:19Z",
+      "side": 1,
+      "message": "nit: hidl",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc7dd363_f03ad5b0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -242,6 +265,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aabeac84_97b6ae33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-04-25T19:12:19Z",
+      "side": 1,
+      "message": "I think it would be very useful to paste some stack traces here with the deadlock stack, so that readers reading this CL in the future get context about what situation this happened ? Could we please get those ? \n\nThanks",
+      "parentUuid": "69352f00_ad1cc609",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf15b62_9d769fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-04-25T19:12:19Z",
+      "side": 1,
+      "message": "Why have we changed the file mode from regular to executable ?",
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74827f0b_70bf2235",
         "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
         "patchSetId": 2
@@ -306,6 +370,52 @@
         "startChar": 17,
         "endLine": 47,
         "endChar": 52
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb54c71_e3dd4655",
+        "filename": "services/camera/libcameraservice/hidl/AidlCameraServiceListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-04-25T19:12:19Z",
+      "side": 1,
+      "message": "could we get common code between this and the function on line 44 ? or actually do we even need the function on line 44 now ?",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 49
+      },
+      "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9179c82f_52c66f6c",
+        "filename": "services/camera/libcameraservice/hidl/HidlCameraService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-04-25T19:12:19Z",
+      "side": 1,
+      "message": "could we re-use some code from addListenerInternal ?",
+      "range": {
+        "startLine": 261,
+        "startChar": 6,
+        "endLine": 283,
+        "endChar": 39
       },
       "revId": "0e6a99148521748cfbac705b3354c7017d2e79a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
