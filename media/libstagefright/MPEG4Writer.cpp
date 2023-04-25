@@ -492,7 +492,7 @@ private:
     Track &operator=(const Track &);
 };
 
-MPEG4Writer::MPEG4Writer(int fd) {
+MPEG4Writer::MPEG4Writer(int fd){
     initInternal(dup(fd), true /*isFirstSession*/);
 }
 
@@ -556,6 +556,10 @@ void MPEG4Writer::initInternal(int fd, bool isFirstSession) {
     mResetStatus = OK;
     mPreAllocFirstTime = true;
     mPrevAllTracksTotalMetaDataSizeEstimate = 0;
+    mIsFirstChunk = false;
+    mDone = false;
+    mThread = NULL;
+    mDriftTimeUs = 0;
 
     // Following variables only need to be set for the first recording session.
     // And they will stay the same for all the recording sessions.
