@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33b11bc0_e2bfd715",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-04-25T17:52:52Z",
+      "side": 1,
+      "message": "mBase (which could be null) is used here and in all methods, so I would prefer a solution where Codec2ConfigurableClient is not created if IConfigurable is null.",
+      "range": {
+        "startLine": 308,
+        "startChar": 31,
+        "endLine": 308,
+        "endChar": 36
+      },
+      "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b9efb45_c8d6c498",
         "filename": "media/codec2/hidl/client/client.cpp",
         "patchSetId": 1
