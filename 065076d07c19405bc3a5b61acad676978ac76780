@@ -45,6 +45,29 @@
       },
       "revId": "065076d07c19405bc3a5b61acad676978ac76780",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5588383e_f1a49397",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-04-25T22:51:21Z",
+      "side": 1,
+      "message": "only way libHandle is non-null is if we don\u0027t find the shaper ops on line 2051.\nand we said RTLD_NODELETE when we did the dlopen() on line 2047, so the dlclose is a no-op.",
+      "range": {
+        "startLine": 2065,
+        "startChar": 14,
+        "endLine": 2065,
+        "endChar": 35
+      },
+      "revId": "065076d07c19405bc3a5b61acad676978ac76780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
