@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efc33e1_6f758b9a",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-04-25T18:37:12Z",
+      "side": 1,
+      "message": "Oh, sorry. we cannot return from ctor.",
+      "parentUuid": "9eaaaafd_df87fdd2",
+      "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33b11bc0_e2bfd715",
