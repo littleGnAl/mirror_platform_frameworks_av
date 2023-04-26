@@ -68,6 +68,30 @@
       },
       "revId": "065076d07c19405bc3a5b61acad676978ac76780",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2722b1be_747cdd1a",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-04-26T02:21:56Z",
+      "side": 1,
+      "message": "Yes, the argument is RTLD NODELETE.",
+      "parentUuid": "5588383e_f1a49397",
+      "range": {
+        "startLine": 2065,
+        "startChar": 14,
+        "endLine": 2065,
+        "endChar": 35
+      },
+      "revId": "065076d07c19405bc3a5b61acad676978ac76780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
