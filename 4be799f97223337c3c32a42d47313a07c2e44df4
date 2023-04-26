@@ -163,6 +163,24 @@
       "parentUuid": "1e354f0e_9e32e111",
       "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4270f0e_3c86e70b",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-04-26T18:10:55Z",
+      "side": 1,
+      "message": "Had a look again. Alternatively we should capture and preserve the error case when #620 can return false.\nCheck for that error case in here and return the object or the nullptr accordingly.\nSomething like:\n\nstd::shared_ptr\u003cCodec2Client\u003e client \u003d std::make_shared\u003cCodec2Client\u003e(baseStore, index);\nif (client-\u003echeckForThatError() \u003d\u003d ERROR) {\n    return nullptr;\n}\nreturn client;",
+      "parentUuid": "00a67451_3d100245",
+      "revId": "4be799f97223337c3c32a42d47313a07c2e44df4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
