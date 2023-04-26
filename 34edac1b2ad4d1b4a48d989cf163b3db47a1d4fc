@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c6d3cb_5d14288f",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2023-04-26T12:28:46Z",
+      "side": 1,
+      "message": "Adding a new member variable `mTunneled` to PipelineWatcher, and set `CCodecBufferChannel::mTunneled` to to pipeline watcher\u0027s `mTunneled` at line 1572, you can save 5 times of the changes for `onWorkDone()`.",
+      "revId": "34edac1b2ad4d1b4a48d989cf163b3db47a1d4fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
