@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a7342d_781b77a9",
+        "filename": "media/codec2/tests/C2ComponentInterface_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-04-26T02:29:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a85391e1_67e0c829",
+      "range": {
+        "startLine": 673,
+        "startChar": 27,
+        "endLine": 673,
+        "endChar": 61
+      },
+      "revId": "065076d07c19405bc3a5b61acad676978ac76780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "271cdeea_4d601685",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-25T18:02:19Z",
       "side": 1,
       "message": "if we\u0027re worried about cleaning up with dlclose() on the error returns,\nwhy aren\u0027t we also doing a dlclose() here at the normal exit?\n\n\nalternatively.\n\nmake the \"compLib\" a static,\nso we can initialize it the first time through here and then re-use it\nacross multiple invocations.\nand then we would never dlclose() it no matter what exit path we take from\nthis routine.",
+      "range": {
+        "startLine": 708,
+        "startChar": 0,
+        "endLine": 708,
+        "endChar": 1
+      },
+      "revId": "065076d07c19405bc3a5b61acad676978ac76780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7e3cda_4854a34b",
+        "filename": "media/codec2/tests/C2ComponentInterface_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-04-26T02:29:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "271cdeea_4d601685",
       "range": {
         "startLine": 708,
         "startChar": 0,
