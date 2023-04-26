@@ -211,6 +211,7 @@ class DeviceHalAidl : public DeviceHalInterface, public ConversionHelperAidl,
         ::aidl::android::hardware::audio::core::AudioPatch* patch, bool* created);
     status_t findOrCreatePortConfig(
             const ::aidl::android::media::audio::common::AudioDevice& device,
+            const ::aidl::android::media::audio::common::AudioConfig* config,
             ::aidl::android::media::audio::common::AudioPortConfig* portConfig,
             bool* created);
     status_t findOrCreatePortConfig(
@@ -284,6 +285,7 @@ class DeviceHalAidl : public DeviceHalInterface, public ConversionHelperAidl,
     Microphones mMicrophones;
     std::mutex mLock;
     std::map<void*, Callbacks> mCallbacks GUARDED_BY(mLock);
+    std::set<int32_t> mInitialPortConfigIds;
 };
 
 } // namespace android
