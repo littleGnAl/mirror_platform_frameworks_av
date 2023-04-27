@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd22304_b8cf7adc",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2023-04-27T21:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4271a41f_5a230f67",
+      "range": {
+        "startLine": 1267,
+        "startChar": 0,
+        "endLine": 1267,
+        "endChar": 39
+      },
+      "revId": "6f4115e76fc164250e4f602e1fa381b5561e6beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d9c1b87_dd0bd447",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee073dcb_c68959d7",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2023-04-27T21:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9c1b87_dd0bd447",
+      "range": {
+        "startLine": 1357,
+        "startChar": 0,
+        "endLine": 1357,
+        "endChar": 38
+      },
+      "revId": "6f4115e76fc164250e4f602e1fa381b5561e6beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f4d4fca_5034cdba",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-27T03:19:34Z",
       "side": 1,
       "message": "I would suggest moving this field closer to mPortConfigs.",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 44
+      },
+      "revId": "6f4115e76fc164250e4f602e1fa381b5561e6beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b284ec8_dfc56f9d",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2023-04-27T21:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f4d4fca_5034cdba",
       "range": {
         "startLine": 288,
         "startChar": 0,
