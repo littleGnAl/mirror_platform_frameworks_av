@@ -3393,6 +3393,10 @@ status_t AudioFlinger::DeviceEffectProxy::checkPort(const PatchPanel::Patch& pat
                 thread = patch.thread().promote();
             }
         } else {
+            if ((mDescriptor.flags & EFFECT_FLAG_TYPE_MASK) == EFFECT_FLAG_TYPE_PRE_PROC) {
+                ALOGI("%s don't open preprocessing on playback thread", __func__);
+                return status;
+            }
             if (patch.isSoftware()) {
                 thread = patch.mPlayback.thread();
             } else {
