@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4271a41f_5a230f67",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-27T03:19:34Z",
+      "side": 1,
+      "message": "Usually optional flags are handled on the second pass if we didn\u0027t find anything on the first one. Otherwise we might end up selecting a less specific port during the first pass.",
+      "range": {
+        "startLine": 1267,
+        "startChar": 0,
+        "endLine": 1267,
+        "endChar": 39
+      },
+      "revId": "6f4115e76fc164250e4f602e1fa381b5561e6beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9c1b87_dd0bd447",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-27T03:19:34Z",
+      "side": 1,
+      "message": "I think, it will be uniform to leave the `resetPortConfig` loop as is, and instead precede it with a loop which erases initial config ids from `portConfigIds`.",
+      "range": {
+        "startLine": 1357,
+        "startChar": 0,
+        "endLine": 1357,
+        "endChar": 38
+      },
+      "revId": "6f4115e76fc164250e4f602e1fa381b5561e6beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4d4fca_5034cdba",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-27T03:19:34Z",
+      "side": 1,
+      "message": "I would suggest moving this field closer to mPortConfigs.",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 44
+      },
+      "revId": "6f4115e76fc164250e4f602e1fa381b5561e6beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
