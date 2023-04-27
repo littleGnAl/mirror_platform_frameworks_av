@@ -55,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81317ba6_ef88de6c",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-04-27T17:48:53Z",
+      "side": 1,
+      "message": "can we mention that this should only be called by vendor implementations/? In that spirit can we hide this from the API?\n\nAnother approach would be to make this an implementation details.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 64
+      },
+      "revId": "f7302f31979e8eed741e86a22cc797a7882eaabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b99dffc2_5ed5222b",
         "filename": "media/codec2/core/include/C2Buffer.h",
         "patchSetId": 17

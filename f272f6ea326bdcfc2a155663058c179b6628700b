@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29fc9ca5_d58f1d8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-04-27T17:48:53Z",
+      "side": 1,
+      "message": "Thanks for the update. It is much cleaner now. Was thinking about a potential performance drawback with the current semantics. Can we take the (auto)merging out of the multi fd sync fence?",
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc54ccf6_66f4c641",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-04-27T17:48:53Z",
+      "side": 1,
+      "message": "do we need a C2Fence-wide fds()? It seems to be only used for SyncFenceImpl.",
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd2b135_50791abe",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-04-27T17:48:53Z",
+      "side": 1,
+      "message": "Is this implementation adding some inefficiency due to remerging the fence on each passing across the binder?\n\nSome alternatives are:\n\n1) remove the \"merged fence\" from the abstraction/semantics of multi-fd fence. Instead, require that the last fd being signaled means that all prior fences also signaled. (clients may merge fds 0..n-1 and pass a merged fence the nth fence, but the fence object will not do this). fd() returns the last fence\n\n2) add the merged fence into the native handle, and retrieve it (blindly) in the create from native handle so it does not have to be remerged upon process boundary\n\nI am leaning towards 1) as that allows for a faster solution. E.g. in a slice based decoder, the last fence may already satisfy the requirement.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e8d1d6_c7c37a47",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-04-27T17:48:53Z",
+      "side": 1,
+      "message": "The naming convention is ExtractFdsFromCodec2SyncFence.\n\nNote the use of \"Codec2\" and not \"C2\". Adding SyncFence for specificity.",
+      "range": {
+        "startLine": 308,
+        "startChar": 17,
+        "endLine": 308,
+        "endChar": 38
+      },
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434e7eb8_b173f4f6",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-04-27T17:48:53Z",
+      "side": 1,
+      "message": "here we could restrict this for sync fences.\n\nif (fence.mImpl-\u003etype() \u003d\u003d SYNC_FENCE) {\n   retFds \u003d static_cast\u003cSyncFenceImpl *\u003e(fence.mImpl.get())-\u003efds();\n}",
+      "range": {
+        "startLine": 310,
+        "startChar": 14,
+        "endLine": 310,
+        "endChar": 19
+      },
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
