@@ -22,6 +22,30 @@
       },
       "revId": "cb502d123f3659bdd724aaf209300b8ed722fd03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a9d030_24ce96a4",
+        "filename": "media/audioaidlconversion/include/media/AidlConversionNdkCpp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-28T17:38:48Z",
+      "side": 1,
+      "message": "Makes sense, the result looks less heavy than expanded declaration.",
+      "parentUuid": "364dcdb9_14f8fb58",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "cb502d123f3659bdd724aaf209300b8ed722fd03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
