@@ -949,6 +949,304 @@ void CCodecConfig::initializeStandardParams() {
             }
         }));
 
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_DRC_ATTENUATION_FACTOR_MAIN,
+        C2_PARAMKEY_DTS_DRC_ATTENUATION_FACTOR_MAIN, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < 0 || value > 100 ) {
+                // ensure value is within range
+                value = 100;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_DRC_ATTENUATION_FACTOR_TRANSCODE,
+        C2_PARAMKEY_DTS_DRC_ATTENUATION_FACTOR_TRANSCODE, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < 0 || value > 100 ) {
+                // ensure value is within range
+                value = 100;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_DRC_BOOST_FACTOR_MAIN,
+        C2_PARAMKEY_DTS_DRC_BOOST_FACTOR_MAIN, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < 0 || value > 100 ) {
+                // ensure value is within range
+                value = 100;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_DRC_BOOST_FACTOR_TRANSCODE,
+        C2_PARAMKEY_DTS_DRC_BOOST_FACTOR_TRANSCODE, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < 0 || value > 100 ) {
+                // ensure value is within range
+                value = 100;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_DRC_EFFECT_TYPE_MAIN, C2_PARAMKEY_DTS_DRC_EFFECT_TYPE_MAIN, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_DRC_EFFECT_NO_COMPRESSION
+                || value > C2Config::DTS_DRC_EFFECT_UHD_HIGH_DRC_SYMMETRICAL) {
+                // ensure value is within range
+                value = C2Config::DTS_DRC_EFFECT_UHD_MEDIUM_DRC_SYMMETRICAL;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    add(ConfigMapper(KEY_DTS_DRC_EFFECT_TYPE_TRANSCODE,
+        C2_PARAMKEY_DTS_DRC_EFFECT_TYPE_TRANSCODE, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_DRC_EFFECT_NO_COMPRESSION
+                || value > C2Config::DTS_DRC_EFFECT_UHD_HIGH_DRC_SYMMETRICAL) {
+                // ensure value is within range
+                value = C2Config::DTS_DRC_EFFECT_UHD_MEDIUM_DRC_SYMMETRICAL;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_DRC_MODE_MAIN, C2_PARAMKEY_DTS_DRC_MODE_MAIN, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_DRC_MODE_NONE
+                || value > C2Config::DTS_DRC_MODE_HEAVY) {
+                // ensure value is within range
+                value = C2Config::DTS_DRC_MODE_NONE;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_DRC_MODE_TRANSCODE, C2_PARAMKEY_DTS_DRC_MODE_TRANSCODE, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_DRC_MODE_NONE
+                || value > C2Config::DTS_DRC_MODE_HEAVY) {
+                // ensure value is within range
+                value = C2Config::DTS_DRC_MODE_NONE;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_LIMITER_TYPE_MAIN,
+        C2_PARAMKEY_DTS_LIMITER_TYPE_MAIN, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_HYBRID_LIMITER_UN_LINKED
+                || value > C2Config::DTS_HARD_LIMITER_ALL_CHANNEL) {
+                // ensure value is within range
+                value = C2Config::DTS_HYBRID_LIMITER_UN_LINKED;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_LIMITER_TYPE_TRANSCODE,
+        C2_PARAMKEY_DTS_LIMITER_TYPE_TRANSCODE, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_HYBRID_LIMITER_UN_LINKED
+                || value > C2Config::DTS_HARD_LIMITER_ALL_CHANNEL) {
+                // ensure value is within range
+                value = C2Config::DTS_HARD_LIMITER_EXCEPT_LFE_CHANNEL;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_LOUDNESS_NORM_ENABLE_MAIN,
+        C2_PARAMKEY_DTS_LOUDNESS_NORM_ENABLE_MAIN, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_LOUDNESS_NORM_OFF
+                || value > C2Config::DTS_LOUDNESS_NORM_ON) {
+                // ensure value is within range
+                value = C2Config::DTS_LOUDNESS_NORM_ON;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_LOUDNESS_NORM_ENABLE_TRANSCODE,
+        C2_PARAMKEY_DTS_LOUDNESS_NORM_ENABLE_TRANSCODE, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < C2Config::DTS_LOUDNESS_NORM_OFF
+                || value > C2Config::DTS_LOUDNESS_NORM_ON) {
+                // ensure value is within range
+                value = C2Config::DTS_LOUDNESS_NORM_OFF;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_TARGET_LOUDNESS_MAIN,
+        C2_PARAMKEY_DTS_TARGET_LOUDNESS_MAIN, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < -60 || value > -10 ) {
+                // ensure value is within range
+                value = -24;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
+    // convert to effect type (these map to SDK values) and add default
+    add(ConfigMapper(KEY_DTS_TARGET_LOUDNESS_TRANSCODE,
+        C2_PARAMKEY_DTS_TARGET_LOUDNESS_TRANSCODE, "value")
+        .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMappers([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value) || value < -60 || value > -10 ) {
+                // ensure value is within range
+                value = -31;
+            }
+            return value;
+        },[](C2Value v) -> C2Value {
+            int32_t value;
+            if (v.get(&value)) {
+              return  value;
+            }
+            else {
+              return C2Value();
+            }
+        }));
+
     add(ConfigMapper("android._encoding-quality-level", C2_PARAMKEY_ENCODING_QUALITY_LEVEL, "value")
         .limitTo(D::ENCODER & (D::CONFIG | D::PARAM)));
     add(ConfigMapper(KEY_QUALITY, C2_PARAMKEY_QUALITY, "value")
