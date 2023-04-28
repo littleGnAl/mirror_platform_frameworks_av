@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9f0d51_50bff92b",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 1,
+      "message": "Surprisingly std::queue doesn\u0027t have a clear method:\nhttps://en.cppreference.com/w/cpp/container/queue",
+      "parentUuid": "26db897c_f4241bc9",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e1fd3f_5428eb57",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-28T17:17:03Z",
       "side": 1,
       "message": "```suggestion\n    for (int i \u003d FrameDurationUs::SIZE - 1; i \u003e 0; --i ) {\n        durationUs[i] \u003d durationUs[i - 1];\n    }\n```",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 34
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e99facc0_8ca42dca",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80e1fd3f_5428eb57",
       "range": {
         "startLine": 240,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bf86db_c93b845b",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 1,
+      "message": "In this algorithm, we need at least 5... added an assert",
+      "parentUuid": "5f7f09fe_a6d267fc",
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b6d85fb_2a9bf048",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-04-28T17:17:03Z",
       "side": 1,
       "message": "2?",
+      "range": {
+        "startLine": 283,
+        "startChar": 23,
+        "endLine": 283,
+        "endChar": 25
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e098e3ae_6ad89359",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 1,
+      "message": "either 0 or 2 works... basically... 0, 2, 4 must match and 1, 3 must match",
+      "parentUuid": "0b6d85fb_2a9bf048",
       "range": {
         "startLine": 283,
         "startChar": 23,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14944dc7_3d393488",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 1,
+      "message": "Quality 3:2 pulldown of 24Hz content only occurs at 60Hz refresh rate, and we\u0027re only attemping to detect 3:2 pulldown of 24Hz.",
+      "parentUuid": "3130b7e0_a8679d7c",
+      "range": {
+        "startLine": 287,
+        "startChar": 29,
+        "endLine": 287,
+        "endChar": 34
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40535ad3_4d99500c",
@@ -127,6 +241,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90725622_00adba03",
+        "filename": "media/libstagefright/include/media/stagefright/VideoRenderMetricsTracker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40535ad3_4d99500c",
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77c262c_151b48b6",
@@ -140,6 +272,24 @@
       "writtenOn": "2023-04-28T17:17:03Z",
       "side": 1,
       "message": "please add TODO here",
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f1c9b1_2ec21df0",
+        "filename": "media/libstagefright/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77c262c_151b48b6",
       "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

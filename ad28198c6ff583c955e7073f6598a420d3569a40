@@ -16,6 +16,24 @@
       "message": "is this an intended removal?",
       "revId": "ad28198c6ff583c955e7073f6598a420d3569a40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62584a92_5e76927c",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-04-28T18:38:23Z",
+      "side": 0,
+      "message": "no - fixed",
+      "parentUuid": "b27725cf_df8512b1",
+      "revId": "ad28198c6ff583c955e7073f6598a420d3569a40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
