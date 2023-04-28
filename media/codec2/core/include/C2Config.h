@@ -75,6 +75,10 @@ struct C2Config {
     enum secure_mode_t : uint32_t;          ///< secure/protected modes
     enum supplemental_info_t : uint32_t;    ///< supplemental information types
     enum tiling_mode_t : uint32_t;          ///< tiling modes
+    enum dts_drc_effect_type_t : int32_t;   ///< DTS DRC effect type
+    enum dts_drc_mode_t : uint32_t;         ///< DTS DRC mode
+    enum dts_limiter_type_t : uint32_t;     ///< DTS limiter type
+    enum dts_loudness_norm_enable_t : uint32_t; ///< DTS loudness normalization status
 };
 
 struct C2PlatformConfig {
@@ -234,6 +238,20 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexDrcOutputLoudness, // drc, float (dBFS)
     kParamIndexDrcAlbumMode, // drc, enum
     kParamIndexAudioFrameSize, // int
+    kParamIndexDtsDrcAttenuationFactorMain,
+    kParamIndexDtsDrcAttenuationFactorTranscode,
+    kParamIndexDtsDrcBoostFactorMain,
+    kParamIndexDtsDrcBoostFactorTranscode,
+    kParamIndexDtsDrcEffectTypeMain,
+    kParamIndexDtsDrcEffectTypeTranscode,
+    kParamIndexDtsDrcModeMain,
+    kParamIndexDtsDrcModeTranscode,
+    kParamIndexDtsLimiterTypeMain,
+    kParamIndexDtsLimiterTypeTranscode,
+    kParamIndexDtsLoudnessNormEnableMain,
+    kParamIndexDtsLoudnessNormEnableTranscode,
+    kParamIndexDtsTargetLoudnessMain,
+    kParamIndexDtsTargetLoudnessTranscode,
 
     /* ============================== platform-defined parameters ============================== */
 
@@ -2159,6 +2177,138 @@ typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2EasyEnum<C2Config::aac_packa
         kParamIndexAacPackaging> C2StreamAacPackagingInfo;
 typedef C2StreamAacPackagingInfo C2StreamAacFormatInfo;
 constexpr char C2_PARAMKEY_AAC_PACKAGING[] = "coded.aac-packaging";
+
+/* --------------------------------------- DTS components --------------------------------------- */
+
+/**
+ * Specify how much (in percentage) of the DRC attenuation factor to apply to the PCM samples in
+ * main output path.
+ */
+typedef C2StreamParam<C2Info, C2Uint32Value,
+    kParamIndexDtsDrcAttenuationFactorMain> C2StreamtsDtsDrcAttenuationFactorMainTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_ATTENUATION_FACTOR_MAIN[] =
+    "coding.dts-drc-attenuation-factor-main";
+
+/**
+ * Specify how much (in percentage) of the DRC attenuation factor to apply to the PCM samples in
+ * transcode output path.
+ */
+typedef C2StreamParam<C2Info, C2Uint32Value,
+    kParamIndexDtsDrcAttenuationFactorTranscode> C2StreamtsDtsDrcAttenuationFactorTranscodeTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_ATTENUATION_FACTOR_TRANSCODE[] =
+    "coding.dts-drc-attenuation-factor-transcode";
+
+/**
+ * Specify how much (in percentage) of the DRC boost factor to apply to the PCM samples in
+ * main output path.
+ */
+typedef C2StreamParam<C2Info, C2Uint32Value,
+    kParamIndexDtsDrcBoostFactorMain> C2StreamtsDtsDrcBoostFactorMainTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_BOOST_FACTOR_MAIN[] =
+    "coding.dts-drc-boost-factor-main";
+
+/**
+ * Specify how much (in percentage) of the DRC boost factor to apply to the PCM samples in
+ * transcode output path.
+ */
+typedef C2StreamParam<C2Info, C2Uint32Value,
+    kParamIndexDtsDrcBoostFactorTranscode> C2StreamtsDtsDrcBoostFactorTranscodeTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_BOOST_FACTOR_TRANSCODE[] =
+    "coding.dts-drc-boost-factor-transcode";
+
+/**
+ * DRC Compression curve types used in DTS decoder.
+ */
+C2ENUM(C2Config::dts_drc_effect_type_t, int32_t,
+    DTS_DRC_EFFECT_NO_COMPRESSION = 0,
+    DTS_DRC_EFFECT_LEGACY_FILM_STANDARD,
+    DTS_DRC_EFFECT_LEGACY_FILM_LIGHT,
+    DTS_DRC_EFFECT_LEGACY_MUSIC_STANDARD,
+    DTS_DRC_EFFECT_LEGACY_MUSIC_LIGHT,
+    DTS_DRC_EFFECT_LEGACY_SPEECH,
+    DTS_DRC_EFFECT_UHD_LOW_DRC_LESS_ATTENUATION,
+    DTS_DRC_EFFECT_UHD_LOW_DRC_LESS_BOOST,
+    DTS_DRC_EFFECT_UHD_LOW_DRC_SYMMETRICAL,
+    DTS_DRC_EFFECT_UHD_MEDIUM_DRC_LESS_ATTENUATION,
+    DTS_DRC_EFFECT_UHD_MEDIUM_DRC_LESS_BOOST,
+    DTS_DRC_EFFECT_UHD_MEDIUM_DRC_SYMMETRICAL,
+    DTS_DRC_EFFECT_UHD_HIGH_DRC_LESS_ATTENUATION,
+    DTS_DRC_EFFECT_UHD_HIGH_DRC_LESS_BOOST,
+    DTS_DRC_EFFECT_UHD_HIGH_DRC_SYMMETRICAL
+)
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_drc_effect_type_t>,
+        kParamIndexDtsDrcEffectTypeMain> C2StreamDtsDrcEffectTypeMainTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_EFFECT_TYPE_MAIN[] = "coding.dts-drc-effect-type-main";
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_drc_effect_type_t>,
+        kParamIndexDtsDrcEffectTypeTranscode> C2StreamDtsDrcEffectTypeTranscodeTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_EFFECT_TYPE_TRANSCODE[] = "coding.dts-drc-effect-type-transcode";
+
+C2ENUM(C2Config::dts_drc_mode_t, uint32_t,
+    DTS_DRC_MODE_NONE  = 0,
+    DTS_DRC_MODE_LIGHT,
+    DTS_DRC_MODE_MEDIUM,
+    DTS_DRC_MODE_HEAVY
+)
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_drc_mode_t>,
+        kParamIndexDtsDrcModeMain> C2StreamDtsDrcModeMainTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_MODE_MAIN[] = "coding.dts-drc-mode-main";
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_drc_mode_t>,
+        kParamIndexDtsDrcModeTranscode> C2StreamDtsDrcModeTranscodeTuning;
+constexpr char C2_PARAMKEY_DTS_DRC_MODE_TRANSCODE[] = "coding.dts-drc-mode-transcode";
+
+/**
+ * Limiter type used in the DTS decoder.
+ */
+ C2ENUM(C2Config::dts_limiter_type_t, uint32_t,
+    DTS_HYBRID_LIMITER_UN_LINKED = 0,
+    DTS_HYBRID_LIMITER_LINKED,
+    DTS_HARD_LIMITER_EXCEPT_LFE_CHANNEL,
+    DTS_HARD_LIMITER_ALL_CHANNEL
+)
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_limiter_type_t>,
+        kParamIndexDtsLimiterTypeMain> C2StreamDtsLimiterTypeMainTuning;
+constexpr char C2_PARAMKEY_DTS_LIMITER_TYPE_MAIN[] = "coding.dts-limiter-type-main";
+
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_limiter_type_t>,
+        kParamIndexDtsLimiterTypeTranscode> C2StreamDtsLimiterTypeTranscodeTuning;
+constexpr char C2_PARAMKEY_DTS_LIMITER_TYPE_TRANSCODE[] = "coding.dts-limiter-type-transcode";
+
+C2ENUM(C2Config::dts_loudness_norm_enable_t, uint32_t,
+    DTS_LOUDNESS_NORM_OFF = 0,
+    DTS_LOUDNESS_NORM_ON
+)
+
+/**
+ * Enable/Diable loudness normalization in main output path.
+ */
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_loudness_norm_enable_t>,
+        kParamIndexDtsLoudnessNormEnableMain> C2StreamDtsLoudnessNormEnableMainTuning;
+constexpr char C2_PARAMKEY_DTS_LOUDNESS_NORM_ENABLE_MAIN[] = "coding.dts-loudness-norm-enable-main";
+
+/**
+ * Enable/Diable loudness normalization in transcode output path.
+ */
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::dts_loudness_norm_enable_t>,
+        kParamIndexDtsLoudnessNormEnableTranscode> C2StreamDtsLoudnessNormEnableTranscodeTuning;
+constexpr char C2_PARAMKEY_DTS_LOUDNESS_NORM_ENABLE_TRANSCODE[] =
+        "coding.dts-loudness-norm-enable-transcode";
+
+/**
+ * Specify target loudness for main output path.
+ */
+typedef C2StreamParam<C2Info, C2Int32Value,
+    kParamIndexDtsTargetLoudnessMain> C2StreamtsDtsTargetLoudnessMainTuning;
+constexpr char C2_PARAMKEY_DTS_TARGET_LOUDNESS_MAIN[] = "coding.dts-target-loudness-main";
+
+/**
+ * Specify target loudness for transcode output path.
+ */
+typedef C2StreamParam<C2Info, C2Int32Value,
+    kParamIndexDtsTargetLoudnessTranscode> C2StreamtsDtsTargetLoudnessTranscodeTuning;
+constexpr char C2_PARAMKEY_DTS_TARGET_LOUDNESS_TRANSCODE[] = "coding.dts-target-loudness-transcode";
 
 /* ================================ PLATFORM-DEFINED PARAMETERS ================================ */
 
