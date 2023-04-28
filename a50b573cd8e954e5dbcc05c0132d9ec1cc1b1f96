@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26db897c_f4241bc9",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-04-28T17:17:03Z",
+      "side": 1,
+      "message": "```suggestion\n    mNextExpectedRenderedFrameQueue.clear();\n\n```",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e1fd3f_5428eb57",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-04-28T17:17:03Z",
+      "side": 1,
+      "message": "```suggestion\n    for (int i \u003d FrameDurationUs::SIZE - 1; i \u003e 0; --i ) {\n        durationUs[i] \u003d durationUs[i - 1];\n    }\n```",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 34
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7f09fe_a6d267fc",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-04-28T17:17:03Z",
+      "side": 1,
+      "message": "The code seems to have the assumption of `SIZE \u003d\u003d 5`. Is this a future-proof assumption?",
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6d85fb_2a9bf048",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-04-28T17:17:03Z",
+      "side": 1,
+      "message": "2?",
+      "range": {
+        "startLine": 283,
+        "startChar": 23,
+        "endLine": 283,
+        "endChar": 25
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3130b7e0_a8679d7c",
+        "filename": "media/libstagefright/VideoRenderMetricsTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-04-28T17:17:03Z",
+      "side": 1,
+      "message": "This seems to assume 60Hz display. What about different refresh rates?",
+      "range": {
+        "startLine": 287,
+        "startChar": 29,
+        "endLine": 287,
+        "endChar": 34
+      },
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40535ad3_4d99500c",
+        "filename": "media/libstagefright/include/media/stagefright/VideoRenderMetricsTracker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-04-28T17:17:03Z",
+      "side": 1,
+      "message": "nit: in media fwk convention we use `Type *param` for out params \u0026 `const Type \u0026param` for in params",
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77c262c_151b48b6",
+        "filename": "media/libstagefright/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-04-28T17:17:03Z",
+      "side": 1,
+      "message": "please add TODO here",
+      "revId": "a50b573cd8e954e5dbcc05c0132d9ec1cc1b1f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
