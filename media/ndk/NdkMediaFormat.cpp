@@ -407,6 +407,24 @@ EXPORT const char* AMEDIAFORMAT_KEY_DISCNUMBER = "discnum";
 EXPORT const char* AMEDIAFORMAT_KEY_DISPLAY_CROP = "crop";
 EXPORT const char* AMEDIAFORMAT_KEY_DISPLAY_HEIGHT = "display-height";
 EXPORT const char* AMEDIAFORMAT_KEY_DISPLAY_WIDTH = "display-width";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_ATTENUATION_FACTOR_MAIN =
+        "dts-drc-attenuation-factor-main";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_ATTENUATION_FACTOR_TRANSCODE =
+        "dts-drc-attenuation-factor-transcode";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_BOOST_FACTOR_MAIN = "dts-drc-boost-factor-main";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_BOOST_FACTOR_TRANSCODE =
+        "dts-drc-boost-factor-transcode";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_EFFECT_TYPE_MAIN = "dts-drc-effect-type-main";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_EFFECT_TYPE_TRANSCODE = "dts-drc-effect-type-transcode";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_MODE_MAIN = "dts-drc-mode-main";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_DRC_MODE_TRANSCODE = "dts-drc-mode-transcode";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_LIMITER_TYPE_MAIN = "dts-limiter-type-main";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_LIMITER_TYPE_TRANSCODE = "dts-limiter-type-transcode";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_LOUDNESS_NORM_ENABLE_MAIN = "dts-loudness-norm-enable-main";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_LOUDNESS_NORM_ENABLE_TRANSCODE =
+        "dts-loudness-norm-enable-transcode";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_TARGET_LOUDNESS_MAIN = "dts-target-loudness-main";
+EXPORT const char* AMEDIAFORMAT_KEY_DTS_TARGET_LOUDNESS_TRANSCODE = "dts-target-loudness-transcode";
 EXPORT const char* AMEDIAFORMAT_KEY_DURATION = "durationUs";
 EXPORT const char* AMEDIAFORMAT_KEY_ENCODER_DELAY = "encoder-delay";
 EXPORT const char* AMEDIAFORMAT_KEY_ENCODER_PADDING = "encoder-padding";
