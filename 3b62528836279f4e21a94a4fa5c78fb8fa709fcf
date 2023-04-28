@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfdf750d_84b66eef",
+        "filename": "media/libaudioclient/aidl/android/media/AudioRoute.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-28T17:38:41Z",
+      "side": 1,
+      "message": "Done. Filed b/280077672 and updated the comment.",
+      "parentUuid": "53327b76_10b6c390",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "3b62528836279f4e21a94a4fa5c78fb8fa709fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00698cf4_f2c147b6",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c9f2b5_782afac2",
+        "filename": "media/libaudioclient/aidl/android/media/AudioRoute.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-28T17:38:41Z",
+      "side": 1,
+      "message": "Since it\u0027s not `@nullable`, there is no ambiguity I think. By default it\u0027s false. Also, this is a copy of the comment from the stable AIDL, don\u0027t want to put extra effort in changing that one.",
+      "parentUuid": "00698cf4_f2c147b6",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "3b62528836279f4e21a94a4fa5c78fb8fa709fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a528098c_732da349",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-27T22:48:00Z",
       "side": 1,
       "message": "super nit: 2023",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "3b62528836279f4e21a94a4fa5c78fb8fa709fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5760ae59_c4760a45",
+        "filename": "media/libaudioclient/aidl/android/media/SurroundSoundConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-04-28T17:38:41Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s because I\u0027ve copied it from the stable one. Updated, thanks!",
+      "parentUuid": "a528098c_732da349",
       "range": {
         "startLine": 2,
         "startChar": 17,
