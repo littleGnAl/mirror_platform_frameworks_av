@@ -28,8 +28,9 @@
 #include <media/MediaMetrics.h>
 #include <media/MediaProfiles.h>
 #include <media/stagefright/foundation/AHandler.h>
-#include <media/stagefright/CodecErrorLog.h>
 #include <media/stagefright/FrameRenderTracker.h>
+#include <media/stagefright/PlaybackDurationAccumulator.h>
+#include <media/stagefright/VideoRenderMetricsTracker.h>
 #include <utils/Vector.h>
 
 class C2Buffer;
@@ -61,7 +62,6 @@ class IMemory;
 struct PersistentSurface;
 class SoftwareRenderer;
 class Surface;
-class PlaybackDurationAccumulator;
 namespace hardware {
 namespace cas {
 namespace native {
@@ -298,8 +298,6 @@ struct MediaCodec : public AHandler {
         T value;
     };
 
-    inline CodecErrorLog &getErrorLog() { return mErrorLog; }
-
 protected:
     virtual ~MediaCodec();
     virtual void onMessageReceived(const sp<AMessage> &msg);
@@ -324,7 +322,6 @@ private:
         RELEASING,
     };
     std::string stateString(State state);
-    std::string apiStateString();
 
     enum {
         kPortIndexInput         = 0,
@@ -443,7 +440,7 @@ private:
     void onGetMetrics(const sp<AMessage>& msg);
     constexpr const char *asString(TunnelPeekState state, const char *default_string="?");
     void updateTunnelPeek(const sp<AMessage> &msg);
-    void updatePlaybackDuration(const sp<AMessage> &msg);
+    void processRenderedFrames(const sp<AMessage> &msg);
 
     sp<AMessage> mOutputFormat;
     sp<AMessage> mInputFormat;
@@ -527,8 +524,9 @@ private:
 
     std::shared_ptr<BufferChannelBase> mBufferChannel;
 
-    std::unique_ptr<PlaybackDurationAccumulator> mPlaybackDurationAccumulator;
-    bool mIsSurfaceToScreen;
+    bool isSurfaceToDisplay;
+    PlaybackDurationAccumulator mPlaybackDurationAccumulator;
+    VideoRenderMetricsTracker mVideoRenderMetricsTracker;
 
     MediaCodec(
             const sp<ALooper> &looper, pid_t pid, uid_t uid,
@@ -695,8 +693,6 @@ private:
     std::function<sp<CodecBase>(const AString &, const char *)> mGetCodecBase;
     std::function<status_t(const AString &, sp<MediaCodecInfo> *)> mGetCodecInfo;
     friend class MediaTestHelper;
-
-    CodecErrorLog mErrorLog;
 
     DISALLOW_EVIL_CONSTRUCTORS(MediaCodec);
 };
