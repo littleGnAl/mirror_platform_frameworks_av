@@ -68,6 +68,24 @@
       "message": "create a bug and upload a bugreport for this issue:\n\nhttps://partnerissuetracker.corp.google.com/u/1/issues/236929510",
       "revId": "3e285ff280146527c442fb9842cb889a8f65b9ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb105b5f_2d489f96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-04-29T14:22:56Z",
+      "side": 1,
+      "message": "Hi @Andy \u0026 google experts:\n\nWe update https://partnerissuetracker.corp.google.com/u/1/issues/236929510 for the issue.\n\nLast year, we received a lot of feedback about game crash on Qualcomm platform handset.  We used https://android-review.googlesource.com/c/platform/frameworks/av/+/2051324 to solve the problem,  and no receive the crash feedback again.\n\nRecently, we also received a lot of similar feedback on the mtk platform handset (bugreprot see bug 236929510 affix). We also used this change to solve the problem, so we think this change is effective.\n\nPlease help to review, thank you",
+      "parentUuid": "1aa45d75_19c73659",
+      "revId": "3e285ff280146527c442fb9842cb889a8f65b9ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
