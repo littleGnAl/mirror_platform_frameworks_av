@@ -150,7 +150,11 @@ CCodecBufferChannel::CCodecBufferChannel(
       mMetaMode(MODE_NONE),
       mInputMetEos(false),
       mSendEncryptedInfoBuffer(false) {
-    mOutputSurface.lock()->maxDequeueBuffers = kSmoothnessFactor + kRenderingDepth;
+    {
+        Mutexed<OutputSurface>::Locked output(mOutputSurface);
+        output->maxDequeueBuffers = kSmoothnessFactor + kRenderingDepth;
+        output->curMaxDequeueBuffers = 0;
+    }
     {
         Mutexed<Input>::Locked input(mInput);
         input->buffers.reset(new DummyInputBuffers(""));
@@ -796,6 +800,11 @@ status_t CCodecBufferChannel::renderOutputBuffer(
         if (output->surface == nullptr) {
             ALOGI("[%s] cannot render buffer without surface", mName);
             return OK;
+        } else if (output->maxDequeueBuffers != output->curMaxDequeueBuffers) {
+            output->curMaxDequeueBuffers = updateMaxDequeueBuffersToSurface(
+                    output->surface, output->maxDequeueBuffers, output->curMaxDequeueBuffers);
+            ALOGD("[%s] trys to meet target maxDequeueBuffers : %d [%d]",
+                  mName, output->curMaxDequeueBuffers, output->maxDequeueBuffers);
         }
         int64_t frameIndex;
         buffer->meta()->findInt64("frameIndex", &frameIndex);
@@ -1085,6 +1094,42 @@ void CCodecBufferChannel::pollForRenderedBuffers() {
     processRenderedFrames(delta);
 }
 
+int CCodecBufferChannel::updateMaxDequeueBuffersToSurface(
+        const sp<Surface> &surface, int maxDequeue, int curMaxDequeue) {
+    if (maxDequeue == curMaxDequeue) {
+        return maxDequeue;
+    }
+
+    int delta = maxDequeue - curMaxDequeue;
+    std::vector<int> deltas{delta};
+    delta /= 2;
+    if (delta != 0 && delta != deltas.back()) {
+        deltas.push_back(delta);
+        if (delta != -1 && delta != 1) {
+            deltas.push_back(delta < 0 ? -1 : 1);
+        }
+    }
+
+    for (int i = 0; i < deltas.size(); ++i) {
+        int newDequeue = curMaxDequeue + deltas[i];
+        status_t ret = surface->setMaxDequeuedBufferCount(newDequeue);
+        if (ret == ::android::OK) {
+            if (i != 0) {
+                ALOGD("Target maxDequeueBuffers = %d, but set to %d(orig %d)",
+                      maxDequeue, newDequeue, curMaxDequeue);
+            }
+            return newDequeue;
+        }
+        if (ret != ::android::BAD_VALUE) {
+            ALOGE("setMaxDequeuedBufferCount failed ret(%d)", ret);
+            return curMaxDequeue;
+        }
+    }
+    ALOGD("Surface is not ready to set maxDequeueCount to %d, retained(%d)",
+         maxDequeue, curMaxDequeue);
+    return curMaxDequeue;
+}
+
 status_t CCodecBufferChannel::discardBuffer(const sp<MediaCodecBuffer> &buffer) {
     ALOGV("[%s] discardBuffer: %p", mName, buffer.get());
     bool released = false;
@@ -1368,7 +1413,8 @@ status_t CCodecBufferChannel::start(
             outputSurface = output->surface ?
                     output->surface->getIGraphicBufferProducer() : nullptr;
             if (outputSurface) {
-                output->surface->setMaxDequeuedBufferCount(output->maxDequeueBuffers);
+                output->curMaxDequeueBuffers = updateMaxDequeueBuffersToSurface(
+                        output->surface, maxDequeueCount, output->curMaxDequeueBuffers);
             }
             outputGeneration = output->generation;
         }
@@ -2027,7 +2073,8 @@ bool CCodecBufferChannel::handleWork(
             maxDequeueCount = output->maxDequeueBuffers =
                     numOutputSlots + reorderDepth + kRenderingDepth;
             if (output->surface) {
-                output->surface->setMaxDequeuedBufferCount(output->maxDequeueBuffers);
+                output->curMaxDequeueBuffers = updateMaxDequeueBuffersToSurface(
+                        output->surface, output->maxDequeueBuffers, output->curMaxDequeueBuffers);
             }
         }
         if (maxDequeueCount > 0) {
@@ -2208,11 +2255,19 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface) {
                 & ((1 << 10) - 1));
 
     sp<IGraphicBufferProducer> producer;
-    int maxDequeueCount = mOutputSurface.lock()->maxDequeueBuffers;
+    int maxDequeueCount;
+    int curMaxDequeueCount = 0;
+    sp<Surface> oldSurface;
+    {
+        Mutexed<OutputSurface>::Locked outputSurface(mOutputSurface);
+        maxDequeueCount = outputSurface->maxDequeueBuffers;
+        oldSurface = outputSurface->surface;
+    }
     if (newSurface) {
         newSurface->setScalingMode(NATIVE_WINDOW_SCALING_MODE_SCALE_TO_WINDOW);
         newSurface->setDequeueTimeout(kDequeueTimeoutNs);
-        newSurface->setMaxDequeuedBufferCount(maxDequeueCount);
+        curMaxDequeueCount = updateMaxDequeueBuffersToSurface(
+                newSurface, maxDequeueCount, curMaxDequeueCount);
         producer = newSurface->getIGraphicBufferProducer();
         producer->setGenerationNumber(generation);
     } else {
@@ -2242,6 +2297,9 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface) {
     {
         Mutexed<OutputSurface>::Locked output(mOutputSurface);
         output->surface = newSurface;
+        if (newSurface) {
+            output->curMaxDequeueBuffers = curMaxDequeueCount;
+        }
         output->generation = generation;
     }
     initializeFrameTrackingFor(static_cast<ANativeWindow *>(newSurface.get()));

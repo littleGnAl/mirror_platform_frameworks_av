@@ -291,6 +291,8 @@ private:
     void processRenderedFrames(const FrameEventHistoryDelta& delta);
     int64_t getRenderTimeNs(const TrackedFrame& frame);
 
+    int updateMaxDequeueBuffersToSurface(const sp<Surface> &surface, int targetMax, int curMax);
+
     QueueSync mSync;
     sp<MemoryDealer> mDealer;
     sp<IMemory> mDecryptDestination;
@@ -339,6 +341,7 @@ private:
         sp<Surface> surface;
         uint32_t generation;
         int maxDequeueBuffers;
+        int curMaxDequeueBuffers;
         std::map<uint64_t, int> rotation;
     };
     Mutexed<OutputSurface> mOutputSurface;
