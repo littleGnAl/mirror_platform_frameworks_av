@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb9fef4_8455becd",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "s/should/must/",
+      "range": {
+        "startLine": 54,
+        "startChar": 29,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3de0d1_cecf702f",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "sizeof \u0027_MARK\u0027 is 6, since it includes the null.\nwe\u0027re specically not including the null (this the -1 on line 56)",
+      "range": {
+        "startLine": 55,
+        "startChar": 40,
+        "endLine": 55,
+        "endChar": 66
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cfbdd7_bd1ed357",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "\u003c\u003d seems more appropriate than \u003c\nfor both of these actually.\n\nkmarkersize \u003d\u003d 5.\nso i can contain a marker in the case where mSize \u003d\u003d 5 and mReadIndex \u003d\u003d 0",
+      "range": {
+        "startLine": 177,
+        "startChar": 18,
+        "endLine": 177,
+        "endChar": 22
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0cba68_f8c59235",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "same \u003c\u003d logic as for isMarker()",
+      "range": {
+        "startLine": 185,
+        "startChar": 23,
+        "endLine": 185,
+        "endChar": 27
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf1f3c4_975fbeaa",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "same \u003c\u003d logic as for isMarker() and isM3U8Marker()",
+      "range": {
+        "startLine": 193,
+        "startChar": 22,
+        "endLine": 193,
+        "endChar": 29
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef32bfd1_7d9e0970",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "there\u0027s a mismatch here.\nthis line walks backward, but the exit criteria just below here seems to be\nbased on moving forward.",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 17
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865139da_87034e17",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "we know we\u0027ve consumed everything from mReadIndex to the end of the file\nat this point,\nso that means 0.. (mReadIndex-1) \u003d\u003d mReadIndex bytes are what\u0027s left in the file.\n\nso we could say:  bytesRemaining \u003d mReadIndex\nhere.",
+      "range": {
+        "startLine": 245,
+        "startChar": 3,
+        "endLine": 245,
+        "endChar": 67
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8eb3e1_a05692e7",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "ok, this loop seems to be start at the back and work to front of the file\nto peel off the contents we\u0027re creating from the markers. \n\nthat says that around lines 205..208, the decrement is ok, but the loop termination code is what is broken.",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 17
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6186ffa9_7a9f4690",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T21:43:29Z",
+      "side": 1,
+      "message": "we\u0027ll enter this if we have no marker+bin_suffix in the raw data.\nbut that data *could* have a marker+m3u8_suffix entry/entries\nso we\u0027ll create a \u0027bin file\u0027 here that could have \u0027_MARK_M_\u0027 as a prefix or\neven somewhere in the middle...\n\nfeels like maybe line 248..255 should be more:\nif (m3u8index\u003d\u003d0 \u0026\u0026 binfileindex\u003d\u003d0) { ... create the files ... }\n\nso need some explanation here.  if it\u0027s correct, probably need to explain that.",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 24
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
