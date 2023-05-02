@@ -118,6 +118,29 @@
       },
       "revId": "d78c656eed21088543a41246dcdcd59986a3c931",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4131a92a_95f72a91",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-02T12:07:37Z",
+      "side": 0,
+      "message": "i\u0027m guessing that your motivation is that compilers, with appropriate flags, will complain about how this definition of width/height masks the earlier definition.\n\ni want to preserve locality and scoping of these declarations.\n\nrenaming the definition + use of width/height in this block (line 1135..1146) \nwill satisfy thoaw goals: locality, scoping, no masking of the other instance\nof width/height.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 12,
+        "endLine": 1136,
+        "endChar": 34
+      },
+      "revId": "d78c656eed21088543a41246dcdcd59986a3c931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
