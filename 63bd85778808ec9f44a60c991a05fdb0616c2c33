@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f28051_b0457d75",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-05-02T11:24:32Z",
+      "side": 1,
+      "message": "These will most probably be introduced in API 35, I think the API 34 for Android 14 (U) is finalized at this point.",
+      "revId": "63bd85778808ec9f44a60c991a05fdb0616c2c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c87d632_5c33c178",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-05-02T11:24:32Z",
+      "side": 1,
+      "message": "Same as above, should be API 35.",
+      "revId": "63bd85778808ec9f44a60c991a05fdb0616c2c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
