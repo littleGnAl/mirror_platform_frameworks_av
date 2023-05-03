@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72acccdb_7973205e",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-05-03T17:33:26Z",
+      "side": 1,
+      "message": "Done with approach 2",
+      "parentUuid": "efd2b135_50791abe",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9e8d1d6_c7c37a47",
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8aca0e5_178b7402",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-05-03T17:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9e8d1d6_c7c37a47",
+      "range": {
+        "startLine": 308,
+        "startChar": 17,
+        "endLine": 308,
+        "endChar": 38
+      },
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "434e7eb8_b173f4f6",
@@ -94,6 +142,30 @@
       "writtenOn": "2023-04-27T17:48:53Z",
       "side": 1,
       "message": "here we could restrict this for sync fences.\n\nif (fence.mImpl-\u003etype() \u003d\u003d SYNC_FENCE) {\n   retFds \u003d static_cast\u003cSyncFenceImpl *\u003e(fence.mImpl.get())-\u003efds();\n}",
+      "range": {
+        "startLine": 310,
+        "startChar": 14,
+        "endLine": 310,
+        "endChar": 19
+      },
+      "revId": "f272f6ea326bdcfc2a155663058c179b6628700b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38817610_9d813ee2",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-05-03T17:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "434e7eb8_b173f4f6",
       "range": {
         "startLine": 310,
         "startChar": 14,
