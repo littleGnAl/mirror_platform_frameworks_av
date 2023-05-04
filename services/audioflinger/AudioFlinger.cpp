@@ -235,6 +235,7 @@ BINDER_METHOD_ENTRY(getSupportedLatencyModes) \
 BINDER_METHOD_ENTRY(setBluetoothVariableLatencyEnabled) \
 BINDER_METHOD_ENTRY(isBluetoothVariableLatencyEnabled) \
 BINDER_METHOD_ENTRY(supportsBluetoothVariableLatency) \
+BINDER_METHOD_ENTRY(getAudioPolicyConfig) \
 
 // singleton for Binder Method Statistics for IAudioFlinger
 static auto& getIAudioFlingerStatistics() {
@@ -2538,6 +2539,40 @@ Exit:
 
 // ----------------------------------------------------------------------------
 
+status_t AudioFlinger::getAudioPolicyConfig(media::AudioPolicyConfig *config)
+{
+    if (config == nullptr) {
+        return BAD_VALUE;
+    }
+    Mutex::Autolock _l(mLock);
+    AutoMutex lock(mHardwareLock);
+    RETURN_STATUS_IF_ERROR(
+            mDevicesFactoryHal->getSurroundSoundConfig(&config->surroundSoundConfig));
+    RETURN_STATUS_IF_ERROR(mDevicesFactoryHal->getEngineConfig(&config->engineConfig));
+    std::vector<std::string> hwModuleNames;
+    RETURN_STATUS_IF_ERROR(mDevicesFactoryHal->getDeviceNames(&hwModuleNames));
+    for (const auto& name : hwModuleNames) {
+        AudioHwDevice* module = loadHwModule_l(name.c_str());
+        if (module == nullptr) continue;
+        media::AudioHwModule aidlModule;
+        if (module->hwDevice()->getAudioPorts(&aidlModule.ports) == OK &&
+                module->hwDevice()->getAudioRoutes(&aidlModule.routes) == OK) {
+            aidlModule.handle = module->handle();
+            aidlModule.name = module->moduleName();
+            config->modules.push_back(std::move(aidlModule));
+        }
+        (void)module->hwDevice()->getSupportedModes(&config->supportedModes);
+    }
+    if (config->supportedModes.empty()) {
+        ALOGW("%s: The HAL does not provide telephony functionality", __func__);
+        config->supportedModes = { media::audio::common::AudioMode::NORMAL,
+            media::audio::common::AudioMode::RINGTONE,
+            media::audio::common::AudioMode::IN_CALL,
+            media::audio::common::AudioMode::IN_COMMUNICATION };
+    }
+    return OK;
+}
+
 audio_module_handle_t AudioFlinger::loadHwModule(const char *name)
 {
     if (name == NULL) {
@@ -2548,16 +2583,17 @@ audio_module_handle_t AudioFlinger::loadHwModule(const char *name)
     }
     Mutex::Autolock _l(mLock);
     AutoMutex lock(mHardwareLock);
-    return loadHwModule_l(name);
+    AudioHwDevice* module = loadHwModule_l(name);
+    return module != nullptr ? module->handle() : AUDIO_MODULE_HANDLE_NONE;
 }
 
 // loadHwModule_l() must be called with AudioFlinger::mLock and AudioFlinger::mHardwareLock held
-audio_module_handle_t AudioFlinger::loadHwModule_l(const char *name)
+AudioHwDevice* AudioFlinger::loadHwModule_l(const char *name)
 {
     for (size_t i = 0; i < mAudioHwDevs.size(); i++) {
         if (strncmp(mAudioHwDevs.valueAt(i)->moduleName(), name, strlen(name)) == 0) {
             ALOGW("loadHwModule() module %s already loaded", name);
-            return mAudioHwDevs.keyAt(i);
+            return mAudioHwDevs.valueAt(i);
         }
     }
 
@@ -2566,7 +2602,7 @@ audio_module_handle_t AudioFlinger::loadHwModule_l(const char *name)
     int rc = mDevicesFactoryHal->openDevice(name, &dev);
     if (rc) {
         ALOGE("loadHwModule() error %d loading module %s", rc, name);
-        return AUDIO_MODULE_HANDLE_NONE;
+        return nullptr;
     }
 
     mHardwareStatus = AUDIO_HW_INIT;
@@ -2574,7 +2610,7 @@ audio_module_handle_t AudioFlinger::loadHwModule_l(const char *name)
     mHardwareStatus = AUDIO_HW_IDLE;
     if (rc) {
         ALOGE("loadHwModule() init check error %d for module %s", rc, name);
-        return AUDIO_MODULE_HANDLE_NONE;
+        return nullptr;
     }
 
     // Check and cache this HAL's level of support for master mute and master
@@ -2648,8 +2684,7 @@ audio_module_handle_t AudioFlinger::loadHwModule_l(const char *name)
 
     ALOGI("loadHwModule() Loaded %s audio interface, handle %d", name, handle);
 
-    return handle;
-
+    return audioDevice;
 }
 
 // ----------------------------------------------------------------------------
@@ -4678,7 +4713,8 @@ status_t AudioFlinger::onTransactWrapper(TransactionCode code,
         case TransactionCode::UPDATE_SECONDARY_OUTPUTS:
         case TransactionCode::SET_BLUETOOTH_VARIABLE_LATENCY_ENABLED:
         case TransactionCode::IS_BLUETOOTH_VARIABLE_LATENCY_ENABLED:
-        case TransactionCode::SUPPORTS_BLUETOOTH_VARIABLE_LATENCY: {
+        case TransactionCode::SUPPORTS_BLUETOOTH_VARIABLE_LATENCY:
+        case TransactionCode::GET_AUDIO_POLICY_CONFIG: {
             if (!isServiceUid(IPCThreadState::self()->getCallingUid())) {
                 ALOGW("%s: transaction %d received from PID %d unauthorized UID %d",
                       __func__, code, IPCThreadState::self()->getCallingPid(),
