@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71458cc_0fdfec21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-05-08T15:32:52Z",
+      "side": 1,
+      "message": "Apologies for the late review! I left some comments.",
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a0c6c7_80d65fe5",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-05-08T15:32:52Z",
+      "side": 1,
+      "message": "Can we fold the setBatchSize() into applyMaxBatchSizeLocked()? Something like `applyMaxBatchSizeLocked(requestList, outputStream);`",
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5fa001_336c74b3",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2776,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-05-08T15:32:52Z",
+      "side": 1,
+      "message": "nit: pass in a const reference to the strong pointer is sufficient. We don\u0027t need to use sp\u003c\u003e to track lifetime of the object.",
+      "range": {
+        "startLine": 2776,
+        "startChar": 46,
+        "endLine": 2776,
+        "endChar": 87
+      },
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9cb224a_3f5cda79",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2796,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-05-08T15:32:52Z",
+      "side": 1,
+      "message": "Preview size may be either 30fps or 60fps. Is it okay here only considering 30fps, but not 60fps?",
+      "range": {
+        "startLine": 2796,
+        "startChar": 75,
+        "endLine": 2796,
+        "endChar": 77
+      },
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddbb857_676823a8",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2799,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-05-08T15:32:52Z",
+      "side": 1,
+      "message": "For `S10+ S.LSI model` mentioned in the bug, reportedSize is 1. For a device like that, we are setting batchSize to be 1.\n\nIs that intended? My worry is that if a HAL sets batchSize to 1 today, even though they didn\u0027t intend to. It\u0027s okay because today we aren\u0027t using that field. \n\nAre we breaking those HALs with this change?",
+      "range": {
+        "startLine": 2799,
+        "startChar": 20,
+        "endLine": 2799,
+        "endChar": 96
+      },
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
