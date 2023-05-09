@@ -34,6 +34,24 @@
       "parentUuid": "ea0d9391_625c62df",
       "revId": "b8bd5b41bcd3aaea8d317276d54e85eca17f39a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92b9959_e294ae86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-05-09T10:08:36Z",
+      "side": 1,
+      "message": "Hi, Andrew,\n\nThanks for your quick response.\n(1) I have synced with latest AOSP master branch but there is no merge conflict. \n(2) Currently, there are several Android devices which support Dolby Vision capture, such as OPPO Find X6 Pro, Vivo X90 Pro+, Xiaomi 13 Ultra. The created Dolby Vision content doesn\u0027t include branding info due to this bug. If these captured Dolby Vision files are played on Android TV (e.g. via personal NAS or net disk), the playback will fail because Dolby asked for TV manufacturers to check this field in their product.\n(3) I don\u0027t think Media3/ExoPlayer takes this field as block point. That means if we use ExoPlayer based app to play this captured file, everything is OK. The key point here is Dolby asked TV manufacturers to check this field in their product but we didn\u0027t add this field into Android MPEG-4 writer code.\n(4) If this change can\u0027t be merged to Android U, what\u0027s the next milestone? Android U MR1? Does MPEG4Writer belong to mainline module?",
+      "parentUuid": "687e16fe_b24f892e",
+      "revId": "b8bd5b41bcd3aaea8d317276d54e85eca17f39a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
