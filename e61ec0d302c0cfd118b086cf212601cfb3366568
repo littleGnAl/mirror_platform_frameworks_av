@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "301767ec_0ea8deca",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-05-09T16:07:14Z",
+      "side": 1,
+      "message": "Good catch. Thanks!",
+      "parentUuid": "94a0c6c7_80d65fe5",
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc5fa001_336c74b3",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-05-08T15:32:52Z",
       "side": 1,
       "message": "nit: pass in a const reference to the strong pointer is sufficient. We don\u0027t need to use sp\u003c\u003e to track lifetime of the object.",
+      "range": {
+        "startLine": 2776,
+        "startChar": 46,
+        "endLine": 2776,
+        "endChar": 87
+      },
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa8e911_757af44c",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2776,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-05-09T16:07:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bc5fa001_336c74b3",
       "range": {
         "startLine": 2776,
         "startChar": 46,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "915d540b_2dcc38e2",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2796,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-05-09T16:07:14Z",
+      "side": 1,
+      "message": "It only considers 30fps to acquire the allowed maximum batch size. \n\nFollowings are the description of the `android.control.availableHighSpeedVideoConfigurations`;\n- Each max batch size will be a divisor of its corresponding fps_max / 30.\n- The camera device may choose smaller internal batch size for each configuration, but the actual batch size will be a divisor of max batch size.\n\nSo, dividing by 30 is acquring the allowed maximum batch size based on the first statement. If the device only supports 60fps preview for high speed recording, the batch size will be a divisor of the allowed maximum batch size, and the size will comply with the second statement anyway.",
+      "parentUuid": "a9cb224a_3f5cda79",
+      "range": {
+        "startLine": 2796,
+        "startChar": 75,
+        "endLine": 2796,
+        "endChar": 77
+      },
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ddbb857_676823a8",
         "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
         "patchSetId": 3
@@ -94,6 +160,30 @@
       "writtenOn": "2023-05-08T15:32:52Z",
       "side": 1,
       "message": "For `S10+ S.LSI model` mentioned in the bug, reportedSize is 1. For a device like that, we are setting batchSize to be 1.\n\nIs that intended? My worry is that if a HAL sets batchSize to 1 today, even though they didn\u0027t intend to. It\u0027s okay because today we aren\u0027t using that field. \n\nAre we breaking those HALs with this change?",
+      "range": {
+        "startLine": 2799,
+        "startChar": 20,
+        "endLine": 2799,
+        "endChar": 96
+      },
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d72be5b_1f5051d4",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2799,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-05-09T16:07:14Z",
+      "side": 1,
+      "message": "\u003e Is that intended? My worry is that if a HAL sets batchSize to 1 today, even though they didn\u0027t intend to. It\u0027s okay because today we aren\u0027t using that field.\n\nIt\u0027s tricky. For the Samsung devices, we can gurantee that whatever the value in the field is the intended value. But, this is not guaranteed for all OEMs, as you mentioned. Because, the field has not been used since the start of the HAL3.\n\nHow about adding an API level check to only works with the device after a specific OS launching version and adding a explicit comment that the field will work on devices launched with that OS version to the tag description? (Maybe V? U seems too late)",
+      "parentUuid": "5ddbb857_676823a8",
       "range": {
         "startLine": 2799,
         "startChar": 20,
