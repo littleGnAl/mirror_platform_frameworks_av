@@ -16,6 +16,24 @@
       "message": "Excuse me, I found there were 31 failed founnd by TreeHugger. I have no permission to check the report. What can I do to make this code change forward?",
       "revId": "b8bd5b41bcd3aaea8d317276d54e85eca17f39a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687e16fe_b24f892e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-05-09T08:44:39Z",
+      "side": 1,
+      "message": "I\u0027d guess these are merge conflicts with internal main branch (didn\u0027t look closely though). You could try sync\u0027ing in case the conflict is actually with changes in AOSP but I doubt it will help.\n\n\u003e If there is no this branding info, some Android TV devices will reject to play Dolby Vision stream.\n\nCould you share what the use case is here? Where is the stream being produced with MediaMuxer and how does it end up being played on ATV?\n\nI am wondering if we can make a workaround on the extraction side in Media3/ExoPlayer extractors (if it doesn\u0027t work already) to avoid needing this change. We are only making minimal/P0 fixes to MediaMuxer at this point, and we are probably too late for Android U.",
+      "parentUuid": "ea0d9391_625c62df",
+      "revId": "b8bd5b41bcd3aaea8d317276d54e85eca17f39a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
