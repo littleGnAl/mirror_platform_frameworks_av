@@ -22,6 +22,30 @@
       },
       "revId": "1414781ec189037c0b5d47c5ea05679ac05cae5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7eef9f9_36ba833d",
+        "filename": "media/module/extractors/mp3/VBRISeeker.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-10T15:02:24Z",
+      "side": 1,
+      "message": "i didn\u0027t like the original.\nI tried several others with various CHECK() expressions, \nbut they all complained about various things in either the compiler or gerrit.",
+      "parentUuid": "d8b60bbe_403fa12c",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 61
+      },
+      "revId": "1414781ec189037c0b5d47c5ea05679ac05cae5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
