@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c992a64_0c91fae4",
+        "filename": "media/libaudioclient/TrackPlayerBase.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-10T23:17:06Z",
+      "side": 1,
+      "message": "hold on, this should be the same as mAudioTrack.clear(), right?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "e2cf89a37443c1a2bf9b5f202f7e0428192f1f7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
