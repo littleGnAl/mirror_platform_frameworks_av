@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b60bbe_403fa12c",
+        "filename": "media/module/extractors/mp3/VBRISeeker.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2023-05-10T14:18:16Z",
+      "side": 1,
+      "message": "If you happened to see my comment in the other CL, I would consider fixing this switch, while we are here. Ignorable, otherwise.",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 61
+      },
+      "revId": "1414781ec189037c0b5d47c5ea05679ac05cae5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
