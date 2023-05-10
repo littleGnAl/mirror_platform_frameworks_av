@@ -84,8 +84,6 @@ VBRISeeker *VBRISeeker::CreateFromSource(
          scale,
          entrySize);
 
-    // RBE check on the small end too
-    // b/280693435, which is duped to b/155563985
     if (entrySize < 1 || entrySize > 4) {
         ALOGE("invalid VBRI entry size: %zu", entrySize);
         return NULL;
