@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992296f4_5504f004",
+        "filename": "media/module/extractors/mp3/VBRISeeker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2023-05-10T10:30:51Z",
+      "side": 1,
+      "message": "Sorry for the late comment. The change was merged before I could hit send.\n\nWould it be a more idiomatic implementation to have:\n\n```\n        switch (entrySize) {\n            case 1: numBytes \u003d buffer[i]; break;\n            case 2: numBytes \u003d U16_AT(buffer + 2 * i); break;\n            case 3: numBytes \u003d U24_AT(buffer + 3 * i); break;\n            case 4: numBytes \u003d U32_AT(buffer + 4 * i); break;\n            default: IMMEDIATE_CRASH(); // Can never happen.\n```",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 61
+      },
+      "revId": "0155fcc2662093153d8999a3f8623ca045d2a03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
