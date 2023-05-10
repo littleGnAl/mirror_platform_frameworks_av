@@ -84,8 +84,6 @@ VBRISeeker *VBRISeeker::CreateFromSource(
          scale,
          entrySize);
 
-    // RBE check on the small end too
-    // b/280693435, which is duped to b/155563985
     if (entrySize < 1 || entrySize > 4) {
         ALOGE("invalid VBRI entry size: %zu", entrySize);
         return NULL;
@@ -130,8 +128,9 @@ VBRISeeker *VBRISeeker::CreateFromSource(
             case 1: numBytes = buffer[i]; break;
             case 2: numBytes = U16_AT(buffer + 2 * i); break;
             case 3: numBytes = U24_AT(buffer + 3 * i); break;
-            default:
             case 4: numBytes = U32_AT(buffer + 4 * i); break;
+            default:
+                CHECK(0);       // not allowed
         }
 
         numBytes *= scale;
