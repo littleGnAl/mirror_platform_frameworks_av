@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bbd12c9_771a5072",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2023-05-11T17:54:22Z",
+      "side": 1,
+      "message": "Wonsik, is there a better way for us to determine if the component supports block-model ?",
+      "range": {
+        "startLine": 561,
+        "startChar": 15,
+        "endLine": 562,
+        "endChar": 63
+      },
+      "revId": "7dfb65734505234c1448276f8b2dbc5d06883e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
