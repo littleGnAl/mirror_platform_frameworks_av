@@ -25,25 +25,66 @@ cc_binary {
         "libmediametrics_headers",
     ],
 
-    shared_libs: [
-        "packagemanager_aidl-cpp",
+    defaults: [
+        "latest_android_media_audio_common_types_cpp_shared",
+    ],
+
+    static_libs: [
         "libaaudioservice",
-        "libaudioclient",
         "libaudioflinger",
         "libaudiopolicyservice",
+        "libaudiospdif",
+        "libmedialogservice",
+        "libnbaio",
+        "libaudiopolicycomponents",
+        "libeffectsconfig",
+    ],
+
+    shared_libs: [
+        "aaudio-aidl-cpp",
+        "audioclient-types-aidl-cpp",
+        "audioflinger-aidl-cpp",
+        "audiopolicy-aidl-cpp",
+        "audiopolicy-types-aidl-cpp",
+        "av-types-aidl-cpp",
+        "capture_state_listener-aidl-cpp",
+        "effect-aidl-cpp",
+        "framework-permission-aidl-cpp",
+        "libaaudio_internal",
+        "libactivitymanager_aidl",
+        "libaudioclient",
+        "libaudioclient",
+        "libaudioclient_aidl_conversion",
+        "libaudiofoundation",
+        "libaudiohal",
+        "libaudiopolicy",
+        "libaudiopolicymanagerdefault",
         "libaudioprocessing",
+        "libaudioutils",
         "libbinder",
         "libcutils",
+        "libhardware_legacy",
+        "libheadtracking",
+        "libheadtracking-binding",
         "libhidlbase",
         "liblog",
         "libmedia",
-        "libmedialogservice",
+        "libmedia_helper",
+        "libmediametrics",
         "libmediautils",
-        "libnbaio",
+        "libmemunreachable",
         "libnblog",
+        "libpermission",
         "libpowermanager",
+        "libsensor",
+        "libsensorprivacy",
+        "libshmemcompat",
+        "libstagefright_foundation",
         "libutils",
         "libvibrator",
+        "libxml2",
+        "packagemanager_aidl-cpp",
+        "spatializer-aidl-cpp",
     ],
 
     // TODO check if we still need all of these include directories
@@ -59,9 +100,9 @@ cc_binary {
         "frameworks/av/services/audiopolicy/engine/interface",
         "frameworks/av/services/audiopolicy/service",
         "frameworks/av/services/medialog",
+        "frameworks/av/services/oboeservice", // TODO oboeservice is the old folder name for aaudioservice. It will be changed.
 
-        // TODO oboeservice is the old folder name for aaudioservice. It will be changed.
-        "frameworks/av/services/oboeservice",
+
     ],
 
     init_rc: ["audioserver.rc"],

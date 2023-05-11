@@ -7,7 +7,7 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
-cc_library_shared {
+cc_library {
     name: "libaudiopolicyservice",
 
     defaults: [
