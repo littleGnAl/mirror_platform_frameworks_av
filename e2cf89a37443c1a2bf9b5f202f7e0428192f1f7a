@@ -22,6 +22,30 @@
       },
       "revId": "e2cf89a37443c1a2bf9b5f202f7e0428192f1f7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad1be22e_1834aa89",
+        "filename": "media/libaudioclient/TrackPlayerBase.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-05-11T02:53:32Z",
+      "side": 1,
+      "message": "1. From code， mAudioTrack.clear() only set m_ptr to nullptr, but StrongPointer(mAudioTrack) is not 0.\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/libutils/include/utils/StrongPointer.h;l\u003d343\n\ntemplate\u003ctypename T\u003e\nvoid sp\u003cT\u003e::clear() {\n    T* oldPtr(*const_cast\u003cT* volatile*\u003e(\u0026m_ptr));\n    if (oldPtr) {\n        oldPtr-\u003edecStrong(this);\n        if (oldPtr !\u003d *const_cast\u003cT* volatile*\u003e(\u0026m_ptr)) sp_report_race();\n        m_ptr \u003d nullptr;\n    }\n}\n\nAnd compare(\u003d\u003d) StrongPointer , *this is not 0.\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/libutils/include/utils/StrongPointer.h;l\u003d110\n\n    inline bool operator \u003d\u003d (const wp\u003cU\u003e\u0026 o) const {\n        return o \u003d\u003d *this;\n    }\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n2. mAudioTrack.clear() will set m_ptr to nullptr.\nSo we also can change judgment as following to resolve the issue.\n if (mAudioTrack !\u003d 0) ...\n to\n if (mAudioTrack.get() \u003d\u003d nullptr) ...",
+      "parentUuid": "5c992a64_0c91fae4",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "e2cf89a37443c1a2bf9b5f202f7e0428192f1f7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
