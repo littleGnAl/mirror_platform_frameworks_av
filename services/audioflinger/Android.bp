@@ -134,10 +134,45 @@ cc_defaults {
     ],
 }
 
-cc_library_shared {
+cc_defaults {
+    name: "libaudioflinger_dependencies",
+    shared_libs: [
+        "audioflinger-aidl-cpp",
+        "audioclient-types-aidl-cpp",
+        "av-types-aidl-cpp",
+        "effect-aidl-cpp",
+        "libaudioclient_aidl_conversion",
+        "libaudiofoundation",
+        "libaudiohal",
+        "libaudioprocessing",
+        "libaudioutils",
+        "libcutils",
+        "libutils",
+        "liblog",
+        "libbinder",
+        "libaudioclient",
+        "libmedialogservice",
+        "libmediametrics",
+        "libmediautils",
+        "libnbaio",
+        "libnblog",
+        "libpermission",
+        "libpowermanager",
+        "libmediautils",
+        "libmemunreachable",
+        "libmedia_helper",
+        "libshmemcompat",
+        "libvibrator",
+        "packagemanager_aidl-cpp",
+    ],
+}
+
+
+cc_library {
     name: "libaudioflinger",
 
     defaults: [
+        "libaudioflinger_dependencies",
         "latest_android_media_audio_common_types_cpp_shared",
         "audioflinger_flags_defaults",
     ],
@@ -174,38 +209,8 @@ cc_library_shared {
         "frameworks/av/services/medialog",
     ],
 
-    shared_libs: [
-        "audioflinger-aidl-cpp",
-        "audioclient-types-aidl-cpp",
-        "av-types-aidl-cpp",
-        "effect-aidl-cpp",
-        "libaudioclient_aidl_conversion",
-        "libaudiofoundation",
-        "libaudiohal",
-        "libaudioprocessing",
-        "libaudiospdif",
-        "libaudioutils",
-        "libcutils",
-        "libutils",
-        "liblog",
-        "libbinder",
-        "libaudioclient",
-        "libmedialogservice",
-        "libmediametrics",
-        "libmediautils",
-        "libnbaio",
-        "libnblog",
-        "libpermission",
-        "libpowermanager",
-        "libmediautils",
-        "libmemunreachable",
-        "libmedia_helper",
-        "libshmemcompat",
-        "libvibrator",
-        "packagemanager_aidl-cpp",
-    ],
-
     static_libs: [
+        "libaudiospdif",
         "libcpustats",
         "libsndfile",
         "libpermission",
