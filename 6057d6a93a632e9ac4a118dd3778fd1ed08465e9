@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52268d32_91e7c9cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-11T20:26:02Z",
+      "side": 1,
+      "message": "also - maybe change to be more specific \"fuzzer: remove libdl, which is already included\". The fact that ODR causes null-deref is very hard to understand. It could cause many types of issues.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "6057d6a93a632e9ac4a118dd3778fd1ed08465e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
