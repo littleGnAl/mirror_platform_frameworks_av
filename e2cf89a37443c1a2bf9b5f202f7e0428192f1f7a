@@ -46,6 +46,30 @@
       },
       "revId": "e2cf89a37443c1a2bf9b5f202f7e0428192f1f7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a14de516_c1c04044",
+        "filename": "media/libaudioclient/TrackPlayerBase.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-11T03:24:27Z",
+      "side": 1,
+      "message": "I believe clear() and \"\u003d 0\" are equivalent for sp\u003cT\u003e.\n\nHere is sp\u003cT\u003e::clear()\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/rs/cpp/util/StrongPointer.h;drc\u003ded3d7823b0f94c11000e4743865056df828ca4a3;l\u003d183\n\nHere is sp\u003cT\u003e\u0026 sp\u003cT\u003e::operator \u003d (U* other)\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/rs/cpp/util/StrongPointer.h;drc\u003ded3d7823b0f94c11000e4743865056df828ca4a3;l\u003d183\n\nSo mAudioTrack.clear() should be equivalent to mAudioTrack \u003d 0, both set m_ptr to 0.\n\nAlso for sp\u003cT\u003e equality is evaluated by the contents of m_ptr.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/rs/cpp/util/StrongPointer.h;drc\u003ded3d7823b0f94c11000e4743865056df828ca4a3;l\u003d51",
+      "parentUuid": "ad1be22e_1834aa89",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "e2cf89a37443c1a2bf9b5f202f7e0428192f1f7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
