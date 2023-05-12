@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73873bc8_24e5a982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-05-12T05:38:32Z",
+      "side": 1,
+      "message": "Updated patchset 7;\n- Use HAL version instead of `ro.product.first_api_level` to differentiate the batch_size_max behaviour\n- Move implementation to AIDL/HIDL child class. For HIDL, current behaviour is kept. For AIDL, new behaviour will be applied from AIDL v3.",
+      "revId": "5bb0fda80ab27f312e478a4f466ab6f73683121f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

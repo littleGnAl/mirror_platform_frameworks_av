@@ -240,6 +240,30 @@
       },
       "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7c2323_3da4e485",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2799,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-05-12T05:38:32Z",
+      "side": 1,
+      "message": "\u003e The bug is in consideration for V. Let me add this info into the bug as well.\n\nConsideration for V is more than enough.\n\n\u003e We make sure that with new HAL version, we do validity check on max_batch_size in VTS test. And the logic in this CL will only take effect for the new HAL versions.\n\nAcknowledged, thanks.",
+      "parentUuid": "1a320c1b_b33a876a",
+      "range": {
+        "startLine": 2799,
+        "startChar": 20,
+        "endLine": 2799,
+        "endChar": 96
+      },
+      "revId": "e61ec0d302c0cfd118b086cf212601cfb3366568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
