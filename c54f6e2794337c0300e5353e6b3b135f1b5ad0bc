@@ -51,6 +51,24 @@
       "parentUuid": "671c0839_ec6c61f7",
       "revId": "c54f6e2794337c0300e5353e6b3b135f1b5ad0bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e6d09d_39bedda1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-05-12T22:56:11Z",
+      "side": 1,
+      "message": "\u003e The other ones already include uname.\n\noh, weird. (but, yes, confirmed.)\n\n\u003e And if you are asking about the other policy files, they all include the debuggerd policy file explicitly.\n\ndo we know why arm/arm64 don\u0027t? is _that_ the better fix, so you never have to come back?\n\nseems like an oversight rather than an actual arm/arm64 difference?\n```\n~/aosp-master-with-phones/frameworks/av/services/mediacodec/seccomp_policy$ grep -r crash_dump\nmediacodec-x86.policy:@include /system/etc/seccomp_policy/crash_dump.x86.policy\nmediacodec-x86_64.policy:@include /system/etc/seccomp_policy/crash_dump.x86.policy\nmediaswcodec-x86.policy:@include /apex/com.android.media.swcodec/etc/seccomp_policy/crash_dump.x86.policy\nmediacodec-arm.policy:@include /system/etc/seccomp_policy/crash_dump.arm.policy\nmediacodec-arm64.policy:@include /system/etc/seccomp_policy/crash_dump.arm.policy\nmediaswcodec-x86_64.policy:@include /apex/com.android.media.swcodec/etc/seccomp_policy/crash_dump.x86_64.policy\n```",
+      "parentUuid": "d8e3c5db_6f14a91c",
+      "revId": "c54f6e2794337c0300e5353e6b3b135f1b5ad0bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
