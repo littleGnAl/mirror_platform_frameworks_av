@@ -56,5 +56,7 @@ ppoll: 1
 gettid: 1
 sched_yield: 1
 getpid: 1
+gettid: 1
 
+@include /apex/com.android.media.swcodec/etc/seccomp_policy/crash_dump.riscv64.policy
 @include /apex/com.android.media.swcodec/etc/seccomp_policy/code_coverage.riscv64.policy
