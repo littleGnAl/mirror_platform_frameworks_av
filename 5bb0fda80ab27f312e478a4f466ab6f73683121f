@@ -16,6 +16,23 @@
       "message": "Updated patchset 7;\n- Use HAL version instead of `ro.product.first_api_level` to differentiate the batch_size_max behaviour\n- Move implementation to AIDL/HIDL child class. For HIDL, current behaviour is kept. For AIDL, new behaviour will be applied from AIDL v3.",
       "revId": "5bb0fda80ab27f312e478a4f466ab6f73683121f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44a6d2c_3b9bee68",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-05-15T23:47:27Z",
+      "side": 1,
+      "message": "This isn\u0027t aligned with https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/2585399/1/camera/provider/aidl/vts/camera_aidl_test.cpp#818, where we are checking against version 1.3. Or did I miss something obvious?",
+      "revId": "5bb0fda80ab27f312e478a4f466ab6f73683121f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
