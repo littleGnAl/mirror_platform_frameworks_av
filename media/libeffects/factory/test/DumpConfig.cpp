@@ -14,37 +14,50 @@
  * limitations under the License.
  */
 
+#include <getopt.h>
+
 #include <media/EffectsFactoryApi.h>
-#include <unistd.h>
 
 #include "EffectsXmlConfigLoader.h"
+#include "EffectsConfigLoader.h"
 
 int main(int argc, char* argv[]) {
-    char* path = nullptr;
-    if ((argc == 2 || argc == 3) && strcmp(argv[1], "--xml") == 0) {
-        if (argc == 3) {
-            path = argv[2];
-            fprintf(stderr, "Dumping XML effect config file: %s\n", path);
-        } else {
-            fprintf(stderr, "Dumping default XML effect config file.\n");
+    const char* const short_opts = "lx:h";
+    const option long_opts[] = {{"legacy", no_argument, nullptr, 'l'},
+                                {"xml", required_argument, nullptr, 'x'},
+                                {"help", no_argument, nullptr, 'h'}};
+
+    const auto opt = getopt_long(argc, argv, short_opts, long_opts, nullptr);
+    switch (opt) {
+        case 'l': { // -l or --legacy
+            fprintf(stdout, "Dumping legacy effect config file\n");
+            if (EffectLoadEffectConfig() < 0) {
+                fprintf(stderr, "loadEffectConfig failed, see logcat for detail.\n");
+                return 3;
+            }
+            return EffectDumpEffects(STDOUT_FILENO);
         }
-    } else {
-        fprintf(stderr, "Invalid arguments.\nUsage: %s [--xml [FILE]]\n", argv[0]);
-        return 1;
-    }
-
-    ssize_t ret = EffectLoadXmlEffectConfig(path);
-    if (ret < 0) {
-        fprintf(stderr, "loadXmlEffectConfig failed, see logcat for detail.\n");
-        return 2;
-    }
-    if (ret > 0) {
-        fprintf(stderr, "Partially failed to load config. Skipped %zu elements, "
-                "see logcat for detail.\n", (size_t)ret);
-    }
-
-    if (EffectDumpEffects(STDOUT_FILENO) != 0) {
-        fprintf(stderr, "Effect dump failed, see logcat for detail.\n");
-        return 4;
+        case 'x': { // -x or --xml
+            ssize_t ret = EffectLoadXmlEffectConfig(optarg);
+            if (ret < 0) {
+                fprintf(stderr, "loadXmlEffectConfig failed, see logcat for detail.\n");
+                return 1;
+            }
+            if (ret > 0) {
+                fprintf(stdout, "Partially failed to load config. Skipped %zu elements.\n",
+                        (size_t)ret);
+            }
+            return EffectDumpEffects(STDOUT_FILENO);
+        }
+        case 'h': // -h or --help
+        default: {
+            fprintf(stdout,
+                    "Usage: %s\n"
+                    "--legacy (or -l):        Legacy audio effect config file to load\n"
+                    "--xml (or -x) <FILE>:    Audio effect config file to load\n"
+                    "--help (or -h):          Show this help\n",
+                    argv[0]);
+            return 0;
+        }
     }
 }
