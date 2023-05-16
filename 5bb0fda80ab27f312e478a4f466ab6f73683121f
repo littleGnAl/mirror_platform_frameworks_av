@@ -33,6 +33,24 @@
       "message": "This isn\u0027t aligned with https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/2585399/1/camera/provider/aidl/vts/camera_aidl_test.cpp#818, where we are checking against version 1.3. Or did I miss something obvious?",
       "revId": "5bb0fda80ab27f312e478a4f466ab6f73683121f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd633da0_cf287247",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-05-16T06:51:43Z",
+      "side": 1,
+      "message": "Thanks for pointing this out.\n\nRegarding the AIDL versioning in the camera framework, it seems that 3 different measure exists.\n\nThe first one is the \u0027device@\u003cmajor\u003e.\u003cminor\u003e/\u003ctype\u003e/\u003cid\u003e\u0027 from device name. It is used in the VTS, as you mentioned. With this versioning system, AIDL V3 will be `1.3`.\n\nThe second one is the `HARDWARE_DEVICE_API_VERSION` managed by the camera service. It is based on the same device name and has the same minor version, but the major version is pinned down to 3. With this system, AIDL V3 will be `3.3`.\n\nThe last one is the `getInterfaceVersion()` from AIDL interface. It returns the interface version of the remote object, in other words the actually implemented version. But, this versioning system is not used in the camera framework right now.\n\nSo, both https://android-review.googlesource.com/c/platform/hardware/interfaces/+/2585399/1/camera/provider/aidl/vts/camera_aidl_test.cpp#818 and this line has same meaning.\n\nBecause, I couldn\u0027t fully firgure out the historical reason of different version systems have been used. So, I keep each versioning convention for each module rather than unifying the versioning system.",
+      "parentUuid": "b44a6d2c_3b9bee68",
+      "revId": "5bb0fda80ab27f312e478a4f466ab6f73683121f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
