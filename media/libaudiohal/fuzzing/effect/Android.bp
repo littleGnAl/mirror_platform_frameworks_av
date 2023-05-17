@@ -1,0 +1,62 @@
+/*
+ * Copyright (C) 2023 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+cc_fuzz {
+    name: "audio_effect_aidl_hal_fuzzer",
+    srcs: [
+        "EffectFactoryServiceFuzzer.cpp",
+    ],
+    defaults: [
+        "libaudiohal_default",
+        "latest_android_hardware_audio_common_ndk_shared",
+        "latest_android_hardware_audio_core_ndk_shared",
+        "latest_android_hardware_audio_effect_ndk_shared",
+        "latest_android_media_audio_common_types_ndk_shared",
+    ],
+    static_libs: [
+        "android.hardware.common-V2-ndk",
+        "android.hardware.common.fmq-V1-ndk",
+    ],
+    shared_libs: [
+        "libaudio_aidl_conversion_common_cpp",
+        "libaudio_aidl_conversion_common_ndk",
+        "libaudio_aidl_conversion_common_ndk_cpp",
+        "libaudio_aidl_conversion_core_ndk",
+        "libaudio_aidl_conversion_effect_ndk",
+        "libaudioaidlcommon",
+        "libbinder_ndk",
+    ],
+    header_libs: [
+        "libaudio_system_headers",
+        "libeffectsconfig_headers",
+    ],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+    ],
+    fuzz_config: {
+        cc: [
+            "android-media-fuzzing-reports@google.com",
+        ],
+        componentid: 155276,
+        libfuzzer_options: [
+            //based on b/187360866
+            "timeout=770",
+        ],
+
+    },
+}
