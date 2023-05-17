@@ -34,6 +34,23 @@
       "parentUuid": "15c9fcf3_c9425126",
       "revId": "a545e7c09af2c0341afd6c37e75615e2afa7af07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d51059f_ce0ff081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-05-17T20:45:18Z",
+      "side": 1,
+      "message": "this is a revert CL, and the lint build warning will be fixed in aosp/2592067",
+      "revId": "a545e7c09af2c0341afd6c37e75615e2afa7af07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
