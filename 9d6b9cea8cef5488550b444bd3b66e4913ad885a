@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3205e700_cd7eeae1",
+        "filename": "media/libeffects/factory/test/DumpConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-05-17T01:09:29Z",
+      "side": 1,
+      "message": "Note that `printf` is the same as `fprintf(stdout, ...`. The old code used `fprintf` to print to `stderr`, see https://linux.die.net/man/3/printf",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "9d6b9cea8cef5488550b444bd3b66e4913ad885a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
