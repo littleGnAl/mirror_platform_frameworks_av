@@ -16,6 +16,24 @@
       "message": "Do you need to specify a Merged-In here and align the Change-Id with ag/23247960?",
       "revId": "a545e7c09af2c0341afd6c37e75615e2afa7af07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0c74d0_a729f912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-05-17T00:42:36Z",
+      "side": 1,
+      "message": "I think we don\u0027t need Merged-In for reverting a change with Merged-In tags:\nhttps://g3doc.corp.google.com/company/teams/android-build-team/automerger.md?cl\u003dhead#using-merged-in\n\n\"Note: if you\u0027re reverting a change with Merged-In tags, the revert does not need any additional Merged-In tags. Automerger will look at the reverted change for tags.\"",
+      "parentUuid": "15c9fcf3_c9425126",
+      "revId": "a545e7c09af2c0341afd6c37e75615e2afa7af07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
