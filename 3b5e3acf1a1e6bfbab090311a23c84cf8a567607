@@ -16,6 +16,24 @@
       "message": "This change would almost certainly break existing use cases.",
       "revId": "3b5e3acf1a1e6bfbab090311a23c84cf8a567607",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb10bf5_86dee194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2023-05-17T08:25:28Z",
+      "side": 1,
+      "message": "Could you please describe which use case will be impacted? Is there XTS testcase can be verified?",
+      "parentUuid": "d9aac744_cb246b69",
+      "revId": "3b5e3acf1a1e6bfbab090311a23c84cf8a567607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
