@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f97e15f_ad2fa894",
+        "filename": "media/libeffects/factory/test/DumpConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-05-17T01:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0249d175_2994e151",
+      "range": {
+        "startLine": 26,
+        "startChar": 48,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "1c747be160860decbb3634aac29a3be5590a1301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f80958c5_52cac14a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6253ee25_52baaa45",
+        "filename": "media/libeffects/factory/test/DumpConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-05-17T01:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80958c5_52cac14a",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "1c747be160860decbb3634aac29a3be5590a1301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95af3fc7_7ac91b78",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-17T00:26:45Z",
       "side": 1,
       "message": "nit: what are these return values here and on line 43?",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "1c747be160860decbb3634aac29a3be5590a1301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2598edce_25021d22",
+        "filename": "media/libeffects/factory/test/DumpConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-05-17T01:06:48Z",
+      "side": 1,
+      "message": "Coped from original code, I think we return non zero for abnormal exit, but 3 is kind of confusing IMO, so changed to 1 and align with line#43, let me know if this doesn\u0027t make sense. thanks",
+      "parentUuid": "95af3fc7_7ac91b78",
       "range": {
         "startLine": 35,
         "startChar": 22,
