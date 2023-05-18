@@ -22,6 +22,30 @@
       },
       "revId": "29efa39912fcd551003bde36a75e55290f4e8131",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a1e42c_54d0cd91",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/camera_service_aidl_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-18T21:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ebcfdc_61d69c02",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 2
+      },
+      "revId": "29efa39912fcd551003bde36a75e55290f4e8131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
