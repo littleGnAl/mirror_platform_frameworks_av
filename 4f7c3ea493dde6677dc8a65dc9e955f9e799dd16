@@ -16,6 +16,41 @@
       "message": "Q: AFAIK, APM checks all profiles from all hw modules to find the compatible one for the request. APM prefers the one matches all input flags and then the first one matches inexact input flags. See code at https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/managerdefault/AudioPolicyManager.cpp;l\u003d7133?q\u003dAudioPolicyManager.cpp.\n\nIn that case, by modifying `IOProfile::isCompatibleProfile` doesn\u0027t seems help prioritize the exact audio profile one.",
       "revId": "4f7c3ea493dde6677dc8a65dc9e955f9e799dd16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "513623f9_2fd95623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-19T00:55:37Z",
+      "side": 1,
+      "message": "Currently the compatible profile does not always select the \"exact\" one.  The logic returns the first matching here (and is obviously not the best in the example given in the Commit message).\n\nhttps://cs.android.com/android/platform/superproject/+/refs/heads/master:frameworks/av/services/audiopolicy/common/managerdefinitions/src/AudioProfileVectorHelper.cpp;drc\u003d7346c436e5a11ce08f6a80dcfeb8ef941ca30176;l\u003d344\n\n\nAre we concerned about concurrent record cases where the first AudioRecord sets the configuration for future AudioRecords?  Perhaps the checkCompatibleProfile logic should be updated rather than blindly selecting the exact one if it exists.",
+      "parentUuid": "973104ca_090efeeb",
+      "revId": "4f7c3ea493dde6677dc8a65dc9e955f9e799dd16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f74c436_3474f8df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-19T00:55:37Z",
+      "side": 1,
+      "message": "Adding Eric for review here.  The logic is reasonable, but may not be ideal.",
+      "revId": "4f7c3ea493dde6677dc8a65dc9e955f9e799dd16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
