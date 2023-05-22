@@ -123,7 +123,12 @@ status_t NuPlayer::GenericSource::setDataSource(
     mUri = url;
 
     if (headers) {
-        mUriHeaders = *headers;
+	mUriHeaders = *headers;
+	mUriHeaders.add(String8("Range"),String8("bytes=0-"));
+	mUriHeaders.add(String8("Accept"),String8("*/*"));
+    } else {
+	mUriHeaders.add(String8("Range"),String8("bytes=0-"));
+	mUriHeaders.add(String8("Accept"),String8("*/*"));
     }
 
     // delay data source creation to prepareAsync() to avoid blocking
