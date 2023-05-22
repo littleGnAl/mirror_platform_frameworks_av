@@ -16,6 +16,23 @@
       "message": "This is clean-up in preparation to modify debuggerd to add a new allowed syscall.",
       "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af5ce277_0bd1409d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2023-05-22T19:34:23Z",
+      "side": 1,
+      "message": "This actually increases security since it disallows any EXEC maps.\n\nI couldn\u0027t find any reason in the past that the code allowed EXEC maps, but it might be required for sw codecs.\n\nif it is, I can come up with a new solution for this.",
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
