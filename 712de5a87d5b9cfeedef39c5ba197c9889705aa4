@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c2cc2d_3230c013",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "which kept the bad guys from generating arbitrary code and then marking it executable.\n\ni\u0027d rather see us disallow PROT_EXEC here than to allow anything.\nthat would get us in sync with the current crash dump semantics.\nand we\u0027ll worry about an update if crashdump gets changed down the road in a way that puts them both at odds.",
+      "range": {
+        "startLine": 18,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7793ee5_0c9a53a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "i played with this sort of stuff a while back. the minijail parser is happy with these, where it goes bad is when it pushes those conflicts into the kernel, the kernel starts objecting [and minijail passes that rejection back upstream].\n\nAt one point, I played a bit with the minijail parser to see if I could get it to cache all the rules and reconcile the rules by combining them. something like:  \nmprotect (the swcodec restriction) || (the crashdump restruction)\n\nbut I didn\u0027t get very far at that before some other shiny object caught my attention.",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bf22200e_b3ab9db3",
@@ -85,6 +131,138 @@
       "side": 1,
       "message": "so shouldn\u0027t we just _remove_ these lines rather than have them be `1`, in case crash_dump policy changes?",
       "parentUuid": "99541897_ca622a66",
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7488a10_6e83feb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "well, my comments appear to have run slightly amuck.",
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b70ec30_4505a7b3",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "I think i\u0027d prefer to match the restrictions of the crashdump code here\nrather than saying \u0027everything\u0027.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08611a2_6320096c",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "repeated on line 72",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a74bb9_012fab9e",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "prefer to have this match crashdump rather than make this wide open.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f0e3aa_513ecfbd",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "duplicated from line 75",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7d7410_93e07e7e",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-riscv64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-22T20:50:35Z",
+      "side": 1,
+      "message": "both here and line 56 seems .... repetitive",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 9
+      },
       "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
