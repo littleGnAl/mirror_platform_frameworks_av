@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66152083_7e8a2bde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-22T22:51:22Z",
+      "side": 1,
+      "message": "Cherry-pick from internal ag/20751522 with minor manual merge resolution.",
+      "revId": "ee86ceee6ce8182766fa8c191b043f0b865f8bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a29dc8_b575dceb",
+        "filename": "services/audioflinger/AudioFlinger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-22T22:51:22Z",
+      "side": 1,
+      "message": "manual merge resolution here.",
+      "revId": "ee86ceee6ce8182766fa8c191b043f0b865f8bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10a45fe_ca7d29de",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6190,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-22T22:51:22Z",
+      "side": 1,
+      "message": "white space diff here",
+      "revId": "ee86ceee6ce8182766fa8c191b043f0b865f8bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
