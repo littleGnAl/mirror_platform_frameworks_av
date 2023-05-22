@@ -51,6 +51,24 @@
       "parentUuid": "af5ce277_0bd1409d",
       "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99541897_ca622a66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2023-05-22T19:40:12Z",
+      "side": 1,
+      "message": "It inherits the restrictions from the crash_dump policy. The problem is you can\u0027t have restrictive rules in both places. If you have the arg2 restriction here, the process won\u0027t load because of rule in crash_dump policy.\n\nThat\u0027s why the other that load the crash_dump policy just set it to 1.",
+      "parentUuid": "b145c3e5_d306a527",
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
