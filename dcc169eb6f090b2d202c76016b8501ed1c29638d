@@ -16,6 +16,23 @@
       "message": "Adding Ian for API-Review.\n\nIan, this doesn\u0027t change schema at all, but it just specify the root element for the schema to avoid unnecessary code generation. Note that by setting the root element as `MediaCodec` the parser function `readIncluded` is not generated.",
       "revId": "dcc169eb6f090b2d202c76016b8501ed1c29638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0da133_ae829261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-23T05:39:01Z",
+      "side": 1,
+      "message": "Btw, the schema in this change isn\u0027t used for code generation, but it\u0027s used only in the test data. Hence, there\u0027s no diff between the reference build and the build with this change in the target files.",
+      "revId": "dcc169eb6f090b2d202c76016b8501ed1c29638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
