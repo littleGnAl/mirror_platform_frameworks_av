@@ -457,6 +457,11 @@ void NuPlayer::Decoder::onSetParameters(const sp<AMessage> &params) {
 
         sp<AMessage> codecParams = new AMessage();
         codecParams->setFloat("operating-rate", decodeFrameRate * mPlaybackSpeed);
+
+        int32_t videoScalingMode;
+        if (params->findInt32("android._video-scaling", &videoScalingMode)) {
+            codecParams->setInt32("android._video-scaling", videoScalingMode);
+        }
         mCodec->setParameters(codecParams);
     }
 }
