@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f963fef_23dc2f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-05-23T13:58:52Z",
+      "side": 1,
+      "message": "Dear Google team,\n\nPls review this CL, in https://cs.android.com/android/platform/superproject/+/master:frameworks/base/media/jni/android_media_MediaCodec.cpp;l\u003d953;bpv\u003d0\n\nvoid JMediaCodec::setVideoScalingMode(int mode) {\n    if (mSurfaceTextureClient !\u003d NULL) {\n        // this works for components that queue to surface\n        native_window_set_scaling_mode(mSurfaceTextureClient.get(), mode);\n        // also signal via param for components that queue to IGBP\n        sp\u003cAMessage\u003e msg \u003d new AMessage;\n        msg-\u003esetInt32(\"android._video-scaling\", mode);\n        (void)mCodec-\u003esetParameters(msg);\n    }\n}\nbut, in Nuplayer, it not signal \"android._video-scaling\" to codec component, cause VideoScalingMode not set as expected.",
+      "revId": "404d9d6f342f1856daa8443f5e933623d9cbef81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
