@@ -16,6 +16,46 @@
       "message": "Clean cherry-pick from internal ag/23276762.",
       "revId": "068e08eeca472ff3e423c7f0c0a99dc0a4480edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6c6fd6_d6bc186b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-23T18:15:48Z",
+      "side": 1,
+      "message": "Needs to be submitted with aosp/2599665.",
+      "revId": "068e08eeca472ff3e423c7f0c0a99dc0a4480edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fae927f_b2390af3",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3926,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-23T18:15:48Z",
+      "side": 1,
+      "message": "aosp/2599665 will fix the clang tidy issue of a const ref here; will be submitted together.",
+      "range": {
+        "startLine": 3926,
+        "startChar": 35,
+        "endLine": 3926,
+        "endChar": 77
+      },
+      "revId": "068e08eeca472ff3e423c7f0c0a99dc0a4480edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
