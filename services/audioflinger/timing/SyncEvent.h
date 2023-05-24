@@ -16,55 +16,43 @@
 
 #pragma once
 
-#include <functional>
-#include <mutex>
-
-#include <media/AudioSystem.h>
-#include <utils/RefBase.h>
-
-namespace android::audioflinger {
+namespace android {
 
 class SyncEvent;
-using SyncEventCallback = std::function<void(const wp<SyncEvent>& event)>;
+
+typedef void (*sync_event_callback_t)(const wp<SyncEvent>& event) ;
 
 class SyncEvent : public RefBase {
 public:
     SyncEvent(AudioSystem::sync_event_t type,
               audio_session_t triggerSession,
               audio_session_t listenerSession,
-              const SyncEventCallback& callBack,
+              sync_event_callback_t callBack,
               const wp<RefBase>& cookie)
     : mType(type), mTriggerSession(triggerSession), mListenerSession(listenerSession),
-      mCookie(cookie), mCallback(callBack)
+      mCallback(callBack), mCookie(cookie)
     {}
 
+    virtual ~SyncEvent() {}
+
     void trigger() {
-        std::lock_guard l(mLock);
-        if (mCallback) mCallback(wp<SyncEvent>::fromExisting(this));
+        Mutex::Autolock _l(mLock);
+        if (mCallback) mCallback(wp<SyncEvent>(this));
     }
-
-    bool isCancelled() const {
-        std::lock_guard l(mLock);
-        return mCallback == nullptr;
-    }
-
-    void cancel() {
-        std::lock_guard l(mLock);
-        mCallback = nullptr;
-    }
-
+    bool isCancelled() const { Mutex::Autolock _l(mLock); return (mCallback == NULL); }
+    void cancel() { Mutex::Autolock _l(mLock); mCallback = NULL; }
     AudioSystem::sync_event_t type() const { return mType; }
     audio_session_t triggerSession() const { return mTriggerSession; }
     audio_session_t listenerSession() const { return mListenerSession; }
-    const wp<RefBase>& cookie() const { return mCookie; }
+    wp<RefBase> cookie() const { return mCookie; }
 
 private:
       const AudioSystem::sync_event_t mType;
       const audio_session_t mTriggerSession;
       const audio_session_t mListenerSession;
+      sync_event_callback_t mCallback;
       const wp<RefBase> mCookie;
-      mutable std::mutex mLock;
-      SyncEventCallback mCallback GUARDED_BY(mLock);
+      mutable Mutex mLock;
 };
 
-} // namespace android::audioflinger
+} // namespace android

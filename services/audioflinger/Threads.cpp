@@ -3278,7 +3278,7 @@ uint32_t AudioFlinger::PlaybackThread::activeSleepTimeUs() const
     return (uint32_t)((uint32_t)((mNormalFrameCount * 1000) / mSampleRate) * 1000);
 }
 
-status_t AudioFlinger::PlaybackThread::setSyncEvent(const sp<audioflinger::SyncEvent>& event)
+status_t AudioFlinger::PlaybackThread::setSyncEvent(const sp<SyncEvent>& event)
 {
     if (!isValidSyncEvent(event)) {
         return BAD_VALUE;
@@ -3297,8 +3297,7 @@ status_t AudioFlinger::PlaybackThread::setSyncEvent(const sp<audioflinger::SyncE
     return NAME_NOT_FOUND;
 }
 
-bool AudioFlinger::PlaybackThread::isValidSyncEvent(
-        const sp<audioflinger::SyncEvent>& event) const
+bool AudioFlinger::PlaybackThread::isValidSyncEvent(const sp<SyncEvent>& event) const
 {
     return event->type() == AudioSystem::SYNC_EVENT_PRESENTATION_COMPLETE;
 }
@@ -8681,9 +8680,9 @@ status_t AudioFlinger::RecordThread::start(RecordThread::RecordTrack* recordTrac
     }
 }
 
-void AudioFlinger::RecordThread::syncStartEventCallback(const wp<audioflinger::SyncEvent>& event)
+void AudioFlinger::RecordThread::syncStartEventCallback(const wp<SyncEvent>& event)
 {
-    sp<audioflinger::SyncEvent> strongEvent = event.promote();
+    sp<SyncEvent> strongEvent = event.promote();
 
     if (strongEvent != 0) {
         sp<RefBase> ptr = strongEvent->cookie().promote();
@@ -8722,14 +8721,12 @@ bool AudioFlinger::RecordThread::stop(RecordThread::RecordTrack* recordTrack) {
     return false;
 }
 
-bool AudioFlinger::RecordThread::isValidSyncEvent(
-        const sp<audioflinger::SyncEvent>& /* event */) const
+bool AudioFlinger::RecordThread::isValidSyncEvent(const sp<SyncEvent>& event __unused) const
 {
     return false;
 }
 
-status_t AudioFlinger::RecordThread::setSyncEvent(
-        const sp<audioflinger::SyncEvent>& event __unused)
+status_t AudioFlinger::RecordThread::setSyncEvent(const sp<SyncEvent>& event __unused)
 {
 #if 0   // This branch is currently dead code, but is preserved in case it will be needed in future
     if (!isValidSyncEvent(event)) {
@@ -10262,13 +10259,12 @@ void AudioFlinger::MmapThread::threadLoop_exit()
     // and because it can cause a recursive mutex lock on stop().
 }
 
-status_t AudioFlinger::MmapThread::setSyncEvent(const sp<audioflinger::SyncEvent>& /* event */)
+status_t AudioFlinger::MmapThread::setSyncEvent(const sp<SyncEvent>& event __unused)
 {
     return BAD_VALUE;
 }
 
-bool AudioFlinger::MmapThread::isValidSyncEvent(
-        const sp<audioflinger::SyncEvent>& /* event */) const
+bool AudioFlinger::MmapThread::isValidSyncEvent(const sp<SyncEvent>& event __unused) const
 {
     return false;
 }

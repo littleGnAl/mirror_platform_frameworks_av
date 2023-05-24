@@ -10,10 +10,6 @@ package {
 cc_library {
     name: "libaudioflinger_timing",
 
-    defaults: [
-        "audioflinger_flags_defaults",
-    ],
-
     host_supported: true,
 
     srcs: [
