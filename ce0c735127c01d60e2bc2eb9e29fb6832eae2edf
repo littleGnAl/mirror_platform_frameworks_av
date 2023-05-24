@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c44df4d_69aaa815",
+        "filename": "services/mediaextractor/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2023-05-24T08:59:17Z",
+      "side": 1,
+      "message": "Is it possible to use groups instead of individual googlers?\n\nFor instance, it\u0027s been some time since I last owned extractors. The current owners are the android-media-playback@ team (I\u0027d be surprised if Ray also wants to be CCed). I\u0027ll CC them to this CL to give you some input on this.",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "ce0c735127c01d60e2bc2eb9e29fb6832eae2edf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
