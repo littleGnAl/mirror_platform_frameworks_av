@@ -22,6 +22,30 @@
       },
       "revId": "ce0c735127c01d60e2bc2eb9e29fb6832eae2edf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630d610a_bfc5c145",
+        "filename": "services/mediaextractor/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-24T14:36:52Z",
+      "side": 1,
+      "message": "we can definitely do groups.\nother fuzzers are using android-media-fuzzing-reports@google.com for the cc\n\nthe only other frameworks/av fuzzer that appears to use the triage_assignee\nis services/camera/libcameraservice/libcameraservice_fuzzer/Android.bp which appears to be the same author.\n\n(1) cc\u0027s to a group [android-media-fuzzing-reports] is appropriate\n(2) assignee should be the group for the code we\u0027re fuzzing; for here, android-media-playback@ as Santiago suggests.\n(3) we need a bug to run through all of frameworks/av/**/Android.bp to make sure they follow this pattern with the cc and triage_assignee fields being present.",
+      "parentUuid": "1c44df4d_69aaa815",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "ce0c735127c01d60e2bc2eb9e29fb6832eae2edf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
