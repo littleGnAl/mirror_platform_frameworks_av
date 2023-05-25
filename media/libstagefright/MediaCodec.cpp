@@ -581,7 +581,10 @@ void MediaCodec::ResourceManagerServiceProxy::notifyClientCreated() {
                                 .uid = static_cast<int32_t>(mUid),
                                 .id = getId(mClient),
                                 .name = mCodecName};
-    service->notifyClientCreated(clientInfo);
+    if (mService == nullptr) {
+        return;
+    }
+    mService->notifyClientCreated(clientInfo);
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientStarted(
@@ -596,7 +599,10 @@ void MediaCodec::ResourceManagerServiceProxy::notifyClientStarted(
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
-    service->notifyClientStarted(clientConfig);
+    if (mService == nullptr) {
+        return;
+    }
+    mService->notifyClientStarted(clientConfig);
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientStopped(
@@ -626,7 +632,10 @@ void MediaCodec::ResourceManagerServiceProxy::notifyClientConfigChanged(
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
-    service->notifyClientConfigChanged(clientConfig);
+    if (mService == nullptr) {
+        return;
+    }
+    mService->notifyClientStopped(clientConfig);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
