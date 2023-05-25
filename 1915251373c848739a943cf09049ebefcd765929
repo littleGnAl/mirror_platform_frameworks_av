@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "be5f9ddd_d4cdd0af",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-05-25T01:31:14Z",
+      "side": 1,
+      "message": "Right, they don\u0027t even have to be in this class. Moved to the anonymous namespace with utilities.",
+      "parentUuid": "6cf9de19_663c1733",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 3
+      },
+      "revId": "1915251373c848739a943cf09049ebefcd765929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "25a6a321_02df4c09",
         "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-25T00:33:58Z",
       "side": 1,
       "message": "odd that this is set as an integer but comes back as an enum.",
+      "range": {
+        "startLine": 243,
+        "startChar": 94,
+        "endLine": 243,
+        "endChar": 96
+      },
+      "revId": "1915251373c848739a943cf09049ebefcd765929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e45308_88541c9b",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-05-25T01:31:14Z",
+      "side": 1,
+      "message": "It\u0027s passed from the Java layer all the way down as a string (http://cs/android-internal/frameworks/base/services/core/java/com/android/server/audio/AudioService.java;l\u003d1517;rcl\u003dcefc47b992614ab38d8a6e9603cd920b2940074e). Int here is just a convenience.",
+      "parentUuid": "25a6a321_02df4c09",
       "range": {
         "startLine": 243,
         "startChar": 94,
