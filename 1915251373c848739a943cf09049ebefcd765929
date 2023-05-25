@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf9de19_663c1733",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-25T00:33:58Z",
+      "side": 1,
+      "message": "nit:  static or const, here and line 215?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 3
+      },
+      "revId": "1915251373c848739a943cf09049ebefcd765929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a6a321_02df4c09",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-05-25T00:33:58Z",
+      "side": 1,
+      "message": "odd that this is set as an integer but comes back as an enum.",
+      "range": {
+        "startLine": 243,
+        "startChar": 94,
+        "endLine": 243,
+        "endChar": 96
+      },
+      "revId": "1915251373c848739a943cf09049ebefcd765929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
