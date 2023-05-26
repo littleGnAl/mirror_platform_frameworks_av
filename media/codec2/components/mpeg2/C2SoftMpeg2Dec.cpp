@@ -324,6 +324,7 @@ C2SoftMpeg2Dec::C2SoftMpeg2Dec(
         mIvColorformat(IV_YUV_420P),
         mWidth(320),
         mHeight(240),
+        mHeaderDecoded(false),
         mOutIndex(0u) {
     // If input dump is enabled, then open create an empty file
     GENERATE_FILE_NAMES();
@@ -514,7 +515,7 @@ status_t C2SoftMpeg2Dec::setNumCores() {
     return OK;
 }
 
-status_t C2SoftMpeg2Dec::setParams(size_t stride) {
+status_t C2SoftMpeg2Dec::setParams(size_t stride, IVD_VIDEO_DECODE_MODE_T decMode) {
     ivd_ctl_set_config_ip_t s_set_dyn_params_ip;
     ivd_ctl_set_config_op_t s_set_dyn_params_op;
 
@@ -524,7 +525,7 @@ status_t C2SoftMpeg2Dec::setParams(size_t stride) {
     s_set_dyn_params_ip.u4_disp_wd = (UWORD32) stride;
     s_set_dyn_params_ip.e_frm_skip_mode = IVD_SKIP_NONE;
     s_set_dyn_params_ip.e_frm_out_mode = IVD_DISPLAY_FRAME_OUT;
-    s_set_dyn_params_ip.e_vid_dec_mode = IVD_DECODE_FRAME;
+    s_set_dyn_params_ip.e_vid_dec_mode = decMode;
     s_set_dyn_params_op.u4_size = sizeof(ivd_ctl_set_config_op_t);
     IV_API_CALL_STATUS_T status = ivdec_api_function(mDecHandle,
                                                      &s_set_dyn_params_ip,
@@ -576,7 +577,7 @@ status_t C2SoftMpeg2Dec::initDecoder() {
     mSignalledError = false;
     resetPlugin();
     (void) setNumCores();
-    if (OK != setParams(mStride)) return UNKNOWN_ERROR;
+    if (OK != setParams(mStride, IVD_DECODE_FRAME)) return UNKNOWN_ERROR;
     (void) getVersion();
 
     return OK;
@@ -601,7 +602,7 @@ bool C2SoftMpeg2Dec::setDecodeArgs(ivd_video_decode_ip_t *ps_decode_ip,
 
     if (mStride != displayStride) {
         mStride = displayStride;
-        if (OK != setParams(mStride)) return false;
+        if (OK != setParams(mStride, IVD_DECODE_FRAME)) return false;
     }
 
     ps_decode_ip->u4_size = sizeof(ivd_video_decode_ip_t);
@@ -725,6 +726,7 @@ status_t C2SoftMpeg2Dec::resetDecoder() {
     (void) setNumCores();
     mStride = 0;
     mSignalledError = false;
+    mHeaderDecoded = false;
 
     return OK;
 }
@@ -929,6 +931,12 @@ void C2SoftMpeg2Dec::process(
             work->result = C2_CORRUPTED;
             return;
         }
+
+        if (false == mHeaderDecoded) {
+            /* Decode header and get dimensions */
+            setParams(mStride, IVD_DECODE_HEADER);
+        }
+
         // If input dump is enabled, then write to file
         DUMP_TO_FILE(mInFile, s_decode_ip.pv_stream_buffer, s_decode_ip.u4_num_Bytes);
         nsecs_t delay = mTimeStart - mTimeEnd;
@@ -980,6 +988,11 @@ void C2SoftMpeg2Dec::process(
             continue;
         }
         if (0 < s_decode_op.u4_pic_wd && 0 < s_decode_op.u4_pic_ht) {
+            if (mHeaderDecoded == false) {
+                mHeaderDecoded = true;
+                mStride = ALIGN128(s_decode_op.u4_pic_wd);
+                setParams(mStride, IVD_DECODE_FRAME);
+            }
             if (s_decode_op.u4_pic_wd != mWidth ||  s_decode_op.u4_pic_ht != mHeight) {
                 mWidth = s_decode_op.u4_pic_wd;
                 mHeight = s_decode_op.u4_pic_ht;
@@ -1001,6 +1014,7 @@ void C2SoftMpeg2Dec::process(
                     work->result = C2_CORRUPTED;
                     return;
                 }
+                continue;
             }
         }
 

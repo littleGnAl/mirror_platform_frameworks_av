@@ -111,7 +111,7 @@ struct C2SoftMpeg2Dec : public SimpleC2Component {
     status_t fillMemRecords();
     status_t createDecoder();
     status_t setNumCores();
-    status_t setParams(size_t stride);
+    status_t setParams(size_t stride, IVD_VIDEO_DECODE_MODE_T dec_mode);
     status_t getVersion();
     status_t initDecoder();
     bool setDecodeArgs(ivd_video_decode_ip_t *ps_decode_ip,
@@ -158,6 +158,7 @@ struct C2SoftMpeg2Dec : public SimpleC2Component {
     uint32_t mStride;
     bool mSignalledOutputEos;
     bool mSignalledError;
+    bool mHeaderDecoded;
     std::atomic_uint64_t mOutIndex;
 
     // Color aspects. These are ISO values and are meant to detect changes in aspects to avoid
