@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e044929e_ee1c4583",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eb9fef4_8455becd",
+      "range": {
+        "startLine": 54,
+        "startChar": 29,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc3de0d1_cecf702f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-02T21:43:29Z",
       "side": 1,
       "message": "sizeof \u0027_MARK\u0027 is 6, since it includes the null.\nwe\u0027re specically not including the null (this the -1 on line 56)",
+      "range": {
+        "startLine": 55,
+        "startChar": 40,
+        "endLine": 55,
+        "endChar": 66
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "348e6f57_da6b238e",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3de0d1_cecf702f",
       "range": {
         "startLine": 55,
         "startChar": 40,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e94a4ef_3a18009e",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74cfbdd7_bd1ed357",
+      "range": {
+        "startLine": 177,
+        "startChar": 18,
+        "endLine": 177,
+        "endChar": 22
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d0cba68_f8c59235",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-02T21:43:29Z",
       "side": 1,
       "message": "same \u003c\u003d logic as for isMarker()",
+      "range": {
+        "startLine": 185,
+        "startChar": 23,
+        "endLine": 185,
+        "endChar": 27
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4130163_006500ba",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d0cba68_f8c59235",
       "range": {
         "startLine": 185,
         "startChar": 23,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0917163_8981abdb",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf1f3c4_975fbeaa",
+      "range": {
+        "startLine": 193,
+        "startChar": 22,
+        "endLine": 193,
+        "endChar": 29
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef32bfd1_7d9e0970",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-05-02T21:43:29Z",
       "side": 1,
       "message": "there\u0027s a mismatch here.\nthis line walks backward, but the exit criteria just below here seems to be\nbased on moving forward.",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 17
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2073ead_3926f6c9",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef32bfd1_7d9e0970",
       "range": {
         "startLine": 205,
         "startChar": 2,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6931a221_3eac8b57",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "865139da_87034e17",
+      "range": {
+        "startLine": 245,
+        "startChar": 3,
+        "endLine": 245,
+        "endChar": 67
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de8eb3e1_a05692e7",
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "700fbfb8_5f37b935",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de8eb3e1_a05692e7",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 17
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6186ffa9_7a9f4690",
@@ -198,6 +390,30 @@
       "writtenOn": "2023-05-02T21:43:29Z",
       "side": 1,
       "message": "we\u0027ll enter this if we have no marker+bin_suffix in the raw data.\nbut that data *could* have a marker+m3u8_suffix entry/entries\nso we\u0027ll create a \u0027bin file\u0027 here that could have \u0027_MARK_M_\u0027 as a prefix or\neven somewhere in the middle...\n\nfeels like maybe line 248..255 should be more:\nif (m3u8index\u003d\u003d0 \u0026\u0026 binfileindex\u003d\u003d0) { ... create the files ... }\n\nso need some explanation here.  if it\u0027s correct, probably need to explain that.",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 24
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d0f18f_a73bb997",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-05-26T04:55:23Z",
+      "side": 1,
+      "message": "This is done to ensure that in case corpus file doesn\u0027t have any marker then we dump entire data to m3u8file and binfileIndex.",
+      "parentUuid": "6186ffa9_7a9f4690",
       "range": {
         "startLine": 252,
         "startChar": 5,
