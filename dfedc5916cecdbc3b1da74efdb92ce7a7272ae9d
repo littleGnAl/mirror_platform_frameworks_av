@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3fec6d1_2887bd89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-05-29T08:48:00Z",
+      "side": 1,
+      "message": "In Android system, there\u0027s a JAVA API getAudioPresentations() in MediaExtractor to allow getting audio presentations information from extractor. It\u0027s added in API level 28.\nhttps://developer.android.com/reference/android/media/MediaExtractor#getAudioPresentations(int)\n\nBut this API can work for MPEG2TS but not for MPEG4 file. The reason is MediaExtractor.getAudioPresentations() gets the Audio Presentation information from the metadata combined with Media Buffer of each sample of the track. But in current implementation of MPEG4 extractor, the audio presentation info is just stored in track metadata.\n\nThis code change is to put the Audio Presentations information into metadata combined with Media Buffer of each sample. Then MediaExtractor.getAudioPresentations() can work with MPEG4 file too.",
+      "revId": "dfedc5916cecdbc3b1da74efdb92ce7a7272ae9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
