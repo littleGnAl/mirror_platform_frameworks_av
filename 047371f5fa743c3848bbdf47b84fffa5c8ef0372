@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae602ca_7b33eccf",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-05-30T13:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7270b1fe_31cdbabd",
+      "range": {
+        "startLine": 338,
+        "startChar": 30,
+        "endLine": 338,
+        "endChar": 35
+      },
+      "revId": "047371f5fa743c3848bbdf47b84fffa5c8ef0372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47ee598e_48586f87",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67456f18_72cf720b",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-05-30T13:29:06Z",
+      "side": 1,
+      "message": "final buffer is now initialized to nullptr before empty check",
+      "parentUuid": "47ee598e_48586f87",
+      "range": {
+        "startLine": 358,
+        "startChar": 12,
+        "endLine": 358,
+        "endChar": 29
+      },
+      "revId": "047371f5fa743c3848bbdf47b84fffa5c8ef0372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c999249_9607c1a6",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-25T15:03:41Z",
       "side": 1,
       "message": "this creates another copy of the relevant bytes, right?\n\nso we will wind up with 2 copies of the relevant bytes\nOne is the outData array where we drop everything.\nSecond is the st of c2Buffer\u0027s that we create and populate on line 407.\n\nso .... 2 copies. 2 data movements.\nseems like we\u0027re doing some unnecessary data movement here.\nI\u0027d have expected lines 406/407 to replace line 404.",
+      "range": {
+        "startLine": 407,
+        "startChar": 8,
+        "endLine": 407,
+        "endChar": 73
+      },
+      "revId": "047371f5fa743c3848bbdf47b84fffa5c8ef0372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30710006_8bb9513f",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-05-30T13:29:06Z",
+      "side": 1,
+      "message": "createLinearBuffer accept inputs in blocks and we have encoded data in byte array.\n\nTo copy encoded data into outputBuffers list first we need to copy byte array into mOutputBlock and then mOutputBlock to outputBuffers list",
+      "parentUuid": "5c999249_9607c1a6",
       "range": {
         "startLine": 407,
         "startChar": 8,
