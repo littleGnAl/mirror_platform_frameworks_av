@@ -22,6 +22,30 @@
       },
       "revId": "aafb9118a6506518065dab7232610f42bab03e49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68f3bbc_8dd82ef3",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-05-30T15:03:48Z",
+      "side": 1,
+      "message": "yes. the /sdcard name has been standardized regardless of whether there is a physical sdcard slot on the device.\n\nfrom app-side, you see it as a sequence of symlinks and FUSE filesystem mounts. Behind the FUSE mount, it\u0027s mapped into subdirectories of /data/",
+      "parentUuid": "1c829729_89769213",
+      "range": {
+        "startLine": 2,
+        "startChar": 36,
+        "endLine": 2,
+        "endChar": 42
+      },
+      "revId": "aafb9118a6506518065dab7232610f42bab03e49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
