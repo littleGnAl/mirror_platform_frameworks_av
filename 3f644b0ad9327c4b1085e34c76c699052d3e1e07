@@ -16,6 +16,24 @@
       "message": "Is there a bug detailing the problem that this is trying to solve? In general I\u0027m surprised that an HTTP server **requires** `Range` or `Accept` headers to be provided.",
       "revId": "3f644b0ad9327c4b1085e34c76c699052d3e1e07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b974a132_bbb1e24f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1973035
+      },
+      "writtenOn": "2023-05-31T07:35:06Z",
+      "side": 1,
+      "message": "the details are in b/283728014",
+      "parentUuid": "4488d9ce_0bb5ac29",
+      "revId": "3f644b0ad9327c4b1085e34c76c699052d3e1e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
