@@ -90,13 +90,13 @@ public class MediaCodecSurfaceEncoder {
         }
 
         String decoderMime = decoderFormat.getString(MediaFormat.KEY_MIME);
-        ArrayList<String> listOfDeocders =
+        ArrayList<String> listOfDecoders =
                 MediaCodecBase.selectCodecs(decoderMime, null, null, false, mIsCodecSoftware);
-        if (listOfDeocders.isEmpty()) {
+        if (listOfDecoders.isEmpty()) {
             Log.e(TAG, "No suitable decoder found for mime: " + decoderMime);
             return -1;
         }
-        mDecoder = MediaCodec.createByCodecName(listOfDeocders.get(0));
+        mDecoder = MediaCodec.createByCodecName(listOfDecoders.get(0));
 
         MediaFormat encoderFormat = setUpEncoderFormat(decoderFormat);
         ArrayList<String> listOfEncoders =
