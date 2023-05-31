@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0907f2d7_ef81f06f",
+        "filename": "services/mediaextractor/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-31T01:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e09368_a0899515",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 48
+      },
+      "revId": "ddae9b18173911e2ea1c38081bb844a63c203626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e330e7d1_12d55bfd",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "I do also watch them. It\u0027s to avoid other processes from looking at these until the fuzzer is stabilized.",
       "parentUuid": "e330e7d1_12d55bfd",
+      "range": {
+        "startLine": 112,
+        "startChar": 26,
+        "endLine": 112,
+        "endChar": 35
+      },
+      "revId": "ddae9b18173911e2ea1c38081bb844a63c203626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d582759b_73c09469",
+        "filename": "services/mediaextractor/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-31T01:13:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2eab56b4_f801c32c",
       "range": {
         "startLine": 112,
         "startChar": 26,
