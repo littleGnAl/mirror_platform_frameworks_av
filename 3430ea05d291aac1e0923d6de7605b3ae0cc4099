@@ -422,6 +422,30 @@
       },
       "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bbcea2_5e2e8e11",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T11:43:56Z",
+      "side": 1,
+      "message": "doesn\u0027t \u0027no marker\u0027 mean that: m3u8index \u003d\u003d 0 \u0026\u0026 binfileindex\u003d\u003d0?",
+      "parentUuid": "30d0f18f_a73bb997",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 24
+      },
+      "revId": "3430ea05d291aac1e0923d6de7605b3ae0cc4099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

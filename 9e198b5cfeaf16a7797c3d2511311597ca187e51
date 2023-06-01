@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8b5b56_6c30e155",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T11:43:56Z",
+      "side": 1,
+      "message": "reading searchForMarker(), \nit seems to me that if searchForMarker() returns true,\nthen mReadIndex must be \u003e\u003d 0.\n\nso the test of mReadIndex seems redundant.\nnot wrong, just redundant.",
+      "range": {
+        "startLine": 226,
+        "startChar": 26,
+        "endLine": 226,
+        "endChar": 46
+      },
+      "revId": "9e198b5cfeaf16a7797c3d2511311597ca187e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
