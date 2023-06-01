@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "189e8d04_99ade530",
+        "filename": "media/libaudiohal/impl/ConversionHelperAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-06-01T09:19:54Z",
+      "side": 1,
+      "message": "redundant?",
+      "range": {
+        "startLine": 47,
+        "startChar": 28,
+        "endLine": 47,
+        "endChar": 56
+      },
+      "revId": "53de9d1dfacf8d269c6125c3d337c71eb889ec94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0332c6_1c079e2c",
+        "filename": "media/libaudiohal/impl/ConversionHelperAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-06-01T09:19:54Z",
+      "side": 1,
+      "message": "redundant?",
+      "range": {
+        "startLine": 67,
+        "startChar": 32,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "53de9d1dfacf8d269c6125c3d337c71eb889ec94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a3417f_0fcb4cf6",
+        "filename": "media/libaudiohal/impl/ConversionHelperAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-06-01T09:19:54Z",
+      "side": 1,
+      "message": "do we need to verify that vendorParameters are properly formatted?",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "53de9d1dfacf8d269c6125c3d337c71eb889ec94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "46b474f1_704936ec",
