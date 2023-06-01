@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "148b8e28_d78c7f7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2023-06-01T09:04:18Z",
+      "side": 1,
+      "message": "Hi Phil,\nWe had one more look at the bug filed by clusterfuzz and the discussion on Buganizer regarding this bug. Since the bug was a timeout bug, we attempted to resolve the timeout but it looks like the current bug fix is just masking the actual issue.\nHence, we shall abandon the current bug fix CL.\n\nApologies for the inconvenience caused.",
+      "revId": "59fd533d5666d94e090c99d7ac0c10abb8abda4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "591b66c3_d544c02b",
         "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
         "patchSetId": 1
