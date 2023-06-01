@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d188fdd9_6897825e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T19:01:08Z",
+      "side": 1,
+      "message": "scope of outputBuffers is a must-fix problem.",
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176228a9_355fec3d",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T19:01:08Z",
+      "side": 1,
+      "message": "this needs to be within the C2SoftFlacEnc class.\n\nas written, it\u0027s outside of that class.\nand if we\u0027re running 2 concurrent flac encodings, we\u0027ll see the contents\nintermingled between the codec instances.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14eb9684_42f74fe0",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T19:01:08Z",
+      "side": 1,
+      "message": "it seems that this would read better as\nif(outputBuffers.size() \u003d\u003d 1)",
+      "range": {
+        "startLine": 351,
+        "startChar": 7,
+        "endLine": 351,
+        "endChar": 33
+      },
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e290e8_786319dd",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T19:01:08Z",
+      "side": 1,
+      "message": "why not the same pattern as line 340/341: make a local \u0027front\u0027 variable\nand use it to shorten the rest of these lines.",
+      "range": {
+        "startLine": 352,
+        "startChar": 29,
+        "endLine": 352,
+        "endChar": 51
+      },
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca35b62_b030f549",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T19:01:08Z",
+      "side": 1,
+      "message": "seems that we could/should assert that outputBuffers.size() \u003d\u003d 0 at this point.\nit\u0027s an error otherwise.",
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

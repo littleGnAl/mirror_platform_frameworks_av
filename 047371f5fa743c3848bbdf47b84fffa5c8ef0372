@@ -140,6 +140,30 @@
       },
       "revId": "047371f5fa743c3848bbdf47b84fffa5c8ef0372",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a213bde_b2836d77",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-01T19:01:08Z",
+      "side": 1,
+      "message": "ok. i see where outData is within mOutputBlock,\nso the memcpy() is putting it into mOutputblock.",
+      "parentUuid": "30710006_8bb9513f",
+      "range": {
+        "startLine": 407,
+        "startChar": 8,
+        "endLine": 407,
+        "endChar": 73
+      },
+      "revId": "047371f5fa743c3848bbdf47b84fffa5c8ef0372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
