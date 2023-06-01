@@ -16,6 +16,24 @@
       "message": "Hi Lajos, could you please share the lint error details?",
       "revId": "c1cb45937c8cb554ff8fb6370596f217189791d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c3d33b_c0d6f418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-06-01T20:41:03Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2237988/25/media/codec2/vndk/C2Fence.cpp\nLine#296: Lines longer than 100 characters should be wrapped to improve readability;\nLine#309: Common typo found: \"incase\" -- should it be \"in case\"?",
+      "parentUuid": "49c80d02_8cb63303",
+      "revId": "c1cb45937c8cb554ff8fb6370596f217189791d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
