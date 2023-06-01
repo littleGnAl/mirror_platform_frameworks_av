@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ed0145_be930125",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-06-01T07:52:54Z",
+      "side": 1,
+      "message": "not needed as default constructor takes care of this. no?",
+      "range": {
+        "startLine": 349,
+        "startChar": 36,
+        "endLine": 349,
+        "endChar": 46
+      },
+      "revId": "5f7688e8973bc37c7de9b08e1d80fa8af85bb142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
