@@ -16,6 +16,24 @@
       "message": "Andrew/Harish, what do you think about this change?",
       "revId": "77653e49b93cc11972a038abcb69ad4d682a22a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d39e58_a193d686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-06-02T09:27:06Z",
+      "side": 1,
+      "message": "Without looking into the details much it seems too risky. Media recorder is in maintenance mode at the moment. What was the motivation for the change? Can the code using `MediaRecorder` be migrated to use `MediaCodec` directly, or `CameraX`?",
+      "parentUuid": "16cf877b_c302873b",
+      "revId": "77653e49b93cc11972a038abcb69ad4d682a22a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
