@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c283650e_8cd85e82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2010871
+      },
+      "writtenOn": "2023-06-05T01:51:11Z",
+      "side": 1,
+      "message": "done",
+      "revId": "a5e04a1bd70654ede28b59dcc83994cbe13fbe67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bf7cbbc_cc2c910d",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-05-31T08:51:45Z",
       "side": 1,
       "message": "thank you for spotting this. Since we\u0027re here, how about renaming the variable to just \u0027decoders\u0027?",
+      "range": {
+        "startLine": 93,
+        "startChar": 26,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "a5e04a1bd70654ede28b59dcc83994cbe13fbe67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab54d6a_0bb29ddd",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 2010871
+      },
+      "writtenOn": "2023-06-05T01:51:11Z",
+      "side": 1,
+      "message": "listOfDecoders is ok",
+      "parentUuid": "6bf7cbbc_cc2c910d",
       "range": {
         "startLine": 93,
         "startChar": 26,
