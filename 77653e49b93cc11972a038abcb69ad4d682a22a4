@@ -34,6 +34,24 @@
       "parentUuid": "16cf877b_c302873b",
       "revId": "77653e49b93cc11972a038abcb69ad4d682a22a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e1cd00_e47853bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1902438
+      },
+      "writtenOn": "2023-06-05T09:55:32Z",
+      "side": 1,
+      "message": "The motivation for this change is to improve camcorder startup latency by parallelizing audio \u0026 video encoder setup.\nThis saves around 30-40 ms in the overall startup time.",
+      "parentUuid": "91d39e58_a193d686",
+      "revId": "77653e49b93cc11972a038abcb69ad4d682a22a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
