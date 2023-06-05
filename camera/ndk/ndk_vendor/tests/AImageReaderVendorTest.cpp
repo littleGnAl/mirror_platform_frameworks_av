@@ -31,6 +31,7 @@
 #include <stdio.h>
 
 #include <android/log.h>
+#include <android-base/properties.h>
 #include <camera/NdkCameraError.h>
 #include <camera/NdkCameraManager.h>
 #include <camera/NdkCameraDevice.h>
@@ -872,6 +873,9 @@ class AImageReaderVendorTest : public ::testing::Test {
 };
 
 TEST_F(AImageReaderVendorTest, CreateWindowNativeHandle) {
+    if (android::base::GetUintProperty<uint64_t>("ro.vendor.api_level", 0) > __ANDROID_API_U__) {
+        GTEST_SKIP() << "This device no longer supports AImageReader_getWindowNativeHandle";
+    }
     // We always use the first camera.
     const char* cameraId = mCameraIdList->cameraIds[0];
     ASSERT_TRUE(cameraId != nullptr);
@@ -905,6 +909,9 @@ TEST_F(AImageReaderVendorTest, CreateWindowNativeHandle) {
 }
 
 TEST_F(AImageReaderVendorTest, LogicalCameraPhysicalStream) {
+    if (android::base::GetUintProperty<uint64_t>("ro.vendor.api_level", 0) > __ANDROID_API_U__) {
+        GTEST_SKIP() << "This device no longer supports AImageReader_getWindowNativeHandle";
+    }
     for (auto & v2 : {true, false}) {
         testLogicalCameraPhysicalStream(false/*usePhysicalSettings*/, v2);
         testLogicalCameraPhysicalStream(true/*usePhysicalSettings*/, v2);

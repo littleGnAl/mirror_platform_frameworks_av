@@ -181,6 +181,7 @@ cc_test {
         "ndk_vendor/tests/ACameraManagerTest.cpp",
     ],
     shared_libs: [
+        "libbase",
         "libcamera2ndk_vendor",
         "libcamera_metadata",
         "libmediandk",
