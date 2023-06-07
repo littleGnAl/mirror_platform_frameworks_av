@@ -63,6 +63,30 @@
       },
       "revId": "9d2dbea661ea84437b160dbe00a9080afe2e7504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596b4171_f99c6c21",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4082,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2023-06-07T16:47:19Z",
+      "side": 1,
+      "message": "Agreed with Dorin. We don\u0027t allow adding offload flag here just because of there is a non-offloadble effect is enabled. It doesn\u0027t mean the device doesn\u0027t support offload or direct playback. We will still need to check all mix ports to see how offload is supported.\n\nThe bug looks like something is fixed recently in U. I noticed the build is on T, that doesn\u0027t include the fix. Let me attach the fix to the bug. Yongming, please check if the attached fix in the bug work for you.",
+      "parentUuid": "e80bd6d5_8240e7c1",
+      "range": {
+        "startLine": 4082,
+        "startChar": 15,
+        "endLine": 4082,
+        "endChar": 41
+      },
+      "revId": "9d2dbea661ea84437b160dbe00a9080afe2e7504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
