@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b2c01a_8c0145f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-06-07T14:28:58Z",
+      "side": 1,
+      "message": "This API is for both direct playback (passthrough) and offload playback.\nWe cannot return that direct playback is not supported just because offload isn\u0027t",
+      "revId": "9d2dbea661ea84437b160dbe00a9080afe2e7504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73d5aabc_9c8b97ff",
