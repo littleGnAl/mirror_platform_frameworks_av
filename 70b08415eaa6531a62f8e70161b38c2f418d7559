@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "745dd7b9_d374fda6",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-06-07T12:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "176228a9_355fec3d",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14eb9684_42f74fe0",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-01T19:01:08Z",
       "side": 1,
       "message": "it seems that this would read better as\nif(outputBuffers.size() \u003d\u003d 1)",
+      "range": {
+        "startLine": 351,
+        "startChar": 7,
+        "endLine": 351,
+        "endChar": 33
+      },
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61e56b2_1a802eeb",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-06-07T12:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14eb9684_42f74fe0",
       "range": {
         "startLine": 351,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f847f6_4226120d",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-06-07T12:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36e290e8_786319dd",
+      "range": {
+        "startLine": 352,
+        "startChar": 29,
+        "endLine": 352,
+        "endChar": 51
+      },
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ca35b62_b030f549",
@@ -100,6 +172,24 @@
       "writtenOn": "2023-06-01T19:01:08Z",
       "side": 1,
       "message": "seems that we could/should assert that outputBuffers.size() \u003d\u003d 0 at this point.\nit\u0027s an error otherwise.",
+      "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef03b501_a43c9053",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-06-07T12:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca35b62_b030f549",
       "revId": "70b08415eaa6531a62f8e70161b38c2f418d7559",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
