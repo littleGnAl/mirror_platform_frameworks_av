@@ -39,6 +39,30 @@
       },
       "revId": "9d2dbea661ea84437b160dbe00a9080afe2e7504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80bd6d5_8240e7c1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4082,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-06-07T14:50:24Z",
+      "side": 1,
+      "message": "I don\u0027t think this is entirely accurate, on TVs we have devices that have no offload capabilities, but can play direct (bitstreams) (e,g. HDMI). The return can still be AUDIO_DIRECT_BITSTREAM_SUPPORTED even without offload capabilities.",
+      "parentUuid": "73d5aabc_9c8b97ff",
+      "range": {
+        "startLine": 4082,
+        "startChar": 15,
+        "endLine": 4082,
+        "endChar": 41
+      },
+      "revId": "9d2dbea661ea84437b160dbe00a9080afe2e7504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
