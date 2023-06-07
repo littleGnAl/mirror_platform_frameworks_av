@@ -4078,6 +4078,8 @@ audio_direct_mode_t AudioPolicyManager::getDirectPlaybackSupport(const audio_att
     uint32_t relevantFlags = AUDIO_OUTPUT_FLAG_HW_AV_SYNC;
     if (offloadPossible) {
         relevantFlags |= AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD;
+    } else {
+        return AUDIO_DIRECT_NOT_SUPPORTED;
     }
     flags = (audio_output_flags_t)((flags & relevantFlags) | AUDIO_OUTPUT_FLAG_DIRECT);
 
