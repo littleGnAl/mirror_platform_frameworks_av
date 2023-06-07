@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e700cb_1f9cff74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-07T15:55:43Z",
+      "side": 1,
+      "message": "patchset 4 cleans the must fix. thanks.\nstill have some questions.",
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bffc1e34_ec3410e6",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-07T15:55:43Z",
+      "side": 1,
+      "message": "i think\nmEncoderReturnedNbBytes !\u003d 0  correlates with mOutputBuffers.size() !\u003d 0\n\nwondering about the clarity around perhaps \nsurrounding line 331..362 inside an \"if (mEncoderReturnedNbBytes !\u003d 0)\"\nand having the else clause use the old fillEmptyWork",
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fbdefcd_4df87490",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-07T15:55:43Z",
+      "side": 1,
+      "message": "trying to convince myself that this is correct thing to do for both\nthe case where there is a last bit of buffer (lines 344..361) \nand \nwhen there were no buffers at all.\n\nI\u0027m pretty sure that the \"there is a final buffer\" case is ok.\ni\u0027m less confident about the case where we had no buffers to send back.\nthus, my thoughts near line 330.",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 353,
+        "endChar": 36
+      },
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
