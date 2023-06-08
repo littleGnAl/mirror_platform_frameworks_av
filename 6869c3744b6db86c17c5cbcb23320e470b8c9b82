@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef46a6b_893cae22",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-06-08T05:03:58Z",
+      "side": 1,
+      "message": "Answered below.",
+      "parentUuid": "bffc1e34_ec3410e6",
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fbdefcd_4df87490",
@@ -70,6 +88,53 @@
         "startChar": 3,
         "endLine": 353,
         "endChar": 36
+      },
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c14dfd_4a141491",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-06-08T05:03:58Z",
+      "side": 1,
+      "message": "The FillWork() implementation is just as same as FillEmptyWork if buffer is nullptr. If mEncoderReturnedNBytes is 0, then this automatically implies mOutputBuffer.size() is 0, causing buffer arg to be nullptr during this call. Thus it is same as FillEmptyWork.",
+      "parentUuid": "2fbdefcd_4df87490",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 353,
+        "endChar": 36
+      },
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b3eb7d_d55150de",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-06-08T05:03:58Z",
+      "side": 1,
+      "message": "Please remove this. This is unreachable code. If this is happening then some how flac encoder has sent data after callbacks are serviced. This should not happen. This is misleading.",
+      "range": {
+        "startLine": 355,
+        "startChar": 4,
+        "endLine": 362,
+        "endChar": 5
       },
       "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
