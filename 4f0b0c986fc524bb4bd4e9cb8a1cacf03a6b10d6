@@ -91,6 +91,30 @@
       },
       "revId": "4f0b0c986fc524bb4bd4e9cb8a1cacf03a6b10d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3247dc8c_7a0de92f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4123,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-06-08T08:36:17Z",
+      "side": 1,
+      "message": "Ideally there should be a way for apps/AudioTracks to request direct playback, not existing atm, maybe in the future.",
+      "parentUuid": "0fffec44_e00387c1",
+      "range": {
+        "startLine": 4123,
+        "startChar": 16,
+        "endLine": 4123,
+        "endChar": 27
+      },
+      "revId": "4f0b0c986fc524bb4bd4e9cb8a1cacf03a6b10d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
