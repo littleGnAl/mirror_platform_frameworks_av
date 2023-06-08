@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ef2ffd_7be9d50c",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-06-08T18:06:44Z",
+      "side": 1,
+      "message": "Don\u0027t we need D::READ for this one too?",
+      "range": {
+        "startLine": 648,
+        "startChar": 41,
+        "endLine": 648,
+        "endChar": 50
+      },
+      "revId": "48e98a1dd9e19fad565fda2b5a3f0fec3dbd7528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
