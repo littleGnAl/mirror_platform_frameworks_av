@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "695b4994_7331fbaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-06-08T17:41:28Z",
+      "side": 1,
+      "message": "I am okay with this change, but am planning to do a fix-up patch in the near future to optimize memory usage and potential symbol leakage.",
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dbfbdc8_3338b4f7",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-06-08T17:41:28Z",
+      "side": 1,
+      "message": "nit: this phrasing seems a bit Android-specific and expose implementation details.\n\nI would phrase this as:\n\n\\note a C2Fence object may internally contain multiple sub-fences. In this case the returned fence is a final fence that is signaled only once all internal sub-fences have been fired.",
+      "range": {
+        "startLine": 104,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde1b621_3f1a846b",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-06-08T17:41:28Z",
+      "side": 1,
+      "message": "nit: this could be moved into a method in _C2FenceFactory to avoid adding this line here. The worry is that this line may create an ABI symbol in our tools that we don\u0027t want to commit to keeping constant.",
+      "range": {
+        "startLine": 134,
+        "startChar": 28,
+        "endLine": 134,
+        "endChar": 57
+      },
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da1b8b9_b6078b46",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-06-08T17:41:28Z",
+      "side": 1,
+      "message": "nit: I am tempted to change the implementation shortly so that mListFences does not contain mFence itself (to avoid one less memory).",
+      "range": {
+        "startLine": 256,
+        "startChar": 12,
+        "endLine": 256,
+        "endChar": 42
+      },
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
