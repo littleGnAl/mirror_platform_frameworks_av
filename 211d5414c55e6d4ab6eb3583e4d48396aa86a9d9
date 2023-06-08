@@ -33,6 +33,23 @@
       "message": "rather than try to chase merge conflicts, I\u0027m going to inject this directly into the internal/master branch.",
       "revId": "211d5414c55e6d4ab6eb3583e4d48396aa86a9d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4bbca77_9e906cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-08T19:23:31Z",
+      "side": 1,
+      "message": "moved to internal/master, retaining attribution, at\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/av/+/23620856\nto avoid all those merge conflicts.",
+      "revId": "211d5414c55e6d4ab6eb3583e4d48396aa86a9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
