@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a4ba47_d1256e77",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4079,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2023-06-08T07:56:49Z",
+      "side": 1,
+      "message": "when offloadPossible is false, relevantFlags didn\u0027t add flag AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD.",
+      "range": {
+        "startLine": 4079,
+        "startChar": 8,
+        "endLine": 4079,
+        "endChar": 23
+      },
+      "revId": "4f0b0c986fc524bb4bd4e9cb8a1cacf03a6b10d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a940be1_be861809",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4094,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2023-06-08T07:56:49Z",
+      "side": 1,
+      "message": "policy configuration like this, both include direc and offload flag\n\u003cmixPort name\u003d\"compressed_offload\" role\u003d\"source\"\n         flags\u003d\"AUDIO_OUTPUT_FLAG_DIRECT AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD AUDIO_OUTPUT_FLAG_NON_BLOCKING AUDIO_OUTPUT_FLAG_GAPLESS_OFFLOAD\"\u003e\n    \u003cprofile name\u003d\"\" format\u003d\"AUDIO_FORMAT_MP3\"",
+      "range": {
+        "startLine": 4094,
+        "startChar": 48,
+        "endLine": 4094,
+        "endChar": 65
+      },
+      "revId": "4f0b0c986fc524bb4bd4e9cb8a1cacf03a6b10d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2532fa4b_8bbd14a6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4095,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2023-06-08T07:56:49Z",
+      "side": 1,
+      "message": "isCompatibleProfile return true due to direct flag",
+      "range": {
+        "startLine": 4095,
+        "startChar": 29,
+        "endLine": 4095,
+        "endChar": 48
+      },
+      "revId": "4f0b0c986fc524bb4bd4e9cb8a1cacf03a6b10d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fffec44_e00387c1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4123,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2023-06-08T07:56:49Z",
+      "side": 1,
+      "message": "Offload\u0027s priority is higher than direct.\nWhat is the reasonable direct mode in this situation?",
+      "range": {
+        "startLine": 4123,
+        "startChar": 16,
+        "endLine": 4123,
+        "endChar": 27
+      },
+      "revId": "4f0b0c986fc524bb4bd4e9cb8a1cacf03a6b10d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
