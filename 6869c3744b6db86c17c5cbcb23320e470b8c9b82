@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b8779de_cdc9b6d2",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-08T12:54:44Z",
+      "side": 1,
+      "message": "I think we can do better with the terminology.\n\nline 331 says that each entry in mOutputBuffers is a frame\nline 351 says that the overall transaction is a single frame.\n\ncomment on line 351 might be better phrased as:\n\n// finish the response for the overall transaction.\n// this includes any final frame that the encoder produced during this request\n// this response is required even if no data was encoded.",
+      "parentUuid": "01c14dfd_4a141491",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 353,
+        "endChar": 36
+      },
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58b3eb7d_d55150de",
         "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
         "patchSetId": 4
