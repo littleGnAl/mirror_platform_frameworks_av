@@ -16,6 +16,23 @@
       "message": "not sure why it had those merge conflicts.\ngoing to give it another whirl through treehugger.\n\nif that fails again, next step might be to apply to internal/master and it\u0027ll propagate around to aosp over the next year.",
       "revId": "211d5414c55e6d4ab6eb3583e4d48396aa86a9d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef051f6b_cf794845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-08T19:13:30Z",
+      "side": 1,
+      "message": "rather than try to chase merge conflicts, I\u0027m going to inject this directly into the internal/master branch.",
+      "revId": "211d5414c55e6d4ab6eb3583e4d48396aa86a9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
