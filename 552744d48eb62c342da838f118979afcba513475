@@ -22,6 +22,30 @@
       },
       "revId": "552744d48eb62c342da838f118979afcba513475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f81a7a_5b3f96c9",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-06-08T01:40:31Z",
+      "side": 0,
+      "message": "Done, keep stdlib.h.",
+      "parentUuid": "56429dae_85b9a961",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "552744d48eb62c342da838f118979afcba513475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
