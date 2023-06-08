@@ -141,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b696387_a916fde5",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-06-08T16:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b8779de_cdc9b6d2",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 353,
+        "endChar": 36
+      },
+      "revId": "6869c3744b6db86c17c5cbcb23320e470b8c9b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58b3eb7d_d55150de",
