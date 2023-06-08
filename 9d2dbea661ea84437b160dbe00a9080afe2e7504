@@ -87,6 +87,30 @@
       },
       "revId": "9d2dbea661ea84437b160dbe00a9080afe2e7504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b92489_a7e3237b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4082,
+      "author": {
+        "id": 1931225
+      },
+      "writtenOn": "2023-06-08T07:58:58Z",
+      "side": 1,
+      "message": "the fix already exsist, don\u0027t work",
+      "parentUuid": "596b4171_f99c6c21",
+      "range": {
+        "startLine": 4082,
+        "startChar": 15,
+        "endLine": 4082,
+        "endChar": 41
+      },
+      "revId": "9d2dbea661ea84437b160dbe00a9080afe2e7504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
