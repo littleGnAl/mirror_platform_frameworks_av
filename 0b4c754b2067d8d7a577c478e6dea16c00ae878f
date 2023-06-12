@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5273ad_faeed235",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-12T16:44:07Z",
+      "side": 1,
+      "message": "and a run through treehugger to see if that finds anything may have missed.",
+      "revId": "0b4c754b2067d8d7a577c478e6dea16c00ae878f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bab760_182c7fbd",
+        "filename": "media/libstagefright/RemoteMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-12T16:44:07Z",
+      "side": 1,
+      "message": "i still have a lot of debug statements in here to help me convince myself that I have synchronization and sequencing correct. These will be removed before I merge anything.",
+      "range": {
+        "startLine": 110,
+        "startChar": 7,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "0b4c754b2067d8d7a577c478e6dea16c00ae878f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfe2f93_e7592657",
+        "filename": "media/libstagefright/RemoteMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-12T16:44:07Z",
+      "side": 1,
+      "message": "only here to simplify testing, turning on/off without rebuild/reflash/reboot.\nassuming we like this, i\u0027ll just turn this to always-on.",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 71
+      },
+      "revId": "0b4c754b2067d8d7a577c478e6dea16c00ae878f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
