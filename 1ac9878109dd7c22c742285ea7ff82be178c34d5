@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7e60918_400bf319",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-06-12T12:58:49Z",
+      "side": 1,
+      "message": "\\note a C2Fence object may internally contain multiple sub-fences. In this case the returned fence is a final fence that is combination(merged fence) of all internal sub-fences.\n\nDoes this seems ok ?",
+      "parentUuid": "4dbfbdc8_3338b4f7",
+      "range": {
+        "startLine": 104,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fde1b621_3f1a846b",
         "filename": "media/codec2/core/include/C2Buffer.h",
         "patchSetId": 26
@@ -77,6 +101,30 @@
       "writtenOn": "2023-06-08T17:41:28Z",
       "side": 1,
       "message": "nit: I am tempted to change the implementation shortly so that mListFences does not contain mFence itself (to avoid one less memory).",
+      "range": {
+        "startLine": 256,
+        "startChar": 12,
+        "endLine": 256,
+        "endChar": 42
+      },
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f5fff9_170cdf41",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1941767
+      },
+      "writtenOn": "2023-06-12T12:58:49Z",
+      "side": 1,
+      "message": "can you please explain in more deatil, since keeping the list of FD\u0027s is also not working, thus we opted for keeping the list of fences.",
+      "parentUuid": "3da1b8b9_b6078b46",
       "range": {
         "startLine": 256,
         "startChar": 12,
