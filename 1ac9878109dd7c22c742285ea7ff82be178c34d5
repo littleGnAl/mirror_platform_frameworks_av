@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65187a8f_ffb15ab5",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-06-13T20:48:35Z",
+      "side": 1,
+      "message": "I was intentionally trying to avoid saying that a merged fence is returned, because in some implementations I can see that no merge is necessary. E.g. the last fence is guaranteed to fire after all other sub-fences. In this case, no merge is needed.",
+      "parentUuid": "a7e60918_400bf319",
+      "range": {
+        "startLine": 104,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fde1b621_3f1a846b",
         "filename": "media/codec2/core/include/C2Buffer.h",
         "patchSetId": 26
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "can you please explain in more deatil, since keeping the list of FD\u0027s is also not working, thus we opted for keeping the list of fences.",
       "parentUuid": "3da1b8b9_b6078b46",
+      "range": {
+        "startLine": 256,
+        "startChar": 12,
+        "endLine": 256,
+        "endChar": 42
+      },
+      "revId": "1ac9878109dd7c22c742285ea7ff82be178c34d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffc6c82_3a7b003d",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-06-13T20:48:35Z",
+      "side": 1,
+      "message": "Let\u0027s merge this in and I can push an update CL.",
+      "parentUuid": "d5f5fff9_170cdf41",
       "range": {
         "startLine": 256,
         "startChar": 12,
