@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "219b4c75_ae865ff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-06-13T21:29:25Z",
+      "side": 1,
+      "message": "Girish, can we submit our metrics CLs to AOSP as well? It is creating issues with vendors trying to upload fixes.",
+      "revId": "7779ec321028e57adc8edef6d969fdb8b5353592",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
