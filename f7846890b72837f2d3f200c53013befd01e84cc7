@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e24bad4_5afe24bc",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-06-14T07:54:22Z",
+      "side": 1,
+      "message": "this is not equivalent to previous code: here restoreTrack_l() is not called if the CBLK_INVALID is set at line 879",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 881,
+        "endChar": 12
+      },
+      "revId": "f7846890b72837f2d3f200c53013befd01e84cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
