@@ -1,0 +1,32 @@
+cc_library {
+    name: "libmediadrmrkp",
+    vendor_available: true,
+    srcs: [
+        "src/**/*.cpp",
+    ],
+    export_include_dirs: [
+        "include"
+    ],
+    defaults: [
+        "keymint_use_latest_hal_aidl_ndk_shared",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
+
+cc_binary {
+    name: "test_libmediadrmrkp",
+    srcs: [
+        "test/*",
+    ],
+    shared_libs: [
+        "libmediadrmrkp",
+    ],
+    vendor: true,
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
