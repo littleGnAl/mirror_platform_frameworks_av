@@ -64,6 +64,11 @@ namespace android {
 #define MAX_MIXES_PER_POLICY 10
 #define MAX_CRITERIA_PER_MIX 20
 
+/** Different priority for AudioMix */
+#define MIX_PRIORITY_LOW (-1)
+#define MIX_PRIORITY_MEDIUM 0
+#define MIX_PRIORITY_HIGH 1
+
 class AudioMixMatchCriterion {
 public:
     AudioMixMatchCriterion() {}
