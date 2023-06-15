@@ -33,6 +33,23 @@
       "message": "Hi @tonihei@google.com, could you help trigger presubmit or autosubmit? Thanks.",
       "revId": "8beceedc6d7a4013bdc297d776d50c95603be7d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9a3cd9_141b9ba0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1670415
+      },
+      "writtenOn": "2023-06-15T02:27:18Z",
+      "side": 1,
+      "message": "Hi tonihei@google.com, thanks for trigger auto-submit. But looks like the presubmit has warnings and it doesn\u0027t allow auto-submit. Could you help to submit it manually? Thanks.",
+      "revId": "8beceedc6d7a4013bdc297d776d50c95603be7d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
