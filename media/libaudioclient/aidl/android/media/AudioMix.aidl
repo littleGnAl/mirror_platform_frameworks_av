@@ -39,4 +39,6 @@ parcelable AudioMix {
     boolean allowPrivilegedMediaPlaybackCapture;
     /** Indicates if the caller can capture voice communication output */
     boolean voiceCommunicationCaptureAllowed;
+    /** Indicates the priority for audiomix */
+    int priority;
 }

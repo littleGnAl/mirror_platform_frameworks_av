@@ -128,6 +128,8 @@ void AudioPolicyMix::dump(String8 *dst, int spaces, int index) const
 
     dst->appendFormat("%*s- device address: %s\n", spaces, "", mDeviceAddress.string());
 
+    dst->appendFormat("%*s- proiroty level: %d\n", spaces, "", mPriority);
+
     dst->appendFormat("%*s- output: %d\n", spaces, "",
             mOutput == nullptr ? 0 : mOutput->mIoHandle);
 
@@ -248,9 +250,11 @@ status_t AudioPolicyMixCollection::getOutputForAttr(
 {
     ALOGV("getOutputForAttr() querying %zu mixes:", size());
     primaryMix.clear();
+    int t_priority = MIX_PRIORITY_LOW;
     for (size_t i = 0; i < size(); i++) {
         sp<AudioPolicyMix> policyMix = itemAt(i);
         const bool primaryOutputMix = !is_mix_loopback_render(policyMix->mRouteFlags);
+        const int priority = policyMix->mPriority;
         if (!primaryOutputMix && (flags & AUDIO_OUTPUT_FLAG_MMAP_NOIRQ)) {
             // AAudio does not support MMAP_NO_IRQ loopback render, and there is no way with
             // the current MmapStreamInterface::start to reject a specific client added to a shared
@@ -262,7 +266,7 @@ status_t AudioPolicyMixCollection::getOutputForAttr(
             return INVALID_OPERATION;
         }
 
-        if (primaryOutputMix && primaryMix != nullptr) {
+        if (primaryOutputMix && primaryMix != nullptr && priority <= t_priority) {
             ALOGV("%s: Skiping %zu: Primary output already found", __func__, i);
             continue; // Primary output already found
         }
@@ -274,7 +278,8 @@ status_t AudioPolicyMixCollection::getOutputForAttr(
 
         if (primaryOutputMix) {
             primaryMix = policyMix;
-            ALOGV("%s: Mix %zu: set primary desc", __func__, i);
+            t_priority = priority;
+            ALOGV("%s: Mix %zu: set primary desc, priority %d ", __func__, i, t_priority);
         } else {
             ALOGV("%s: Add a secondary desc %zu", __func__, i);
             if (secondaryMixes != nullptr) {
