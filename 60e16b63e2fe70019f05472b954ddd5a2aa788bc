@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4daa813b_39641c92",
+        "filename": "drm/libmediadrmrkp/include/DrmRemotelyProvisionedComponent.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-16T02:43:51Z",
+      "side": 1,
+      "message": "Using in the global namespace pollutes the namespace for everyone.\n\nI suggest moving the `using` statements inside the `android::mediadrm` namespace, or even as type aliases inside the `DrmRemotelyProvisionedComponent` instead (e.g. `using IDrmPlugin \u003d ::aidl::android::hardware::drm::IDrmPlugin;`\n\nThis way, we limit how widely these types \"leak\".",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e5f2f8_a622bab2",
+        "filename": "drm/libmediadrmrkp/include/DrmRemotelyProvisionedComponent.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-16T02:43:51Z",
+      "side": 1,
+      "message": "nit: It\u0027s best to _not_ pass this type by ref (especially non-const ref). We can always move inside the ctor and it\u0027s equally efficient (i.e. it\u0027s the same number of atomic ops as copy-from-ref).",
+      "range": {
+        "startLine": 36,
+        "startChar": 63,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0fb5dc7_ec48f1d4",
+        "filename": "drm/libmediadrmrkp/include/DrmRkpAdapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-16T02:43:51Z",
+      "side": 1,
+      "message": "I think it would be best to not inline the implementation here so that we don\u0027t need to define `LOG_TAG` in a header.\n\nAnyone who includes this might find their `LOG_TAG` gets overwritten. AFAICT, the only reason this is here is because of the inlining of the function below (not sure why it\u0027s inlined, vs in a .cpp file).",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c7d175_176c9f52",
+        "filename": "drm/libmediadrmrkp/include/DrmRkpAdapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-16T02:43:51Z",
+      "side": 1,
+      "message": "It would be simpler to capture `comps` here, rather than casting it back and forth.\n\nCapture by reference should be effectively free, right? Maybe there\u0027s some gotcha you\u0027re trying to avoid by casting to/from `void*`.",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8349f82_3601b47d",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-16T02:43:51Z",
+      "side": 1,
+      "message": "This looks racy (some other process could call `setPropertyByteArray` at the same time, right?)\n\nOr is there some guard that prevents this from happening?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
