@@ -78,6 +78,7 @@
 #include <mediautils/Synchronization.h>
 #include <mediautils/ThreadSnapshot.h>
 
+#include <afutils/AllocatorFactory.h>
 #include <afutils/AudioWatchdog.h>
 #include <afutils/NBAIO_Tee.h>
 
@@ -99,7 +100,6 @@
 #include <fastpath/FastCapture.h>
 #include <fastpath/FastMixer.h>
 #include <media/nbaio/NBAIO.h>
-
 
 #include <android/os/IPowerManager.h>
 
