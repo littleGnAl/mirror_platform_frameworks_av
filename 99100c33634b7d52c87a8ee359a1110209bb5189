@@ -164,6 +164,30 @@
       },
       "revId": "99100c33634b7d52c87a8ee359a1110209bb5189",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ec2f38_ef47fde6",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-06-19T08:55:08Z",
+      "side": 1,
+      "message": "We are experiencing immediate timeouts when using the wait() function instead of wait_until(). Waiting at this specific code point is essential to ensure the proper execution of the connect() API. The connect() function takes nearly around 0.03 seconds to execute, hence, we have updated the wait time accordingly. The current execution speed is 50 executions per second.",
+      "parentUuid": "c744ed83_59b9b6a9",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 66
+      },
+      "revId": "99100c33634b7d52c87a8ee359a1110209bb5189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
