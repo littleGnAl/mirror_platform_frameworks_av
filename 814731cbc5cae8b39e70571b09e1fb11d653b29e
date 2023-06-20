@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b776d839_8ec24dc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-20T23:46:50Z",
+      "side": 1,
+      "message": "how long do you usually run these locally btw? You might add it here as well (or pass `-runs\u003d10000` as well) so it is reproducible. People not familiar with fuzzers might not realize it will run forever.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "814731cbc5cae8b39e70571b09e1fb11d653b29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
