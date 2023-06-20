@@ -97,11 +97,8 @@ cc_fuzz {
     ],
 }
 
-cc_fuzz {
-    name: "mediaplayer_fuzzer",
-    srcs: [
-        "mediaplayer_fuzzer.cpp",
-    ],
+cc_defaults {
+    name: "mediaplayer_fuzzer_defaults",
     defaults: [
         "libmediaplayerserviceFuzzer_defaults",
     ],
@@ -138,4 +135,33 @@ cc_fuzz {
         "libpowermanager",
         "libstagefright_httplive",
     ],
+}
+
+cc_fuzz {
+    name: "mediaplayer_fuzzer",
+    srcs: [
+        "mediaplayer_fuzzer.cpp",
+    ],
+    defaults: [
+        "mediaplayer_fuzzer_defaults",
+    ],
+}
+
+cc_fuzz {
+    name: "media_player_service_fuzzer",
+    defaults: [
+        "service_fuzzer_defaults",
+        "mediaplayer_fuzzer_defaults",
+        "fuzzer_disable_leaks",
+    ],
+    srcs: [
+        "media_player_service_fuzzer.cpp",
+    ],
+    fuzz_config: {
+        cc: [
+            "kyslov@google.com",
+            "ibaker@google.com",
+        ],
+        triage_assignee: "waghpawan@google.com",
+    },
 }
