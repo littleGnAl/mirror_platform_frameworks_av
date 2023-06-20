@@ -105,7 +105,7 @@ cc_fuzz {
     defaults: [
         "libmediaplayerserviceFuzzer_defaults",
     ],
-    static_libs: [
+     static_libs: [
         "libplayerservice_datasource",
         "libstagefright_nuplayer",
         "libstagefright_rtsp",
@@ -138,4 +138,27 @@ cc_fuzz {
         "libpowermanager",
         "libstagefright_httplive",
     ],
+}
+
+cc_fuzz {
+    name: "media_player_service_fuzzer",
+    defaults: [
+        "service_fuzzer_defaults",
+        "libmediaplayerservice_defaults",
+        "fuzzer_disable_leaks",
+    ],
+    srcs: [
+        "media_player_service_fuzzer.cpp",
+    ],
+    fuzz_config: {
+        cc: [
+            "kyslov@google.com",
+            "ibaker@google.com",
+        ],
+        triage_assignee: "waghpawan@google.com",
+    },
+    cflags: [
+        "-DFUZZ_MODE_MEDIA_PLAYER_SERVICE",
+    ],
+    include_dirs: ["frameworks/av/media/libmediaplayerservice/"],
 }
