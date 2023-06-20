@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fdd9da_f7af5674",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-20T15:55:40Z",
+      "side": 1,
+      "message": "can we just use mCurrentTrack[trackIndex] !\u003d nullptr to\nachieve the same semantics as mTrackAdded[]?",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 5
+      },
+      "revId": "6fac7b752853f56719cccb9c9deef8b346be0a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687d4e6c_08ecfa26",
+        "filename": "media/libstagefright/writer_fuzzers/include/WriterFuzzerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-20T15:55:40Z",
+      "side": 1,
+      "message": "false, not 0.\n\nBut I\u0027d like to think that we can use comparing mCurrentTrack[#] against nullptr \nto get the same results.   if !\u003d nullptr, then we have added the track, if \u003d\u003d nullptr, then there was no track.",
+      "range": {
+        "startLine": 207,
+        "startChar": 40,
+        "endLine": 207,
+        "endChar": 41
+      },
+      "revId": "6fac7b752853f56719cccb9c9deef8b346be0a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
