@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d648ce66_f3541f94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-06-20T19:45:12Z",
+      "side": 1,
+      "message": "CP from internal ag/23742873.  On AOSP, we don\u0027t have AllocatorFactory.h, so there were changes to fix that.",
+      "revId": "1798b12a5202c77785d34be268ef8ab4bc1013cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
