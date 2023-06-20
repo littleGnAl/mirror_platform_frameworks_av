@@ -498,13 +498,13 @@ private:
 
 // ----------------------------------------------------------------------------
 
-                            MediaPlayerService();
-    virtual                 ~MediaPlayerService();
-
     mutable     Mutex                       mLock;
                 SortedVector< wp<Client> >  mClients;
                 SortedVector< wp<MediaRecorderClient> > mMediaRecorderClients;
                 int32_t                     mNextConnId;
+public:
+                            MediaPlayerService();
+    virtual                 ~MediaPlayerService();
 };
 
 // ----------------------------------------------------------------------------
