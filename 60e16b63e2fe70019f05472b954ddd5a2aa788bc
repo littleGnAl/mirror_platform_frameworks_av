@@ -95,6 +95,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e646e2cf_3f1bb48b",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1930132
+      },
+      "writtenOn": "2023-06-21T18:48:32Z",
+      "side": 1,
+      "message": "Please replace this line with \n  info-\u003esupportedEekCurve \u003d RpcHardwareInfo::CURVE_NONE;\n  info-\u003esupportedNumKeysInCsr \u003d RpcHardwareInfo::MIN_SUPPORTED_NUM_KEYS_IN_CSR;",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1238392e_809b40ac",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1930132
+      },
+      "writtenOn": "2023-06-21T18:48:32Z",
+      "side": 1,
+      "message": "Can we return \nStatus(IRemotelyProvisionedComponent::STATUS_REMOVED,\n                \"generateCertificateRequestV1 not supported.\");\nVTS seems to require this error code...",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 78
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8349f82_3601b47d",
         "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
         "patchSetId": 4
