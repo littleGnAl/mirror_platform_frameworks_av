@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f497dd2_fd53421a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-06-21T08:26:28Z",
+      "side": 1,
+      "message": "Generally it doesn\u0027t seem great to open up the visibility of a symbol only to allow testing. Shouldn\u0027t we test this via the currently visible public API surface? \"using the front door\": go/unit-testing-practices#public-apis",
+      "revId": "16156b0b63a02a06e5443d2fb3a340d1ebb31573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
