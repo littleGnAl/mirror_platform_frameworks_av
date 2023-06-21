@@ -16,6 +16,24 @@
       "message": "Generally it doesn\u0027t seem great to open up the visibility of a symbol only to allow testing. Shouldn\u0027t we test this via the currently visible public API surface? \"using the front door\": go/unit-testing-practices#public-apis",
       "revId": "16156b0b63a02a06e5443d2fb3a340d1ebb31573",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cbe83e_90e0524d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-21T16:57:58Z",
+      "side": 1,
+      "message": "The fuzzers need to create a new instance every iteration. There could be another static public function (which is more explicit like \u0027instantiateFuzz\u0027) or \u0027friend\u0027, but singleton-style front-door won\u0027t do in a fuzzing world.",
+      "parentUuid": "2f497dd2_fd53421a",
+      "revId": "16156b0b63a02a06e5443d2fb3a340d1ebb31573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
