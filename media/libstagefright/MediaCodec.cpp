@@ -1046,7 +1046,8 @@ MediaCodec::MediaCodec(
       mIndexOfFirstFrameWhenLowLatencyOn(-1),
       mInputBufferCounter(0),
       mGetCodecBase(getCodecBase),
-      mGetCodecInfo(getCodecInfo) {
+      mGetCodecInfo(getCodecInfo),
+      mCodecErrorDuringStateTransition(0) {
     mCodecId = GenerateCodecId();
     mResourceManagerProxy = std::make_shared<ResourceManagerServiceProxy>(pid, uid,
             ::ndk::SharedRefBase::make<ResourceManagerClient>(this, pid, uid));
@@ -3550,6 +3551,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     switch (mState) {
                         case INITIALIZING:
                         {
+                            mCodecErrorDuringStateTransition |= AsyncErrorInState::INIT;
                             setState(UNINITIALIZED);
                             break;
                         }
@@ -3563,6 +3565,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 flushMediametrics();
                                 initMediametrics();
                             }
+                            mCodecErrorDuringStateTransition |= AsyncErrorInState::CONFIG;
                             setState(actionCode == ACTION_CODE_FATAL ?
                                     UNINITIALIZED : INITIALIZED);
                             break;
@@ -3577,6 +3580,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 flushMediametrics();
                                 initMediametrics();
                             }
+                            mCodecErrorDuringStateTransition |= AsyncErrorInState::START;
                             setState(actionCode == ACTION_CODE_FATAL ?
                                     UNINITIALIZED : CONFIGURED);
                             break;
@@ -3600,6 +3604,11 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 // be a shutdown complete notification after
                                 // all.
 
+                                if (mState == RELEASING) {
+                                    mCodecErrorDuringStateTransition |= AsyncErrorInState::RELEASE;
+                                } else {
+                                    mCodecErrorDuringStateTransition |= AsyncErrorInState::STOP;
+                                }
                                 // note that we may be directly going from
                                 // STOPPING->UNINITIALIZED, instead of the
                                 // usual STOPPING->INITIALIZED state.
@@ -3622,6 +3631,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                         case FLUSHING:
                         {
+                            mCodecErrorDuringStateTransition |= AsyncErrorInState::FLUSH;
                             if (actionCode == ACTION_CODE_FATAL) {
                                 mediametrics_setInt32(mMetricsHandle, kCodecError, err);
                                 mediametrics_setCString(mMetricsHandle, kCodecErrorState,
@@ -3712,13 +3722,16 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                 case kWhatComponentAllocated:
                 {
-                    if (mState == RELEASING || mState == UNINITIALIZED) {
+                    if (mState == RELEASING || mState == UNINITIALIZED
+                        || (mCodecErrorDuringStateTransition & AsyncErrorInState::INIT)) {
                         // In case a kWhatError or kWhatRelease message came in and replied,
                         // we log a warning and ignore.
-                        ALOGW("allocate interrupted by error or release, current state %d/%s",
-                              mState, stateString(mState).c_str());
+                        ALOGW("allocate interrupted by error or release, current state %d/%s, "
+                                "mCodecErrorDuringStateTransition %x", mState,
+                                stateString(mState).c_str(), mCodecErrorDuringStateTransition);
                         break;
                     }
+                    mCodecErrorDuringStateTransition &= ~AsyncErrorInState::INIT;
                     CHECK_EQ(mState, INITIALIZING);
                     setState(INITIALIZED);
                     mFlags |= kFlagIsComponentAllocated;
@@ -3758,13 +3771,16 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                 case kWhatComponentConfigured:
                 {
-                    if (mState == RELEASING || mState == UNINITIALIZED || mState == INITIALIZED) {
+                    if (mState == RELEASING || mState == UNINITIALIZED || mState == INITIALIZED
+                        || (mCodecErrorDuringStateTransition & AsyncErrorInState::CONFIG)) {
                         // In case a kWhatError or kWhatRelease message came in and replied,
                         // we log a warning and ignore.
-                        ALOGW("configure interrupted by error or release, current state %d/%s",
-                              mState, stateString(mState).c_str());
+                        ALOGW("configure interrupted by error or release, current state %d/%s, "
+                                "mCodecErrorDuringStateTransition %x", mState,
+                                stateString(mState).c_str(), mCodecErrorDuringStateTransition);
                         break;
                     }
+                    mCodecErrorDuringStateTransition &= ~AsyncErrorInState::CONFIG;
                     CHECK_EQ(mState, CONFIGURING);
 
                     // reset input surface flag
@@ -3907,14 +3923,17 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                 case kWhatStartCompleted:
                 {
-                    if (mState == RELEASING || mState == UNINITIALIZED) {
-                        // In case a kWhatRelease message came in and replied,
+                    if (mState == RELEASING || mState == UNINITIALIZED
+                        || (mCodecErrorDuringStateTransition & AsyncErrorInState::START)) {
+                        // In case a kWhatRelease or kWhatError message came in and replied,
                         // we log a warning and ignore.
-                        ALOGW("start interrupted by release, current state %d/%s",
-                              mState, stateString(mState).c_str());
+                        ALOGW("start interrupted by release/error, current state %d/%s, "
+                                "mCodecErrorDuringStateTransition %x", mState,
+                                stateString(mState).c_str(), mCodecErrorDuringStateTransition);
                         break;
                     }
 
+                    mCodecErrorDuringStateTransition &= ~AsyncErrorInState::START;
                     CHECK_EQ(mState, STARTING);
                     if (mDomain == DOMAIN_VIDEO || mDomain == DOMAIN_IMAGE) {
                         mResourceManagerProxy->addResource(
@@ -4135,9 +4154,11 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                 case kWhatStopCompleted:
                 {
-                    if (mState != STOPPING) {
-                        ALOGW("Received kWhatStopCompleted in state %d/%s",
-                              mState, stateString(mState).c_str());
+                    if (mState != STOPPING ||
+                        (mCodecErrorDuringStateTransition & AsyncErrorInState::STOP)) {
+                        ALOGW("Received kWhatStopCompleted in state %d/%s, "
+                                "mCodecErrorDuringStateTransition %x", mState,
+                                stateString(mState).c_str(), mCodecErrorDuringStateTransition);
                         break;
                     }
                     // Notify the RM that the codec has been stopped.
@@ -4145,6 +4166,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     initClientConfigParcel(clientConfig);
                     mResourceManagerProxy->notifyClientStopped(clientConfig);
 
+                    mCodecErrorDuringStateTransition &= ~AsyncErrorInState::STOP;
                     setState(INITIALIZED);
                     if (mReplyID) {
                         postPendingRepliesAndDeferredMessages("kWhatStopCompleted");
@@ -4158,11 +4180,14 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                 case kWhatReleaseCompleted:
                 {
-                    if (mState != RELEASING) {
-                        ALOGW("Received kWhatReleaseCompleted in state %d/%s",
-                              mState, stateString(mState).c_str());
+                    if (mState != RELEASING ||
+                        (mCodecErrorDuringStateTransition & AsyncErrorInState::RELEASE)) {
+                        ALOGW("Received kWhatReleaseCompleted in state %d/%s, "
+                                "mCodecErrorDuringStateTransition %x", mState,
+                                stateString(mState).c_str(), mCodecErrorDuringStateTransition);
                         break;
                     }
+                    mCodecErrorDuringStateTransition &= ~AsyncErrorInState::RELEASE;
                     setState(UNINITIALIZED);
                     mComponentName.clear();
 
@@ -4189,12 +4214,15 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                 case kWhatFlushCompleted:
                 {
-                    if (mState != FLUSHING) {
-                        ALOGW("received FlushCompleted message in state %d/%s",
-                                mState, stateString(mState).c_str());
+                    if (mState != FLUSHING ||
+                        mCodecErrorDuringStateTransition & AsyncErrorInState::FLUSH) {
+                        ALOGW("received FlushCompleted message in state %d/%s, "
+                                "mCodecErrorDuringStateTransition %x", mState,
+                                stateString(mState).c_str(), mCodecErrorDuringStateTransition);
                         break;
                     }
 
+                    mCodecErrorDuringStateTransition &= ~AsyncErrorInState::FLUSH;
                     if (mFlags & kFlagIsAsync) {
                         setState(FLUSHED);
                     } else {
@@ -4240,6 +4268,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             }
             format->setString("componentName", name);
 
+            mCodecErrorDuringStateTransition &= ~AsyncErrorInState::INIT;
             mCodec->initiateAllocateComponent(format);
             break;
         }
@@ -4414,6 +4443,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 androidSetThreadPriority(gettid(), ANDROID_PRIORITY_BACKGROUND);
             }
 
+            mCodecErrorDuringStateTransition &= ~AsyncErrorInState::CONFIG;
             mCodec->initiateConfigureComponent(format);
             break;
         }
@@ -4550,6 +4580,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             mReplyID = replyID;
             setState(STARTING);
 
+            mCodecErrorDuringStateTransition &= ~AsyncErrorInState::START;
             mCodec->initiateStart();
             break;
         }
@@ -4724,6 +4755,12 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             }
             mReplyID = replyID;
             setState(msg->what() == kWhatStop ? STOPPING : RELEASING);
+
+            if (msg->what() == kWhatStop) {
+                mCodecErrorDuringStateTransition &= ~AsyncErrorInState::STOP;
+            } else {
+                mCodecErrorDuringStateTransition &= ~AsyncErrorInState::RELEASE;
+            }
 
             mCodec->initiateShutdown(
                     msg->what() == kWhatStop /* keepComponentAllocated */);
@@ -5017,6 +5054,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             // TODO: skip flushing if already FLUSHED
             setState(FLUSHING);
 
+            mCodecErrorDuringStateTransition &= ~AsyncErrorInState::FLUSH;
             mCodec->signalFlush();
             returnBuffersToCodec();
             TunnelPeekState previousState = mTunnelPeekState;
