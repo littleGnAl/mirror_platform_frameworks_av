@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2013f2_543e07bb",
+        "filename": "media/codec2/hal/common/include/codec2/common/BufferTypes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-06-22T23:16:17Z",
+      "side": 1,
+      "message": "Don\u0027t we need include guards for this header?",
+      "revId": "4c8c0b078f68383c84ef8e1c2b8e508e308715d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eadfc077_a5a354dd",
+        "filename": "media/codec2/hal/common/include/codec2/common/BufferTypes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-06-22T23:16:17Z",
+      "side": 1,
+      "message": "Possibly this will cause multiple definition of LOG_TAG",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "4c8c0b078f68383c84ef8e1c2b8e508e308715d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
