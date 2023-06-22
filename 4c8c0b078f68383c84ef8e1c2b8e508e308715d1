@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f181d6_f7cd3204",
+        "filename": "media/codec2/hal/common/include/codec2/common/BufferTypes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-06-22T23:18:17Z",
+      "side": 1,
+      "message": "Never mind, I see this file reworked here: https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2620622/2/media/codec2/hal/common/include/codec2/common/BufferTypes.h",
+      "parentUuid": "1a2013f2_543e07bb",
+      "revId": "4c8c0b078f68383c84ef8e1c2b8e508e308715d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eadfc077_a5a354dd",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-22T23:16:17Z",
       "side": 1,
       "message": "Possibly this will cause multiple definition of LOG_TAG",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "4c8c0b078f68383c84ef8e1c2b8e508e308715d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "810fa3be_50f46cd4",
+        "filename": "media/codec2/hal/common/include/codec2/common/BufferTypes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-06-22T23:18:17Z",
+      "side": 1,
+      "message": "Never mind, I see this file reworked here: https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2620622/2/media/codec2/hal/common/include/codec2/common/BufferTypes.h",
+      "parentUuid": "eadfc077_a5a354dd",
       "range": {
         "startLine": 18,
         "startChar": 0,
