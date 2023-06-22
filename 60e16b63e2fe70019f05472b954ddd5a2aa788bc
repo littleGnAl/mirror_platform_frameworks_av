@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22051143_c5607a92",
+        "filename": "drm/libmediadrmrkp/include/DrmRemotelyProvisionedComponent.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-22T00:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4daa813b_39641c92",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98e5f2f8_a622bab2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-16T02:43:51Z",
       "side": 1,
       "message": "nit: It\u0027s best to _not_ pass this type by ref (especially non-const ref). We can always move inside the ctor and it\u0027s equally efficient (i.e. it\u0027s the same number of atomic ops as copy-from-ref).",
+      "range": {
+        "startLine": 36,
+        "startChar": 63,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "040754b8_5eaf7483",
+        "filename": "drm/libmediadrmrkp/include/DrmRemotelyProvisionedComponent.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-22T00:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98e5f2f8_a622bab2",
       "range": {
         "startLine": 36,
         "startChar": 63,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90418a39_e2307cc4",
+        "filename": "drm/libmediadrmrkp/include/DrmRkpAdapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-22T00:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0fb5dc7_ec48f1d4",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95c7d175_176c9f52",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-16T02:43:51Z",
       "side": 1,
       "message": "It would be simpler to capture `comps` here, rather than casting it back and forth.\n\nCapture by reference should be effectively free, right? Maybe there\u0027s some gotcha you\u0027re trying to avoid by casting to/from `void*`.",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e71d8d3_89d69d79",
+        "filename": "drm/libmediadrmrkp/include/DrmRkpAdapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-22T00:08:32Z",
+      "side": 1,
+      "message": "Thanks, IIUC, I could avoid cast \"forth\" in `static_cast\u003cvoid*\u003e(\u0026comps)` but inside the callback it still needs to be cast \"back\" from the `void* context`.",
+      "parentUuid": "95c7d175_176c9f52",
       "range": {
         "startLine": 40,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8451967a_559aba40",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-22T00:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e646e2cf_3f1bb48b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1238392e_809b40ac",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9ac3db_a765fa2a",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-22T00:08:32Z",
+      "side": 1,
+      "message": "AFAIU, this implementation won\u0027t be covered by vts so should be ok?",
+      "parentUuid": "1238392e_809b40ac",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 78
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8349f82_3601b47d",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-06-16T02:43:51Z",
       "side": 1,
       "message": "This looks racy (some other process could call `setPropertyByteArray` at the same time, right?)\n\nOr is there some guard that prevents this from happening?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "60e16b63e2fe70019f05472b954ddd5a2aa788bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a31990_067b7d8e",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-22T00:08:32Z",
+      "side": 1,
+      "message": "I think we can consider the protection in plugin.",
+      "parentUuid": "c8349f82_3601b47d",
       "range": {
         "startLine": 45,
         "startChar": 0,
