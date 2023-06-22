@@ -34,6 +34,24 @@
       "parentUuid": "2f497dd2_fd53421a",
       "revId": "16156b0b63a02a06e5443d2fb3a340d1ebb31573",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ef29bd_45152fd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-06-22T08:28:37Z",
+      "side": 1,
+      "message": "Yeah, I think if this is the only way forward then an explicitly fuzz-testing-only static constructor function would be preferable.\n\n`createForFuzzTesting`? Happy with other similar names if there\u0027s something better",
+      "parentUuid": "16cbe83e_90e0524d",
+      "revId": "16156b0b63a02a06e5443d2fb3a340d1ebb31573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
