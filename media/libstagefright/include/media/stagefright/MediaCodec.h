@@ -704,6 +704,18 @@ private:
 
     CodecErrorLog mErrorLog;
 
+    enum AsyncErroInState {
+        INIT = 0x1,
+        CONFIG = 0x2,
+        START = 0x4,
+        RELEASE = 0x8,
+        STOP = 0x10,
+        FLUSH = 0x20
+    };
+    // Flag to indicate async error from codec during blocking calls (like configure, start, ..)
+    // during state change.
+    uint32_t mCodecErrorDuringStateTransition;
+
     DISALLOW_EVIL_CONSTRUCTORS(MediaCodec);
 };
 
