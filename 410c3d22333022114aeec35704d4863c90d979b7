@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb22ed07_e99c5990",
+        "filename": "media/libmediaplayerservice/fuzzer/media_player_service_fuzzer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-06-23T10:58:52Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Build Warnings: using decl \u0027sp\u0027 is unused [misc-unused-using-decls]\n\nAnalyzer Description: Reports warnings that originate from build.log in the build artifacts.\nOwner: farivar@google.com\n\n    using decl \u0027sp\u0027 is unused [misc-unused-using-decls]\n    using android::sp;\n                   ^\n    /b/f/w/frameworks/av/media/libmediaplayerservice/fuzzer/media_player_service_fuzzer.cpp:24:16: note: remove the using\n    using android::sp;\n    ~~~~~~~~~~~~~~~^~~\n\nThis finding was found on https://android-build.googleplex.com/builds/build-details/P58832769/targets/aosp_arm64-userdebug_tidy, but may also be present on other builds.",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "410c3d22333022114aeec35704d4863c90d979b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
