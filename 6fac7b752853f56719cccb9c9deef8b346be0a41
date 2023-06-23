@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d630f78c_f6b42a9e",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-23T15:26:13Z",
+      "side": 1,
+      "message": "there are numerous ways to handle that addSource behavior. It\u0027s only an apparne tproblem because of how the code here has been structured.\n\nThe cleanest one: Do not set mCurrentTrack[] until after we learn that the addSource() is successful. use a local variable to hold the \u0027new MediaAdapter\u0027 until you know you want to keep it.\n\nyou could stay with the current structure and clear the mCurrentTrack[] entry if the addSource() fails.",
+      "parentUuid": "5c4ec4d8_54ada638",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 5
+      },
+      "revId": "6fac7b752853f56719cccb9c9deef8b346be0a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "687d4e6c_08ecfa26",
         "filename": "media/libstagefright/writer_fuzzers/include/WriterFuzzerBase.h",
         "patchSetId": 1
