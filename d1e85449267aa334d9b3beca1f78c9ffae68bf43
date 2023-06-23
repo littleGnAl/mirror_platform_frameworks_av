@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71804ce_30291f79",
+        "filename": "media/codec2/components/aac/C2SoftAacEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002682
+      },
+      "writtenOn": "2023-06-23T00:06:47Z",
+      "side": 1,
+      "message": "can you reformat for the line size?  \nAlso the resetting of nSamplesRead, is it done by the AACENC_INIT_ALL command? If yes, mention it in the comment.",
+      "range": {
+        "startLine": 203,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 131
+      },
+      "revId": "d1e85449267aa334d9b3beca1f78c9ffae68bf43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
