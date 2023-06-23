@@ -2121,6 +2121,20 @@ void CCodec::signalResume() {
         RevertOutputFormatIfNeeded(outputFormat, config->mOutputFormat);
     }
 
+    std::map<size_t, sp<MediaCodecBuffer>> clientInputBuffers;
+    status_t err = mChannel->prepareInitialInputBuffers(&clientInputBuffers);
+    if (err != OK) {
+        if (err == NO_MEMORY) {
+            ALOGI("Resuming with all input buffers still with codec");
+        } else if (err == WOULD_BLOCK) {
+            ALOGI("Resuming with all input buffers not a fatal error");
+        } else {
+            ALOGE("Resume request for Input Buffers failed");
+            mCallback->onError(err, ACTION_CODE_FATAL);
+            return;
+        }
+    }
+
     (void)mChannel->start(nullptr, nullptr, [&]{
         Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
         const std::unique_ptr<Config> &config = *configLocked;
@@ -2138,15 +2152,9 @@ void CCodec::signalResume() {
         state->set(RUNNING);
     }
 
-    std::map<size_t, sp<MediaCodecBuffer>> clientInputBuffers;
-    status_t err = mChannel->prepareInitialInputBuffers(&clientInputBuffers);
-    // FIXME(b/237656746)
-    if (err != OK && err != NO_MEMORY) {
-        ALOGE("Resume request for Input Buffers failed");
-        mCallback->onError(err, ACTION_CODE_FATAL);
-        return;
+    if (err == WOULD_BLOCK) {
+        mChannel->requestInitialInputBuffers(std::move(clientInputBuffers));
     }
-    mChannel->requestInitialInputBuffers(std::move(clientInputBuffers));
 }
 
 void CCodec::signalSetParameters(const sp<AMessage> &msg) {
