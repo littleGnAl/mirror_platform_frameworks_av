@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a70617_fdec5b13",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-23T00:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4097083e_c247b367",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "33359b435799c5ca8af5d5ff95444563013328a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b119be_43730388",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-22T16:23:50Z",
       "side": 1,
       "message": "If you capture `\u0026comps` here, then we don\u0027t need to cast at all. e.g.\n\n```\nAServiceManager_forEachDeclaredInstance(\n            IDrmFactory::descriptor, nullptr, [\u0026comps](const char* instance, void*) {\n           \n```\n\n`context` is not necessary.\n\nIMO it\u0027s better to capture variables instead of casting, because it grants better type saftey.\n\nHowever, the interface here is fixed so risk is low of it breaking in the future. So this is really more of a best practice nit more than anything.",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "33359b435799c5ca8af5d5ff95444563013328a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8968e160_4d049b02",
+        "filename": "drm/libmediadrmrkp/src/DrmRkpAdapter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-23T00:08:08Z",
+      "side": 1,
+      "message": "The definition of `AServiceManager_forEachDeclaredInstance` is\n```\nvoid AServiceManager_forEachDeclaredInstance(const char* interface, void* context,\n                                             void (*callback)(const char*, void*))\n```\n\nIf I pass with `[\u0026comps]`, there has a conversion failure from ` \u0027(lambda` to `void (*callback)(const char*, void*)`. The usage of casting from `context` seems to be a common practice (in Android code base).",
+      "parentUuid": "a3b119be_43730388",
       "range": {
         "startLine": 35,
         "startChar": 45,
