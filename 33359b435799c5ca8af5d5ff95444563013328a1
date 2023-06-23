@@ -93,6 +93,30 @@
       },
       "revId": "33359b435799c5ca8af5d5ff95444563013328a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf70805_fee34eda",
+        "filename": "drm/libmediadrmrkp/src/DrmRkpAdapter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-23T01:54:41Z",
+      "side": 1,
+      "message": "Ah, yeah... you\u0027re totally right, we cannot pass a capturing lambda as a c-style function pointer.",
+      "parentUuid": "8968e160_4d049b02",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "33359b435799c5ca8af5d5ff95444563013328a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
