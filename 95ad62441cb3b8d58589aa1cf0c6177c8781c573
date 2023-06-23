@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42b955c_7eb74601",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-06-23T23:39:03Z",
+      "side": 1,
+      "message": "I meant for this to be `mDrm-\u003egetPropertyString(\"vendor\")`, or maybe pass in the service name and supported uuid to the ctor and avoid more IPC\u0027s in this method.",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01102d72_e7563d08",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-06-23T23:39:03Z",
+      "side": 1,
+      "message": "ditto, get property `\"description\"`, or re-use info from ctor.",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b25d9b_3867b9a4",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-06-23T23:39:03Z",
+      "side": 1,
+      "message": "Can we please use `ndk::ScopedAStatus::getDescription()` to get more detailed error message? Thanks.",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b140e5_5e4c6dbc",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-06-23T23:39:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
