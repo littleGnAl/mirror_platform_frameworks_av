@@ -51,6 +51,24 @@
       "parentUuid": "b44a6d2c_3b9bee68",
       "revId": "5bb0fda80ab27f312e478a4f466ab6f73683121f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b76a896_9945709c",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-06-24T03:16:54Z",
+      "side": 1,
+      "message": "After checking that the aosp/2580090 had been merged, change the major version to 1 so that the versioning policy matches across modules.",
+      "parentUuid": "bd633da0_cf287247",
+      "revId": "5bb0fda80ab27f312e478a4f466ab6f73683121f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
