@@ -1445,6 +1445,8 @@ static CMediaExtractor* CreateExtractor(
     return wrap(new OggExtractor(new DataSourceHelper(source)));
 }
 
+#define OGG_EXTRACTOR_BEST_CONFIDENCE 0.5f
+
 static CreatorFunc Sniff(
         CDataSource *source,
         float *confidence,
@@ -1456,7 +1458,7 @@ static CreatorFunc Sniff(
         return NULL;
     }
 
-    *confidence = 0.5f;
+    *confidence = OGG_EXTRACTOR_BEST_CONFIDENCE;
 
     return CreateExtractor;
 }
@@ -1477,6 +1479,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("8cc5cd06-f772-495e-8a62-cba9649374e9"),
         1, // version
         "Ogg Extractor",
+        OGG_EXTRACTOR_BEST_CONFIDENCE,
         { .v3 = {Sniff, extensions} },
     };
 }

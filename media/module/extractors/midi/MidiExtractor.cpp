@@ -323,13 +323,15 @@ media_status_t MidiExtractor::getMetaData(AMediaFormat *meta)
     return AMediaFormat_copy(meta, mFileMetadata);
 }
 
+#define MIDI_EXTRACTOR_BEST_CONFIDENCE 0.8f
+
 // Sniffer
 
 bool SniffMidi(CDataSource *source, float *confidence)
 {
     MidiEngine p(source, NULL, NULL);
     if (p.initCheck() == OK) {
-        *confidence = 0.8;
+        *confidence = MIDI_EXTRACTOR_BEST_CONFIDENCE;
         ALOGV("SniffMidi: yes");
         return true;
     }
@@ -360,6 +362,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("ef6cca0a-f8a2-43e6-ba5f-dfcd7c9a7ef2"),
         1,
         "MIDI Extractor",
+        MIDI_EXTRACTOR_BEST_CONFIDENCE,
         {
             .v3 = {
                 [](

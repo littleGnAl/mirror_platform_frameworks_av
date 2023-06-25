@@ -2315,6 +2315,8 @@ uint32_t MatroskaExtractor::flags() const {
     return x;
 }
 
+#define MKV_EXTRACTOR_BEST_CONFIDENCE 0.6f
+
 bool SniffMatroska(
         DataSourceHelper *source, float *confidence) {
     DataSourceBaseReader reader(source);
@@ -2324,7 +2326,7 @@ bool SniffMatroska(
         return false;
     }
 
-    *confidence = 0.6;
+    *confidence = MKV_EXTRACTOR_BEST_CONFIDENCE;
 
     return true;
 }
@@ -2345,6 +2347,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("abbedd92-38c4-4904-a4c1-b3f45f899980"),
         1,
         "Matroska Extractor",
+        MKV_EXTRACTOR_BEST_CONFIDENCE,
         {
             .v3 = {
                 [](
