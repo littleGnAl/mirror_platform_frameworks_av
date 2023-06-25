@@ -591,6 +591,8 @@ static CMediaExtractor* CreateExtractor(
     return wrap(new WAVExtractor(new DataSourceHelper(source)));
 }
 
+#define WAV_EXTRACTOR_BEST_CONFIDENCE 0.3f
+
 static CreatorFunc Sniff(
         CDataSource *source,
         float *confidence,
@@ -615,7 +617,7 @@ static CreatorFunc Sniff(
         return NULL;
     }
 
-    *confidence = 0.3f;
+    *confidence = WAV_EXTRACTOR_BEST_CONFIDENCE;
 
     return CreateExtractor;
 }
@@ -634,6 +636,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("7d613858-5837-4a38-84c5-332d1cddee27"),
         1, // version
         "WAV Extractor",
+        WAV_EXTRACTOR_BEST_CONFIDENCE,
         { .v3 = {Sniff, extensions} },
     };
 }

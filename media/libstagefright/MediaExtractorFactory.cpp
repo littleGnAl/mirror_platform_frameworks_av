@@ -147,6 +147,11 @@ void *MediaExtractorFactory::sniff(
     void *bestCreator = NULL;
     for (auto it = plugins->begin(); it != plugins->end(); ++it) {
         ALOGV("sniffing %s", (*it)->def.extractor_name);
+
+        if (*confidence >= (*it)->def.best_confidence) {
+            break;
+        }
+
         float newConfidence;
         void *newMeta = nullptr;
         FreeMetaFunc newFreeMeta = nullptr;
@@ -268,7 +273,10 @@ void MediaExtractorFactory::RegisterExtractors(
 }
 
 static bool compareFunc(const sp<ExtractorPlugin>& first, const sp<ExtractorPlugin>& second) {
-    return strcmp(first->def.extractor_name, second->def.extractor_name) < 0;
+    if (first->def.best_confidence != second->def.best_confidence)
+        return first->def.best_confidence > second->def.best_confidence;
+    else
+        return strcmp(first->def.extractor_name, second->def.extractor_name) < 0;
 }
 
 static std::vector<std::string> gSupportedExtensions;

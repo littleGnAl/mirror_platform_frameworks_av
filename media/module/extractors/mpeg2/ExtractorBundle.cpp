@@ -44,6 +44,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("3d1dcfeb-e40a-436d-a574-c2438a555e5f"),
         1,
         "MPEG2-PS/TS Extractor",
+        0.25f,
         {
             .v3 = {
                 [](

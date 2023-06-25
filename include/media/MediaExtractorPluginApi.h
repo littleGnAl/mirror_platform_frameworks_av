@@ -134,6 +134,9 @@ struct ExtractorDef {
     // a human readable name
     const char *extractor_name;
 
+    // The best confidence of this extractor when it matches a container mime type.
+    const float best_confidence;
+
     union {
         struct {
             SnifferFunc sniff;

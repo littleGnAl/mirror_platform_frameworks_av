@@ -117,6 +117,8 @@ static media_status_t getFrameSizeByOffset(DataSourceHelper *source,
     return AMEDIA_OK;
 }
 
+#define AMR_EXTRACTOR_BEST_CONFIDENCE 0.5f
+
 static bool SniffAMR(
         DataSourceHelper *source, bool *isWide, float *confidence) {
     char header[9];
@@ -129,14 +131,14 @@ static bool SniffAMR(
         if (isWide != nullptr) {
             *isWide = false;
         }
-        *confidence = 0.5;
+        *confidence = AMR_EXTRACTOR_BEST_CONFIDENCE;
 
         return true;
     } else if (!memcmp(header, "#!AMR-WB\n", 9)) {
         if (isWide != nullptr) {
             *isWide = true;
         }
-        *confidence = 0.5;
+        *confidence = AMR_EXTRACTOR_BEST_CONFIDENCE;
 
         return true;
     }
@@ -392,6 +394,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("c86639c9-2f31-40ac-a715-fa01b4493aaf"),
         1,
         "AMR Extractor",
+        AMR_EXTRACTOR_BEST_CONFIDENCE,
         {
            .v3 = {
                [](
