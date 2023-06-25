@@ -791,6 +791,8 @@ media_status_t FLACExtractor::getMetaData(AMediaFormat *meta)
     return AMediaFormat_copy(meta, mFileMetadata);
 }
 
+#define FLAC_EXTRACTOR_BEST_CONFIDENCE 0.5f
+
 // Sniffer
 
 bool SniffFLAC(DataSourceHelper *source, float *confidence)
@@ -834,7 +836,7 @@ bool SniffFLAC(DataSourceHelper *source, float *confidence)
         return false;
     }
 
-    *confidence = 0.5;
+    *confidence = FLAC_EXTRACTOR_BEST_CONFIDENCE;
 
     return true;
 }
@@ -855,7 +857,7 @@ ExtractorDef GETEXTRACTORDEF() {
             1,
             "FLAC Extractor",
             {
-                .v3 = {
+                .v4 = {
                     [](
                         CDataSource *source,
                         float *confidence,
@@ -870,7 +872,8 @@ ExtractorDef GETEXTRACTORDEF() {
                         }
                         return NULL;
                     },
-                    extensions
+                    extensions,
+                    FLAC_EXTRACTOR_BEST_CONFIDENCE
                 }
             },
      };

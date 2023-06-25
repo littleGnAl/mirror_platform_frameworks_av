@@ -89,7 +89,8 @@ sp<IMediaExtractor> MediaExtractorFactory::CreateFromService(
 
     MediaExtractor *ex = nullptr;
     if (creatorVersion == EXTRACTORDEF_VERSION_NDK_V1 ||
-            creatorVersion == EXTRACTORDEF_VERSION_NDK_V2) {
+            creatorVersion == EXTRACTORDEF_VERSION_NDK_V2 ||
+            creatorVersion == EXTRACTORDEF_VERSION_NDK_V3) {
         CMediaExtractor *ret = ((CreatorFunc)creator)(source->wrap(), meta);
         if (meta != nullptr && freeMeta != nullptr) {
             freeMeta(meta);
@@ -147,6 +148,12 @@ void *MediaExtractorFactory::sniff(
     void *bestCreator = NULL;
     for (auto it = plugins->begin(); it != plugins->end(); ++it) {
         ALOGV("sniffing %s", (*it)->def.extractor_name);
+
+        if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V3
+                && *confidence >= (*it)->def.u.v4.best_confidence) {
+            break;
+        }
+
         float newConfidence;
         void *newMeta = nullptr;
         FreeMetaFunc newFreeMeta = nullptr;
@@ -157,6 +164,9 @@ void *MediaExtractorFactory::sniff(
                     source->wrap(), &newConfidence, &newMeta, &newFreeMeta);
         } else if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2) {
             curCreator = (void*) (*it)->def.u.v3.sniff(
+                    source->wrap(), &newConfidence, &newMeta, &newFreeMeta);
+        } else if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V3) {
+            curCreator = (void*) (*it)->def.u.v4.sniff(
                     source->wrap(), &newConfidence, &newMeta, &newFreeMeta);
         }
 
@@ -186,8 +196,8 @@ void *MediaExtractorFactory::sniff(
 void MediaExtractorFactory::RegisterExtractor(const sp<ExtractorPlugin> &plugin,
         std::list<sp<ExtractorPlugin>> &pluginList) {
     // sanity check check struct version, uuid, name
-    if (plugin->def.def_version != EXTRACTORDEF_VERSION_NDK_V1 &&
-            plugin->def.def_version != EXTRACTORDEF_VERSION_NDK_V2) {
+    if (plugin->def.def_version < EXTRACTORDEF_VERSION_NDK_V1 ||
+            plugin->def.def_version > EXTRACTORDEF_VERSION_NDK_V3) {
         ALOGW("don't understand extractor format %u, ignoring.", plugin->def.def_version);
         return;
     }
@@ -268,7 +278,18 @@ void MediaExtractorFactory::RegisterExtractors(
 }
 
 static bool compareFunc(const sp<ExtractorPlugin>& first, const sp<ExtractorPlugin>& second) {
-    return strcmp(first->def.extractor_name, second->def.extractor_name) < 0;
+    // assume the best confidence is 1.0f if this extractor has old version.
+    const float first_confidence =
+                (first->def.def_version == EXTRACTORDEF_VERSION_NDK_V3 ?
+                first->def.u.v4.best_confidence : 1.0f);
+    const float second_confidence =
+                (second->def.def_version == EXTRACTORDEF_VERSION_NDK_V3 ?
+                second->def.u.v4.best_confidence : 1.0f);
+
+    if (first_confidence != second_confidence)
+        return first_confidence > second_confidence;
+    else
+        return strcmp(first->def.extractor_name, second->def.extractor_name) < 0;
 }
 
 static std::vector<std::string> gSupportedExtensions;
@@ -317,9 +338,11 @@ void MediaExtractorFactory::LoadExtractors() {
     gPlugins = newList;
 
     for (auto it = gPlugins->begin(); it != gPlugins->end(); ++it) {
-        if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2) {
+        if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2 ||
+                (*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V3) {
             for (size_t i = 0;; i++) {
-                const char* ext = (*it)->def.u.v3.supported_types[i];
+                const char* ext = ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2 ?
+                                    (*it)->def.u.v3.supported_types[i] : (*it)->def.u.v4.supported_types[i]);
                 if (ext == nullptr) {
                     break;
                 }
@@ -370,10 +393,12 @@ status_t MediaExtractorFactory::dump(int fd, const Vector<String16>&) {
                         (*it)->uuidString.c_str(),
                         (*it)->def.extractor_version,
                         (*it)->libPath.c_str());
-                if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2) {
+                if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2 ||
+                        (*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V3) {
                     out.append(", supports: ");
                     for (size_t i = 0;; i++) {
-                        const char* mime = (*it)->def.u.v3.supported_types[i];
+                        const char* mime = ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2 ?
+                                            (*it)->def.u.v3.supported_types[i] : (*it)->def.u.v4.supported_types[i]);
                         if (mime == nullptr) {
                             break;
                         }

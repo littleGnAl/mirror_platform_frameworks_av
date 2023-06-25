@@ -2315,6 +2315,8 @@ uint32_t MatroskaExtractor::flags() const {
     return x;
 }
 
+#define MKV_EXTRACTOR_BEST_CONFIDENCE 0.6f
+
 bool SniffMatroska(
         DataSourceHelper *source, float *confidence) {
     DataSourceBaseReader reader(source);
@@ -2324,7 +2326,7 @@ bool SniffMatroska(
         return false;
     }
 
-    *confidence = 0.6;
+    *confidence = MKV_EXTRACTOR_BEST_CONFIDENCE;
 
     return true;
 }
@@ -2346,7 +2348,7 @@ ExtractorDef GETEXTRACTORDEF() {
         1,
         "Matroska Extractor",
         {
-            .v3 = {
+            .v4 = {
                 [](
                     CDataSource *source,
                     float *confidence,
@@ -2361,7 +2363,8 @@ ExtractorDef GETEXTRACTORDEF() {
                     }
                     return NULL;
                 },
-                extensions
+                extensions,
+                MKV_EXTRACTOR_BEST_CONFIDENCE
             }
         }
     };

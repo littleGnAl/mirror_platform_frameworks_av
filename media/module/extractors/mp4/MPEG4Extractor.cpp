@@ -6976,6 +6976,8 @@ MPEG4Extractor::Track *MPEG4Extractor::findTrackByMimePrefix(
     return NULL;
 }
 
+#define MP4_EXTRACTOR_BEST_CONFIDENCE 0.4f
+
 static bool LegacySniffMPEG4(DataSourceHelper *source, float *confidence) {
     uint8_t header[8];
 
@@ -6993,7 +6995,7 @@ static bool LegacySniffMPEG4(DataSourceHelper *source, float *confidence) {
         || !memcmp(header, "ftypmif1", 8) || !memcmp(header, "ftypheic", 8)
         || !memcmp(header, "ftypmsf1", 8) || !memcmp(header, "ftyphevc", 8)
         || !memcmp(header, "ftypavif", 8) || !memcmp(header, "ftypavis", 8)) {
-        *confidence = 0.4;
+        *confidence = MP4_EXTRACTOR_BEST_CONFIDENCE;
 
         return true;
     }
@@ -7163,7 +7165,7 @@ static bool BetterSniffMPEG4(DataSourceHelper *source, float *confidence) {
         return false;
     }
 
-    *confidence = 0.4f;
+    *confidence = MP4_EXTRACTOR_BEST_CONFIDENCE;
 
     return true;
 }
@@ -7212,7 +7214,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("27575c67-4417-4c54-8d3d-8e626985a164"),
         2, // version
         "MP4 Extractor",
-        { .v3 = {Sniff, extensions} },
+        { .v4 = {Sniff, extensions, MP4_EXTRACTOR_BEST_CONFIDENCE} },
     };
 }
 

@@ -673,6 +673,8 @@ static CMediaExtractor* CreateExtractor(
     return wrap(new MP3Extractor(new DataSourceHelper(source), metaData));
 }
 
+#define MP3_EXTRACTOR_BEST_CONFIDENCE 0.2f
+
 static CreatorFunc Sniff(
         CDataSource *source, float *confidence, void **meta,
         FreeMetaFunc *freeMeta) {
@@ -700,7 +702,7 @@ static CreatorFunc Sniff(
     *meta = mp3Meta;
     *freeMeta = ::free;
 
-    *confidence = 0.2f;
+    *confidence = MP3_EXTRACTOR_BEST_CONFIDENCE;
 
     return CreateExtractor;
 }
@@ -723,7 +725,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("812a3f6c-c8cf-46de-b529-3774b14103d4"),
         1, // version
         "MP3 Extractor",
-        { .v3 = {Sniff, extensions} }
+        { .v4 = {Sniff, extensions, MP3_EXTRACTOR_BEST_CONFIDENCE} }
     };
 }
 

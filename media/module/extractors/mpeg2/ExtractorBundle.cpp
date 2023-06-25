@@ -35,6 +35,8 @@ static const char *extensions[] = {
    NULL
 };
 
+#define MPEG2_EXTRACTOR_BEST_CONFIDENCE 0.25f
+
 extern "C" {
 // This is the only symbol that needs to be exported
 __attribute__ ((visibility ("default")))
@@ -45,7 +47,7 @@ ExtractorDef GETEXTRACTORDEF() {
         1,
         "MPEG2-PS/TS Extractor",
         {
-            .v3 = {
+            .v4 = {
                 [](
                     CDataSource *source,
                     float *confidence,
@@ -65,7 +67,8 @@ ExtractorDef GETEXTRACTORDEF() {
                     }
                     return NULL;
                 },
-                extensions
+                extensions,
+                MPEG2_EXTRACTOR_BEST_CONFIDENCE
             }
         },
     };

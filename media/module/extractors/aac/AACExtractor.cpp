@@ -338,6 +338,7 @@ media_status_t AACSource::read(
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+#define AAC_EXTRACTOR_BEST_CONFIDENCE 0.2f
 
 static CMediaExtractor* CreateExtractor(
         CDataSource *source,
@@ -387,7 +388,7 @@ static CreatorFunc Sniff(
 
     // ADTS syncword
     if ((header[0] == 0xff) && ((header[1] & 0xf6) == 0xf0)) {
-        *confidence = 0.2;
+        *confidence = AAC_EXTRACTOR_BEST_CONFIDENCE;
 
         off64_t *offPtr = (off64_t*) malloc(sizeof(off64_t));
         *offPtr = pos;
@@ -414,7 +415,7 @@ ExtractorDef GETEXTRACTORDEF() {
         UUID("4fd80eae-03d2-4d72-9eb9-48fa6bb54613"),
         1, // version
         "AAC Extractor",
-        { .v3 = {Sniff, extensions} },
+        { .v4 = {Sniff, extensions, AAC_EXTRACTOR_BEST_CONFIDENCE} },
     };
 }
 

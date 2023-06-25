@@ -144,6 +144,12 @@ struct ExtractorDef {
             // that this extractor supports
             const char **supported_types;
         } v3;
+        struct {
+            SnifferFunc sniff;
+            const char **supported_types;
+            // The best confidence of this extractor when it matches a container mime type.
+            const float best_confidence;
+        } v4;
     } u;
 };
 
@@ -156,7 +162,10 @@ const uint32_t EXTRACTORDEF_VERSION_NDK_V1 = 2;
 // the second C/NDK based API
 const uint32_t EXTRACTORDEF_VERSION_NDK_V2 = 3;
 
-const uint32_t EXTRACTORDEF_VERSION = EXTRACTORDEF_VERSION_NDK_V2;
+// the third C/NDK based API that defines the best confidence of this extractor
+const uint32_t EXTRACTORDEF_VERSION_NDK_V3 = 4;
+
+const uint32_t EXTRACTORDEF_VERSION = EXTRACTORDEF_VERSION_NDK_V3;
 
 // each plugin library exports one function of this type
 typedef ExtractorDef (*GetExtractorDef)();
