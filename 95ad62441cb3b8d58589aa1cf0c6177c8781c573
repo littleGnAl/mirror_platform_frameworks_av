@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e76b26_1ebc5679",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-26T21:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b42b955c_7eb74601",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01102d72_e7563d08",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-23T23:39:03Z",
       "side": 1,
       "message": "ditto, get property `\"description\"`, or re-use info from ctor.",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ec68d5_17a25a5f",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-26T21:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01102d72_e7563d08",
       "range": {
         "startLine": 29,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29dc8e4a_24a347b3",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-26T21:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b25d9b_3867b9a4",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b140e5_5e4c6dbc",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-23T23:39:03Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "95ad62441cb3b8d58589aa1cf0c6177c8781c573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eeea371_43e36eb3",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2023-06-26T21:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b140e5_5e4c6dbc",
       "range": {
         "startLine": 61,
         "startChar": 8,
