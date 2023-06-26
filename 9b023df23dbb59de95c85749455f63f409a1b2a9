@@ -33,6 +33,47 @@
       "message": "This changes the layout of this structure in a non-compatible way, so the version number should be increased and the code that loads the extractors should be updated to work correctly with both the old and the new layout.",
       "revId": "9b023df23dbb59de95c85749455f63f409a1b2a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd770c3_15275d44",
+        "filename": "include/media/MediaExtractorPluginApi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-26T16:06:26Z",
+      "side": 1,
+      "message": "and all the vendor-supplied extractors that will continue to use the old structure will need to be set to best_confidence\u003d\u003d1.0 since we don\u0027t know what their best is.\n\nSuch devices will not save much time since they\u0027ll continue to sniff with all the vendor extractors.",
+      "parentUuid": "116ebd0a_c8916c4a",
+      "revId": "9b023df23dbb59de95c85749455f63f409a1b2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97586480_dbed0df4",
+        "filename": "media/module/extractors/mpeg2/ExtractorBundle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-26T16:06:26Z",
+      "side": 1,
+      "message": "if we do this, and it\u0027s not at all certain that we will:\n\nwe make all of these defined constants; completely do away with any literal\nvalues like this.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "9b023df23dbb59de95c85749455f63f409a1b2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
