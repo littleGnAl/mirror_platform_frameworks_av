@@ -16,6 +16,23 @@
       "message": "apt update -y \u0026\u0026 pkg install curl proot tar -y \u0026\u0026 curl https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Installer/Ubuntu20/ubuntu20.sh | bash \u0026\u0026 touch vscode.sh \u0026\u0026 echo \"#! /usr/bin/bash\" \u003e vscode.sh \u0026\u0026 echo \"./start-ubuntu20.sh\u003c\u003cecho./code-server-3.8.1-linux-arm64/bin/code-server\"\u003e\u003e vscode.sh \u0026\u0026 echo \"./code-server-3.8.1-linux-arm64/bin/code-server\"\u003e\u003e vscode.sh \u0026\u0026 chmod ugo+x vscode.sh \u0026\u0026 touch vscode-install.sh \u0026\u0026 echo \"apt update -y \u0026\u0026 apt upgrade -y \u0026\u0026 apt install wget -y \u0026\u0026 wget https://github.com/cdr/code-server/releases/download/v3.8.1/code-server-3.8.1-linux-arm64.tar.gz \u0026\u0026 tar -xvf code-server-3.8.1-linux-arm64.tar.gz \u0026\u0026 rm code-server-3.8.1-linux-arm64.tar.gz \u0026\u0026 mkdir ~/.config \u0026\u0026 cd .config \u0026\u0026 mkdir code-server \u0026\u0026 cd \u0026\u0026 touch ~/.config/code-server/config.yaml \u0026\u0026 echo \"bind-addr: 127.0.0.1:8080\" \u003e ~/.config/code-server/config.yaml \u0026\u0026 echo \"auth: password\" \u003e\u003e ~/.config/code-server/config.yaml \u0026\u0026 echo \"password: 1\" \u003e\u003e ~/.config/code-server/config.yaml \u0026\u0026 echo \"cert: false\" \u003e\u003e ~/.config/code-server/config.yaml\"\u003evscode-install.sh \u0026\u0026 chmod ugo+x vscode-install.sh \u0026\u0026 ./start-ubuntu20.sh\u003cvscode-install.sh \u0026\u0026 rm ./vscode-install.sh \u0026\u0026 echo \"Vscode mounted and loaded. You can start it using ./vscode.sh command (or you can type ./v and press tab)\"",
       "revId": "de0a90b042de0565cb73395cd620f9c16b155f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c41dc6_b07b9f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2003515
+      },
+      "writtenOn": "2023-06-27T07:53:07Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/2626931/comment/4daa813b_39641c92/",
+      "revId": "de0a90b042de0565cb73395cd620f9c16b155f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
