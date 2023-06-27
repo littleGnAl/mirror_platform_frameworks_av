@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c66659_a9738b2d",
+        "filename": "include/media/MediaExtractorPluginApi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2023-06-27T06:11:10Z",
+      "side": 1,
+      "message": "patch 3 is uploaded. In this patch, according to your comments, define EXTRACTORDEF_VERSION_NDK_V3 for extractor which supports best_confidence. For those extractors which still use old version, assume its best_confidence is 1.0f so that they will rank in the front and always be sniffed. Also change the relevant code in MediaExtractorFactory to make sure all extractor versions are compatible.",
+      "parentUuid": "0cd770c3_15275d44",
+      "revId": "9b023df23dbb59de95c85749455f63f409a1b2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97586480_dbed0df4",
@@ -66,6 +84,30 @@
       "writtenOn": "2023-06-26T16:06:26Z",
       "side": 1,
       "message": "if we do this, and it\u0027s not at all certain that we will:\n\nwe make all of these defined constants; completely do away with any literal\nvalues like this.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "9b023df23dbb59de95c85749455f63f409a1b2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8dd3e75_5639618f",
+        "filename": "media/module/extractors/mpeg2/ExtractorBundle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2023-06-27T06:11:10Z",
+      "side": 1,
+      "message": "In patch 3, define a macro for \"MPEG2-PS/TS Extractor\" to make this value be constant.",
+      "parentUuid": "97586480_dbed0df4",
       "range": {
         "startLine": 47,
         "startChar": 0,
