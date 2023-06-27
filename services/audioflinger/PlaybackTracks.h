@@ -193,8 +193,13 @@ public:
     sp<os::ExternalVibration> getExternalVibration() const final { return mExternalVibration; }
 
             // This function should be called with holding thread lock.
+<<<<<<< HEAD   (b72144 Merge "Codec2 vndk: clear pending lock by a dead client proc)
     void updateTeePatches() final;
     void setTeePatchesToUpdate(TeePatches teePatchesToUpdate) final;
+=======
+            void    updateTeePatches_l();
+            void    setTeePatchesToUpdate_l(TeePatches teePatchesToUpdate);
+>>>>>>> CHANGE (7434e8 Accessing tee patches with holding the thread lock.)
 
     void tallyUnderrunFrames(size_t frames) final {
        if (isOut()) { // we expect this from output tracks only
@@ -349,8 +354,9 @@ protected:
 
 private:
     void                interceptBuffer(const AudioBufferProvider::Buffer& buffer);
+    // Must hold thread lock to access tee patches
     template <class F>
-    void                forEachTeePatchTrack(F f) {
+    void                forEachTeePatchTrack_l(F f) {
         for (auto& tp : mTeePatches) { f(tp.patchTrack); }
     };
 
