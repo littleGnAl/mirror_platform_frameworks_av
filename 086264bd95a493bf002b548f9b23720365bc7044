@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9131fbe0_73952850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-06-27T08:39:20Z",
+      "side": 1,
+      "message": "Thanks for the contribution! Unfortunately we\u0027re not heavily investing in `MediaExtractor` at the moment, so I\u0027m afraid we won\u0027t be merging this, because the potential benefits don\u0027t outweigh the risk of introducing regressions and associated maintenance costs.\n\nI would recommend you use the androidx.media3 player (ExoPlayer) and its extractors instead of `MediaExtractor` for nearly all use-cases. These are much more actively maintained, we will accept PRs for them on https://github.com/androidx/media, and they also offer many more possibilities for customization (e.g. you can provide your own `ExtractorsFactory` that sorts extractors with any logic you prefer).",
+      "revId": "086264bd95a493bf002b548f9b23720365bc7044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
