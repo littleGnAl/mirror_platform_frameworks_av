@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27b8b580_08160f84",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-06-28T11:03:23Z",
+      "side": 1,
+      "message": "Nit: sorry for missing this before, but these parentheses should also be removed for consistency with the code above.",
+      "range": {
+        "startLine": 1554,
+        "startChar": 12,
+        "endLine": 1554,
+        "endChar": 46
+      },
+      "revId": "e2eb06b3623dc6d56afa88e5942a6a5597230bcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
