@@ -26,3 +26,13 @@ cc_library {
 
     srcs: ["C2SoftRawDec.cpp"],
 }
+
+cc_library {
+    name: "libcodec2_soft_rawenc",
+    defaults: [
+        "libcodec2_soft-defaults",
+        "libcodec2_soft_sanitize_all-defaults",
+    ],
+
+    srcs: ["C2SoftRawEnc.cpp"],
+}

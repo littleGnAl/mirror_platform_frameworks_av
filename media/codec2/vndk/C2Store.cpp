@@ -1098,6 +1098,7 @@ C2PlatformComponentStore::C2PlatformComponentStore()
     emplace("libcodec2_soft_mpeg4enc.so");
     emplace("libcodec2_soft_opusdec.so");
     emplace("libcodec2_soft_opusenc.so");
+    emplace("libcodec2_soft_rawenc.so");
     emplace("libcodec2_soft_rawdec.so");
     emplace("libcodec2_soft_vorbisdec.so");
     emplace("libcodec2_soft_vp8dec.so");

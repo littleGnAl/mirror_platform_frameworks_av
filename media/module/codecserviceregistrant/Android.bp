@@ -63,6 +63,7 @@ cc_library {
         "libcodec2_soft_av1dec_gav1",
         "libcodec2_soft_vp8enc",
         "libcodec2_soft_vp9enc",
+        "libcodec2_soft_rawenc",
         "libcodec2_soft_rawdec",
         "libcodec2_soft_flacdec",
         "libcodec2_soft_flacenc",

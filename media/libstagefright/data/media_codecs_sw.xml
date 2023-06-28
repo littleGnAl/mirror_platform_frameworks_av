@@ -246,6 +246,13 @@
             <Feature name="bitrate-modes" value="CBR" />
             <Attribute name="software-codec" />
         </MediaCodec>
+        <MediaCodec name="c2.android.raw.encoder" type="audio/raw">
+            <Alias name="OMX.google.raw.encoder" />
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000-192000" />
+            <Limit name="bitrate" range="1-10000000" />
+            <Attribute name="software-codec" />
+        </MediaCodec>
         <MediaCodec name="c2.android.flac.encoder" type="audio/flac">
             <Alias name="OMX.google.flac.encoder" />
             <Limit name="channel-count" max="2" />
