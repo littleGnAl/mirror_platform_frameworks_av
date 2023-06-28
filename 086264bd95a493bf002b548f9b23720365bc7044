@@ -34,6 +34,24 @@
       "parentUuid": "9131fbe0_73952850",
       "revId": "086264bd95a493bf002b548f9b23720365bc7044",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32fdfd41_8a5ad86b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-06-28T07:34:58Z",
+      "side": 1,
+      "message": "We don\u0027t plan to deprecate `MediaPlayer` or `MediaExtractor`. In the future we plan to change the implementations behind these existing APIs in order to make them easier to maintain and improve in future. In the meantime we are not investing in non-critical changes to the existing implementations.\n\n\u003e And we find this issue by running MediaFrameworkUnitTest\n\nhttps://issuetracker.google.com/288733664 suggests this is improving a performance concern. Are you saying here that you find the CTS `MediaFrameworkUnitTest` just runs a bit slowly, or are you seeing CTS failures that this change resolves? If you are seeing failures, please provide more details.",
+      "parentUuid": "5b89e8d4_54b29690",
+      "revId": "086264bd95a493bf002b548f9b23720365bc7044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
