@@ -33,6 +33,29 @@
       "message": "@andrew, could you help to \"+2\" for this code update again? If there is no chance to be merged, please feel free to let me know. Thanks.",
       "revId": "1beaa8c029755e1ebf69738f7204b40ab21350ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcfc7643_89a2165e",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-06-28T10:04:40Z",
+      "side": 1,
+      "message": "Nit: add space before parenthesis for consistency.",
+      "range": {
+        "startLine": 1554,
+        "startChar": 0,
+        "endLine": 1554,
+        "endChar": 67
+      },
+      "revId": "1beaa8c029755e1ebf69738f7204b40ab21350ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
