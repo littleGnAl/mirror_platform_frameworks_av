@@ -19,12 +19,13 @@
 #define LOG_TAG "MediaCodec"
 #include <utils/Log.h>
 
-#include <dlfcn.h>
-#include <inttypes.h>
-#include <future>
-#include <random>
 #include <set>
-#include <string>
+#include <random>
+#include <stdlib.h>
+
+#include <inttypes.h>
+#include <stdlib.h>
+#include <dlfcn.h>
 
 #include <C2Buffer.h>
 
@@ -211,10 +212,6 @@ static const C2MemoryUsage kDefaultReadWriteUsage{
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/*
- * Implementation of IResourceManagerClient interrface that facilitates
- * MediaCodec reclaim for the ResourceManagerService.
- */
 struct ResourceManagerClient : public BnResourceManagerClient {
     explicit ResourceManagerClient(MediaCodec* codec, int32_t pid, int32_t uid) :
             mMediaCodec(codec), mPid(pid), mUid(uid) {}
@@ -227,9 +224,7 @@ struct ResourceManagerClient : public BnResourceManagerClient {
             std::shared_ptr<IResourceManagerService> service =
                     IResourceManagerService::fromBinder(binder);
             if (service == nullptr) {
-                ALOGE("MediaCodec::ResourceManagerClient unable to find ResourceManagerService");
-                *_aidl_return = false;
-                return Status::fromStatus(STATUS_INVALID_OPERATION);
+                ALOGW("MediaCodec::ResourceManagerClient unable to find ResourceManagerService");
             }
             ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(mPid),
                                 .uid = static_cast<int32_t>(mUid),
@@ -277,25 +272,21 @@ private:
     DISALLOW_EVIL_CONSTRUCTORS(ResourceManagerClient);
 };
 
-/*
- * Proxy for ResourceManagerService that communicates with the
- * ResourceManagerService for MediaCodec
- */
-struct MediaCodec::ResourceManagerServiceProxy :
-    public std::enable_shared_from_this<ResourceManagerServiceProxy> {
-
-    // BinderDiedContext defines the cookie that is passed as DeathRecipient.
-    // Since this can maintain more context than a raw pointer, we can
-    // validate the scope of ResourceManagerServiceProxy,
-    // before deferencing it upon the binder death.
-    struct BinderDiedContext {
-        std::weak_ptr<ResourceManagerServiceProxy> mRMServiceProxy;
-    };
-
+struct MediaCodec::ResourceManagerServiceProxy : public RefBase {
     ResourceManagerServiceProxy(pid_t pid, uid_t uid,
             const std::shared_ptr<IResourceManagerClient> &client);
-    ~ResourceManagerServiceProxy();
+    virtual ~ResourceManagerServiceProxy();
+
     status_t init();
+
+    // implements DeathRecipient
+    static void BinderDiedCallback(void* cookie);
+    void binderDied();
+    static Mutex sLockCookies;
+    static std::set<void*> sCookies;
+    static void addCookie(void* cookie);
+    static void removeCookie(void* cookie);
+
     void addResource(const MediaResourceParcel &resource);
     void removeResource(const MediaResourceParcel &resource);
     void removeClient();
@@ -311,92 +302,50 @@ struct MediaCodec::ResourceManagerServiceProxy :
     }
 
 private:
-    // To get the binder interface to ResourceManagerService.
-    void getService() {
-        std::scoped_lock lock{mLock};
-        getService_l();
-    }
-
-    std::shared_ptr<IResourceManagerService> getService_l();
-
-    // To add/register all the resources currently added/registered with
-    // the ResourceManagerService.
-    // This function will be called right after the death of the Resource
-    // Manager to make sure that the newly started ResourceManagerService
-    // knows about the current resource usage.
-    void reRegisterAllResources_l();
-
-    void deinit() {
-        std::scoped_lock lock{mLock};
-        // Unregistering from DeathRecipient notification.
-        if (mService != nullptr) {
-            AIBinder_unlinkToDeath(mService->asBinder().get(), mDeathRecipient.get(), this);
-            mService = nullptr;
-        }
-    }
-
-    // For binder death handling
-    static void BinderDiedCallback(void* cookie);
-    static void BinderUnlinkedCallback(void* cookie);
-
-    void binderDied() {
-        std::scoped_lock lock{mLock};
-        ALOGE("ResourceManagerService died.");
-        mService = nullptr;
-        mBinderDied = true;
-        // start an async operation that will reconnect with the RM and
-        // re-registers all the resources.
-        mGetServiceFuture = std::async(std::launch::async, [this] { getService(); });
-    }
-
-
-private:
-    std::mutex mLock;
+    Mutex mLock;
     pid_t mPid;
     uid_t mUid;
-    bool mBinderDied = false;
     std::string mCodecName;
-    /**
-     * Reconnecting with the ResourceManagerService, after its binder interface dies,
-     * is done asynchronously. It will also make sure that, all the resources
-     * asssociated with this Proxy (MediaCodec) is added with the new instance
-     * of the ResourceManagerService to persist the state of resources.
-     * We must store the reference of the furture to guarantee real asynchronous operation.
-     */
-    std::future<void> mGetServiceFuture;
-    // To maintain the list of all the resources currently added/registered with
-    // the ResourceManagerService.
-    std::set<MediaResourceParcel> mMediaResourceParcel;
+    std::shared_ptr<IResourceManagerService> mService;
     std::shared_ptr<IResourceManagerClient> mClient;
     ::ndk::ScopedAIBinder_DeathRecipient mDeathRecipient;
-    std::shared_ptr<IResourceManagerService> mService;
 };
 
 MediaCodec::ResourceManagerServiceProxy::ResourceManagerServiceProxy(
-        pid_t pid, uid_t uid, const std::shared_ptr<IResourceManagerClient> &client) :
-    mPid(pid), mUid(uid), mClient(client),
-    mDeathRecipient(::ndk::ScopedAIBinder_DeathRecipient(
-            AIBinder_DeathRecipient_new(BinderDiedCallback))) {
+        pid_t pid, uid_t uid, const std::shared_ptr<IResourceManagerClient> &client)
+        : mPid(pid), mUid(uid), mClient(client),
+          mDeathRecipient(AIBinder_DeathRecipient_new(BinderDiedCallback)) {
     if (mUid == MediaCodec::kNoUid) {
         mUid = AIBinder_getCallingUid();
     }
     if (mPid == MediaCodec::kNoPid) {
         mPid = AIBinder_getCallingPid();
     }
-    // Setting callback notification when DeathRecipient gets deleted.
-    AIBinder_DeathRecipient_setOnUnlinked(mDeathRecipient.get(), BinderUnlinkedCallback);
 }
 
 MediaCodec::ResourceManagerServiceProxy::~ResourceManagerServiceProxy() {
-    deinit();
+
+    // remove the cookie, so any in-flight death notification will get dropped
+    // by our handler.
+    removeCookie(this);
+
+    Mutex::Autolock _l(mLock);
+    if (mService != nullptr) {
+        AIBinder_unlinkToDeath(mService->asBinder().get(), mDeathRecipient.get(), this);
+        mService = nullptr;
+    }
 }
 
 status_t MediaCodec::ResourceManagerServiceProxy::init() {
-    std::scoped_lock lock{mLock};
+    ::ndk::SpAIBinder binder(AServiceManager_waitForService("media.resource_manager"));
+    mService = IResourceManagerService::fromBinder(binder);
+    if (mService == nullptr) {
+        ALOGE("Failed to get ResourceManagerService");
+        return UNKNOWN_ERROR;
+    }
 
     int callerPid = AIBinder_getCallingPid();
     int callerUid = AIBinder_getCallingUid();
-
     if (mPid != callerPid || mUid != callerUid) {
         // Media processes don't need special permissions to act on behalf of other processes.
         if (callerUid != AID_MEDIA) {
@@ -409,54 +358,58 @@ status_t MediaCodec::ResourceManagerServiceProxy::init() {
         }
     }
 
-    mService = getService_l();
-    if (mService == nullptr) {
-        return DEAD_OBJECT;
-    }
-
     // Kill clients pending removal.
     mService->reclaimResourcesFromClientsPendingRemoval(mPid);
+
+    // so our handler will process the death notifications
+    addCookie(this);
+
+    // after this, require mLock whenever using mService
+    AIBinder_linkToDeath(mService->asBinder().get(), mDeathRecipient.get(), this);
     return OK;
 }
 
-std::shared_ptr<IResourceManagerService> MediaCodec::ResourceManagerServiceProxy::getService_l() {
-    if (mService != nullptr) {
-        return mService;
-    }
+//static
+// these are no_destroy to keep them from being destroyed at process exit
+// where some thread calls exit() while other threads are still running.
+// see b/194783918
+[[clang::no_destroy]] Mutex MediaCodec::ResourceManagerServiceProxy::sLockCookies;
+[[clang::no_destroy]] std::set<void*> MediaCodec::ResourceManagerServiceProxy::sCookies;
 
-    // Get binder interface to resource manager.
-    ::ndk::SpAIBinder binder(AServiceManager_waitForService("media.resource_manager"));
-    mService = IResourceManagerService::fromBinder(binder);
-    if (mService == nullptr) {
-        ALOGE("Failed to get ResourceManagerService");
-        return mService;
-    }
-
-    // Create the context that is passed as cookie to the binder death notification.
-    // The context gets deleted at BinderUnlinkedCallback.
-    BinderDiedContext* context = new BinderDiedContext{.mRMServiceProxy = weak_from_this()};
-    // Register for the callbacks by linking to death notification.
-    AIBinder_linkToDeath(mService->asBinder().get(), mDeathRecipient.get(), context);
-
-    // If the RM was restarted, re-register all the resources.
-    if (mBinderDied) {
-        reRegisterAllResources_l();
-        mBinderDied = false;
-    }
-    return mService;
+//static
+void MediaCodec::ResourceManagerServiceProxy::addCookie(void* cookie) {
+    Mutex::Autolock _l(sLockCookies);
+    sCookies.insert(cookie);
 }
 
-void MediaCodec::ResourceManagerServiceProxy::reRegisterAllResources_l() {
-    if (mMediaResourceParcel.empty()) {
-        ALOGV("%s:%d:%p No resources to add", __func__, __LINE__, this);
-        return;
-    }
+//static
+void MediaCodec::ResourceManagerServiceProxy::removeCookie(void* cookie) {
+    Mutex::Autolock _l(sLockCookies);
+    sCookies.erase(cookie);
+}
 
+//static
+void MediaCodec::ResourceManagerServiceProxy::BinderDiedCallback(void* cookie) {
+    Mutex::Autolock _l(sLockCookies);
+    if (sCookies.find(cookie) != sCookies.end()) {
+        auto thiz = static_cast<ResourceManagerServiceProxy*>(cookie);
+        thiz->binderDied();
+    }
+}
+
+void MediaCodec::ResourceManagerServiceProxy::binderDied() {
+    ALOGW("ResourceManagerService died.");
+    Mutex::Autolock _l(mLock);
+    mService = nullptr;
+}
+
+void MediaCodec::ResourceManagerServiceProxy::addResource(
+        const MediaResourceParcel &resource) {
     std::vector<MediaResourceParcel> resources;
-    std::copy(mMediaResourceParcel.begin(), mMediaResourceParcel.end(),
-              std::back_inserter(resources));
+    resources.push_back(resource);
+
+    Mutex::Autolock _l(mLock);
     if (mService == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
         return;
     }
     ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(mPid),
@@ -466,98 +419,50 @@ void MediaCodec::ResourceManagerServiceProxy::reRegisterAllResources_l() {
     mService->addResource(clientInfo, mClient, resources);
 }
 
-void MediaCodec::ResourceManagerServiceProxy::BinderDiedCallback(void* cookie) {
-    BinderDiedContext* context = reinterpret_cast<BinderDiedContext*>(cookie);
-
-    // Validate the context and check if the ResourceManagerServiceProxy object is still in scope.
-    if (context != nullptr) {
-        std::shared_ptr<ResourceManagerServiceProxy> thiz = context->mRMServiceProxy.lock();
-        if (thiz != nullptr) {
-            thiz->binderDied();
-        } else {
-            ALOGI("ResourceManagerServiceProxy is out of scope already");
-        }
-    }
-}
-
-void MediaCodec::ResourceManagerServiceProxy::BinderUnlinkedCallback(void* cookie) {
-    BinderDiedContext* context = reinterpret_cast<BinderDiedContext*>(cookie);
-    // Since we don't need the context anymore, we are deleting it now.
-    delete context;
-}
-
-void MediaCodec::ResourceManagerServiceProxy::addResource(
-        const MediaResourceParcel &resource) {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
-        return;
-    }
-    std::vector<MediaResourceParcel> resources;
-    resources.push_back(resource);
-    ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(mPid),
-                                .uid = static_cast<int32_t>(mUid),
-                                .id = getId(mClient),
-                                .name = mCodecName};
-    service->addResource(clientInfo, mClient, resources);
-    mMediaResourceParcel.emplace(resource);
-}
-
 void MediaCodec::ResourceManagerServiceProxy::removeResource(
         const MediaResourceParcel &resource) {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
-        return;
-    }
     std::vector<MediaResourceParcel> resources;
     resources.push_back(resource);
+
+    Mutex::Autolock _l(mLock);
+    if (mService == nullptr) {
+        return;
+    }
     ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(mPid),
                                 .uid = static_cast<int32_t>(mUid),
                                 .id = getId(mClient),
                                 .name = mCodecName};
-    service->removeResource(clientInfo, resources);
-    mMediaResourceParcel.erase(resource);
+    mService->removeResource(clientInfo, resources);
 }
 
 void MediaCodec::ResourceManagerServiceProxy::removeClient() {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
+    Mutex::Autolock _l(mLock);
+    if (mService == nullptr) {
         return;
     }
     ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(mPid),
                                 .uid = static_cast<int32_t>(mUid),
                                 .id = getId(mClient),
                                 .name = mCodecName};
-    service->removeClient(clientInfo);
-    mMediaResourceParcel.clear();
+    mService->removeClient(clientInfo);
 }
 
 void MediaCodec::ResourceManagerServiceProxy::markClientForPendingRemoval() {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
+    Mutex::Autolock _l(mLock);
+    if (mService == nullptr) {
         return;
     }
     ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(mPid),
                                 .uid = static_cast<int32_t>(mUid),
                                 .id = getId(mClient),
                                 .name = mCodecName};
-    service->markClientForPendingRemoval(clientInfo);
-    mMediaResourceParcel.clear();
+    mService->markClientForPendingRemoval(clientInfo);
 }
 
 bool MediaCodec::ResourceManagerServiceProxy::reclaimResource(
         const std::vector<MediaResourceParcel> &resources) {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Service isn't available", __func__, __LINE__, this);
+    Mutex::Autolock _l(mLock);
+    if (mService == NULL) {
         return false;
     }
     bool success;
@@ -565,67 +470,43 @@ bool MediaCodec::ResourceManagerServiceProxy::reclaimResource(
                                 .uid = static_cast<int32_t>(mUid),
                                 .id = getId(mClient),
                                 .name = mCodecName};
-    Status status = service->reclaimResource(clientInfo, resources, &success);
+    Status status = mService->reclaimResource(clientInfo, resources, &success);
     return status.isOk() && success;
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientCreated() {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
-        return;
-    }
     ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(mPid),
                                 .uid = static_cast<int32_t>(mUid),
                                 .id = getId(mClient),
                                 .name = mCodecName};
-    service->notifyClientCreated(clientInfo);
+    mService->notifyClientCreated(clientInfo);
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientStarted(
         ClientConfigParcel& clientConfig) {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
-        return;
-    }
     clientConfig.clientInfo.pid = static_cast<int32_t>(mPid);
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
-    service->notifyClientStarted(clientConfig);
+    mService->notifyClientStarted(clientConfig);
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientStopped(
         ClientConfigParcel& clientConfig) {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
-        return;
-    }
     clientConfig.clientInfo.pid = static_cast<int32_t>(mPid);
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
-    service->notifyClientStopped(clientConfig);
+    mService->notifyClientStopped(clientConfig);
 }
 
 void MediaCodec::ResourceManagerServiceProxy::notifyClientConfigChanged(
         ClientConfigParcel& clientConfig) {
-    std::scoped_lock lock{mLock};
-    std::shared_ptr<IResourceManagerService> service = getService_l();
-    if (service == nullptr) {
-        ALOGW("%s:%d:%p Serice isn't available", __func__, __LINE__, this);
-        return;
-    }
     clientConfig.clientInfo.pid = static_cast<int32_t>(mPid);
     clientConfig.clientInfo.uid = static_cast<int32_t>(mUid);
     clientConfig.clientInfo.id = getId(mClient);
     clientConfig.clientInfo.name = mCodecName;
-    service->notifyClientConfigChanged(clientConfig);
+    mService->notifyClientConfigChanged(clientConfig);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1045,7 +926,7 @@ MediaCodec::MediaCodec(
       mGetCodecBase(getCodecBase),
       mGetCodecInfo(getCodecInfo) {
     mCodecId = GenerateCodecId();
-    mResourceManagerProxy = std::make_shared<ResourceManagerServiceProxy>(pid, uid,
+    mResourceManagerProxy = new ResourceManagerServiceProxy(pid, uid,
             ::ndk::SharedRefBase::make<ResourceManagerClient>(this, pid, uid));
     if (!mGetCodecBase) {
         mGetCodecBase = [](const AString &name, const char *owner) {
@@ -2156,11 +2037,9 @@ status_t MediaCodec::configure(
     std::vector<MediaResourceParcel> resources;
     resources.push_back(MediaResource::CodecResource(mFlags & kFlagIsSecure,
             toMediaResourceSubType(mDomain)));
-    if (mDomain == DOMAIN_VIDEO || mDomain == DOMAIN_IMAGE) {
-        // Don't know the buffer size at this point, but it's fine to use 1 because
-        // the reclaimResource call doesn't consider the requester's buffer size for now.
-        resources.push_back(MediaResource::GraphicMemoryResource(1));
-    }
+    // Don't know the buffer size at this point, but it's fine to use 1 because
+    // the reclaimResource call doesn't consider the requester's buffer size for now.
+    resources.push_back(MediaResource::GraphicMemoryResource(1));
     for (int i = 0; i <= kMaxRetry; ++i) {
         sp<AMessage> response;
         err = PostAndAwaitResponse(msg, &response);
@@ -2761,11 +2640,9 @@ status_t MediaCodec::start() {
     std::vector<MediaResourceParcel> resources;
     resources.push_back(MediaResource::CodecResource(mFlags & kFlagIsSecure,
             toMediaResourceSubType(mDomain)));
-    if (mDomain == DOMAIN_VIDEO || mDomain == DOMAIN_IMAGE) {
-        // Don't know the buffer size at this point, but it's fine to use 1 because
-        // the reclaimResource call doesn't consider the requester's buffer size for now.
-        resources.push_back(MediaResource::GraphicMemoryResource(1));
-    }
+    // Don't know the buffer size at this point, but it's fine to use 1 because
+    // the reclaimResource call doesn't consider the requester's buffer size for now.
+    resources.push_back(MediaResource::GraphicMemoryResource(1));
     for (int i = 0; i <= kMaxRetry; ++i) {
         if (i > 0) {
             // Don't try to reclaim resource for the first time.
