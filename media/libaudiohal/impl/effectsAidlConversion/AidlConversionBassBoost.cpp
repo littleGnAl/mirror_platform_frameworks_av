@@ -66,7 +66,7 @@ status_t AidlConversionBassBoost::setParameter(EffectParamReader& param) {
         default: {
             // for vendor extension, copy data area to the DefaultExtension, parameter ignored
             VendorExtension ext = VALUE_OR_RETURN_STATUS(
-                    aidl::android::legacy2aidl_EffectParameterReader_Data_VendorExtension(param));
+                    aidl::android::legacy2aidl_EffectParameterReader_VendorExtension(param));
             aidlParam = MAKE_SPECIFIC_PARAMETER(BassBoost, bassBoost, vendor, ext);
             break;
         }
@@ -92,6 +92,7 @@ status_t AidlConversionBassBoost::getParameter(EffectParamWriter& param) {
             RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mEffect->getParameter(id, &aidlParam)));
             value = VALUE_OR_RETURN_STATUS(
                     aidl::android::aidl2legacy_Parameter_BassBoost_uint16_strengthPm(aidlParam));
+            ALOGW("%s xxx got %d", __func__, value);
             return param.writeToValue(&value);
         }
         case BASSBOOST_PARAM_STRENGTH_SUPPORTED: {
