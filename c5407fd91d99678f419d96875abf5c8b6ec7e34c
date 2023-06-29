@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4017fe09_f19862ca",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionBassBoost.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-06-29T21:48:22Z",
+      "side": 1,
+      "message": "A leftover from debugging?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "c5407fd91d99678f419d96875abf5c8b6ec7e34c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "978fd8f4_094fddd7",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-06-29T21:48:22Z",
+      "side": 1,
+      "message": "What is the purpose of using random data here? Unless we intend to fuzz, using any arbitrary fixed value will suffice.",
+      "range": {
+        "startLine": 201,
+        "startChar": 45,
+        "endLine": 201,
+        "endChar": 89
+      },
+      "revId": "c5407fd91d99678f419d96875abf5c8b6ec7e34c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
