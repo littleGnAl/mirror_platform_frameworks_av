@@ -46,6 +46,30 @@
       },
       "revId": "20d223b42f53376383af8162b8c21c3c921ebd16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa979804_afb525ea",
+        "filename": "media/libstagefright/RemoteMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2023-06-29T19:05:59Z",
+      "side": 1,
+      "message": "MediaCloser or ExtractorCloser\nworker is not is redundant for a thread.",
+      "parentUuid": "1500d184_c16ac58e",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 55
+      },
+      "revId": "20d223b42f53376383af8162b8c21c3c921ebd16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
