@@ -52,6 +52,24 @@
       "parentUuid": "5b89e8d4_54b29690",
       "revId": "086264bd95a493bf002b548f9b23720365bc7044",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a8221f_6775a2e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2023-06-29T06:12:30Z",
+      "side": 1,
+      "message": "It\u0027s not CTS, but `MediaFrameworkUnitTest` which is located in `frameworks/base/media/tests/MediaFrameworkTest`. Our device fails sometimes and error log shows it is timeout (over 1000ms) waiting for `MediaPlayer` command completed.\nI\u0027ve add more details about this case in [https://issuetracker.google.com/288733664], which describe this root cause.",
+      "parentUuid": "32fdfd41_8a5ad86b",
+      "revId": "086264bd95a493bf002b548f9b23720365bc7044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
