@@ -14,20 +14,21 @@
  * limitations under the License.
  */
 
-#include "ReverbTypes.h"
-#define LOG_TAG "EffectReverb"
-#include <Utils.h>
 #include <algorithm>
+#include <limits.h>
 #include <unordered_set>
+
+#define LOG_TAG "EffectReverb"
 
 #include <android-base/logging.h>
 #include <fmq/AidlMessageQueue.h>
 #include <audio_effects/effect_bassboost.h>
 #include <audio_effects/effect_equalizer.h>
 #include <audio_effects/effect_virtualizer.h>
+#include <Utils.h>
 
 #include "EffectReverb.h"
-#include <limits.h>
+#include "ReverbTypes.h"
 
 using aidl::android::hardware::audio::effect::Descriptor;
 using aidl::android::hardware::audio::effect::EffectReverb;
