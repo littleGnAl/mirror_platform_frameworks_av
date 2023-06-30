@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "833052f8_917cee4e",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-30T15:42:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "32f04506_decf8e9a",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 24
+      },
+      "revId": "0a07409863674705cb405874297f782297b5d665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d20835c6_c6b44934",
