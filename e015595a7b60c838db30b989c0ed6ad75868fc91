@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff210e77_ee9180d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-30T15:40:51Z",
+      "side": 1,
+      "message": "I think this one final observation....",
+      "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced90b1a_f186f375",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-06-30T15:40:51Z",
+      "side": 1,
+      "message": "seems to me that we should have a \n\ndelete mCurrentTrack[trackIndex]\n\nbefore we clear the pointer -- otherwise we leak the just-created MediaAdapter.",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
