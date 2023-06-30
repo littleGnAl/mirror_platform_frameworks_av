@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad5ab33_0953f18c",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2023-06-30T15:33:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd50ccd_c3bb29ae",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 20
+      },
+      "revId": "0a07409863674705cb405874297f782297b5d665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89edac6f_86c238f7",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32f04506_decf8e9a",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2023-06-30T15:33:38Z",
+      "side": 1,
+      "message": "MediaBuffer does not inherit RefBase class. Thus, sp\u003cMediaBuffer\u003e cannot be implemented.",
+      "parentUuid": "89edac6f_86c238f7",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 24
+      },
+      "revId": "0a07409863674705cb405874297f782297b5d665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d20835c6_c6b44934",
         "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-23T15:26:13Z",
       "side": 1,
       "message": "first, i\u0027d move this down to line 225; so that we mess with the reference just before we send it away via the pushBuffer() call.",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 9
+      },
+      "revId": "0a07409863674705cb405874297f782297b5d665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e44d590_f4623d1f",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2023-06-30T15:33:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d20835c6_c6b44934",
       "range": {
         "startLine": 212,
         "startChar": 4,
