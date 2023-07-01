@@ -127,8 +127,6 @@ public:
 
     Status notifyClientStopped(const ClientConfigParcel& clientConfig) override;
 
-    Status notifyClientConfigChanged(const ClientConfigParcel& clientConfig) override;
-
 private:
     friend class ResourceManagerServiceTest;
     friend class DeathNotifier;

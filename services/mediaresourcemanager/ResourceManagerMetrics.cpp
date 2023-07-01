@@ -175,22 +175,6 @@ void ResourceManagerMetrics::notifyClientReleased(const ClientInfoParcel& client
     }
 }
 
-void ResourceManagerMetrics::notifyClientConfigChanged(const ClientConfigParcel& clientConfig) {
-    std::scoped_lock lock(mLock);
-    ClientConfigMap::iterator entry = mClientConfigMap.find(clientConfig.clientInfo.id);
-    if (entry != mClientConfigMap.end() &&
-        (clientConfig.codecType == MediaResourceSubType::kVideoCodec ||
-        clientConfig.codecType == MediaResourceSubType::kImageCodec)) {
-        int pid = clientConfig.clientInfo.pid;
-        // Update the pixel count for this process
-        updatePixelCount(pid, clientConfig.width * (long)clientConfig.height,
-                         entry->second.width * (long)entry->second.height);
-        // Update the resolution in the record.
-        entry->second.width = clientConfig.width;
-        entry->second.height = clientConfig.height;
-    }
-}
-
 void ResourceManagerMetrics::notifyClientStarted(const ClientConfigParcel& clientConfig) {
     std::scoped_lock lock(mLock);
     int pid = clientConfig.clientInfo.pid;
@@ -213,15 +197,9 @@ void ResourceManagerMetrics::notifyClientStarted(const ClientConfigParcel& clien
     }
 
     // System concurrent codec usage
-    int systemConcurrentCodecs = mConcurrentCodecsMap[codecBucket];
+    int systemConcurrentCodecCount = mConcurrentCodecsMap[codecBucket];
     // Process/Application concurrent codec usage for this type of codec
-    const ConcurrentCodecs& concurrentCodecs = mProcessConcurrentCodecsMap[pid];
-    int appConcurrentCodecs = concurrentCodecs.mCurrent[codecBucket];
-    int hwVideoCodecs = concurrentCodecs.mHWVideoCodecs;
-    int swVideoCodecs = concurrentCodecs.mSWVideoCodecs;
-    int videoCodecs = concurrentCodecs.mVideoCodecs;
-    int audioCodecs = concurrentCodecs.mAudioCodecs;
-    int imageCodecs = concurrentCodecs.mImageCodecs;
+    int appConcurrentCodecCount = mProcessConcurrentCodecsMap[pid].mCurrent[codecBucket];
     // Process/Application's current pixel count.
     long pixelCount = 0;
     std::map<int32_t, PixelCount>::iterator it = mProcessPixelsMap.find(pid);
@@ -238,14 +216,9 @@ void ResourceManagerMetrics::notifyClientStarted(const ClientConfigParcel& clien
          clientConfig.isEncoder,
          clientConfig.isHardware,
          clientConfig.width, clientConfig.height,
-         systemConcurrentCodecs,
-         appConcurrentCodecs,
-         pixelCount,
-         hwVideoCodecs,
-         swVideoCodecs,
-         videoCodecs,
-         audioCodecs,
-         imageCodecs);
+         systemConcurrentCodecCount,
+         appConcurrentCodecCount,
+         pixelCount);
 
     ALOGV("%s: Pushed MEDIA_CODEC_STARTED atom: "
           "Process[pid(%d): uid(%d)] "
@@ -253,7 +226,6 @@ void ResourceManagerMetrics::notifyClientStarted(const ClientConfigParcel& clien
           "Timestamp: %jd "
           "Resolution: %d x %d "
           "ConcurrentCodec[%d]={System: %d App: %d} "
-          "AppConcurrentCodecs{Video: %d(HW[%d] SW[%d]) Audio: %d Image: %d} "
           "result: %d",
           __func__,
           pid, clientConfig.clientInfo.uid,
@@ -264,8 +236,7 @@ void ResourceManagerMetrics::notifyClientStarted(const ClientConfigParcel& clien
           clientConfig.isEncoder? "encoder" : "decoder",
           clientConfig.timeStamp,
           clientConfig.width, clientConfig.height,
-          codecBucket, systemConcurrentCodecs, appConcurrentCodecs,
-          videoCodecs, hwVideoCodecs, swVideoCodecs, audioCodecs, imageCodecs,
+          codecBucket, systemConcurrentCodecCount, appConcurrentCodecCount,
           result);
 }
 
@@ -285,12 +256,12 @@ void ResourceManagerMetrics::notifyClientStopped(const ClientConfigParcel& clien
     }
 
     // System concurrent codec usage
-    int systemConcurrentCodecs = mConcurrentCodecsMap[codecBucket];
+    int systemConcurrentCodecCount = mConcurrentCodecsMap[codecBucket];
     // Process/Application concurrent codec usage for this type of codec
-    int appConcurrentCodecs = 0;
+    int appConcurrentCodecCount = 0;
     std::map<int32_t, ConcurrentCodecs>::iterator found = mProcessConcurrentCodecsMap.find(pid);
     if (found != mProcessConcurrentCodecsMap.end()) {
-        appConcurrentCodecs = found->second.mCurrent[codecBucket];
+        appConcurrentCodecCount = found->second.mCurrent[codecBucket];
     }
     // Process/Application's current pixel count.
     long pixelCount = 0;
@@ -321,8 +292,8 @@ void ResourceManagerMetrics::notifyClientStopped(const ClientConfigParcel& clien
          clientConfig.isEncoder,
          clientConfig.isHardware,
          clientConfig.width, clientConfig.height,
-         systemConcurrentCodecs,
-         appConcurrentCodecs,
+         systemConcurrentCodecCount,
+         appConcurrentCodecCount,
          pixelCount,
          usageTime);
     ALOGV("%s: Pushed MEDIA_CODEC_STOPPED atom: "
@@ -341,7 +312,7 @@ void ResourceManagerMetrics::notifyClientStopped(const ClientConfigParcel& clien
           clientConfig.isEncoder? "encoder" : "decoder",
           clientConfig.timeStamp, usageTime,
           clientConfig.width, clientConfig.height,
-          codecBucket, systemConcurrentCodecs, appConcurrentCodecs,
+          codecBucket, systemConcurrentCodecCount, appConcurrentCodecCount,
           result);
 }
 
@@ -513,42 +484,13 @@ void ResourceManagerMetrics::increaseConcurrentCodecs(int32_t pid,
         ConcurrentCodecs codecs;
         codecs.mCurrent[codecBucket] = 1;
         codecs.mPeak[codecBucket] = 1;
-        auto added = mProcessConcurrentCodecsMap.emplace(pid, codecs);
-        found = added.first;
+        mProcessConcurrentCodecsMap.emplace(pid, codecs);
     } else {
         found->second.mCurrent[codecBucket]++;
         // Check if it's the peak count for this slot.
         if (found->second.mPeak[codecBucket] < found->second.mCurrent[codecBucket]) {
             found->second.mPeak[codecBucket] = found->second.mCurrent[codecBucket];
         }
-    }
-
-    switch (codecBucket) {
-        case HwVideoEncoder:
-        case HwVideoDecoder:
-        case SwVideoEncoder:
-        case SwVideoDecoder:
-            if (codecBucket == HwVideoEncoder || codecBucket == HwVideoDecoder) {
-                found->second.mHWVideoCodecs++;
-            } else {
-                found->second.mSWVideoCodecs++;
-            }
-            found->second.mVideoCodecs++;
-            break;
-        case HwAudioEncoder:
-        case HwAudioDecoder:
-        case SwAudioEncoder:
-        case SwAudioDecoder:
-            found->second.mAudioCodecs++;
-            break;
-        case HwImageEncoder:
-        case HwImageDecoder:
-        case SwImageEncoder:
-        case SwImageDecoder:
-            found->second.mImageCodecs++;
-            break;
-        default:
-            break;
     }
 }
 
@@ -564,34 +506,6 @@ void ResourceManagerMetrics::decreaseConcurrentCodecs(int32_t pid,
     if (found != mProcessConcurrentCodecsMap.end()) {
         if (found->second.mCurrent[codecBucket] > 0) {
             found->second.mCurrent[codecBucket]--;
-        }
-
-        switch (codecBucket) {
-            case HwVideoEncoder:
-            case HwVideoDecoder:
-            case SwVideoEncoder:
-            case SwVideoDecoder:
-                if (codecBucket == HwVideoEncoder || codecBucket == HwVideoDecoder) {
-                    found->second.mHWVideoCodecs--;
-                } else {
-                    found->second.mSWVideoCodecs--;
-                }
-                found->second.mVideoCodecs--;
-                break;
-            case HwAudioEncoder:
-            case HwAudioDecoder:
-            case SwAudioEncoder:
-            case SwAudioDecoder:
-                found->second.mAudioCodecs--;
-                break;
-            case HwImageEncoder:
-            case HwImageDecoder:
-            case SwImageEncoder:
-            case SwImageDecoder:
-                found->second.mImageCodecs--;
-                break;
-            default:
-                break;
         }
     }
 }
@@ -612,13 +526,6 @@ void ResourceManagerMetrics::increasePixelCount(int32_t pid, long pixels) {
             found->second.mPeak = found->second.mCurrent;
         }
     }
-}
-
-void ResourceManagerMetrics::updatePixelCount(int32_t pid, long newPixels, long lastPixels) {
-    // Since there is change in resolution, decrease it by last pixels and
-    // increase it by new pixels.
-    decreasePixelCount(pid, lastPixels);
-    increasePixelCount(pid, newPixels);
 }
 
 void ResourceManagerMetrics::decreasePixelCount(int32_t pid, long pixels) {
