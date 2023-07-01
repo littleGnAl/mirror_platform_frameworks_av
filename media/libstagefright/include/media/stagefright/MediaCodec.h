@@ -456,7 +456,7 @@ private:
     sp<AMessage> mAsyncReleaseCompleteNotification;
     sp<AMessage> mOnFirstTunnelFrameReadyNotification;
 
-    std::shared_ptr<ResourceManagerServiceProxy> mResourceManagerProxy;
+    sp<ResourceManagerServiceProxy> mResourceManagerProxy;
 
     Domain mDomain;
     AString mLogSessionId;
