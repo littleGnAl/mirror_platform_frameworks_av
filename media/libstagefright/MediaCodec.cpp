@@ -1989,9 +1989,6 @@ status_t MediaCodec::configure(
     sp<AMessage> msg = new AMessage(kWhatConfigure, this);
     mediametrics_handle_t nextMetricsHandle = mediametrics_create(kCodecKeyName);
 
-    // TODO: validity check log-session-id: it should be a 32-hex-digit.
-    format->findString("log-session-id", &mLogSessionId);
-
     if (nextMetricsHandle != 0) {
         mediametrics_setInt64(nextMetricsHandle, kCodecId, mCodecId);
         int32_t profile = 0;
@@ -2005,7 +2002,10 @@ status_t MediaCodec::configure(
         mediametrics_setInt32(nextMetricsHandle, kCodecEncoder,
                               (flags & CONFIGURE_FLAG_ENCODE) ? 1 : 0);
 
-        mediametrics_setCString(nextMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
+        // TODO: validity check log-session-id: it should be a 32-hex-digit.
+        if (format->findString("log-session-id", &mLogSessionId)) {
+            mediametrics_setCString(nextMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
+        }
 
         // moved here from ::init()
         mediametrics_setCString(nextMetricsHandle, kCodecCodec, mInitName.c_str());
