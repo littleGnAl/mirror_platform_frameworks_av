@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac01ff11_055fcf0b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2006,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-07-04T12:38:27Z",
+      "side": 1,
+      "message": "I don\u0027t like this because it makes the retrieval of the session id conditional\non having metrics set up. I want the findString() call to remain where it was.\n\na test here that validates we have some information in mLogSessionId seems good.\nChecking that the string is non-empty is probably the right test.",
+      "range": {
+        "startLine": 2006,
+        "startChar": 7,
+        "endLine": 2006,
+        "endChar": 67
+      },
+      "revId": "da81fbcf9a897903632f3444a147db305f70cfea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
