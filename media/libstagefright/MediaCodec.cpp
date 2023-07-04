@@ -10,7 +10,7 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
+ * See the License for the specific language governing permissions andmDeferredMessages
  * limitations under the License.
  */
 
@@ -2005,7 +2005,9 @@ status_t MediaCodec::configure(
         mediametrics_setInt32(nextMetricsHandle, kCodecEncoder,
                               (flags & CONFIGURE_FLAG_ENCODE) ? 1 : 0);
 
-        mediametrics_setCString(nextMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
+        if (!mLogSessionId.empty()) {
+            mediametrics_setCString(nextMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
+        }
 
         // moved here from ::init()
         mediametrics_setCString(nextMetricsHandle, kCodecCodec, mInitName.c_str());
