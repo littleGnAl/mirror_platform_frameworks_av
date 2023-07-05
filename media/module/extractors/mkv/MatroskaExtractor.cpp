@@ -2071,6 +2071,19 @@ void MatroskaExtractor::addTracks() {
                     ALOGW("track height exceeds int32_t, %lld", height);
                     continue;
                 }
+                if (!mIsWebm) {
+                    int32_t fps = -1;
+                    if (!AMediaFormat_getInt32(meta, AMEDIAFORMAT_KEY_FRAME_RATE, &fps) && track->GetDefaultDuration()) {
+                        float fps_tmp = (float)((1000.0 * 1000000) / track->GetDefaultDuration());
+                        // trasfer framerate from 23.976 -> 24; 29.97 -> 30; 59.94 -> 60 etc.
+                        fps = (int32_t)fps_tmp + ((uint32_t)(fps_tmp*10.0)%10)/5;
+
+                        if (fps > 0 && fps <= 240) {
+                            AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_FRAME_RATE, fps);
+                            ALOGD("set video fps=%d", fps);
+                        }
+                    }
+                }
                 AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_WIDTH, (int32_t)width);
                 AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_HEIGHT, (int32_t)height);
 
