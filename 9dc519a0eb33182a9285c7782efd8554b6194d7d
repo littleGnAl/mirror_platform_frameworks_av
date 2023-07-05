@@ -45,6 +45,30 @@
       },
       "revId": "9dc519a0eb33182a9285c7782efd8554b6194d7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f7c9f8_3f037b6a",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-05T22:38:02Z",
+      "side": 1,
+      "message": "you can also do:\n\n    ::fromExceptionCode(Status::EX_ILLEGAL_ARGUMENT, \"USB Device Event requires 1 argument\");",
+      "parentUuid": "4d279cd8_2cc9dce5",
+      "range": {
+        "startLine": 2460,
+        "startChar": 23,
+        "endLine": 2460,
+        "endChar": 76
+      },
+      "revId": "9dc519a0eb33182a9285c7782efd8554b6194d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
