@@ -63,6 +63,30 @@
       },
       "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddecb9d6_c9740f0d",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-07-05T14:08:10Z",
+      "side": 1,
+      "message": "let\u0027s verify that this is working as desired.\nreading in go/c++ (Android Framework C++ Code Style Guidelines)\n\n\u003d\u003d use sp\u003cT\u003e for reference-counted pointers\n\u003d\u003d found in \u003cutils/StrongPointer.h\u003e\n\u003d\u003d T needs to have RefBase or LightRefBase as a base class. Use LightRefBase when \u003d\u003d weak pointers are not needed.\n\nI couldn\u0027t trace MediaAdapter to deriving from RefBase or LightRefBase.",
+      "parentUuid": "9e5e13d4_0075f591",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
