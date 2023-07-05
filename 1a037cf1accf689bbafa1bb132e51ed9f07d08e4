@@ -16,6 +16,29 @@
       "message": "Thanks for the fix!\n\nThe number of valid args depends on the eventId, so it\u0027d probably be best to have each event do its own argument checking.\n\nEVENT_USER_SWITCHED / doUserSwitch correctly handles the zero-args case (and in general has variable number of arguments), so EVENT_USB_DEVICE_* should probably enforce exactly one argument.",
       "revId": "1a037cf1accf689bbafa1bb132e51ed9f07d08e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e61262f_8a891077",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-05T22:04:15Z",
+      "side": 1,
+      "message": "move the check here so that we only error this one case and not the others, which I don\u0027t think require arguments? maybe camera team should be able to say if args should always have length 1 here",
+      "range": {
+        "startLine": 2465,
+        "startChar": 0,
+        "endLine": 2465,
+        "endChar": 81
+      },
+      "revId": "1a037cf1accf689bbafa1bb132e51ed9f07d08e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
