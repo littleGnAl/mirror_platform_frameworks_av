@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "955982e1_930635d5",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2432,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-07-05T22:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "416aa288_65d8bc69",
+      "revId": "1a037cf1accf689bbafa1bb132e51ed9f07d08e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e61262f_8a891077",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-07-05T22:04:15Z",
       "side": 1,
       "message": "move the check here so that we only error this one case and not the others, which I don\u0027t think require arguments? maybe camera team should be able to say if args should always have length 1 here",
+      "range": {
+        "startLine": 2465,
+        "startChar": 0,
+        "endLine": 2465,
+        "endChar": 81
+      },
+      "revId": "1a037cf1accf689bbafa1bb132e51ed9f07d08e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8e0ebd_06244603",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-07-05T22:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e61262f_8a891077",
       "range": {
         "startLine": 2465,
         "startChar": 0,
