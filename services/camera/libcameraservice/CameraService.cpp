@@ -2429,6 +2429,10 @@ Status CameraService::notifySystemEvent(int32_t eventId,
     const int pid = CameraThreadState::getCallingPid();
     const int selfPid = getpid();
 
+    if (args.size() == 0) {
+        return Status::fromExceptionCode(Status::EX_BAD_PARCELABLE);
+    }
+
     // Permission checks
     if (pid != selfPid) {
         // Ensure we're being called by system_server, or similar process with
