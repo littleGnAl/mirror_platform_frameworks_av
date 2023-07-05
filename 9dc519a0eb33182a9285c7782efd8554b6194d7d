@@ -69,6 +69,54 @@
       },
       "revId": "9dc519a0eb33182a9285c7782efd8554b6194d7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4e3c88_eed32b86",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-07-05T22:51:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f7c9f8_3f037b6a",
+      "range": {
+        "startLine": 2460,
+        "startChar": 23,
+        "endLine": 2460,
+        "endChar": 76
+      },
+      "revId": "9dc519a0eb33182a9285c7782efd8554b6194d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a158a90_2034aba0",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-07-05T22:51:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc571e89_4349e6b8",
+      "range": {
+        "startLine": 2460,
+        "startChar": 57,
+        "endLine": 2460,
+        "endChar": 74
+      },
+      "revId": "9dc519a0eb33182a9285c7782efd8554b6194d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
