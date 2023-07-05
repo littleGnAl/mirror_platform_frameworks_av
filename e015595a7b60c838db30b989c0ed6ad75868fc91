@@ -39,6 +39,30 @@
       },
       "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5e13d4_0075f591",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2023-07-05T04:27:42Z",
+      "side": 1,
+      "message": "\u0027mCurrentTack\u0027 is a vector of sp\u003cMediaAdapter\u003e. Here, \u0027sp operator\u003d\u0027 deletes the old pointer while assigning the new one. Thus, no pointer would be leaked.\n\n[link - https://cs.android.com/android/platform/superproject/+/master:frameworks/rs/cpp/util/StrongPointer.h;drc\u003d9c4ad291f012ed5f9ee9b131106e9732a848740f;bpv\u003d1;bpt\u003d1;l\u003d183?q\u003dStrongPointer\u0026ss\u003dandroid%2Fplatform%2Fsuperproject ]",
+      "parentUuid": "ced90b1a_f186f375",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
