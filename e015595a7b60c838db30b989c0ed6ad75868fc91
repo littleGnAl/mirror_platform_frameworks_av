@@ -87,6 +87,30 @@
       },
       "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847e0ab8_7d35bd19",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1890836
+      },
+      "writtenOn": "2023-07-06T04:24:57Z",
+      "side": 1,
+      "message": "MediaAdapter derives from MediaSource which derives from RefBase.\n\n[ MediaAdapter class defined at - https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/include/media/stagefright/MediaAdapter.h ]\n\n[ MediaSource class defined at - https://cs.android.com/android/platform/superproject/+/refs/heads/master:frameworks/av/media/libstagefright/include/media/stagefright/MediaSource.h ].\n\nHence, no leaks would occur.",
+      "parentUuid": "ddecb9d6_c9740f0d",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
