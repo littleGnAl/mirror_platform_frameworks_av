@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6fcec4_65205ceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2023-07-06T16:58:09Z",
+      "side": 1,
+      "message": "This change break the logic of using channel index mask. There is already channel mask introduced for AAudio. If the client doesn\u0027t want to use channel index mask, they should set the channel mask correctly by calling `AAudioStreamBuilder_setChannelMask`.",
+      "revId": "04298e046d05c2ed77527e3040c6e57c9695ef82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
