@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d345190_ff050657",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-07-06T14:55:35Z",
+      "side": 1,
+      "message": "this bug has been closed for a year.\n\nif this CL is indeed related to that bug, let\u0027s first re-open the bug and provide some context for why we\u0027re making this change a year after it was declared obsolete.  It can be a simple comment -- \"we finally stumbled across what was triggering this failure, turns out the fuzzer was giving bad PTS information to the writer\". [that\u0027s just based on what I see in the CL]",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "6d1bc8ddb6265944a63346fb2ad004e3a342d9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9462b55_daf25ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-07-06T14:55:35Z",
+      "side": 1,
+      "message": "it feels like we\u0027re fixing a test instead of the underlying problem",
+      "revId": "6d1bc8ddb6265944a63346fb2ad004e3a342d9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db7dac25_da8de2c9",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-07-06T14:55:35Z",
+      "side": 1,
+      "message": "curious why not:\n\nmemcpy(\u0026pts, framePtr, sizeof(int64_t))\n\nwith the reinterpret case on the \u0026pts parameter.",
+      "range": {
+        "startLine": 89,
+        "startChar": 20,
+        "endLine": 89,
+        "endChar": 98
+      },
+      "revId": "6d1bc8ddb6265944a63346fb2ad004e3a342d9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16cfb7b_200b1d48",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-07-06T14:55:35Z",
+      "side": 1,
+      "message": "this says that we\u0027re intentionally not fuzzing for how well the writer behaves\nif given an invalid timestamp.\n\nthis has the feel that it\u0027s something the underlying writer should be\nvalidating instead of the fuzzer.  which implies that we should let these values\nthrough and the writer should catch values like this. Which would make this a CL that we should not merge.",
+      "range": {
+        "startLine": 91,
+        "startChar": 23,
+        "endLine": 91,
+        "endChar": 32
+      },
+      "revId": "6d1bc8ddb6265944a63346fb2ad004e3a342d9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
