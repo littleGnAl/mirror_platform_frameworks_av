@@ -510,7 +510,7 @@ bool AAudio_isChannelIndexMask(aaudio_channel_mask_t channelMask) {
 audio_channel_mask_t AAudio_getChannelMaskForOpen(
         aaudio_channel_mask_t channelMask, int32_t samplesPerFrame, bool isInput) {
     if (channelMask != AAUDIO_UNSPECIFIED) {
-        if (AAudio_isChannelIndexMask(channelMask) && samplesPerFrame <= 2) {
+        if (AAudio_isChannelIndexMask(channelMask) && samplesPerFrame <= AUDIO_CHANNEL_COUNT_MAX) {
             // When it is index mask and the count is less than 3, use position mask
             // instead of index mask for opening a stream. This may need to be revisited
             // when making channel index mask public.
