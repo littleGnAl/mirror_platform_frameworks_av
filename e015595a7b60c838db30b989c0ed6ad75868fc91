@@ -111,6 +111,30 @@
       },
       "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "087ffae5_d0226279",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-07-06T11:17:52Z",
+      "side": 1,
+      "message": "and I looked right at the MediaSource definition, too.\nI should probably go get my eyes checked...",
+      "parentUuid": "847e0ab8_7d35bd19",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "e015595a7b60c838db30b989c0ed6ad75868fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
