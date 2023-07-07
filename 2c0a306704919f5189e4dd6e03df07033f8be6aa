@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c4809d_0eabd656",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-07-07T03:53:54Z",
+      "side": 1,
+      "message": "nit: can you please file a bug and add it here with\n\n    Test: \u003cway this was tested\u003e\n    Bug: \u003csome number\u003e\n\nhttps://source.android.com/docs/setup/contribute/report-bugs",
+      "revId": "2c0a306704919f5189e4dd6e03df07033f8be6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5060010_c5723f6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-07-07T03:53:54Z",
+      "side": 1,
+      "message": "Thanks for the submission!",
+      "revId": "2c0a306704919f5189e4dd6e03df07033f8be6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b778260_2c9984a7",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2189,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-07-07T03:53:54Z",
+      "side": 1,
+      "message": "nit: line length, here and on line 2769.",
+      "range": {
+        "startLine": 2189,
+        "startChar": 0,
+        "endLine": 2189,
+        "endChar": 109
+      },
+      "revId": "2c0a306704919f5189e4dd6e03df07033f8be6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
