@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78edcd5e_6a56cef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-07-07T16:39:08Z",
+      "side": 1,
+      "message": "Adding Eric, Shunkai, and Jiabin.  LGTM, presumably this avoids the mCblk nullptr dereference until the initCheck() can be performed.\n\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/AudioFlinger.cpp;drc\u003d1798b12a5202c77785d34be268ef8ab4bc1013cf;l\u003d3876",
+      "revId": "8e3a5687a1690125fb170859bd3059878d6032f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
