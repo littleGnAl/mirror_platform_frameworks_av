@@ -94,6 +94,52 @@
       },
       "revId": "5499ccfd02db2164d537d5aa1a6eccfdc98728b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2b6a04_49c0e073",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1930132
+      },
+      "writtenOn": "2023-07-10T21:08:43Z",
+      "side": 1,
+      "message": "a better name would be \"signedCsrPayload\" or \"signedDeviceCsrPayload\" or similar since it is only a part of the csr.",
+      "range": {
+        "startLine": 158,
+        "startChar": 25,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "5499ccfd02db2164d537d5aa1a6eccfdc98728b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14107d8d_93ac718d",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1930132
+      },
+      "writtenOn": "2023-07-10T21:08:43Z",
+      "side": 1,
+      "message": "This needs a new name after this change, because the actual CSR is now assembled in adapter, not in plugin. Plugin only returns the csr payload to be assembled below.\n\nCould be updated to something like \"signedDeviceCsrPayload\" or \"signedCsrPayload\"?\nstatus \u003d mDrm-\u003egetPropertyByteArray(\"signedDeviceCsrPayload\", \u0026signedDeviceCsrPayload);",
+      "range": {
+        "startLine": 159,
+        "startChar": 41,
+        "endLine": 159,
+        "endChar": 66
+      },
+      "revId": "5499ccfd02db2164d537d5aa1a6eccfdc98728b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
