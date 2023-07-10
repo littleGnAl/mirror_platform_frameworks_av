@@ -620,6 +620,7 @@ status_t AudioPolicyService::clientCreateAudioPatch(const struct audio_patch *pa
                                                 audio_patch_handle_t *handle,
                                                 int delayMs)
 {
+    mLock.unlock();
     return mAudioCommandThread->createAudioPatchCommand(patch, handle, delayMs);
 }
 
