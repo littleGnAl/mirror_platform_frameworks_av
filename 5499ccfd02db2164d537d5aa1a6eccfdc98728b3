@@ -22,6 +22,30 @@
       },
       "revId": "5499ccfd02db2164d537d5aa1a6eccfdc98728b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf0f913_d900baf6",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1930132
+      },
+      "writtenOn": "2023-07-10T19:31:55Z",
+      "side": 1,
+      "message": "The later call getPropertyByteArray(\"certificateSigningRequest\") will need deviceInfo as an input to generate certificateSigningRequest output, similar to setPropertyByteArray(\"certificateSigningRequestChallenge\").",
+      "parentUuid": "583f8a76_fd163f74",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 39
+      },
+      "revId": "5499ccfd02db2164d537d5aa1a6eccfdc98728b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
