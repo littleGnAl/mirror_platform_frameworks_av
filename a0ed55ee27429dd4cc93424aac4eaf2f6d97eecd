@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38423fbe_580801e7",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1930132
+      },
+      "writtenOn": "2023-07-10T22:24:11Z",
+      "side": 1,
+      "message": "Could you please change it to \"deviceSignedCsrPayload\"... I just realized the cmd and oemcrypto APIs both use this name instead of \"signedDeviceCsrPayload\"... doesn\u0027t make much differences though, just to keep things aligned... Sorry about that!",
+      "range": {
+        "startLine": 159,
+        "startChar": 41,
+        "endLine": 159,
+        "endChar": 63
+      },
+      "revId": "a0ed55ee27429dd4cc93424aac4eaf2f6d97eecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d575add2_450bbced",
         "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
         "patchSetId": 4
