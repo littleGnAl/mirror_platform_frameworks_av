@@ -22,6 +22,30 @@
       },
       "revId": "c4d372a1db63edad6d878e62ac7ef233c9c8c87a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83402ff_ead0bb26",
+        "filename": "include/media/VolumeShaper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-07-10T23:30:06Z",
+      "side": 1,
+      "message": "For this particular bug, only MediaPlayerService changes should be sufficient. But this code in header and it can be used elsewhere directly :  https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudioclient/AudioTrack.cpp;l\u003d3020?q\u003dsetIdIfNecessary",
+      "parentUuid": "7daac356_6a45c466",
+      "range": {
+        "startLine": 1102,
+        "startChar": 12,
+        "endLine": 1102,
+        "endChar": 25
+      },
+      "revId": "c4d372a1db63edad6d878e62ac7ef233c9c8c87a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
