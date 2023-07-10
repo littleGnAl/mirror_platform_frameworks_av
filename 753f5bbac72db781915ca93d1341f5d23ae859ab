@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e55024_5d11c719",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-07-10T20:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79fb4f45_18be7a91",
+      "range": {
+        "startLine": 58,
+        "startChar": 46,
+        "endLine": 58,
+        "endChar": 56
+      },
+      "revId": "753f5bbac72db781915ca93d1341f5d23ae859ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddace001_8c677c38",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-10T19:21:14Z",
       "side": 1,
       "message": "We can remove \"V2\" here I think. \"v2\" is to distinguish with the old getDeviceInfo() in the factory tool folder, which is not present here.",
+      "range": {
+        "startLine": 90,
+        "startChar": 47,
+        "endLine": 90,
+        "endChar": 62
+      },
+      "revId": "753f5bbac72db781915ca93d1341f5d23ae859ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0485d5c6_207f91fa",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-07-10T20:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddace001_8c677c38",
       "range": {
         "startLine": 90,
         "startChar": 47,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af0368a_acc78e34",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-07-10T20:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d158ee_4ee08e76",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 12
+      },
+      "revId": "753f5bbac72db781915ca93d1341f5d23ae859ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4985e057_de5308b3",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-07-10T19:21:14Z",
       "side": 1,
       "message": "device info size can be up to 700 bytes. I assume it is ok to have drm plugin hold a temp field of this size?",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 39
+      },
+      "revId": "753f5bbac72db781915ca93d1341f5d23ae859ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f744a6_dfba6a4b",
+        "filename": "drm/libmediadrmrkp/src/DrmRemotelyProvisionedComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-07-10T20:51:05Z",
+      "side": 1,
+      "message": "IMO yes.",
+      "parentUuid": "4985e057_de5308b3",
       "range": {
         "startLine": 151,
         "startChar": 19,
