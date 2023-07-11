@@ -15,6 +15,7 @@
  */
 
 #include <algorithm>
+#include <cstddef>
 #include <iterator>
 #include <memory>
 #define LOG_TAG "EffectProxy"
@@ -91,7 +92,14 @@ ndk::ScopedAStatus EffectProxy::setOffloadParam(const effect_offload_param_t* of
                                                                 "noActiveEffctFound");
     }
 
-    mActiveSubIdx = std::distance(mSubEffects.begin(), itor);
+    const size_t newIndex = std::distance(mSubEffects.begin(), itor);
+    if (newIndex != mActiveSubIdx) {
+        mSubEffects[mActiveSubIdx].handle->setParameter(Parameter::make<Parameter::offload>(false));
+
+        mActiveSubIdx = newIndex;
+        mSubEffects[mActiveSubIdx].handle->setParameter(Parameter::make<Parameter::offload>(true));
+    }
+
     ALOGV("%s: active %soffload sub-effect %zu descriptor: %s", __func__,
           offload->isOffload ? "" : "non-", mActiveSubIdx,
           ::android::audio::utils::toString(mSubEffects[mActiveSubIdx].descriptor.common.id.uuid)
