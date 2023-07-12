@@ -69,6 +69,24 @@
       "parentUuid": "1fc9246d_eb30a4c2",
       "revId": "98da40c4e6b2d4e0acd662489b8155057f24e067",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d621294_8cc869ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-07-12T08:57:52Z",
+      "side": 1,
+      "message": "From what I can tell, if this needs to be submitted soon then it needs to be merged manually on downstream branches then I need to mark it as merged-in here. However, I don\u0027t think there\u0027s any urgency to merge this change so I think we can wait a bit and the rebase when the internal changes are available on this branch. Does that sound okay?",
+      "parentUuid": "951eac3a_aa41c98e",
+      "revId": "98da40c4e6b2d4e0acd662489b8155057f24e067",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
