@@ -143,4 +143,8 @@ cc_fuzz {
              "android-drm-team@google.com",
          ],
      },
+
+     cflags: [
+         "-DFUZZ_MODE_DRM_MANAGER_SERVICE",
+     ],
 }

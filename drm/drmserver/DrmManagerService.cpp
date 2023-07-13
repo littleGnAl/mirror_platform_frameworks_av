@@ -132,6 +132,10 @@ DrmManagerService::DrmManagerService() :
     mDrmManager = new DrmManager();
     mDrmManager->initMetricsLooper();
     mDrmManager->loadPlugIns();
+
+#ifdef FUZZ_MODE_DRM_MANAGER_SERVICE
+    trustedUids.push(AID_ROOT);
+#endif //FUZZ_MODE_DRM_MANAGER_SERVICE
 }
 
 DrmManagerService::~DrmManagerService() {
