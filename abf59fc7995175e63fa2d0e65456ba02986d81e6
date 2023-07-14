@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2e5a23_afcdae36",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2023-07-14T19:23:15Z",
+      "side": 1,
+      "message": "Can you move this to `DrmManagerService::instantiate` under where `AID_MEDIA` is pushed? Thanks.\n\nAnd please add a comment saying the fuzzer runs as root or something along those lines.",
+      "revId": "abf59fc7995175e63fa2d0e65456ba02986d81e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
