@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57ad20e_f8ab1fea",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-07-17T20:17:49Z",
+      "side": 1,
+      "message": "I agree that there are unnecessary calls to external services. However, the proposed approach looks a bit heavy because we need to group statements into one big `if` which checks all the possible conditions that can occur inside. This is somewhat error-prone because in future if we modify the statements inside the `if` we can forget to update its condition. What I would prefer instead is to implement a more generic \"lazy invocation + memoization\" helper which will defer calling the external service until it\u0027s actually needed, and remember the result, so that it\u0027s equivalent to having a cache in a local variable. Something like the following, a very lightweight class, which does not store the attribution source: \n\n```\nclass LazyInvoker {\n  public:\n    using CheckerFunc \u003d std::function\u003cbool(const AttributionSourceState\u0026)\u003e;\n    explicit LazyInvoker(const CheckerFunc\u0026 f) : mFunc(f) {}\n    bool operator(const AttributionSourceState\u0026 attributionSource) {\n        if (!mCache.has_value()) {\n            mCache \u003d mFunc(attributionSource);\n        }\n        return *mCache;\n    }\n  private:\n    const CheckerFunc mFunc; \n    std::optional\u003cbool\u003e mCache;\n};\n```\n\nWe can put it into frameworks/av/media/utils/include/mediautils/ServiceUtilities.h. Then, here we change, for example, `canCaptureOutput` to:\n\n```\n  auto canCaptureOutput \u003d LazyInvoker(captureAudioOutputAllowed);\n  ...\n  if (isCallAudioSource \u0026\u0026 ... \u0026\u0026 !canCaptureOutput(attributionSource)) {\n     ...\n  }\n```\n\nCombined with short-circuiting of logical operators evaluation, this will automatically avoid extra calls to external services.\n\nWDYT?",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 51
+      },
+      "revId": "4e8c961a14b126e6612de86671da500395fb1291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
