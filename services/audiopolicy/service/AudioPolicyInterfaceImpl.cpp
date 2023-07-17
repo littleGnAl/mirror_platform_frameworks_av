@@ -624,35 +624,43 @@ Status AudioPolicyService::getInputForAttr(const media::audio::common::AudioAttr
         return binderStatusFromStatusT(PERMISSION_DENIED);
     }
 
-    bool canCaptureOutput = captureAudioOutputAllowed(attributionSource);
-    bool canInterceptCallAudio = callAudioInterceptionAllowed(attributionSource);
     bool isCallAudioSource = inputSource == AUDIO_SOURCE_VOICE_UPLINK
              || inputSource == AUDIO_SOURCE_VOICE_DOWNLINK
              || inputSource == AUDIO_SOURCE_VOICE_CALL;
 
-    if (isCallAudioSource && !canInterceptCallAudio && !canCaptureOutput) {
-        return binderStatusFromStatusT(PERMISSION_DENIED);
-    }
-    if (inputSource == AUDIO_SOURCE_ECHO_REFERENCE
-            && !canCaptureOutput) {
-        return binderStatusFromStatusT(PERMISSION_DENIED);
-    }
-    if (inputSource == AUDIO_SOURCE_FM_TUNER
-        && !canCaptureOutput
-        && !captureTunerAudioInputAllowed(attributionSource)) {
-        return binderStatusFromStatusT(PERMISSION_DENIED);
+    if (isCallAudioSource ||
+            inputSource == AUDIO_SOURCE_ECHO_REFERENCE ||
+            inputSource == AUDIO_SOURCE_FM_TUNER) {
+        bool canCaptureOutput = captureAudioOutputAllowed(attributionSource);
+        if (isCallAudioSource && !canCaptureOutput &&
+                !callAudioInterceptionAllowed(attributionSource) {
+            return binderStatusFromStatusT(PERMISSION_DENIED);
+        }
+        if (inputSource == AUDIO_SOURCE_ECHO_REFERENCE
+                && !canCaptureOutput) {
+            return binderStatusFromStatusT(PERMISSION_DENIED);
+        }
+
+        if (inputSource == AUDIO_SOURCE_FM_TUNER
+            && !canCaptureOutput
+            && !captureTunerAudioInputAllowed(attributionSource)) {
+            return binderStatusFromStatusT(PERMISSION_DENIED);
+        }
     }
 
-    bool canCaptureHotword = captureHotwordAllowed(attributionSource);
-    if ((inputSource == AUDIO_SOURCE_HOTWORD) && !canCaptureHotword) {
-        return binderStatusFromStatusT(PERMISSION_DENIED);
-    }
+    if ((inputSource == AUDIO_SOURCE_HOTWORD) ||
+            ((flags & AUDIO_INPUT_FLAG_HW_HOTWORD) != 0) {
+        bool canCaptureHotword = captureHotwordAllowed(attributionSource);
+        if ((inputSource == AUDIO_SOURCE_HOTWORD) && !canCaptureHotword) {
+            return binderStatusFromStatusT(PERMISSION_DENIED);
+        }
 
-    if (((flags & AUDIO_INPUT_FLAG_HW_HOTWORD) != 0)
-            && !canCaptureHotword) {
-        ALOGE("%s: permission denied: hotword mode not allowed"
-              " for uid %d pid %d", __func__, attributionSource.uid, attributionSource.pid);
-        return binderStatusFromStatusT(PERMISSION_DENIED);
+        if (((flags & AUDIO_INPUT_FLAG_HW_HOTWORD) != 0)
+                && !canCaptureHotword) {
+            ALOGE("%s: permission denied: hotword mode not allowed"
+                  " for uid %d pid %d", __func__, attributionSource.uid, attributionSource.pid);
+            return binderStatusFromStatusT(PERMISSION_DENIED);
+        }
     }
 
     if (attr.source == AUDIO_SOURCE_ULTRASOUND) {
