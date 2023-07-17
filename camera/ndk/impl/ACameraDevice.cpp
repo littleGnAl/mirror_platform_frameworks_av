@@ -1431,13 +1431,13 @@ CameraDevice::checkAndFireSequenceCompleteLocked() {
             if (lastFrameNumber <= completedFrameNumber) {
                 ALOGV("Mark sequenceId %d as sequence completed", sequenceId);
                 it->second.isSequenceCompleted = true;
-            }
 
+                // Send sequence completion callback
+                sendCaptureSequenceCompletedLocked(sequenceId, lastFrameNumber);
+            }
         }
 
         if (it->second.isSequenceCompleted && it->second.isInflightCompleted) {
-            sendCaptureSequenceCompletedLocked(sequenceId, lastFrameNumber);
-
             it = mSequenceLastFrameNumberMap.erase(it);
             ALOGV("%s: Remove holder for sequenceId %d", __FUNCTION__, sequenceId);
         } else {
@@ -1464,8 +1464,6 @@ CameraDevice::removeCompletedCallbackHolderLocked(int64_t lastCompletedRegularFr
                 lastCompletedRegularFrameNumber);
         if (lastFrameNumber <= lastCompletedRegularFrameNumber) {
             if (it->second.isSequenceCompleted) {
-                sendCaptureSequenceCompletedLocked(sequenceId, lastFrameNumber);
-
                 it = mSequenceLastFrameNumberMap.erase(it);
                 ALOGV("%s: Remove holder for sequenceId %d", __FUNCTION__, sequenceId);
             } else {
