@@ -46,6 +46,30 @@
       },
       "revId": "4e8c961a14b126e6612de86671da500395fb1291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6fab83_a8d8c044",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-07-18T01:56:29Z",
+      "side": 1,
+      "message": "The cache will have the same life time as the boolean variable in the current code. Currently we effectively cache the current value of the permission by recording it into a boolean variable, for example, `canCaptureOutput`.\n\nWith the proposed approach, a boolean variable is replaced with an object that holds the retrieved value. Since the object is created on the stack (see my example), its life time, and thus the life time of the cached value inside of it, will also be limited to the function call. No conceptual changes to caching here.",
+      "parentUuid": "743434a0_c73b8943",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 51
+      },
+      "revId": "4e8c961a14b126e6612de86671da500395fb1291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
