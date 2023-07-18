@@ -22,6 +22,30 @@
       },
       "revId": "4e8c961a14b126e6612de86671da500395fb1291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "743434a0_c73b8943",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1902032
+      },
+      "writtenOn": "2023-07-18T01:47:31Z",
+      "side": 1,
+      "message": "Thanks for your reply. Your suggestion is more reasonable.\nHowever I think it should not using cache since the permission may be changed.",
+      "parentUuid": "f57ad20e_f8ab1fea",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 51
+      },
+      "revId": "4e8c961a14b126e6612de86671da500395fb1291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
