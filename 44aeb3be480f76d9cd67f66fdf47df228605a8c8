@@ -135,6 +135,30 @@
       },
       "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b30e344_e15b4dca",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7383,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-07-18T16:37:42Z",
+      "side": 1,
+      "message": "The comment for `AudioOutputDescriptor::mDevices` says that these are the devices where the output is routed to (https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/common/managerdefinitions/include/AudioOutputDescriptor.h;l\u003d314;drc\u003d72af8011fe38f00df58579b476187f8e9fb35a58). Output can be muted, but still stay routed to the speaker. In this case, as I understand, the index will not be 0.\n\nHowever, I\u0027m not deeply familiar with the data model used for volume curves management. I would defer to Eric or Jean-Michel for the final judgement.",
+      "parentUuid": "e37ec6d9_073b65bc",
+      "range": {
+        "startLine": 7383,
+        "startChar": 0,
+        "endLine": 7383,
+        "endChar": 51
+      },
+      "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
