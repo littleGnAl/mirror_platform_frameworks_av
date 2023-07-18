@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ec3bd9_783fa033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963880
+      },
+      "writtenOn": "2023-07-18T01:55:34Z",
+      "side": 1,
+      "message": "There is no intention to change index\u003d\u003d0 here. For example, if deviceTypes is empty, then the index may be the speaker\u0027s index. Assuming that outputDesc-\u003edevices().types() is not a speaker but a proxy, then the speaker\u0027s index and will be sent to proxy, causing problems.",
+      "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08dbb7da_6ef43712",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-07-17T20:30:06Z",
       "side": 1,
       "message": "I don\u0027t have a deep knowledge of this code, but from I see below, `index \u003d\u003d 0` means \"muted.\" Thus, we probably don\u0027t want to change the index when it was `0`.",
+      "range": {
+        "startLine": 7383,
+        "startChar": 0,
+        "endLine": 7383,
+        "endChar": 51
+      },
+      "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd82fa8_7f01b140",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7383,
+      "author": {
+        "id": 1963880
+      },
+      "writtenOn": "2023-07-18T01:55:34Z",
+      "side": 1,
+      "message": "There is no intention to change index\u003d\u003d0 here. For example, if deviceTypes is empty, then the index may be the speaker\u0027s index. Assuming that outputDesc-\u003edevices().types() is not a speaker but a proxy, then the speaker\u0027s index and will be sent to proxy, causing problems.",
+      "parentUuid": "08dbb7da_6ef43712",
       "range": {
         "startLine": 7383,
         "startChar": 0,
