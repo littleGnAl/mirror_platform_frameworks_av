@@ -63,6 +63,30 @@
       },
       "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a416731b_15b9ea3d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7383,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-07-18T01:59:04Z",
+      "side": 1,
+      "message": "\u003e There is no intention to change index\u003d\u003d0 here.\n\nSuppose the caller has passed to `checkAndSetVolume` empty `deviceTypes` and `index \u003d 0`. In this case, the line 7383 will overwrite `index`, possibly to non-zero. That\u0027s what I\u0027m talking about here.",
+      "parentUuid": "7cd82fa8_7f01b140",
+      "range": {
+        "startLine": 7383,
+        "startChar": 0,
+        "endLine": 7383,
+        "endChar": 51
+      },
+      "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
