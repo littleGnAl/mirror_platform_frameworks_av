@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "282644f4_bd060741",
+        "filename": "camera/ndk/impl/ACameraDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2023-07-18T16:52:03Z",
+      "side": 1,
+      "message": "I am guessing this aligns the behavior with the java framework:\nhttps://cs.android.com/android/platform/superproject/+/main:frameworks/base/core/java/android/hardware/camera2/impl/CameraDeviceImpl.java;l\u003d1644 ?",
+      "revId": "8ac0ac27827afa74d4f6baaf23b1271b1126cbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
