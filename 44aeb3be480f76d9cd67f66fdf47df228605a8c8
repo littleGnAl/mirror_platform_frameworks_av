@@ -111,6 +111,30 @@
       },
       "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e37ec6d9_073b65bc",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7383,
+      "author": {
+        "id": 1963880
+      },
+      "writtenOn": "2023-07-18T02:24:36Z",
+      "side": 1,
+      "message": "This should not matter, if \"the caller has passed to checkAndSetVolume empty deviceTypes and index \u003d 0\", then it can only mean that the speaker is muted, if outputDesc-\u003edevices().types() is muted, the index of outputDesc-\u003edevices().types() should also be 0, and vice versa.",
+      "parentUuid": "7d6bbfc9_5740638d",
+      "range": {
+        "startLine": 7383,
+        "startChar": 0,
+        "endLine": 7383,
+        "endChar": 51
+      },
+      "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
