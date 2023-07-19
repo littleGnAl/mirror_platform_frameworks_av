@@ -207,6 +207,30 @@
       },
       "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9692708_ff0a57c1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7383,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-07-19T15:26:09Z",
+      "side": 1,
+      "message": "OK, makes sense. Sorry for being picky, I just wanted to ensure that the change does not introduce any unpredictable behavior.",
+      "parentUuid": "3eb5ee9f_62c51117",
+      "range": {
+        "startLine": 7383,
+        "startChar": 0,
+        "endLine": 7383,
+        "endChar": 51
+      },
+      "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
