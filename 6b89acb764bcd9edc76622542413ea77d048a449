@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64444af7_6dd34c89",
+        "filename": "media/codec2/hal/aidl/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-07-20T21:06:38Z",
+      "side": 1,
+      "message": "Could you remove the dead codes?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 3
+      },
+      "revId": "6b89acb764bcd9edc76622542413ea77d048a449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38433553_d924d6a9",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-07-20T21:06:38Z",
+      "side": 1,
+      "message": "Do we have the specialization for this?",
+      "range": {
+        "startLine": 195,
+        "startChar": 11,
+        "endLine": 195,
+        "endChar": 28
+      },
+      "revId": "6b89acb764bcd9edc76622542413ea77d048a449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ce70aa_d73851e3",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-07-20T21:06:38Z",
+      "side": 1,
+      "message": "ditto(also for belows)",
+      "range": {
+        "startLine": 202,
+        "startChar": 11,
+        "endLine": 202,
+        "endChar": 28
+      },
+      "revId": "6b89acb764bcd9edc76622542413ea77d048a449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
