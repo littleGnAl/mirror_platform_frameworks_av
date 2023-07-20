@@ -271,6 +271,30 @@
       },
       "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ee9025_6fd26a90",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7384,
+      "author": {
+        "id": 1963880
+      },
+      "writtenOn": "2023-07-20T02:44:36Z",
+      "side": 1,
+      "message": "I\u0027ve modified the line lengths to keep each line under 100 characters.\n\nI can\u0027t see the content of \"go/ayeaye-long-lines\", but the code used in the modification is similarly used in other places, such as line 2197, line 3220",
+      "parentUuid": "aabb8f0b_2f909a79",
+      "range": {
+        "startLine": 7384,
+        "startChar": 0,
+        "endLine": 7384,
+        "endChar": 142
+      },
+      "revId": "44aeb3be480f76d9cd67f66fdf47df228605a8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
