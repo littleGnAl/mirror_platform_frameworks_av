@@ -330,7 +330,7 @@ private:
         std::scoped_lock lock{mLock};
         // Unregistering from DeathRecipient notification.
         if (mService != nullptr) {
-            AIBinder_unlinkToDeath(mService->asBinder().get(), mDeathRecipient.get(), this);
+            AIBinder_unlinkToDeath(mService->asBinder().get(), mDeathRecipient.get(), mCookie);
             mService = nullptr;
         }
     }
@@ -370,6 +370,7 @@ private:
     std::shared_ptr<IResourceManagerClient> mClient;
     ::ndk::ScopedAIBinder_DeathRecipient mDeathRecipient;
     std::shared_ptr<IResourceManagerService> mService;
+    BinderDiedContext* mCookie = nullptr;
 };
 
 MediaCodec::ResourceManagerServiceProxy::ResourceManagerServiceProxy(
@@ -434,9 +435,9 @@ std::shared_ptr<IResourceManagerService> MediaCodec::ResourceManagerServiceProxy
 
     // Create the context that is passed as cookie to the binder death notification.
     // The context gets deleted at BinderUnlinkedCallback.
-    BinderDiedContext* context = new BinderDiedContext{.mRMServiceProxy = weak_from_this()};
+    mCookie = new BinderDiedContext{.mRMServiceProxy = weak_from_this()};
     // Register for the callbacks by linking to death notification.
-    AIBinder_linkToDeath(mService->asBinder().get(), mDeathRecipient.get(), context);
+    AIBinder_linkToDeath(mService->asBinder().get(), mDeathRecipient.get(), mCookie);
 
     // If the RM was restarted, re-register all the resources.
     if (mBinderDied) {
