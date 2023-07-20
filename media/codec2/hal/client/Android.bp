@@ -29,6 +29,7 @@ cc_library {
     name: "libcodec2_client",
 
     srcs: [
+        "GraphicsTracker.cpp",
         "client.cpp",
         "output.cpp",
     ],
@@ -56,6 +57,7 @@ cc_library {
         "libgui",
         "libhidlbase",
         "liblog",
+        "libnativewindow",
         "libstagefright_bufferpool@2.0.1",
         "libui",
         "libutils",
