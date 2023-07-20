@@ -1083,7 +1083,7 @@ status_t MPEG4Writer::start(MetaData *param) {
 
 status_t MPEG4Writer::stop() {
     // If reset was in progress, wait for it to complete.
-    return reset(true, true);
+    return reset(true, false);
 }
 
 status_t MPEG4Writer::pause() {
