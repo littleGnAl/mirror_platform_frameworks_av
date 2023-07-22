@@ -639,6 +639,26 @@ void EngineBase::dump(String8 *dst) const
     dumpCapturePresetDevicesRoleMap(dst, 2);
     mVolumeGroups.dump(dst, 2);
 }
-
+diff --git a/services/audiopolicy/engine/common/src/EngineBase.cpp b/services/audiopolicy/engine/common/src/EngineBase.cpp
+index 150a9a8e4f..9d5dff6d9f 100644
+--- a/services/audiopolicy/engine/common/src/EngineBase.cpp
++++ b/services/audiopolicy/engine/common/src/EngineBase.cpp
+@@ -165,16 +165,7 @@ engineConfig::ParsingResult EngineBase::loadAudioPolicyEngineConfig()
+         android::status_t ret = engineConfig::parseLegacyVolumes(config.volumeGroups);
+         result = {std::make_unique<engineConfig::Config>(config),
+                   static_cast<size_t>(ret == NO_ERROR ? 0 : 1)};
+-    } else {
+-        // Append for internal use only volume groups (e.g. rerouting/patch)
+-        result.parsedConfig->volumeGroups.insert(
+-                    std::end(result.parsedConfig->volumeGroups),
+-                    std::begin(gSystemVolumeGroups), std::end(gSystemVolumeGroups));
+     }
+-    // Append for internal use only strategies (e.g. rerouting/patch)
+-    result.parsedConfig->productStrategies.insert(
+-                std::end(result.parsedConfig->productStrategies),
+-                std::begin(gOrderedSystemStrategies), std::end(gOrderedSystemStrategies));
+ 
+ 
+     ALOGE_IF(result.nbSkippedElement != 0, "skipped %zu elements", result.nbSkippedElement);
 } // namespace audio_policy
 } // namespace android
