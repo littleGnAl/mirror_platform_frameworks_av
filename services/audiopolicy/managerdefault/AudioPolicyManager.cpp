@@ -7315,5 +7315,25 @@ sp<SwAudioOutputDescriptor> AudioPolicyManager::openOutputWithProfileAndDevice(
     }
     return desc;
 }
-
+diff --git a/services/audiopolicy/managerdefault/AudioPolicyManager.cpp b/services/audiopolicy/managerdefault/AudioPolicyManager.cpp
+index 5a18762967..f3f50f513c 100644
+--- a/services/audiopolicy/managerdefault/AudioPolicyManager.cpp
++++ b/services/audiopolicy/managerdefault/AudioPolicyManager.cpp
+@@ -5349,15 +5349,7 @@ status_t AudioPolicyManager::checkOutputsForDevice(const sp<DeviceDescriptor>& d
+     }
+ 
+     if (state == AUDIO_POLICY_DEVICE_STATE_AVAILABLE) {
+-        // first call getAudioPort to get the supported attributes from the HAL
+-        struct audio_port_v7 port = {};
+-        device->toAudioPort(&port);
+-        status_t status = mpClientInterface->getAudioPort(&port);
+-        if (status == NO_ERROR) {
+-            device->importAudioPort(port);
+-        }
+-
+-        // then list already open outputs that can be routed to this device
++        // first list already open outputs that can be routed to this device
+         for (size_t i = 0; i < mOutputs.size(); i++) {
+             desc = mOutputs.valueAt(i);
+             if (!desc->isDuplicated() && desc->supportsDevice(device)
 } // namespace android
