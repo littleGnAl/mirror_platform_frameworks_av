@@ -69,9 +69,11 @@ int32_t ColorConversionFuzzer::getFrameSize(OMX_COLOR_FORMATTYPE colorFormat, in
             frameSize = 4 * stride * height;
             break;
         }
+        case OMX_COLOR_FormatCbYCrY:
+            frameSize = 2 * stride * height;
+            break;
         case OMX_COLOR_FormatYUV420Planar:
         case OMX_COLOR_FormatYUV420SemiPlanar:
-        case OMX_COLOR_FormatCbYCrY:
         case OMX_QCOM_COLOR_FormatYVU420SemiPlanar:
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
         default: {
