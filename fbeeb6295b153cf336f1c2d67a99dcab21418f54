@@ -16,6 +16,23 @@
       "message": "We cannot release the audio policy service lock in the middle of processing a call to audio policy manager.\nIf there is a cross deadlock between audio flinger and audio policy service, this must be addressed in the way audio policy service processes the command from audio flinger.",
       "revId": "fbeeb6295b153cf336f1c2d67a99dcab21418f54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b2f201_08fcef7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-07-24T15:26:34Z",
+      "side": 1,
+      "message": "Eric, there is some analysis I\u0027ve shared on the related bug.",
+      "revId": "fbeeb6295b153cf336f1c2d67a99dcab21418f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
