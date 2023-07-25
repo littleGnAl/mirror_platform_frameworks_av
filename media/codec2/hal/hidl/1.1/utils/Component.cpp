@@ -411,6 +411,7 @@ Return<void> Component::createBlockPool(
     if (blockPool) {
         mBlockPoolsMutex.lock();
         mBlockPools.emplace(blockPool->getLocalId(), blockPool);
+        LOG(INFO) << "SS-memleak: blockpool created: " << blockPool->getLocalId();
         mBlockPoolsMutex.unlock();
     } else if (status == C2_OK) {
         status = C2_CORRUPTED;
@@ -425,7 +426,10 @@ Return<void> Component::createBlockPool(
 
 Return<Status> Component::destroyBlockPool(uint64_t blockPoolId) {
     std::lock_guard<std::mutex> lock(mBlockPoolsMutex);
-    return mBlockPools.erase(blockPoolId) == 1 ?
+    auto del =  mBlockPools.erase(blockPoolId);
+    LOG(INFO) << "SS-memleak : blockpool destroyed: " << blockPoolId <<
+              (del == 1 ? " success":" fail");
+    return del == 1 ?
             Status::OK : Status::CORRUPTED;
 }
 
@@ -442,6 +446,8 @@ Return<Status> Component::reset() {
     Status status = static_cast<Status>(mComponent->reset());
     {
         std::lock_guard<std::mutex> lock(mBlockPoolsMutex);
+        auto count = mBlockPools.size();
+        LOG(INFO) << "SS-memleak: blockpool cleared " << count;
         mBlockPools.clear();
     }
     InputBufferManager::unregisterFrameData(mListener);
@@ -452,6 +458,8 @@ Return<Status> Component::release() {
     Status status = static_cast<Status>(mComponent->release());
     {
         std::lock_guard<std::mutex> lock(mBlockPoolsMutex);
+        auto count = mBlockPools.size();
+        LOG(INFO) << "SS-memleak: blockpool cleared " << count;
         mBlockPools.clear();
     }
     InputBufferManager::unregisterFrameData(mListener);

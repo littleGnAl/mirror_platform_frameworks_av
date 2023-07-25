@@ -763,9 +763,14 @@ private:
 
 C2PooledBlockPool::C2PooledBlockPool(
         const std::shared_ptr<C2Allocator> &allocator, const local_id_t localId)
-        : mAllocator(allocator), mLocalId(localId), mImpl(new Impl(allocator)) {}
+        : mAllocator(allocator), mLocalId(localId), mImpl(new Impl(allocator)) {
+    ALOGD("SS-memleak: Bufferpool based blockpool %llu ctored",
+          (unsigned long long)localId);
+}
 
 C2PooledBlockPool::~C2PooledBlockPool() {
+    ALOGD("SS-memleak: Bufferpool based blockpool %llu dtored",
+          (unsigned long long)mLocalId);
 }
 
 c2_status_t C2PooledBlockPool::fetchLinearBlock(
