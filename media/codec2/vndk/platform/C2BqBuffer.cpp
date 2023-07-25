@@ -1046,7 +1046,9 @@ C2BufferQueueBlockPool::C2BufferQueueBlockPool(
         const std::shared_ptr<C2Allocator> &allocator, const local_id_t localId)
         : mAllocator(allocator), mLocalId(localId), mImpl(new Impl(allocator)) {}
 
-C2BufferQueueBlockPool::~C2BufferQueueBlockPool() {}
+C2BufferQueueBlockPool::~C2BufferQueueBlockPool() {
+    ALOGD("SS-memleak: %llu BQ pool dtored", (unsigned long long)mLocalId);
+}
 
 c2_status_t C2BufferQueueBlockPool::fetchGraphicBlock(
         uint32_t width,

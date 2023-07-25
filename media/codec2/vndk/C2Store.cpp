@@ -483,6 +483,7 @@ private:
                     mComponents[poolId].insert(
                            mComponents[poolId].end(),
                            components.begin(), components.end());
+                    ALOGD("SS-memleak: ion based pool %llu", (unsigned long long)poolId);
                 }
                 break;
             case C2PlatformAllocatorStore::BLOB:
@@ -496,6 +497,7 @@ private:
                     mComponents[poolId].insert(
                            mComponents[poolId].end(),
                            components.begin(), components.end());
+                    ALOGD("SS-memleak: blob based pool %llu", (unsigned long long)poolId);
                 }
                 break;
             case C2PlatformAllocatorStore::GRALLOC:
@@ -510,6 +512,7 @@ private:
                     mComponents[poolId].insert(
                            mComponents[poolId].end(),
                            components.begin(), components.end());
+                    ALOGD("SS-memleak: gralloc based pool %llu", (unsigned long long)poolId);
                 }
                 break;
             case C2PlatformAllocatorStore::BUFFERQUEUE:
@@ -523,6 +526,7 @@ private:
                     mComponents[poolId].insert(
                            mComponents[poolId].end(),
                            components.begin(), components.end());
+                    ALOGD("SS-memleak: BQ based pool %llu", (unsigned long long)poolId);
                 }
                 break;
             default:
@@ -536,6 +540,7 @@ private:
                     mComponents[poolId].insert(
                            mComponents[poolId].end(),
                            components.begin(), components.end());
+                    ALOGD("SS-memleak: platform based pool %llu", (unsigned long long)poolId);
                 }
                 break;
         }
