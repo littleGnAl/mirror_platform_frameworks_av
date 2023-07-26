@@ -25,7 +25,6 @@ namespace android {
 void CodecErrorLog::log(const char *tag, const char *message) {
     std::unique_lock lock(mLock);
     ALOG(LOG_ERROR, tag, "%s", message);
-    mStream << message << std::endl;
 }
 
 void CodecErrorLog::log(const char *tag, const std::string &message) {
