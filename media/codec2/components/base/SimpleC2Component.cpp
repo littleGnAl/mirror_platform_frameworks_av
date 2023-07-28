@@ -521,7 +521,7 @@ void SimpleC2Component::WorkHandler::onMessageReceived(const sp<AMessage> &msg) 
 
 class SimpleC2Component::BlockingBlockPool : public C2BlockPool {
 public:
-    BlockingBlockPool(const std::shared_ptr<C2BlockPool>& base): mBase{base} {}
+    BlockingBlockPool(const std::shared_ptr<C2BlockPool>& base, std::atomic<bool> *released): mBase{base}, mReleased{released} {}
 
     virtual local_id_t getLocalId() const override {
         return mBase->getLocalId();
@@ -561,12 +561,13 @@ public:
         do {
             status = mBase->fetchGraphicBlock(width, height, format, usage,
                                               block);
-        } while (status == C2_BLOCKING);
-        return status;
+        } while (status == C2_BLOCKING && (*mReleased) == false);
+        return status == C2_BLOCKING ? C2_BAD_STATE : status;
     }
 
 private:
     std::shared_ptr<C2BlockPool> mBase;
+    std::atomic<bool> *mReleased;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -756,6 +757,7 @@ c2_status_t SimpleC2Component::reset() {
 
 c2_status_t SimpleC2Component::release() {
     ALOGV("release");
+    mReleased = true;
     sp<AMessage> reply;
     (new AMessage(WorkHandler::kWhatRelease, mHandler))->postAndAwaitResponse(&reply);
     return C2_OK;
@@ -882,7 +884,7 @@ bool SimpleC2Component::processQueue() {
                             blockPool ? blockPool->getLocalId() : 111000111),
                     err);
             if (err == C2_OK) {
-                mOutputBlockPool = std::make_shared<BlockingBlockPool>(blockPool);
+                mOutputBlockPool = std::make_shared<BlockingBlockPool>(blockPool, &mReleased);
             }
             return err;
         }();
