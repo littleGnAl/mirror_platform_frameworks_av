@@ -17,6 +17,7 @@
 #ifndef SIMPLE_C2_COMPONENT_H_
 #define SIMPLE_C2_COMPONENT_H_
 
+#include <atomic>
 #include <list>
 #include <unordered_map>
 
@@ -261,6 +262,7 @@ private:
     std::shared_ptr<BlockingBlockPool> mOutputBlockPool;
 
     std::vector<int> mBitDepth10HalPixelFormats;
+    std::atomic<bool> mReleased{false};
     SimpleC2Component() = delete;
 };
 
