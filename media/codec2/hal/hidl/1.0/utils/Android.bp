@@ -19,7 +19,6 @@ cc_library {
     ],
 
     header_libs: [
-        "libcodec2_hal_common",
         "libcodec2_internal", // private
     ],
 
@@ -78,9 +77,8 @@ cc_library {
 
     header_libs: [
         "libbinder_headers",
-        "libcodec2_hal_common",
-        "libcodec2_internal", // private
         "libsystem_headers",
+        "libcodec2_internal", // private
     ],
 
     shared_libs: [
