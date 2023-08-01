@@ -222,6 +222,21 @@ c2_status_t Component::status() const {
     return mInit;
 }
 
+void Component::onDeathReceived() {
+    {
+        std::lock_guard<std::mutex> lock(mBlockPoolsMutex);
+        mDeathReceived = true;
+        for (auto it = mBlockPools.begin(); it != mBlockPools.end(); ++it) {
+            if (it->second->getAllocatorId() == C2PlatformAllocatorStore::BUFFERQUEUE) {
+                std::shared_ptr<C2BufferQueueBlockPool> bqPool =
+                        std::static_pointer_cast<C2BufferQueueBlockPool>(it->second);
+                bqPool->invalidate();
+            }
+        }
+    }
+    release();
+}
+
 // Methods from ::android::hardware::media::c2::V1_1::IComponent
 Return<Status> Component::queue(const WorkBundle& workBundle) {
     std::list<std::unique_ptr<C2Work>> c2works;
@@ -408,12 +423,20 @@ Return<void> Component::createBlockPool(
     if (status != C2_OK) {
         blockPool = nullptr;
     }
+    bool emplaced = false;
     if (blockPool) {
         mBlockPoolsMutex.lock();
-        mBlockPools.emplace(blockPool->getLocalId(), blockPool);
+        if (!mDeathReceived) {
+            mBlockPools.emplace(blockPool->getLocalId(), blockPool);
+            emplaced = true;
+        }
         mBlockPoolsMutex.unlock();
     } else if (status == C2_OK) {
         status = C2_CORRUPTED;
+    }
+    if (!emplaced) {
+        blockPool.reset();
+        status = C2_BAD_STATE;
     }
 
     _hidl_cb(static_cast<Status>(status),
@@ -532,8 +555,8 @@ void Component::initListener(const sp<Component>& self) {
                 ) override {
             auto strongComponent = component.promote();
             if (strongComponent) {
-                LOG(INFO) << "Client died ! release the component !!";
-                strongComponent->release();
+                LOG(INFO) << "Client died ! notify and release the component !!";
+                strongComponent->onDeathReceived();
             } else {
                 LOG(ERROR) << "Client died ! no component to release !!";
             }

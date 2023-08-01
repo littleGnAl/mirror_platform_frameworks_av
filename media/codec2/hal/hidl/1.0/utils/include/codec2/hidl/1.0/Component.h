@@ -34,6 +34,7 @@
 #include <C2Buffer.h>
 #include <C2.h>
 
+#include <atomic>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -66,6 +67,8 @@ struct Component : public IComponent,
             const sp<::android::hardware::media::bufferpool::V2_0::
                 IClientManager>& clientPoolManager);
     c2_status_t status() const;
+    // Recieves a death notification of the client.
+    void onDeathReceived();
 
     typedef ::android::hardware::graphics::bufferqueue::V1_0::
             IGraphicBufferProducer HGraphicBufferProducer1;
@@ -135,6 +138,7 @@ protected:
 
     using HwDeathRecipient = ::android::hardware::hidl_death_recipient;
     sp<HwDeathRecipient> mDeathRecipient;
+    std::atomic<bool> mDeathReceived{false};
 };
 
 }  // namespace utils
