@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e7c75e_cac5c99a",
+        "filename": "media/codec2/hal/hidl/1.0/utils/Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-02T19:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e40c97a_25eb3270",
+      "range": {
+        "startLine": 228,
+        "startChar": 7,
+        "endLine": 228,
+        "endChar": 24
+      },
+      "revId": "cc283862d7a762cdb346654f2ec2d7d995f5ad51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ca38bea_e52d5ba8",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4aa0e3_0f865289",
+        "filename": "media/codec2/hal/hidl/1.0/utils/Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-02T19:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ca38bea_e52d5ba8",
+      "range": {
+        "startLine": 437,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "cc283862d7a762cdb346654f2ec2d7d995f5ad51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1579c596_cd310de7",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-02T18:37:20Z",
       "side": 1,
       "message": "looks like all hidl 1/1.1/2/3 are all the same pattern and therefore the\nsame questions from me.",
+      "range": {
+        "startLine": 437,
+        "startChar": 3,
+        "endLine": 437,
+        "endChar": 20
+      },
+      "revId": "cc283862d7a762cdb346654f2ec2d7d995f5ad51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49433fb_76640db3",
+        "filename": "media/codec2/hal/hidl/1.1/utils/Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-02T19:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1579c596_cd310de7",
       "range": {
         "startLine": 437,
         "startChar": 3,
