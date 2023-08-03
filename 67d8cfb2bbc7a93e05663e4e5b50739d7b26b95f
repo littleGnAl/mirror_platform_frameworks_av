@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149ceef6_f2718d43",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-03T20:32:06Z",
+      "side": 1,
+      "message": "Is this a partial failure for the specific index?\nReturning all partial failures and the corresponding index might be required for the future?",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 38
+      },
+      "revId": "67d8cfb2bbc7a93e05663e4e5b50739d7b26b95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1053418_94ba0f76",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-03T20:32:06Z",
+      "side": 1,
+      "message": "aidl transcation actually does not happen here?\nCould we have a better error code here?(I\u0027m unsure we have proper one though)",
+      "range": {
+        "startLine": 752,
+        "startChar": 19,
+        "endLine": 752,
+        "endChar": 40
+      },
+      "revId": "67d8cfb2bbc7a93e05663e4e5b50739d7b26b95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
