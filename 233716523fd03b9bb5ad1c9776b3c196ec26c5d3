@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6eb418_7b466900",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-08-03T20:48:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "57f0b992_20456d9d",
+      "range": {
+        "startLine": 611,
+        "startChar": 16,
+        "endLine": 611,
+        "endChar": 21
+      },
+      "revId": "233716523fd03b9bb5ad1c9776b3c196ec26c5d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c0f2549_36e8756b",
