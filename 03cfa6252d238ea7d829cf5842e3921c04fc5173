@@ -22,6 +22,30 @@
       },
       "revId": "03cfa6252d238ea7d829cf5842e3921c04fc5173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b327a2_cb907b07",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-03T21:10:52Z",
+      "side": 1,
+      "message": "Yes, since client process is dead, C2BqPool will never be valid.",
+      "parentUuid": "e640ce05_36dd3585",
+      "range": {
+        "startLine": 754,
+        "startChar": 8,
+        "endLine": 754,
+        "endChar": 20
+      },
+      "revId": "03cfa6252d238ea7d829cf5842e3921c04fc5173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
