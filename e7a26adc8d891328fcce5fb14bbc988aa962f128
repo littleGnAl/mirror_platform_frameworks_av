@@ -16,6 +16,24 @@
       "message": "@mnaganov@google.com\nIs this interface not required to present framework compatibility matrix?",
       "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899cf1d1_ffd42a4c",
+        "filename": "aidl/android/media/audio/IHalAdapterVendorExtension.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-03T16:26:33Z",
+      "side": 1,
+      "message": "It is a system-side interface. It can only be used for interaction between components on the system partition (including system_ext). You can see that it\u0027s not marked as \"VINTF-stable\", thus it\u0027s not included in any compatibility matrices.",
+      "parentUuid": "d0d9583f_6ce69a56",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
