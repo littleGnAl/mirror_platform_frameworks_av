@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e640ce05_36dd3585",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-08-03T20:46:30Z",
+      "side": 1,
+      "message": "Once invalidated, the C2BufferQueueBlockPool can never be reused is it?",
+      "range": {
+        "startLine": 754,
+        "startChar": 8,
+        "endLine": 754,
+        "endChar": 20
+      },
+      "revId": "03cfa6252d238ea7d829cf5842e3921c04fc5173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
