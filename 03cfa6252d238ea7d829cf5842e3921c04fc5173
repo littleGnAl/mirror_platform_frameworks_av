@@ -46,6 +46,30 @@
       },
       "revId": "03cfa6252d238ea7d829cf5842e3921c04fc5173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c796a5_716dc46b",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-08-03T22:33:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c6b327a2_cb907b07",
+      "range": {
+        "startLine": 754,
+        "startChar": 8,
+        "endLine": 754,
+        "endChar": 20
+      },
+      "revId": "03cfa6252d238ea7d829cf5842e3921c04fc5173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
