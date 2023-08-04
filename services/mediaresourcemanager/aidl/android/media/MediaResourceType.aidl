@@ -24,10 +24,14 @@ package android.media;
 @Backing(type="int")
 enum MediaResourceType {
     kUnspecified = 0,
+    // Codec resource type as secure or unsecure
     kSecureCodec = 1,
     kNonSecureCodec = 2,
+    // Other Codec resource types understood by the frameworks
     kGraphicMemory = 3,
-    kCpuBoost = 4,
-    kBattery = 5,
-    kDrmSession = 6,
+    kRamMemory = 4,
+    kCpuBoost = 5,
+    kBattery = 6,
+    // DRM Session resource type
+    kDrmSession = 7,
 }
