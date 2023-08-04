@@ -30,6 +30,8 @@
 #include <utils/String8.h>
 #include <utils/threads.h>
 
+#include "ResourceModelInterface.h"
+
 namespace android {
 
 class DeathNotifier;
@@ -126,29 +128,55 @@ public:
 
     Status notifyClientConfigChanged(const ClientConfigParcel& clientConfig) override;
 
+    bool isCallingPriorityHigher_l(int callingPid, int pid);
+
+    // Gets the list of all the clients who own the specified resource type.
+    // Returns false if any client belongs to a process with higher priority than the
+    // calling process. The clients will remain unchanged if returns false.
+    bool getAllClients_l(const ResourceRequestInfo& resourceInfo,
+                         PidUidVector* idList,
+                         std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
+
+    // A helper function basically calls getLowestPriorityBiggestClient_l and add
+    // the result client to the given Vector.
+    void getClientForResource_l(const ResourceRequestInfo& requestInfo,
+            PidUidVector* idVector,
+            std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
+
 private:
     friend class ResourceManagerServiceTest;
     friend class DeathNotifier;
     friend class OverrideProcessInfoDeathNotifier;
+
+    // Set up the Resource models.
+    void setUpResourceModels();
+
+    // Set up the Reclaim Policies.
+    void setUpReclaimPolicies();
 
     // Reclaims resources from |clients|. Returns true if reclaim succeeded
     // for all clients.
     bool reclaimUnconditionallyFrom(
         const std::vector<std::shared_ptr<IResourceManagerClient>>& clients);
 
-    // Gets the list of all the clients who own the specified resource type.
-    // Returns false if any client belongs to a process with higher priority than the
-    // calling process. The clients will remain unchanged if returns false.
-    bool getAllClients_l(int callingPid, MediaResource::Type type, MediaResource::SubType subType,
-            PidUidVector* idList,
-            std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
+
+    // Handles resource reclaim associated with codecs.
+    // returns a list of clients who owns specified resource type given it matches
+    // the reclaim policy.
+    bool handleCodecResourceReclaim_l(const ClientInfoParcel& clientInfo,
+        const std::vector<MediaResourceParcel>& resources,
+        std::vector<std::pair<int32_t, uid_t>>* idVector,
+        std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
+
+    // ReclaimFunction
+    typedef std::function<bool(const ResourceRequestInfo&, PidUidVector*,
+                               std::shared_ptr<IResourceManagerClient>*)> ReclaimFunction;
 
     // Gets the client who owns specified resource type from lowest possible priority process.
     // Returns false if the calling process priority is not higher than the lowest process
     // priority. The client will remain unchanged if returns false.
-    bool getLowestPriorityBiggestClient_l(int callingPid, MediaResource::Type type,
-            MediaResource::SubType subType, PidUidVector* idList,
-            std::shared_ptr<IResourceManagerClient> *client);
+    bool getLowestPriorityProcessBiggestClient_l(const ResourceRequestInfo& requestInfo,
+            PidUidVector* idVector, std::shared_ptr<IResourceManagerClient>* client);
 
     // Gets lowest priority process that has the specified resource type.
     // Returns false if failed. The output parameters will remain unchanged if failed.
@@ -166,13 +194,6 @@ private:
             MediaResource::SubType subType, uid_t& uid,
             std::shared_ptr<IResourceManagerClient> *client);
 
-    bool isCallingPriorityHigher_l(int callingPid, int pid);
-
-    // A helper function basically calls getLowestPriorityBiggestClient_l and add
-    // the result client to the given Vector.
-    void getClientForResource_l(int callingPid, const MediaResourceParcel *res,
-            PidUidVector* idList,
-            std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
 
     void onFirstAdded(const MediaResourceParcel& res, const ResourceInfo& clientInfo);
     void onLastRemoved(const MediaResourceParcel& res, const ResourceInfo& clientInfo);
@@ -204,6 +225,7 @@ private:
     bool mSupportsMultipleSecureCodecs;
     bool mSupportsSecureWithNonSecureCodec;
     int32_t mCpuBoostCount;
+    std::vector<ReclaimFunction> mReclaimFunctions;
     ::ndk::ScopedAIBinder_DeathRecipient mDeathRecipient;
     struct ProcessInfoOverride {
         std::shared_ptr<DeathNotifier> deathNotifier = nullptr;
@@ -213,6 +235,8 @@ private:
     std::map<pid_t, ProcessInfoOverride> mProcessInfoOverrideMap;
     std::shared_ptr<ResourceObserverService> mObserverService;
     std::unique_ptr<ResourceManagerMetrics> mResourceManagerMetrics;
+    std::unique_ptr<ResourceModelInterface> mCodecCoexistenceModel;
+    std::unique_ptr<ResourceModelInterface> mCommonResourceModel;
 };
 
 // ----------------------------------------------------------------------------

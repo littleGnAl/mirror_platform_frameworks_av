@@ -41,7 +41,7 @@ public:
             int64_t instanceCount = 1);
     static MediaResource GraphicMemoryResource(int64_t value);
     static MediaResource CpuBoostResource();
-    static MediaResource VideoBatteryResource();
+    static MediaResource VideoBatteryResource(bool isHardware = true);
     static MediaResource DrmSessionResource(const std::vector<uint8_t> &id, int64_t value);
 };
 
@@ -54,6 +54,7 @@ inline static const char *asString(MediaResource::Type i, const char *def = "??"
         case MediaResource::Type::kCpuBoost:       return "cpu-boost";
         case MediaResource::Type::kBattery:        return "battery";
         case MediaResource::Type::kDrmSession:     return "drm-session";
+        case MediaResource::Type::kRamMemory:      return "ram-memory";
         default:                                   return def;
     }
 }
@@ -61,9 +62,12 @@ inline static const char *asString(MediaResource::Type i, const char *def = "??"
 inline static const char *asString(MediaResource::SubType i, const char *def = "??") {
     switch (i) {
         case MediaResource::SubType::kUnspecifiedSubType: return "unspecified";
-        case MediaResource::SubType::kAudioCodec:         return "audio-codec";
-        case MediaResource::SubType::kVideoCodec:         return "video-codec";
-        case MediaResource::SubType::kImageCodec:         return "image-codec";
+        case MediaResource::SubType::kHwAudioCodec:         return "hw-audio-codec";
+        case MediaResource::SubType::kSwAudioCodec:         return "sw-audio-codec";
+        case MediaResource::SubType::kHwVideoCodec:         return "hw-video-codec";
+        case MediaResource::SubType::kSwVideoCodec:         return "sw-video-codec";
+        case MediaResource::SubType::kHwImageCodec:         return "hw-image-codec";
+        case MediaResource::SubType::kSwImageCodec:         return "sw-image-codec";
         default:                                 return def;
     }
 }
