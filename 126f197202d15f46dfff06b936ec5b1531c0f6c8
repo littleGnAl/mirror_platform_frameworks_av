@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6968ec71_d5c568e6",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-04T23:23:10Z",
+      "side": 1,
+      "message": "nit: init at the ctor",
+      "revId": "126f197202d15f46dfff06b936ec5b1531c0f6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edaf8c28_58ab02e2",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-04T23:23:10Z",
+      "side": 1,
+      "message": "nit: init at ctor",
+      "revId": "126f197202d15f46dfff06b936ec5b1531c0f6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
