@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20573e0e_925182be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2023-08-07T16:03:16Z",
+      "side": 1,
+      "message": "Please also resolve conflicts and don\u0027t make this cl depend on another one.",
+      "revId": "15ae77bc41bb0cca9554a10bbe7dbabfc1ca79b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6b2a8c_9f39e398",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2256,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2023-08-07T16:03:16Z",
+      "side": 1,
+      "message": "Do you have to check if the queue is empty? I think the message should be posted as long as the workItems is not empty.",
+      "range": {
+        "startLine": 2254,
+        "startChar": 0,
+        "endLine": 2256,
+        "endChar": 9
+      },
+      "revId": "15ae77bc41bb0cca9554a10bbe7dbabfc1ca79b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
