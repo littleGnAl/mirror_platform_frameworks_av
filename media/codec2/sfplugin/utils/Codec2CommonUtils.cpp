@@ -31,11 +31,19 @@
 
 namespace android {
 
-bool isAtLeastT() {
+
+static bool isAtLeast(int version, char *codeName) {
     char deviceCodeName[PROP_VALUE_MAX];
     __system_property_get("ro.build.version.codename", deviceCodeName);
-    return android_get_device_api_level() >= __ANDROID_API_T__ ||
-           !strcmp(deviceCodeName, "Tiramisu");
+    return android_get_device_api_level() >= version || !strcmp(deviceCodeName, codeName);
+}
+
+bool isAtLeastT() {
+    return isAtLeast(__ANDROID_API_T__, "Tiramisu");
+}
+
+bool isAtLeastU() {
+    return isAtLeast(__ANDROID_API_U__, "UpsideDownCake");
 }
 
 static bool isP010Allowed() {
@@ -127,10 +135,13 @@ bool isHalPixelFormatSupported(AHardwareBuffer_Format format) {
             .rfu0 = 0,
             .rfu1 = 0,
     };
-
-    return AHardwareBuffer_isSupported(&consumableForDisplayOrGpu)
-            && AHardwareBuffer_isSupported(&consumableForHwEncoder)
-            && AHardwareBuffer_isSupported(&consumableForSwEncoder);
+    if (isAtLeastU()) {
+        return AHardwareBuffer_isSupported(&consumableForDisplayOrGpu)
+                && AHardwareBuffer_isSupported(&consumableForHwEncoder)
+                && AHardwareBuffer_isSupported(&consumableForSwEncoder);
+    } else {
+        return AHardwareBuffer_isSupported(&consumableForDisplayOrGpu);
+    }
 }
 
 }  // namespace android
