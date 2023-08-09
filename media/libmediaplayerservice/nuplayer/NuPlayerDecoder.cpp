@@ -802,6 +802,13 @@ bool NuPlayer::Decoder::handleAnOutputBuffer(
     notifyResumeCompleteIfNecessary();
 
     if (mRenderer != NULL) {
+        if (mIsAudio) {
+            // DO NOT SUBMIT trying to reproduce
+            // std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            ALOGW("ibaker sleeping 200ms before queueing audio buffer");
+            sleep(200);
+            ALOGW("ibaker after sleep");
+        }
         // send the buffer to renderer.
         mRenderer->queueBuffer(mIsAudio, buffer, reply);
         if (eos && !isDiscontinuityPending()) {
