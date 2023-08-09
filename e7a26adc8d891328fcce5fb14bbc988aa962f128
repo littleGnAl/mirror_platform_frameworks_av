@@ -52,6 +52,24 @@
       "parentUuid": "899cf1d1_ffd42a4c",
       "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48dc6867_94a487c2",
+        "filename": "aidl/android/media/audio/IHalAdapterVendorExtension.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-09T16:31:46Z",
+      "side": 1,
+      "message": "Use of unstable interfaces is not allowed across the system-vendor boundary. I\u0027m not sure at which level this rule is enforced, but it is certainly enforced somewhere.\n\nThe reason why this interface is unstable (system side) is because it operates on arbitrary configuration data that has no pre-defined meaning for the system. This data can only be passed between system and vendor via vendor-defined stable AIDL interfaces wrapped into ParcelableHolders. If this rule were not installed, we could simply continue using strings for parameters in the main HAL interface and IHalAdapterVendorExtension would not be needed.",
+      "parentUuid": "c14b3580_794124fa",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
