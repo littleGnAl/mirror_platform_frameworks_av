@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073d839d_8a7a8dfe",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-08-09T14:19:52Z",
+      "side": 1,
+      "message": "Should be moved after the check for the new codec.",
+      "revId": "f0e4ca0ac4d03b11bc02ee17dab82f1e0cd255a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a7b8bf_3703538b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-08-09T14:19:52Z",
+      "side": 1,
+      "message": "Why not use csd0?",
+      "revId": "f0e4ca0ac4d03b11bc02ee17dab82f1e0cd255a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
