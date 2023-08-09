@@ -34,6 +34,24 @@
       "parentUuid": "d0d9583f_6ce69a56",
       "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c14b3580_794124fa",
+        "filename": "aidl/android/media/audio/IHalAdapterVendorExtension.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1883619
+      },
+      "writtenOn": "2023-08-09T14:43:32Z",
+      "side": 1,
+      "message": "@mnaganov@google.com\n\nAlthough you suggest as system side interface. \ncould we register this Interface in the context of Audio HAL process without any kind of declaration?\nif so, do we need some se-policy rule?",
+      "parentUuid": "899cf1d1_ffd42a4c",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
