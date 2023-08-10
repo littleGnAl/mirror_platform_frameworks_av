@@ -133,10 +133,10 @@ void ALooperRoster::dump(int fd, const Vector<String16>& args) {
 
     Mutex::Autolock autoLock(mLock);
     size_t n = mHandlers.size();
-    s.appendFormat(" %zu registered handlers:\n", n);
+    appendFormat(s, " %zu registered handlers:\n", n);
 
     for (size_t i = 0; i < n; i++) {
-        s.appendFormat("  %d: ", mHandlers.keyAt(i));
+        appendFormat(s, "  %d: ", mHandlers.keyAt(i));
         HandlerInfo &info = mHandlers.editValueAt(i);
         sp<ALooper> looper = info.mLooper.promote();
         if (looper != NULL) {
@@ -144,12 +144,12 @@ void ALooperRoster::dump(int fd, const Vector<String16>& args) {
             sp<AHandler> handler = info.mHandler.promote();
             if (handler != NULL) {
                 handler->mVerboseStats = verboseStats;
-                s.appendFormat(": %" PRIu64 " messages processed", handler->mMessageCounter);
+                appendFormat(s, ": %" PRIu64 " messages processed", handler->mMessageCounter);
                 if (verboseStats) {
                     for (size_t j = 0; j < handler->mMessages.size(); j++) {
                         char fourcc[15];
                         makeFourCC(handler->mMessages.keyAt(j), fourcc, sizeof(fourcc));
-                        s.appendFormat("\n    %s: %u",
+                        appendFormat(s, "\n    %s: %u",
                                 fourcc,
                                 handler->mMessages.valueAt(j));
                     }
