@@ -19,11 +19,11 @@
 #define A_STRING_H_
 
 #include <utils/Errors.h>
+#include <utils/String8.h>
 #include <sys/types.h>
 
 namespace android {
 
-class String8;
 class Parcel;
 
 struct AString {

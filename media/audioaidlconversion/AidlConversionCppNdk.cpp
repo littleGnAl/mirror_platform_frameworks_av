@@ -1050,16 +1050,6 @@ AudioDeviceAddress::Tag suggestDeviceAddressTag(const AudioDeviceDescription& de
 
 ::android::status_t aidl2legacy_AudioDevice_audio_device(
         const AudioDevice& aidl,
-        audio_devices_t* legacyType, String8* legacyAddress) {
-    std::string stringAddress;
-    RETURN_STATUS_IF_ERROR(aidl2legacy_AudioDevice_audio_device(
-                    aidl, legacyType, &stringAddress));
-    *legacyAddress = VALUE_OR_RETURN_STATUS(aidl2legacy_string_view_String8(stringAddress));
-    return OK;
-}
-
-::android::status_t aidl2legacy_AudioDevice_audio_device(
-        const AudioDevice& aidl,
         audio_devices_t* legacyType, std::string* legacyAddress) {
     using Tag = AudioDeviceAddress::Tag;
     *legacyType = VALUE_OR_RETURN_STATUS(
@@ -1107,13 +1097,6 @@ ConversionResult<AudioDevice> legacy2aidl_audio_device_AudioDevice(
         audio_devices_t legacyType, const char* legacyAddress) {
     const std::string stringAddress = VALUE_OR_RETURN(
             legacy2aidl_string(legacyAddress, AUDIO_DEVICE_MAX_ADDRESS_LEN));
-    return legacy2aidl_audio_device_AudioDevice(legacyType, stringAddress);
-}
-
-ConversionResult<AudioDevice>
-legacy2aidl_audio_device_AudioDevice(
-        audio_devices_t legacyType, const String8& legacyAddress) {
-    const std::string stringAddress = VALUE_OR_RETURN(legacy2aidl_String8_string(legacyAddress));
     return legacy2aidl_audio_device_AudioDevice(legacyType, stringAddress);
 }
 

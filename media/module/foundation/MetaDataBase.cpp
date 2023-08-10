@@ -381,33 +381,33 @@ String8 MetaDataBase::typed_data::asString(bool verbose) const {
     const void *data = storage();
     switch(mType) {
         case TYPE_NONE:
-            out = String8::format("no type, size %zu)", mSize);
+            out = String8format("no type, size %zu)", mSize);
             break;
         case TYPE_C_STRING:
-            out = String8::format("(char*) %s", (const char *)data);
+            out = String8format("(char*) %s", (const char *)data);
             break;
         case TYPE_INT32:
-            out = String8::format("(int32_t) %d", *(int32_t *)data);
+            out = String8format("(int32_t) %d", *(int32_t *)data);
             break;
         case TYPE_INT64:
-            out = String8::format("(int64_t) %" PRId64, *(int64_t *)data);
+            out = String8format("(int64_t) %" PRId64, *(int64_t *)data);
             break;
         case TYPE_FLOAT:
-            out = String8::format("(float) %f", *(float *)data);
+            out = String8format("(float) %f", *(float *)data);
             break;
         case TYPE_POINTER:
-            out = String8::format("(void*) %p", *(void **)data);
+            out = String8format("(void*) %p", *(void **)data);
             break;
         case TYPE_RECT:
         {
             const Rect *r = (const Rect *)data;
-            out = String8::format("Rect(%d, %d, %d, %d)",
+            out = String8format("Rect(%d, %d, %d, %d)",
                                   r->mLeft, r->mTop, r->mRight, r->mBottom);
             break;
         }
 
         default:
-            out = String8::format("(unknown type %d, size %zu)", mType, mSize);
+            out = String8format("(unknown type %d, size %zu)", mType, mSize);
             if (verbose && mSize <= 48) { // if it's less than three lines of hex data, dump it
                 AString foo;
                 hexdump(data, mSize, 0, &foo);
@@ -434,7 +434,7 @@ String8 MetaDataBase::toString() const {
         char cc[5];
         MakeFourCCString(key, cc);
         const typed_data &item = mInternalData->mItems.valueAt(i);
-        s.appendFormat("%s: %s", cc, item.asString(false).c_str());
+        appendFormat(s, "%s: %s", cc, item.asString(false).c_str());
         if (i != 0) {
             s.append(", ");
         }
