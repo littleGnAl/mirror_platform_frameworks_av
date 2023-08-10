@@ -46,6 +46,7 @@
 #include <system/audio_policy.h>
 #include <utils/Errors.h>
 #include <utils/Mutex.h>
+#include <utils/String8.h>
 
 using android::content::AttributionSourceState;
 
@@ -82,7 +83,6 @@ typedef void (*routing_callback)();
 typedef void (*vol_range_init_req_callback)();
 
 class IAudioFlinger;
-class String8;
 
 namespace media {
 class IAudioPolicyService;

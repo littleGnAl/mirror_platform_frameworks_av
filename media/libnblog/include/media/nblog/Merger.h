@@ -28,14 +28,13 @@
 #include <utils/Condition.h>
 #include <utils/Mutex.h>
 #include <utils/RefBase.h>
+#include <utils/String16.h>
+#include <utils/String8.h>
 #include <utils/Thread.h>
 #include <utils/Timers.h>
 #include <utils/Vector.h>
 
 namespace android {
-
-class String16;
-class String8;
 
 namespace NBLog {
 

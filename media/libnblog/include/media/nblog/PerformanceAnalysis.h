@@ -25,11 +25,10 @@
 
 #include <media/nblog/Events.h>
 #include <media/nblog/ReportPerformance.h>
+#include <utils/String8.h>
 #include <utils/Timers.h>
 
 namespace android {
-
-class String8;
 
 namespace ReportPerformance {
 

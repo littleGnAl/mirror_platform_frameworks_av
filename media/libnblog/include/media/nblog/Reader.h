@@ -25,6 +25,7 @@
 #include <media/nblog/Entry.h>
 #include <media/nblog/Events.h>
 #include <utils/RefBase.h>
+#include <utils/String8.h>
 
 class audio_utils_fifo;
 class audio_utils_fifo_reader;
@@ -32,7 +33,6 @@ class audio_utils_fifo_reader;
 namespace android {
 
 class IMemory;
-class String8;
 
 namespace NBLog {
 
