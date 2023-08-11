@@ -70,7 +70,7 @@ status_t Camera3FakeStream::returnBufferCheckedLocked(
 void Camera3FakeStream::dump(int fd, [[maybe_unused]] const Vector<String16> &args) const {
     String8 lines;
     lines.appendFormat("    Stream[%d]: Fake\n", mId);
-    write(fd, lines.string(), lines.size());
+    write(fd, lines.c_str(), lines.size());
 
     Camera3IOStreamBase::dump(fd, args);
 }
