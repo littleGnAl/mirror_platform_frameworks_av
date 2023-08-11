@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7cb04e0_3b755f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2023-08-11T17:36:12Z",
+      "side": 1,
+      "message": "We did a major migration of camera string handling in internal main recently, so this will heavily conflict with that change.\n\nSo I\u0027d prefer you don\u0027t touch the camera string code in AOSP, unless you can exactly match what the internal change is doing (probably would have to just cherry-pick it).",
+      "revId": "334fd34504e4840e4e4fd12a89542c56cadf0d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
