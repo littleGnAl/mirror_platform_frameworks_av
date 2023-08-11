@@ -32,7 +32,6 @@
 #include <OMX_Index.h>
 #include <OMX_IndexExt.h>
 
-#include <android/fdsan.h>
 #include <media/stagefright/foundation/ColorUtils.h>
 #include <media/stagefright/omx/OMXUtils.h>
 #include <media/stagefright/MediaErrors.h>
@@ -199,7 +198,6 @@ C2OMXNode::C2OMXNode(const std::shared_ptr<Codec2Client::Component> &comp)
     : mComp(comp), mFrameIndex(0), mWidth(0), mHeight(0), mUsage(0),
       mAdjustTimestampGapUs(0), mFirstInputFrame(true),
       mQueueThread(new QueueThread) {
-    android_fdsan_set_error_level(ANDROID_FDSAN_ERROR_LEVEL_WARN_ALWAYS);
     mQueueThread->run("C2OMXNode", PRIORITY_AUDIO);
 
     Mutexed<android_dataspace>::Locked ds(mDataspace);
@@ -208,7 +206,6 @@ C2OMXNode::C2OMXNode(const std::shared_ptr<Codec2Client::Component> &comp)
 
 status_t C2OMXNode::freeNode() {
     mComp.reset();
-    android_fdsan_set_error_level(ANDROID_FDSAN_ERROR_LEVEL_WARN_ONCE);
     return mQueueThread->requestExitAndWait();
 }
 
