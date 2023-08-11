@@ -49,12 +49,12 @@ CameraFlashlight::~CameraFlashlight() {
 
 status_t CameraFlashlight::createFlashlightControl(const String8& cameraId) {
     ALOGV("%s: creating a flash light control for camera %s", __FUNCTION__,
-            cameraId.string());
+            cameraId.c_str());
     if (mFlashControl != NULL) {
         return INVALID_OPERATION;
     }
 
-    if (mProviderManager->supportSetTorchMode(cameraId.string())) {
+    if (mProviderManager->supportSetTorchMode(cameraId.c_str())) {
         mFlashControl = new ProviderFlashControl(mProviderManager);
     } else {
         ALOGE("Flashlight control not supported by this device!");
@@ -72,7 +72,7 @@ status_t CameraFlashlight::setTorchMode(const String8& cameraId, bool enabled) {
     }
 
     ALOGV("%s: set torch mode of camera %s to %d", __FUNCTION__,
-            cameraId.string(), enabled);
+            cameraId.c_str(), enabled);
 
     status_t res = OK;
     Mutex::Autolock l(mLock);
@@ -87,7 +87,7 @@ status_t CameraFlashlight::setTorchMode(const String8& cameraId, bool enabled) {
         // TODO: Move torch status checks and state updates behind this CameraFlashlight lock
         // to avoid other similar race conditions.
         ALOGE("%s: Camera device %s is in use, cannot set torch mode.",
-                __FUNCTION__, cameraId.string());
+                __FUNCTION__, cameraId.c_str());
         return -EBUSY;
     }
 
@@ -126,13 +126,13 @@ status_t CameraFlashlight::turnOnTorchWithStrengthLevel(const String8& cameraId,
     }
 
     ALOGV("%s: set torch strength of camera %s to %d", __FUNCTION__,
-            cameraId.string(), torchStrength);
+            cameraId.c_str(), torchStrength);
     status_t res = OK;
     Mutex::Autolock l(mLock);
 
     if (mOpenedCameraIds.indexOf(cameraId) != NAME_NOT_FOUND) {
         ALOGE("%s: Camera device %s is in use, cannot be turned ON.",
-                __FUNCTION__, cameraId.string());
+                __FUNCTION__, cameraId.c_str());
         return -EBUSY;
     }
 
@@ -195,17 +195,17 @@ status_t CameraFlashlight::findFlashUnits() {
         res = createFlashlightControl(id);
         if (res) {
             ALOGE("%s: failed to create flash control for %s", __FUNCTION__,
-                    id.string());
+                    id.c_str());
         } else {
             res = mFlashControl->hasFlashUnit(id, &hasFlash);
             if (res == -EUSERS || res == -EBUSY) {
                 ALOGE("%s: failed to check if camera %s has a flash unit. Some "
                         "camera devices may be opened", __FUNCTION__,
-                        id.string());
+                        id.c_str());
                 return res;
             } else if (res) {
                 ALOGE("%s: failed to check if camera %s has a flash unit. %s"
-                        " (%d)", __FUNCTION__, id.string(), strerror(-res),
+                        " (%d)", __FUNCTION__, id.c_str(), strerror(-res),
                         res);
             }
 
@@ -234,7 +234,7 @@ bool CameraFlashlight::hasFlashUnitLocked(const String8& cameraId) {
     if (index == NAME_NOT_FOUND) {
         // Might be external camera
         ALOGW("%s: camera %s not present when findFlashUnits() was called",
-                __FUNCTION__, cameraId.string());
+                __FUNCTION__, cameraId.c_str());
         return false;
     }
 
@@ -244,7 +244,7 @@ bool CameraFlashlight::hasFlashUnitLocked(const String8& cameraId) {
 bool CameraFlashlight::isBackwardCompatibleMode(const String8& cameraId) {
     bool backwardCompatibleMode = false;
     if (mProviderManager != nullptr &&
-            !mProviderManager->supportSetTorchMode(cameraId.string())) {
+            !mProviderManager->supportSetTorchMode(cameraId.c_str())) {
         backwardCompatibleMode = true;
     }
     return backwardCompatibleMode;
@@ -290,7 +290,7 @@ status_t CameraFlashlight::prepareDeviceOpen(const String8& cameraId) {
 }
 
 status_t CameraFlashlight::deviceClosed(const String8& cameraId) {
-    ALOGV("%s: device %s is closed", __FUNCTION__, cameraId.string());
+    ALOGV("%s: device %s is closed", __FUNCTION__, cameraId.c_str());
 
     Mutex::Autolock l(mLock);
     if (!mFlashlightMapInitialized) {
@@ -302,7 +302,7 @@ status_t CameraFlashlight::deviceClosed(const String8& cameraId) {
     ssize_t index = mOpenedCameraIds.indexOf(cameraId);
     if (index == NAME_NOT_FOUND) {
         ALOGE("%s: couldn't find camera %s in the opened list", __FUNCTION__,
-                cameraId.string());
+                cameraId.c_str());
     } else {
         mOpenedCameraIds.removeAt(index);
     }
@@ -347,31 +347,31 @@ status_t ProviderFlashControl::hasFlashUnit(const String8& cameraId, bool *hasFl
     if (!hasFlash) {
         return BAD_VALUE;
     }
-    *hasFlash = mProviderManager->hasFlashUnit(cameraId.string());
+    *hasFlash = mProviderManager->hasFlashUnit(cameraId.c_str());
     return OK;
 }
 
 status_t ProviderFlashControl::setTorchMode(const String8& cameraId, bool enabled) {
     ALOGV("%s: set camera %s torch mode to %d", __FUNCTION__,
-            cameraId.string(), enabled);
+            cameraId.c_str(), enabled);
 
-    return mProviderManager->setTorchMode(cameraId.string(), enabled);
+    return mProviderManager->setTorchMode(cameraId.c_str(), enabled);
 }
 
 status_t ProviderFlashControl::turnOnTorchWithStrengthLevel(const String8& cameraId,
             int32_t torchStrength) {
     ALOGV("%s: change torch strength level of camera %s to %d", __FUNCTION__,
-            cameraId.string(), torchStrength);
+            cameraId.c_str(), torchStrength);
 
-    return mProviderManager->turnOnTorchWithStrengthLevel(cameraId.string(), torchStrength);
+    return mProviderManager->turnOnTorchWithStrengthLevel(cameraId.c_str(), torchStrength);
 }
 
 status_t ProviderFlashControl::getTorchStrengthLevel(const String8& cameraId,
             int32_t* torchStrength) {
     ALOGV("%s: get torch strength level of camera %s", __FUNCTION__,
-            cameraId.string());
+            cameraId.c_str());
 
-    return mProviderManager->getTorchStrengthLevel(cameraId.string(), torchStrength);
+    return mProviderManager->getTorchStrengthLevel(cameraId.c_str(), torchStrength);
 }
 // ProviderFlashControl implementation ends
 

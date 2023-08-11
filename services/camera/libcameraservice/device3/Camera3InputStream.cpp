@@ -218,7 +218,7 @@ status_t Camera3InputStream::disconnectLocked() {
 void Camera3InputStream::dump(int fd, [[maybe_unused]] const Vector<String16> &args) const {
     String8 lines;
     lines.appendFormat("    Stream[%d]: Input\n", mId);
-    write(fd, lines.string(), lines.size());
+    write(fd, lines.c_str(), lines.size());
 
     Camera3IOStreamBase::dump(fd, args);
 }

@@ -524,8 +524,8 @@ status_t Camera3OutputStream::returnBufferCheckedLocked(
 void Camera3OutputStream::dump(int fd, [[maybe_unused]] const Vector<String16> &args) const {
     String8 lines;
     lines.appendFormat("    Stream[%d]: Output\n", mId);
-    lines.appendFormat("      Consumer name: %s\n", mConsumerName.string());
-    write(fd, lines.string(), lines.size());
+    lines.appendFormat("      Consumer name: %s\n", mConsumerName.c_str());
+    write(fd, lines.c_str(), lines.size());
 
     Camera3IOStreamBase::dump(fd, args);
 
@@ -709,7 +709,7 @@ status_t Camera3OutputStream::configureConsumerQueueLocked(bool allowPreviewResp
             // service. So update mMaxCachedBufferCount.
             mMaxCachedBufferCount = 1;
             mTotalBufferCount += mMaxCachedBufferCount;
-            res = mPreviewFrameSpacer->run(String8::format("PreviewSpacer-%d", mId).string());
+            res = mPreviewFrameSpacer->run(String8::format("PreviewSpacer-%d", mId).c_str());
             if (res != OK) {
                 ALOGE("%s: Unable to start preview spacer", __FUNCTION__);
                 return res;
