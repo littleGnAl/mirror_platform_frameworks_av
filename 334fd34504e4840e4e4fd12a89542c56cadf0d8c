@@ -16,6 +16,24 @@
       "message": "We did a major migration of camera string handling in internal main recently, so this will heavily conflict with that change.\n\nSo I\u0027d prefer you don\u0027t touch the camera string code in AOSP, unless you can exactly match what the internal change is doing (probably would have to just cherry-pick it).",
       "revId": "334fd34504e4840e4e4fd12a89542c56cadf0d8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecf55ba_44470628",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-11T17:45:45Z",
+      "side": 1,
+      "message": "Austin just told me about cameraserver migration to std::string. Is this the same thing you\u0027re talking about?",
+      "parentUuid": "a7cb04e0_3b755f86",
+      "revId": "334fd34504e4840e4e4fd12a89542c56cadf0d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
