@@ -69,8 +69,13 @@ status_t Camera3FakeStream::returnBufferCheckedLocked(
 }
 
 void Camera3FakeStream::dump(int fd, [[maybe_unused]] const Vector<String16> &args) const {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 lines;
+    lines.appendFormat("    Stream[%d]: Fake\n", mId);
+=======
     std::string lines;
     lines += fmt::sprintf("    Stream[%d]: Fake\n", mId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     write(fd, lines.c_str(), lines.size());
 
     Camera3IOStreamBase::dump(fd, args);

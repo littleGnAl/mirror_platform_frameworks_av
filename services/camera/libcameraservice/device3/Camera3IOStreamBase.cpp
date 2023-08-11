@@ -99,11 +99,17 @@ void Camera3IOStreamBase::dump(int fd, [[maybe_unused]] const Vector<String16> &
     lines << fmt::sprintf("      Timestamp base: %d\n", getTimestampBase());
     lines << fmt::sprintf("      Frames produced: %d, last timestamp: %" PRId64 " ns\n",
             mFrameCount, mLastTimestamp);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    lines.appendFormat("      Total buffers: %zu, currently dequeued: %zu, currently cached: %zu\n",
+            mTotalBufferCount, mHandoutTotalBufferCount, mCachedOutputBufferCount);
+    write(fd, lines.c_str(), lines.size());
+=======
     lines << fmt::sprintf("      Total buffers: %zu, currently dequeued: %zu, "
             "currently cached: %zu\n", mTotalBufferCount, mHandoutTotalBufferCount,
             mCachedOutputBufferCount);
     std::string linesStr = std::move(lines.str());
     write(fd, linesStr.c_str(), linesStr.size());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     Camera3Stream::dump(fd, args);
 }

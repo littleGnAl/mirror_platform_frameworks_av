@@ -128,7 +128,11 @@ status_t CameraDeviceClient::initializeImpl(TProviderPtr providerPtr,
     }
 
     mFrameProcessor = new FrameProcessorBase(mDevice);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    threadName = String8::format("CDU-%s-FrameProc", mCameraIdStr.c_str());
+=======
     std::string threadName = std::string("CDU-") + mCameraIdStr + "-FrameProc";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     mFrameProcessor->run(threadName.c_str());
 
     mFrameProcessor->registerListener(camera2::FrameProcessorBase::FRAME_PROCESSOR_LISTENER_MIN_ID,
@@ -182,9 +186,17 @@ status_t CameraDeviceClient::initializeImpl(TProviderPtr providerPtr,
     mProviderManager = providerPtr;
     // Cache physical camera ids corresponding to this device and also the high
     // resolution sensors in this device + physical camera ids
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    mProviderManager->isLogicalCamera(mCameraIdStr.c_str(), &mPhysicalCameraIds);
+=======
     mProviderManager->isLogicalCamera(mCameraIdStr, &mPhysicalCameraIds);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     if (isUltraHighResolutionSensor(mCameraIdStr)) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        mHighResolutionSensors.insert(mCameraIdStr.c_str());
+=======
         mHighResolutionSensors.insert(mCameraIdStr);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
     for (auto &physicalId : mPhysicalCameraIds) {
         if (isUltraHighResolutionSensor(physicalId)) {
@@ -351,9 +363,15 @@ binder::Status CameraDeviceClient::submitRequestList(
 
                 ssize_t index = mConfiguredOutputs.indexOfKey(streamId);
                 if (index >= 0) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    String8 requestedPhysicalId(
+                            mConfiguredOutputs.valueAt(index).getPhysicalCameraId());
+                    requestedPhysicalIds.push_back(requestedPhysicalId.c_str());
+=======
                     const std::string &requestedPhysicalId =
                             mConfiguredOutputs.valueAt(index).getPhysicalCameraId();
                     requestedPhysicalIds.push_back(requestedPhysicalId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     dynamicProfileBitmap |=
                             mConfiguredOutputs.valueAt(index).getDynamicRangeProfile();
                 } else {
@@ -388,9 +406,15 @@ binder::Status CameraDeviceClient::submitRequestList(
                     return res;
                 }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                String8 requestedPhysicalId(
+                        mConfiguredOutputs.valueAt(index).getPhysicalCameraId());
+                requestedPhysicalIds.push_back(requestedPhysicalId.c_str());
+=======
                 const std::string &requestedPhysicalId =
                         mConfiguredOutputs.valueAt(index).getPhysicalCameraId();
                 requestedPhysicalIds.push_back(requestedPhysicalId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 dynamicProfileBitmap |=
                         mConfiguredOutputs.valueAt(index).getDynamicRangeProfile();
             }
@@ -585,7 +609,11 @@ binder::Status CameraDeviceClient::cancelRequest(
 
     Mutex::Autolock idLock(mStreamingRequestIdLock);
     if (mStreamingRequestId != requestId) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Canceling request ID %d doesn't match "
+=======
         std::string msg = fmt::sprintf("Camera %s: Canceling request ID %d doesn't match "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 "current request ID %d", mCameraIdStr.c_str(), requestId, mStreamingRequestId);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -625,7 +653,11 @@ binder::Status CameraDeviceClient::endConfigure(int operatingMode,
     if (!(res = checkPidStatus(__FUNCTION__)).isOk()) return res;
 
     if (offlineStreamIds == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Invalid offline stream ids");
+=======
         std::string msg = "Invalid offline stream ids";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
@@ -644,12 +676,20 @@ binder::Status CameraDeviceClient::endConfigure(int operatingMode,
 
     status_t err = mDevice->configureStreams(sessionParams, operatingMode);
     if (err == BAD_VALUE) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Unsupported set of inputs/outputs provided",
+=======
         std::string msg = fmt::sprintf("Camera %s: Unsupported set of inputs/outputs provided",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 mCameraIdStr.c_str());
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         res = STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     } else if (err != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Error configuring streams: %s (%d)",
+=======
         std::string msg = fmt::sprintf("Camera %s: Error configuring streams: %s (%d)",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 mCameraIdStr.c_str(), strerror(-err), err);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         res = STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
@@ -661,7 +701,11 @@ binder::Status CameraDeviceClient::endConfigure(int operatingMode,
         for (size_t i = 0; i < mCompositeStreamMap.size(); ++i) {
             err = mCompositeStreamMap.valueAt(i)->configureStream();
             if (err != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                String8 msg = String8::format("Camera %s: Error configuring composite "
+=======
                 std::string msg = fmt::sprintf("Camera %s: Error configuring composite "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                         "streams: %s (%d)", mCameraIdStr.c_str(), strerror(-err), err);
                 ALOGE("%s: %s", __FUNCTION__, msg.c_str());
                 res = STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
@@ -723,7 +767,11 @@ binder::Status CameraDeviceClient::isSessionConfigurationSupported(
     }
 
     if (status == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format( "Camera %s: Invalid status!", mCameraIdStr.c_str());
+=======
         std::string msg = fmt::sprintf( "Camera %s: Invalid status!", mCameraIdStr.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
@@ -748,7 +796,11 @@ binder::Status CameraDeviceClient::isSessionConfigurationSupported(
 
             break;
         default: {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                String8 msg = String8::format( "Camera %s: Error: %s (%d)", mCameraIdStr.c_str(),
+=======
                 std::string msg = fmt::sprintf( "Camera %s: Error: %s (%d)", mCameraIdStr.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                         strerror(-ret), ret);
                 ALOGE("%s: %s", __FUNCTION__, msg.c_str());
                 res = STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT,
@@ -804,7 +856,11 @@ binder::Status CameraDeviceClient::deleteStream(int streamId) {
         }
 
         if (surfaces.empty() && dIndex == NAME_NOT_FOUND) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8 msg = String8::format("Camera %s: Invalid stream ID (%d) specified, no such"
+=======
             std::string msg = fmt::sprintf("Camera %s: Invalid stream ID (%d) specified, no such"
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     " stream created yet", mCameraIdStr.c_str(), streamId);
             ALOGW("%s: %s", __FUNCTION__, msg.c_str());
             return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -815,8 +871,13 @@ binder::Status CameraDeviceClient::deleteStream(int streamId) {
     status_t err = mDevice->deleteStream(streamId);
 
     if (err != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Unexpected error %s (%d) when deleting stream %d",
+                mCameraIdStr.c_str(), strerror(-err), err, streamId);
+=======
         std::string msg = fmt::sprintf("Camera %s: Unexpected error %s (%d) when deleting stream "
                 "%d", mCameraIdStr.c_str(), strerror(-err), err, streamId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         res = STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
     } else {
@@ -838,9 +899,15 @@ binder::Status CameraDeviceClient::deleteStream(int streamId) {
                 status_t ret;
                 if ((ret = mCompositeStreamMap.valueAt(compositeIndex)->deleteStream())
                         != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    String8 msg = String8::format("Camera %s: Unexpected error %s (%d) when "
+                            "deleting composite stream %d", mCameraIdStr.c_str(), strerror(-err), err,
+                            streamId);
+=======
                     std::string msg = fmt::sprintf("Camera %s: Unexpected error %s (%d) when "
                             "deleting composite stream %d", mCameraIdStr.c_str(), strerror(-err),
                             err, streamId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     ALOGE("%s: %s", __FUNCTION__, msg.c_str());
                     res = STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
                 }
@@ -916,9 +983,14 @@ binder::Status CameraDeviceClient::createStream(
         sp<IBinder> binder = IInterface::asBinder(bufferProducer);
         ssize_t index = mStreamMap.indexOfKey(binder);
         if (index != NAME_NOT_FOUND) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8 msg = String8::format("Camera %s: Surface already has a stream created for it "
+                    "(ID %zd)", mCameraIdStr.c_str(), index);
+=======
             std::string msg = std::string("Camera ") + mCameraIdStr
                     + ": Surface already has a stream created for it (ID "
                     + std::to_string(index) + ")";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             ALOGW("%s: %s", __FUNCTION__, msg.c_str());
             return STATUS_ERROR(CameraService::ERROR_ALREADY_EXISTS, msg.c_str());
         }
@@ -1005,6 +1077,10 @@ binder::Status CameraDeviceClient::createStream(
         // Fill in mHighResolutionCameraIdToStreamIdSet map
         const std::string &cameraIdUsed =
                 physicalCameraId.size() != 0 ? physicalCameraId : mCameraIdStr;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        const char *cameraIdUsedCStr = cameraIdUsed.c_str();
+=======
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         // Only needed for high resolution sensors
         if (mHighResolutionSensors.find(cameraIdUsed) !=
                 mHighResolutionSensors.end()) {
@@ -1098,10 +1174,18 @@ binder::Status CameraDeviceClient::createDeferredSurfaceStreamLocked(
 
         *newStreamId = streamId;
         // Fill in mHighResolutionCameraIdToStreamIdSet
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        const char *cameraIdUsedCStr = cameraIdUsed.c_str();
+=======
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         // Only needed for high resolution sensors
         if (mHighResolutionSensors.find(cameraIdUsed) !=
                 mHighResolutionSensors.end()) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            mHighResolutionCameraIdToStreamIdSet[cameraIdUsed.c_str()].insert(streamId);
+=======
             mHighResolutionCameraIdToStreamIdSet[cameraIdUsed].insert(streamId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
     }
     return res;
@@ -1153,7 +1237,11 @@ binder::Status CameraDeviceClient::createInputStream(
     }
 
     if (mInputStream.configured) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Already has an input stream "
+=======
         std::string msg = fmt::sprintf("Camera %s: Already has an input stream "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 "configured (ID %d)", mCameraIdStr.c_str(), mInputStream.id);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str() );
         return STATUS_ERROR(CameraService::ERROR_ALREADY_EXISTS, msg.c_str());
@@ -1452,8 +1540,12 @@ binder::Status CameraDeviceClient::flush(
     status_t err = mDevice->flush(lastFrameNumber);
     if (err != OK) {
         res = STATUS_ERROR_FMT(CameraService::ERROR_INVALID_OPERATION,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "Camera %s: Error flushing device: %s (%d)", mCameraIdStr.c_str(), strerror(-err), err);
+=======
                 "Camera %s: Error flushing device: %s (%d)", mCameraIdStr.c_str(), strerror(-err),
                 err);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
     return res;
 }
@@ -1477,7 +1569,11 @@ binder::Status CameraDeviceClient::prepare(int streamId) {
     }
 
     if (index == NAME_NOT_FOUND) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Invalid stream ID (%d) specified, no stream "
+=======
         std::string msg = fmt::sprintf("Camera %s: Invalid stream ID (%d) specified, no stream "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
               "with that ID exists", mCameraIdStr.c_str(), streamId);
         ALOGW("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -1517,14 +1613,22 @@ binder::Status CameraDeviceClient::prepare2(int maxCount, int streamId) {
     }
 
     if (index == NAME_NOT_FOUND) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Invalid stream ID (%d) specified, no stream "
+=======
         std::string msg = fmt::sprintf("Camera %s: Invalid stream ID (%d) specified, no stream "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
               "with that ID exists", mCameraIdStr.c_str(), streamId);
         ALOGW("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
 
     if (maxCount <= 0) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: maxCount (%d) must be greater than 0",
+=======
         std::string msg = fmt::sprintf("Camera %s: maxCount (%d) must be greater than 0",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 mCameraIdStr.c_str(), maxCount);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -1565,7 +1669,11 @@ binder::Status CameraDeviceClient::tearDown(int streamId) {
     }
 
     if (index == NAME_NOT_FOUND) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Invalid stream ID (%d) specified, no stream "
+=======
         std::string msg = fmt::sprintf("Camera %s: Invalid stream ID (%d) specified, no stream "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
               "with that ID exists", mCameraIdStr.c_str(), streamId);
         ALOGW("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -1623,14 +1731,22 @@ binder::Status CameraDeviceClient::finalizeOutputConfigurations(int32_t streamId
 
     }
     if (deferredStreamIndex == NAME_NOT_FOUND && !streamIdConfigured) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: deferred surface is set to a unknown stream"
+=======
         std::string msg = fmt::sprintf("Camera %s: deferred surface is set to a unknown stream"
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 "(ID %d)", mCameraIdStr.c_str(), streamId);
         ALOGW("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
 
     if (mStreamInfoMap[streamId].finalized) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: finalizeOutputConfigurations has been called"
+=======
         std::string msg = fmt::sprintf("Camera %s: finalizeOutputConfigurations has been called"
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 " on stream ID %d", mCameraIdStr.c_str(), streamId);
         ALOGW("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -1711,7 +1827,11 @@ binder::Status CameraDeviceClient::setCameraAudioRestriction(int32_t mode) {
     if (!(res = checkPidStatus(__FUNCTION__)).isOk()) return res;
 
     if (!isValidAudioRestriction(mode)) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: invalid audio restriction mode %d",
+=======
         std::string msg = fmt::sprintf("Camera %s: invalid audio restriction mode %d",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 mCameraIdStr.c_str(), mode);
         ALOGW("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -1778,13 +1898,21 @@ binder::Status CameraDeviceClient::switchToOffline(
     }
 
     if (offlineOutputIds.empty()) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Offline surfaces must not be empty");
+=======
         std::string msg = "Offline surfaces must not be empty";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
 
     if (session == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Invalid offline session");
+=======
         std::string msg = "Invalid offline session";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }

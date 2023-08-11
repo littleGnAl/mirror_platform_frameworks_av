@@ -75,7 +75,11 @@ status_t CaptureRequest::readFromParcel(const android::Parcel* parcel) {
             return err;
         }
         ALOGV("%s: Read metadata from parcel", __FUNCTION__);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        mPhysicalCameraSettings.push_back({std::string(String8(id).c_str()), settings});
+=======
         mPhysicalCameraSettings.push_back({toStdString(id), settings});
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     int isReprocess = 0;

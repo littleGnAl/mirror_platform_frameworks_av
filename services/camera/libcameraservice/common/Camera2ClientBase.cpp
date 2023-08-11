@@ -70,7 +70,11 @@ Camera2ClientBase<TClientBase>::Camera2ClientBase(
         mDeviceActive(false), mApi1CameraId(api1CameraId)
 {
     ALOGI("Camera %s: Opened. Client: %s (PID %d, UID %d)", cameraId.c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8(clientPackageName).c_str(), clientPid, clientUid);
+=======
             clientPackageName.c_str(), clientPid, clientUid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     mInitialClientPid = clientPid;
     mOverrideForPerfClass = overrideForPerfClass;
@@ -110,7 +114,11 @@ status_t Camera2ClientBase<TClientBase>::initializeImpl(TProviderPtr providerPtr
         return res;
     }
     IPCTransport providerTransport = IPCTransport::INVALID;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    res = providerPtr->getCameraIdIPCTransport(TClientBase::mCameraIdStr.c_str(),
+=======
     res = providerPtr->getCameraIdIPCTransport(TClientBase::mCameraIdStr,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             &providerTransport);
     if (res != OK) {
         return res;
@@ -169,15 +177,24 @@ Camera2ClientBase<TClientBase>::~Camera2ClientBase() {
 
     ALOGI("Closed Camera %s. Client was: %s (PID %d, UID %u)",
             TClientBase::mCameraIdStr.c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8(TClientBase::mClientPackageName).c_str(),
+=======
             TClientBase::mClientPackageName.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             mInitialClientPid, TClientBase::mClientUid);
 }
 
 template <typename TClientBase>
 status_t Camera2ClientBase<TClientBase>::dumpClient(int fd,
                                               const Vector<String16>& args) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 result;
+    result.appendFormat("Camera2ClientBase[%s] (%p) PID: %d, dump:\n",
+=======
     std::string result;
     result += fmt::sprintf("Camera2ClientBase[%s] (%p) PID: %d, dump:\n",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             TClientBase::mCameraIdStr.c_str(),
             (TClientBase::getRemoteCallback() != NULL ?
                     (void *)IInterface::asBinder(TClientBase::getRemoteCallback()).get() : NULL),

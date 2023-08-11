@@ -367,7 +367,11 @@ void sendCaptureResult(
 
     std::unordered_map<std::string, CameraMetadata> monitoredPhysicalMetadata;
     for (auto& m : physicalMetadatas) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        monitoredPhysicalMetadata.emplace(String8(m.mPhysicalCameraId).c_str(),
+=======
         monitoredPhysicalMetadata.emplace(m.mPhysicalCameraId,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 CameraMetadata(m.mPhysicalCameraMetadata));
     }
     states.tagMonitor.monitorMetadata(TagMonitor::RESULT,
@@ -983,7 +987,11 @@ void notifyError(CaptureOutputStates& states, const camera_error_msg_t &msg) {
                             if (!validPhysicalCameraId) {
                                 ALOGE("%s: Reported result failure for physical camera device: %s "
                                         " which is not part of the respective request!",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                                        __FUNCTION__, cameraId.c_str());
+=======
                                         __FUNCTION__, physicalCameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                                 break;
                             }
                             resultExtras.errorPhysicalCameraId = physicalCameraId;

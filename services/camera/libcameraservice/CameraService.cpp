@@ -417,7 +417,11 @@ void CameraService::removeStates(const std::string& cameraId) {
 void CameraService::onDeviceStatusChanged(const std::string& cameraId,
         CameraDeviceStatus newHalStatus) {
     ALOGI("%s: Status changed for cameraId=%s, newStatus=%d", __FUNCTION__,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            id.c_str(), newHalStatus);
+=======
             cameraId.c_str(), newHalStatus);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     StatusInternal newStatus = mapToInternal(newHalStatus);
 
@@ -426,14 +430,22 @@ void CameraService::onDeviceStatusChanged(const std::string& cameraId,
     if (state == nullptr) {
         if (newStatus == StatusInternal::PRESENT) {
             ALOGI("%s: Unknown camera ID %s, a new camera is added",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    __FUNCTION__, id.c_str());
+=======
                     __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
             // First add as absent to make sure clients are notified below
             addStates(cameraId);
 
             updateStatus(newStatus, cameraId);
         } else {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            ALOGE("%s: Bad camera ID %s", __FUNCTION__, id.c_str());
+=======
             ALOGE("%s: Bad camera ID %s", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
         return;
     }
@@ -749,11 +761,20 @@ Status CameraService::getCameraCharacteristics(const std::string& cameraId,
 
     if (shouldRejectSystemCameraConnection(cameraId)) {
         return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION, "Unable to retrieve camera"
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "characteristics for system only device %s: ", String8(cameraId).c_str());
+=======
                 "characteristics for system only device %s: ", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     Status ret{};
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+
+    std::string cameraIdStr = String8(cameraId).c_str();
+=======
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     bool overrideForPerfClass =
             SessionConfigurationUtils::targetPerfClassPrimaryCamera(mPerfClassPrimaryCameraIds,
                     cameraId, targetSdkVersion);
@@ -762,21 +783,43 @@ Status CameraService::getCameraCharacteristics(const std::string& cameraId,
     if (res != OK) {
         if (res == NAME_NOT_FOUND) {
             return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT, "Unable to retrieve camera "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    "characteristics for unknown device %s: %s (%d)", String8(cameraId).c_str(),
+=======
                     "characteristics for unknown device %s: %s (%d)", cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     strerror(-res), res);
         } else {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            logServiceError(String8::format("Unable to retrieve camera characteristics for "
+            "device %s.", String8(cameraId).c_str()),ERROR_INVALID_OPERATION);
+=======
             logServiceError(fmt::sprintf("Unable to retrieve camera characteristics for device %s.",
                     cameraId.c_str()), ERROR_INVALID_OPERATION);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION, "Unable to retrieve camera "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    "characteristics for device %s: %s (%d)", String8(cameraId).c_str(),
+=======
                     "characteristics for device %s: %s (%d)", cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     strerror(-res), res);
         }
     }
     SystemCameraKind deviceKind = SystemCameraKind::PUBLIC;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    if (getSystemCameraKind(String8(cameraId), &deviceKind) != OK) {
+        ALOGE("%s: Invalid camera id %s, skipping", __FUNCTION__, String8(cameraId).c_str());
+=======
     if (getSystemCameraKind(cameraId, &deviceKind) != OK) {
         ALOGE("%s: Invalid camera id %s, skipping", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION, "Unable to retrieve camera kind "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "for device %s", String8(cameraId).c_str());
+=======
                 "for device %s", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
     int callingPid = CameraThreadState::getCallingPid();
     int callingUid = CameraThreadState::getCallingUid();
@@ -788,13 +831,21 @@ Status CameraService::getCameraCharacteristics(const std::string& cameraId,
             (deviceKind != SystemCameraKind::SYSTEM_ONLY_CAMERA) &&
             !checkPermission(toString16(sCameraPermission), callingPid, callingUid)) {
         res = cameraInfo->removePermissionEntries(
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                mCameraProviderManager->getProviderTagIdLocked(String8(cameraId).c_str()),
+=======
                 mCameraProviderManager->getProviderTagIdLocked(cameraId),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 &tagsRemoved);
         if (res != OK) {
             cameraInfo->clear();
             return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION, "Failed to remove camera"
                     " characteristics needing camera permission for device %s: %s (%d)",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    String8(cameraId).c_str(), strerror(-res), res);
+=======
                     cameraId.c_str(), strerror(-res), res);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
     }
 
@@ -804,7 +855,11 @@ Status CameraService::getCameraCharacteristics(const std::string& cameraId,
         if (res != OK) {
             cameraInfo->clear();
             return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION, "Failed to insert camera "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    "keys needing permission for device %s: %s (%d)", String8(cameraId).c_str(),
+=======
                     "keys needing permission for device %s: %s (%d)", cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     strerror(-res), res);
         }
     }
@@ -826,10 +881,19 @@ Status CameraService::getTorchStrengthLevel(const std::string& cameraId,
         return STATUS_ERROR(ERROR_ILLEGAL_ARGUMENT, "Strength level should not be null.");
     }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    status_t res = mCameraProviderManager->getTorchStrengthLevel(String8(cameraId).c_str(),
+        torchStrength);
+=======
     status_t res = mCameraProviderManager->getTorchStrengthLevel(cameraId, torchStrength);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     if (res != OK) {
         return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION, "Unable to retrieve torch "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            "strength level for device %s: %s (%d)", String8(cameraId).c_str(),
+=======
             "strength level for device %s: %s (%d)", cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             strerror(-res), res);
     }
     ALOGI("%s: Torch strength level is: %d", __FUNCTION__, *torchStrength);
@@ -887,7 +951,12 @@ std::pair<int, IPCTransport> CameraService::getDeviceVersion(const std::string& 
     status_t res;
     hardware::hidl_version maxVersion{0,0};
     IPCTransport transport = IPCTransport::INVALID;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    res = mCameraProviderManager->getHighestSupportedVersion(cameraId.c_str(),
+            &maxVersion, &transport);
+=======
     res = mCameraProviderManager->getHighestSupportedVersion(cameraId, &maxVersion, &transport);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     if (res != OK || transport == IPCTransport::INVALID) {
         ALOGE("%s: Unable to get highest supported version for camera id %s", __FUNCTION__,
                 cameraId.c_str());
@@ -897,7 +966,11 @@ std::pair<int, IPCTransport> CameraService::getDeviceVersion(const std::string& 
 
     hardware::CameraInfo info;
     if (facing) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        res = mCameraProviderManager->getCameraInfo(cameraId.c_str(), overrideToPortrait,
+=======
         res = mCameraProviderManager->getCameraInfo(cameraId, overrideToPortrait,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 portraitRotation, &info);
         if (res != OK) {
             return std::make_pair(-1, IPCTransport::INVALID);
@@ -1068,7 +1141,7 @@ Status CameraService::initializeShimMetadata(int cameraId) {
             /*targetSdkVersion*/ __ANDROID_API_FUTURE__, /*overrideToPortrait*/ true,
             /*forceSlowJpegMode*/false, /*out*/ tmp)
             ).isOk()) {
-        ALOGE("%s: Error initializing shim metadata: %s", __FUNCTION__, ret.toString8().string());
+        ALOGE("%s: Error initializing shim metadata: %s", __FUNCTION__, ret.toString8().c_str());
     }
     return ret;
 }
@@ -1094,9 +1167,17 @@ Status CameraService::getLegacyParametersLazy(int cameraId,
         Mutex::Autolock lock(mServiceLock);
         auto cameraState = getCameraState(cameraIdStr);
         if (cameraState == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            ALOGE("%s: Invalid camera ID: %s", __FUNCTION__, id.c_str());
+=======
             ALOGE("%s: Invalid camera ID: %s", __FUNCTION__, cameraIdStr.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    "Invalid camera ID: %s", id.c_str());
+=======
                     "Invalid camera ID: %s", cameraIdStr.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
         CameraParameters p = cameraState->getShimParams();
         if (!p.isEmpty()) {
@@ -1119,9 +1200,17 @@ Status CameraService::getLegacyParametersLazy(int cameraId,
         Mutex::Autolock lock(mServiceLock);
         auto cameraState = getCameraState(cameraIdStr);
         if (cameraState == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            ALOGE("%s: Invalid camera ID: %s", __FUNCTION__, id.c_str());
+=======
             ALOGE("%s: Invalid camera ID: %s", __FUNCTION__, cameraIdStr.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    "Invalid camera ID: %s", id.c_str());
+=======
                     "Invalid camera ID: %s", cameraIdStr.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
         CameraParameters p = cameraState->getShimParams();
         if (!p.isEmpty()) {
@@ -1152,8 +1241,13 @@ static status_t getUidForPackage(const std::string &packageName, int userId, /*i
     PermissionController pc;
     uid = pc.getPackageUid(toString16(packageName), 0);
     if (uid <= 0) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        ALOGE("Unknown package: '%s'", String8(packageName).c_str());
+        dprintf(err, "Unknown package: '%s'\n", String8(packageName).c_str());
+=======
         ALOGE("Unknown package: '%s'", packageName.c_str());
         dprintf(err, "Unknown package: '%s'\n", packageName.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return BAD_VALUE;
     }
 
@@ -1231,7 +1325,11 @@ Status CameraService::validateClientPermissionsLocked(const std::string& cameraI
                 "Untrusted caller (calling PID %d, UID %d) trying to "
                 "forward camera access to camera %s for client %s (PID %d, UID %d)",
                 callingPid, callingUid, cameraId.c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                clientName8.c_str(), clientUid, clientPid);
+=======
                 clientName.c_str(), clientUid, clientPid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     // Check if we can trust clientPid
@@ -1244,7 +1342,11 @@ Status CameraService::validateClientPermissionsLocked(const std::string& cameraI
                 "Untrusted caller (calling PID %d, UID %d) trying to "
                 "forward camera access to camera %s for client %s (PID %d, UID %d)",
                 callingPid, callingUid, cameraId.c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                clientName8.c_str(), clientUid, clientPid);
+=======
                 clientName.c_str(), clientUid, clientPid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     if (shouldRejectSystemCameraConnection(cameraId)) {
@@ -1270,7 +1372,11 @@ Status CameraService::validateClientPermissionsLocked(const std::string& cameraI
         ALOGE("Permission Denial: can't use the camera pid=%d, uid=%d", clientPid, clientUid);
         return STATUS_ERROR_FMT(ERROR_PERMISSION_DENIED,
                 "Caller \"%s\" (PID %d, UID %d) cannot open camera \"%s\" without camera permission",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                clientName8.c_str(), clientUid, clientPid, cameraId.c_str());
+=======
                 clientName.c_str(), clientUid, clientPid, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     // Make sure the UID is in an active state to use the camera
@@ -1281,7 +1387,11 @@ Status CameraService::validateClientPermissionsLocked(const std::string& cameraI
         return STATUS_ERROR_FMT(ERROR_DISABLED,
                 "Caller \"%s\" (PID %d, UID %d) cannot open camera \"%s\" from background ("
                 "calling UID %d proc state %" PRId32 ")",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                clientName8.c_str(), clientUid, clientPid, cameraId.c_str(),
+=======
                 clientName.c_str(), clientUid, clientPid, cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 callingUid, procState);
     }
 
@@ -1290,7 +1400,11 @@ Status CameraService::validateClientPermissionsLocked(const std::string& cameraI
         ALOGE("Access Denial: cannot use the camera when sensor privacy is enabled");
         return STATUS_ERROR_FMT(ERROR_DISABLED,
                 "Caller \"%s\" (PID %d, UID %d) cannot open camera \"%s\" when sensor privacy "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "is enabled", clientName8.c_str(), clientUid, clientPid, cameraId.c_str());
+=======
                 "is enabled", clientName.c_str(), clientUid, clientPid, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     // Only use passed in clientPid to check permission. Use calling PID as the client PID that's
@@ -1467,7 +1581,11 @@ status_t CameraService::handleEvictionsLocked(const std::string& cameraId, int c
             auto incompatibleClients =
                     mActiveClientManager.getIncompatibleClients(clientDescriptor);
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8 msg = String8::format("%s : DENIED connect device %s client for package %s "
+=======
             std::string msg = fmt::sprintf("%s : DENIED connect device %s client for package %s "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     "(PID %d, score %d state %d) due to eviction policy", curTime.c_str(),
                     cameraId.c_str(), packageName.c_str(), clientPid,
                     clientPriority.getScore(), clientPriority.getState());
@@ -1476,12 +1594,20 @@ status_t CameraService::handleEvictionsLocked(const std::string& cameraId, int c
                 msg += fmt::sprintf("\n   - Blocked by existing device %s client for package %s"
                         "(PID %" PRId32 ", score %" PRId32 ", state %" PRId32 ")",
                         i->getKey().c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        String8{i->getValue()->getPackageName()}.c_str(),
+=======
                         i->getValue()->getPackageName().c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                         i->getOwnerId(), i->getPriority().getScore(),
                         i->getPriority().getState());
                 ALOGE("   Conflicts with: Device %s, client package %s (PID %"
                         PRId32 ", score %" PRId32 ", state %" PRId32 ")", i->getKey().c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        String8{i->getValue()->getPackageName()}.c_str(), i->getOwnerId(),
+=======
                         i->getValue()->getPackageName().c_str(), i->getOwnerId(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                         i->getPriority().getScore(), i->getPriority().getState());
             }
 
@@ -1517,7 +1643,11 @@ status_t CameraService::handleEvictionsLocked(const std::string& cameraId, int c
             logEvent(fmt::sprintf("EVICT device %s client held by package %s (PID"
                     " %" PRId32 ", score %" PRId32 ", state %" PRId32 ")\n - Evicted by device %s client for"
                     " package %s (PID %d, score %" PRId32 ", state %" PRId32 ")",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    i->getKey().c_str(), String8{clientSp->getPackageName()}.c_str(),
+=======
                     i->getKey().c_str(), clientSp->getPackageName().c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     i->getOwnerId(), i->getPriority().getScore(),
                     i->getPriority().getState(), cameraId.c_str(),
                     packageName.c_str(), clientPid, clientPriority.getScore(),
@@ -1689,10 +1819,17 @@ Status CameraService::connectDevice(
     }
 
     if (oomScoreOffset < 0) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg =
+                String8::format("Cannot increase the priority of a client %s pid %d for "
+                        "camera id %s", String8(clientPackageNameAdj).c_str(), callingPid,
+                        id.c_str());
+=======
         std::string msg =
                 fmt::sprintf("Cannot increase the priority of a client %s pid %d for "
                         "camera id %s", clientPackageNameAdj.c_str(), callingPid,
                         cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
@@ -1704,7 +1841,12 @@ Status CameraService::connectDevice(
     }
 
     if (CameraServiceProxyWrapper::isCameraDisabled(clientUserId)) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg =
+                String8::format("Camera disabled by device policy");
+=======
         std::string msg = "Camera disabled by device policy";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(ERROR_DISABLED, msg.c_str());
     }
@@ -1714,7 +1856,11 @@ Status CameraService::connectDevice(
             !hasPermissionsForSystemCamera(callingPid, CameraThreadState::getCallingUid())) {
         std::string msg = fmt::sprintf("Cannot change the priority of a client %s pid %d for "
                         "camera id %s without SYSTEM_CAMERA permissions",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        String8(clientPackageNameAdj).c_str(), callingPid, id.c_str());
+=======
                         clientPackageNameAdj.c_str(), callingPid, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(ERROR_PERMISSION_DENIED, msg.c_str());
     }
@@ -1810,7 +1956,11 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const std::str
     int packagePid = (clientPid == USE_CALLING_PID) ?
         CameraThreadState::getCallingPid() : clientPid;
     ALOGI("CameraService::connect call (PID %d \"%s\", camera ID %s) and "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            "Camera API version %d", packagePid, clientName8.c_str(), cameraId.c_str(),
+=======
             "Camera API version %d", packagePid, clientPackageName.c_str(), cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             static_cast<int>(effectiveApiLevel));
 
     nsecs_t openTimeNs = systemTime();
@@ -1829,7 +1979,11 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const std::str
                     , clientPid);
             return STATUS_ERROR_FMT(ERROR_MAX_CAMERAS_IN_USE,
                     "Cannot open camera %s for \"%s\" (PID %d): Too many other clients connecting",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    cameraId.c_str(), clientName8.c_str(), clientPid);
+=======
                     cameraId.c_str(), clientPackageName.c_str(), clientPid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
 
         // Enforce client permissions and do basic validity checks
@@ -1895,7 +2049,11 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const std::str
 
         sp<BasicClient> tmp = nullptr;
         bool overrideForPerfClass = SessionConfigurationUtils::targetPerfClassPrimaryCamera(
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                mPerfClassPrimaryCameraIds, cameraId.c_str(), targetSdkVersion);
+=======
                 mPerfClassPrimaryCameraIds, cameraId, targetSdkVersion);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         if(!(ret = makeClient(this, cameraCb, clientPackageName, systemNativeClient,
                 clientFeatureId, cameraId, api1CameraId, facing,
                 orientation, clientPid, clientUid, getpid(),
@@ -1993,7 +2151,11 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const std::str
         } else if (isCameraPrivacyEnabled) {
             // no camera mute supported, but privacy is on! => disconnect
             ALOGI("Camera mute not supported for package: %s, camera id: %s",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    String8(client->getPackageName()).c_str(), cameraId.c_str());
+=======
                     client->getPackageName().c_str(), cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             // Do not hold mServiceLock while disconnecting clients, but
             // retain the condition blocking other clients from connecting
             // in mServiceLockWrapper if held.
@@ -2151,28 +2313,52 @@ Status CameraService::turnOnTorchWithStrengthLevel(const std::string& cameraId,
                 "Torch client binder in null.");
     }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 id = String8(cameraId.c_str());
+=======
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     int uid = CameraThreadState::getCallingUid();
 
     if (shouldRejectSystemCameraConnection(cameraId)) {
         return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT, "Unable to change the strength level"
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "for system only device %s: ", id.c_str());
+=======
                 "for system only device %s: ", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     // verify id is valid
     auto state = getCameraState(cameraId);
     if (state == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        ALOGE("%s: camera id is invalid %s", __FUNCTION__, id.c_str());
+=======
         ALOGE("%s: camera id is invalid %s", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            "Camera ID \"%s\" is a not valid camera ID", id.c_str());
+=======
             "Camera ID \"%s\" is a not valid camera ID", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     StatusInternal cameraStatus = state->getStatus();
     if (cameraStatus != StatusInternal::NOT_AVAILABLE &&
             cameraStatus != StatusInternal::PRESENT) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        ALOGE("%s: camera id is invalid %s, status %d", __FUNCTION__, id.c_str(),
+=======
         ALOGE("%s: camera id is invalid %s, status %d", __FUNCTION__, cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             (int)cameraStatus);
         return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "Camera ID \"%s\" is a not valid camera ID", id.c_str());
+=======
                 "Camera ID \"%s\" is a not valid camera ID", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     {
@@ -2182,28 +2368,56 @@ Status CameraService::turnOnTorchWithStrengthLevel(const std::string& cameraId,
         if (err != OK) {
             if (err == NAME_NOT_FOUND) {
              return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    "Camera \"%s\" does not have a flash unit", id.c_str());
+=======
                     "Camera \"%s\" does not have a flash unit", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             }
             ALOGE("%s: getting current torch status failed for camera %s",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    __FUNCTION__, id.c_str());
+=======
                     __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION,
                     "Error changing torch strength level for camera \"%s\": %s (%d)",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    id.c_str(), strerror(-err), err);
+=======
                     cameraId.c_str(), strerror(-err), err);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
 
         if (status == TorchModeStatus::NOT_AVAILABLE) {
             if (cameraStatus == StatusInternal::NOT_AVAILABLE) {
                 ALOGE("%s: torch mode of camera %s is not available because "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        "camera is in use.", __FUNCTION__, id.c_str());
+=======
                         "camera is in use.", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 return STATUS_ERROR_FMT(ERROR_CAMERA_IN_USE,
                         "Torch for camera \"%s\" is not available due to an existing camera user",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        id.c_str());
+=======
                         cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             } else {
                 ALOGE("%s: torch mode of camera %s is not available due to "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                       "insufficient resources", __FUNCTION__, id.c_str());
+=======
                        "insufficient resources", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 return STATUS_ERROR_FMT(ERROR_MAX_CAMERAS_IN_USE,
                         "Torch for camera \"%s\" is not available due to insufficient resources",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        id.c_str());
+=======
                         cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             }
         }
     }
@@ -2214,7 +2428,11 @@ Status CameraService::turnOnTorchWithStrengthLevel(const std::string& cameraId,
     }
     // Check if the current torch strength level is same as the new one.
     bool shouldSkipTorchStrengthUpdates = mCameraProviderManager->shouldSkipTorchStrengthUpdate(
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            id.c_str(), torchStrength);
+=======
             cameraId, torchStrength);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     status_t err = mFlashlight->turnOnTorchWithStrengthLevel(cameraId, torchStrength);
 
@@ -2223,13 +2441,23 @@ Status CameraService::turnOnTorchWithStrengthLevel(const std::string& cameraId,
         std::string msg;
         switch (err) {
             case -ENOSYS:
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                msg = String8::format("Camera \"%s\" has no flashlight.",
+                    id.c_str());
+=======
                 msg = fmt::sprintf("Camera \"%s\" has no flashlight.",
                     cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 errorCode = ERROR_ILLEGAL_ARGUMENT;
                 break;
             case -EBUSY:
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                msg = String8::format("Camera \"%s\" is in use",
+                    id.c_str());
+=======
                 msg = fmt::sprintf("Camera \"%s\" is in use",
                     cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 errorCode = ERROR_CAMERA_IN_USE;
                 break;
             case -EINVAL:
@@ -2279,27 +2507,51 @@ Status CameraService::setTorchMode(const std::string& cameraId, bool enabled,
                 "Torch client Binder is null");
     }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 id = String8(cameraId.c_str());
+=======
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     int uid = CameraThreadState::getCallingUid();
 
     if (shouldRejectSystemCameraConnection(cameraId)) {
         return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT, "Unable to set torch mode"
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                " for system only device %s: ", id.c_str());
+=======
                 " for system only device %s: ", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
     // verify id is valid.
     auto state = getCameraState(cameraId);
     if (state == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        ALOGE("%s: camera id is invalid %s", __FUNCTION__, id.c_str());
+=======
         ALOGE("%s: camera id is invalid %s", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "Camera ID \"%s\" is a not valid camera ID", id.c_str());
+=======
                 "Camera ID \"%s\" is a not valid camera ID", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     StatusInternal cameraStatus = state->getStatus();
     if (cameraStatus != StatusInternal::PRESENT &&
             cameraStatus != StatusInternal::NOT_AVAILABLE) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        ALOGE("%s: camera id is invalid %s, status %d", __FUNCTION__, id.c_str(), (int)cameraStatus);
+=======
         ALOGE("%s: camera id is invalid %s, status %d", __FUNCTION__, cameraId.c_str(),
                 (int)cameraStatus);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                "Camera ID \"%s\" is a not valid camera ID", id.c_str());
+=======
                 "Camera ID \"%s\" is a not valid camera ID", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     {
@@ -2309,28 +2561,56 @@ Status CameraService::setTorchMode(const std::string& cameraId, bool enabled,
         if (err != OK) {
             if (err == NAME_NOT_FOUND) {
                 return STATUS_ERROR_FMT(ERROR_ILLEGAL_ARGUMENT,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        "Camera \"%s\" does not have a flash unit", id.c_str());
+=======
                         "Camera \"%s\" does not have a flash unit", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             }
             ALOGE("%s: getting current torch status failed for camera %s",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    __FUNCTION__, id.c_str());
+=======
                     __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             return STATUS_ERROR_FMT(ERROR_INVALID_OPERATION,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    "Error updating torch status for camera \"%s\": %s (%d)", id.c_str(),
+=======
                     "Error updating torch status for camera \"%s\": %s (%d)", cameraId.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     strerror(-err), err);
         }
 
         if (status == TorchModeStatus::NOT_AVAILABLE) {
             if (cameraStatus == StatusInternal::NOT_AVAILABLE) {
                 ALOGE("%s: torch mode of camera %s is not available because "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        "camera is in use", __FUNCTION__, id.c_str());
+=======
                         "camera is in use", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 return STATUS_ERROR_FMT(ERROR_CAMERA_IN_USE,
                         "Torch for camera \"%s\" is not available due to an existing camera user",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        id.c_str());
+=======
                         cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             } else {
                 ALOGE("%s: torch mode of camera %s is not available due to "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        "insufficient resources", __FUNCTION__, id.c_str());
+=======
                         "insufficient resources", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 return STATUS_ERROR_FMT(ERROR_MAX_CAMERAS_IN_USE,
                         "Torch for camera \"%s\" is not available due to insufficient resources",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        id.c_str());
+=======
                         cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             }
         }
     }
@@ -2349,23 +2629,41 @@ Status CameraService::setTorchMode(const std::string& cameraId, bool enabled,
         std::string msg;
         switch (err) {
             case -ENOSYS:
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                msg = String8::format("Camera \"%s\" has no flashlight",
+                    id.c_str());
+=======
                 msg = fmt::sprintf("Camera \"%s\" has no flashlight",
                     cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 errorCode = ERROR_ILLEGAL_ARGUMENT;
                 break;
             case -EBUSY:
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                msg = String8::format("Camera \"%s\" is in use",
+                    id.c_str());
+=======
                 msg = fmt::sprintf("Camera \"%s\" is in use",
                     cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 errorCode = ERROR_CAMERA_IN_USE;
                 break;
             default:
                 msg = fmt::sprintf(
                     "Setting torch mode of camera \"%s\" to %d failed: %s (%d)",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    id.c_str(), enabled, strerror(-err), err);
+=======
                     cameraId.c_str(), enabled, strerror(-err), err);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 errorCode = ERROR_INVALID_OPERATION;
         }
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        logServiceError(msg,errorCode);
+=======
         logServiceError(msg, errorCode);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return STATUS_ERROR(errorCode, msg.c_str());
     }
 
@@ -2394,10 +2692,18 @@ Status CameraService::setTorchMode(const std::string& cameraId, bool enabled,
     return Status::ok();
 }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+void CameraService::updateTorchUidMapLocked(const String16& cameraId, int uid) {
+    String8 id = String8(cameraId.c_str());
+    if (mTorchUidMap.find(id) == mTorchUidMap.end()) {
+        mTorchUidMap[id].first = uid;
+        mTorchUidMap[id].second = uid;
+=======
 void CameraService::updateTorchUidMapLocked(const std::string& cameraId, int uid) {
     if (mTorchUidMap.find(cameraId) == mTorchUidMap.end()) {
         mTorchUidMap[cameraId].first = uid;
         mTorchUidMap[cameraId].second = uid;
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     } else {
         // Set the pending UID
         mTorchUidMap[cameraId].first = uid;
@@ -2669,7 +2975,11 @@ Status CameraService::addListenerHelper(const sp<ICameraServiceListener>& listen
         if (ret != NO_ERROR) {
             std::string msg = fmt::sprintf("Failed to initialize service listener: %s (%d)",
                     strerror(-ret), ret);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            logServiceError(msg,ERROR_ILLEGAL_ARGUMENT);
+=======
             logServiceError(msg, ERROR_ILLEGAL_ARGUMENT);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             ALOGE("%s: %s", __FUNCTION__, msg.c_str());
             return STATUS_ERROR(ERROR_ILLEGAL_ARGUMENT, msg.c_str());
         }
@@ -2717,7 +3027,11 @@ Status CameraService::addListenerHelper(const sp<ICameraServiceListener>& listen
     {
         Mutex::Autolock al(mTorchStatusMutex);
         for (size_t i = 0; i < mTorchStatusMap.size(); i++ ) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String16 id = String16(mTorchStatusMap.keyAt(i).c_str());
+=======
             const std::string &id = mTorchStatusMap.keyAt(i);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             // The camera id is visible to the client. Fine to send torch
             // callback.
             if (idsChosenForCallback.find(id) != idsChosenForCallback.end()) {
@@ -2788,14 +3102,24 @@ Status CameraService::supportsCameraApi(const std::string& cameraId, int apiVers
         /*out*/ bool *isSupported) {
     ATRACE_CALL();
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    const String8 id = String8(cameraId);
+
+    ALOGV("%s: for camera ID = %s", __FUNCTION__, id.c_str());
+=======
     ALOGV("%s: for camera ID = %s", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     switch (apiVersion) {
         case API_VERSION_1:
         case API_VERSION_2:
             break;
         default:
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8 msg = String8::format("Unknown API version %d", apiVersion);
+=======
             std::string msg = fmt::sprintf("Unknown API version %d", apiVersion);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             ALOGE("%s: %s", __FUNCTION__, msg.c_str());
             return STATUS_ERROR(ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
@@ -2803,7 +3127,11 @@ Status CameraService::supportsCameraApi(const std::string& cameraId, int apiVers
     int portraitRotation;
     auto deviceVersionAndTransport = getDeviceVersion(cameraId, false, &portraitRotation);
     if (deviceVersionAndTransport.first == -1) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Unknown camera ID %s", id.c_str());
+=======
         std::string msg = fmt::sprintf("Unknown camera ID %s", cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
@@ -2815,11 +3143,19 @@ Status CameraService::supportsCameraApi(const std::string& cameraId, int apiVers
             case CAMERA_DEVICE_API_VERSION_3_1:
                 if (apiVersion == API_VERSION_2) {
                     ALOGV("%s: Camera id %s uses HAL version %d <3.2, doesn't support api2 without "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                            "shim", __FUNCTION__, id.c_str(), deviceVersion);
+=======
                             "shim", __FUNCTION__, cameraId.c_str(), deviceVersion);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     *isSupported = false;
                 } else { // if (apiVersion == API_VERSION_1) {
                     ALOGV("%s: Camera id %s uses older HAL before 3.2, but api1 is always "
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                            "supported", __FUNCTION__, id.c_str());
+=======
                             "supported", __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     *isSupported = true;
                 }
                 break;
@@ -2830,12 +3166,21 @@ Status CameraService::supportsCameraApi(const std::string& cameraId, int apiVers
             case CAMERA_DEVICE_API_VERSION_3_6:
             case CAMERA_DEVICE_API_VERSION_3_7:
                 ALOGV("%s: Camera id %s uses HAL3.2 or newer, supports api1/api2 directly",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                        __FUNCTION__, id.c_str());
+=======
                         __FUNCTION__, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 *isSupported = true;
                 break;
             default: {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                String8 msg = String8::format("Unknown device version %x for device %s",
+                        deviceVersion, id.c_str());
+=======
                 std::string msg = fmt::sprintf("Unknown device version %x for device %s",
                         deviceVersion, cameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 ALOGE("%s: %s", __FUNCTION__, msg.c_str());
                 return STATUS_ERROR(ERROR_INVALID_OPERATION, msg.c_str());
             }
@@ -2850,8 +3195,15 @@ Status CameraService::isHiddenPhysicalCamera(const std::string& cameraId,
         /*out*/ bool *isSupported) {
     ATRACE_CALL();
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    const String8 id = String8(cameraId);
+
+    ALOGV("%s: for camera ID = %s", __FUNCTION__, id.c_str());
+    *isSupported = mCameraProviderManager->isHiddenPhysicalCamera(id.c_str());
+=======
     ALOGV("%s: for camera ID = %s", __FUNCTION__, cameraId.c_str());
     *isSupported = mCameraProviderManager->isHiddenPhysicalCamera(cameraId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     return Status::ok();
 }
@@ -2875,8 +3227,13 @@ Status CameraService::injectCamera(
     ALOGV(
         "%s: Package name = %s, Internal camera ID = %s, External camera ID = "
         "%s",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        __FUNCTION__, String8(packageName).c_str(),
+        String8(internalCamId).c_str(), String8(externalCamId).c_str());
+=======
         __FUNCTION__, packageName.c_str(),
         internalCamId.c_str(), externalCamId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     {
         Mutex::Autolock lock(mInjectionParametersLock);
@@ -3050,7 +3407,11 @@ void CameraService::doUserSwitch(const std::vector<int32_t>& newUserIds) {
         logEvent(fmt::sprintf("EVICT device %s client held by package %s (PID %"
                 PRId32 ", score %" PRId32 ", state %" PRId32 ")\n   - Evicted due"
                 " to user switch.", i->getKey().c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                String8{clientSp->getPackageName()}.c_str(),
+=======
                 clientSp->getPackageName().c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 i->getOwnerId(), i->getPriority().getScore(),
                 i->getPriority().getState()));
 
@@ -3076,7 +3437,11 @@ void CameraService::doUserSwitch(const std::vector<int32_t>& newUserIds) {
 void CameraService::logEvent(const std::string &event) {
     std::string curTime = getFormattedCurrentTime();
     Mutex::Autolock l(mLogLock);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 msg = String8::format("%s : %s", curTime.c_str(), event);
+=======
     std::string msg = curTime + " : " + event;
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     // For service error events, print the msg only once.
     if (msg.find("SERVICE ERROR") != std::string::npos) {
         mEventLog.add(msg);
@@ -3137,7 +3502,11 @@ void CameraService::logUserSwitch(const std::set<userid_t>& oldUserIds,
         oldUsers = "<None>";
     }
     // Log the new and old users
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    logEvent(String8::format("USER_SWITCH previous allowed user IDs: %s, current allowed user IDs: %s",
+=======
     logEvent(fmt::sprintf("USER_SWITCH previous allowed user IDs: %s, current allowed user IDs: %s",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             oldUsers.c_str(), newUsers.c_str()));
 }
 
@@ -3469,7 +3838,11 @@ bool CameraService::BasicClient::isValidAudioRestriction(int32_t mode) {
 status_t CameraService::BasicClient::handleAppOpMode(int32_t mode) {
     if (mode == AppOpsManager::MODE_ERRORED) {
         ALOGI("Camera %s: Access for \"%s\" has been revoked",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                mCameraIdStr.c_str(), String8(mClientPackageName).c_str());
+=======
                 mCameraIdStr.c_str(), mClientPackageName.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return PERMISSION_DENIED;
     } else if (!mUidIsTrusted && mode == AppOpsManager::MODE_IGNORED) {
         // If the calling Uid is trusted (a native service), the AppOpsManager could
@@ -3480,7 +3853,11 @@ status_t CameraService::BasicClient::handleAppOpMode(int32_t mode) {
                 sCameraService->mSensorPrivacyPolicy->isCameraPrivacyEnabled();
         if (!isUidActive || !isCameraPrivacyEnabled) {
             ALOGI("Camera %s: Access for \"%s\" has been restricted",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    mCameraIdStr.c_str(), String8(mClientPackageName).c_str());
+=======
                     mCameraIdStr.c_str(), mClientPackageName.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             // Return the same error as for device policy manager rejection
             return -EACCES;
         }
@@ -3493,7 +3870,11 @@ status_t CameraService::BasicClient::startCameraOps() {
 
     {
         ALOGV("%s: Start camera ops, package name = %s, client UID = %d",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+              __FUNCTION__, String8(mClientPackageName).c_str(), mClientUid);
+=======
               __FUNCTION__, mClientPackageName.c_str(), mClientUid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
     if (mAppOpsManager != nullptr) {
         // Notify app ops that the camera is not available
@@ -3537,7 +3918,11 @@ status_t CameraService::BasicClient::startCameraStreamingOps() {
     }
 
     ALOGV("%s: Start camera streaming ops, package name = %s, client UID = %d",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            __FUNCTION__, String8(mClientPackageName).c_str(), mClientUid);
+=======
             __FUNCTION__, mClientPackageName.c_str(), mClientUid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     if (mAppOpsManager != nullptr) {
         int32_t mode = mAppOpsManager->startOpNoThrow(AppOpsManager::OP_CAMERA, mClientUid,
@@ -3559,7 +3944,11 @@ status_t CameraService::BasicClient::noteAppOp() {
     ATRACE_CALL();
 
     ALOGV("%s: Start camera noteAppOp, package name = %s, client UID = %d",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            __FUNCTION__, String8(mClientPackageName).c_str(), mClientUid);
+=======
             __FUNCTION__, mClientPackageName.c_str(), mClientUid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     // noteAppOp is only used for when camera mute is not supported, in order
     // to trigger the sensor privacy "Unblock" dialog
@@ -3655,14 +4044,22 @@ void CameraService::BasicClient::opChanged(int32_t op, const String16&) {
 
     if (res == AppOpsManager::MODE_ERRORED) {
         ALOGI("Camera %s: Access for \"%s\" revoked", mCameraIdStr.c_str(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+              String8(mClientPackageName).c_str());
+=======
               mClientPackageName.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         block();
     } else if (res == AppOpsManager::MODE_IGNORED) {
         bool isUidActive = sCameraService->mUidPolicy->isUidActive(mClientUid, mClientPackageName);
         bool isCameraPrivacyEnabled =
                 sCameraService->mSensorPrivacyPolicy->isCameraPrivacyEnabled();
         ALOGI("Camera %s: Access for \"%s\" has been restricted, isUidTrusted %d, isUidActive %d",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                mCameraIdStr.c_str(), String8(mClientPackageName).c_str(),
+=======
                 mCameraIdStr.c_str(), mClientPackageName.c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 mUidIsTrusted, isUidActive);
         // If the calling Uid is trusted (a native service), or the client Uid is active (WAR for
         // b/175320666), the AppOpsManager could return MODE_IGNORED. Do not treat such cases as
@@ -4164,19 +4561,31 @@ std::string CameraService::CameraClientManager::toString() const {
             uid_t clientUid = clientSp->getClientUid();
             clientUserId = multiuser_get_user_id(clientUid);
         }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        ret.appendFormat("\n(Camera ID: %s, Cost: %" PRId32 ", PID: %" PRId32 ", Score: %"
+=======
         ret << fmt::sprintf("\n(Camera ID: %s, Cost: %" PRId32 ", PID: %" PRId32 ", Score: %"
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 PRId32 ", State: %" PRId32, key.c_str(), cost, pid, score, state);
 
         if (clientSp.get() != nullptr) {
             ret << fmt::sprintf("User Id: %d, ", clientUserId);
         }
         if (packageName.size() != 0) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            ret.appendFormat("Client Package Name: %s", packageName.c_str());
+=======
             ret << fmt::sprintf("Client Package Name: %s", packageName.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
 
         ret << ", Conflicting Client Devices: {";
         for (auto& j : conflicting) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            ret.appendFormat("%s, ", j.c_str());
+=======
             ret << fmt::sprintf("%s, ", j.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
         ret << "})";
     }
@@ -4392,7 +4801,11 @@ status_t CameraService::dump(int fd, const Vector<String16>& args) {
     for (size_t i = 0; i < mNormalDeviceIds.size(); i++) {
         dprintf(fd, "    Device %zu maps to \"%s\"\n", i, mNormalDeviceIds[i].c_str());
     }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 activeClientString = mActiveClientManager.toString();
+=======
     std::string activeClientString = mActiveClientManager.toString();
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     dprintf(fd, "Active Camera Clients:\n%s", activeClientString.c_str());
     dprintf(fd, "Allowed user IDs: %s\n", toString(mAllowedUsers).c_str());
     if (mStreamUseCaseOverrides.size() > 0) {
@@ -4474,7 +4887,11 @@ status_t CameraService::dump(int fd, const Vector<String16>& args) {
         if (args[i] == verboseOption) {
             // change logging level
             if (i + 1 >= n) continue;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8 levelStr(args[i+1]);
+=======
             std::string levelStr = toStdString(args[i+1]);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             int level = atoi(levelStr.c_str());
             dprintf(fd, "\nSetting log level to %d.\n", level);
             setLogLevel(level);
@@ -4533,7 +4950,11 @@ void CameraService::dumpOpenSessionClientLogs(int fd,
 
     auto client = clientDescriptor->getValue();
     dprintf(fd, "    Client package: %s\n",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8(client->getPackageName()).c_str());
+=======
         client->getPackageName().c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     client->dumpClient(fd, args);
 }
@@ -4570,10 +4991,24 @@ void CameraService::cacheClientTagDumpIfNeeded(const std::string &cameraId, Basi
 
     std::ostringstream dumpString;
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 currentTime = getFormattedCurrentTime();
+    dumpString += "Cached @ ";
+    dumpString += currentTime.c_str();
+    dumpString += "\n"; // First line is the timestamp of when client is cached.
+
+
+    const String16 &packageName = client->getPackageName();
+
+    String8 packageName8 = String8(packageName);
+    const char *printablePackageName = packageName8.lockBuffer(packageName.size());
+
+=======
     std::string currentTime = getFormattedCurrentTime();
     dumpString << "Cached @ ";
     dumpString << currentTime;
     dumpString << "\n"; // First line is the timestamp of when client is cached.
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     size_t i = dumpVector.size();
 
@@ -4906,8 +5341,13 @@ status_t CameraService::handleSetUidState(const Vector<String16>& args, int err)
     bool active = false;
     if (args[2] == toString16("active")) {
         active = true;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    } else if ((args[2] != String16("idle"))) {
+        ALOGE("Expected active or idle but got: '%s'", String8(args[2]).c_str());
+=======
     } else if ((args[2] != toString16("idle"))) {
         ALOGE("Expected active or idle but got: '%s'", toStdString(args[2]).c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         return BAD_VALUE;
     }
 
@@ -5225,7 +5665,11 @@ status_t CameraService::printWatchedTags(int outFd) {
         dprintf(outFd, "Client: %s (active)\n", client->getPackageName().c_str());
         while(printIdx > 0) {
             printIdx--;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            dprintf(outFd, "%s:%s  %s", cameraId.c_str(), printablePackageName,
+=======
             dprintf(outFd, "%s:%s  %s", cameraId.c_str(), client->getPackageName().c_str(),
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     dumpVector[printIdx].c_str());
         }
         dprintf(outFd, "\n");
@@ -5242,7 +5686,11 @@ status_t CameraService::printWatchedTags(int outFd) {
             continue;
         }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        dprintf(outFd, "Client: %s (cached)\n", String8(package).c_str());
+=======
         dprintf(outFd, "Client: %s (cached)\n", package.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         dprintf(outFd, "%s\n", kv.second.c_str());
         printedSomething = true;
     }
@@ -5359,7 +5807,11 @@ status_t CameraService::printWatchedTagsUntilInterrupt(const Vector<String16> &a
 
         size_t intervalValIdx = intervalIdx + 1;
         if (intervalValIdx < args.size()) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            refreshTimeoutMs = strtol(String8(args[intervalValIdx].c_str()), nullptr, 10);
+=======
             refreshTimeoutMs = strtol(toStdString(args[intervalValIdx]).c_str(), nullptr, 10);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             if (errno) { return BAD_VALUE; }
         }
     }
@@ -5409,8 +5861,12 @@ status_t CameraService::printWatchedTagsUntilInterrupt(const Vector<String16> &a
 void CameraService::parseClientsToWatchLocked(const std::string &clients) {
     mWatchedClientPackages.clear();
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    const char *allSentinel = String8(kWatchAllClientsFlag).c_str();
+=======
     std::istringstream iss(clients);
     std::string nextClient;
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     while (std::getline(iss, nextClient, ',')) {
         if (nextClient == kWatchAllClientsFlag) {

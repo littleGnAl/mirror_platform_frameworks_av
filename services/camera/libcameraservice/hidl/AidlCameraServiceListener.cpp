@@ -33,7 +33,11 @@ binder::Status H2BCameraServiceListener::onStatusChanged(
   HCameraDeviceStatus hCameraDeviceStatus = convertToHidlCameraDeviceStatus(status);
   CameraStatusAndId cameraStatusAndId;
   cameraStatusAndId.deviceStatus = hCameraDeviceStatus;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+  cameraStatusAndId.cameraId = String8(cameraId).c_str();
+=======
   cameraStatusAndId.cameraId = cameraId;
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
   auto ret = mBase->onStatusChanged(cameraStatusAndId);
   if (!ret.isOk()) {
       ALOGE("%s OnStatusChanged callback failed due to %s",__FUNCTION__,
@@ -53,8 +57,13 @@ binder::Status H2BCameraServiceListener::onPhysicalCameraStatusChanged(
       HCameraDeviceStatus hCameraDeviceStatus = convertToHidlCameraDeviceStatus(status);
       V2_1::PhysicalCameraStatusAndId cameraStatusAndId;
       cameraStatusAndId.deviceStatus = hCameraDeviceStatus;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+      cameraStatusAndId.cameraId = String8(cameraId).c_str();
+      cameraStatusAndId.physicalCameraId = String8(physicalCameraId).c_str();
+=======
       cameraStatusAndId.cameraId = cameraId;
       cameraStatusAndId.physicalCameraId = physicalCameraId;
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
       auto ret = interface2_1->onPhysicalCameraStatusChanged(cameraStatusAndId);
       if (!ret.isOk()) {
         ALOGE("%s OnPhysicalCameraStatusChanged callback failed due to %s",__FUNCTION__,

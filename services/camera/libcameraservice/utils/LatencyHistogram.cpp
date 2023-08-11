@@ -77,8 +77,12 @@ void CameraLatencyHistogram::log(const char* fmt, ...) {
 
     va_list args;
     va_start(args, fmt);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 histogramName = String8::formatV(fmt, args);
+=======
     std::string histogramName;
     base::StringAppendV(&histogramName, fmt, args);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     ALOGI("%s (%" PRId64 ") samples:", histogramName.c_str(), mTotalCount);
     va_end(args);
 

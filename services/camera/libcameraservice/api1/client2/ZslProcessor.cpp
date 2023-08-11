@@ -681,11 +681,19 @@ void ZslProcessor::clearZslResultQueueLocked() {
 void ZslProcessor::dump(int fd, const Vector<String16>& /*args*/) const {
     Mutex::Autolock l(mInputMutex);
     if (!mLatestCapturedRequest.isEmpty()) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 result("    Latest ZSL capture request:\n");
+=======
         std::string result = "    Latest ZSL capture request:\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         write(fd, result.c_str(), result.size());
         mLatestCapturedRequest.dump(fd, 2, 6);
     } else {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 result("    Latest ZSL capture request: none yet\n");
+=======
         std::string result = "    Latest ZSL capture request: none yet\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         write(fd, result.c_str(), result.size());
     }
     dumpZslQueue(fd);
@@ -707,8 +715,13 @@ bool ZslProcessor::threadLoop() {
 }
 
 void ZslProcessor::dumpZslQueue(int fd) const {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 header("ZSL queue contents:");
+    String8 indent("    ");
+=======
     std::string header = "ZSL queue contents:";
     std::string indent = "    ";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     ALOGV("%s", header.c_str());
     if (fd != -1) {
         header = indent + header + "\n";

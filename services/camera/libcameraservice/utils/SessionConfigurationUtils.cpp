@@ -340,7 +340,11 @@ binder::Status createSurfaceFromGbp(
         int64_t streamUseCase, int timestampBase, int mirrorMode) {
     // bufferProducer must be non-null
     if (gbp == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Surface is NULL", logicalCameraId.c_str());
+=======
         std::string msg = fmt::sprintf("Camera %s: Surface is NULL", logicalCameraId.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGW("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
@@ -351,7 +355,11 @@ binder::Status createSurfaceFromGbp(
     uint64_t consumerUsage = 0;
     status_t err;
     if ((err = gbp->getConsumerUsage(&consumerUsage)) != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Failed to query Surface consumer usage: %s (%d)",
+=======
         std::string msg = fmt::sprintf("Camera %s: Failed to query Surface consumer usage: %s (%d)",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), strerror(-err), err);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
@@ -376,26 +384,42 @@ binder::Status createSurfaceFromGbp(
     int width, height, format;
     android_dataspace dataSpace;
     if ((err = anw->query(anw, NATIVE_WINDOW_WIDTH, &width)) != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Failed to query Surface width: %s (%d)",
+=======
         std::string msg = fmt::sprintf("Camera %s: Failed to query Surface width: %s (%d)",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                  logicalCameraId.c_str(), strerror(-err), err);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
     }
     if ((err = anw->query(anw, NATIVE_WINDOW_HEIGHT, &height)) != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Failed to query Surface height: %s (%d)",
+=======
         std::string msg = fmt::sprintf("Camera %s: Failed to query Surface height: %s (%d)",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), strerror(-err), err);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
     }
     if ((err = anw->query(anw, NATIVE_WINDOW_FORMAT, &format)) != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Failed to query Surface format: %s (%d)",
+=======
         std::string msg = fmt::sprintf("Camera %s: Failed to query Surface format: %s (%d)",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), strerror(-err), err);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
     }
     if ((err = anw->query(anw, NATIVE_WINDOW_DEFAULT_DATASPACE,
             reinterpret_cast<int*>(&dataSpace))) != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Failed to query Surface dataspace: %s (%d)",
+=======
         std::string msg = fmt::sprintf("Camera %s: Failed to query Surface dataspace: %s (%d)",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), strerror(-err), err);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION, msg.c_str());
@@ -413,7 +437,11 @@ binder::Status createSurfaceFromGbp(
     std::unordered_set<int32_t> overriddenSensorPixelModes;
     if (checkAndOverrideSensorPixelModesUsed(sensorPixelModesUsed, format, width, height,
             physicalCameraMetadata, flexibleConsumer, &overriddenSensorPixelModes) != OK) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: sensor pixel modes for stream with "
+=======
         std::string msg = fmt::sprintf("Camera %s: sensor pixel modes for stream with "
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 "format %#x are not valid",logicalCameraId.c_str(), format);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -437,7 +465,11 @@ binder::Status createSurfaceFromGbp(
     }
     if (!SessionConfigurationUtils::isDynamicRangeProfileSupported(dynamicRangeProfile,
                 physicalCameraMetadata)) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: Dynamic range profile 0x%" PRIx64
+=======
         std::string msg = fmt::sprintf("Camera %s: Dynamic range profile 0x%" PRIx64
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 " not supported,failed to create output stream", logicalCameraId.c_str(),
                 dynamicRangeProfile);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
@@ -453,21 +485,33 @@ binder::Status createSurfaceFromGbp(
     }
     if (!SessionConfigurationUtils::isStreamUseCaseSupported(streamUseCase,
             physicalCameraMetadata)) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: stream use case %" PRId64 " not supported,"
+=======
         std::string msg = fmt::sprintf("Camera %s: stream use case %" PRId64 " not supported,"
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 " failed to create output stream", logicalCameraId.c_str(), streamUseCase);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
     if (timestampBase < OutputConfiguration::TIMESTAMP_BASE_DEFAULT ||
             timestampBase > OutputConfiguration::TIMESTAMP_BASE_MAX) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: invalid timestamp base %d",
+=======
         std::string msg = fmt::sprintf("Camera %s: invalid timestamp base %d",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), timestampBase);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
     if (mirrorMode < OutputConfiguration::MIRROR_MODE_AUTO ||
             mirrorMode > OutputConfiguration::MIRROR_MODE_V) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s: invalid mirroring mode %d",
+=======
         std::string msg = fmt::sprintf("Camera %s: invalid mirroring mode %d",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), mirrorMode);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -487,26 +531,42 @@ binder::Status createSurfaceFromGbp(
         return binder::Status::ok();
     }
     if (width != streamInfo.width) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s:Surface width doesn't match: %d vs %d",
+=======
         std::string msg = fmt::sprintf("Camera %s:Surface width doesn't match: %d vs %d",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), width, streamInfo.width);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
     if (height != streamInfo.height) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s:Surface height doesn't match: %d vs %d",
+=======
         std::string msg = fmt::sprintf("Camera %s:Surface height doesn't match: %d vs %d",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                  logicalCameraId.c_str(), height, streamInfo.height);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
     if (format != streamInfo.format) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format("Camera %s:Surface format doesn't match: %d vs %d",
+=======
         std::string msg = fmt::sprintf("Camera %s:Surface format doesn't match: %d vs %d",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                  logicalCameraId.c_str(), format, streamInfo.format);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
     if (format != HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED) {
         if (dataSpace != streamInfo.dataSpace) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            String8 msg = String8::format("Camera %s:Surface dataSpace doesn't match: %d vs %d",
+=======
             std::string msg = fmt::sprintf("Camera %s:Surface dataSpace doesn't match: %d vs %d",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                     logicalCameraId.c_str(), dataSpace, streamInfo.dataSpace);
             ALOGE("%s: %s", __FUNCTION__, msg.c_str());
             return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -541,7 +601,11 @@ void mapStreamInfo(const OutputStreamInfo &streamInfo,
     stream->dataSpace = AidlCamera3Device::mapToAidlDataspace(streamInfo.dataSpace);
     stream->rotation = AidlCamera3Device::mapToAidlStreamRotation(rotation);
     stream->id = -1; // Invalid stream id
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    stream->physicalCameraId = std::string(physicalId.c_str());
+=======
     stream->physicalCameraId = physicalId;
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     stream->bufferSize = 0;
     stream->groupId = groupId;
     stream->sensorPixelModesUsed.resize(streamInfo.sensorPixelModesUsed.size());
@@ -575,7 +639,11 @@ convertToHALStreamCombination(
     }
 
     if (earlyExit == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg("earlyExit nullptr");
+=======
         std::string msg("earlyExit nullptr");
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
     }
@@ -760,8 +828,13 @@ binder::Status checkPhysicalCameraId(
         return binder::Status::ok();
     }
     if (std::find(physicalCameraIds.begin(), physicalCameraIds.end(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        physicalCameraId.c_str()) == physicalCameraIds.end()) {
+        String8 msg = String8::format("Camera %s: Camera doesn't support physicalCameraId %s.",
+=======
         physicalCameraId) == physicalCameraIds.end()) {
         std::string msg = fmt::sprintf("Camera %s: Camera doesn't support physicalCameraId %s.",
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 logicalCameraId.c_str(), physicalCameraId.c_str());
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT, msg.c_str());
@@ -794,7 +867,11 @@ binder::Status checkSurfaceType(size_t numBufferProducers,
 binder::Status checkOperatingMode(int operatingMode,
         const CameraMetadata &staticInfo, const std::string &cameraId) {
     if (operatingMode < 0) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        String8 msg = String8::format(
+=======
         std::string msg = fmt::sprintf(
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             "Camera %s: Invalid operating mode %d requested", cameraId.c_str(), operatingMode);
         ALOGE("%s: %s", __FUNCTION__, msg.c_str());
         return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT,

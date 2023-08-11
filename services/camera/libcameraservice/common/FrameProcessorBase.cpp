@@ -87,7 +87,11 @@ status_t FrameProcessorBase::removeListener(int32_t minId,
 }
 
 void FrameProcessorBase::dump(int fd, const Vector<String16>& /*args*/) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 result("    Latest received frame:\n");
+=======
     std::string result("    Latest received frame:\n");
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     write(fd, result.c_str(), result.size());
 
     CameraMetadata lastFrame;

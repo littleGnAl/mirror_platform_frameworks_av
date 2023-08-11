@@ -54,7 +54,11 @@ status_t ConcurrentCameraIdCombination::readFromParcel(const android::Parcel* pa
             ALOGE("%s: Failed to read camera id!", __FUNCTION__);
             return err;
         }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        mConcurrentCameraIds.push_back(std::string(String8(id).c_str()));
+=======
         mConcurrentCameraIds.push_back(toStdString(id));
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
     return OK;
 }
@@ -100,7 +104,11 @@ status_t CameraIdAndSessionConfiguration::readFromParcel(const android::Parcel* 
         ALOGE("%s: Failed to read sessionConfiguration!", __FUNCTION__);
         return err;
     }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    mCameraId = std::string(String8(id).c_str());
+=======
     mCameraId = toStdString(id);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     return OK;
 }
 

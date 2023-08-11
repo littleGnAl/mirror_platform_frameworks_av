@@ -219,8 +219,12 @@ void Camera3OfflineSession::setErrorStateLocked(const char *fmt, ...) {
 
 void Camera3OfflineSession::setErrorStateLockedV(const char *fmt, va_list args) {
     // Print out all error messages to log
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 errorCause = String8::formatV(fmt, args);
+=======
     std::string errorCause;
     base::StringAppendV(&errorCause, fmt, args);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     ALOGE("Camera %s: %s", mId.c_str(), errorCause.c_str());
 
     // But only do error state transition steps for the first error

@@ -186,7 +186,11 @@ void CaptureSequencer::dump(int fd, const Vector<String16>& /*args*/) {
     }
     result = fmt::sprintf("    Current capture state: %s\n",
             kStateNames[mCaptureState]);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    result.append("    Latest captured frame:\n");
+=======
     result += "    Latest captured frame:\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     write(fd, result.c_str(), result.size());
     mNewFrame.dump(fd, 2, 6);
 }

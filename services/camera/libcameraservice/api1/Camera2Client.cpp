@@ -144,25 +144,56 @@ status_t Camera2Client::initializeImpl(TProviderPtr providerPtr, const std::stri
 
     std::string threadName = std::string("C2-") + std::to_string(mCameraId);
     mFrameProcessor = new FrameProcessor(mDevice, this);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    threadName = String8::format("C2-%d-FrameProc",
+            mCameraId);
+    mFrameProcessor->run(threadName.c_str());
+=======
     mFrameProcessor->run((threadName + "-FrameProc").c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     mCaptureSequencer = new CaptureSequencer(this);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    threadName = String8::format("C2-%d-CaptureSeq",
+            mCameraId);
+    mCaptureSequencer->run(threadName.c_str());
+=======
     mCaptureSequencer->run((threadName + "-CaptureSeq").c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     mJpegProcessor = new JpegProcessor(this, mCaptureSequencer);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    threadName = String8::format("C2-%d-JpegProc",
+            mCameraId);
+    mJpegProcessor->run(threadName.c_str());
+=======
     mJpegProcessor->run((threadName + "-JpegProc").c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     mZslProcessor = new ZslProcessor(this, mCaptureSequencer);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+
+    threadName = String8::format("C2-%d-ZslProc",
+            mCameraId);
+    mZslProcessor->run(threadName.c_str());
+=======
     mZslProcessor->run((threadName + "-ZslProc").c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     mCallbackProcessor = new CallbackProcessor(this);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    threadName = String8::format("C2-%d-CallbkProc",
+            mCameraId);
+    mCallbackProcessor->run(threadName.c_str());
+=======
     mCallbackProcessor->run((threadName + "-CallbkProc").c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     if (gLogLevel >= 1) {
         SharedParameters::Lock l(mParameters);
         ALOGD("%s: Default parameters converted from camera %d:", __FUNCTION__,
               mCameraId);
-        ALOGD("%s", l.mParameters.paramsFlattened.string());
+        ALOGD("%s", l.mParameters.paramsFlattened.c_str());
     }
 
     return OK;
@@ -220,8 +251,13 @@ status_t Camera2Client::dumpClient(int fd, const Vector<String16>& args) {
                 p.gpsCoordinates[2]);
         result << fmt::sprintf("    GPS timestamp: %" PRId64 "\n",
                 p.gpsTimestamp);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        result.appendFormat("    GPS processing method: %s\n",
+                p.gpsProcessingMethod.c_str());
+=======
         result << fmt::sprintf("    GPS processing method: %s\n",
                 p.gpsProcessingMethod.string());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     result << "    White balance mode: ";
@@ -393,9 +429,13 @@ status_t Camera2Client::dumpClient(int fd, const Vector<String16>& args) {
         result << "    none\n";
     }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    write(fd, result.c_str(), result.size());
+=======
     std::string resultStr = std::move(result.str());
 
     write(fd, resultStr.c_str(), resultStr.size());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     mStreamingProcessor->dump(fd, args);
 

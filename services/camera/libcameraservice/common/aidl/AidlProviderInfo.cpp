@@ -767,7 +767,11 @@ status_t AidlProviderInfo::convertToAidlHALStreamCombinationAndCameraIdsLocked(
         camera3::metadataGetter getMetadata =
                 [this](const std::string &id, bool overrideForPerfClass) {
                     CameraMetadata physicalDeviceInfo;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    mManager->getCameraCharacteristicsLocked(id.c_str(), overrideForPerfClass,
+=======
                     mManager->getCameraCharacteristicsLocked(id, overrideForPerfClass,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                                                    &physicalDeviceInfo,
                                                    /*overrideToPortrait*/false);
                     return physicalDeviceInfo;

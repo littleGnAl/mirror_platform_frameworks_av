@@ -48,7 +48,11 @@ status_t CameraOfflineSessionClient::initialize(sp<CameraProviderManager>, const
     }
 
     mFrameProcessor = new camera2::FrameProcessorBase(mOfflineSession);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    threadName = String8::format("Offline-%s-FrameProc", mCameraIdStr.c_str());
+=======
     std::string threadName = fmt::sprintf("Offline-%s-FrameProc", mCameraIdStr.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     mFrameProcessor->run(threadName.c_str());
 
     mFrameProcessor->registerListener(camera2::FrameProcessorBase::FRAME_PROCESSOR_LISTENER_MIN_ID,
@@ -214,7 +218,11 @@ status_t CameraOfflineSessionClient::startCameraOps() {
     ATRACE_CALL();
     {
         ALOGV("%s: Start camera ops, package name = %s, client UID = %d",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+              __FUNCTION__, String8(mClientPackageName).c_str(), mClientUid);
+=======
               __FUNCTION__, mClientPackageName.c_str(), mClientUid);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     if (mAppOpsManager != nullptr) {
@@ -230,7 +238,11 @@ status_t CameraOfflineSessionClient::startCameraOps() {
 
         if (res == AppOpsManager::MODE_ERRORED) {
             ALOGI("Offline Camera %s: Access for \"%s\" has been revoked",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    mCameraIdStr.c_str(), String8(mClientPackageName).c_str());
+=======
                     mCameraIdStr.c_str(), mClientPackageName.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             return PERMISSION_DENIED;
         }
 
@@ -238,7 +250,11 @@ status_t CameraOfflineSessionClient::startCameraOps() {
         // return MODE_IGNORED. Do not treat such case as error.
         if (!mUidIsTrusted && res == AppOpsManager::MODE_IGNORED) {
             ALOGI("Offline Camera %s: Access for \"%s\" has been restricted",
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                    mCameraIdStr.c_str(), String8(mClientPackageName).c_str());
+=======
                     mCameraIdStr.c_str(), mClientPackageName.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             // Return the same error as for device policy manager rejection
             return -EACCES;
         }

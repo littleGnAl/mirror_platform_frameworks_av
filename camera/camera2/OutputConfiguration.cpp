@@ -227,7 +227,11 @@ status_t OutputConfiguration::readFromParcel(const android::Parcel* parcel) {
     for (auto& surface : surfaceShims) {
         ALOGV("%s: OutputConfiguration: %p, name %s", __FUNCTION__,
                 surface.graphicBufferProducer.get(),
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                String8(surface.name).c_str());
+=======
                 toString8(surface.name).string());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         mGbps.push_back(surface.graphicBufferProducer);
     }
 
@@ -238,7 +242,11 @@ status_t OutputConfiguration::readFromParcel(const android::Parcel* parcel) {
           " physicalCameraId = %s, isMultiResolution = %d, streamUseCase = %" PRId64
           ", timestampBase = %d, mirrorMode = %d",
           __FUNCTION__, mRotation, mSurfaceSetID, mSurfaceType,
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+          String8(mPhysicalCameraId).c_str(), mIsMultiResolution, mStreamUseCase, timestampBase,
+=======
           mPhysicalCameraId.c_str(), mIsMultiResolution, mStreamUseCase, timestampBase,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
           mMirrorMode);
 
     return err;

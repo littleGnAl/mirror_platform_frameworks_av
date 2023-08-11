@@ -54,7 +54,11 @@ status_t CameraFlashlight::createFlashlightControl(const std::string& cameraId) 
         return INVALID_OPERATION;
     }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    if (mProviderManager->supportSetTorchMode(cameraId.c_str())) {
+=======
     if (mProviderManager->supportSetTorchMode(cameraId)) {
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         mFlashControl = new ProviderFlashControl(mProviderManager);
     } else {
         ALOGE("Flashlight control not supported by this device!");
@@ -244,7 +248,11 @@ bool CameraFlashlight::hasFlashUnitLocked(const std::string& cameraId) {
 bool CameraFlashlight::isBackwardCompatibleMode(const std::string& cameraId) {
     bool backwardCompatibleMode = false;
     if (mProviderManager != nullptr &&
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            !mProviderManager->supportSetTorchMode(cameraId.c_str())) {
+=======
             !mProviderManager->supportSetTorchMode(cameraId)) {
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         backwardCompatibleMode = true;
     }
     return backwardCompatibleMode;
@@ -288,7 +296,11 @@ status_t CameraFlashlight::prepareDeviceOpen(const std::string& cameraId) {
     return OK;
 }
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+status_t CameraFlashlight::deviceClosed(const String8& cameraId) {
+=======
 status_t CameraFlashlight::deviceClosed(const std::string& cameraId) {
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     ALOGV("%s: device %s is closed", __FUNCTION__, cameraId.c_str());
 
     Mutex::Autolock l(mLock);
@@ -345,7 +357,11 @@ status_t ProviderFlashControl::hasFlashUnit(const std::string& cameraId, bool *h
     if (!hasFlash) {
         return BAD_VALUE;
     }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    *hasFlash = mProviderManager->hasFlashUnit(cameraId.c_str());
+=======
     *hasFlash = mProviderManager->hasFlashUnit(cameraId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     return OK;
 }
 
@@ -353,7 +369,11 @@ status_t ProviderFlashControl::setTorchMode(const std::string& cameraId, bool en
     ALOGV("%s: set camera %s torch mode to %d", __FUNCTION__,
             cameraId.c_str(), enabled);
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    return mProviderManager->setTorchMode(cameraId.c_str(), enabled);
+=======
     return mProviderManager->setTorchMode(cameraId, enabled);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 }
 
 status_t ProviderFlashControl::turnOnTorchWithStrengthLevel(const std::string& cameraId,
@@ -361,7 +381,11 @@ status_t ProviderFlashControl::turnOnTorchWithStrengthLevel(const std::string& c
     ALOGV("%s: change torch strength level of camera %s to %d", __FUNCTION__,
             cameraId.c_str(), torchStrength);
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    return mProviderManager->turnOnTorchWithStrengthLevel(cameraId.c_str(), torchStrength);
+=======
     return mProviderManager->turnOnTorchWithStrengthLevel(cameraId, torchStrength);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 }
 
 status_t ProviderFlashControl::getTorchStrengthLevel(const std::string& cameraId,
@@ -369,7 +393,11 @@ status_t ProviderFlashControl::getTorchStrengthLevel(const std::string& cameraId
     ALOGV("%s: get torch strength level of camera %s", __FUNCTION__,
             cameraId.c_str());
 
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    return mProviderManager->getTorchStrengthLevel(cameraId.c_str(), torchStrength);
+=======
     return mProviderManager->getTorchStrengthLevel(cameraId, torchStrength);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 }
 // ProviderFlashControl implementation ends
 

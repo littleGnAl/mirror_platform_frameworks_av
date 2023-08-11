@@ -523,9 +523,15 @@ status_t Camera3OutputStream::returnBufferCheckedLocked(
 }
 
 void Camera3OutputStream::dump(int fd, [[maybe_unused]] const Vector<String16> &args) const {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 lines;
+    lines.appendFormat("    Stream[%d]: Output\n", mId);
+    lines.appendFormat("      Consumer name: %s\n", mConsumerName.c_str());
+=======
     std::string lines;
     lines += fmt::sprintf("    Stream[%d]: Output\n", mId);
     lines += fmt::sprintf("      Consumer name: %s\n", mConsumerName);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     write(fd, lines.c_str(), lines.size());
 
     Camera3IOStreamBase::dump(fd, args);
@@ -710,8 +716,12 @@ status_t Camera3OutputStream::configureConsumerQueueLocked(bool allowPreviewResp
             // service. So update mMaxCachedBufferCount.
             mMaxCachedBufferCount = 1;
             mTotalBufferCount += mMaxCachedBufferCount;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            res = mPreviewFrameSpacer->run(String8::format("PreviewSpacer-%d", mId).c_str());
+=======
             res = mPreviewFrameSpacer->run((std::string("PreviewSpacer-")
                     + std::to_string(mId)).c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             if (res != OK) {
                 ALOGE("%s: Unable to start preview spacer", __FUNCTION__);
                 return res;

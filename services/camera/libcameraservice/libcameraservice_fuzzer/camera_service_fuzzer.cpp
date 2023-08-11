@@ -582,7 +582,11 @@ void Camera2Fuzzer::process() {
                     kSensorPixelModes[mFuzzedDataProvider->ConsumeBool() ? 1 : 0];
             requestTemplate.update(ANDROID_SENSOR_PIXEL_MODE, &sensorPixelMode, 1);
             request.mPhysicalCameraSettings.clear();
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            request.mPhysicalCameraSettings.push_back({s.cameraId.c_str(), requestTemplate});
+=======
             request.mPhysicalCameraSettings.push_back({s.cameraId, requestTemplate});
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             device->submitRequest(request, /*streaming*/false, /*out*/&info);
             ALOGV("%s : camera id %s submit request id %d",__FUNCTION__, s.cameraId.c_str(),
                     info.mRequestId);

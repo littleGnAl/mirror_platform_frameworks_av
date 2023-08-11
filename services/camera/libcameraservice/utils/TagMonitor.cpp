@@ -282,13 +282,22 @@ void TagMonitor::dumpMonitoredTagEventsToVectorLocked(std::vector<std::string> &
                 eventString += fmt::sprintf(" %d", id);
             }
             eventString += "\n";
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            vec.emplace_back(eventString.c_str());
+=======
             vec.emplace_back(eventString);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             continue;
         }
 
         if (event.inputStreamId != -1) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+            eventString.appendFormat(" input stream id: %d\n", event.inputStreamId);
+            vec.emplace_back(eventString.c_str());
+=======
             eventString += fmt::sprintf(" input stream id: %d\n", event.inputStreamId);
             vec.emplace_back(eventString);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             continue;
         }
 
@@ -304,7 +313,11 @@ void TagMonitor::dumpMonitoredTagEventsToVectorLocked(std::vector<std::string> &
                     event.newData.data(), event.tag, event.type,
                     event.newData.size() / camera_metadata_type_size[event.type], indentation + 18);
         }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        vec.emplace_back(eventString.c_str());
+=======
         vec.emplace_back(eventString);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 }
 

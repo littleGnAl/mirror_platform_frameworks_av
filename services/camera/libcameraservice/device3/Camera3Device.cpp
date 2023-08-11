@@ -122,7 +122,11 @@ status_t Camera3Device::initializeCommonLocked() {
 
     /** Start up status tracker thread */
     mStatusTracker = new StatusTracker(this);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    status_t res = mStatusTracker->run(String8::format("C3Dev-%s-Status", mId.c_str()).c_str());
+=======
     status_t res = mStatusTracker->run((std::string("C3Dev-") + mId + "-Status").c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     if (res != OK) {
         SET_ERR_L("Unable to start status tracking thread: %s (%d)",
                 strerror(-res), res);
@@ -174,7 +178,11 @@ status_t Camera3Device::initializeCommonLocked() {
     mRequestThread = createNewRequestThread(
             this, mStatusTracker, mInterface, sessionParamKeys,
             mUseHalBufManager, mSupportCameraMute, mOverrideToPortrait);
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    res = mRequestThread->run(String8::format("C3Dev-%s-ReqQueue", mId.c_str()).c_str());
+=======
     res = mRequestThread->run((std::string("C3Dev-") + mId + "-ReqQueue").c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     if (res != OK) {
         SET_ERR_L("Unable to start request queue thread: %s (%d)",
                 strerror(-res), res);
@@ -551,7 +559,11 @@ status_t Camera3Device::dump(int fd, [[maybe_unused]] const Vector<String16> &ar
 
     lines += fmt::sprintf("    Device status: %s\n", status);
     if (mStatus == STATUS_ERROR) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        lines.appendFormat("    Error cause: %s\n", mErrorCause.c_str());
+=======
         lines += fmt::sprintf("    Error cause: %s\n", mErrorCause.c_str());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
     lines += "    Stream configuration:\n";
     const char *mode =
@@ -564,7 +576,11 @@ status_t Camera3Device::dump(int fd, [[maybe_unused]] const Vector<String16> &ar
         write(fd, lines.c_str(), lines.size());
         mInputStream->dump(fd, args);
     } else {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        lines.appendFormat("      No input stream.\n");
+=======
         lines += "      No input stream.\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         write(fd, lines.c_str(), lines.size());
     }
     for (size_t i = 0; i < mOutputStreams.size(); i++) {
@@ -572,7 +588,11 @@ status_t Camera3Device::dump(int fd, [[maybe_unused]] const Vector<String16> &ar
     }
 
     if (mBufferManager != NULL) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        lines = String8("    Camera3 Buffer Manager:\n");
+=======
         lines = "    Camera3 Buffer Manager:\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         write(fd, lines.c_str(), lines.size());
         mBufferManager->dump(fd, args);
     }
@@ -602,7 +622,11 @@ status_t Camera3Device::dump(int fd, [[maybe_unused]] const Vector<String16> &ar
     }
 
     {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        lines = String8("    Last request sent:\n");
+=======
         lines = "    Last request sent:\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         write(fd, lines.c_str(), lines.size());
 
         CameraMetadata lastRequest = getLatestRequestLocked();
@@ -625,7 +649,11 @@ status_t Camera3Device::dump(int fd, [[maybe_unused]] const Vector<String16> &ar
                     (camera_request_template_t) i, &templateRequest);
             lines = fmt::sprintf("    HAL Request %s:\n", templateNames[i-1]);
             if (templateRequest == nullptr) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+                lines.append("       Not supported\n");
+=======
                 lines += "       Not supported\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                 write(fd, lines.c_str(), lines.size());
             } else {
                 write(fd, lines.c_str(), lines.size());
@@ -639,7 +667,11 @@ status_t Camera3Device::dump(int fd, [[maybe_unused]] const Vector<String16> &ar
     mTagMonitor.dumpMonitoredMetadata(fd);
 
     if (mInterface->valid()) {
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        lines = String8("     HAL device dump:\n");
+=======
         lines = "     HAL device dump:\n";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         write(fd, lines.c_str(), lines.size());
         mInterface->dump(fd);
     }
@@ -780,7 +812,11 @@ void Camera3Device::convertToRequestList(List<const PhysicalCameraSettingsList>&
         std::list<const SurfaceMap>& surfaceMaps,
         const CameraMetadata& request) {
     PhysicalCameraSettingsList requestList;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    requestList.push_back({std::string(getId().c_str()), request});
+=======
     requestList.push_back({getId(), request});
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     requestsList.push_back(requestList);
 
     SurfaceMap surfaceMap;
@@ -1836,8 +1872,12 @@ status_t Camera3Device::tearDown(int streamId) {
 status_t Camera3Device::addBufferListenerForStream(int streamId,
         wp<Camera3StreamBufferListener> listener) {
     ATRACE_CALL();
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    ALOGV("%s: Camera %s: Adding buffer listener for stream %d", __FUNCTION__, mId.c_str(), streamId);
+=======
     ALOGV("%s: Camera %s: Adding buffer listener for stream %d", __FUNCTION__, mId.c_str(),
             streamId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     Mutex::Autolock il(mInterfaceLock);
     Mutex::Autolock l(mLock);
 
@@ -2685,8 +2725,12 @@ void Camera3Device::setErrorStateLocked(const char *fmt, ...) {
 
 void Camera3Device::setErrorStateLockedV(const char *fmt, va_list args) {
     // Print out all error messages to log
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    String8 errorCause = String8::formatV(fmt, args);
+=======
     std::string errorCause;
     base::StringAppendV(&errorCause, fmt, args);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     ALOGE("Camera %s: %s", mId.c_str(), errorCause.c_str());
 
     // But only do error state transition steps for the first error

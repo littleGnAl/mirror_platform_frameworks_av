@@ -551,7 +551,11 @@ TEST_F(CameraClientBinderTest, CheckBinderCameraDeviceUser) {
         EXPECT_TRUE(res.isOk()) << res;
 
         hardware::camera2::CaptureRequest request;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        request.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate});
+=======
         request.mPhysicalCameraSettings.push_back({cameraId, requestTemplate});
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         request.mSurfaceList.add(surface);
         request.mIsReprocess = false;
         int64_t lastFrameNumber = 0;
@@ -578,7 +582,11 @@ TEST_F(CameraClientBinderTest, CheckBinderCameraDeviceUser) {
                 /*out*/&requestTemplate);
         EXPECT_TRUE(res.isOk()) << res;
         hardware::camera2::CaptureRequest request2;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        request2.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate});
+=======
         request2.mPhysicalCameraSettings.push_back({cameraId, requestTemplate});
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         request2.mSurfaceList.add(surface);
         request2.mIsReprocess = false;
         callbacks->clearStatus();
@@ -611,10 +619,18 @@ TEST_F(CameraClientBinderTest, CheckBinderCameraDeviceUser) {
         EXPECT_TRUE(res.isOk()) << res;
         android::hardware::camera2::CaptureRequest request3;
         android::hardware::camera2::CaptureRequest request4;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        request3.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate});
+=======
         request3.mPhysicalCameraSettings.push_back({cameraId, requestTemplate});
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         request3.mSurfaceList.add(surface);
         request3.mIsReprocess = false;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+        request4.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate2});
+=======
         request4.mPhysicalCameraSettings.push_back({cameraId, requestTemplate2});
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         request4.mSurfaceList.add(surface);
         request4.mIsReprocess = false;
         std::vector<hardware::camera2::CaptureRequest> requestList;

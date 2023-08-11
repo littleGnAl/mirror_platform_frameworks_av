@@ -184,7 +184,11 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
 
     std::shared_ptr<camera::device::ICameraDeviceSession> session;
     ATRACE_BEGIN("CameraHal::openSession");
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    status_t res = manager->openAidlSession(mId.c_str(), mCallbacks,
+=======
     status_t res = manager->openAidlSession(mId, mCallbacks,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             /*out*/ &session);
     ATRACE_END();
     if (res != OK) {
@@ -195,17 +199,29 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
       SET_ERR("Session iface returned is null");
       return INVALID_OPERATION;
     }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    res = manager->getCameraCharacteristics(mId.c_str(), mOverrideForPerfClass, &mDeviceInfo,
+=======
     res = manager->getCameraCharacteristics(mId, mOverrideForPerfClass, &mDeviceInfo,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
             mOverrideToPortrait);
     if (res != OK) {
         SET_ERR_L("Could not retrieve camera characteristics: %s (%d)", strerror(-res), res);
         session->close();
         return res;
     }
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    mSupportNativeZoomRatio = manager->supportNativeZoomRatio(mId.c_str());
+=======
     mSupportNativeZoomRatio = manager->supportNativeZoomRatio(mId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     std::vector<std::string> physicalCameraIds;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    bool isLogical = manager->isLogicalCamera(mId.c_str(), &physicalCameraIds);
+=======
     bool isLogical = manager->isLogicalCamera(mId, &physicalCameraIds);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     if (isLogical) {
         for (auto& physicalId : physicalCameraIds) {
             // Do not override characteristics for physical cameras
@@ -296,7 +312,11 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
     mInterface = new AidlHalInterface(session, queue, mUseHalBufManager, mSupportOfflineProcessing);
 
     std::string providerType;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    mVendorTagId = manager->getProviderTagIdLocked(mId.c_str());
+=======
     mVendorTagId = manager->getProviderTagIdLocked(mId);
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     mTagMonitor.initialize(mVendorTagId);
     if (!monitorTags.empty()) {
         mTagMonitor.parseTagsToMonitor(monitorTags);
@@ -1473,7 +1493,11 @@ status_t AidlCamera3Device::AidlCamera3DeviceInjectionMethods::injectionInitiali
     mInjectedCamId = injectedCamId;
     std::shared_ptr<camera::device::ICameraInjectionSession> injectionSession;
     ATRACE_BEGIN("Injection CameraHal::openSession");
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    status_t res = manager->openAidlInjectionSession(injectedCamId.c_str(), callback,
+=======
     status_t res = manager->openAidlInjectionSession(injectedCamId, callback,
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
                                           /*out*/ &injectionSession);
     ATRACE_END();
     if (res != OK) {

@@ -92,7 +92,11 @@ Camera3Stream::Camera3Stream(int id,
     camera_stream::data_space = dataSpace;
     camera_stream::rotation = rotation;
     camera_stream::max_buffers = 0;
+<<<<<<< PATCH SET (603655 Use String8/16 c_str [camera])
+    camera_stream::physical_camera_id = mPhysicalCameraId.c_str();
+=======
     camera_stream::physical_camera_id = mPhysicalCameraId;
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     camera_stream::sensor_pixel_modes_used = sensorPixelModesUsed;
     camera_stream::dynamic_range_profile = dynamicRangeProfile;
     camera_stream::use_case = streamUseCase;
