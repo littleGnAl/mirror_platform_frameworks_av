@@ -924,7 +924,7 @@ status_t HidlProviderInfo::convertToHALStreamCombinationAndCameraIdsLocked(
         camera3::metadataGetter getMetadata =
                 [this](const String8 &id, bool overrideForPerfClass) {
                     CameraMetadata physicalDeviceInfo;
-                    mManager->getCameraCharacteristicsLocked(id.string(), overrideForPerfClass,
+                    mManager->getCameraCharacteristicsLocked(id.c_str(), overrideForPerfClass,
                             &physicalDeviceInfo, /*overrideToPortrait*/false);
                     return physicalDeviceInfo;
                 };
