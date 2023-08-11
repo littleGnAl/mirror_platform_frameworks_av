@@ -38,7 +38,7 @@ namespace android {
 
 HidlCamera3OfflineSession::~HidlCamera3OfflineSession() {
     ATRACE_CALL();
-    ALOGV("%s: Tearing down hidl offline session for camera id %s", __FUNCTION__, mId.string());
+    ALOGV("%s: Tearing down hidl offline session for camera id %s", __FUNCTION__, mId.c_str());
     Camera3OfflineSession::disconnectImpl();
 }
 

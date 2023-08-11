@@ -281,13 +281,13 @@ void TagMonitor::dumpMonitoredTagEventsToVectorLocked(std::vector<std::string> &
                 eventString.appendFormat(" %d", id);
             }
             eventString += "\n";
-            vec.emplace_back(eventString.string());
+            vec.emplace_back(eventString.c_str());
             continue;
         }
 
         if (event.inputStreamId != -1) {
             eventString.appendFormat(" input stream id: %d\n", event.inputStreamId);
-            vec.emplace_back(eventString.string());
+            vec.emplace_back(eventString.c_str());
             continue;
         }
 
@@ -303,7 +303,7 @@ void TagMonitor::dumpMonitoredTagEventsToVectorLocked(std::vector<std::string> &
                     event.newData.data(), event.tag, event.type,
                     event.newData.size() / camera_metadata_type_size[event.type], indentation + 18);
         }
-        vec.emplace_back(eventString.string());
+        vec.emplace_back(eventString.c_str());
     }
 }
 
