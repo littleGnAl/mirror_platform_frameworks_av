@@ -98,7 +98,7 @@ void Camera3IOStreamBase::dump(int fd, [[maybe_unused]] const Vector<String16> &
             mFrameCount, mLastTimestamp);
     lines.appendFormat("      Total buffers: %zu, currently dequeued: %zu, currently cached: %zu\n",
             mTotalBufferCount, mHandoutTotalBufferCount, mCachedOutputBufferCount);
-    write(fd, lines.string(), lines.size());
+    write(fd, lines.c_str(), lines.size());
 
     Camera3Stream::dump(fd, args);
 }

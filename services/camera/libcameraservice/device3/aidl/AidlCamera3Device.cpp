@@ -26,10 +26,10 @@
 #endif
 
 // Convenience macro for transient errors
-#define CLOGE(fmt, ...) ALOGE("Camera %s: %s: " fmt, mId.string(), __FUNCTION__, \
+#define CLOGE(fmt, ...) ALOGE("Camera %s: %s: " fmt, mId.c_str(), __FUNCTION__, \
             ##__VA_ARGS__)
 
-#define CLOGW(fmt, ...) ALOGW("Camera %s: %s: " fmt, mId.string(), __FUNCTION__, \
+#define CLOGW(fmt, ...) ALOGW("Camera %s: %s: " fmt, mId.c_str(), __FUNCTION__, \
             ##__VA_ARGS__)
 
 // Convenience macros for transitioning to the error state
@@ -174,7 +174,7 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
     Mutex::Autolock il(mInterfaceLock);
     Mutex::Autolock l(mLock);
 
-    ALOGV("%s: Initializing AIDL device for camera %s", __FUNCTION__, mId.string());
+    ALOGV("%s: Initializing AIDL device for camera %s", __FUNCTION__, mId.c_str());
     if (mStatus != STATUS_UNINITIALIZED) {
         CLOGE("Already initialized!");
         return INVALID_OPERATION;
@@ -183,7 +183,7 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
 
     std::shared_ptr<camera::device::ICameraDeviceSession> session;
     ATRACE_BEGIN("CameraHal::openSession");
-    status_t res = manager->openAidlSession(mId.string(), mCallbacks,
+    status_t res = manager->openAidlSession(mId.c_str(), mCallbacks,
             /*out*/ &session);
     ATRACE_END();
     if (res != OK) {
@@ -194,17 +194,17 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
       SET_ERR("Session iface returned is null");
       return INVALID_OPERATION;
     }
-    res = manager->getCameraCharacteristics(mId.string(), mOverrideForPerfClass, &mDeviceInfo,
+    res = manager->getCameraCharacteristics(mId.c_str(), mOverrideForPerfClass, &mDeviceInfo,
             mOverrideToPortrait);
     if (res != OK) {
         SET_ERR_L("Could not retrieve camera characteristics: %s (%d)", strerror(-res), res);
         session->close();
         return res;
     }
-    mSupportNativeZoomRatio = manager->supportNativeZoomRatio(mId.string());
+    mSupportNativeZoomRatio = manager->supportNativeZoomRatio(mId.c_str());
 
     std::vector<std::string> physicalCameraIds;
-    bool isLogical = manager->isLogicalCamera(mId.string(), &physicalCameraIds);
+    bool isLogical = manager->isLogicalCamera(mId.c_str(), &physicalCameraIds);
     if (isLogical) {
         for (auto& physicalId : physicalCameraIds) {
             // Do not override characteristics for physical cameras
@@ -295,7 +295,7 @@ status_t AidlCamera3Device::initialize(sp<CameraProviderManager> manager,
     mInterface = new AidlHalInterface(session, queue, mUseHalBufManager, mSupportOfflineProcessing);
 
     std::string providerType;
-    mVendorTagId = manager->getProviderTagIdLocked(mId.string());
+    mVendorTagId = manager->getProviderTagIdLocked(mId.c_str());
     mTagMonitor.initialize(mVendorTagId);
     if (!monitorTags.isEmpty()) {
         mTagMonitor.parseTagsToMonitor(String8(monitorTags));
@@ -1472,7 +1472,7 @@ status_t AidlCamera3Device::AidlCamera3DeviceInjectionMethods::injectionInitiali
     mInjectedCamId = injectedCamId;
     std::shared_ptr<camera::device::ICameraInjectionSession> injectionSession;
     ATRACE_BEGIN("Injection CameraHal::openSession");
-    status_t res = manager->openAidlInjectionSession(injectedCamId.string(), callback,
+    status_t res = manager->openAidlInjectionSession(injectedCamId.c_str(), callback,
                                           /*out*/ &injectionSession);
     ATRACE_END();
     if (res != OK) {

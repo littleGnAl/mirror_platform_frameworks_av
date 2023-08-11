@@ -481,7 +481,7 @@ void Camera3BufferManager::dump(int fd, [[maybe_unused]] const Vector<String16>&
                     streamId, bufferCount);
         }
     }
-    write(fd, lines.string(), lines.size());
+    write(fd, lines.c_str(), lines.size());
 }
 
 bool Camera3BufferManager::checkIfStreamRegisteredLocked(int streamId,

@@ -550,7 +550,7 @@ TEST_F(CameraClientBinderTest, CheckBinderCameraDeviceUser) {
         EXPECT_TRUE(res.isOk()) << res;
 
         hardware::camera2::CaptureRequest request;
-        request.mPhysicalCameraSettings.push_back({cameraId8.string(), requestTemplate});
+        request.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate});
         request.mSurfaceList.add(surface);
         request.mIsReprocess = false;
         int64_t lastFrameNumber = 0;
@@ -577,7 +577,7 @@ TEST_F(CameraClientBinderTest, CheckBinderCameraDeviceUser) {
                 /*out*/&requestTemplate);
         EXPECT_TRUE(res.isOk()) << res;
         hardware::camera2::CaptureRequest request2;
-        request2.mPhysicalCameraSettings.push_back({cameraId8.string(), requestTemplate});
+        request2.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate});
         request2.mSurfaceList.add(surface);
         request2.mIsReprocess = false;
         callbacks->clearStatus();
@@ -610,10 +610,10 @@ TEST_F(CameraClientBinderTest, CheckBinderCameraDeviceUser) {
         EXPECT_TRUE(res.isOk()) << res;
         android::hardware::camera2::CaptureRequest request3;
         android::hardware::camera2::CaptureRequest request4;
-        request3.mPhysicalCameraSettings.push_back({cameraId8.string(), requestTemplate});
+        request3.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate});
         request3.mSurfaceList.add(surface);
         request3.mIsReprocess = false;
-        request4.mPhysicalCameraSettings.push_back({cameraId8.string(), requestTemplate2});
+        request4.mPhysicalCameraSettings.push_back({cameraId8.c_str(), requestTemplate2});
         request4.mSurfaceList.add(surface);
         request4.mIsReprocess = false;
         std::vector<hardware::camera2::CaptureRequest> requestList;
