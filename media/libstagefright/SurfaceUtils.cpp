@@ -105,8 +105,8 @@ status_t setNativeWindowSizeFormatAndUsage(
 
         // Deny queuing into native window if neither condition is satisfied.
         if (queuesToNativeWindow != 1 && isConsumerProtected != 1) {
-            ALOGE("native window cannot handle protected buffers: the consumer should either be "
-                  "a hardware composer or support hardware protection");
+            ALOGE("native window cannot handle protected buffers: the consumer neither"
+                  "queues to a hardware composer nor supports hardware protection.");
             return PERMISSION_DENIED;
         }
     }
