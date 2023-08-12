@@ -1150,6 +1150,18 @@ status_t GraphicBufferSource::configure(
         int32_t bufferCount,
         uint32_t frameWidth,
         uint32_t frameHeight,
+        uint32_t consumerUsage) {
+    uint64_t consumerUsage2 = static_cast<uint64_t>(consumerUsage);
+    return configure(component, dataSpace, bufferCount,
+                     frameWidth, frameHeight, consumerUsage2);
+}
+
+status_t GraphicBufferSource::configure(
+        const sp<ComponentWrapper>& component,
+        int32_t dataSpace,
+        int32_t bufferCount,
+        uint32_t frameWidth,
+        uint32_t frameHeight,
         uint64_t consumerUsage) {
     if (component == NULL) {
         return BAD_VALUE;
