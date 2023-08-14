@@ -2686,7 +2686,11 @@ Status CameraService::addListenerHelper(const sp<ICameraServiceListener>& listen
         for (auto& i : mCameraStates) {
             cameraStatuses->emplace_back(i.first,
                     mapToInterface(i.second->getStatus()), i.second->getUnavailablePhysicalIds(),
+<<<<<<< PATCH SET (b26e8d Don't use String8::empty [camera])
+                    openCloseCallbackAllowed ? i.second->getClientPackage() : String8());
+=======
                     openCloseCallbackAllowed ? i.second->getClientPackage() : std::string());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
         }
     }
     // Remove the camera statuses that should be hidden from the client, we do
@@ -4709,7 +4713,11 @@ void CameraService::updateOpenCloseStatus(const std::string& cameraId, bool open
     if (open) {
         state->setClientPackage(clientPackageName);
     } else {
+<<<<<<< PATCH SET (b26e8d Don't use String8::empty [camera])
+        state->setClientPackage(String8());
+=======
         state->setClientPackage(std::string());
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
     }
 
     Mutex::Autolock lock(mStatusListenerLock);
@@ -5170,7 +5178,11 @@ status_t CameraService::startWatchingTags(const Vector<String16> &args, int outF
 status_t CameraService::stopWatchingTags(int outFd) {
     // clear mMonitorTags to prevent new clients from monitoring tags at initialization
     Mutex::Autolock lock(mLogLock);
+<<<<<<< PATCH SET (b26e8d Don't use String8::empty [camera])
+    mMonitorTags = String8();
+=======
     mMonitorTags = "";
+>>>>>>> BASE      (30cab0 Merge "codec2 hal: type conversion refactoring, step 3" into)
 
     mWatchedClientPackages.clear();
     mWatchedClientsDumpCache.clear();
