@@ -33,6 +33,24 @@
       "message": "isBypassing only checks the bypass flag.\nHow about the tunnel(offload) effects? Are those expected to enter here or will be handled from AudioFlinger/threadloop?\nDo you think we need to add similar condition for offload effects bypassing as done in the VTS?",
       "revId": "26689d94b7ec4a31529adaffd14996d57e3f8f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9bffaf_14597904",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-08-14T16:30:16Z",
+      "side": 1,
+      "message": "I think offload case was checked here:\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Effects.cpp;l\u003d2193",
+      "parentUuid": "1e06d6e9_a0fd657a",
+      "revId": "26689d94b7ec4a31529adaffd14996d57e3f8f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
