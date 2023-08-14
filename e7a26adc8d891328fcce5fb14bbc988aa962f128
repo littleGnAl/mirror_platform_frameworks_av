@@ -70,6 +70,24 @@
       "parentUuid": "c14b3580_794124fa",
       "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46c6d4c_d741011e",
+        "filename": "aidl/android/media/audio/IHalAdapterVendorExtension.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1883619
+      },
+      "writtenOn": "2023-08-14T00:42:55Z",
+      "side": 1,
+      "message": "@mnaganov@google.com,\nI tried registering this Interface as AIDL service in the audio server process context. But, I think service registration kept failing.\nI am sure I am missing a se-policy rule, do you have any such example to register the unstable Interface as AIDL service. Could you please help here?",
+      "parentUuid": "48dc6867_94a487c2",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
