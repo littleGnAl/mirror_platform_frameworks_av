@@ -16,6 +16,23 @@
       "message": "Clean CP of ag/24288662, thanks",
       "revId": "26689d94b7ec4a31529adaffd14996d57e3f8f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e06d6e9_a0fd657a",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2023-08-14T05:34:08Z",
+      "side": 1,
+      "message": "isBypassing only checks the bypass flag.\nHow about the tunnel(offload) effects? Are those expected to enter here or will be handled from AudioFlinger/threadloop?\nDo you think we need to add similar condition for offload effects bypassing as done in the VTS?",
+      "revId": "26689d94b7ec4a31529adaffd14996d57e3f8f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
