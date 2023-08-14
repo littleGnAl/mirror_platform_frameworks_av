@@ -2712,7 +2712,7 @@ Status CameraService::addListenerHelper(const sp<ICameraServiceListener>& listen
         for (auto& i : mCameraStates) {
             cameraStatuses->emplace_back(i.first,
                     mapToInterface(i.second->getStatus()), i.second->getUnavailablePhysicalIds(),
-                    openCloseCallbackAllowed ? i.second->getClientPackage() : String8::empty());
+                    openCloseCallbackAllowed ? i.second->getClientPackage() : String8());
         }
     }
     // Remove the camera statuses that should be hidden from the client, we do
@@ -4751,7 +4751,7 @@ void CameraService::updateOpenCloseStatus(const String8& cameraId, bool open,
     if (open) {
         state->setClientPackage(String8(clientPackageName));
     } else {
-        state->setClientPackage(String8::empty());
+        state->setClientPackage(String8());
     }
 
     Mutex::Autolock lock(mStatusListenerLock);
@@ -5212,7 +5212,7 @@ status_t CameraService::startWatchingTags(const Vector<String16> &args, int outF
 status_t CameraService::stopWatchingTags(int outFd) {
     // clear mMonitorTags to prevent new clients from monitoring tags at initialization
     Mutex::Autolock lock(mLogLock);
-    mMonitorTags = String8::empty();
+    mMonitorTags = String8();
 
     mWatchedClientPackages.clear();
     mWatchedClientsDumpCache.clear();
