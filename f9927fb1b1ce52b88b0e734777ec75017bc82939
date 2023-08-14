@@ -16,6 +16,29 @@
       "message": "Please remove both Wonsik and Lajos from the reviewers list. They don\u0027t work on the audio stack. Added Eric for audio.",
       "revId": "f9927fb1b1ce52b88b0e734777ec75017bc82939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcffd2fd_06098b38",
+        "filename": "media/libaudioprocessing/AudioMixerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-08-14T22:42:27Z",
+      "side": 1,
+      "message": "So it looks like the change forces a direct set of the volume in the second call to setVolumeRampVariables(), rather than stranding a small offset due to FP inaccuracies?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 70
+      },
+      "revId": "f9927fb1b1ce52b88b0e734777ec75017bc82939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
