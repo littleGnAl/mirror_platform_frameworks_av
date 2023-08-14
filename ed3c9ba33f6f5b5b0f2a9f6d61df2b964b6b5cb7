@@ -22,6 +22,30 @@
       },
       "revId": "ed3c9ba33f6f5b5b0f2a9f6d61df2b964b6b5cb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f964b3d_f90e7752",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-14T20:22:06Z",
+      "side": 1,
+      "message": "Yes it is, fixed in PS4 already.",
+      "parentUuid": "c30a4017_6750f9ce",
+      "range": {
+        "startLine": 324,
+        "startChar": 44,
+        "endLine": 324,
+        "endChar": 51
+      },
+      "revId": "ed3c9ba33f6f5b5b0f2a9f6d61df2b964b6b5cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
