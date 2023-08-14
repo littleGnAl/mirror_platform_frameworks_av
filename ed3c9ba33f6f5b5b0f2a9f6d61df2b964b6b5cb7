@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30a4017_6750f9ce",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002682
+      },
+      "writtenOn": "2023-08-14T18:00:03Z",
+      "side": 1,
+      "message": "is that a search/replace error, this is a SortedVector, not a String8",
+      "range": {
+        "startLine": 324,
+        "startChar": 44,
+        "endLine": 324,
+        "endChar": 51
+      },
+      "revId": "ed3c9ba33f6f5b5b0f2a9f6d61df2b964b6b5cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
