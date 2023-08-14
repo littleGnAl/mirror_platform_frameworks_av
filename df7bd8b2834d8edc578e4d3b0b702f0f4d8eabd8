@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad74027_1d4fe7e5",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2023-08-14T05:27:46Z",
+      "side": 1,
+      "message": "1) Why do we need to do for all subeffects ?\n2) Line 184-\u003e 186 overwrites this configuration anyway.",
+      "revId": "df7bd8b2834d8edc578e4d3b0b702f0f4d8eabd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
