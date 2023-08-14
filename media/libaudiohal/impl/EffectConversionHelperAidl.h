@@ -135,6 +135,7 @@ class EffectConversionHelperAidl {
         return BAD_VALUE;
     }
 
+    ::aidl::android::hardware::audio::effect::Descriptor getDescriptor() const;
 };
 
 }  // namespace effect
