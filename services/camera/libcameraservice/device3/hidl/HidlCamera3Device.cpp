@@ -273,7 +273,7 @@ status_t HidlCamera3Device::initialize(sp<CameraProviderManager> manager,
     std::string providerType;
     mVendorTagId = manager->getProviderTagIdLocked(mId.c_str());
     mTagMonitor.initialize(mVendorTagId);
-    if (!monitorTags.isEmpty()) {
+    if (!monitorTags.empty()) {
         mTagMonitor.parseTagsToMonitor(String8(monitorTags));
     }
 

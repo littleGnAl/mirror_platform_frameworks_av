@@ -671,7 +671,7 @@ const CameraMetadata& Camera3Device::infoPhysical(const String8& physicalId) con
                 mStatus == STATUS_ERROR ?
                 "when in error state" : "before init");
     }
-    if (physicalId.isEmpty()) {
+    if (physicalId.empty()) {
         return mDeviceInfo;
     } else {
         std::string id(physicalId.c_str());
@@ -3895,7 +3895,7 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
                 if (parent != nullptr) {
                     const String8& streamCameraId = outputStream->getPhysicalCameraId();
                     for (const auto& settings : captureRequest->mSettingsList) {
-                        if ((streamCameraId.isEmpty() &&
+                        if ((streamCameraId.empty() &&
                                 parent->getId() == settings.cameraId.c_str()) ||
                                 streamCameraId == settings.cameraId.c_str()) {
                             outputStream->fireBufferRequestForFrameNumber(
@@ -3910,7 +3910,7 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
             int32_t streamGroupId = outputStream->getHalStreamGroupId();
             if (streamGroupId != -1 && mGroupIdPhysicalCameraMap.count(streamGroupId) == 1) {
                 requestedPhysicalCameras.insert(mGroupIdPhysicalCameraMap[streamGroupId]);
-            } else if (!physicalCameraId.isEmpty()) {
+            } else if (!physicalCameraId.empty()) {
                 requestedPhysicalCameras.insert(std::set<String8>({physicalCameraId}));
             }
             halRequest->num_output_buffers++;
