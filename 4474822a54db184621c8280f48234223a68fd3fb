@@ -16,6 +16,24 @@
       "message": "will we be removing the deprecated string() method from our String8 class\nso that people can no longer use that?",
       "revId": "4474822a54db184621c8280f48234223a68fd3fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d412ad3_7988068b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-15T05:28:34Z",
+      "side": 1,
+      "message": "Yes, exactly!\n\nThis is the pending change: https://r.android.com/2706173",
+      "parentUuid": "32205268_46d01505",
+      "revId": "4474822a54db184621c8280f48234223a68fd3fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
