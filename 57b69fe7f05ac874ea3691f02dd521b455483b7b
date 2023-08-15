@@ -16,6 +16,23 @@
       "message": "LGTM, but I let Wonsik +2 if needed because I don\u0027t have a lot of context on this file.",
       "revId": "57b69fe7f05ac874ea3691f02dd521b455483b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0192864_5487f827",
+        "filename": "media/libstagefright/SurfaceUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-15T15:54:26Z",
+      "side": 1,
+      "message": "this is always true per the if condition at L107\n\nTo make the error statement more direct, we can change it like below:\n\n\"the consumer neither queues to a hardware composer nor supports hardware protection\"",
+      "revId": "57b69fe7f05ac874ea3691f02dd521b455483b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
