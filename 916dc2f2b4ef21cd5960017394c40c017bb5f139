@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf86d0d_4e2f1d29",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-08-15T18:57:35Z",
+      "side": 1,
+      "message": "nit: legacyDevices \u0026 -legacyDevices",
+      "range": {
+        "startLine": 332,
+        "startChar": 37,
+        "endLine": 332,
+        "endChar": 91
+      },
+      "revId": "916dc2f2b4ef21cd5960017394c40c017bb5f139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad198e8_d63d7f2e",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-08-15T18:57:35Z",
+      "side": 1,
+      "message": "nit: legacyDevices -\u003d lowestBitDevice saves one op?",
+      "range": {
+        "startLine": 337,
+        "startChar": 8,
+        "endLine": 337,
+        "endChar": 43
+      },
+      "revId": "916dc2f2b4ef21cd5960017394c40c017bb5f139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f074acf_455dadf6",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-08-15T18:57:35Z",
+      "side": 1,
+      "message": "nit: is this method const?",
+      "range": {
+        "startLine": 462,
+        "startChar": 51,
+        "endLine": 462,
+        "endChar": 56
+      },
+      "revId": "916dc2f2b4ef21cd5960017394c40c017bb5f139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
