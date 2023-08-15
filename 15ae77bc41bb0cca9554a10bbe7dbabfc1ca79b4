@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d600c7d8_9f2daf42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-15T20:41:14Z",
+      "side": 1,
+      "message": "I don\u0027t understand why spurious kWhatWorkDone messages would block stop command for more than moments, but could still save some time if there are many onWorkDone events waiting to be handled.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "15ae77bc41bb0cca9554a10bbe7dbabfc1ca79b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "20573e0e_925182be",
@@ -18,6 +41,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d089191a_75f091f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-15T20:41:14Z",
+      "side": 1,
+      "message": "Thanks for this CL",
+      "revId": "15ae77bc41bb0cca9554a10bbe7dbabfc1ca79b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f6b2a8c_9f39e398",
@@ -31,6 +71,30 @@
       "writtenOn": "2023-08-07T16:03:16Z",
       "side": 1,
       "message": "Do you have to check if the queue is empty? I think the message should be posted as long as the workItems is not empty.",
+      "range": {
+        "startLine": 2254,
+        "startChar": 0,
+        "endLine": 2256,
+        "endChar": 9
+      },
+      "revId": "15ae77bc41bb0cca9554a10bbe7dbabfc1ca79b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719bb600_e76c2855",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2256,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-15T20:41:14Z",
+      "side": 1,
+      "message": "I think this mimics the logic in kWhatWorkDone handling, and avoids spurious kWhatWorkDone messages...",
+      "parentUuid": "9f6b2a8c_9f39e398",
       "range": {
         "startLine": 2254,
         "startChar": 0,
