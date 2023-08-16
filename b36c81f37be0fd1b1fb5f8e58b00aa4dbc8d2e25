@@ -16,6 +16,24 @@
       "message": "Why \"DO NOT MERGE\"? Looks like some targets are failing because of it (likely the other change in the topic depends on it).",
       "revId": "b36c81f37be0fd1b1fb5f8e58b00aa4dbc8d2e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0508fc57_8aac7765",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944172
+      },
+      "writtenOn": "2023-08-16T17:09:41Z",
+      "side": 1,
+      "message": "This can\u0027t merge into either main or udc due to merge conflicts. Main has a lot of code that AOSP doesn\u0027t, and this refactor isn\u0027t really suitable for UDC IMO.",
+      "parentUuid": "9dabb03b_88e9bc3e",
+      "revId": "b36c81f37be0fd1b1fb5f8e58b00aa4dbc8d2e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
