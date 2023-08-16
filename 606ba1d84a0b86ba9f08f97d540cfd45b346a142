@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab86a6e9_4f8b2e16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-08-16T15:36:36Z",
+      "side": 1,
+      "message": "This change touches files with multiple ownership. I\u0027m granting OWNERS +2 for `module/id3` only (owned by android-media-playback@). Adding andrewlewis@ for `mediatranscoding` and essick@ to suggest who owns `foundation`.",
+      "revId": "606ba1d84a0b86ba9f08f97d540cfd45b346a142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
