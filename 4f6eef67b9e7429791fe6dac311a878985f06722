@@ -39,6 +39,23 @@
       "message": "Adding Eric for Owner\u0027s approval on audio policy.",
       "revId": "4f6eef67b9e7429791fe6dac311a878985f06722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3105870_3463a91b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-08-16T18:35:20Z",
+      "side": 1,
+      "message": "Note the cherry-pick difference between this CL and the internal CLs are with AudioPolicyMix.cpp.",
+      "revId": "4f6eef67b9e7429791fe6dac311a878985f06722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
