@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3534037_f45ad791",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-08-16T09:36:05Z",
+      "side": 1,
+      "message": "device",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "9ca99fee6edcf23f9c2cc1f7c00df598058ac856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c8fb21_0bc8139a",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-08-16T09:36:05Z",
+      "side": 1,
+      "message": "I am not sure this works with input devices bit masks that are marked by setting the MSB. \nhttps://cs.android.com/android/platform/superproject/+/master:system/media/audio/include/system/audio-hal-enums.h;l\u003d334?q\u003daudio-hal-enums",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 68
+      },
+      "revId": "9ca99fee6edcf23f9c2cc1f7c00df598058ac856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
