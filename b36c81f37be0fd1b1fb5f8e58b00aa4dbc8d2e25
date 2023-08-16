@@ -34,6 +34,24 @@
       "parentUuid": "9dabb03b_88e9bc3e",
       "revId": "b36c81f37be0fd1b1fb5f8e58b00aa4dbc8d2e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e112b51_b09c951f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944172
+      },
+      "writtenOn": "2023-08-16T22:39:36Z",
+      "side": 1,
+      "message": "On second thought udc will be merging with AOSP so I\u0027ll cherry-pick there too.",
+      "parentUuid": "0508fc57_8aac7765",
+      "revId": "b36c81f37be0fd1b1fb5f8e58b00aa4dbc8d2e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
