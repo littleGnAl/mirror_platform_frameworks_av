@@ -2584,12 +2584,6 @@ nsecs_t AudioTrack::processAudioBuffer()
         minFrames = min(minFrames, (newPosition - position).value());
     }
 
-    // If > 0, poll periodically to recover from a stuck server.  A good value is 2.
-    static const uint32_t kPoll = 0;
-    if (kPoll > 0 && mTransfer == TRANSFER_CALLBACK && kPoll * notificationFrames < minFrames) {
-        minFrames = kPoll * notificationFrames;
-    }
-
     // This "fudge factor" avoids soaking CPU, and compensates for late progress by server
     static const nsecs_t kWaitPeriodNs = WAIT_PERIOD_MS * 1000000LL;
     const nsecs_t timeAfterCallbacks = systemTime();
