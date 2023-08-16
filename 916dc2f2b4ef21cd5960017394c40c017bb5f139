@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbffe345_fdd1391f",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-08-16T02:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bf86d0d_4e2f1d29",
+      "range": {
+        "startLine": 332,
+        "startChar": 37,
+        "endLine": 332,
+        "endChar": 91
+      },
+      "revId": "916dc2f2b4ef21cd5960017394c40c017bb5f139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dad198e8_d63d7f2e",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f1e9a0_a858cf60",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-08-16T02:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad198e8_d63d7f2e",
+      "range": {
+        "startLine": 337,
+        "startChar": 8,
+        "endLine": 337,
+        "endChar": 43
+      },
+      "revId": "916dc2f2b4ef21cd5960017394c40c017bb5f139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f074acf_455dadf6",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-15T18:57:35Z",
       "side": 1,
       "message": "nit: is this method const?",
+      "range": {
+        "startLine": 462,
+        "startChar": 51,
+        "endLine": 462,
+        "endChar": 56
+      },
+      "revId": "916dc2f2b4ef21cd5960017394c40c017bb5f139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61661357_f302fd49",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-08-16T02:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f074acf_455dadf6",
       "range": {
         "startLine": 462,
         "startChar": 51,
