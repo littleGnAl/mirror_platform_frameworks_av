@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22341f9b_50858ae5",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-17T22:19:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "182e6ffe_f5fa916b",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 38
+      },
+      "revId": "67d8cfb2bbc7a93e05663e4e5b50739d7b26b95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1053418_94ba0f76",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "This is carried over from L498",
       "parentUuid": "b1053418_94ba0f76",
+      "range": {
+        "startLine": 752,
+        "startChar": 19,
+        "endLine": 752,
+        "endChar": 40
+      },
+      "revId": "67d8cfb2bbc7a93e05663e4e5b50739d7b26b95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67062aaa_2f5108e4",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-17T22:19:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a5560d6e_51f99ce7",
       "range": {
         "startLine": 752,
         "startChar": 19,
