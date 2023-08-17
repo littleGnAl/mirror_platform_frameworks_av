@@ -16,6 +16,23 @@
       "message": "Some merge conflicts are pending on https://android-review.git.corp.google.com/q/topic:%22aosp-cameraserver-string%22",
       "revId": "fab1fb6e6ac9e8b8ba638a3a5c50981fef02f758",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd78226c_b5f994c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-08-17T01:59:52Z",
+      "side": 1,
+      "message": "all the changes I read in this CL looked fine.\nthe merge conflicts seem more likely to be what will give you the most\nfrustation;  fewer files per CL is probably the answer there.",
+      "revId": "fab1fb6e6ac9e8b8ba638a3a5c50981fef02f758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
