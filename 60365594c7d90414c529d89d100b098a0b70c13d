@@ -16,6 +16,23 @@
       "message": "To be rebased after http://ag/23522384 gets cherry-picked to or near AOSP main.",
       "revId": "60365594c7d90414c529d89d100b098a0b70c13d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "207e69ac_a244036c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944172
+      },
+      "writtenOn": "2023-08-18T17:31:02Z",
+      "side": 1,
+      "message": "You\u0027ve seemed to highlight some areas I\u0027ve missed in the string migration. I\u0027m going to look this over and migrate those.",
+      "revId": "60365594c7d90414c529d89d100b098a0b70c13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
