@@ -103,6 +103,30 @@
       },
       "revId": "15ae77bc41bb0cca9554a10bbe7dbabfc1ca79b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8cb2d7_9b9e8628",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2256,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2023-08-18T09:30:02Z",
+      "side": 1,
+      "message": "Previously I didn\u0027t notice there is a Mutexed::Locked, and thought there is a data race issue...\n\nI think it\u0027s safe to avoid the messages here, as kWhatWorkDone is also posted if queue is not empty in the kWhatWorkDone case.",
+      "parentUuid": "719bb600_e76c2855",
+      "range": {
+        "startLine": 2254,
+        "startChar": 0,
+        "endLine": 2256,
+        "endChar": 9
+      },
+      "revId": "15ae77bc41bb0cca9554a10bbe7dbabfc1ca79b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
