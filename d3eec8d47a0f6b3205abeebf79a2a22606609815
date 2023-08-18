@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2dc9bb_bb6a80dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-18T15:33:15Z",
+      "side": 1,
+      "message": "To be rebased after http://ag/23522384 gets cherry-picked to or near AOSP main.\n\nThis is the last change needed to unblock .empty migration.",
+      "revId": "d3eec8d47a0f6b3205abeebf79a2a22606609815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
