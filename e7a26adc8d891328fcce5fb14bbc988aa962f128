@@ -88,6 +88,23 @@
       "parentUuid": "48dc6867_94a487c2",
       "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3a8545_b368bd96",
+        "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1883619
+      },
+      "writtenOn": "2023-08-18T19:25:05Z",
+      "side": 1,
+      "message": "This AServiceManager_isDeclared checks for vintf services. But the expectation on IHAVE as not vintf stable or did i miss something ?",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
