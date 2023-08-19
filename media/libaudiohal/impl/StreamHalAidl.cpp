@@ -267,7 +267,8 @@ status_t StreamHalAidl::getLatency(uint32_t *latency) {
     if (status_t status = updateCountersIfNeeded(&reply); status != OK) {
         return status;
     }
-    *latency = std::max<int32_t>(0, reply.latencyMs);
+    // FIXME: fix AIDL hal latency
+    *latency = 0; //std::max<int32_t>(0, reply.latencyMs);
     return OK;
 }
 
