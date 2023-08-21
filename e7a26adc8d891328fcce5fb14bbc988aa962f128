@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca19cd5c_72e7787d",
+        "filename": "aidl/android/media/audio/IHalAdapterVendorExtension.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-21T19:30:02Z",
+      "side": 1,
+      "message": "\u003e I am sure I am missing a se-policy rule, do you have any such example to register the unstable Interface as AIDL service\n\nThere certainly must be a rule for the instance of the service you are trying to register, and it looks the same, regardless of whether it\u0027s stable or not. Usually these entries are in `service_contexts` files, there are many of them: for the system, coming from vendors, etc. You need to have a line like this:\n\n```\nandroid.media.audio.IHalAdapterVendorExtension/default               u:object_r:audioserver_service:s0\n```\n\nNote that I used `audioserver_service` as the name of the service. If you intend to have the implementation in another service, you will need to use its SELinux tag instead.\n\nA more generic way to find missing SELinux policy rules is described here: https://source.android.com/docs/security/features/selinux/validate",
+      "parentUuid": "b46c6d4c_d741011e",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de3a8545_b368bd96",
@@ -103,6 +121,24 @@
       "writtenOn": "2023-08-18T19:25:05Z",
       "side": 1,
       "message": "This AServiceManager_isDeclared checks for vintf services. But the expectation on IHAVE as not vintf stable or did i miss something ?",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9654ec_18acba3a",
+        "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-21T19:30:02Z",
+      "side": 1,
+      "message": "That depends. There are actually two service managers: `servicemanager` and `vndservicemanager`: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/Android.bp;l\u003d59;drc\u003d9d9c50a9ae39122b1fb62396ef008304fb6a91c2. The system used the first one, which does not have `VENDORSERVICEMANAGER` preprocessor define, which means it only tries to check the service existence via SELinux: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/ServiceManager.cpp;l\u003d515;drc\u003defea66bc80fc52c5764dd99dfd73884339f9891c",
+      "parentUuid": "de3a8545_b368bd96",
       "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
