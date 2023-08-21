@@ -46,6 +46,30 @@
       },
       "revId": "02c9a491ac0af6b9c43c18fb798202d241ffd962",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1447278f_6a63ddde",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-21T17:47:46Z",
+      "side": 1,
+      "message": "Perhaps something like this should help to bring sanity and detect cases when something goes wrong:\n\n```\n*latency \u003d std::clamp(std::max\u003cint32_t\u003e(0, reply.latencyMs), 1, 3000);\nALOGW_IF(reply.latencyMs !\u003d static_cast\u003cint32_t\u003e(*latency),\n         \"Suspicious latency value reported by HAL: %d, clamped to %u\",\n         reply.latencyMs, *latency);\n```",
+      "parentUuid": "7dae7147_831aa692",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 58
+      },
+      "revId": "02c9a491ac0af6b9c43c18fb798202d241ffd962",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
