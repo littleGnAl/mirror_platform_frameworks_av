@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f86ace6_ba1fa176",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-21T15:51:02Z",
+      "side": 1,
+      "message": "What is wrong with the returned latency?\n\nAlso, I don\u0027t think that AudioTrack will like the latency value `0`: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Threads.cpp;l\u003d2434;drc\u003df0e3624954773fd6d15900e0704c9d17d1361b25",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 58
+      },
+      "revId": "02c9a491ac0af6b9c43c18fb798202d241ffd962",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
