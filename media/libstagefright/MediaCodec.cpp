@@ -1617,7 +1617,9 @@ void MediaCodec::statsBufferSent(int64_t presentationUs, const sp<MediaCodecBuff
 
         // XXX: we *could* make sure that the time is later than the end of queue
         // as part of a consistency check...
-        mBuffersInFlight.push_back(startdata);
+        if (!mTunneled) {
+            mBuffersInFlight.push_back(startdata);
+        }
 
         if (mIsLowLatencyModeOn && mIndexOfFirstFrameWhenLowLatencyOn < 0) {
             mIndexOfFirstFrameWhenLowLatencyOn = mInputBufferCounter;
