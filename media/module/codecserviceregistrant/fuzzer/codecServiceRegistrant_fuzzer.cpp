@@ -59,9 +59,9 @@ void CodecServiceRegistrantFuzzer::initH2C2ComponentStore() {
   if (!store) {
     return;
   }
-  android::sp<V1_1::IComponentStore> storeV1_1 =
-      new V1_1::utils::ComponentStore(store);
-  if (storeV1_1->registerAsService(string(kServiceName)) != android::OK) {
+  android::sp<V1_2::IComponentStore> storeV1_2 =
+      new V1_2::utils::ComponentStore(store);
+  if (storeV1_2->registerAsService(string(kServiceName)) != android::OK) {
     return;
   }
   string const preferredStoreName = string(kServiceName);
