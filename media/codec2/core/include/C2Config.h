@@ -198,6 +198,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexHdrDynamicMetadata,
     kParamIndexHdrFormat,
 
+    // buffer number
+    kParamIndexBufferNum,
+
     /* ------------------------------------ video components ------------------------------------ */
 
     kParamIndexFrameRate = C2_PARAM_INDEX_VIDEO_PARAM_START,
@@ -872,6 +875,26 @@ typedef C2PortParam<C2Tuning, C2Uint32Value, kParamIndexDelay> C2PortDelayTuning
 typedef C2PortDelayTuning C2PortActualDelayTuning; // deprecated
 constexpr char C2_PARAMKEY_INPUT_DELAY[] = "input.delay";
 constexpr char C2_PARAMKEY_OUTPUT_DELAY[] = "output.delay";
+
+/**
+ * BufferNum (input or output).
+ */
+struct C2BufferNumStruct {
+    inline C2BufferNumStruct()
+        : inputBufferNum(0), outputBufferNum(0) { }
+
+    inline C2BufferNumStruct(uint32_t inputBufferNum_, uint32_t outputBufferNum_)
+        : inputBufferNum(inputBufferNum_), outputBufferNum(outputBufferNum_) { }
+
+    uint32_t inputBufferNum;
+    uint32_t outputBufferNum;
+
+    DEFINE_AND_DESCRIBE_C2STRUCT(BufferNum)
+    C2FIELD(inputBufferNum, "inputBufferNum")
+    C2FIELD(outputBufferNum, "outputBufferNum")
+};
+typedef C2StreamParam<C2Info, C2BufferNumStruct, kParamIndexBufferNum> C2StreamBufferNum;
+constexpr char C2_PARAMKEY_BUFFER_NUM[] = "buffer.number";
 
 // read-only
 typedef C2GlobalParam<C2Tuning, C2Uint32Value, kParamIndexDelay> C2PipelineDelayTuning;
