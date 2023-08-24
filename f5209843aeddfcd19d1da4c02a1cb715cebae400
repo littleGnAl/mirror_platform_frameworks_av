@@ -134,6 +134,30 @@
       },
       "revId": "f5209843aeddfcd19d1da4c02a1cb715cebae400",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43fb127_15be11f9",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1630064
+      },
+      "writtenOn": "2023-08-24T03:17:03Z",
+      "side": 1,
+      "message": "I think changing volume is related to effects which expose a capability to control volume, may be overall idea would be if effect controls the volume, then effects passes unity gain back to flinger.\n\nI looked at legacy usage and found this ,\n\n\"\n//  Set and get volume. Used by audio framework to delegate volume control to effect engine.\n//  The effect implementation must set EFFECT_FLAG_VOLUME_IND or EFFECT_FLAG_VOLUME_CTRL flag in\n//  its descriptor to receive this command before every call to process() function\n//  If EFFECT_FLAG_VOLUME_CTRL flag is set in the effect descriptor, the effect engine must return\n//  the volume that should be applied before the effect is processed. The overall volume (the volume\n//  actually applied by the effect engine multiplied by the returned value) should match the value\n//  indicated in the command.\n\"\n\nSo basically, this getVolume needs to be done for effects having EFFECT_FLAG_VOLUME_CTRL always needs to be passed.\n\nmay be we can do like \n\"\nif (common.flags.volume \u003d\u003d Flags::Volume::CTRL) {\n       if (replySize \u0026\u0026 *replySize \u003d\u003d 2 * sizeof(uint32_t) \u0026\u0026 pReplyData) {\n            ALOGI(\"%s requested %s actual applied %s \", __func__,\n                  requestedVolume.toString().c_str(), appliedVolume.toString().c_str());\n            uint32_t vl \u003d (uint32_t)(appliedVolume.left * unityGain);\n            uint32_t vr \u003d (uint32_t)(appliedVolume.right * unityGain);\n            uint32_t vol_ret[2] \u003d {vl, vr};\n            memcpy(pReplyData, vol_ret, sizeof(vol_ret));\n\t\t}\n}\n\"\n\nIf we go by above legacy description then for VOLUME_CTRL effects we always need to return the volume.\n\n\nBut i am not sure if we need to check the volume flag here, will it be taken care by audioflinger itself? What do you think?",
+      "parentUuid": "4ec1aa19_6e314ef1",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 57
+      },
+      "revId": "f5209843aeddfcd19d1da4c02a1cb715cebae400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
