@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-#include <cstddef>
 #define LOG_TAG "EffectHalAidl"
 //#define LOG_NDEBUG 0
 
-#include <memory>
 
 #include <error/expected_utils.h>
 #include <media/AidlConversionCppNdk.h>
@@ -51,6 +49,9 @@
 #include "effectsAidlConversion/AidlConversionVendorExtension.h"
 #include "effectsAidlConversion/AidlConversionVirtualizer.h"
 #include "effectsAidlConversion/AidlConversionVisualizer.h"
+
+#include <cstddef>
+#include <memory>
 
 using ::aidl::android::aidl_utils::statusTFromBinderStatus;
 using ::aidl::android::hardware::audio::effect::Descriptor;
@@ -204,9 +205,20 @@ status_t EffectHalAidl::process() {
     efGroup->wake(aidl::android::hardware::audio::effect::kEventFlagNotEmpty);
 
     IEffect::Status retStatus{};
-    if (!statusQ->readBlocking(&retStatus, 1) || retStatus.status != OK ||
-        (size_t)retStatus.fmqConsumed != floatsToWrite || retStatus.fmqProduced == 0) {
-        ALOGE("%s read status failed: %s", __func__, retStatus.toString().c_str());
+    int halConsumed = 0, halProduced = 0;
+    while (statusQ->availableToRead()) {
+        if (!statusQ->readBlocking(&retStatus, 1) || retStatus.status != OK) {
+            ALOGW("%s read status failed: %s after consumed %d produced %d", __func__,
+                  retStatus.toString().c_str(), halConsumed, halProduced);
+            break;
+        }
+        halConsumed += retStatus.fmqConsumed;
+        halProduced += retStatus.fmqProduced;
+    }
+
+    if (halConsumed < 0 || static_cast<size_t>(halConsumed) != floatsToWrite || halProduced <= 0) {
+        ALOGE("%s wrote to HAL %zu, HAL consumed %d produced %d", __func__, floatsToWrite,
+              halConsumed, halProduced);
         return INVALID_OPERATION;
     }
 
