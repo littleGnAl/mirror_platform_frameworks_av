@@ -1191,11 +1191,11 @@ status_t MPEG4Writer::release() {
         if (err == OK) { err = ERROR_IO; }
     }
 
-    // TODO(b/174770856) remove this measurement (and perhaps the fsync)
+    // TODO(b/174770856) remove this measurement (and perhaps the fdatasync)
     nsecs_t sync_started = systemTime(SYSTEM_TIME_REALTIME);
-    if (fsync(mFd) != 0) {
-        ALOGW("(ignored)fsync err:%s(%d)", std::strerror(errno), errno);
-        // Don't bubble up fsync error, b/157291505.
+    if (fdatasync(mFd) != 0) {
+        ALOGW("(ignored)fdatasync err:%s(%d)", std::strerror(errno), errno);
+        // Don't bubble up fdatasync error, b/157291505.
         // if (err == OK) { err = ERROR_IO; }
     }
     nsecs_t sync_finished = systemTime(SYSTEM_TIME_REALTIME);
@@ -1205,7 +1205,7 @@ status_t MPEG4Writer::release() {
     if (fstat(mFd, &statbuf) == 0) {
         filesize = statbuf.st_size;
     }
-    ALOGD("final fsync() takes %" PRId64 " ms, file size %" PRId64,
+    ALOGD("final fdatasync() takes %" PRId64 " ms, file size %" PRId64,
           sync_elapsed_ns / 1000000, (int64_t) filesize);
 
     if (close(mFd) != 0) {
