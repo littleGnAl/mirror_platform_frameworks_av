@@ -642,6 +642,10 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
         fullConfig.sample_rate = config->sample_rate;
         fullConfig.channel_mask = config->channel_mask;
         fullConfig.format = config->format;
+        // HidlUtils::audioConfigFromHal,need sample rate,Otherwise, the usage information will be cleared
+        fullConfig.offload_info.sample_rate = config->sample_rate;
+        // Give usage information to audio hal.
+        fullConfig.offload_info.usage = localAttr.usage;
         std::vector<audio_io_handle_t> secondaryOutputs;
         bool isSpatialized;
         ret = AudioSystem::getOutputForAttr(&localAttr, &io,
