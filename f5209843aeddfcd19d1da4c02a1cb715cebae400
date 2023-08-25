@@ -158,6 +158,30 @@
       },
       "revId": "f5209843aeddfcd19d1da4c02a1cb715cebae400",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05498f1a_896f1e7f",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-25T18:23:23Z",
+      "side": 1,
+      "message": "Yes, the audioflinger only sends the \"set volume\" command for effects that declare the VOLUME_CTRL flag:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Effects.cpp;l\u003d994;drc\u003d7e551a388c1344dbe77e6775d0ac6f947e005249\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Effects.cpp;l\u003d2520;drc\u003d7e551a388c1344dbe77e6775d0ac6f947e005249\n\nThus, no need to check the flag in the effect.",
+      "parentUuid": "d43fb127_15be11f9",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 57
+      },
+      "revId": "f5209843aeddfcd19d1da4c02a1cb715cebae400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
