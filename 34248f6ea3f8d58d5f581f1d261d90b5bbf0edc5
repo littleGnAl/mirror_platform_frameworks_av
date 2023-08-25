@@ -22,6 +22,30 @@
       },
       "revId": "34248f6ea3f8d58d5f581f1d261d90b5bbf0edc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a374271_c55b1ef6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-25T17:09:02Z",
+      "side": 1,
+      "message": "Oops, thanks for catching this. Updating SortedVector to .empty wouldn\u0027t hurt, but it\u0027s not the goal of this CL. Reverted non-String changes.",
+      "parentUuid": "58f3b76f_36858e21",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "34248f6ea3f8d58d5f581f1d261d90b5bbf0edc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
