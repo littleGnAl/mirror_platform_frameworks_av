@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf3c834_e60ca7ec",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-25T18:29:54Z",
+      "side": 1,
+      "message": "Is there any possibility that an effect will continuously write a new status each time, thus turning this loop into an infinite one?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 40
+      },
+      "revId": "3f7ca30043b0e8a9ae992d45100c0618b8f520d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce91212_89c16f94",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-25T18:29:54Z",
+      "side": 1,
+      "message": "Is it correct that both `fmqConsumed` and `fmqProduces` must be non-negative? In that case, I would add a check for that. Then we can make `halConsumed/Produced` to be of `size_t` and avoid awkward checks below for them being negative.",
+      "range": {
+        "startLine": 215,
+        "startChar": 23,
+        "endLine": 215,
+        "endChar": 44
+      },
+      "revId": "3f7ca30043b0e8a9ae992d45100c0618b8f520d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
