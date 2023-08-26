@@ -16,6 +16,29 @@
       "message": "Partner verified",
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6681fb45_21813dc9",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-08-26T00:55:43Z",
+      "side": 1,
+      "message": "What\u0027s the reason for only setting waitForIdleFence in the `else` clause, in other words, when `newState \u003d\u003d prevState`?",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
