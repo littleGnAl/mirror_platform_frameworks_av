@@ -46,6 +46,30 @@
       },
       "revId": "be9ba35051c631436d546476e115a12187d67417",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f9ab55_6969c291",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2303,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-08-26T07:06:57Z",
+      "side": 1,
+      "message": "Sorry, thats right\n\n```\nif (!workItems.empty()) {\n    Mutexed\u003cstd::list\u003cstd::unique_ptr\u003cC2Work\u003e\u003e\u003e::Locked queue(mWorkDoneQueue);\n    bool shouldPost \u003d queue-\u003eempty();\n    queue-\u003esplice(queue-\u003eend(), workItems);\n    if (shouldPost) {\n        (new AMessage(kWhatWorkDone, this))-\u003epost();\n    }\n}\n```",
+      "parentUuid": "ab5827cd_bdde11e0",
+      "range": {
+        "startLine": 2293,
+        "startChar": 0,
+        "endLine": 2303,
+        "endChar": 5
+      },
+      "revId": "be9ba35051c631436d546476e115a12187d67417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
