@@ -22,6 +22,30 @@
       },
       "revId": "be9ba35051c631436d546476e115a12187d67417",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5827cd_bdde11e0",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2303,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2023-08-26T01:22:59Z",
+      "side": 1,
+      "message": "Hi, Google,\nIt seems shoule be \"bool shouldPost \u003d queue-\u003eempty();\"",
+      "parentUuid": "c0e4b97f_c6efd67c",
+      "range": {
+        "startLine": 2293,
+        "startChar": 0,
+        "endLine": 2303,
+        "endChar": 5
+      },
+      "revId": "be9ba35051c631436d546476e115a12187d67417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
