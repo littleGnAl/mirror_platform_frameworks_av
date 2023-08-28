@@ -63,6 +63,30 @@
       },
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b79f83a_2107d11d",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-08-28T21:14:59Z",
+      "side": 1,
+      "message": "My question is why don\u0027t we have something like:\n\n```\nif (newState !\u003d prevState) {\n    mStateTransitions.add(newState);\n}\n\nif (validFence \u0026\u0026 !waitForIdleFence) {\n    waitForIdleFence \u003d true;\n}\n```",
+      "parentUuid": "4e77ca6b_3572a259",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
