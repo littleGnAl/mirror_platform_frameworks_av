@@ -16,6 +16,24 @@
       "message": "Please confirm if aosp/2695929 can be cherry picked to Android 13 for b/297325361.",
       "revId": "5d41b573abb96a67a7c8bee5cfa91ec344f729f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b22e83_bf86f470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-08-28T10:18:45Z",
+      "side": 1,
+      "message": "By \"cherry picked to Android 13\" to you mean to android13-gsi branch? I don\u0027t knoe the rules governing updats on this branch",
+      "parentUuid": "265d867b_3adec72d",
+      "revId": "5d41b573abb96a67a7c8bee5cfa91ec344f729f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
