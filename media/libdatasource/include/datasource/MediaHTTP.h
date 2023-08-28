@@ -65,6 +65,8 @@ private:
     bool mCachedSizeValid;
     off64_t mCachedSize;
 
+    Mutex mLock;
+
     DISALLOW_EVIL_CONSTRUCTORS(MediaHTTP);
 };
 

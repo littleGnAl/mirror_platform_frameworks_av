@@ -68,6 +68,7 @@ status_t MediaHTTP::connect(
 
     if (success) {
         AString sanitized = uriDebugString(mLastURI);
+        Mutex::Autolock autoLock(mLock);
         mName = String8::format("MediaHTTP(%s)", sanitized.c_str());
     }
 
@@ -79,7 +80,10 @@ void MediaHTTP::close() {
 }
 
 void MediaHTTP::disconnect() {
-    mName = String8("MediaHTTP(<disconnected>)");
+    {
+        Mutex::Autolock autoLock(mLock);
+        mName = String8("MediaHTTP(<disconnected>)");
+    }
     if (mInitCheck != OK) {
         return;
     }
