@@ -16,6 +16,23 @@
       "message": "Hi, CL needs code review vote from test owner. Thanks",
       "revId": "22cea39faaa7fe68d2aea25d68f796285f7caee7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b0d1f1_92054693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-08-28T17:50:54Z",
+      "side": 1,
+      "message": "inappropriate for android 12.\nthe code that supports this is not in android 12, so I don\u0027t see why we would\nmove this xsd back to android 12.",
+      "revId": "22cea39faaa7fe68d2aea25d68f796285f7caee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
