@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2cee9cb_f560b117",
+        "filename": "aidl/android/media/audio/IHalAdapterVendorExtension.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1883619
+      },
+      "writtenOn": "2023-08-28T11:46:49Z",
+      "side": 1,
+      "message": "Added the rule entry in the service_contexts, Now i can dlopen the our lib from main_audioserver.cpp and register the service. Now there is no se-policy issue.\nAlso i can see the serivce entry in \n``` \nadb shell \"service list\" \n```\n\nBut the AServiceManager_isDeclared cannot find the service. I am not sure about \"Declared service\" meaning.\n\nHow to be sure the service is declared ?",
+      "parentUuid": "ca19cd5c_72e7787d",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de3a8545_b368bd96",
         "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.cpp",
         "patchSetId": 4
