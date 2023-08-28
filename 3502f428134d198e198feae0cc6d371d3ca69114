@@ -159,6 +159,30 @@
       },
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb31ee2_83d453c6",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-08-28T23:20:44Z",
+      "side": 1,
+      "message": "So the below sequence can in theory still happen?\n\n```\n1. tracker.addComponent(1);\n2. tracker.markComponentActive(1);\n3. tracker.markComponentIdle(1, fence);\n4. // some time later\n   fence.signal();\n```\n\nIn this case, because there is no IDLE-\u003eIDLE transition, the extra kWaitDuration wait is still there?",
+      "parentUuid": "7e98c039_b45251bf",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
