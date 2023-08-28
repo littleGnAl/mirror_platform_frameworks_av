@@ -183,6 +183,30 @@
       },
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7172796d_a13689e3",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2023-08-28T23:28:47Z",
+      "side": 1,
+      "message": "Right, the possible optimization here is only useful/relevant in one particular case, when the fence is delayed between \"getDeviceStateLocked\" and kWaitDuration. If we timeout waiting on the fence, we resume as usual.",
+      "parentUuid": "beb31ee2_83d453c6",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
