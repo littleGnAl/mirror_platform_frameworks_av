@@ -135,6 +135,30 @@
       },
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e98c039_b45251bf",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2023-08-28T22:46:53Z",
+      "side": 1,
+      "message": "Sort of, it appears that depending on the timing of the idle fence signal, the ACTIVE-\u003eIDLE transition can be delayed just enough to miss \u0027getDeviceStateLocked\u0027 on line #206 and end up waiting one extra iteration for the \u0027mPendingChangeSignal\u0027 to timeout. So essentially we transition from ACTIVE to IDLE once however the parent may need to wait an extra \u0027kWaitDuration\u0027 to get notified.",
+      "parentUuid": "48db4305_ce0ddd30",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
