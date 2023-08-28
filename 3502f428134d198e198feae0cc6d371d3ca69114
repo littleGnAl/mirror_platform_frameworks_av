@@ -111,6 +111,30 @@
       },
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48db4305_ce0ddd30",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-08-28T22:41:29Z",
+      "side": 1,
+      "message": "Thanks for the explanation!\n\nDoes this mean for ACTIVE-\u003eIDLE transition, we need an ACTIVE-\u003eIDLE-\u003eIDLE transition, so that the IDLE-\u003eIDLE transition can trigger waitForIdleFence?",
+      "parentUuid": "eb5aca63_66c1e9d6",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
