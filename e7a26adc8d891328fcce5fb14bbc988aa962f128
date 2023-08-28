@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f11e4bf_89ab9792",
+        "filename": "aidl/android/media/audio/IHalAdapterVendorExtension.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-28T18:24:40Z",
+      "side": 1,
+      "message": "`AServiceManager_isDeclared` checks all manifests (I realized, I was wrong in my comment below, I misread the `#ifndef` condition). You need to register the service in the \"system_ext\" manifest: https://source.android.com/docs/core/architecture/vintf/objects#framework-manifest-file. Typically this is done via \"interface fragments\". You need to create an file with the following contents:\n\n```\n\u003cmanifest version\u003d\"1.0\" type\u003d\"framework\"\u003e\n  \u003chal format\u003d\"aidl\"\u003e\n    \u003cname\u003eandroid.media.audio\u003c/name\u003e\n    \u003cversion\u003e1\u003c/version\u003e\n    \u003cfqname\u003eIHalAdapterVendorExtension/default\u003c/fqname\u003e\n  \u003c/hal\u003e\n\u003c/manifest\u003e\n```\n\nAnd hook it up to the main manifest as described here: https://source.android.com/docs/core/architecture/vintf/objects#manifest-fragments",
+      "parentUuid": "c2cee9cb_f560b117",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de3a8545_b368bd96",
         "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.cpp",
         "patchSetId": 4
@@ -157,6 +175,24 @@
       "side": 1,
       "message": "That depends. There are actually two service managers: `servicemanager` and `vndservicemanager`: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/Android.bp;l\u003d59;drc\u003d9d9c50a9ae39122b1fb62396ef008304fb6a91c2. The system used the first one, which does not have `VENDORSERVICEMANAGER` preprocessor define, which means it only tries to check the service existence via SELinux: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/ServiceManager.cpp;l\u003d515;drc\u003defea66bc80fc52c5764dd99dfd73884339f9891c",
       "parentUuid": "de3a8545_b368bd96",
+      "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2b77d2_11814093",
+        "filename": "media/libaudiohal/impl/DevicesFactoryHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-08-28T18:24:40Z",
+      "side": 1,
+      "message": "Note: the statement \"it only tries to check the service existence via SELinux\" is wrong. Since the code uses `#ifndef VENDORSERVICEMANAGER`, it does check the contents of VINTF, which aggregates information from the device manifest and the framework manifest: https://source.android.com/docs/core/architecture/vintf/objects",
+      "parentUuid": "8d9654ec_18acba3a",
       "revId": "e7a26adc8d891328fcce5fb14bbc988aa962f128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
