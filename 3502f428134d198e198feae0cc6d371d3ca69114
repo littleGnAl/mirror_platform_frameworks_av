@@ -87,6 +87,30 @@
       },
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb5aca63_66c1e9d6",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2023-08-28T21:22:20Z",
+      "side": 1,
+      "message": "If we have a state transition or in other words \"newState !\u003d prevState\", then we will be able to notify the parent at line #229 and the \"mPendingChangeSignal\" wait will be signaled and we will avoid an extra kWaitDuration latency. The only scenario where we want to wait on the idle fence is when we don\u0027t have a state transition along with valid fence.",
+      "parentUuid": "0b79f83a_2107d11d",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
