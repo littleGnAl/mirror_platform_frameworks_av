@@ -207,6 +207,30 @@
       },
       "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b910e6c_d711bf7e",
+        "filename": "services/camera/libcameraservice/device3/StatusTracker.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-08-29T01:07:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7172796d_a13689e3",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "3502f428134d198e198feae0cc6d371d3ca69114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
