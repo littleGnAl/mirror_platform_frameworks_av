@@ -34,6 +34,24 @@
       "parentUuid": "265d867b_3adec72d",
       "revId": "5d41b573abb96a67a7c8bee5cfa91ec344f729f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716ea2bd_10745dac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2023-08-29T03:46:17Z",
+      "side": 1,
+      "message": "Yes, by \"Android 13\", I mean android13-gsi.\n\nThis cherrypick is requested by b/297325361. I\u0027m not sure if it makes sense or not on Android 13.",
+      "parentUuid": "b3b22e83_bf86f470",
+      "revId": "5d41b573abb96a67a7c8bee5cfa91ec344f729f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
