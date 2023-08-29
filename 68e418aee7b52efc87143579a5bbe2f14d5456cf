@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9157c3_da3ccb22",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-08-29T12:56:59Z",
+      "side": 1,
+      "message": "Unfortunately, I don\u0027t think the `offload_info` is the right place to sent this, even though it looks like an easy place for a workaround 😊. Quoting Mikhail: \"`offload_info` is intended for compressed data which is decoded by the SoC DSP. It is only used with mix ports that have AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD flag set.\"",
+      "revId": "68e418aee7b52efc87143579a5bbe2f14d5456cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
