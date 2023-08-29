@@ -98,6 +98,12 @@ void FrameCaptureLayer::BufferLayer::getLayerSettings(
     layerSettings->source.buffer.isY410BT2020 = isHdrY410(mBufferItem);
     bool hasSmpte2086 = mBufferItem.mHdrMetadata.validTypes & HdrMetadata::SMPTE2086;
     bool hasCta861_3 = mBufferItem.mHdrMetadata.validTypes & HdrMetadata::CTA861_3;
+
+    if (hasSmpte2086 && mBufferItem.mHdrMetadata.smpte2086.maxLuminance > 0
+        && mBufferItem.mHdrMetadata.smpte2086.maxLuminance < 100) {
+        mBufferItem.mHdrMetadata.smpte2086.maxLuminance = kDefaultMaxMasteringLuminance;
+    }
+
     layerSettings->source.buffer.maxMasteringLuminance = hasSmpte2086
             ? mBufferItem.mHdrMetadata.smpte2086.maxLuminance
                     : kDefaultMaxMasteringLuminance;
