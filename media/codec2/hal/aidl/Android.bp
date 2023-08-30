@@ -6,6 +6,7 @@ package {
 // use libcodec2-aidl-client-defaults instead
 cc_library {
     name: "libcodec2_aidl_client",
+    min_sdk_version: "31",
 
     srcs: [
         "BufferTypes.cpp",
@@ -51,8 +52,8 @@ cc_library {
 
 cc_library {
     name: "libcodec2_aidl",
+    min_sdk_version: "31",
     vendor_available: true,
-    min_sdk_version: "34",
     apex_available: [
         "//apex_available:platform",
         "com.android.media.swcodec",
@@ -128,7 +129,7 @@ cc_library {
 // public dependency for Codec 2.0 HAL service implementations
 cc_defaults {
     name: "libcodec2-aidl-defaults",
-    min_sdk_version: "34",
+    min_sdk_version: "31",
     defaults: ["libcodec2-impl-defaults"],
 
     shared_libs: [
@@ -140,7 +141,7 @@ cc_defaults {
 // public dependency for Codec 2.0 HAL client
 cc_defaults {
     name: "libcodec2-aidl-client-defaults",
-    min_sdk_version: "34",
+    min_sdk_version: "31",
     defaults: ["libcodec2-impl-defaults"],
 
     shared_libs: [
