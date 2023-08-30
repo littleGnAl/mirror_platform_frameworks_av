@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e70279_cd3add83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-30T17:56:23Z",
+      "side": 1,
+      "message": "thanks for catching this!",
+      "revId": "2692914cb8473756edc2f6817b670d909ad4d6e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f738a647_30bb4027",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-30T17:56:23Z",
+      "side": 1,
+      "message": "can we just return from here if `mTunneled`?",
+      "revId": "2692914cb8473756edc2f6817b670d909ad4d6e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
