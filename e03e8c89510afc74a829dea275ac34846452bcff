@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b2a7958_41cb680c",
+        "filename": "media/codec2/hal/aidl/Android.bp",
+        "patchSetId": 15
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:13:44Z",
+      "side": 0,
+      "message": "do we need to keep this? s/hidl/aidl/",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "e03e8c89510afc74a829dea275ac34846452bcff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dedf4a2_680993b3",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:13:44Z",
+      "side": 0,
+      "message": "do we need to keep this code commented out for the InputSurface work?",
+      "revId": "e03e8c89510afc74a829dea275ac34846452bcff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b876e5e_27d54581",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:13:44Z",
+      "side": 0,
+      "message": "and similarly these (sans connectToOmxInputSurface)?",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 1
+      },
+      "revId": "e03e8c89510afc74a829dea275ac34846452bcff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebefa18c_3c547df5",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:13:44Z",
+      "side": 0,
+      "message": "and similarly this?",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 47
+      },
+      "revId": "e03e8c89510afc74a829dea275ac34846452bcff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97eec3dd_7345c9b6",
+        "filename": "media/codec2/hal/aidl/include/codec2/aidl/InputSurface.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:13:44Z",
+      "side": 0,
+      "message": "and similarly this file?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "e03e8c89510afc74a829dea275ac34846452bcff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
