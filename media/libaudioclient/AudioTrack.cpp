@@ -1699,29 +1699,96 @@ audio_io_handle_t AudioTrack::getOutput() const
 }
 
 status_t AudioTrack::setOutputDevice(audio_port_handle_t deviceId) {
+    status_t result = NO_ERROR;
     AutoMutex lock(mLock);
-    ALOGV("%s(%d): deviceId=%d mSelectedDeviceId=%d mRoutedDeviceId %d",
-            __func__, mPortId, deviceId, mSelectedDeviceId, mRoutedDeviceId);
+    ALOGV("%s(%d): deviceId=%d mSelectedDeviceId=%d",
+            __func__, mPortId, deviceId, mSelectedDeviceId);
     if (mSelectedDeviceId != deviceId) {
         mSelectedDeviceId = deviceId;
         if (mStatus == NO_ERROR) {
-            // allow track invalidation when track is not playing to propagate
-            // the updated mSelectedDeviceId
-            if (isPlaying_l()) {
-                if (mSelectedDeviceId != mRoutedDeviceId) {
-                    android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
-                    mProxy->interrupt();
+            if (isOffloadedOrDirect_l()) {
+                // Offload and direct track is skipped in restoreTrack_l() due to cases which need
+                // to invalidate track and the client must be notified to create new track.
+                // Hence, do re-create IAudioTrack locally.
+                if (mState == STATE_STOPPED || mState == STATE_FLUSHED) {
+                    // save the old startThreshold and framecount
+                    const uint32_t originalStartThresholdInFrames =
+                        mProxy->getStartThresholdInFrames();
+                    const uint32_t originalFrameCount = mProxy->frameCount();
+
+                    ++mSequence;
+
+                    // refresh the audio configuration cache in this process to make sure we get new
+                    // output parameters and new IAudioFlinger in createTrack_l()
+                    AudioSystem::clearAudioConfigCache();
+
+                    result = createTrack_l();
+                    if (result == NO_ERROR) {
+                        ALOGD("%s(%d): creating a new AudioTrack", __func__, mPortId);
+                        // restore volume handler
+                        mVolumeHandler->forall([this](const VolumeShaper &shaper)
+                                -> VolumeShaper::Status {
+                            sp<VolumeShaper::Operation> operationToEnd =
+                            new VolumeShaper::Operation(shaper.mOperation);
+                            // TODO: Ideally we would restore to the exact xOffset position
+                            // as returned by getVolumeShaperState(), but we don't have that
+                            // information when restoring at the client unless we periodically poll
+                            // the server or create shared memory state.
+                            //
+                            // For now, we simply advance to the end of the VolumeShaper effect
+                            // if it has been started.
+                            if (shaper.isStarted()) {
+                            operationToEnd->setNormalizedTime(1.f);
+                            }
+                            media::VolumeShaperConfiguration config;
+                            shaper.mConfiguration->writeToParcelable(&config);
+                            media::VolumeShaperOperation operation;
+                            operationToEnd->writeToParcelable(&operation);
+                            status_t status;
+                            mAudioTrack->applyVolumeShaper(config, operation, &status);
+                            return status;
+                            });
+
+                        // restore the original start threshold if different than frameCount.
+                        if (originalStartThresholdInFrames != originalFrameCount) {
+                            // Note: mProxy->setStartThresholdInFrames() call is in the Proxy
+                            // and does not trigger a restart.
+                            // (Also CBLK_DISABLED is not set, buffers are empty after track
+                            // recreation).
+                            // Any start would be triggered on the mState == ACTIVE check below.
+                            const uint32_t currentThreshold =
+                                mProxy->setStartThresholdInFrames(originalStartThresholdInFrames);
+                            ALOGD_IF(originalStartThresholdInFrames != currentThreshold,
+                                    "%s(%d) startThresholdInFrames changing from %u to %u",
+                                    __func__, mPortId, originalStartThresholdInFrames,
+                                    currentThreshold);
+                        }
+                    }
+                } else {
+                    ALOGW("%s(%d): Offloaded or Direct track is not STOPPED or FLUSHED.",
+                            __func__, mPortId);
+                    result = BAD_VALUE;
                 }
             } else {
-                // if the track is idle, try to restore now and
-                // defer to next start if not possible
-                if (restoreTrack_l("setOutputDevice") != OK) {
-                    android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
+                // allow track invalidation when track is not playing to propagate
+                // the updated mSelectedDeviceId
+                if (isPlaying_l()) {
+                    if (mSelectedDeviceId != mRoutedDeviceId) {
+                        android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
+                        mProxy->interrupt();
+                    }
+                } else {
+                    // if the track is idle, try to restore now and
+                    // defer to next start if not possible
+                    if (restoreTrack_l("setOutputDevice") != OK) {
+                        android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
+                    }
                 }
+                result = NO_ERROR;
             }
         }
     }
-    return NO_ERROR;
+    return result;
 }
 
 audio_port_handle_t AudioTrack::getOutputDevice() {
