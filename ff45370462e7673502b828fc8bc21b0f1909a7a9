@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360e131d_4044de06",
+        "filename": "media/codec2/hal/services/vendor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:16:13Z",
+      "side": 1,
+      "message": "this seems to no longer be relevant for AIDL service? Still we will need threads as multiple codec operations may be pending (e.g. start/stop/release) and we don\u0027t want to block other codecs.",
+      "range": {
+        "startLine": 174,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 72
+      },
+      "revId": "ff45370462e7673502b828fc8bc21b0f1909a7a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
