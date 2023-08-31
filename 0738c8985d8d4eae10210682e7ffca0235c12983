@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e9b5ff_42b7be65",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:02:55Z",
+      "side": 1,
+      "message": "nit: yes this is fewer lines, but perhaps this would look cleaner as an if..else:\n\nrename createInterface to createInterface_hidl (with also hidl_base....)\n\nthen\n\ncreateInterface() {\n  if (mAidlBase) {\n    createInterface_aidl(...);\n  } else {\n    createInterface_hidl(...);\n  }\n}\n\nwe can do this later...",
+      "range": {
+        "startLine": 1230,
+        "startChar": 4,
+        "endLine": 1230,
+        "endChar": 5
+      },
+      "revId": "0738c8985d8d4eae10210682e7ffca0235c12983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f2860d_e474b6e6",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:02:55Z",
+      "side": 1,
+      "message": "nit: do we ever need to worry about this overflowing?\n\nseq may be 32-bit, enough for 4 billion link to death links... what\u0027s the fastest that could happen?",
+      "range": {
+        "startLine": 1804,
+        "startChar": 21,
+        "endLine": 1804,
+        "endChar": 25
+      },
+      "revId": "0738c8985d8d4eae10210682e7ffca0235c12983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f42cb6_0703dde9",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-08-31T17:02:55Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this will ever get implemented.",
+      "range": {
+        "startLine": 2392,
+        "startChar": 11,
+        "endLine": 2392,
+        "endChar": 16
+      },
+      "revId": "0738c8985d8d4eae10210682e7ffca0235c12983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
