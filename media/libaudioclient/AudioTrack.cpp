@@ -1686,25 +1686,40 @@ audio_io_handle_t AudioTrack::getOutput() const
 }
 
 status_t AudioTrack::setOutputDevice(audio_port_handle_t deviceId) {
+    status_t result = NO_ERROR;
     AutoMutex lock(mLock);
-    ALOGV("%s(%d): deviceId=%d mSelectedDeviceId=%d mRoutedDeviceId %d",
-            __func__, mPortId, deviceId, mSelectedDeviceId, mRoutedDeviceId);
+    ALOGV("%s(%d): deviceId=%d mSelectedDeviceId=%d",
+            __func__, mPortId, deviceId, mSelectedDeviceId);
     if (mSelectedDeviceId != deviceId) {
         mSelectedDeviceId = deviceId;
-        if (mStatus == NO_ERROR && mSelectedDeviceId != mRoutedDeviceId) {
-            if (isPlaying_l()) {
-                android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
-                mProxy->interrupt();
-            } else {
-                // if the track is idle, try to restore now and
-                // defer to next start if not possible
-                if (restoreTrack_l("setOutputDevice") != OK) {
-                    android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
+        if (mStatus == NO_ERROR) {
+            if (isOffloadedOrDirect_l()) {
+                if (mState == STATE_STOPPED || mState == STATE_FLUSHED) {
+                    // refresh the audio configuration cache in this process to make sure we get new
+                    // output parameters and new IAudioFlinger in createTrack_l()
+                    AudioSystem::clearAudioConfigCache();
+                    result = createTrack_l();
+                } else {
+                    ALOGW("%s(%d): Offloaded or Direct track is not STOPPED or FLUSHED.",
+                            __func__, mPortId);
+                    result = BAD_VALUE;
                 }
+            } else {
+                if (isPlaying_l()) {
+                    android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
+                    mProxy->interrupt();
+                } else {
+                    // if the track is idle, try to restore now and
+                    // defer to next start if not possible
+                    if (restoreTrack_l("setOutputDevice") != OK) {
+                        android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
+                    }
+                }
+                result = NO_ERROR;
             }
         }
     }
-    return NO_ERROR;
+    return result;
 }
 
 audio_port_handle_t AudioTrack::getOutputDevice() {
