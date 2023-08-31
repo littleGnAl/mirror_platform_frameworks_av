@@ -22,6 +22,30 @@
       },
       "revId": "ff45370462e7673502b828fc8bc21b0f1909a7a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a402c564_ba670623",
+        "filename": "media/codec2/hal/services/vendor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-31T18:42:59Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "360e131d_4044de06",
+      "range": {
+        "startLine": 174,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 72
+      },
+      "revId": "ff45370462e7673502b828fc8bc21b0f1909a7a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
