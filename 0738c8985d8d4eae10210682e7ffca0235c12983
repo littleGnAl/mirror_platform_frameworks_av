@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4adc17f1_5a18adc0",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-31T17:55:42Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "97e9b5ff_42b7be65",
+      "range": {
+        "startLine": 1230,
+        "startChar": 4,
+        "endLine": 1230,
+        "endChar": 5
+      },
+      "revId": "0738c8985d8d4eae10210682e7ffca0235c12983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0f2860d_e474b6e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-31T17:02:55Z",
       "side": 1,
       "message": "nit: do we ever need to worry about this overflowing?\n\nseq may be 32-bit, enough for 4 billion link to death links... what\u0027s the fastest that could happen?",
+      "range": {
+        "startLine": 1804,
+        "startChar": 21,
+        "endLine": 1804,
+        "endChar": 25
+      },
+      "revId": "0738c8985d8d4eae10210682e7ffca0235c12983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4befc191_d3484a55",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-31T17:55:42Z",
+      "side": 1,
+      "message": "If an app creates a codec every second, it will last 100+ years",
+      "parentUuid": "f0f2860d_e474b6e6",
       "range": {
         "startLine": 1804,
         "startChar": 21,
