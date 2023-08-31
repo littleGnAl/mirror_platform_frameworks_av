@@ -618,15 +618,16 @@ std::variant<status_t, RouteTraits::Element> PolicySerializer::deserialize<Route
     }
     // Convert Sink name to port pointer
     sp<PolicyAudioPort> sink = ctx->findPortByTagName(sinkAttr);
-    if (sink == NULL && !mIgnoreVendorExtensions) {
+    if (sink) {
+        route->setSink(sink);
+    } else if (!mIgnoreVendorExtensions) {
         ALOGE("%s: no sink found with name=%s", __func__, sinkAttr.c_str());
         return BAD_VALUE;
-    } else if (sink == NULL) {
+    } else {
         ALOGW("Skipping route to sink \"%s\" as it likely has vendor extension type",
                 sinkAttr.c_str());
         return NO_INIT;
     }
-    route->setSink(sink);
 
     std::string sourcesAttr = getXmlAttribute(cur, Attributes::sources);
     if (sourcesAttr.empty()) {
@@ -641,14 +642,14 @@ std::variant<status_t, RouteTraits::Element> PolicySerializer::deserialize<Route
     while (devTag != NULL) {
         if (strlen(devTag) != 0) {
             sp<PolicyAudioPort> source = ctx->findPortByTagName(devTag);
-            if (source == NULL && !mIgnoreVendorExtensions) {
+            if (source) {
+                sources.add(source);
+            } else if (!mIgnoreVendorExtensions) {
                 ALOGE("%s: no source found with name=%s", __func__, devTag);
                 return BAD_VALUE;
-            } else if (source == NULL) {
+            } else {
                 ALOGW("Skipping route source \"%s\" as it likely has vendor extension type",
                         devTag);
-            } else {
-                sources.add(source);
             }
         }
         devTag = strtok(NULL, ",");
@@ -728,13 +729,19 @@ std::variant<status_t, ModuleTraits::Element> PolicySerializer::deserialize<Modu
                         sp<DeviceDescriptor> device = module->getDeclaredDevices().
                                 getDeviceFromTagName(std::string(reinterpret_cast<const char*>(
                                                         attachedDevice.get())));
-                        if (device == nullptr && mIgnoreVendorExtensions) {
-                            ALOGW("Skipped attached device \"%s\" because it likely uses a vendor"
-                                    "extension type",
-                                    reinterpret_cast<const char*>(attachedDevice.get()));
+                        if (device) {
+                            ctx->addDevice(device);
+                        } else {
+                            if (mIgnoreVendorExtensions) {
+                                ALOGW("Skipped attached device \"%s\" because it likely uses a "
+                                      "vendor extension type",
+                                      reinterpret_cast<const char*>(attachedDevice.get()));
+                            } else {
+                                ALOGE("Got null device in %s %s", child->name,
+                                      reinterpret_cast<const char*>(attachedDevice.get()));
+                            }
                             continue;
                         }
-                        ctx->addDevice(device);
                     }
                 }
             }
