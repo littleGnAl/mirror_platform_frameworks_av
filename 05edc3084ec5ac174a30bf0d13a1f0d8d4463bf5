@@ -22,6 +22,30 @@
       },
       "revId": "05edc3084ec5ac174a30bf0d13a1f0d8d4463bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef032a4b_c3104ccc",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-31T18:24:12Z",
+      "side": 1,
+      "message": "nice catch! PTAL",
+      "parentUuid": "9fcd166b_1c6bb0ac",
+      "range": {
+        "startLine": 332,
+        "startChar": 15,
+        "endLine": 332,
+        "endChar": 22
+      },
+      "revId": "05edc3084ec5ac174a30bf0d13a1f0d8d4463bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
