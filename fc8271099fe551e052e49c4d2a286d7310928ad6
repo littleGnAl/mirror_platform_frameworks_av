@@ -22,6 +22,30 @@
       },
       "revId": "fc8271099fe551e052e49c4d2a286d7310928ad6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f37fddc_caa61a77",
+        "filename": "media/module/codecserviceregistrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-09-01T13:22:20Z",
+      "side": 1,
+      "message": "this code runs within mainline and therefore does run on R devices\nwhich is where the v1.1 store is used.",
+      "parentUuid": "67e0f61c_e4d6e12c",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 59
+      },
+      "revId": "fc8271099fe551e052e49c4d2a286d7310928ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
