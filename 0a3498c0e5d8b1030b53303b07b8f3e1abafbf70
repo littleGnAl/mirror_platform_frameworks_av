@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851f9a02_f70e45b1",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/Serializer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-01T21:02:30Z",
+      "side": 1,
+      "message": "nit: perhaps put __func__ here and on line 651 and on line 741",
+      "range": {
+        "startLine": 626,
+        "startChar": 18,
+        "endLine": 626,
+        "endChar": 20
+      },
+      "revId": "0a3498c0e5d8b1030b53303b07b8f3e1abafbf70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
