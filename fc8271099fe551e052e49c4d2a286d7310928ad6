@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e0f61c_e4d6e12c",
+        "filename": "media/module/codecserviceregistrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-09-01T13:19:47Z",
+      "side": 1,
+      "message": "it\u0027s better now in that we at least acknowledge that the other versions exist.\n\nmy question, which applied to the original and also applies to this update is:\n\nhow do we fuzz the v1.1 and v1.2 code paths?  This appears to fuzz exactly 1\nof those (and most likely, just the v1.2 paths).",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 59
+      },
+      "revId": "fc8271099fe551e052e49c4d2a286d7310928ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
