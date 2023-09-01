@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3d62ff_be4c8edf",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-09-01T09:07:59Z",
+      "side": 0,
+      "message": "There are other situations than preferred device where we need to invalidate the track and the client must be notified to create a new track in non offload mode.\nWe need to find a way to identify that we are in the context of a preferred device seleciton and the selected preferred device is compatible with offloading",
+      "range": {
+        "startLine": 2830,
+        "startChar": 0,
+        "endLine": 2830,
+        "endChar": 53
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
