@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "62801273_99c1c21c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-09-01T13:39:07Z",
+      "side": 1,
+      "message": "the difference in data written (the non-critical metadata) is pretty small, so I am doubtful of the \u0027much faster\u0027 claim.\nthe numbers in this commit -- that it goes from 6+ seconds to just under 2 seconds:  that implies that this non-critical metadata accounted for 4+ seconds of writing time and that seems unlikely.\n\nThe leading \"blocks access to the sdcard for a long time\" is relevant. Pointing more at not being able to do other things/apps rather than that writing the recording takes a long time.\n\nIn that case, I would think that the problem is more that the kernel doesn\u0027t allow other unrelated reads to jump in front of the long line of blocks being written out; with the presumption that the two are unrelated (e.g. not trying to re-read what is in the write queue; which i would expect to have been caught by the in-memory block caching before it gets to any actual io).",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "d10def186048cc1eeaa5e4f646e0fa07d7481708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2655558e_44671962",
