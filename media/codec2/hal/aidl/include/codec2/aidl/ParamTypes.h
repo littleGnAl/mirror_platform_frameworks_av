@@ -40,6 +40,9 @@ namespace utils {
 // Returns true iff AIDL c2 HAL is enabled
 bool IsEnabled();
 
+// Returns true iff AIDL c2 HAL is selected for the system
+bool IsSelected();
+
 // Make asString() and operator<< work with Status as well as c2_status_t.
 C2_DECLARE_AS_STRING_AND_DEFINE_STREAM_OUT(Status);
 
