@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd9de80_4aff5638",
+        "filename": "media/libmediaplayerservice/MediaPlayerService.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-01T20:55:44Z",
+      "side": 1,
+      "message": "nit: do you need to log on hidlBase and aidlBase.get() are both nullptr?",
+      "range": {
+        "startLine": 952,
+        "startChar": 0,
+        "endLine": 952,
+        "endChar": 17
+      },
+      "revId": "e8e9815916e0cb6c73b198a16f27b73e7efe4152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
