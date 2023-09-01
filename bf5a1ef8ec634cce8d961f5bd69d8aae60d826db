@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac609970_1d68c8e8",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/Serializer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-09-01T16:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ad8213_75f372f8",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 15
+      },
+      "revId": "bf5a1ef8ec634cce8d961f5bd69d8aae60d826db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "628536f3_4a13898e",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-09-01T07:41:21Z",
       "side": 1,
       "message": "I think first testing for device \u003d\u003d null is more readable:\nif (device \u003d\u003d null) {\n    if (mIgnoreVendorExtensions) {\n        ALOGW(\"Skipped attached device \\\"%s\\\" because it likely uses a \"\n                                      \"vendor extension type\",\n                                      reinterpret_cast\u003cconst char*\u003e(attachedDevice.get()));\n    } else {\n        ALOGE(\"Got null device in %s %s\", child-\u003ename,\n                                      reinterpret_cast\u003cconst char*\u003e(attachedDevice.get()));\n    }\n    continue;\n}\nctx-\u003eaddDevice(device);",
+      "range": {
+        "startLine": 732,
+        "startChar": 0,
+        "endLine": 732,
+        "endChar": 37
+      },
+      "revId": "bf5a1ef8ec634cce8d961f5bd69d8aae60d826db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd15a324_ff24e6b7",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/Serializer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-09-01T16:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628536f3_4a13898e",
       "range": {
         "startLine": 732,
         "startChar": 0,
