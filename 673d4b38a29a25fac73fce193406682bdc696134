@@ -16,6 +16,29 @@
       "message": ",kkm",
       "revId": "673d4b38a29a25fac73fce193406682bdc696134",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a74c67_1dce6f6d",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/Serializer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-01T00:56:45Z",
+      "side": 1,
+      "message": "nit: should there be an else {} where we ALOGE or return failure.  There is a silent error now, at least before it crashed.",
+      "range": {
+        "startLine": 739,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 25
+      },
+      "revId": "673d4b38a29a25fac73fce193406682bdc696134",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
