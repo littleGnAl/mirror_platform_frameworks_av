@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dfd08ad6_bb04e55c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1258076
+      },
+      "writtenOn": "2023-09-04T10:58:59Z",
+      "side": 1,
+      "message": "You have a point, after more testing problem seems rather to be bad application design than a real/significant problem here. \n\nThank you for feedback, it was really helpful, but I think we should drop this, based on above.",
+      "parentUuid": "62801273_99c1c21c",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "d10def186048cc1eeaa5e4f646e0fa07d7481708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2655558e_44671962",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
