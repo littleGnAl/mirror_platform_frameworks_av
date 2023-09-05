@@ -46,6 +46,30 @@
       },
       "revId": "87cb9127233b71b7eafef7086905056756406cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66bf6e8_6eefa77d",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-05T16:53:38Z",
+      "side": 1,
+      "message": "This is confusing, do you have any plan to refactor in the future?",
+      "parentUuid": "f9c9cdc3_2e27f90a",
+      "range": {
+        "startLine": 344,
+        "startChar": 17,
+        "endLine": 344,
+        "endChar": 59
+      },
+      "revId": "87cb9127233b71b7eafef7086905056756406cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
