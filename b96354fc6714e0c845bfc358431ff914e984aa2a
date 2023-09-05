@@ -46,6 +46,30 @@
       },
       "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21570712_a0c42ac9",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-05T17:58:51Z",
+      "side": 0,
+      "message": "Offload situations may cause a loss of 20-30 seconds of audio.  It is often better to invalidate (and seek the the last location).  I can see for direct tracks this may be okay to retry.",
+      "parentUuid": "355228de_a2095665",
+      "range": {
+        "startLine": 2830,
+        "startChar": 0,
+        "endLine": 2830,
+        "endChar": 53
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
