@@ -359,6 +359,7 @@ cc_library {
     ],
 
     shared_libs: [
+        "aconfig_libmedia_playback_flags_c_lib",
         "android.hidl.token@1.0-utils",
         "audioclient-types-aidl-cpp",
         "av-types-aidl-cpp",
@@ -454,4 +455,15 @@ cc_library_static {
         "//apex_available:platform",
         "com.android.media",
     ],
+}
+
+aconfig_declarations {
+    name: "aconfig_libmedia_playback_flags",
+    package: "com.android.media.playback.flags",
+    srcs: ["playback_flags.aconfig"],
+}
+
+cc_aconfig_library {
+    name: "aconfig_libmedia_playback_flags_c_lib",
+    aconfig_declarations: "aconfig_libmedia_playback_flags",
 }
