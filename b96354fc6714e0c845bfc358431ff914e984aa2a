@@ -22,6 +22,30 @@
       },
       "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "355228de_a2095665",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 2041936
+      },
+      "writtenOn": "2023-09-05T04:43:53Z",
+      "side": 0,
+      "message": "Since createTrack_l is returning errno when it fail and restoreTrack_l will add CBLK_INVALID into mCblk-\u003emFlags, then client will eventually be notified to create new track. Should we still need to identify it\u0027s context of a preferred device?",
+      "parentUuid": "4b3d62ff_be4c8edf",
+      "range": {
+        "startLine": 2830,
+        "startChar": 0,
+        "endLine": 2830,
+        "endChar": 53
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
