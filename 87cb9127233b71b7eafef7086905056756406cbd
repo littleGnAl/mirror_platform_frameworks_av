@@ -22,6 +22,30 @@
       },
       "revId": "87cb9127233b71b7eafef7086905056756406cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c9cdc3_2e27f90a",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-05T16:30:12Z",
+      "side": 1,
+      "message": "Sungtak,\nInfo files populate these flags as fixed values and there are no cases where more than one is set simultaneously.",
+      "parentUuid": "87baeb56_18733376",
+      "range": {
+        "startLine": 344,
+        "startChar": 17,
+        "endLine": 344,
+        "endChar": 59
+      },
+      "revId": "87cb9127233b71b7eafef7086905056756406cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
