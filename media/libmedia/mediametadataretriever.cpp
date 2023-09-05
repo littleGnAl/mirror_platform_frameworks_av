@@ -25,10 +25,14 @@
 #include <media/mediametadataretriever.h>
 #include <media/IMediaHTTPService.h>
 #include <media/IMediaPlayerService.h>
+#include <media/stagefright/foundation/ADebug.h>
 #include <utils/Log.h>
 #include <dlfcn.h>
+#include <com_android_media_playback_flags.h>
 
 namespace android {
+
+namespace playback_flags = com::android::media::playback::flags;
 
 // client singleton for binder interface to service
 Mutex MediaMetadataRetriever::sServiceLock;
@@ -144,6 +148,9 @@ status_t MediaMetadataRetriever::setDataSource(
 sp<IMemory> MediaMetadataRetriever::getFrameAtTime(
         int64_t timeUs, int option, int colorFormat, bool metaOnly)
 {
+    if (playback_flags::mediametadataretriever_default_rgb8888()) {
+        // TODO: Logic based on the flag value
+    }
     ALOGV("getFrameAtTime: time(%" PRId64 " us) option(%d) colorFormat(%d) metaOnly(%d)",
             timeUs, option, colorFormat, metaOnly);
     Mutex::Autolock _l(mLock);
