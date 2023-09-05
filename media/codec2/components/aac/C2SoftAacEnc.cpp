@@ -600,7 +600,7 @@ void C2SoftAacEnc::process(
         inBufferSize[0] = 0;
     }
 
-    if (inBufferSize[0] > 0) {
+    if (encoderErr == AACENC_OK && inBufferSize[0] > 0) {
         for (size_t i = 0; i < inBufferSize[0]; ++i) {
             mRemainder[i] = static_cast<uint8_t *>(inBuffer[0])[i];
         }
