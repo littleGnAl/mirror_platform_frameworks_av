@@ -39,6 +39,7 @@ struct _C2FenceFactory {
 
     class SurfaceFenceImpl;
     class SyncFenceImpl;
+    class EventFenceImpl;
 
     /*
      * Create C2Fence for BufferQueueBased blockpool.
