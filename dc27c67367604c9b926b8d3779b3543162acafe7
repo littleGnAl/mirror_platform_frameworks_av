@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13858962_82f8f3f7",
+        "filename": "media/codec2/hal/client/GraphicBufferAllocator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-06T23:12:32Z",
+      "side": 1,
+      "message": "do we really want to abort here?",
+      "revId": "dc27c67367604c9b926b8d3779b3543162acafe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2ef528_1f29541c",
+        "filename": "media/codec2/hal/client/include/codec2/aidl/GraphicBufferAllocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-06T23:12:32Z",
+      "side": 1,
+      "message": "please avoid convenience aliases in header (ref go/cstyle#Aliases)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "dc27c67367604c9b926b8d3779b3543162acafe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
