@@ -146,6 +146,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexOutOfMemory,
     kParamIndexMaxBufferSize,
 
+    /* large audio frame support */
+    kParamIndexThresholdBufferSize,
+
     /* misc. state */
     kParamIndexTripped,
     kParamIndexConfigCounter,
@@ -1108,11 +1111,25 @@ constexpr char C2_PARAMKEY_OUT_OF_MEMORY[] = "algo.oom";
  * can preallocate input buffers, or configure downstream components that require a maximum size on
  * their buffers.
  *
- * Read-only. Required to be provided by components on all compressed streams.
+ * Input buffers size is read-only. Required to be provided by components of all compressed streams
+ * Max output buffer size may be configured by clients. E.g. for large audio frame support.
  */
 typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexMaxBufferSize> C2StreamMaxBufferSizeInfo;
 constexpr char C2_PARAMKEY_INPUT_MAX_BUFFER_SIZE[] = "input.buffers.max-size";
 constexpr char C2_PARAMKEY_OUTPUT_MAX_BUFFER_SIZE[] = "output.buffers.max-size";
+
+/**
+ * Threshold buffer size
+ *
+ * Specifies the threshold size in bytes of a buffer of data. The component may
+ * return output buffers as it reaches this threshold size. This may be used as an optimization
+ * and avoid memcpy while generating output buffers.
+ *
+ */
+typedef C2StreamParam<C2Tuning, C2Uint32Value, kParamIndexThresholdBufferSize>
+        C2StreamThresholdBufferSizeInfo;
+constexpr char C2_PARAMKEY_OUTPUT_THRESHOLD_BUFFER_SIZE[] = "output.buffers.threshold-size";
+
 
 /* ---------------------------------------- misc. state ---------------------------------------- */
 
