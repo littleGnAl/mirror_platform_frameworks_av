@@ -34,6 +34,138 @@
       "parentUuid": "8696f6af_4bcfa5f0",
       "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af9c5a1_ac0b5a3a",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T22:28:14Z",
+      "side": 1,
+      "message": "Can you please check again? I don\u0027t see mp4 file attached in the above bug.",
+      "parentUuid": "caac651b_b4d18671",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d90f6a2_1f73af06",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T22:28:14Z",
+      "side": 1,
+      "message": "can you please add appropriate size checks to ensure there are enough bits available?\n\nRefer: kKeyHVCC for example.",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee4c425_b3c3356b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T22:28:14Z",
+      "side": 1,
+      "message": "need checks here to ensure there are enough bytes remaining in the source before calling copyNALUToABuffer()",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f82ac2b_0b2b1221",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1519,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T22:28:14Z",
+      "side": 1,
+      "message": "nit: space before and after",
+      "range": {
+        "startLine": 1519,
+        "startChar": 60,
+        "endLine": 1519,
+        "endChar": 61
+      },
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d4b0c1_56d0a16a",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T22:28:14Z",
+      "side": 1,
+      "message": "kKeyHVCC also sets HDR metadata and color aspects information.\n\nVVC also would need these.\n\nAlso, we will need to add support to parse profile and level information like hevc does.",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce15fb3_76907003",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2189,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T22:28:14Z",
+      "side": 1,
+      "message": "MEDIA_MIMETYPE_VIDEO_VVC",
+      "range": {
+        "startLine": 2189,
+        "startChar": 27,
+        "endLine": 2189,
+        "endChar": 38
+      },
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f29050d_71ec18ab",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T22:28:14Z",
+      "side": 1,
+      "message": "avcc and hvcc above have a functions like reassembleHVCC and reassembleAVCC and use that data as csd-0.\nDo we need similar approach here for VVC?",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
