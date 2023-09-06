@@ -1107,7 +1107,6 @@ constexpr char C2_PARAMKEY_OUT_OF_MEMORY[] = "algo.oom";
  * current configuration on its input and output streams. This is communicated to clients so they
  * can preallocate input buffers, or configure downstream components that require a maximum size on
  * their buffers.
- *
  * Read-only. Required to be provided by components on all compressed streams.
  */
 typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexMaxBufferSize> C2StreamMaxBufferSizeInfo;
