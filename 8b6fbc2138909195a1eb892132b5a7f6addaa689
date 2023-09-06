@@ -16,6 +16,24 @@
       "message": "Can the changes in this file be moved out to a separate CL, so that the base changes that add required constants in frameworks/av and frameworks/base can be merged independently.\n\nAlso, can you please share one mp4 file with vvc (with content that is distributable) so that CTS test can be added to ensure this new code is covered in the tests?",
       "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caac651b_b4d18671",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2023-09-06T08:55:00Z",
+      "side": 1,
+      "message": "Hi, Google,\nTopic VVC removed.\nWe update mp4 file in\nhttps://partnerissuetracker.corp.google.com/issues/294963798\nPlease help to check. Thank you.",
+      "parentUuid": "8696f6af_4bcfa5f0",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
