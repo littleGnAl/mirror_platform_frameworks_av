@@ -65,6 +65,7 @@ cc_library {
         "C2Store.cpp",
         "platform/C2BqBuffer.cpp",
         "platform/C2SurfaceSyncObj.cpp",
+        "platform/C2IgbaWaitableObj.cpp",
         "types.cpp",
         "util/C2Debug.cpp",
         "util/C2InterfaceHelper.cpp",

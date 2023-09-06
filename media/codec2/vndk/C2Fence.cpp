@@ -16,11 +16,16 @@
 
 //#define LOG_NDEBUG 0
 #define LOG_TAG "C2FenceFactory"
+#include <poll.h>
+
 #include <cutils/native_handle.h>
 #include <utils/Log.h>
 #include <ui/Fence.h>
 
+#include <atomic>
+
 #include <C2FenceFactory.h>
+#include <C2IgbaWaitableObj.h>
 #include <C2SurfaceSyncObj.h>
 
 #define MAX_FENCE_FDS 1
@@ -32,6 +37,7 @@ public:
         NULL_FENCE,
         SURFACE_FENCE,
         SYNC_FENCE,
+        EVENT_FENCE,
     };
 
     virtual c2_status_t wait(c2_nsecs_t timeoutNs) = 0;
@@ -349,6 +355,100 @@ C2Fence _C2FenceFactory::CreateMultipleFdSyncFence(const std::vector<int>& fence
         }
     } else {
         ALOGE("Create sync fence from invalid fd list of size 0");
+    }
+    return C2Fence(p);
+}
+
+/**
+ * Fence implementation for C2IgbaBlockPool based block allocation.
+ * The implementation supports all C2Fence interface except fd().
+ */
+class _C2FenceFactory::EventFenceImpl: public C2Fence::Impl {
+public:
+    virtual c2_status_t wait(c2_nsecs_t timeoutNs) {
+        if (!mObj) {
+            return C2_BAD_STATE;
+        }
+        bool hangUp = false;
+        bool allocatable = false;
+        if (mObj->waitEvent(timeoutNs, &hangUp, &allocatable)) {
+            if (hangUp) {
+                return C2_BAD_STATE;
+            }
+            if (allocatable) {
+                return C2_OK;
+            }
+            return C2_TIMED_OUT;
+        } else {
+            return C2_CANCELED;
+        }
+    }
+
+    virtual bool valid() const {
+        if (!mObj) {
+            return false;
+        }
+        bool hangUp = false;
+        bool allocatable = false;
+        if (mObj->waitEvent(0, &hangUp, &allocatable)) {
+            if (hangUp) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    virtual bool ready() const {
+        if (!mObj) {
+            return false;
+        }
+        bool hangUp = false;
+        bool allocatable = false;
+        if (mObj->waitEvent(0, &hangUp, &allocatable)) {
+            if (allocatable) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    virtual int fd() const {
+        // This is using 2 eventfds. so returning one fd is of no use.
+        return -1;
+    }
+
+    virtual bool isHW() const {
+        return false;
+    }
+
+    virtual type_t type() const {
+        return EVENT_FENCE;
+    }
+
+    virtual native_handle_t *createNativeHandle() const {
+        // This is not supported.
+        return nullptr;
+    }
+
+    virtual ~EventFenceImpl() = default;
+
+    EventFenceImpl(const std::shared_ptr<C2IgbaWaitableObj> &obj) : mObj(obj) {}
+
+private:
+    const std::shared_ptr<C2IgbaWaitableObj> mObj;
+};
+
+C2Fence _C2FenceFactory::CreateEventFence(const std::shared_ptr<C2IgbaWaitableObj> &obj) {
+    std::shared_ptr<C2Fence::Impl> p;
+    if (obj) {
+        p = std::make_shared<_C2FenceFactory::EventFenceImpl>(obj);
+        if (!p) {
+            ALOGE("EventFence creation failure");
+        } else if (!p->valid()) {
+            p.reset();
+        }
+    } else {
+        ALOGE("EventFence createion failed: Waitable object for IGBA is not valid");
     }
     return C2Fence(p);
 }
