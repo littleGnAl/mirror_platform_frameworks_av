@@ -237,6 +237,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexDrcOutputLoudness, // drc, float (dBFS)
     kParamIndexDrcAlbumMode, // drc, enum
     kParamIndexAudioFrameSize, // int
+    kParamIndexLargeFrameMetadata, // struct
 
     /* ============================== platform-defined parameters ============================== */
 
@@ -1128,6 +1129,7 @@ constexpr char C2_PARAMKEY_OUTPUT_MAX_BUFFER_SIZE[] = "output.buffers.max-size";
  */
 typedef C2StreamParam<C2Tuning, C2Uint32Value, kParamIndexThresholdBufferSize>
         C2StreamThresholdBufferSizeInfo;
+
 constexpr char C2_PARAMKEY_OUTPUT_THRESHOLD_BUFFER_SIZE[] = "output.buffers.threshold-size";
 
 
@@ -2162,6 +2164,48 @@ constexpr char C2_PARAMKEY_DRC_OUTPUT_LOUDNESS[] = "output.drc.output-loudness";
 typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexAudioFrameSize>
         C2StreamAudioFrameSizeInfo;
 constexpr char C2_PARAMKEY_AUDIO_FRAME_SIZE[] = "raw.audio-frame-size";
+
+/**
+ * Large audio frame support metadata
+ *
+ * When available, audio components may use this metadata to identify or indicate
+ * access-unit boundaries when multiple access-units are provided in a single
+ * input/output buffer.
+ */
+struct C2LargeFrameMetadataStruct {
+
+    inline C2LargeFrameMetadataStruct() {
+        memset(this, 0, sizeof(*this));
+    }
+
+    inline C2LargeFrameMetadataStruct(
+            uint32_t flags_,
+            uint64_t size_,
+            uint64_t offset_,
+            int64_t presentationTimeUs_)
+        : flags(flags_),
+          size(size_),
+          offset(offset_),
+          presentationTimeUs(presentationTimeUs_) { }
+
+    uint32_t flags; ///<flags for the access-unit
+    uint64_t size; ///<size of access-unit
+    uint64_t offset; ///<offset of access-unit within this buffer
+    int64_t presentationTimeUs; ///<presentationTime in us for each access-unit
+
+    DEFINE_AND_DESCRIBE_C2STRUCT(LargeFrameMetadata)
+    C2FIELD(flags, "flags")
+    C2FIELD(size, "size")
+    C2FIELD(offset, "offset")
+    C2FIELD(presentationTimeUs, "presentationTimeUs")
+};
+
+typedef C2StreamParam<C2Info, C2SimpleArrayStruct<C2LargeFrameMetadataStruct>,
+                kParamIndexLargeFrameMetadata>
+        C2LargeFrameMetadata;
+
+constexpr char C2_PARAMKEY_INPUT_LARGEFRAME_METADATA[] = "input.large-frame-metadata";
+constexpr char C2_PARAMKEY_OUTPUT_LARGEFRAME_METADATA[] = "output.large-frame-metadata";
 
 /* --------------------------------------- AAC components --------------------------------------- */
 
