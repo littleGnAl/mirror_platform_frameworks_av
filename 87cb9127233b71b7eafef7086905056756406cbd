@@ -70,6 +70,30 @@
       },
       "revId": "87cb9127233b71b7eafef7086905056756406cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bcec97a_b532a4f2",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-06T02:04:36Z",
+      "side": 1,
+      "message": "Sungtak,\nI have filed b/299201934 to track this cleanup.",
+      "parentUuid": "a66bf6e8_6eefa77d",
+      "range": {
+        "startLine": 344,
+        "startChar": 17,
+        "endLine": 344,
+        "endChar": 59
+      },
+      "revId": "87cb9127233b71b7eafef7086905056756406cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
