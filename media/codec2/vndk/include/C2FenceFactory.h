@@ -31,6 +31,7 @@
 std::vector<int> ExtractFdsFromCodec2SyncFence(const C2Fence& fence);
 
 class C2SurfaceSyncMemory;
+class C2IgbaWaitableObj;
 
 /**
  * C2Fence implementation factory
@@ -39,6 +40,7 @@ struct _C2FenceFactory {
 
     class SurfaceFenceImpl;
     class SyncFenceImpl;
+    class PipeFenceImpl;
 
     /*
      * Create C2Fence for BufferQueueBased blockpool.
@@ -65,6 +67,15 @@ struct _C2FenceFactory {
      *                          It will be owned and closed by the returned fence object.
      */
     static C2Fence CreateMultipleFdSyncFence(const std::vector<int>& fenceFds);
+
+    /*
+     * Create C2Fence from an fd which are created from pipe2().
+     *
+     * \param obj               Waitable object for C2AIDL IGraphicBufferAllocator.
+     *                          It will notify when it is ready to allocate.
+     *
+     */
+    static C2Fence CreatePipeFence(const std::shared_ptr<C2IgbaWaitableObj> &obj);
 
     /**
      * Create a native handle from fence for marshalling
