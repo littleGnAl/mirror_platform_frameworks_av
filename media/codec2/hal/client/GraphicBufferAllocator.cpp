@@ -66,10 +66,13 @@ public:
         IGraphicBufferAllocator::WaitableFds* _aidl_return) {
     int allocFd;
     int statusFd;
-    mGraphicsTracker->getWaitableFds(&allocFd, &statusFd);
-    _aidl_return->allocEvent.set(allocFd);
-    _aidl_return->statusEvent.set(statusFd);
-    return ::ndk::ScopedAStatus::ok();
+    c2_status_t ret = mGraphicsTracker->getWaitableFds(&allocFd, &statusFd);
+    if (ret == C2_OK) {
+        _aidl_return->allocEvent.set(allocFd);
+        _aidl_return->statusEvent.set(statusFd);
+        return ::ndk::ScopedAStatus::ok();
+    }
+    return ::ndk::ScopedAStatus::fromServiceSpecificError(ret);
 }
 
 bool GraphicBufferAllocator::configure(

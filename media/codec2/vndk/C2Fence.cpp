@@ -16,9 +16,13 @@
 
 //#define LOG_NDEBUG 0
 #define LOG_TAG "C2FenceFactory"
+#include <poll.h>
+
 #include <cutils/native_handle.h>
 #include <utils/Log.h>
 #include <ui/Fence.h>
+
+#include <atomic>
 
 #include <C2FenceFactory.h>
 #include <C2SurfaceSyncObj.h>
@@ -32,6 +36,7 @@ public:
         NULL_FENCE,
         SURFACE_FENCE,
         SYNC_FENCE,
+        EVENT_FENCE,
     };
 
     virtual c2_status_t wait(c2_nsecs_t timeoutNs) = 0;
@@ -352,6 +357,130 @@ C2Fence _C2FenceFactory::CreateMultipleFdSyncFence(const std::vector<int>& fence
     }
     return C2Fence(p);
 }
+
+/**
+ * Fence implementation for C2IgbaBlockPool based block allocation.
+ * The implementation supports all C2Fence interface except fd().
+ */
+class _C2FenceFactory::EventFenceImpl: public C2Fence::Impl {
+public:
+    virtual c2_status_t wait(c2_nsecs_t timeoutNs) {
+        bool statusEvent = false;
+        bool allocEvent = false;
+        if (pollEvent(timeoutNs, &statusEvent, &allocEvent)) {
+            if (statusEvent) {
+                return C2_BAD_STATE;
+            }
+            if (allocEvent) {
+                return C2_OK;
+            }
+            return C2_TIMED_OUT;
+        } else {
+            return C2_CANCELED;
+        }
+    }
+
+    virtual bool valid() const {
+        bool statusEvent = false;
+        bool allocEvent = false;
+        if (pollEvent(0, &statusEvent, &allocEvent)) {
+            if (statusEvent) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    virtual bool ready() const {
+        bool statusEvent = false;
+        bool allocEvent = false;
+        if (pollEvent(0, &statusEvent, &allocEvent)) {
+            if (allocEvent) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    virtual int fd() const {
+        // This is using 2 eventfds. so returning one fd is of no use.
+        return -1;
+    }
+
+    virtual bool isHW() const {
+        return false;
+    }
+
+    virtual type_t type() const {
+        return EVENT_FENCE;
+    }
+
+    virtual native_handle_t *createNativeHandle() const {
+        // This is not supported.
+        return nullptr;
+    }
+
+    virtual ~EventFenceImpl() = default;
+
+    EventFenceImpl(int statusEventFd, int allocEventFd)
+            : mValid(true), mStatusEventFd(statusEventFd), mAllocEventFd(allocEventFd) {
+    }
+
+private:
+    mutable std::atomic<bool> mValid;
+    ::android::base::unique_fd mStatusEventFd;
+    ::android::base::unique_fd mAllocEventFd;
+
+    bool pollEvent(c2_nsecs_t timeoutNs, bool *statusEvent, bool *allocEvent) const {
+        if (!mValid) {
+            *statusEvent = true;
+            return true;
+        }
+        struct pollfd fds[2];
+        fds[0].fd = mStatusEventFd.get();
+        fds[0].events = (POLLIN | POLLHUP | POLLERR);
+        fds[0].revents = 0;
+        fds[1].fd = mAllocEventFd.get();
+        fds[1].events = (POLLIN | POLLHUP | POLLERR);
+        fds[1].revents = 0;
+        struct timespec ts;
+        ts.tv_sec = 0;
+        ts.tv_nsec = timeoutNs;
+
+        int ret = ::ppoll(fds, 2, &ts, nullptr);
+        if (ret >= 0) {
+            if (fds[0].revents) {
+                *statusEvent = true;
+                mValid = false;
+                if (fds[0].revents & ~POLLIN) {
+                    ALOGE("EventFence: status eventfd hungup or error");
+                }
+                return true;
+            }
+            if (fds[1].revents) {
+                if (fds[1].revents & ~POLLIN) {
+                    *statusEvent = true;
+                    mValid = false;
+                    ALOGE("EventFence: alloc eventfd hungup or error");
+                    return true;
+                }
+                *allocEvent = true;
+                return true;
+            }
+            // events are not ready
+            return true;
+        }
+        if (errno == EINTR) {
+            // retry, polliing was cancelled.
+            return false;
+        }
+        ALOGE("EventFence: polling error %d", errno);
+        // treat this as no more allocation event happened.
+        *statusEvent = true;
+        mValid = false;
+        return true;
+    }
+};
 
 native_handle_t* _C2FenceFactory::CreateNativeHandle(const C2Fence& fence) {
     return fence.mImpl? fence.mImpl->createNativeHandle() : nullptr;
