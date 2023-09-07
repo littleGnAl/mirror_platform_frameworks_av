@@ -7394,7 +7394,8 @@ status_t AudioPolicyManager::checkAndSetVolume(IVolumeCurves &curves,
     if (outputDesc->isFixedVolume(deviceTypes) ||
             // Force VoIP volume to max for bluetooth SCO device except if muted
             (index != 0 && (isVoiceVolSrc || isBtScoVolSrc) &&
-                    isSingleDeviceType(deviceTypes, audio_is_bluetooth_out_sco_device))) {
+                    isSingleDeviceType(deviceTypes, audio_is_bluetooth_out_sco_device) &&
+                    isInCall())) {
         volumeDb = 0.0f;
     }
     const bool muted = (index == 0) && (volumeDb != 0.0f);
