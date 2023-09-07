@@ -113,26 +113,19 @@ struct Component::Listener : public C2Component::Listener {
             WorkBundle workBundle;
 
             std::shared_ptr<Component> strongComponent = mComponent.lock();
-            // TODO
-            // beginTransferBufferQueueBlocks(c2workItems, true);
             if (!ToAidl(&workBundle, c2workItems, strongComponent ?
                     &strongComponent->mBufferPoolSender : nullptr)) {
                 LOG(ERROR) << "Component::Listener::onWorkDone_nb -- "
                            << "received corrupted work items.";
-                // TODO
-                // endTransferBufferQueueBlocks(c2workItems, false, true);
                 return;
             }
             ScopedAStatus transStatus = listener->onWorkDone(workBundle);
             if (!transStatus.isOk()) {
                 LOG(ERROR) << "Component::Listener::onWorkDone_nb -- "
                            << "transaction failed.";
-                // TODO
-                // endTransferBufferQueueBlocks(c2workItems, false, true);
                 return;
             }
-            // TODO
-            // endTransferBufferQueueBlocks(c2workItems, true, true);
+            DisownIgbaBlocks(c2workItems);
         }
     }
 
@@ -210,15 +203,12 @@ ScopedAStatus Component::flush(WorkBundle *flushedWorkBundle) {
         }
     }
 
-    // TODO
-    // beginTransferBufferQueueBlocks(c2flushedWorks, true);
     if (c2res == C2_OK) {
         if (!ToAidl(flushedWorkBundle, c2flushedWorks, &mBufferPoolSender)) {
             c2res = C2_CORRUPTED;
         }
     }
-    // TODO
-    // endTransferBufferQueueBlocks(c2flushedWorks, true, true);
+    DisownIgbaBlocks(c2flushedWorks);
     if (c2res == C2_OK) {
         return ScopedAStatus::ok();
     }
