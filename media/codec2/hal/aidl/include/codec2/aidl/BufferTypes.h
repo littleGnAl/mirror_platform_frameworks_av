@@ -115,6 +115,11 @@ bool FromAidl(
         std::list<std::unique_ptr<C2Work>>* d,
         const WorkBundle& s);
 
+// Mark blocks created by IGBA as not owned by the current process anymore
+// (After transfer being successfully completed).
+void DisownIgbaBlocks(
+        const std::list<std::unique_ptr<C2Work>>& workList);
+
 /**
  * Converts a BufferPool status value to c2_status_t.
  * \param BufferPool status
