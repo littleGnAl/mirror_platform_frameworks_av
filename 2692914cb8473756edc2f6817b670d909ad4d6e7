@@ -33,6 +33,24 @@
       "message": "can we just return from here if `mTunneled`?",
       "revId": "2692914cb8473756edc2f6817b670d909ad4d6e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8f3bed_5c2fde2a",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2023-09-07T20:54:54Z",
+      "side": 1,
+      "message": "I don\u0027t think that will result in correct values for mBytesInput and mFramesInput and mInputBufferCount? Also, onCodecActivity won\u0027t be called?",
+      "parentUuid": "f738a647_30bb4027",
+      "revId": "2692914cb8473756edc2f6817b670d909ad4d6e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
