@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab80a62_b25646cf",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-07T18:09:08Z",
+      "side": 1,
+      "message": "Can we discuss this in our design doc? I am not sure if DEFAULT is different from HIDL, as that is technically the default for updatability purposes. Or will default be AIDL for V-launching devices and HIDL for updating devices?",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "c83b8750563a9fb6c0dcab1bbae8a66aabb2874c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
