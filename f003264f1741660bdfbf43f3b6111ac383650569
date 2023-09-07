@@ -22,6 +22,30 @@
       },
       "revId": "f003264f1741660bdfbf43f3b6111ac383650569",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c65acbc1_41248abf",
+        "filename": "media/codec2/hal/aidl/include/codec2/aidl/Component.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-07T18:29:48Z",
+      "side": 1,
+      "message": "per libbinder_ndk documentation, the lifecycle of cookie is managed by the callbacks and thus having a managed ptr could cause double free race. ref https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/ndk/include_ndk/android/binder_ibinder.h;drc\u003df270b1d4440e8056532202006b136a8ccbfcd1da;l\u003d652",
+      "parentUuid": "8ad4ec6e_08ca308f",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "f003264f1741660bdfbf43f3b6111ac383650569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
