@@ -94,6 +94,30 @@
       },
       "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec22794_dfecb7b2",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-07T16:38:55Z",
+      "side": 0,
+      "message": "Maybe only allow retry for offloaded when mSelectedDeviceId !\u003d AUDIO_PORT_HANDLE_NONE?  Would that work?",
+      "parentUuid": "aaaeb7c3_2c421268",
+      "range": {
+        "startLine": 2830,
+        "startChar": 0,
+        "endLine": 2830,
+        "endChar": 53
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
