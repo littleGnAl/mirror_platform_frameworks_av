@@ -86,6 +86,13 @@ public:
         BLOB,
 
         /**
+         * ID of C2AIDL IGraphicBufferAllocator backed platform allocator.
+         *
+         * TODO: Wrap/UnWrap, objcpy() between HAL and client.
+         */
+        IGBA,
+
+        /**
          * ID of indicating the end of platform allocator definition.
          *
          * \note always put this macro in the last place.
