@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad4ec6e_08ca308f",
+        "filename": "media/codec2/hal/aidl/include/codec2/aidl/Component.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-07T18:12:29Z",
+      "side": 1,
+      "message": "Will it be OK to have raw ptr here? (neither shared_ptr nor sp)",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "f003264f1741660bdfbf43f3b6111ac383650569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
