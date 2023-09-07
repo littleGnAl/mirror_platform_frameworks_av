@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2d4c9c6_aac69dee",
+        "filename": "media/codec2/hal/services/manifest_media_c2_V1_0_default.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-07T18:06:00Z",
+      "side": 1,
+      "message": "what is the reason we are removing these now? (and all three). Should we have removed 1.0 and 1.1 prior to this (e.g. when we introduced hidl 1.2)?",
+      "revId": "bdf3ea84f7dc711e6fc87a1119bdc8ea23fadd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
