@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177ae645_bd58666e",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-09-07T21:10:25Z",
+      "side": 1,
+      "message": "I doubt you have to specify the type explicitly—type deduction from the parameter should work fine.",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "9a6f7ae32425c0895a19a6decf550d4d47ea91bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
