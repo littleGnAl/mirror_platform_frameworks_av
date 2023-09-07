@@ -127,7 +127,7 @@ private:
     Impl *mImpl;
 };
 
-class C2AllocatorAhwb : C2Allocator {
+class C2AllocatorAhwb : public C2Allocator {
 public:
     virtual id_t getId() const override;
 
