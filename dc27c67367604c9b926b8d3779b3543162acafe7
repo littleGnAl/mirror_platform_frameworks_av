@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd3a147_b3c26cba",
+        "filename": "media/codec2/hal/client/GraphicBufferAllocator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-07T18:48:43Z",
+      "side": 1,
+      "message": "removed abort here",
+      "parentUuid": "13858962_82f8f3f7",
+      "revId": "dc27c67367604c9b926b8d3779b3543162acafe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf2ef528_1f29541c",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-09-06T23:12:32Z",
       "side": 1,
       "message": "please avoid convenience aliases in header (ref go/cstyle#Aliases)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "dc27c67367604c9b926b8d3779b3543162acafe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba831103_5b59b365",
+        "filename": "media/codec2/hal/client/include/codec2/aidl/GraphicBufferAllocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-07T18:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf2ef528_1f29541c",
       "range": {
         "startLine": 29,
         "startChar": 0,
