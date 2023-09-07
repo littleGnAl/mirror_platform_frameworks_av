@@ -70,6 +70,30 @@
       },
       "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaaeb7c3_2c421268",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 2041936
+      },
+      "writtenOn": "2023-09-07T13:55:43Z",
+      "side": 0,
+      "message": "The current preferred device flow is using restoreTrack to trigger getOutputForAttr in policy and the mSelectedDeviceId is kept in AudioTrack instance. So it\u0027s not possible to invalidate track and notify client to re-create a new one which mSelectedDeviceId is reset when offloading. Unless the preferred device can be configured via set() which need modify the flow from java to native. Is this okay to you? Or just support preferred device for direct but not offload?",
+      "parentUuid": "21570712_a0c42ac9",
+      "range": {
+        "startLine": 2830,
+        "startChar": 0,
+        "endLine": 2830,
+        "endChar": 53
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
