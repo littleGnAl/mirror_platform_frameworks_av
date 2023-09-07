@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edb09e3b_d23ee26d",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-07T18:10:26Z",
+      "side": 1,
+      "message": "this still needs to be true \u0026 enabledFromAConfig.\n\nIn essence enabling AIDL requires both enablement of the feature flag (from aconfig) and opt-in from the OEM (via this flag).",
+      "range": {
+        "startLine": 173,
+        "startChar": 15,
+        "endLine": 173,
+        "endChar": 19
+      },
+      "revId": "c83b8750563a9fb6c0dcab1bbae8a66aabb2874c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ab80a62_b25646cf",
         "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
         "patchSetId": 1
