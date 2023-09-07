@@ -210,6 +210,13 @@ void SetHandle(BaseBlock *block, const C2Handle *handle) {
 }
 
 template<>
+void SetAHardwareBuffer(BaseBlock *block, const AHardwareBuffer *pBuf) {
+    (void) block;
+    (void) pBuf;
+    // Note: This is not used.
+}
+
+template<>
 void SetPooledBlock<BufferPoolTypes>(
         BaseBlock *baseBlock,
         const typename BufferPoolTypes::BufferStatusMessage &pooledBlock) {
