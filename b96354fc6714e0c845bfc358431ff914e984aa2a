@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6fb85c3_9ed67ad5",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-08T13:04:03Z",
+      "side": 0,
+      "message": "Actually, I like the change for another reason - it permits the restore/reetry only once.  I was thinking of suggesting something similar.",
+      "parentUuid": "21e4eb91_a7705cdd",
+      "range": {
+        "startLine": 2830,
+        "startChar": 0,
+        "endLine": 2830,
+        "endChar": 53
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b923ab1a_8e8dd170",
