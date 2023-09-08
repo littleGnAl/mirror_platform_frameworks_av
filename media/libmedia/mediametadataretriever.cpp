@@ -25,10 +25,14 @@
 #include <media/mediametadataretriever.h>
 #include <media/IMediaHTTPService.h>
 #include <media/IMediaPlayerService.h>
+#include <media/stagefright/foundation/ADebug.h>
 #include <utils/Log.h>
 #include <dlfcn.h>
+#include <com_android_media_playback_flags.h>
 
 namespace android {
+
+namespace playback_flags = com::android::media::playback::flags;
 
 // client singleton for binder interface to service
 Mutex MediaMetadataRetriever::sServiceLock;
@@ -143,7 +147,11 @@ status_t MediaMetadataRetriever::setDataSource(
 
 sp<IMemory> MediaMetadataRetriever::getFrameAtTime(
         int64_t timeUs, int option, bool metaOnly) {
-    return getFrameAtTime(timeUs, option, HAL_PIXEL_FORMAT_RGB_565, metaOnly);
+    int colorFormat = HAL_PIXEL_FORMAT_RGB_565;
+    if (playback_flags::mediametadataretriever_default_rgb8888()) {
+      colorFormat = HAL_PIXEL_FORMAT_RGB_888;
+    }
+    return getFrameAtTime(timeUs, option, colorFormat, metaOnly);
 }
 
 sp<IMemory> MediaMetadataRetriever::getFrameAtTime(
@@ -161,7 +169,11 @@ sp<IMemory> MediaMetadataRetriever::getFrameAtTime(
 
 sp<IMemory> MediaMetadataRetriever::getImageAtIndex(
         int index, bool metaOnly, bool thumbnail) {
-    return getImageAtIndex(index, HAL_PIXEL_FORMAT_RGB_565, metaOnly, thumbnail);
+    int colorFormat = HAL_PIXEL_FORMAT_RGB_565;
+    if (playback_flags::mediametadataretriever_default_rgb8888()) {
+      colorFormat = HAL_PIXEL_FORMAT_RGB_888;
+    }
+    return getImageAtIndex(index, colorFormat, metaOnly, thumbnail);
 }
 
 sp<IMemory> MediaMetadataRetriever::getImageAtIndex(
@@ -191,7 +203,11 @@ sp<IMemory> MediaMetadataRetriever::getImageRectAtIndex(
 
 sp<IMemory>  MediaMetadataRetriever::getFrameAtIndex(
         int index, bool metaOnly) {
-    return getFrameAtIndex(index, HAL_PIXEL_FORMAT_RGB_565, metaOnly);
+    int colorFormat = HAL_PIXEL_FORMAT_RGB_565;
+    if (playback_flags::mediametadataretriever_default_rgb8888()) {
+      colorFormat = HAL_PIXEL_FORMAT_RGB_888;
+    }
+    return getFrameAtIndex(index, colorFormat, metaOnly);
 }
 
 sp<IMemory>  MediaMetadataRetriever::getFrameAtIndex(
