@@ -51,6 +51,47 @@
       "parentUuid": "f738a647_30bb4027",
       "revId": "2692914cb8473756edc2f6817b670d909ad4d6e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e37e973_d13ca0f2",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-08T18:30:22Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "fa8f3bed_5c2fde2a",
+      "revId": "2692914cb8473756edc2f6817b670d909ad4d6e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3591c19f_b3650897",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1611,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-08T18:30:22Z",
+      "side": 1,
+      "message": "please move these two lines into `if (!mTunneled) {}` block",
+      "range": {
+        "startLine": 1610,
+        "startChar": 0,
+        "endLine": 1611,
+        "endChar": 63
+      },
+      "revId": "2692914cb8473756edc2f6817b670d909ad4d6e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
