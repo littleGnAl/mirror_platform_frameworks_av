@@ -16,6 +16,52 @@
       "message": "Patchset 9 for merge conflict",
       "revId": "86cedc9c2649ed2dea93f62bfb4818ad29f63cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd85e07_777465f6",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-09-08T17:25:33Z",
+      "side": 1,
+      "message": "I believe that with current logic, deviceVersion will be {major \u003d 3, minor \u003d 2} for new version of CameraDevice. See \n\n```\n// in CameraProviderManager::ProviderInfo::addDevice, only minor version is\n// passed in, the major number remains as 3.\ndeviceInfo \u003d initializeDeviceInfo(name, mProviderTagid, id, minor);\n```\n\nAnd I believe we can just do \n```\nmBatchSizeLimitEnabled \u003d (maxVersion.get_minor() \u003e\u003d 2);\n```\nbecause the v2 version of ICameraDevice will has minor version of 2.",
+      "range": {
+        "startLine": 325,
+        "startChar": 46,
+        "endLine": 325,
+        "endChar": 75
+      },
+      "revId": "86cedc9c2649ed2dea93f62bfb4818ad29f63cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae773e5_0aaef104",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-09-08T17:25:33Z",
+      "side": 1,
+      "message": "Should we use `configEntry.data.i32[index - 1]/configEntry.data.i32[index - 2]` instead in case the HAL supports 60fps preview rather than 30fps?",
+      "range": {
+        "startLine": 1618,
+        "startChar": 75,
+        "endLine": 1618,
+        "endChar": 77
+      },
+      "revId": "86cedc9c2649ed2dea93f62bfb4818ad29f63cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
