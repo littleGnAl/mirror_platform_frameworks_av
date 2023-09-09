@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc24ab40_e8f55169",
+        "filename": "media/codec2/hal/services/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-09T01:18:01Z",
+      "side": 1,
+      "message": "How could we configure HIDL HAL ver? (will it be 1.2 all the time?)",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "bdf3ea84f7dc711e6fc87a1119bdc8ea23fadd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2d4c9c6_aac69dee",
         "filename": "media/codec2/hal/services/manifest_media_c2_V1_0_default.xml",
         "patchSetId": 11
@@ -50,6 +73,29 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "8473a710_b9a108b3",
+      "revId": "bdf3ea84f7dc711e6fc87a1119bdc8ea23fadd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c376691_64911f83",
+        "filename": "media/codec2/hal/services/vendor.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-09T01:18:01Z",
+      "side": 1,
+      "message": "Is it same with HIDL?\nBetter to define as a constantexpr?",
+      "range": {
+        "startLine": 176,
+        "startChar": 48,
+        "endLine": 176,
+        "endChar": 49
+      },
       "revId": "bdf3ea84f7dc711e6fc87a1119bdc8ea23fadd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
