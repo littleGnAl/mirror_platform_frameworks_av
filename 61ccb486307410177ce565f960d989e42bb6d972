@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b7ffcb_d91c056b",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-09-11T22:54:18Z",
+      "side": 1,
+      "message": "Do you think if it\u0027s more clear to do this?\n```\nif (portConfigIt \u003d\u003d mPortConfigs.end()) {\n    if (flags.has_value()) {\n    } else {\n    }\n} else {\n```",
+      "range": {
+        "startLine": 1483,
+        "startChar": 4,
+        "endLine": 1483,
+        "endChar": 66
+      },
+      "revId": "61ccb486307410177ce565f960d989e42bb6d972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
