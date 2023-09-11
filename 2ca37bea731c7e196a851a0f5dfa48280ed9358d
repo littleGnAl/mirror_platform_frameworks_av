@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d49ed0_ee855608",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-09-11T08:20:48Z",
+      "side": 1,
+      "message": "There is a crash triggered by a Dolby Vision profile 12 negative test case. In current AOSP MPEG4Extractor implementation, There are three branches for Dolby Vision. One for profile 2~8, one for profile 10 and one for other profiles. But the \"else\" branch checks content\u0027s format as AVC. The negative case test content is profile 12 and codec is HEVC. Therefore this test fails in else branch CHECK and results in crash.",
+      "revId": "2ca37bea731c7e196a851a0f5dfa48280ed9358d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
