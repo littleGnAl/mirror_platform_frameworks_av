@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "960eb874_38787563",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2837,
+      "author": {
+        "id": 2041936
+      },
+      "writtenOn": "2023-09-11T02:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f77f238_256f2cc1",
+      "range": {
+        "startLine": 2837,
+        "startChar": 1,
+        "endLine": 2837,
+        "endChar": 50
+      },
+      "revId": "4c2865099a1a82b3a412b221e2ffd250e47f9614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2258889d_c587589e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-08T13:04:03Z",
       "side": 1,
       "message": "nit:\n\n    bool mSelectedDeviceUpdate \u003d false;",
+      "range": {
+        "startLine": 1452,
+        "startChar": 48,
+        "endLine": 1452,
+        "endChar": 50
+      },
+      "revId": "4c2865099a1a82b3a412b221e2ffd250e47f9614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c07191c6_b05bd880",
+        "filename": "media/libaudioclient/include/media/AudioTrack.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 2041936
+      },
+      "writtenOn": "2023-09-11T02:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2258889d_c587589e",
       "range": {
         "startLine": 1452,
         "startChar": 48,
