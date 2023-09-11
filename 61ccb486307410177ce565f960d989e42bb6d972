@@ -22,6 +22,30 @@
       },
       "revId": "61ccb486307410177ce565f960d989e42bb6d972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada26dca_9c500231",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-09-11T23:05:39Z",
+      "side": 1,
+      "message": "I agree it\u0027s more clear branch-wise, however it adds one more indent level.",
+      "parentUuid": "92b7ffcb_d91c056b",
+      "range": {
+        "startLine": 1483,
+        "startChar": 4,
+        "endLine": 1483,
+        "endChar": 66
+      },
+      "revId": "61ccb486307410177ce565f960d989e42bb6d972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
