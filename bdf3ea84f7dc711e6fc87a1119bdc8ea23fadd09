@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4170237b_5334147c",
+        "filename": "media/codec2/hal/services/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-11T18:52:41Z",
+      "side": 1,
+      "message": "As an example service this shows the latest version of HAL, so HIDL@1.2 and AIDL are present.",
+      "parentUuid": "fc24ab40_e8f55169",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "bdf3ea84f7dc711e6fc87a1119bdc8ea23fadd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2d4c9c6_aac69dee",
@@ -90,6 +114,30 @@
       "writtenOn": "2023-09-09T01:18:01Z",
       "side": 1,
       "message": "Is it same with HIDL?\nBetter to define as a constantexpr?",
+      "range": {
+        "startLine": 176,
+        "startChar": 48,
+        "endLine": 176,
+        "endChar": 49
+      },
+      "revId": "bdf3ea84f7dc711e6fc87a1119bdc8ea23fadd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0c09d1_13adf97e",
+        "filename": "media/codec2/hal/services/vendor.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-11T18:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c376691_64911f83",
       "range": {
         "startLine": 176,
         "startChar": 48,
