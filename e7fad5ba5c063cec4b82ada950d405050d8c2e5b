@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab33354_f4b55652",
+        "filename": "media/libmedia/mediametadataretriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-11T14:16:42Z",
+      "side": 1,
+      "message": "nit: I would naturally use a ternary here and below\n\n```\nint colorFormat \u003d\n    playback_flags::mediametadataretriever_default_rgb8888() ? \n        HAL_PIXEL_FORMAT_RGB_888 :\n        HAL_PIXEL_FORMAT_RGB_565;\n```",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 5
+      },
+      "revId": "e7fad5ba5c063cec4b82ada950d405050d8c2e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
