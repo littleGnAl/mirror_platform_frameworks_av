@@ -39,6 +39,30 @@
       },
       "revId": "48eaba94162a64ad260bec07295e378147631d6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c721165_5688dc5c",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 2041936
+      },
+      "writtenOn": "2023-09-12T02:02:59Z",
+      "side": 1,
+      "message": "Do you means for direct/offloaded track do not try to restore track and it\u0027s application\u0027s responsibility to make sure setOutputDevice() come after set() or stop() before write(). If yes, should setOutputDevice() return error when it\u0027s not at correct state?",
+      "parentUuid": "a3e1e014_c4a6c012",
+      "range": {
+        "startLine": 2832,
+        "startChar": 0,
+        "endLine": 2832,
+        "endChar": 51
+      },
+      "revId": "48eaba94162a64ad260bec07295e378147631d6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
