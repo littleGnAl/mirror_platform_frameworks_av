@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35502a19_fd59d591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-12T01:13:11Z",
+      "side": 1,
+      "message": "Seems to be called from AudioFlinger::closeInputFinish() on closing, seems there isn\u0027t too much difference here.",
+      "revId": "49aecf0dba4b6e703d51fb2254476cad4ab60c7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
