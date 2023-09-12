@@ -63,6 +63,30 @@
       },
       "revId": "48eaba94162a64ad260bec07295e378147631d6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbbfb8a2_247e15cb",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-12T02:07:29Z",
+      "side": 1,
+      "message": "Yes, we should return an error from setOutputDevice() immediately to give proper feedback if direct/offload and not in the correct state.  Thanks!",
+      "parentUuid": "5c721165_5688dc5c",
+      "range": {
+        "startLine": 2832,
+        "startChar": 0,
+        "endLine": 2832,
+        "endChar": 51
+      },
+      "revId": "48eaba94162a64ad260bec07295e378147631d6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
