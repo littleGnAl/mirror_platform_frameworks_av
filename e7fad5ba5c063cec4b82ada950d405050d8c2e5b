@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8ddbcd0_d53fb2ad",
+        "filename": "media/libmedia/playback_flags.aconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-12T08:06:07Z",
+      "side": 1,
+      "message": "@arunjohnson@google.com You originally suggested ARGB_8888 in b/295092040#comment7 - would you be able to comment here on whether RGB888 would be sufficient or if it should definitely be ARGB_8888? Thanks!",
+      "parentUuid": "46de03e2_b779dd30",
+      "range": {
+        "startLine": 4,
+        "startChar": 41,
+        "endLine": 4,
+        "endChar": 47
+      },
+      "revId": "e7fad5ba5c063cec4b82ada950d405050d8c2e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5917fe5_7242ef7c",
         "filename": "media/libmedia/playback_flags.aconfig",
         "patchSetId": 1
