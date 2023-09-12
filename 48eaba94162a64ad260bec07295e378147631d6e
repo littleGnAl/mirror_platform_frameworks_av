@@ -87,6 +87,30 @@
       },
       "revId": "48eaba94162a64ad260bec07295e378147631d6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f8779f_6a09adf5",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 2041936
+      },
+      "writtenOn": "2023-09-12T12:29:56Z",
+      "side": 1,
+      "message": "Since mFramesWritten is reset in start() when STOPPED/FLUSHED, I think checking STOPPED/FLUSHED state will be better on control flow and easier to understand for client, rather than checking mFramesWritten.",
+      "parentUuid": "cbbfb8a2_247e15cb",
+      "range": {
+        "startLine": 2832,
+        "startChar": 0,
+        "endLine": 2832,
+        "endChar": 51
+      },
+      "revId": "48eaba94162a64ad260bec07295e378147631d6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
