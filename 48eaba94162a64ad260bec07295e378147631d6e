@@ -16,6 +16,29 @@
       "message": "lgtm as is.",
       "revId": "48eaba94162a64ad260bec07295e378147631d6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e1e014_c4a6c012",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-12T01:44:04Z",
+      "side": 1,
+      "message": "Discussed with Eric - there is still a problem here - restoring an offload or direct track will cause the timestamps to be reset to 0.  This might be unexpected for an application during playback.\n\nWe might be able to allow restoring a direct/offloaded track for a selected device change when the AudioTrack hasn\u0027t been written to (mFramesWritten \u003d\u003d 0) after initial creation and after a stop().  Note that the stop() resets the timestamp for direct/offload.  The mFramesWritten variable is updated for AudioTrack::write() but needs to be updated for the offload callback mode.",
+      "range": {
+        "startLine": 2832,
+        "startChar": 0,
+        "endLine": 2832,
+        "endChar": 51
+      },
+      "revId": "48eaba94162a64ad260bec07295e378147631d6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
