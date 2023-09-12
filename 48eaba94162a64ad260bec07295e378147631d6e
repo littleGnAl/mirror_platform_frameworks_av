@@ -111,6 +111,30 @@
       },
       "revId": "48eaba94162a64ad260bec07295e378147631d6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8f54ee_13890189",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-12T18:39:18Z",
+      "side": 1,
+      "message": "Sounds reasonable.\n\nThe original goal of using mFramesWritten \u003d 0 was to prevent writing data before setOutputDevice() is called - it is possible to do so before start().  The issue is that data would be lost when the cblk is changed (unless we copy the data from the old cblk). Offload actually requires start() to be called for the callbacks to fetch data.",
+      "parentUuid": "27f8779f_6a09adf5",
+      "range": {
+        "startLine": 2832,
+        "startChar": 0,
+        "endLine": 2832,
+        "endChar": 51
+      },
+      "revId": "48eaba94162a64ad260bec07295e378147631d6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

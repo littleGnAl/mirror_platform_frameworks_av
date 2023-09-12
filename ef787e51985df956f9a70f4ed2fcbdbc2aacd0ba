@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15005a79_79a14a6f",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-12T18:39:18Z",
+      "side": 1,
+      "message": "I think you want to add the following before createTrack.\n\n    ALOGD(\"%s(%d): creating a new AudioTrack\",\n            __func__, mPortId);\n    ++mSequence;\n    \nThere may be useful code here for restoring original parameters on success.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudioclient/AudioTrack.cpp;drc\u003d5b401d3b88ff2c0160e544521612d0faf99c77f9;l\u003d2890",
+      "range": {
+        "startLine": 1701,
+        "startChar": 0,
+        "endLine": 1701,
+        "endChar": 45
+      },
+      "revId": "ef787e51985df956f9a70f4ed2fcbdbc2aacd0ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
