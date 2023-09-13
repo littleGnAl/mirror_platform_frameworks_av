@@ -106,9 +106,21 @@ static const std::vector<audio_format_t> kFormats =
     getFlags<audio_format_t, xsd::AudioFormat, decltype(audio_format_from_string)>(
         xsdc_enum_range<xsd::AudioFormat>{}, audio_format_from_string);
 
-static const std::vector<audio_channel_mask_t> kChannelMasks =
-    getFlags<audio_channel_mask_t, xsd::AudioChannelMask, decltype(audio_channel_mask_from_string)>(
-        xsdc_enum_range<xsd::AudioChannelMask>{}, audio_channel_mask_from_string);
+/**
+ * AudioChannelMask - AUDIO_CHANNEL_IN_6 is excluded from kChannelMasks[] because 
+ * it is deprecated as per line 285 of AidlConversionCppNdk.cpp
+ */
+
+static const std::vector<audio_channel_mask_t> kChannelMasks = [] {
+    std::vector<audio_channel_mask_t> masks;
+    for (const auto value : xsdc_enum_range<xsd::AudioChannelMask>{}) {
+        audio_channel_mask_t pushVal = (audio_channel_mask_t)value;
+        if (value != xsd::AudioChannelMask::AUDIO_CHANNEL_IN_6) {
+            masks.push_back(pushVal);
+        }
+    }
+    return masks;
+}();
 
 static const std::vector<audio_usage_t> kUsages =
     getFlags<audio_usage_t, xsd::AudioUsage, decltype(audio_usage_from_string)>(
