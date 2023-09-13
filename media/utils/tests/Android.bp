@@ -16,7 +16,7 @@ cc_test_library {
     ],
 
     sanitize:{
-       address: true,
+       hwaddress: true,
        cfi: true,
        integer_overflow: true,
        memtag_heap: true,
@@ -41,7 +41,7 @@ cc_test {
     ],
 
     sanitize:{
-       address: true,
+       hwaddress: true,
        cfi: true,
        integer_overflow: true,
        memtag_heap: true,
@@ -196,7 +196,7 @@ cc_test {
     ],
 
     sanitize:{
-       address: true,
+       hwaddress: true,
        cfi: true,
        integer_overflow: true,
        memtag_heap: true,
