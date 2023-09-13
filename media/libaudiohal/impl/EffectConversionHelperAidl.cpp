@@ -455,8 +455,9 @@ status_t EffectConversionHelperAidl::updateEventFlags() {
                   efGroup);
             status = (status == OK) ? BAD_VALUE : status;
         }
-    } else if (isBypassing()) {
-        // for effect with bypass (no processing) flag, it's okay to not have statusQ
+    } else if (isBypassingOrOffload()) {
+        // for effect with bypass (no processing) or offloadIndication flag, it's okay to not have
+        // statusQ
         return OK;
     }
 
@@ -464,10 +465,20 @@ status_t EffectConversionHelperAidl::updateEventFlags() {
     return status;
 }
 
+bool EffectConversionHelperAidl::isBypassingOrOffload() const {
+    return isBypassing() || isOffload();
+}
+
 bool EffectConversionHelperAidl::isBypassing() const {
     return mEffect &&
            (mDesc.common.flags.bypass ||
             (mIsProxyEffect && std::static_pointer_cast<EffectProxy>(mEffect)->isBypassing()));
+}
+
+bool EffectConversionHelperAidl::isOffload() const {
+    return mEffect &&
+           (mDesc.common.flags.offloadIndication ||
+            (mIsProxyEffect && std::static_pointer_cast<EffectProxy>(mEffect)->isOffload()));
 }
 
 Descriptor EffectConversionHelperAidl::getDescriptor() const {
