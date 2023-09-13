@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49575b40_34a6b288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-09-13T23:38:39Z",
+      "side": 1,
+      "message": "This is to route issues like b/300195182 which doesn\u0027t need security review and so that they can be fixed early. Otherwise, fuzzer bugs go into security triage. @wonsik@google.com I will remove this once fuzzer is stabilized.",
+      "revId": "6e459ecdec09ce32621afb00037f6da03cf7c34d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
