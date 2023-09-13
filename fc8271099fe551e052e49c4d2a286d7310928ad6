@@ -46,6 +46,30 @@
       },
       "revId": "fc8271099fe551e052e49c4d2a286d7310928ad6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8369d15_991389dc",
+        "filename": "media/module/codecserviceregistrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1961659
+      },
+      "writtenOn": "2023-09-13T05:58:46Z",
+      "side": 1,
+      "message": "Ray,\nYes. When run on older versions of android, store v1_1 and v1_0 are used.\nWe verified this on Android R and confirmed that storeV1_1 was used.",
+      "parentUuid": "6f37fddc_caa61a77",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 59
+      },
+      "revId": "fc8271099fe551e052e49c4d2a286d7310928ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
