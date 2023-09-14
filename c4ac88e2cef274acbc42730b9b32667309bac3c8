@@ -16,6 +16,52 @@
       "message": "Hi, please help to review this commit for audio dsd format, thanks!",
       "revId": "c4ac88e2cef274acbc42730b9b32667309bac3c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644cae35_b13a3f7b",
+        "filename": "media/module/foundation/MediaDefs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-09-14T16:19:10Z",
+      "side": 1,
+      "message": "Per https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/audioaidlconversion/AidlConversionCppNdk.cpp;l\u003d708;drc\u003d6c9c5014b28750ca2966310b7902dfe86b98d733, this needs to be `audio/vnd.sony.dsd`. Please update that file as well to replace the hardcoded string with use of the constant you are adding. Thanks!",
+      "range": {
+        "startLine": 126,
+        "startChar": 39,
+        "endLine": 126,
+        "endChar": 51
+      },
+      "revId": "c4ac88e2cef274acbc42730b9b32667309bac3c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723a5a04_04ef1b81",
+        "filename": "media/module/foundation/MediaDefs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-09-14T16:19:10Z",
+      "side": 1,
+      "message": "Please add a comment that this type is not in the official IANA registry (https://www.iana.org/assignments/media-types/media-types.xhtml#audio).",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "c4ac88e2cef274acbc42730b9b32667309bac3c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
