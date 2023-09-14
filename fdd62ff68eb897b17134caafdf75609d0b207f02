@@ -158,6 +158,24 @@
       "message": "@harish.mahendrakar@ittiam.com, should this be changed to 2?",
       "revId": "fdd62ff68eb897b17134caafdf75609d0b207f02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d043346_361eedd6",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoEncTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-14T22:41:13Z",
+      "side": 1,
+      "message": "Thank you for flagging this.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2753012 fixes this.",
+      "parentUuid": "76d29ba3_1fa74304",
+      "revId": "fdd62ff68eb897b17134caafdf75609d0b207f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
