@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53dbec80_cb657921",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-09-14T03:34:31Z",
+      "side": 1,
+      "message": "See https://godbolt.org/z/3MeKjhE99 for a demonstration of how Clang stopped allowing an implicit uint32_t to int32_t conversion when constructing a std::variant instance, between Clang 8 and Clang 9.\n\nThe _LIBCPP_ENABLE_NARROWING_CONVERSIONS_IN_VARIANT flag appears relevant. I think it was added to disable the implementation of P0608R3, in these two commits:\n\nhttps://github.com/llvm/llvm-project/commit/128af315957eb1516c3b7ffd389774a0287ba300\n\nhttps://github.com/llvm/llvm-project/commit/194b337f3327691ee88007061c71225c934b3af0",
+      "revId": "8d37bb0c7df5b7bde36e38b450f8c465257f6c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
