@@ -125,6 +125,8 @@ bool deviceTypesToString(const DeviceTypeSet& deviceTypes, std::string &str);
 
 std::string dumpDeviceTypes(const DeviceTypeSet& deviceTypes);
 
+std::string dumpMixerBehaviors(const MixerBehaviorSet& mixerBehaviors);
+
 /**
  * Return human readable string for device types.
  */
