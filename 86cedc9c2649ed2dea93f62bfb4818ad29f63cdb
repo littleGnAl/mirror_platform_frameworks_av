@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94bf1a78_420c25c0",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-09-14T08:54:03Z",
+      "side": 1,
+      "message": "\u003e deviceVersion will be {major \u003d 3, minor \u003d 2} for new version of CameraDevice\n\nWith the aosp/2580090, now the version for the AIDL will have major \u003d1.\n\nWe can only check the minor version to differentiate the behvaiour, but I used `HARDWARE_DEVICE_API_VERSION` to match style with other version checking code in the service and to prepare for the possbible future change in the major version.",
+      "parentUuid": "4bd85e07_777465f6",
+      "range": {
+        "startLine": 325,
+        "startChar": 46,
+        "endLine": 325,
+        "endChar": 75
+      },
+      "revId": "86cedc9c2649ed2dea93f62bfb4818ad29f63cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fae773e5_0aaef104",
         "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
         "patchSetId": 9
@@ -54,6 +78,30 @@
       "writtenOn": "2023-09-08T17:25:33Z",
       "side": 1,
       "message": "Should we use `configEntry.data.i32[index - 1]/configEntry.data.i32[index - 2]` instead in case the HAL supports 60fps preview rather than 30fps?",
+      "range": {
+        "startLine": 1618,
+        "startChar": 75,
+        "endLine": 1618,
+        "endChar": 77
+      },
+      "revId": "86cedc9c2649ed2dea93f62bfb4818ad29f63cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69714674_68fbf2e5",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-09-14T08:54:03Z",
+      "side": 1,
+      "message": "It comes from the following statement of the key definition.\n\u003e Each max batch size will be a divisor of its corresponding fps_max / 30.\n\nFor the 60fps case, actual batch size from the app is half of (fps_max / 30). So, the checking seems still valid.",
+      "parentUuid": "fae773e5_0aaef104",
       "range": {
         "startLine": 1618,
         "startChar": 75,
