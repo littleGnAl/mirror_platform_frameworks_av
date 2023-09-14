@@ -16,6 +16,24 @@
       "message": "shouldn\u0027t we use the hw_tunnel flag to check offload?",
       "revId": "0a047987fb9bb84a0d48f5446224e37d3cbd29f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d4b9d0_571d23bb",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-09-14T23:25:16Z",
+      "side": 1,
+      "message": "yes you are right",
+      "parentUuid": "2d74cf50_cc6df2ac",
+      "revId": "0a047987fb9bb84a0d48f5446224e37d3cbd29f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
