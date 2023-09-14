@@ -606,6 +606,8 @@ class Camera3Device :
         // Indicates that the ROTATE_AND_CROP value within 'mSettingsList' was modified
         // irrespective of the original value.
         bool                                mRotateAndCropChanged = false;
+        // Indicates that the camera test pattern setting is modified
+        bool                                mTestPatternChanged = false;
 
         // Whether this capture request has its zoom ratio set to 1.0x before
         // the framework overrides it for camera HAL consumption.
