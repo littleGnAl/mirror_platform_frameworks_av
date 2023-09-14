@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f3e4a7_0c962220",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-14T23:01:20Z",
+      "side": 1,
+      "message": "it would be nice if C2Fence did not depend on C2IgbaWaitableObject, which is a specialized eventfd based object.\n\nE.g. we may want to merge multiple EVENTFD_FENCE objects, creating a super-object, so that apps can wait on it.",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d75209_e8330218",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-14T23:01:20Z",
+      "side": 1,
+      "message": "nit: this may be better called EVENTFD_FENCE",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d20b2c6_209f0aad",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-14T23:01:20Z",
+      "side": 1,
+      "message": "it would be very useful if we could solve this with a single fd, so that apps could easily wait on multiple events using poll.",
+      "range": {
+        "startLine": 411,
+        "startChar": 16,
+        "endLine": 411,
+        "endChar": 18
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea1ef9d_229acadb",
+        "filename": "media/codec2/vndk/include/C2IgbaWaitableObj.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-14T23:01:20Z",
+      "side": 1,
+      "message": "this could be generalized as an object with an array of fds (unique_fd eventFd[]).\n\nwaitEvent() could return the index of the fd that is ready, or some error const if it was interrupted.",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b99e0a_a0a345b9",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-14T23:01:20Z",
+      "side": 1,
+      "message": "it seems you are treating status is readable the same as HUNG UP. is there a need to have this dualily?",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
