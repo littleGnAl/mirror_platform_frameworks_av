@@ -123,6 +123,8 @@ const char *MEDIA_MIMETYPE_AUDIO_AAC_LATM_HE_V2 = "audio/mp4a-latm.29";
 const char *MEDIA_MIMETYPE_AUDIO_IEC61937 = "audio/x-iec61937";
 // Note: not in the IANA registry.
 const char *MEDIA_MIMETYPE_AUDIO_IEC60958 = "audio/x-iec60958";
+// Note: not in the IANA registry.
+const char *MEDIA_MIMETYPE_AUDIO_DSD = "audio/vnd.sony.dsd";
 
 const char *MEDIA_MIMETYPE_CONTAINER_MPEG4 = "video/mp4";
 const char *MEDIA_MIMETYPE_CONTAINER_WAV = "audio/x-wav";

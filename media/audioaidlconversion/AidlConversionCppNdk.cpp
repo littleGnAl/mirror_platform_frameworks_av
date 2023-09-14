@@ -705,7 +705,7 @@ const detail::AudioFormatPairs& getAudioFormatPairs() {
             {AUDIO_FORMAT_QCELP,
              make_AudioFormatDescription(::android::MEDIA_MIMETYPE_AUDIO_QCELP)},
             {// Note: not in the IANA registry.
-             AUDIO_FORMAT_DSD, make_AudioFormatDescription("audio/vnd.sony.dsd")},
+             AUDIO_FORMAT_DSD, make_AudioFormatDescription(::android::MEDIA_MIMETYPE_AUDIO_DSD)},
             {AUDIO_FORMAT_FLAC, make_AudioFormatDescription(::android::MEDIA_MIMETYPE_AUDIO_FLAC)},
             {AUDIO_FORMAT_ALAC, make_AudioFormatDescription(::android::MEDIA_MIMETYPE_AUDIO_ALAC)},
             {// Note: not in the IANA registry.
