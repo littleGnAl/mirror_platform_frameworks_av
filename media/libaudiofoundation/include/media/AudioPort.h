@@ -63,6 +63,9 @@ public:
     virtual void clearAudioProfiles() {
         mProfiles.clearProfiles();
     }
+    virtual void clearDynamicAudioProfiles() {
+        mProfiles.clearDynamicProfiles();
+    }
 
     bool hasValidAudioProfile() const { return mProfiles.hasValidProfile(); }
 
