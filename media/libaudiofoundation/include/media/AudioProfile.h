@@ -125,9 +125,11 @@ public:
 
     virtual ssize_t add(const sp<AudioProfile> &profile);
 
-    // If the profile is dynamic format and has valid format, it will be removed when doing
-    // clearProfiles(). Otherwise, AudioProfile::clear() will be called.
+    // To clear all profiles.
     virtual void clearProfiles();
+    // If the profile is dynamic format and has valid format, it will be removed when doing
+    // clearDynamicProfiles(). Otherwise, AudioProfile::clear() will be called.
+    virtual void clearDynamicProfiles();
 
     sp<AudioProfile> getFirstValidProfile() const;
     sp<AudioProfile> getFirstValidProfileFor(audio_format_t format) const;

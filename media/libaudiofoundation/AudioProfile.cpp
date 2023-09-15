@@ -246,6 +246,11 @@ ssize_t AudioProfileVector::add(const sp<AudioProfile> &profile)
 
 void AudioProfileVector::clearProfiles()
 {
+    clear();
+}
+
+void AudioProfileVector::clearDynamicProfiles()
+{
     for (auto it = begin(); it != end();) {
         if ((*it)->isDynamicFormat() && (*it)->hasValidFormat()) {
             it = erase(it);
