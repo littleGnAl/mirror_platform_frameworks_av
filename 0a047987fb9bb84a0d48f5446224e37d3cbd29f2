@@ -34,6 +34,24 @@
       "parentUuid": "2d74cf50_cc6df2ac",
       "revId": "0a047987fb9bb84a0d48f5446224e37d3cbd29f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b00474_a5e78419",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-09-15T00:30:50Z",
+      "side": 1,
+      "message": "Please checkout https://android-review.googlesource.com/c/platform/frameworks/av/+/2753228",
+      "parentUuid": "87d4b9d0_571d23bb",
+      "revId": "0a047987fb9bb84a0d48f5446224e37d3cbd29f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
