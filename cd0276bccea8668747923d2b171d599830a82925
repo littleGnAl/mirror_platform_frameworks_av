@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1fddaa5_95683445",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-15T16:56:10Z",
+      "side": 1,
+      "message": "nit: \"offload\" here and on line 9.",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "cd0276bccea8668747923d2b171d599830a82925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b9d316c_969790e3",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-09-15T16:56:10Z",
+      "side": 1,
+      "message": "if you could please add a comment why we don\u0027t call restoreTrack_l() here?  Would that not be simpler?",
+      "range": {
+        "startLine": 1699,
+        "startChar": 0,
+        "endLine": 1699,
+        "endChar": 67
+      },
+      "revId": "cd0276bccea8668747923d2b171d599830a82925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
