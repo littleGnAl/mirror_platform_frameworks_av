@@ -60,7 +60,7 @@ void AudioPort::importAudioPort(const audio_port_v7 &port) {
         sp<AudioProfile> profile = new AudioProfile(port.audio_profiles[i].format,
                 ChannelMaskSet(port.audio_profiles[i].channel_masks,
                         port.audio_profiles[i].channel_masks +
-                        port.audio_profiles->num_channel_masks),
+                        port.audio_profiles[i].num_channel_masks),
                 SampleRateSet(port.audio_profiles[i].sample_rates,
                         port.audio_profiles[i].sample_rates +
                         port.audio_profiles[i].num_sample_rates),
