@@ -210,6 +210,30 @@
       },
       "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b1b830_808ee637",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-16T17:25:42Z",
+      "side": 1,
+      "message": "No longer using error status reporting fd.",
+      "parentUuid": "a5b99e0a_a0a345b9",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
