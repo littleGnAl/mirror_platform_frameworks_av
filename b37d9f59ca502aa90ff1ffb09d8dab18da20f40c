@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba922d09_bb5d2792",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-16T17:24:50Z",
+      "side": 1,
+      "message": "The reason I introduced C2IgbaWaitableObject is that I don\u0027t want to dup() fd every time C2Fence is created. \n\nUsing some object based on unique_fd could be a better life-cycle management.",
+      "parentUuid": "c3f3e4a7_0c962220",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d75209_e8330218",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-14T23:01:20Z",
       "side": 1,
       "message": "nit: this may be better called EVENTFD_FENCE",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96361533_acaea3e5",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-16T17:24:50Z",
+      "side": 1,
+      "message": "Changed to PIPE_FENCE.",
+      "parentUuid": "96d75209_e8330218",
       "range": {
         "startLine": 36,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf21c18_a628e845",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-16T17:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d20b2c6_209f0aad",
+      "range": {
+        "startLine": 411,
+        "startChar": 16,
+        "endLine": 411,
+        "endChar": 18
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea1ef9d_229acadb",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-09-14T23:01:20Z",
       "side": 1,
       "message": "this could be generalized as an object with an array of fds (unique_fd eventFd[]).\n\nwaitEvent() could return the index of the fd that is ready, or some error const if it was interrupted.",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "b37d9f59ca502aa90ff1ffb09d8dab18da20f40c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0c722d_d40a594f",
+        "filename": "media/codec2/vndk/include/C2IgbaWaitableObj.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-16T17:24:50Z",
+      "side": 1,
+      "message": "Better to create that separately?\nThe interface may look very similar to ::poll() or ::epoll",
+      "parentUuid": "cea1ef9d_229acadb",
       "range": {
         "startLine": 59,
         "startChar": 9,
