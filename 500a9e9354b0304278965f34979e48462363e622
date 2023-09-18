@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e54cc0_b570d425",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-09-18T10:21:27Z",
+      "side": 1,
+      "message": "Update the patch set 2 for code style and vendor listener misbehaviour.",
+      "revId": "500a9e9354b0304278965f34979e48462363e622",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36d63a19_566ccc50",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-09-18T05:23:27Z",
       "side": 1,
       "message": "nit: Can we use `getCameraServiceLocked()` after line 259? \n\nThat way it aligns with other calls in this file.",
+      "range": {
+        "startLine": 258,
+        "startChar": 14,
+        "endLine": 258,
+        "endChar": 30
+      },
+      "revId": "500a9e9354b0304278965f34979e48462363e622",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4206b18_b7b418b5",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-09-18T10:21:27Z",
+      "side": 1,
+      "message": "It sounds good. I\u0027ve addressed with the latest patch set. thanks.",
+      "parentUuid": "36d63a19_566ccc50",
       "range": {
         "startLine": 258,
         "startChar": 14,
