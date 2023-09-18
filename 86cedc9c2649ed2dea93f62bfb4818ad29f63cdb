@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4daa11c5_314ebfc8",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-09-18T07:27:54Z",
+      "side": 1,
+      "message": "Addressed",
+      "parentUuid": "94bf1a78_420c25c0",
+      "range": {
+        "startLine": 325,
+        "startChar": 46,
+        "endLine": 325,
+        "endChar": 75
+      },
+      "revId": "86cedc9c2649ed2dea93f62bfb4818ad29f63cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fae773e5_0aaef104",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "It comes from the following statement of the key definition.\n\u003e Each max batch size will be a divisor of its corresponding fps_max / 30.\n\nFor the 60fps case, actual batch size from the app is half of (fps_max / 30). So, the checking seems still valid.",
       "parentUuid": "fae773e5_0aaef104",
+      "range": {
+        "startLine": 1618,
+        "startChar": 75,
+        "endLine": 1618,
+        "endChar": 77
+      },
+      "revId": "86cedc9c2649ed2dea93f62bfb4818ad29f63cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a3f012_d33f6f46",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-09-18T07:27:54Z",
+      "side": 1,
+      "message": "Addressed",
+      "parentUuid": "69714674_68fbf2e5",
       "range": {
         "startLine": 1618,
         "startChar": 75,
