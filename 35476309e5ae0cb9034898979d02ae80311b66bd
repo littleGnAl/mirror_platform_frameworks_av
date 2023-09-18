@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c29d886_78de80f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2023-09-18T18:24:53Z",
+      "side": 1,
+      "message": "nit: \u0027camera service used to unconditionally filter out\u0027 - just to make it clear that after this PS it wont. Thank you for catching this.",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "35476309e5ae0cb9034898979d02ae80311b66bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
