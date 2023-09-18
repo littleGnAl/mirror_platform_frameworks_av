@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addec026_6d75aeaa",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-18T23:09:07Z",
+      "side": 1,
+      "message": "I think we could have multiple GraphicsTrackers in a process. Should we maybe make it thread_local?",
+      "revId": "e6dd1655212b74e88de481f92ef477dc700f5fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
