@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50854f00_ccd8ba4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2023-09-18T03:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1fddaa5_95683445",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "cd0276bccea8668747923d2b171d599830a82925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b9d316c_969790e3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-15T16:56:10Z",
       "side": 1,
       "message": "if you could please add a comment why we don\u0027t call restoreTrack_l() here?  Would that not be simpler?",
+      "range": {
+        "startLine": 1699,
+        "startChar": 0,
+        "endLine": 1699,
+        "endChar": 67
+      },
+      "revId": "cd0276bccea8668747923d2b171d599830a82925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38c72b0_67122cf4",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2023-09-18T03:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b9d316c_969790e3",
       "range": {
         "startLine": 1699,
         "startChar": 0,
