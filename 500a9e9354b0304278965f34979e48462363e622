@@ -16,6 +16,29 @@
       "message": "Hi, would you please review this change?",
       "revId": "500a9e9354b0304278965f34979e48462363e622",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d63a19_566ccc50",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2023-09-18T05:23:27Z",
+      "side": 1,
+      "message": "nit: Can we use `getCameraServiceLocked()` after line 259? \n\nThat way it aligns with other calls in this file.",
+      "range": {
+        "startLine": 258,
+        "startChar": 14,
+        "endLine": 258,
+        "endChar": 30
+      },
+      "revId": "500a9e9354b0304278965f34979e48462363e622",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
