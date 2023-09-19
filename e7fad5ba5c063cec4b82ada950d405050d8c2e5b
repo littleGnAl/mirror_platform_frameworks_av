@@ -188,6 +188,30 @@
       },
       "revId": "e7fad5ba5c063cec4b82ada950d405050d8c2e5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0842284b_1a059a29",
+        "filename": "media/libmedia/playback_flags.aconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-19T12:58:07Z",
+      "side": 1,
+      "message": "huh, interesting - I hadn\u0027t realised that `android_media_MediaMetadataRetriever.cpp` sets a default value too (or maybe that\u0027s actually the only default that matters, because it never calls through to `mediametadataretriever.cpp` without specifying a `colorFormat`).\n\nIt also looks like [there\u0027s a comment](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/media/jni/android_media_MediaMetadataRetriever.cpp;l\u003d377;drc\u003d3815d34e5f941909ceee9e879e309991c3d2a1d0) that\u0027s explicitly discouraging the change we\u0027re trying to make here:\n\n\u003e For getFrameAtTime family of calls, default to ANDROID_BITMAP_FORMAT_RGB_565 to keep the behavior consistent with older releases\n\nSpecifically it looks like `getFrameAtTime` [defaults to `ANDROID_BITMAP_FORMAT_RGB_565`](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/media/jni/android_media_MediaMetadataRetriever.cpp;l\u003d379;drc\u003d3815d34e5f941909ceee9e879e309991c3d2a1d0) and `getFrameAtIndex` [defaults to `ANDROID_BITMAP_FORMAT_RGBA_8888`](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/media/jni/android_media_MediaMetadataRetriever.cpp;l\u003d345;drc\u003d5d2d98a66685814bb4dc1c71749e5e9a01bf6d0b).\n\nLet me have a think/do some more research on this.",
+      "parentUuid": "cca131af_695ac6a3",
+      "range": {
+        "startLine": 6,
+        "startChar": 53,
+        "endLine": 6,
+        "endChar": 60
+      },
+      "revId": "e7fad5ba5c063cec4b82ada950d405050d8c2e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
