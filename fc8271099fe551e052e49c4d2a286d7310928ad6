@@ -94,6 +94,30 @@
       },
       "revId": "fc8271099fe551e052e49c4d2a286d7310928ad6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c83084a8_9b469c46",
+        "filename": "media/module/codecserviceregistrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1961659
+      },
+      "writtenOn": "2023-09-19T07:20:57Z",
+      "side": 1,
+      "message": "As per our observations : \n1.Yes, fuzzer will only run on version 1_2 when latest main is considered.\n2.On ANDROID S and ANDROID R branches, fuzzer does not exist. We had manually added the fuzzer and fixed build errors to verify the previous scenario.",
+      "parentUuid": "c6fc04c8_f82eb289",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 59
+      },
+      "revId": "fc8271099fe551e052e49c4d2a286d7310928ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
