@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ece5ba_31dc0598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-09-19T23:05:20Z",
+      "side": 1,
+      "message": "Thanks Lajos. I will break down this CL into different logical units and post soon.",
+      "parentUuid": "d0c3833d_292e7048",
+      "revId": "f63505c6d0946da17f063821e932b9257d7285f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "623e0ad2_559fc00f",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a48be5b7_c3a5de74",
+        "filename": "media/libmedia/include/media/MediaResource.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-09-19T23:05:20Z",
+      "side": 1,
+      "message": "Just a place-holder for a future resource consideration.\nI will remove this for now as we don\u0027t really handle memory as a resource yet",
+      "parentUuid": "623e0ad2_559fc00f",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 71
+      },
+      "revId": "f63505c6d0946da17f063821e932b9257d7285f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e3028da_019b4128",
         "filename": "media/libmedia/include/media/MediaResource.h",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2023-09-19T22:10:30Z",
       "side": 1,
       "message": "you seem to be separating hw vs. sw codecs. Is this truly a refactor?",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "f63505c6d0946da17f063821e932b9257d7285f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920ab095_5440ae82",
+        "filename": "media/libmedia/include/media/MediaResource.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-09-19T23:05:20Z",
+      "side": 1,
+      "message": "This is more of categorizing codec as SW or HW at the resource manager level (and the metrics). But for the functionality (say codec reclaim), there is no impact as we do reclaim only for hw video codecs (As of now).\n\nI will move this into a separate CL",
+      "parentUuid": "4e3028da_019b4128",
       "range": {
         "startLine": 64,
         "startChar": 8,
