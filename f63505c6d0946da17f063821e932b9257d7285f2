@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c3833d_292e7048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-19T22:10:30Z",
+      "side": 1,
+      "message": "Can we break this CL down into sub CLs. E.g. one that moves isHW to the codec resource type, any other representation changes, then the model/policy separation.",
+      "revId": "f63505c6d0946da17f063821e932b9257d7285f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623e0ad2_559fc00f",
+        "filename": "media/libmedia/include/media/MediaResource.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-19T22:10:30Z",
+      "side": 1,
+      "message": "is this used before? this looks like new functionality.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 71
+      },
+      "revId": "f63505c6d0946da17f063821e932b9257d7285f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3028da_019b4128",
+        "filename": "media/libmedia/include/media/MediaResource.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-19T22:10:30Z",
+      "side": 1,
+      "message": "you seem to be separating hw vs. sw codecs. Is this truly a refactor?",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "f63505c6d0946da17f063821e932b9257d7285f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
