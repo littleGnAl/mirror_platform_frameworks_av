@@ -32,6 +32,10 @@ cc_test {
     ],
     data: [":media_c2_v1_audio_decode_res"],
     test_config: "VtsHalMediaC2V1_0TargetAudioDecTest.xml",
+
+    shared_libs : [
+        "aconfig_mediacodec_flags_c_lib",
+    ],
 }
 
 cc_test {
