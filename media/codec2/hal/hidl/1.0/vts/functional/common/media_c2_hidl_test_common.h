@@ -29,6 +29,7 @@
 
 #define FLAG_NON_DISPLAY_FRAME (1 << 4)
 #define FLAG_CONFIG_DATA (1 << 5)
+#define FLAG_LARGE_AUDIO_FRAME (1 << 7)
 
 #define MAX_RETRY 20
 #define TIME_OUT 400ms
@@ -55,6 +56,7 @@ struct FrameInfo {
     int bytesCount;
     uint32_t flags;
     int64_t timestamp;
+    std::vector<C2LargeFrameMetadataStruct> largeFrameInfo;
 };
 
 template <typename... T>
