@@ -74,10 +74,12 @@ cc_library {
     name: "libresourcemanagerservice",
 
     srcs: [
+        "CommonResourceModel.cpp",
         "ResourceManagerMetrics.cpp",
+        "ResourceModelSecureCodecCoexistence.cpp",
         "ResourceManagerService.cpp",
-        "ResourceObserverService.cpp",
         "ResourceManagerServiceUtils.cpp",
+        "ResourceObserverService.cpp",
         "ServiceLog.cpp",
         "UidObserver.cpp",
 
