@@ -40,6 +40,8 @@
 #include "ResourceManagerMetrics.h"
 #include "ResourceManagerService.h"
 #include "ResourceManagerServiceUtils.h"
+#include "ResourceModelSecureCodecCoexistence.h"
+#include "CommonResourceModel.h"
 #include "ResourceObserverService.h"
 #include "ServiceLog.h"
 
@@ -308,10 +310,40 @@ ResourceManagerService::ResourceManagerService(const sp<ProcessInfoInterface> &p
     mResourceManagerMetrics = std::make_unique<ResourceManagerMetrics>(mProcessInfo);
 }
 
+void ResourceManagerService::setUpResourceModels() {
+    // Default resource model with codec co-existence
+    if (mCodecCoexistenceModel == nullptr) {
+        mCodecCoexistenceModel = std::make_unique<ResourceModelSecureCodecCoexistence>(
+                ref<ResourceManagerService>(),
+                mSupportsMultipleSecureCodecs,
+                mSupportsSecureWithNonSecureCodec);
+    } else {
+        ResourceModelSecureCodecCoexistence* resourceModel =
+            static_cast<ResourceModelSecureCodecCoexistence*>(mCodecCoexistenceModel.get());
+        resourceModel->config(mSupportsMultipleSecureCodecs, mSupportsSecureWithNonSecureCodec);
+    }
+
+    if (mCommonResourceModel == nullptr) {
+        mCommonResourceModel = std::make_unique<CommonResourceModel>(ref<ResourceManagerService>());
+    }
+}
+
+void ResourceManagerService::setUpReclaimPolicies() {
+    // Default reclaim policy.
+    mReclaimFunctions.push_back([this](const ResourceRequestInfo& requestInfo,
+                                       PidUidVector* idVector,
+                                       std::shared_ptr<IResourceManagerClient>* client) {
+          return getLowestPriorityProcessBiggestClient_l(requestInfo, idVector, client);
+    });
+}
+
 //static
 void ResourceManagerService::instantiate() {
     std::shared_ptr<ResourceManagerService> service =
             ::ndk::SharedRefBase::make<ResourceManagerService>();
+    service->setUpResourceModels();
+    service->setUpReclaimPolicies();
+
     binder_status_t status =
                         AServiceManager_addServiceWithFlags(
                         service->asBinder().get(), getServiceName(),
@@ -353,6 +385,8 @@ Status ResourceManagerService::config(const std::vector<MediaResourcePolicyParce
             mSupportsSecureWithNonSecureCodec = (value == "true");
         }
     }
+
+    setUpResourceModels();
     return Status::ok();
 }
 
@@ -370,7 +404,7 @@ void ResourceManagerService::onFirstAdded(const MediaResourceParcel& resource,
         mCpuBoostCount++;
     } else if (resource.type == MediaResource::Type::kBattery
             && (resource.subType == MediaResource::SubType::kHwVideoCodec
-                || resource.subType == MediaResource::SubType::kSwVideoCodec)) {
+             || resource.subType == MediaResource::SubType::kSwVideoCodec)) {
         mSystemCB->noteStartVideo(clientInfo.uid);
     }
 }
@@ -385,7 +419,7 @@ void ResourceManagerService::onLastRemoved(const MediaResourceParcel& resource,
         }
     } else if (resource.type == MediaResource::Type::kBattery
             && (resource.subType == MediaResource::SubType::kHwVideoCodec
-                || resource.subType == MediaResource::SubType::kSwVideoCodec)) {
+             || resource.subType == MediaResource::SubType::kSwVideoCodec)) {
         mSystemCB->noteStopVideo(clientInfo.uid);
     }
 }
@@ -413,7 +447,6 @@ Status ResourceManagerService::addResource(const ClientInfoParcel& clientInfo,
     int32_t pid = clientInfo.pid;
     int32_t uid = clientInfo.uid;
     int64_t clientId = clientInfo.id;
-    const std::string& name = clientInfo.name;
     String8 log = String8::format("addResource(pid %d, uid %d clientId %lld, resources %s)",
             pid, uid, (long long) clientId, getString(resources).c_str());
     mServiceLog->add(log);
@@ -428,7 +461,7 @@ Status ResourceManagerService::addResource(const ClientInfoParcel& clientInfo,
         uid = callingUid;
     }
     ResourceInfos& infos = getResourceInfosForEdit(pid, mMap);
-    ResourceInfo& info = getResourceInfoForEdit(uid, clientId, name, client, infos);
+    ResourceInfo& info = getResourceInfoForEdit(clientInfo, client, infos);
     ResourceList resourceAdded;
 
     for (size_t i = 0; i < resources.size(); ++i) {
@@ -586,17 +619,64 @@ Status ResourceManagerService::removeResource(const ClientInfoParcel& clientInfo
     return Status::ok();
 }
 
-void ResourceManagerService::getClientForResource_l(int callingPid,
-        const MediaResourceParcel *res,
+void ResourceManagerService::getClientForResource_l(const ResourceRequestInfo& requestInfo,
         PidUidVector* idVector,
         std::vector<std::shared_ptr<IResourceManagerClient>>* clients) {
+    int callingPid = requestInfo.mCallingPid;
+    const MediaResourceParcel* res = requestInfo.mResource;
     if (res == NULL) {
         return;
     }
+
+    // Before applying any reclaim policies, check if we have clients marked for
+    // pending removal in the same process.
     std::shared_ptr<IResourceManagerClient> client;
-    if (getLowestPriorityBiggestClient_l(callingPid, res->type, res->subType, idVector, &client)) {
+    uid_t uid = 0;
+    if (getBiggestClientPendingRemoval_l(callingPid, res->type, res->subType, uid, &client)) {
+        idVector->emplace_back(callingPid, uid);
         clients->push_back(client);
+        return;
     }
+
+    // Run through all the reclaim policies until a client to reclaim from is identified.
+    for (ReclaimFunction reclaimFunction : mReclaimFunctions) {
+        if (reclaimFunction(requestInfo, idVector, &client)) {
+            clients->push_back(client);
+            break;
+        }
+    }
+}
+
+bool ResourceManagerService::handleCodecResourceReclaim_l(
+        const ClientInfoParcel& clientInfo,
+        const std::vector<MediaResourceParcel>& resources,
+        std::vector<std::pair<int32_t, uid_t>>* idVector,
+        std::vector<std::shared_ptr<IResourceManagerClient>>* clients) {
+
+    ReclaimRequestInfo requestInfo {clientInfo.pid, resources};
+
+    // Ensure secure/non-secure codec co-existence conflict is addressed first.
+    if (!mCodecCoexistenceModel->getClients(requestInfo, idVector, clients)) {
+        ALOGI("%s: There is a secure/non-secure codec conflict. Can't reclaim codec", __func__);
+        return false;
+    }
+
+    // If we have already found a client to reclaim from, return now.
+    if (!clients->empty()) {
+        return true;
+    }
+
+    // Since there isn't a secure/non-secure codec conflict, handle the other
+    // codec resources.
+    // In this Common Resource Model, all the resources (of a particular type,
+    // be it DRM or Codec) are shared from the common resource pool.
+    // We may have have a different Resource Model where in:
+    //   - Resource available for a particular DRM scheme (say widevine or
+    //   playready) is exclusive to that
+    //   - Resource available for a particular Codec implementation (say AVC
+    //   codec) is is exclusive to that.
+    // In such a Resource model, we need to implement it differently.
+    return mCommonResourceModel->getClients(requestInfo, idVector, clients);
 }
 
 Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInfo,
@@ -608,6 +688,11 @@ Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInf
     mServiceLog->add(log);
     *_aidl_return = false;
 
+    // Check if there are any resources to be reclaimed before processing.
+    if (resources.empty()) {
+        return Status::ok();
+    }
+
     std::vector<std::shared_ptr<IResourceManagerClient>> clients;
     PidUidVector idVector;
     {
@@ -618,80 +703,26 @@ Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInf
                     callingPid, actualCallingPid);
             callingPid = actualCallingPid;
         }
-        const MediaResourceParcel *secureCodec = NULL;
-        const MediaResourceParcel *nonSecureCodec = NULL;
-        const MediaResourceParcel *graphicMemory = NULL;
-        const MediaResourceParcel *drmSession = NULL;
-        for (size_t i = 0; i < resources.size(); ++i) {
-            switch (resources[i].type) {
-                case MediaResource::Type::kSecureCodec:
-                    secureCodec = &resources[i];
-                    break;
-                case MediaResource::Type::kNonSecureCodec:
-                    nonSecureCodec = &resources[i];
-                    break;
-                case MediaResource::Type::kGraphicMemory:
-                    graphicMemory = &resources[i];
-                    break;
-                case MediaResource::Type::kDrmSession:
-                    drmSession = &resources[i];
-                    break;
-                default:
-                    break;
-            }
-        }
 
-        // first pass to handle secure/non-secure codec conflict
-        if (secureCodec != NULL) {
-            if (!mSupportsMultipleSecureCodecs) {
-                if (!getAllClients_l(callingPid, MediaResource::Type::kSecureCodec,
-                            secureCodec->subType, &idVector, &clients)) {
-                    return Status::ok();
-                }
+        // The resource types that are handled are either Codec
+        // (secure/unsecure) or DRM session
+        switch (resources[0].type) {
+        case MediaResource::Type::kSecureCodec:
+        case MediaResource::Type::kNonSecureCodec:
+            {
+                // Handling codec resource reclaim
+                handleCodecResourceReclaim_l(clientInfo, resources, &idVector, &clients);
+                break;
             }
-            if (!mSupportsSecureWithNonSecureCodec) {
-                if (!getAllClients_l(callingPid, MediaResource::Type::kNonSecureCodec,
-                            secureCodec->subType, &idVector, &clients)) {
-                    return Status::ok();
-                }
+        case MediaResource::Type::kDrmSession:
+            {
+                // Handling DRM resource reclaim
+                ReclaimRequestInfo requestInfo {callingPid, resources};
+                mCommonResourceModel->getClients(requestInfo, &idVector, &clients);
+                break;
             }
-        }
-        if (nonSecureCodec != NULL) {
-            if (!mSupportsSecureWithNonSecureCodec) {
-                if (!getAllClients_l(callingPid, MediaResource::Type::kSecureCodec,
-                        nonSecureCodec->subType, &idVector, &clients)) {
-                    return Status::ok();
-                }
-            }
-        }
-        if (drmSession != NULL) {
-            getClientForResource_l(callingPid, drmSession, &idVector, &clients);
-            if (clients.size() == 0) {
-                return Status::ok();
-            }
-        }
-
-        if (clients.size() == 0) {
-            // if no secure/non-secure codec conflict, run second pass to handle other resources.
-            getClientForResource_l(callingPid, graphicMemory, &idVector, &clients);
-        }
-
-        if (clients.size() == 0) {
-            // if we are here, run the third pass to free one codec with the same type.
-            getClientForResource_l(callingPid, secureCodec, &idVector, &clients);
-            getClientForResource_l(callingPid, nonSecureCodec, &idVector, &clients);
-        }
-
-        if (clients.size() == 0) {
-            // if we are here, run the fourth pass to free one codec with the different type.
-            if (secureCodec != NULL) {
-                MediaResource temp(MediaResource::Type::kNonSecureCodec, secureCodec->subType, 1);
-                getClientForResource_l(callingPid, &temp, &idVector, &clients);
-            }
-            if (nonSecureCodec != NULL) {
-                MediaResource temp(MediaResource::Type::kSecureCodec, nonSecureCodec->subType, 1);
-                getClientForResource_l(callingPid, &temp, &idVector, &clients);
-            }
+        default:
+            break;
         }
     }
 
@@ -955,21 +986,23 @@ bool ResourceManagerService::getPriority_l(int pid, int* priority) {
     return mProcessInfo->getPriority(newPid, priority);
 }
 
-bool ResourceManagerService::getAllClients_l(int callingPid, MediaResource::Type type,
-        MediaResource::SubType subType,
-        PidUidVector* idVector,
-        std::vector<std::shared_ptr<IResourceManagerClient>>* clients) {
+bool ResourceManagerService::getAllClients_l(
+    const ResourceRequestInfo& resourceInfo,
+    std::vector<std::pair<int32_t, uid_t>>* idVector,
+    std::vector<std::shared_ptr<IResourceManagerClient>>* clients) {
+    MediaResource::Type type = resourceInfo.mResource->type;
+    MediaResource::SubType subType = resourceInfo.mResource->subType;
     std::vector<std::shared_ptr<IResourceManagerClient>> temp;
     PidUidVector tempIdList;
 
     for (auto& [pid, infos] : mMap) {
         for (const auto& [id, info] : infos) {
             if (hasResourceType(type, subType, info.resources)) {
-                if (!isCallingPriorityHigher_l(callingPid, pid)) {
+                if (!isCallingPriorityHigher_l(resourceInfo.mCallingPid, pid)) {
                     // some higher/equal priority process owns the resource,
                     // this request can't be fulfilled.
-                    ALOGE("getAllClients_l: can't reclaim resource %s from pid %d",
-                            asString(type), pid);
+                    ALOGE("%s: can't reclaim resource %s from pid %d",
+                          __func__, asString(type), pid);
                     return false;
                 }
                 temp.push_back(info.client);
@@ -978,7 +1011,7 @@ bool ResourceManagerService::getAllClients_l(int callingPid, MediaResource::Type
         }
     }
     if (temp.size() == 0) {
-        ALOGV("getAllClients_l: didn't find any resource %s", asString(type));
+        ALOGV("%s: didn't find any resource %s", __func__, asString(type));
         return true;
     }
 
@@ -987,40 +1020,41 @@ bool ResourceManagerService::getAllClients_l(int callingPid, MediaResource::Type
     return true;
 }
 
-bool ResourceManagerService::getLowestPriorityBiggestClient_l(int callingPid,
-        MediaResource::Type type,
-        MediaResource::SubType subType,
+// Process priority (oom score) based reclaim:
+//   - Find a process with lowest priority (than that of calling process).
+//   - Find the bigegst client (with required resources) from that process.
+bool ResourceManagerService::getLowestPriorityProcessBiggestClient_l(
+        const ResourceRequestInfo& requestInfo,
         PidUidVector* idVector,
-        std::shared_ptr<IResourceManagerClient> *client) {
+        std::shared_ptr<IResourceManagerClient>* client) {
+    int callingPid = requestInfo.mCallingPid;
+    MediaResource::Type type = requestInfo.mResource->type;
+    MediaResource::SubType subType = requestInfo.mResource->subType;
     int lowestPriorityPid;
     int lowestPriority;
     int callingPriority;
     uid_t uid = 0;
 
-    // Before looking into other processes, check if we have clients marked for
-    // pending removal in the same process.
-    if (getBiggestClientPendingRemoval_l(callingPid, type, subType, uid, client)) {
-        idVector->emplace_back(callingPid, uid);
-        return true;
-    }
     if (!getPriority_l(callingPid, &callingPriority)) {
-        ALOGE("getLowestPriorityBiggestClient_l: can't get process priority for pid %d",
-                callingPid);
+        ALOGE("%s: can't get process priority for pid %d", __func__, callingPid);
         return false;
     }
     if (!getLowestPriorityPid_l(type, subType, &lowestPriorityPid, &lowestPriority)) {
         return false;
     }
     if (lowestPriority <= callingPriority) {
-        ALOGE("getLowestPriorityBiggestClient_l: lowest priority %d vs caller priority %d",
-                lowestPriority, callingPriority);
+        ALOGE("%s: lowest priority %d vs caller priority %d",
+              __func__, lowestPriority, callingPriority);
         return false;
     }
 
+    // TODO: How about releasing all clients from this process?
     if (!getBiggestClient_l(lowestPriorityPid, type, subType, uid, client)) {
         return false;
     }
 
+    ALOGI("%s: CallingProcess(%d:%d) will reclaim from the lowestPriorityProcess(%d:%d)",
+          __func__, callingPid, callingPriority, lowestPriorityPid, lowestPriority);
     idVector->emplace_back(lowestPriorityPid, uid);
     return true;
 }
