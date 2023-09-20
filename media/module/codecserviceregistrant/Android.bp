@@ -24,6 +24,7 @@ cc_library {
     ],
 
     defaults: [
+        "libcodec2-aidl-defaults",
         "libcodec2-hidl-defaults",
     ],
     shared_libs: [
