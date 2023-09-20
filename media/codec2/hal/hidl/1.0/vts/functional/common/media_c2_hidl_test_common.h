@@ -29,6 +29,7 @@
 
 #define FLAG_NON_DISPLAY_FRAME (1 << 4)
 #define FLAG_CONFIG_DATA (1 << 5)
+#define FLAG_LARGE_AUDIO_FRAME (1 << 7)
 
 #define MAX_RETRY 20
 #define TIME_OUT 400ms
@@ -55,6 +56,7 @@ struct FrameInfo {
     int bytesCount;
     uint32_t flags;
     int64_t timestamp;
+    std::vector<C2AccessUnitInfosStruct> largeFrameInfo;
 };
 
 template <typename... T>
@@ -81,7 +83,7 @@ struct CodecListener : public android::Codec2Client::Listener {
     virtual void onWorkDone(const std::weak_ptr<android::Codec2Client::Component>& comp,
                             std::list<std::unique_ptr<C2Work>>& workItems) override {
         /* TODO */
-        ALOGD("onWorkDone called");
+        //ALOGD("onWorkDone called");
         (void)comp;
         if (callBack) callBack(workItems);
     }
@@ -98,7 +100,7 @@ struct CodecListener : public android::Codec2Client::Listener {
                          uint32_t errorCode) override {
         /* TODO */
         (void)comp;
-        ALOGD("onError called");
+        //ALOGD("onError called");
         if (errorCode != 0) ALOGE("Error : %u", errorCode);
     }
 
