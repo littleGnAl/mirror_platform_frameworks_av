@@ -225,17 +225,29 @@ int32_t populateInfoVector(std::string info, android::Vector<FrameInfo>* frameIn
     int32_t bytesCount = 0;
     uint32_t flags = 0;
     uint32_t timestamp = 0;
+    uint32_t nLargeFrames = 0;
     while (1) {
         if (!(eleInfo >> bytesCount)) break;
         eleInfo >> flags;
         eleInfo >> timestamp;
-        bool codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+        bool codecConfig = flags ?
+                ((1 << ((flags & 0x7f) - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
         if (codecConfig) numCsds++;
         bool nonDisplayFrame = ((flags & FLAG_NON_DISPLAY_FRAME) != 0);
         if (timestampDevTest && !codecConfig && !nonDisplayFrame) {
             timestampUslist->push_back(timestamp);
         }
-        frameInfo->push_back({bytesCount, flags, timestamp});
+        frameInfo->push_back({bytesCount, flags, timestamp, {}});
+        if (flags & FLAG_LARGE_AUDIO_FRAME) {
+            eleInfo >> nLargeFrames;
+            while(nLargeFrames-- > 0) {
+                eleInfo >> bytesCount;
+                eleInfo >> flags;
+                eleInfo >> timestamp;
+                frameInfo->editItemAt(frameInfo->size() - 1).largeFrameInfo.push_back(
+                        {(flags & 0x7f), static_cast<uint64_t>(bytesCount), 0, timestamp});
+            }
+        }
     }
     ALOGV("numCsds : %d", numCsds);
     eleInfo.close();

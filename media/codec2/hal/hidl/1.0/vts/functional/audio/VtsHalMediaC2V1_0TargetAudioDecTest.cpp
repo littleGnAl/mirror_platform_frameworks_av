@@ -28,9 +28,15 @@
 #include <C2Config.h>
 #include <C2Debug.h>
 #include <codec2/hidl/client.h>
-
 #include "media_c2_hidl_test_common.h"
-using DecodeTestParameters = std::tuple<std::string, std::string, uint32_t, bool>;
+
+#include <com_android_media_codec_flags.h>
+
+namespace codec_flags = com::android::media::codec::flags;
+using DecodeTestParameters = std::tuple<std::string /*instance_name*/,
+        std::string /*component_name*/,
+        uint32_t /*stream_index*/,
+        bool /*signal end-of-stream nor not*/>;
 static std::vector<DecodeTestParameters> gDecodeTestParameters;
 
 using CsdFlushTestParameters = std::tuple<std::string, std::string, bool>;
@@ -54,6 +60,7 @@ std::vector<CompToFiles> gCompToFiles = {
         {"g711-mlaw", "bbb_g711mulaw_1ch_8khz.raw", "bbb_g711mulaw_1ch_8khz.info"},
         {"gsm", "bbb_gsm_1ch_8khz_13kbps.raw", "bbb_gsm_1ch_8khz_13kbps.info"},
         {"raw", "bbb_raw_1ch_8khz_s32le.raw", "bbb_raw_1ch_8khz_s32le.info"},
+        {"raw", "bbb_raw_1ch_8khz_s32le.raw", "bbb_raw_1ch_8khz_s32le_largeframe.info"},
         {"flac", "bbb_flac_stereo_680kbps_48000hz.flac", "bbb_flac_stereo_680kbps_48000hz.info"},
 };
 
@@ -134,6 +141,7 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
     struct outputMetaData {
         uint64_t timestampUs;
         uint32_t rangeLength;
+        std::vector<C2LargeFrameMetadataStruct> largeFrameInfo;
     };
     // callback function to process onWorkDone received by Listener
     void handleWorkDone(std::list<std::unique_ptr<C2Work>>& workItems) {
@@ -158,8 +166,20 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
                                                    .capacity();
                     // List of timestamp values and output size to calculate timestamp
                     if (mTimestampDevTest) {
-                        outputMetaData meta = {mTimestampUs, rangeLength};
+                        outputMetaData meta = {mTimestampUs, rangeLength, {}};
                         oBufferMetaData.push_back(meta);
+                        if (codec_flags::large_audio_frame()) {
+                            std::shared_ptr<const C2LargeFrameMetadata::output> inBufferInfo =
+                                    std::static_pointer_cast<const C2LargeFrameMetadata::output>(
+                                    work->worklets.front()->output.buffers[0]->getInfo(
+                                    C2LargeFrameMetadata::output::PARAM_TYPE));
+                            if (inBufferInfo) {
+                                for (int nMeta = 0; nMeta < inBufferInfo->flexCount(); nMeta++) {
+                                    oBufferMetaData.back().largeFrameInfo.push_back(
+                                            inBufferInfo->m.values[nMeta]);
+                                }
+                            }
+                        }
                     }
                 }
                 bool mCsd = false;
@@ -199,6 +219,9 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
     std::string mInputFile;
     std::string mInfoFile;
     size_t mStreamIndex = 0;
+
+    uint32_t mMaxOutputSize;
+    uint32_t mOutputThresholdSize;
 
   protected:
     static void description(const std::string& description) {
@@ -244,6 +267,100 @@ void validateComponent(const std::shared_ptr<android::Codec2Client::Component>& 
         }
     }
     ALOGV("Component Valid");
+}
+
+bool isLargeAudioFrameSupported(const std::shared_ptr<android::Codec2Client::Component> &comp,
+        std::vector<C2FieldSupportedValues>& supportedValues) {
+    std::unique_ptr<C2StreamThresholdBufferSizeInfo::output> outputThresholdBufferSize =
+             std::make_unique<C2StreamThresholdBufferSizeInfo::output>();
+    std::unique_ptr<C2StreamMaxBufferSizeInfo::output> maxOutputBufferSize =
+             std::make_unique<C2StreamMaxBufferSizeInfo::output>();
+    std::vector<C2FieldSupportedValuesQuery> validValueInfos = {
+            C2FieldSupportedValuesQuery::Current(
+                    C2ParamField(maxOutputBufferSize.get(), &C2StreamMaxBufferSizeInfo::value)),
+            C2FieldSupportedValuesQuery::Current(
+                    C2ParamField(outputThresholdBufferSize.get(),
+                            &C2StreamThresholdBufferSizeInfo::value))};
+    c2_status_t c2err = comp->querySupportedValues(validValueInfos, C2_DONT_BLOCK);
+    if (c2err != C2_OK || validValueInfos.size() != 2) {
+        return false;
+    }
+    supportedValues.clear();
+    for (int i = 0; i < 2; i++) {
+        if (validValueInfos[i].values.type == C2FieldSupportedValues::EMPTY) {
+            return false;
+        }
+        supportedValues.push_back(validValueInfos[i].values);
+    }
+    return codec_flags::large_audio_frame();
+}
+
+c2_status_t configureLargeFrameParams(const std::shared_ptr<android::Codec2Client::Component> &comp,
+        uint32_t& maxOutput, uint32_t& outputThreshold,
+        const std::vector<C2FieldSupportedValues>& supportedValues) {
+
+    if (supportedValues.empty()) {
+        ALOGE("Error: No supported values in large audio frame params");
+        return C2_BAD_VALUE;
+    }
+
+    auto boundBySupportedValues = [](const C2FieldSupportedValues& supportedValues, uint32_t& value)
+            -> c2_status_t {
+        uint32_t oBufMin = 0, oBufMax = 0;
+        switch (supportedValues.type) {
+            case C2FieldSupportedValues::type_t::RANGE:
+            {
+                const auto& range = supportedValues.range;
+                oBufMax = (uint32_t)(range.max).ref<uint32_t>();
+                oBufMin = (uint32_t)(range.min).ref<uint32_t>();
+                value = (value > oBufMax) ? oBufMax :
+                        (value < oBufMin) ? oBufMin : value;
+                break;
+            }
+
+            case C2FieldSupportedValues::type_t::VALUES:
+            {
+                uint32_t lastValue;
+                for (const C2Value::Primitive& prim : supportedValues.values) {
+                    lastValue = (uint32_t)prim.ref<uint32_t>();
+                    if (lastValue > value) {
+                        value = lastValue;
+                        break;
+                    }
+                }
+                if (value > lastValue) {
+                    value = lastValue;
+                }
+                break;
+            }
+
+            default:
+                return C2_BAD_VALUE;
+            }
+        return C2_OK;
+    };
+    c2_status_t c2_err = boundBySupportedValues(supportedValues[0], maxOutput);
+    if (c2_err != C2_OK) {
+        return c2_err;
+    }
+    c2_err = boundBySupportedValues(supportedValues[1], outputThreshold);
+    if (c2_err != C2_OK) {
+        return c2_err;
+    }
+    if (outputThreshold > maxOutput) {
+        outputThreshold = maxOutput;
+    }
+    ALOGV("Setting large frame format : Max: %d - Threshold: %d", maxOutput, outputThreshold);
+    std::vector<std::unique_ptr<C2SettingResult>> failures;
+    C2StreamMaxBufferSizeInfo::output maxBufferSize(0u, maxOutput);
+    C2StreamThresholdBufferSizeInfo::output thresholdSize(0u, outputThreshold);
+    std::vector<C2Param*> configParam{&maxBufferSize, &thresholdSize};
+    c2_status_t status = comp->config(configParam, C2_DONT_BLOCK, &failures);
+    if (status != C2_OK || failures.size() != 0u) {
+        ALOGE("Large frame Audio configuration failed for maxSize: %d, thresholdSize: %d",
+                maxOutput, outputThreshold);
+    }
+    return status;
 }
 
 // Set Default config param.
@@ -314,6 +431,10 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
     typedef std::unique_lock<std::mutex> ULock;
     int frameID = offset;
     int maxRetry = 0;
+    std::shared_ptr<C2Buffer> buffer;
+    std::vector<C2FieldSupportedValues> largeFrameValues;
+    bool isComponentSupportsLargeAudioFrame = isLargeAudioFrameSupported(component,
+            largeFrameValues);
     while (1) {
         if (frameID == (int)Info->size() || frameID == (offset + range)) break;
         uint32_t flags = 0;
@@ -371,7 +492,17 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
 
             memcpy(view.base(), data, size);
 
-            work->input.buffers.emplace_back(new LinearBuffer(block));
+            buffer.reset(new LinearBuffer(block));
+            if (!(*Info)[frameID].largeFrameInfo.empty() && isComponentSupportsLargeAudioFrame) {
+                const std::vector<C2LargeFrameMetadataStruct>& meta =
+                        (*Info)[frameID].largeFrameInfo;
+                ALOGV("Large Audio frame supported for %s, frameID: %d, size: %zu",
+                        component->getName().c_str(), frameID, meta.size());
+                const std::shared_ptr<C2LargeFrameMetadata::input> largeFrame =
+                        C2LargeFrameMetadata::input::AllocShared(meta.size(), 0u, meta);
+                buffer->setInfo(largeFrame);
+            }
+            work->input.buffers.push_back(buffer);
             free(data);
         }
         work->worklets.clear();
@@ -398,9 +529,37 @@ void Codec2AudioDecHidlTestBase::validateTimestampList(int32_t* bitStreamInfo) {
     auto itOut = oBufferMetaData.begin();
     EXPECT_EQ(*itIn, itOut->timestampUs);
     uint64_t expectedTimeStamp = *itIn;
-    while (itOut != oBufferMetaData.end()) {
+    bool err= false;
+    while (!err && itOut != oBufferMetaData.end()) {
         EXPECT_EQ(expectedTimeStamp, itOut->timestampUs);
         if (expectedTimeStamp != itOut->timestampUs) break;
+        if (!itOut->largeFrameInfo.empty()) {
+            // checking large audio frame metadata
+            if (itOut->largeFrameInfo[0].presentationTimeUs != itOut->timestampUs) {
+                ALOGE("Metadata first time stamp doesn't match");
+                err = true;
+                break;
+            }
+            uint64_t totalSize = 0;
+            uint64_t sampleSize = 0;
+            int64_t nextTimestamp = itOut->timestampUs;
+            for (auto& meta : itOut->largeFrameInfo) {
+                if (nextTimestamp != meta.presentationTimeUs) {
+                    ALOGE("Metadata timestamp error: expect: %lld, got: %lld",
+                            (long long)nextTimestamp, (long long)meta.presentationTimeUs);
+                    err = true;
+                    break;
+                }
+                totalSize += meta.size;
+                sampleSize = (meta.size / (nChannels * 2));
+                nextTimestamp += sampleSize * 1000000ll / nSampleRate;
+            }
+            if (totalSize != itOut->rangeLength) {
+                ALOGE("Metadata size error: expected:%lld, got: %d",
+                        (long long)totalSize, itOut->rangeLength);
+                err = true;
+            }
+        }
         // buffer samples = ((total bytes) / (ac * (bits per sample / 8))
         samplesReceived += ((itOut->rangeLength) / (nChannels * 2));
         expectedTimeStamp = samplesReceived * 1000000ll / nSampleRate;
@@ -448,7 +607,8 @@ TEST_P(Codec2AudioDecDecodeTest, DecodeTest) {
     android::Vector<FrameInfo> Info;
 
     int32_t numCsds = populateInfoVector(mInfoFile, &Info, mTimestampDevTest, &mTimestampUslist);
-    ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << mInfoFile;
+    ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << mInfoFile <<
+            " #CSD " << numCsds;
 
     // Reset total no of frames received
     mFramesReceived = 0;
@@ -469,10 +629,19 @@ TEST_P(Codec2AudioDecDecodeTest, DecodeTest) {
         std::cout << "[   WARN   ] Test Skipped \n";
         return;
     }
+    std::vector<C2FieldSupportedValues> supportedValues;
+    if (!Info.top().largeFrameInfo.empty() &&
+            isLargeAudioFrameSupported(mComponent, supportedValues)) {
+        // try about 1MB buffer with threshold of about 750KB
+        mMaxOutputSize = 1000000u; mOutputThresholdSize = 750000u;
+        ASSERT_EQ(configureLargeFrameParams(mComponent, mMaxOutputSize,
+                mOutputThresholdSize, supportedValues), C2_OK);
+    }
     ASSERT_EQ(mComponent->start(), C2_OK);
     std::ifstream eleStream;
     eleStream.open(mInputFile, std::ifstream::binary);
     ASSERT_EQ(eleStream.is_open(), true);
+
     ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                           mFlushedIndices, mLinearPool, eleStream, &Info, 0,
                                           (int)Info.size(), signalEOS));
@@ -682,6 +851,7 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
     uint32_t frameId = 0;
     uint32_t flags = 0;
     uint32_t timestamp = 0;
+    uint32_t nLargeFrames = 0;
     bool codecConfig = false;
     // This test introduces empty CSD after every 20th frame
     // and empty input frames at an interval of 5 frames.
@@ -692,13 +862,25 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
             else
                 flags = 0;
             bytesCount = 0;
+            Info.push_back({bytesCount, (flags & 0x7f), timestamp, {}});
         } else {
             if (!(eleInfo >> bytesCount)) break;
             eleInfo >> flags;
             eleInfo >> timestamp;
-            codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+            codecConfig = flags ?
+                    ((1 << ((flags & 0x7f) - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+            Info.push_back({bytesCount, (flags & 0x7f), timestamp, {}});
+            if (codec_flags::large_audio_frame() && (flags & FLAG_LARGE_AUDIO_FRAME)) {
+                // this is a large audio frame.
+                while(nLargeFrames-- > 0) {
+                    eleInfo >> bytesCount;
+                    eleInfo >> flags;
+                    eleInfo >> timestamp;
+                    Info.editItemAt(Info.size() - 1).largeFrameInfo.push_back(
+                            {(uint32_t)bytesCount, (flags & 0x7f), 0, timestamp});
+                }
+            }
         }
-        Info.push_back({bytesCount, flags, timestamp});
         frameId++;
     }
     eleInfo.close();
@@ -864,5 +1046,6 @@ int main(int argc, char** argv) {
     }
 
     ::testing::InitGoogleTest(&argc, argv);
+
     return RUN_ALL_TESTS();
 }
