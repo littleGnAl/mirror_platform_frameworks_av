@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f59a4fd_5c1e580f",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-09-21T11:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "993f9c4c_e4434d37",
+      "range": {
+        "startLine": 357,
+        "startChar": 27,
+        "endLine": 357,
+        "endChar": 37
+      },
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f0bad20_074cfb2f",
@@ -149,6 +173,24 @@
       "writtenOn": "2023-03-01T01:12:48Z",
       "side": 1,
       "message": "with c++11 this can be std::min({iMax, pMax, bMax)});",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85f533a_fb3f1607",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-09-21T11:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f0bad20_074cfb2f",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -170,6 +212,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e8cb3d_05af047c",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-09-21T11:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb2fd9bf_920199d1",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca6dde37_53c1e1bd",
@@ -183,6 +243,24 @@
       "writtenOn": "2023-02-28T21:56:52Z",
       "side": 1,
       "message": "these could be defined in the cpp file.",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd2e194_ab527ebe",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-09-21T11:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca6dde37_53c1e1bd",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -272,6 +350,24 @@
       "side": 1,
       "message": "\u003e James,\n\u003e \n\u003e Intention is to limit the max and min QP used by the encoder.\n\u003e \n\u003e We see that mCodecConfiguration-\u003erc_max_quantizer and mCodecConfiguration-\u003erc_min_quantizer are the two parameters that can be used to control max and min qp in the vpx encoder library.\n\u003e \n\u003e Since the library takes only one min and max, we are taking minimum of the I/P/B Max QP values and setting rc_max_quantizer with this. (similarly taking maximum of min QP values and setting rc_min_quantizer).\n\u003e \n\u003e mCodecConfiguration-\u003erc_max_quantizer and mCodecConfiguration-\u003erc_min_quantizer are set before calling vpx_codec_enc_init().\n\u003e \n\u003e \n\u003e Is the above way to configure min and max qp to the library incorrect?\n\u003e Are rc_max_quantizer and rc_min_quantizer only used for I frame qp in the library?\n\u003e \n\nThe quantizers are used for all frames and can be set with a configuration update, SVC also allows per-layer quantizers. See some examples in webrtc:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/video_coding/codecs/vp8/libvpx_vp8_encoder.cc;l\u003d370;drc\u003da09f21b2074b8058f92714eaa426b7a72fd85570\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/video_coding/codecs/vp8/libvpx_vp8_encoder.cc;l\u003d1033;drc\u003da09f21b2074b8058f92714eaa426b7a72fd85570\n\n\u003e Please correct us, if the above understanding is wrong.\n\u003e Thanks.",
       "parentUuid": "7c2305b1_3594e624",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42dc171_93b8ea3c",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-09-21T11:28:37Z",
+      "side": 1,
+      "message": "Although vpx allows configuring per frame quantizer, the plugin cannot precisely tell if the frame that is being encoded is I frame or P frame (as the current frame type depends on params like key max, key min, force sync frame, scene-cut, ...) configuring the rc max/min quantizer with correct (I/P max, min) values may not possible. we can however say after a particular frame modify the qp max/min values but format keys KEY_VIDEO_QP_I_MAX/MIN, KEY_VIDEO_QP_P_MAX/MIN are not for that\n\nSo we can are configuring the qp level at init only. Now the choice needs to be made whether to use i frame quants max/min and over all max/min during configuration\n\nplease let us know how to proceed",
+      "parentUuid": "9e81e353_8cc56330",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
