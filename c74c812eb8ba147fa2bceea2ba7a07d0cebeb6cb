@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5140fd5a_bd6c5063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959195
+      },
+      "writtenOn": "2023-09-21T13:49:25Z",
+      "side": 1,
+      "message": "following links are not accessible \npath: media/module/codecs/flac/dec/test/DynamicConfig.xml\nhttps://dl.google.com/android-unittest/media/frameworks/av/media/module/codecs/flac/dec/test/extractor-1.5.zip\n\npath: media/module/esds/tests/DynamicConfig.xml\nhttps://dl.google.com/android-unittest/media/frameworks/av/media/module/esds/tests/ESDSTestRes-1.1.zip\n\npath: media/module/extractors/tests/DynamicConfig.xml\nhttps://dl.google.com/android-unittest/media/frameworks/av/media/module/extractors/tests/extractor-1.5.zip\n\npath: media/module/libmediatranscoding/transcoder/benchmark/AndroidTestTemplate.xml\nhttps://dl.google.com/android-unittest/media/frameworks/av/media/module/libmediatranscoding/transcoder/benchmark//TranscodingBenchmark-1.2.zip?unzip\u003dtrue\n\npath: media/module/metadatautils/test/DynamicConfig.xml\nhttps://dl.google.com/android-unittest/media/frameworks/av/media/module/metadatautils/test/MetaDataUtilsTestRes-1.1.zip\n\npath: media/tests/benchmark/MediaBenchmarkTest/DynamicConfig.xml\nhttps://dl.google.com/android-unittest/media/frameworks/av/media/tests/benchmark/MediaBenchmarkTest/MediaBenchmark-1.1.zip",
+      "revId": "c74c812eb8ba147fa2bceea2ba7a07d0cebeb6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
