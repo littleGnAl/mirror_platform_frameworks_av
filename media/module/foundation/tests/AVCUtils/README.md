@@ -22,7 +22,7 @@ To test 32-bit binary push binaries from nativetest.
 adb push ${OUT}/data/nativetest/AVCUtilsUnitTest/AVCUtilsUnitTest /data/local/tmp/
 ```
 
-The resource file for the tests is taken from [here](https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.zip). Download, unzip and push these files into device for testing.
+The resource file for the tests is taken from [here](https://dl.google.com/android-unittest/media/frameworks/av/media/module/foundation/tests/AVCUtils/AVCUtilsUnitTest-1.0.zip). Download, unzip and push these files into device for testing.
 
 ```
 adb push AVCUtilsUnitTest /data/local/tmp/

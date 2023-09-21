@@ -11,7 +11,7 @@ mmm frameworks/av/media/tests/benchmark/
 ```
 
 # Resources
-The resource file for the tests is taken from [here](https://storage.googleapis.com/android_media/frameworks/av/media/tests/benchmark/MediaBenchmark.zip)
+The resource file for the tests is taken from [here](https://dl.google.com/android-unittest/media/frameworks/av/media/tests/benchmark/MediaBenchmarkTest/MediaBenchmark-1.1.zip)
 
 Download the MediaBenchmark.zip file, unzip and push it to /data/local/tmp/ on the device.
 
