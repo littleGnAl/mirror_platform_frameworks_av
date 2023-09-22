@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada326c9_16c529b8",
+        "filename": "media/codec2/hal/common/include/codec2/common/BufferTypes.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T23:24:03Z",
+      "side": 1,
+      "message": "seems it makes more sense without `const`",
+      "revId": "7ce337fe318bd1bf817acd06c2b73f02bdf5bfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8970b578_0a243bd0",
+        "filename": "media/codec2/hal/hidl/1.0/utils/types.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T23:24:03Z",
+      "side": 1,
+      "message": "maybe `LOG(FATAL) \u003c\u003c \"This is not used\";` ?",
+      "revId": "7ce337fe318bd1bf817acd06c2b73f02bdf5bfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8445b5df_e42c752e",
+        "filename": "media/codec2/vndk/internal/C2BlockInternal.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T23:24:03Z",
+      "side": 1,
+      "message": "maybe drop const here?",
+      "range": {
+        "startLine": 189,
+        "startChar": 12,
+        "endLine": 189,
+        "endChar": 17
+      },
+      "revId": "7ce337fe318bd1bf817acd06c2b73f02bdf5bfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0520c376_605e8451",
+        "filename": "media/codec2/vndk/internal/C2BlockInternal.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T23:24:03Z",
+      "side": 1,
+      "message": "does the caller need to release the returned HardwareBuffer? if not which component has the ownership?",
+      "revId": "7ce337fe318bd1bf817acd06c2b73f02bdf5bfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147f627a_0fbc19bc",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T23:24:03Z",
+      "side": 1,
+      "message": "C2_OMITTED?",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "7ce337fe318bd1bf817acd06c2b73f02bdf5bfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67844ae8_767ed3b2",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T23:24:03Z",
+      "side": 1,
+      "message": "anonymous namespace",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "7ce337fe318bd1bf817acd06c2b73f02bdf5bfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3281da50_490bce89",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T23:24:03Z",
+      "side": 1,
+      "message": "```suggestion\n    } else {\n        return C2_OMITTED;\n    }\n```",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 262,
+        "endChar": 14
+      },
+      "revId": "7ce337fe318bd1bf817acd06c2b73f02bdf5bfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
