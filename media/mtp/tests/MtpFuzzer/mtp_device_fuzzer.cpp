@@ -28,6 +28,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <usbhost/usbhost.h>
+#include <functional>
 
 using namespace android;
 

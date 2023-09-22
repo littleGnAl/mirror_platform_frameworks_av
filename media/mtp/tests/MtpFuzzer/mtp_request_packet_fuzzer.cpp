@@ -19,6 +19,7 @@
 #include <MtpRequestPacket.h>
 #include <fuzzer/FuzzedDataProvider.h>
 #include <fstream>
+#include <functional>
 
 using namespace android;
 

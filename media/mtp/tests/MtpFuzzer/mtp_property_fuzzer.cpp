@@ -20,6 +20,7 @@
 #include <MtpProperty.h>
 #include <fuzzer/FuzzedDataProvider.h>
 #include <utils/String16.h>
+#include <functional>
 
 using namespace android;
 
