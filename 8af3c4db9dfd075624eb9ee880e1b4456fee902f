@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "178020cc_bbf85bbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-22T00:03:38Z",
+      "side": 1,
+      "message": "I am okay with this CL as is for now, but ideally we would have C2Fence::PIPE_FENCE as the base primitive that C2Igba uses. So the logical definition and implementation details would be inside C2Fence. Then C2Igba could use C2Fence::wait() and get the result (ready() or !valid())",
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c579cef9_3d6cfc5d",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-22T00:03:38Z",
+      "side": 1,
+      "message": "nit: TODO: replace this with a simple fd (basically move C2IgbaWaitableObj\u0027s waitObj into C2Fence::PipeFenceImpl).",
+      "range": {
+        "startLine": 78,
+        "startChar": 57,
+        "endLine": 78,
+        "endChar": 74
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1856176_1d10196e",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-22T00:03:38Z",
+      "side": 1,
+      "message": "I feel that this should be part of PipeFenceImpl. Basically, IgbaWaitableObj should depend on the C2Fence instead of the other way around.",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720b99ae_1ce67467",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-22T00:03:38Z",
+      "side": 1,
+      "message": "nit: we should probably return with an error instead of waiting indefinitely.",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14709409_cfd66ba0",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-22T00:03:38Z",
+      "side": 1,
+      "message": "ALOGD or ALOGV?\n\nFundamentally, the pipe based fence has 2 end states: HANGUP or POLLIN, and both are valid and common.",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b27f826_d1af038f",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-22T00:03:38Z",
+      "side": 1,
+      "message": "nit: wouldn\u0027t this happen every time the IGBA hangs up or the app is killed? As such, this is at most ALOGD.",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 9
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
