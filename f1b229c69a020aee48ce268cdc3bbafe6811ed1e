@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f63e4ab7_be654ab3",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T22:44:52Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 107
+      },
+      "revId": "f1b229c69a020aee48ce268cdc3bbafe6811ed1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b2b263_385bdd2a",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T22:44:52Z",
+      "side": 1,
+      "message": "shouldn\u0027t we use bare `native_handle_t` or an AIDL alternative?",
+      "revId": "f1b229c69a020aee48ce268cdc3bbafe6811ed1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb0468f_0d275789",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-09-22T22:44:52Z",
+      "side": 1,
+      "message": "Do we want to keep this for the vendor service side of the usage? If we plan to move away from this please add a TODO.",
+      "revId": "f1b229c69a020aee48ce268cdc3bbafe6811ed1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
