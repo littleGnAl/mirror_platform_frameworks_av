@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90f6243_faee5ad5",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-09-22T14:57:19Z",
+      "side": 1,
+      "message": "this seems to create a path to calling release() twice, which seems \nlike a bad idea.\n\nif it is not a bad idea, we need some comments in here explaining why it\nis safe to call release 2 times when we come through this path.",
+      "range": {
+        "startLine": 233,
+        "startChar": 15,
+        "endLine": 233,
+        "endChar": 39
+      },
+      "revId": "f5c9fa80066adfe52221ba05a39010f57063430c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
