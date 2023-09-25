@@ -4670,8 +4670,28 @@ status_t ACodec::setupAVCEncoderParameters(const sp<AMessage> &msg) {
     h264type.bMBAFF = OMX_FALSE;
     h264type.eLoopFilterMode = OMX_VIDEO_AVCLoopFilterEnable;
 
-    err = mOMXNode->setParameter(
-            OMX_IndexParamVideoAvc, &h264type, sizeof(h264type));
+    while (true) {
+        if (h264type.nBFrames == 0) {
+            h264type.nAllowedPictureTypes &= ~OMX_VIDEO_PictureTypeB;
+        }
+        err = mOMXNode->setParameter(
+                OMX_IndexParamVideoAvc, &h264type, sizeof(h264type));
+        if (err != OK) {
+            OMX_U32 newBframes = 0;
+            if (h264type.nBFrames > 1) {
+                newBframes = 1;
+            } else if (h264type.nBFrames > 0) {
+                newBframes = 0;
+            } else {
+                break;
+            }
+            ALOGD("[%s] setParameter with nBFrames = %u failed; trying again with nBFrames = %u",
+                  mComponentName.c_str(), h264type.nBFrames, newBframes);
+            h264type.nBFrames = newBframes;
+        } else {
+            break;
+        }
+    }
 
     if (err != OK) {
         return err;
