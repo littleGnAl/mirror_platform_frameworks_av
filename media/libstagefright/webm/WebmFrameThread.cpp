@@ -204,6 +204,9 @@ status_t WebmFrameSinkThread::stop() {
 
 void WebmFrameSinkThread::run() {
     int numVideoKeyFrames = 0;
+    // store previous audio and video timestamps; skip if the current timestamp is lower.
+    uint64_t prevAudioTs = 0;
+    uint64_t prevVideoTs = 0;
     List<const sp<WebmFrame> > outstandingFrames;
     while (!mDone) {
         ALOGV("wait v frame");
@@ -217,6 +220,8 @@ void WebmFrameSinkThread::run() {
         if (mStartOffsetTimecode == UINT64_MAX) {
             mStartOffsetTimecode =
                     std::min(audioFrame->getAbsTimecode(), videoFrame->getAbsTimecode());
+            prevAudioTs = audioFrame->getAbsTimecode();
+            prevVideoTs = videoFrame->getAbsTimecode();
         }
 
         if (videoFrame->mEos && audioFrame->mEos) {
@@ -226,11 +231,19 @@ void WebmFrameSinkThread::run() {
         if (*audioFrame < *videoFrame) {
             ALOGV("take a frame");
             mAudioFrames.take();
+            if (audioFrame->getAbsTimecode() < prevAudioTs) {
+                continue;
+            }
+            prevAudioTs = audioFrame->getAbsTimecode();
             audioFrame->updateAbsTimecode(audioFrame->getAbsTimecode() - mStartOffsetTimecode);
             outstandingFrames.push_back(audioFrame);
         } else {
             ALOGV("take v frame");
             mVideoFrames.take();
+            if (videoFrame->getAbsTimecode() < prevVideoTs) {
+                continue;
+            }
+            prevVideoTs = videoFrame->getAbsTimecode();
             videoFrame->updateAbsTimecode(videoFrame->getAbsTimecode() - mStartOffsetTimecode);
             outstandingFrames.push_back(videoFrame);
             if (videoFrame->mKey)
@@ -340,6 +353,7 @@ void WebmFrameMediaSourceThread::run() {
     int64_t lastTimestampUs = 0; // Previous sample time stamp
     int64_t lastDurationUs = 0; // Previous sample duration
     int64_t previousPausedDurationUs = 0;
+    bool skipBuffer = false;
 
     const uint64_t kUninitialized = 0xffffffffffffffffL;
     mStartTimeUs = kUninitialized;
@@ -377,8 +391,26 @@ void WebmFrameMediaSourceThread::run() {
             mResumed = false;
         }
         timestampUs -= previousPausedDurationUs;
-        CHECK_GE(timestampUs, 0LL);
 
+        // release the buffer if the timestamp is negative or exceeds INT64_MAX
+        if (timestampUs < 0) {
+            skipBuffer = true;
+        } else {
+            lastDurationUs = timestampUs - lastTimestampUs;
+            // check to prevent mTrackDurationUs overflow when adding lastDurationUS
+            if (timestampUs > (INT64_MAX / 1000) - lastDurationUs) {
+                skipBuffer = true;
+            }
+        }
+        if (skipBuffer) {
+            ALOGE("timestamp is %" PRId64 ,timestampUs);
+            // reset lastDurationUS to 0 since the current buffer is not used for playback
+            lastDurationUs = 0;
+            buffer->release();
+            buffer = NULL;
+            skipBuffer = false;
+            continue;
+        }
         int32_t isSync = false;
         md.findInt32(kKeyIsSyncFrame, &isSync);
         const sp<WebmFrame> f = new WebmFrame(
@@ -401,7 +433,6 @@ void WebmFrameMediaSourceThread::run() {
         if (timestampUs > mTrackDurationUs) {
             mTrackDurationUs = timestampUs;
         }
-        lastDurationUs = timestampUs - lastTimestampUs;
         lastTimestampUs = timestampUs;
     }
 
