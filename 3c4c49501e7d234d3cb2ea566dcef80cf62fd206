@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f704c477_c77e1da2",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-26T08:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c41e1a0_c709ed86",
+      "range": {
+        "startLine": 322,
+        "startChar": 19,
+        "endLine": 322,
+        "endChar": 35
+      },
+      "revId": "3c4c49501e7d234d3cb2ea566dcef80cf62fd206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62092727_74f4853a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-22T22:36:17Z",
       "side": 1,
       "message": "`HandleInterleavedPlanes`",
+      "range": {
+        "startLine": 749,
+        "startChar": 12,
+        "endLine": 749,
+        "endChar": 36
+      },
+      "revId": "3c4c49501e7d234d3cb2ea566dcef80cf62fd206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d51bd33_808522e7",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-26T08:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62092727_74f4853a",
       "range": {
         "startLine": 749,
         "startChar": 12,
