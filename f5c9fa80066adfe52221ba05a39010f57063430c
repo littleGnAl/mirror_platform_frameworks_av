@@ -22,6 +22,30 @@
       },
       "revId": "f5c9fa80066adfe52221ba05a39010f57063430c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019b4e10_decc2a4c",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 2045828
+      },
+      "writtenOn": "2023-09-26T13:34:31Z",
+      "side": 1,
+      "message": "In the latest patchset, release() is invoked only once and a comment is included to clarify the modification.",
+      "parentUuid": "f90f6243_faee5ad5",
+      "range": {
+        "startLine": 233,
+        "startChar": 15,
+        "endLine": 233,
+        "endChar": 39
+      },
+      "revId": "f5c9fa80066adfe52221ba05a39010f57063430c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
