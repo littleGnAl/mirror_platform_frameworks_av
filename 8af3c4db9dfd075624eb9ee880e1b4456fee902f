@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de2a0295_8eea7987",
+        "filename": "media/codec2/vndk/include/C2FenceFactory.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-26T06:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c579cef9_3d6cfc5d",
+      "range": {
+        "startLine": 78,
+        "startChar": 57,
+        "endLine": 78,
+        "endChar": 74
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1856176_1d10196e",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-09-22T00:03:38Z",
       "side": 1,
       "message": "I feel that this should be part of PipeFenceImpl. Basically, IgbaWaitableObj should depend on the C2Fence instead of the other way around.",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6269985e_ffd249d0",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-26T06:21:44Z",
+      "side": 1,
+      "message": "Moved inside C2PipeFenceImpl",
+      "parentUuid": "c1856176_1d10196e",
       "range": {
         "startLine": 39,
         "startChar": 24,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e53f6f_12fbbfaa",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-26T06:21:44Z",
+      "side": 1,
+      "message": "Instead warn, I limited for waiting time for minus value.",
+      "parentUuid": "720b99ae_1ce67467",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14709409_cfd66ba0",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1767fa1_f38a794e",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-26T06:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14709409_cfd66ba0",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b27f826_d1af038f",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-09-22T00:03:38Z",
       "side": 1,
       "message": "nit: wouldn\u0027t this happen every time the IGBA hangs up or the app is killed? As such, this is at most ALOGD.",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 9
+      },
+      "revId": "8af3c4db9dfd075624eb9ee880e1b4456fee902f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6dbf288_27da5279",
+        "filename": "media/codec2/vndk/platform/C2IgbaWaitableObj.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-26T06:21:44Z",
+      "side": 1,
+      "message": "poll err with non EINTR value is rare, and it is error.\n(IGBA hang up or app being killed will usually returns POLLHUP and ret \u003e 0)",
+      "parentUuid": "4b27f826_d1af038f",
       "range": {
         "startLine": 78,
         "startChar": 4,
