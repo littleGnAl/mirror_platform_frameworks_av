@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4cf3120_faaaa0f3",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T18:49:23Z",
+      "side": 1,
+      "message": "why do we need all of this data? Ahwb should already provide width/height/format...\nPerhaps add todo to remove these.",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 20
+      },
+      "revId": "886ee8d4d7374f3fdc77ae2bf9633abe2b99c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d75d94_b2f8731d",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T18:49:23Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 360,
+        "startChar": 51,
+        "endLine": 360,
+        "endChar": 52
+      },
+      "revId": "886ee8d4d7374f3fdc77ae2bf9633abe2b99c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "520137cd_a7f51e1d",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T18:49:23Z",
+      "side": 1,
+      "message": "class doc?",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 21
+      },
+      "revId": "886ee8d4d7374f3fdc77ae2bf9633abe2b99c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d587b709_2732fdb2",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T18:49:23Z",
+      "side": 1,
+      "message": "do we need a linear alloctor support? We already have BlobAllocator on top of GrallocAllocator that would need to move to the AhwbAllocator now.",
+      "range": {
+        "startLine": 142,
+        "startChar": 24,
+        "endLine": 142,
+        "endChar": 46
+      },
+      "revId": "886ee8d4d7374f3fdc77ae2bf9633abe2b99c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
