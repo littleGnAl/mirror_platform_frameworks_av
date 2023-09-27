@@ -50,6 +50,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a133b4c0_50748ca5",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-09-27T15:09:49Z",
+      "side": 1,
+      "message": "looks like they needed a version bump to reflect how they were stored in\nthe cts repo -- so that files would unpack as \"writerTestRes-#.#/xxx\" instead\nof \"xxx\". \n\nthis is likely the same for all of the files you noted.",
+      "parentUuid": "80af3dda_32fb12bd",
+      "range": {
+        "startLine": 22,
+        "startChar": 160,
+        "endLine": 22,
+        "endChar": 169
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6337f813_c3ef7811",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-09-27T15:09:49Z",
+      "side": 1,
+      "message": "didn\u0027t update this.",
+      "range": {
+        "startLine": 25,
+        "startChar": 19,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10845403_1c3d5ce8",
         "filename": "media/module/codecs/m4v_h263/dec/test/README.md",
         "patchSetId": 4
