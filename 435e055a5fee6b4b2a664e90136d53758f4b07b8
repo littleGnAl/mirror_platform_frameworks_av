@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbcd739_97ce19cd",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T18:18:13Z",
+      "side": 1,
+      "message": "nit: this API seems to have 4 return value combinations:\n\n{ true, hangUp }\n{ true, event }\n{ true, hangUp, event } - this is treated as hangUp\n{ false }\n\nWe may have a simple API returning { VALID, READY, INVALID }",
+      "range": {
+        "startLine": 368,
+        "startChar": 9,
+        "endLine": 368,
+        "endChar": 18
+      },
+      "revId": "435e055a5fee6b4b2a664e90136d53758f4b07b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b06e02_6bacd5b7",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T18:18:13Z",
+      "side": 1,
+      "message": "nit: this could be easier done with poll()\n\nppoll() with a null sigmask is identical to poll().\n\nThis would become\n\nret \u003d ::poll(\u0026pfd, 1, timeoutNs / 1000000)\n\nDo we need nanosecond precision in the timeout? we usually wait for 0.",
+      "range": {
+        "startLine": 388,
+        "startChar": 20,
+        "endLine": 388,
+        "endChar": 49
+      },
+      "revId": "435e055a5fee6b4b2a664e90136d53758f4b07b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
