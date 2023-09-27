@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4e5e2f8_8aae3bea",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-27T15:02:15Z",
+      "side": 1,
+      "message": "Ian, \nThere is no change w.r.t. actual version used by the tests.\nThe paths in these readme.md were out of sync with the ones actually used by the tests (in DynamicConfig.xml). \n\nThe inconsistencies are resolved now.\n\nSuyog,\nPlease add a line to the commit message mentioning that fixed version numbers in few files in README.md.",
+      "parentUuid": "80af3dda_32fb12bd",
+      "range": {
+        "startLine": 22,
+        "startChar": 160,
+        "endLine": 22,
+        "endChar": 169
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10845403_1c3d5ce8",
         "filename": "media/module/codecs/m4v_h263/dec/test/README.md",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-27T09:42:19Z",
       "side": 1,
       "message": "same comment here about version bump",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 176
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6968da_d762b52d",
+        "filename": "media/module/codecs/m4v_h263/dec/test/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-27T15:02:15Z",
+      "side": 1,
+      "message": "Please refer to:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2758627/comment/80af3dda_32fb12bd/",
+      "parentUuid": "10845403_1c3d5ce8",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a76fd0a_aeb5efbb",
+        "filename": "media/module/esds/tests/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-27T15:02:15Z",
+      "side": 1,
+      "message": "Please refer to:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2758627/comment/80af3dda_32fb12bd/",
+      "parentUuid": "71be58e3_3bdbaecc",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 156
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d86baf8_e76500ea",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a7a50d_8cc448b1",
+        "filename": "media/module/extractors/tests/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-27T15:02:15Z",
+      "side": 1,
+      "message": "Please refer to:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2758627/comment/80af3dda_32fb12bd/",
+      "parentUuid": "1d86baf8_e76500ea",
+      "range": {
+        "startLine": 25,
+        "startChar": 100,
+        "endLine": 25,
+        "endChar": 200
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbbd2072_a73fe318",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-09-27T09:42:19Z",
       "side": 1,
       "message": "and here",
+      "range": {
+        "startLine": 25,
+        "startChar": 100,
+        "endLine": 25,
+        "endChar": 200
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3bc4e8_d0f4d9ec",
+        "filename": "media/module/metadatautils/test/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-09-27T15:02:15Z",
+      "side": 1,
+      "message": "Please refer to:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2758627/comment/80af3dda_32fb12bd/",
+      "parentUuid": "dbbd2072_a73fe318",
       "range": {
         "startLine": 25,
         "startChar": 100,
