@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80af3dda_32fb12bd",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-27T09:42:19Z",
+      "side": 1,
+      "message": "nit: this is different to the other files because it also includes a version bump - is that deliberate?\n\nIf this is deliberate can we add a note to the CL description acknowledging that some versions are also bumped in this change? Ideally listing exactly which ones too, as trawling through this large CL to spot them is tricky.",
+      "range": {
+        "startLine": 22,
+        "startChar": 160,
+        "endLine": 22,
+        "endChar": 169
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10845403_1c3d5ce8",
+        "filename": "media/module/codecs/m4v_h263/dec/test/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-27T09:42:19Z",
+      "side": 1,
+      "message": "same comment here about version bump",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 176
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71be58e3_3bdbaecc",
+        "filename": "media/module/esds/tests/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-27T09:42:19Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 156
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d86baf8_e76500ea",
+        "filename": "media/module/extractors/tests/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-27T09:42:19Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 25,
+        "startChar": 100,
+        "endLine": 25,
+        "endChar": 200
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbbd2072_a73fe318",
+        "filename": "media/module/metadatautils/test/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-27T09:42:19Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 25,
+        "startChar": 100,
+        "endLine": 25,
+        "endChar": 200
+      },
+      "revId": "8f29a416389225abe919b99fa1d8fbb8a2683513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
