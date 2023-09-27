@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bba5b6e_bea80720",
+        "filename": "media/codec2/hal/aidl/BufferTypes.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T20:48:29Z",
+      "side": 1,
+      "message": "this seems to be very specific to Igba. Should there be similar logic for other buffers (e.g. pooled buffer?) in this same loop?",
+      "range": {
+        "startLine": 353,
+        "startChar": 5,
+        "endLine": 353,
+        "endChar": 21
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b1d18a_7ab05638",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T20:48:29Z",
+      "side": 1,
+      "message": "can we add a comment on why we need to disown just the IGBA blocks here?",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bfccee8_d1a85857",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T20:48:29Z",
+      "side": 1,
+      "message": "is this still a TODO?",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933a9cab_c957d71a",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T20:48:29Z",
+      "side": 1,
+      "message": "nit: From?",
+      "range": {
+        "startLine": 39,
+        "startChar": 37,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

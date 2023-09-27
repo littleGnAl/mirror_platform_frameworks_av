@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7897c7a6_24fd73fa",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-09-27T20:48:29Z",
+      "side": 1,
+      "message": "fetchGraphicBlock does not define a C2_CANCELED return value? Would this be C2_BLOCKING in this case?",
+      "range": {
+        "startLine": 105,
+        "startChar": 15,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "8be6f889d9cb5931ff16319575e38b829214a176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
