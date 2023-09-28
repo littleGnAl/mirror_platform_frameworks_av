@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89243a43_b9ca5333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-28T12:56:12Z",
+      "side": 1,
+      "message": "It\u0027s clearer just to directly revert r.android.com/2746519 (top right button in the gerrit UI), since then it shows up as \u0027reverted\u0027 when looking in gerrit etc.",
+      "revId": "2fd9c1e4c9692269e12998bccb06d09a6b16b143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
