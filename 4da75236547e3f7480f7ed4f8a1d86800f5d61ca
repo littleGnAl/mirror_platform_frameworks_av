@@ -16,6 +16,24 @@
       "message": "Looking at the other calls we\u0027ve added here, it seems like we very likely intended to pass `\u0026hangUp` for our second argument here.  As is, we\u0027re never setting `hangUp` in this code, and the `if` check on the next line is always `false`.",
       "revId": "4da75236547e3f7480f7ed4f8a1d86800f5d61ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0824003b_bade8cbf",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-09-28T18:12:22Z",
+      "side": 1,
+      "message": "Thanks for catching. will upload a CL soon.",
+      "parentUuid": "30a4dfd3_d0ebde02",
+      "revId": "4da75236547e3f7480f7ed4f8a1d86800f5d61ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
