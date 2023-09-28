@@ -16,6 +16,87 @@
       "message": "Would it be possible to provide a bit more context for this change?\n\nThe commit message says \"It was a timing issue\" -\u003e does this suggest there\u0027s a bug describing a particular problem in more detail that this change aims to resolve? It would be helpful link to that bug in the commit description so I (and future code archaelogists) can read the full context for this change.\n\nThanks!",
       "revId": "191173114dd48b923923008daef1c252d1868250",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99acd8ae_b1c9035d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-28T17:08:44Z",
+      "side": 1,
+      "message": "Looks like that is https://issuetracker.google.com/301536060 - please put `Bug: 301536060` in the CL description above the `Change-Id:` line",
+      "parentUuid": "79321044_e970fbde",
+      "revId": "191173114dd48b923923008daef1c252d1868250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ba72d8_be5d2f44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-28T17:08:44Z",
+      "side": 1,
+      "message": "In general I\u0027m not enthusiastic about this change in its current form. I understand it may resolve the issue you\u0027re seeing, but I\u0027m not convinced it\u0027s self-consistent and I don\u0027t like the reliance on arbitrary time thresholds.\n\n---\n\nIn general `MediaPlayer` is not a very modern or well maintained API - I would recommend you switch playback use-cases to [`media3.exoplayer`](https://github.com/androidx/media) wherever possible - you will likely find it more reliable and performant.",
+      "revId": "191173114dd48b923923008daef1c252d1868250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf896c0e_62b91149",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-28T17:08:44Z",
+      "side": 1,
+      "message": "why is it only `CB_OUTPUT_FORMAT_CHANGED` that needs to be handled in the paused state (vs all the other possible messages)?\n\nLooking into `MediaCodec.cpp` where it seems this message is sent from, it looks like it\u0027s always sent in response to something happening during playback (e.g. dequeuing output buffers or draining buffers). Can you add a bit more info about how/why you end up here in a paused state?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 81
+      },
+      "revId": "191173114dd48b923923008daef1c252d1868250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee75aacb_1fc7edaa",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-28T17:08:44Z",
+      "side": 1,
+      "message": "we would generally like to avoid arbitrary time thresholds like this - because it\u0027s usually impossible to reason about what the correct/reasonable value for this is. How did you decide 5ms for this?",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 40
+      },
+      "revId": "191173114dd48b923923008daef1c252d1868250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
