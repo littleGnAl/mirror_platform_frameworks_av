@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c44385_89362539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-09-28T13:07:03Z",
+      "side": 1,
+      "message": "Can we re-use this change ID for the code that\u0027s currently in r.android.com/2745223? Then we will keep all the important comment threads when the change is eventually submitted (vs if we submit that change and abandon this one, in which case the existing comments will be lost).",
+      "revId": "c3825076aa304e84ecf278b2bfe7e2b0cd08a5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
