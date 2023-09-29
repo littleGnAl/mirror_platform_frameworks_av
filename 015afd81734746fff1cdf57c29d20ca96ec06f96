@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6501e27b_74c97092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-09-29T01:05:23Z",
+      "side": 1,
+      "message": "i want nick to confirm that empty vs missing for the session id won\u0027t cause any problems in our backend processing.  I think it\u0027s ok, but want to see if Nick remembers anything about that pipeline that I don\u0027t.\n\notherwise, looks fine to me.",
+      "revId": "015afd81734746fff1cdf57c29d20ca96ec06f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
