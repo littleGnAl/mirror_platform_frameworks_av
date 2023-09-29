@@ -82,6 +82,22 @@ public:
                 .build());
 
         addParameter(
+                DefineParam(mLargeFrameParams, C2_PARAMKEY_LARGE_FRAME_PARAMS)
+                // default codec operates in single access-unit mode
+                .withDefault(new C2LargeFrameParams::output(0u, 0, 0))
+                // max output buffer size
+                // 2mins of 512000/8ch/2 bytes per channel
+                // 92mins of 44100/2ch/2 bytes per channel
+                .withFields({
+                    C2F(mLargeFrameParams, maxOutputSize).inRange(
+                            0, 120 * 512000 * 8 * 2),
+                    C2F(mLargeFrameParams, thresholdSize).inRange(
+                            0, 120 * 512000 * 8 * 2)
+                })
+                .withSetter(LargeFrameParamsSetter)
+                .build());
+
+        addParameter(
                 DefineParam(mPcmEncodingInfo, C2_PARAMKEY_PCM_ENCODING)
                 .withDefault(new C2StreamPcmEncodingInfo::output(0u, C2Config::PCM_16))
                 .withFields({C2F(mPcmEncodingInfo, value).oneOf({
@@ -96,11 +112,40 @@ public:
 
     }
 
+    static C2R LargeFrameParamsSetter(bool mayBlock, C2P<C2LargeFrameParams::output> &me) {
+        (void)mayBlock;
+        C2R res = C2R::Ok();
+        if (!me.F(me.v.maxOutputSize).supportsAtAll(me.v.maxOutputSize)) {
+            res = res.plus(C2SettingResultBuilder::BadValue(me.F(me.v.maxOutputSize)));
+        } else if (!me.F(me.v.thresholdSize).supportsAtAll(me.v.thresholdSize)) {
+            res = res.plus(C2SettingResultBuilder::BadValue(me.F(me.v.thresholdSize)));
+        } else if (me.v.maxOutputSize < me.v.thresholdSize) {
+            res = res.plus(C2SettingResultBuilder::BadValue(me.F(me.v.maxOutputSize)));
+        }
+        std::vector<std::unique_ptr<C2SettingResult>> failures;
+        res.retrieveFailures(&failures);
+        if (failures.size() > 0) {
+            me.set().maxOutputSize = 0;
+            me.set().thresholdSize = 0;
+            ALOGE("ERROR: LargeFrameParams max: %u, threshold: %u", me.v.maxOutputSize, me.v.thresholdSize);
+        }
+        return res;
+    }
+
+    uint32_t getThresholdSize() const {
+        return mLargeFrameParams->thresholdSize;
+    }
+
+    uint32_t getMaxOutputSize() const {
+        return mLargeFrameParams->maxOutputSize;
+    }
+
 private:
     std::shared_ptr<C2StreamSampleRateInfo::output> mSampleRate;
     std::shared_ptr<C2StreamChannelCountInfo::output> mChannelCount;
     std::shared_ptr<C2StreamBitrateInfo::input> mBitrate;
     std::shared_ptr<C2StreamMaxBufferSizeInfo::input> mInputMaxBufSize;
+    std::shared_ptr<C2LargeFrameParams::output> mLargeFrameParams;
     std::shared_ptr<C2StreamPcmEncodingInfo::output> mPcmEncodingInfo;
 };
 
@@ -149,18 +194,204 @@ void C2SoftRawDec::process(
         return;
     }
 
-    ALOGV("in buffer attr. timestamp %d frameindex %d",
-          (int)work->input.ordinal.timestamp.peeku(), (int)work->input.ordinal.frameIndex.peeku());
+    class FillWork {
+       public:
+        FillWork(uint32_t flags, C2WorkOrdinalStruct ordinal,
+                 const std::shared_ptr<C2Buffer>& buffer)
+            : mFlags(flags), mOrdinal(ordinal), mBuffer(buffer) {}
+        ~FillWork() = default;
 
-    work->worklets.front()->output.flags = work->input.flags;
-    work->worklets.front()->output.buffers.clear();
-    work->worklets.front()->output.ordinal = work->input.ordinal;
-    if (!work->input.buffers.empty()) {
-        work->worklets.front()->output.buffers.push_back(work->input.buffers[0]);
+        void operator()(const std::unique_ptr<C2Work>& work) {
+            work->worklets.front()->output.flags = (C2FrameData::flags_t)mFlags;
+            work->worklets.front()->output.buffers.clear();
+            work->worklets.front()->output.ordinal = mOrdinal;
+            work->workletsProcessed = 1u;
+            work->result = C2_OK;
+            if (mBuffer) {
+                work->worklets.front()->output.buffers.push_back(mBuffer);
+            }
+            ALOGV("timestamp = %lld, index = %lld, w/%s buffer",
+                  mOrdinal.timestamp.peekll(), mOrdinal.frameIndex.peekll(),
+                  mBuffer ? "" : "o");
+        }
+
+       private:
+        const uint32_t mFlags;
+        const C2WorkOrdinalStruct mOrdinal;
+        const std::shared_ptr<C2Buffer> mBuffer;
+    };
+
+    if (work->input.buffers.empty()) {
+        // we have nothing to to process.
+        work->worklets.front()->output.flags = work->input.flags;
+        work->worklets.front()->output.buffers.clear();
+        work->worklets.front()->output.ordinal = work->input.ordinal;
+        if (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) {
+            mSignalledEos = true;
+            ALOGV("Signalled end-of-stream");
+        }
+        return;
     }
-    if (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) {
-        mSignalledEos = true;
-        ALOGV("signalled EOS");
+
+    ALOGV("in buffer attr. timestamp %lld frameindex %lld",
+            (long long)work->input.ordinal.timestamp.peekull(),
+            (long long)work->input.ordinal.frameIndex.peekull());
+    C2ReadView rView = mDummyReadView;
+    work->result = C2_OK;
+    work->workletsProcessed = 1u;
+    work->worklets.front()->output.buffers.clear();
+    uint32_t maxOutSize = mIntf->getMaxOutputSize();
+    uint32_t thresholdSize = mIntf->getThresholdSize();
+    if (maxOutSize != 0) {
+        // codec operates in large buffer mode.
+        ALOGV("Large audio frame mode operation using max: %u, threshold: %u",
+                maxOutSize, thresholdSize);
+        for (int inputIndex = 0; inputIndex < work->input.buffers.size(); inputIndex++) {
+            std::shared_ptr<C2Buffer> &inputBuffer = work->input.buffers[inputIndex];
+            if (!inputBuffer->hasInfo(C2LargeFrameMetadata::input::PARAM_TYPE)) {
+                ALOGE("Error: Large audio frame requested with no large frame metadata.");
+                work->result = C2_CORRUPTED;
+                return;
+            }
+            std::shared_ptr<const C2LargeFrameMetadata::input> inBufferInfo =
+                    std::static_pointer_cast<const C2LargeFrameMetadata::input>(
+            work->input.buffers[inputIndex]->getInfo(C2LargeFrameMetadata::input::PARAM_TYPE));
+            rView = work->input.buffers[0]->data().linearBlocks().front().map().get();
+            if (rView.error()) {
+                ALOGE("read view map failed %d", rView.error());
+                work->result = rView.error();
+                return;
+            }
+            int outputSize = 0;
+            int metaIndex = 0;
+            std::shared_ptr<C2LinearBlock> block;
+            std::shared_ptr<C2WriteView> wView;
+            uint8_t *outPtr = nullptr;
+            auto allocateAndMap = [&pool, &block, &wView, maxOutSize](uint8_t **out) -> c2_status_t
+            {
+                c2_status_t err = C2_OK;
+                C2MemoryUsage usage = { C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE };
+                wView.reset(); block.reset();
+                err = pool->fetchLinearBlock(maxOutSize, usage, &block);
+                if (err != C2_OK) {
+                    ALOGV("Failed to allocate memory");
+                    return err;
+                }
+                wView = std::make_shared<C2WriteView>(block->map().get());
+                if(out){
+                    *out = wView->data();
+                }
+                return err;
+            };
+            std::vector<C2LargeFrameMetadataStruct> currentBufferInfos;
+            c2_status_t err = C2_OK;
+            while (metaIndex < inBufferInfo->flexCount()) {
+                const C2LargeFrameMetadataStruct& inputMeta = inBufferInfo->m.values[metaIndex];
+                if (inputMeta.size > maxOutSize) {
+                    // TODO: access-units too big for the output buffer.
+                    // should this fall into too less buffer and return
+                    // the access-unit with a warning ? or send an error?
+                    // TODO: Telemetry: application consider reconfiguring output buffer.
+                    // should this be part of config-update ?
+                    work->result = C2_BAD_VALUE;
+                    return;
+                }
+                if(!block) {
+                    if (C2_OK != allocateAndMap(&outPtr)) {
+                        work->result = C2_NO_MEMORY;
+                        return;
+                    }
+                    outputSize = 0;
+                    currentBufferInfos.clear();
+                }
+                if (outputSize + inputMeta.size > maxOutSize) {
+                    std::shared_ptr<C2Buffer> buffer = createLinearBuffer(block, 0/*offset*/,
+                            outputSize);
+                    std::shared_ptr<C2LargeFrameMetadata::output> largeFrame =
+                            C2LargeFrameMetadata::output::AllocShared(
+                            currentBufferInfos.size(), 0u, currentBufferInfos);
+                    if (C2_OK != (err = buffer->setInfo(largeFrame))) {
+                        ALOGV("Large audio frame metadata attach failed with err: %d", err);
+                    }
+                    C2WorkOrdinalStruct outOrdinal = work->input.ordinal;
+                    outOrdinal.timestamp = currentBufferInfos.front().presentationTimeUs;
+                    cloneAndSend(work->input.ordinal.frameIndex.peeku(), work,
+                            FillWork(C2FrameData::FLAG_INCOMPLETE, outOrdinal, buffer));
+                    ALOGV("Large audio frame sending size: %zu, ts: %ld", inputMeta.size,
+                            inputMeta.presentationTimeUs);
+                    block.reset();
+                    currentBufferInfos.clear();
+                    outputSize = 0;
+                    continue;
+                } else {
+                    memcpy(outPtr + outputSize, rView.data() + inputMeta.offset,
+                           inputMeta.size);
+                    ALOGV("Making %zu for ts: %ld", inputMeta.size, inputMeta.presentationTimeUs);
+                    currentBufferInfos.emplace_back(inputMeta.flags, inputMeta.size,
+                            outputSize, inputMeta.presentationTimeUs);
+                    outputSize += inputMeta.size;
+
+                }
+                if (outputSize > thresholdSize && (metaIndex != inBufferInfo->flexCount() - 1)) {
+                    std::shared_ptr<C2Buffer> buffer = createLinearBuffer(block, 0/*offset*/,
+                            outputSize);
+                    std::shared_ptr<C2LargeFrameMetadata::output> largeFrame =
+                            C2LargeFrameMetadata::output::AllocShared(
+                            currentBufferInfos.size(), 0u, currentBufferInfos);
+                    if (C2_OK != (err = buffer->setInfo(largeFrame))) {
+                        ALOGV("Large audio frame metadata attach failed with err: %d", err);
+                    }
+                    C2WorkOrdinalStruct outOrdinal = work->input.ordinal;
+                    outOrdinal.timestamp = currentBufferInfos.front().presentationTimeUs;
+                    cloneAndSend(work->input.ordinal.frameIndex.peeku(), work,
+                            FillWork(C2FrameData::FLAG_INCOMPLETE, outOrdinal, buffer));
+                    ALOGV("Large Audio frame sending size: %zu, ts: %ld", inputMeta.size,
+                            inputMeta.presentationTimeUs);
+                    block.reset();
+                    currentBufferInfos.clear();
+                    outputSize = 0;
+                }
+                metaIndex++;
+            }
+            // we have exhausted all input metadata but the last. we can send this out now.
+            work->worklets.front()->output.flags = work->input.flags;
+            work->worklets.front()->output.buffers.clear();
+            C2WorkOrdinalStruct outOrdinal = work->input.ordinal;
+            outOrdinal.timestamp = 0;
+            if (outputSize > 0) {
+                std::shared_ptr<C2Buffer> buffer = createLinearBuffer(block, 0/*offset*/,
+                            outputSize);
+                std::shared_ptr<C2LargeFrameMetadata::output> largeFrame =
+                            C2LargeFrameMetadata::output::AllocShared(
+                                    currentBufferInfos.size(), 0u, currentBufferInfos);
+                if (C2_OK != (err = buffer->setInfo(largeFrame))) {
+                    ALOGE("Large audio frame metadata attach failed with err: %d", err);
+                }
+                outOrdinal.timestamp = currentBufferInfos.front().presentationTimeUs;
+                work->worklets.front()->output.buffers.push_back(buffer);
+            }
+            work->worklets.front()->output.ordinal = outOrdinal;
+            ALOGV("Finishing: flag: %d size: %d for ts: %lld",
+                    work->worklets.front()->output.flags, outputSize,
+                    outOrdinal.timestamp.peekull());
+            outputSize = 0;
+            currentBufferInfos.clear();
+            if (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) {
+                mSignalledEos = true;
+            }
+        }
+    } else {
+        // normal buffer mode operation;
+        // raw codec cannot know if this is a multi-frame input, so
+        // this will just return the provided input.
+        ALOGV("RawDec processing in the normal path");
+        work->worklets.front()->output.flags = work->input.flags;
+        work->worklets.front()->output.buffers.clear();
+        work->worklets.front()->output.ordinal = work->input.ordinal;
+        work->worklets.front()->output.buffers.push_back(work->input.buffers[0]);
+        if (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) {
+            mSignalledEos = true;
+        }
     }
 }
 
