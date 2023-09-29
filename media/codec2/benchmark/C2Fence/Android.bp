@@ -1,0 +1,50 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_av_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_av_license"],
+}
+
+cc_test {
+    name: "EventfdMicroBench",
+    test_suites: ["device-tests"],
+
+    srcs: [
+        "Eventfd.cpp",
+        "BenchUtils.cpp",
+    ],
+
+    shared_libs: [
+    ],
+
+    static_libs: [
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+    ],
+}
+
+cc_test {
+    name: "PipeMicroBench",
+    test_suites: ["device-tests"],
+
+    srcs: [
+        "Pipe.cpp",
+        "BenchUtils.cpp",
+    ],
+
+    shared_libs: [
+    ],
+
+    static_libs: [
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+    ],
+}
