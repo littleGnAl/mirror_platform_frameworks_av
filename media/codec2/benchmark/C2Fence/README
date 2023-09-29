@@ -1,0 +1,24 @@
+Benchmarks for C2Fence implementation.
+
+PipeMicroBench: Implementing C2Fence-ish object using pipe() syscall
+Waiting 1 million times took 1299420 usec on the below tests.
+
+EventfdMicroBench: Implementing C2Fence-ish object using eventfd() syscall
+Waiting 1 million times took 1299940 usec on the below tests.
+
+Both of implementations took almost same time. And overhead for polling
+an event may around 1 micro second, which is negligible.
+Test was done on a pixel device.(2023-09-29)
+
+========================================================================
+pixel:/system/bin # time ./PipeMicroBench
+allocated: 1000000
+bool (anonymous namespace)::consumer(EventManager &, IpcMessageTransferer &)179: (1000000, 1299420)
+consumer: 1
+    0m14.19s real     0m02.16s user     0m11.95s system
+pixel:/system/bin # time ./EventfdMicroBench
+allocated: 1000000
+bool (anonymous namespace)::consumer(EventManager &, IpcMessageTransferer &)176: (1000000, 1299940)
+consumer: 1
+    0m14.04s real     0m02.03s user     0m11.92s system
+
