@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a822c7d_a0e3c57b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-02T20:42:02Z",
+      "side": 1,
+      "message": "The benchmark does not really test the real impl. Could you describe the reason?",
+      "revId": "a9efba3d416a4179ff8a5ef337efc2a74dca750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e9bb9c_f6964532",
+        "filename": "media/codec2/benchmark/C2Fence/README",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-02T20:42:02Z",
+      "side": 1,
+      "message": "please avoid using codenames here",
+      "revId": "a9efba3d416a4179ff8a5ef337efc2a74dca750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
