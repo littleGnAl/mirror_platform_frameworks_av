@@ -17,6 +17,7 @@ LIBCAMERA2NDK {
     ACameraDevice_createCaptureRequest;
     ACameraDevice_createCaptureRequest_withPhysicalIds; # introduced=29
     ACameraDevice_createCaptureSession;
+    ACameraDevice_createCaptureSessionV2; # introduced=33
     ACameraDevice_createCaptureSessionWithSessionParameters; # introduced=28
     ACameraDevice_isSessionConfigurationSupported; # introduced=29
     ACameraDevice_getId;

@@ -683,6 +683,12 @@ camera_status_t ACameraDevice_createCaptureSession(
         const ACameraCaptureSession_stateCallbacks* callbacks,
         /*out*/ACameraCaptureSession** session) __INTRODUCED_IN(24);
 
+camera_status_t ACameraDevice_createCaptureSessionV2(
+        ACameraDevice* device,
+        const ACaptureSessionOutputContainer*       outputs,
+        const ACameraCaptureSession_stateCallbacks* callbacks,
+        /*out*/ACameraCaptureSession** session) __INTRODUCED_IN(33);
+
 /**
  * Create a shared ACaptureSessionOutput object.
  *
