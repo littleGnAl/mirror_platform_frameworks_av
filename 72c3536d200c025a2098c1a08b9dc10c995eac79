@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac86747_1e3c5a26",
+        "filename": "media/codec2/hal/aidl/BufferTypes.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-03T08:27:15Z",
+      "side": 1,
+      "message": "This is for only remotely owned blocks when the ownership is passed back to the original remote process via transfer(onworkDone or flush)\n\nC2BqPool(c2hidl) block has very similar logics. But since WorkItem created by pooled blocks are owned by HAL, this is not necessary.",
+      "parentUuid": "2bba5b6e_bea80720",
+      "range": {
+        "startLine": 353,
+        "startChar": 5,
+        "endLine": 353,
+        "endChar": 21
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5b1d18a_7ab05638",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-27T20:48:29Z",
       "side": 1,
       "message": "can we add a comment on why we need to disown just the IGBA blocks here?",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d2fe16_564da1bd",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-03T08:27:15Z",
+      "side": 1,
+      "message": "Changed the name to \u0027ReturnOutputBlocksToClientIfNeeded\u0027. And added some comments.",
+      "parentUuid": "a5b1d18a_7ab05638",
       "range": {
         "startLine": 128,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95425af7_102c3431",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-03T08:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bfccee8_d1a85857",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "933a9cab_c957d71a",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-09-27T20:48:29Z",
       "side": 1,
       "message": "nit: From?",
+      "range": {
+        "startLine": 39,
+        "startChar": 37,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "72c3536d200c025a2098c1a08b9dc10c995eac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc57a6a0_d5a73efb",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-03T08:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933a9cab_c957d71a",
       "range": {
         "startLine": 39,
         "startChar": 37,

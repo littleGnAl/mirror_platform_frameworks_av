@@ -22,6 +22,30 @@
       },
       "revId": "886ee8d4d7374f3fdc77ae2bf9633abe2b99c109",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d130861b_e14bb8e1",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-03T08:27:15Z",
+      "side": 0,
+      "message": "This is kind of lock during the setOutputSurface/buffer migration happening(preventing buffer migration to the new surface).\n\nThis is not needed for AIDL since the migration happens from client asynchronously.",
+      "parentUuid": "e005827e_93397e8d",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 45
+      },
+      "revId": "886ee8d4d7374f3fdc77ae2bf9633abe2b99c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
