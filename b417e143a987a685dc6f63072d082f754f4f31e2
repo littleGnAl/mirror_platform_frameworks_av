@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff6c8b4_92c7b2c5",
+        "filename": "services/mediaresourcemanager/ResourceModelInterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-03T22:02:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "810360a1_706c9fe7",
+      "revId": "b417e143a987a685dc6f63072d082f754f4f31e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9503dd4f_3012cda8",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-03T21:27:17Z",
       "side": 1,
       "message": "I don\u0027t see the priority in the struct.",
+      "revId": "b417e143a987a685dc6f63072d082f754f4f31e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "764fcbf6_666e9b8e",
+        "filename": "services/mediaresourcemanager/ResourceModelInterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-03T22:02:00Z",
+      "side": 1,
+      "message": "Removing it",
+      "parentUuid": "9503dd4f_3012cda8",
       "revId": "b417e143a987a685dc6f63072d082f754f4f31e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "864f992c_7a79c86a",
+        "filename": "services/mediaresourcemanager/ResourceModelSecureCodecCoexistence.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-03T22:02:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6f3c238a_d0893988",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "b417e143a987a685dc6f63072d082f754f4f31e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "617a2a2f_18c12ecf",
@@ -71,6 +131,24 @@
       "writtenOn": "2023-10-03T21:27:17Z",
       "side": 1,
       "message": "if both `mSupportsMultipleSecureCodecs` and `mSupportsSecureWithNonSecureCodec` are true, `mService-\u003egetAllClients_l()` will never get called so `clients` and `idVector` would not be touched and the method will return true. Is this an intended behavior?",
+      "revId": "b417e143a987a685dc6f63072d082f754f4f31e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b5bcc2_0fec3c31",
+        "filename": "services/mediaresourcemanager/ResourceModelSecureCodecCoexistence.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-03T22:02:00Z",
+      "side": 1,
+      "message": "Thats right. If the device supports multiple secure codecs and allows secure codecs with non-secure (no secure/non-secure codec conflict), then we use CommonResourceModel to reclaim.",
+      "parentUuid": "617a2a2f_18c12ecf",
       "revId": "b417e143a987a685dc6f63072d082f754f4f31e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
