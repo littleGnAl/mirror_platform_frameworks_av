@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9fb050_3970be6d",
+        "filename": "services/mediaresourcemanager/aidl/android/media/MediaResourceSubType.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-03T21:31:34Z",
+      "side": 1,
+      "message": "We\u0027re doubling the number of subtypes here --- should we define a different enum for hw/sw?",
+      "revId": "c448b49637c18b72ab4dbb82979c33527e19db27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
