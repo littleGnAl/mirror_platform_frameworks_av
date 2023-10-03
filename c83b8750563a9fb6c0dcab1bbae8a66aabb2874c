@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6787be35_01e0dd46",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-03T23:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb09e3b_d23ee26d",
+      "range": {
+        "startLine": 173,
+        "startChar": 15,
+        "endLine": 173,
+        "endChar": 19
+      },
+      "revId": "c83b8750563a9fb6c0dcab1bbae8a66aabb2874c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab80a62_b25646cf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-07T18:09:08Z",
       "side": 1,
       "message": "Can we discuss this in our design doc? I am not sure if DEFAULT is different from HIDL, as that is technically the default for updatability purposes. Or will default be AIDL for V-launching devices and HIDL for updating devices?",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "c83b8750563a9fb6c0dcab1bbae8a66aabb2874c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10107cf3_027096a1",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-03T23:22:34Z",
+      "side": 1,
+      "message": "Removed DEFAULT and made HIDL default as discussed offline",
+      "parentUuid": "9ab80a62_b25646cf",
       "range": {
         "startLine": 176,
         "startChar": 4,
