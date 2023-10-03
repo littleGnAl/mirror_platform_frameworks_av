@@ -16,6 +16,24 @@
       "message": "We\u0027re doubling the number of subtypes here --- should we define a different enum for hw/sw?",
       "revId": "c448b49637c18b72ab4dbb82979c33527e19db27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ec3989_92e31496",
+        "filename": "services/mediaresourcemanager/aidl/android/media/MediaResourceSubType.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-03T22:01:45Z",
+      "side": 1,
+      "message": "I thought about it (MediaResourceSubTypeHW/MediaResourceSubTypeSW or MediaResourceSubType as is, but adding MediaResourceImplementationType as hw/sw), but that needs changes in:\n - ClientConfigParcel::codecType (https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2755773/1/services/mediaresourcemanager/aidl/android/media/ClientConfigParcel.aidl#36)\n - And the corresponding uses (including those enumerations\nWhich is asks more more changes than this.\n\nDo you have any preferences or recommendations?",
+      "parentUuid": "9b9fb050_3970be6d",
+      "revId": "c448b49637c18b72ab4dbb82979c33527e19db27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
