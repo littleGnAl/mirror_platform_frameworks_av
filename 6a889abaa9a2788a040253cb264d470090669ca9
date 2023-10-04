@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e23efd6_6eafc6d4",
+        "filename": "services/audiopolicy/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2023-10-04T19:02:59Z",
+      "side": 1,
+      "message": "should this be -audio- ??",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "6a889abaa9a2788a040253cb264d470090669ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
