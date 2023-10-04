@@ -16,6 +16,24 @@
       "message": "Ayushi,\nCan you please add android-audio-fuzzing-reports@ to this list?",
       "revId": "2cd9d8623174e9a69962d45e27cf09e9c3c50497",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9704447d_6a94f652",
+        "filename": "media/libaaudio/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-04T18:02:45Z",
+      "side": 1,
+      "message": "Please remove android-media-fuzzing-reports@google.com and add android-audio-fuzzing-reports@google.com.",
+      "parentUuid": "e964d166_e86f0bf1",
+      "revId": "2cd9d8623174e9a69962d45e27cf09e9c3c50497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
