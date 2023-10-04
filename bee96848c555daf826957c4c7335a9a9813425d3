@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ca01d5_e11726dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1068291
+      },
+      "writtenOn": "2023-10-04T08:58:55Z",
+      "side": 1,
+      "message": "This is a minor clean-up, removes the default assignment of colorspace parameter. These functions are always used with a colorspace param specified, so this change will improve readability.",
+      "revId": "bee96848c555daf826957c4c7335a9a9813425d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
