@@ -370,6 +370,24 @@
       "parentUuid": "9e81e353_8cc56330",
       "revId": "61048468876623b3ef3525bc596d4d24519c923e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8e3763_ca463396",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-10-04T01:33:24Z",
+      "side": 1,
+      "message": "\u003e Although vpx allows configuring per frame quantizer, the plugin cannot precisely tell if the frame that is being encoded is I frame or P frame (as the current frame type depends on params like key max, key min, force sync frame, scene-cut, ...) configuring the rc max/min quantizer with correct (I/P max, min) values may not possible. we can however say after a particular frame modify the qp max/min values but format keys KEY_VIDEO_QP_I_MAX/MIN, KEY_VIDEO_QP_P_MAX/MIN are not for that\n\u003e \n\u003e So we can are configuring the qp level at init only. Now the choice needs to be made whether to use i frame quants max/min and over all max/min during configuration\n\u003e \n\u003e please let us know how to proceed\n\nThis is fine if all that is wanted is to set rc_min_quantizer and rc_max_quantizer.",
+      "parentUuid": "b42dc171_93b8ea3c",
+      "revId": "61048468876623b3ef3525bc596d4d24519c923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db63b77_f48c856b",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-10-04T01:33:24Z",
+      "side": 1,
+      "message": "These values aren\u0027t changed after the earlier logging call. Did you mean to output `minFrameQP` and `maxFrameQP` or leave the logging in case the block is modified in the future?",
+      "revId": "ddd522ee3e4238343adde75e0f48b53ef633c8f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
