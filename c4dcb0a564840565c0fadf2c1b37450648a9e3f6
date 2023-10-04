@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2062a2_322f95d5",
+        "filename": "media/mtp/tests/MtpFuzzer/mtp_data_packet_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-10-04T21:57:51Z",
+      "side": 1,
+      "message": "Is there any reason you chose `@` as the delimiter? (Other than it\u0027s use in `addPackets` below)\n\nIf the value is truly arbitrary we can keep this, but maybe it could be updated to be more indicative of it\u0027s purpose.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "c4dcb0a564840565c0fadf2c1b37450648a9e3f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
