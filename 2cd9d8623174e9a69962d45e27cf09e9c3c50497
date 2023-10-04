@@ -34,6 +34,24 @@
       "parentUuid": "e964d166_e86f0bf1",
       "revId": "2cd9d8623174e9a69962d45e27cf09e9c3c50497",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb69538_9737b031",
+        "filename": "media/libaaudio/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-04T18:58:50Z",
+      "side": 1,
+      "message": "Since this has Code Owner approval, I will make this change in a follow up CL (aosp/2772346).",
+      "parentUuid": "9704447d_6a94f652",
+      "revId": "2cd9d8623174e9a69962d45e27cf09e9c3c50497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
