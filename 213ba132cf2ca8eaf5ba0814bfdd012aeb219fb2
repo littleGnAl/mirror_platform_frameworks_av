@@ -34,6 +34,24 @@
       "parentUuid": "b511bcdb_22ca564d",
       "revId": "213ba132cf2ca8eaf5ba0814bfdd012aeb219fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04ec6268_a6e3abe5",
+        "filename": "services/oboeservice/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-04T18:37:21Z",
+      "side": 1,
+      "message": "Since this CL has required approvals now, I will make this change in a follow up CL (aosp/2772346) so that this can be landed.",
+      "parentUuid": "aa5e9241_6a157fd1",
+      "revId": "213ba132cf2ca8eaf5ba0814bfdd012aeb219fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
