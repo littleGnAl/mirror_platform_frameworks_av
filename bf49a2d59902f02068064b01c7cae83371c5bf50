@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7538127b_ad75168f",
+        "filename": "media/libaaudio/fuzzer/libaaudio_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2023-10-04T15:59:26Z",
+      "side": 1,
+      "message": "The AAudioStreamBuilder_set* functions are pure setters.\nTheir order should not make any difference.",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "bf49a2d59902f02068064b01c7cae83371c5bf50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dddd99b2_cb917dcc",
+        "filename": "media/libaaudio/fuzzer/libaaudio_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2023-10-04T15:59:26Z",
+      "side": 1,
+      "message": "The stream methods below will get skipped if called before _openStream() because mAaudioStream will be NULL.\nAnd the Builder functions will have no effect after the _openStream().\nSo this change might result in less coverage.\n\nSo I recommend doing all the AAudioStreamBuilder_set*() calls first.\nThen call AAudioStreamBuilder_openStream().\nThen call all the AAudioStream_* calls randomly.",
+      "range": {
+        "startLine": 230,
+        "startChar": 24,
+        "endLine": 230,
+        "endChar": 54
+      },
+      "revId": "bf49a2d59902f02068064b01c7cae83371c5bf50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
