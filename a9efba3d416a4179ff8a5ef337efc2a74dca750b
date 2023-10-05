@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c128ed32_2ebad3c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-05T19:49:47Z",
+      "side": 1,
+      "message": "This is justification of the underlying implementation.\n(we don\u0027t have eventfd based C2Fence)\nThe implementation tests are also on the way.",
+      "parentUuid": "4a822c7d_a0e3c57b",
+      "revId": "a9efba3d416a4179ff8a5ef337efc2a74dca750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78e9bb9c_f6964532",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-02T20:42:02Z",
       "side": 1,
       "message": "please avoid using codenames here",
+      "revId": "a9efba3d416a4179ff8a5ef337efc2a74dca750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "073bdbf7_d07f54bc",
+        "filename": "media/codec2/benchmark/C2Fence/README",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-05T19:49:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78e9bb9c_f6964532",
       "revId": "a9efba3d416a4179ff8a5ef337efc2a74dca750b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
