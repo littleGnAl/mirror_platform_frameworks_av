@@ -250,7 +250,7 @@ static std::shared_ptr<AMediaFormat> GetDefaultTrackFormat(MediaType mediaType,
 static std::shared_ptr<MediaSampleReader> GetSampleReader(const std::string& srcFileName,
                                                           bool mock) {
     // Asset directory
-    static const std::string kAssetDirectory = "/data/local/tmp/TranscodingBenchmark/";
+    static const std::string kAssetDirectory = "/sdcard/test/TranscodingBenchmark-1.2/";
 
     int srcFd = 0;
     std::string srcPath = kAssetDirectory + srcFileName;
