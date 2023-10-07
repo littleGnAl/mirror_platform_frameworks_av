@@ -1244,6 +1244,10 @@ status_t CCodecBufferChannel::start(
                         numInputSlots, mName));
                 forceArrayMode = true;
             } else {
+                if (property_get_bool("debug.stagefright.c2.input-force-array-mode", true) == true) {
+                    forceArrayMode = true;
+                    ALOGD("input force use array mode");
+                }
                 input->buffers.reset(new LinearInputBuffers(mName));
             }
         }
