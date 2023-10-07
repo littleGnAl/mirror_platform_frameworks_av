@@ -44,7 +44,7 @@ using namespace android;
 static void ReadMediaSamples(benchmark::State& state, const std::string& srcFileName,
                              bool readAudio, bool sequentialAccess = false) {
     // Asset directory.
-    static const std::string kAssetDirectory = "/data/local/tmp/TranscodingBenchmark/";
+    static const std::string kAssetDirectory = "/sdcard/test/TranscodingBenchmark-1.2/";
 
     int srcFd = 0;
     std::string srcPath = kAssetDirectory + srcFileName;

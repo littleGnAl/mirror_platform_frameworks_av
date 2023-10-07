@@ -111,7 +111,7 @@ static void TranscodeMediaFile(benchmark::State& state, const std::string& srcFi
     // User R+W permission.
     static constexpr int kDstFileMode = S_IRUSR | S_IWUSR;
     // Asset directory
-    static const std::string kAssetDirectory = "/data/local/tmp/TranscodingBenchmark/";
+    static const std::string kAssetDirectory = "/sdcard/test/TranscodingBenchmark-1.2/";
 
     // Transcoding configuration params to be logged
     int64_t trackDurationUs = 0;
