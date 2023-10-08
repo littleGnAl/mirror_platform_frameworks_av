@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8962c3f7_959c5479",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-08T16:00:54Z",
+      "side": 1,
+      "message": "Fyodor, Wonsik,\nThis is needed to ensure av1 encoder picks an appropriate level if the level passed in configure is not sufficient for the given configuration.\n\nPatchset 1 of this CL is same as Patchset 10 of the following\nhttps://partner-android-review.googlesource.com/c/platform/frameworks/av/+/2388537\n\nPatchset 2 removes the change that was done to set g_timebase.den.",
+      "revId": "c1670e9a740004c57a523497cf2890c51da15494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
