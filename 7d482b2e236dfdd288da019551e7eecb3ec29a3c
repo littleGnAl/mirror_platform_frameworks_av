@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82a608c_75637e58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-08T16:03:13Z",
+      "side": 1,
+      "message": "Fyodor, Wonsik,\nThis change is needed to ensure the level computed in the plugin can override the level computed in the aom encoder.",
+      "revId": "7d482b2e236dfdd288da019551e7eecb3ec29a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
