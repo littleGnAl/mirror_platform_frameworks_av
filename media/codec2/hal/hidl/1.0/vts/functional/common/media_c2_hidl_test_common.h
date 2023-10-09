@@ -27,9 +27,6 @@
 #include <chrono>
 #include <fstream>
 
-#define FLAG_NON_DISPLAY_FRAME (1 << 4)
-#define FLAG_CONFIG_DATA (1 << 5)
-
 #define MAX_RETRY 20
 #define TIME_OUT 400ms
 #define MAX_INPUT_BUFFERS 8
@@ -50,6 +47,12 @@ extern std::string sResourceDir;
 
 // Component name prefix
 extern std::string sComponentNamePrefix;
+
+enum flags_t {
+    FLAG_SYNC_FRAME = 1,
+    FLAG_NO_SHOW_FRAME = 2,
+    FLAG_CSD_FRAME = 3,
+};
 
 struct FrameInfo {
     int bytesCount;
@@ -161,4 +164,7 @@ int32_t populateInfoVector(std::string info, android::Vector<FrameInfo>* frameIn
 void verifyFlushOutput(std::list<std::unique_ptr<C2Work>>& flushedWork,
                        std::list<std::unique_ptr<C2Work>>& workQueue,
                        std::list<uint64_t>& flushedIndices, std::mutex& queueLock);
+
+int mapInfoFlagsToFlagst(int flags);
+
 #endif  // MEDIA_C2_HIDL_TEST_COMMON_H
