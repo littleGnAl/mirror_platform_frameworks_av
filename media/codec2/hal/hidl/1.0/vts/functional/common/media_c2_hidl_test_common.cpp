@@ -237,10 +237,15 @@ int32_t populateInfoVector(std::string info, android::Vector<FrameInfo>* frameIn
     while (1) {
         if (!(eleInfo >> bytesCount)) break;
         eleInfo >> flags;
+        flags = mapInfoFlagstoVtsFlags(flags);
+        if (flags < 0) {
+            ALOGE("unrecognized flag entry in info file %s", info.c_str());
+            return flags;
+        }
         eleInfo >> timestamp;
-        bool codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+        bool codecConfig = (flags & (1 << VTS_BIT_FLAG_CSD_FRAME)) != 0 ;
         if (codecConfig) numCsds++;
-        bool nonDisplayFrame = ((flags & FLAG_NON_DISPLAY_FRAME) != 0);
+        bool nonDisplayFrame = (flags & (1 << VTS_BIT_FLAG_NO_SHOW_FRAME)) != 0;
         if (timestampDevTest && !codecConfig && !nonDisplayFrame) {
             timestampUslist->push_back(timestamp);
         }
@@ -272,4 +277,12 @@ void verifyFlushOutput(std::list<std::unique_ptr<C2Work>>& flushedWork,
     }
     ASSERT_EQ(flushedIndices.empty(), true);
     flushedWork.clear();
+}
+
+int mapInfoFlagstoVtsFlags(int flags) {
+    if (flags == 0) return 0;
+    else if (flags == 0x1) return (1 << VTS_BIT_FLAG_SYNC_FRAME);
+    else if (flags == 0x10) return (1 << VTS_BIT_FLAG_NO_SHOW_FRAME);
+    else if (flags == 0x20) return (1 << VTS_BIT_FLAG_CSD_FRAME);
+    return 0xFF;
 }
