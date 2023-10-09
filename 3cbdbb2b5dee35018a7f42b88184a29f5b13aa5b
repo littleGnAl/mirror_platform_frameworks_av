@@ -33,6 +33,23 @@
       "message": "Hi, what\u0027s the status, the issue can be produces on low performance devices.\nOr maybe you already have a fix for it. Thanks!",
       "revId": "3cbdbb2b5dee35018a7f42b88184a29f5b13aa5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34d34ed_65cc8f3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130869
+      },
+      "writtenOn": "2023-10-09T07:39:47Z",
+      "side": 1,
+      "message": "The issue leads to lost request. The patch give a chance to keep the request.",
+      "revId": "3cbdbb2b5dee35018a7f42b88184a29f5b13aa5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
