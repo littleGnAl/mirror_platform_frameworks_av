@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77b5646_9a0f3dce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-09T17:32:21Z",
+      "side": 1,
+      "message": "Venkat,\nIt seems the way to set flags is:\n```\nadb shell device_config put \u003cnamespace\u003e \u003cpackage.flag_name\u003e true/false\n```\nCan you please check if that works?\nThanks.",
+      "revId": "c3825076aa304e84ecf278b2bfe7e2b0cd08a5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "06c44385_89362539",
