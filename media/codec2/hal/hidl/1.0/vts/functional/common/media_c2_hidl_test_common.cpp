@@ -228,10 +228,16 @@ int32_t populateInfoVector(std::string info, android::Vector<FrameInfo>* frameIn
     while (1) {
         if (!(eleInfo >> bytesCount)) break;
         eleInfo >> flags;
+        flags = mapInfoFlagsToFlagst(flags);
+        if(flags == -1)
+        {
+            ALOGE("Error in parsing input info file");
+            return -1;
+        }
         eleInfo >> timestamp;
-        bool codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+        bool codecConfig = (flags & FLAG_CSD_FRAME) != 0 ;
         if (codecConfig) numCsds++;
-        bool nonDisplayFrame = ((flags & FLAG_NON_DISPLAY_FRAME) != 0);
+        bool nonDisplayFrame = (flags & FLAG_NO_SHOW_FRAME) != 0;
         if (timestampDevTest && !codecConfig && !nonDisplayFrame) {
             timestampUslist->push_back(timestamp);
         }
@@ -263,4 +269,12 @@ void verifyFlushOutput(std::list<std::unique_ptr<C2Work>>& flushedWork,
     }
     ASSERT_EQ(flushedIndices.empty(), true);
     flushedWork.clear();
+}
+
+int mapInfoFlagsToFlagst(int flags) {
+    if (flags == 0) return 0;
+    else if (flags == 0x1) return FLAG_SYNC_FRAME;
+    else if (flags == 0x10) return FLAG_NO_SHOW_FRAME;
+    else if (flags == 0x20) return FLAG_CSD_FRAME;
+    return -1;
 }
