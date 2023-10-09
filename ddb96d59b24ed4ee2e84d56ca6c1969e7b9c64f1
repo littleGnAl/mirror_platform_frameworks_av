@@ -16,6 +16,24 @@
       "message": "This has conflicts with the internal branches.\nWill need to wait till some of the internal branches are public.\nMarking this as WIP for now.",
       "revId": "ddb96d59b24ed4ee2e84d56ca6c1969e7b9c64f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e54c00_c4a14dfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-10-09T21:01:34Z",
+      "side": 1,
+      "message": "Android 14 is now merged to aosp/main and this CL is rebased and has no merge conflicts now.",
+      "parentUuid": "4c41da9e_05281972",
+      "revId": "ddb96d59b24ed4ee2e84d56ca6c1969e7b9c64f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
