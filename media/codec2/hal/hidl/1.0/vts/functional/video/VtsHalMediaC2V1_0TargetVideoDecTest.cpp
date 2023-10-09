@@ -461,7 +461,7 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
         }
         int64_t timestamp = (*Info)[frameID].timestamp;
 
-        flags = ((*Info)[frameID].flags == FLAG_CONFIG_DATA) ? C2FrameData::FLAG_CODEC_CONFIG : 0;
+        flags = ((*Info)[frameID].flags & FLAG_CSD_FRAME) ? C2FrameData::FLAG_CODEC_CONFIG : 0;
         if (signalEOS && ((frameID == (int)Info->size() - 1) || (frameID == (offset + range - 1))))
             flags |= C2FrameData::FLAG_END_OF_STREAM;
 
@@ -714,12 +714,13 @@ TEST_P(Codec2VideoDecHidlTest, AdaptiveDecodeTest) {
         while (1) {
             if (!(eleInfo >> bytesCount)) break;
             eleInfo >> flags;
+            flags = mapInfoFlagsToFlagst(flags);
+            ASSERT_EQ(flags, -1) << "Error in parsing input info file: " << mInfoFile;
             eleInfo >> timestamp;
             timestamp += timestampOffset;
             Info.push_back({bytesCount, flags, timestamp});
-            bool codecConfig =
-                    flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
-            bool nonDisplayFrame = ((flags & FLAG_NON_DISPLAY_FRAME) != 0);
+            bool codecConfig = (flags & FLAG_CSD_FRAME) != 0;
+            bool nonDisplayFrame = (flags & FLAG_NO_SHOW_FRAME) != 0;
 
             {
                 ULock l(mQueueLock);
@@ -793,20 +794,15 @@ TEST_P(Codec2VideoDecHidlTest, ThumbnailTest) {
     int32_t numCsds = populateInfoVector(mInfoFile, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << mInfoFile;
 
-    uint32_t flags = 0;
     for (size_t i = 0; i < MAX_ITERATIONS; i++) {
         ASSERT_EQ(mComponent->start(), C2_OK);
 
         // request EOS for thumbnail
         // signal EOS flag with last frame
         size_t j = -1;
-        do {
-            j++;
-            flags = 0;
-            if (Info[j].flags) flags = 1u << (Info[j].flags - 1);
-
-        } while (!(flags & SYNC_FRAME));
-
+        for (j = 0; j < Info.size(); j++) {
+            if(Info[j].flags & FLAG_SYNC_FRAME) break;
+        }
         std::ifstream eleStream;
         eleStream.open(mInputFile, std::ifstream::binary);
         ASSERT_EQ(eleStream.is_open(), true);
@@ -906,14 +902,11 @@ TEST_P(Codec2VideoDecHidlTest, FlushTest) {
     // Seek to next key frame and start decoding till the end
     int index = numFramesFlushed;
     bool keyFrame = false;
-    uint32_t flags = 0;
     while (index < (int)Info.size()) {
-        if (Info[index].flags) flags = 1u << (Info[index].flags - 1);
-        if ((flags & SYNC_FRAME) == SYNC_FRAME) {
+        if (Info[index].flags & FLAG_SYNC_FRAME) {
             keyFrame = true;
             break;
         }
-        flags = 0;
         eleStream.ignore(Info[index].bytesCount);
         index++;
     }
@@ -953,16 +946,15 @@ TEST_P(Codec2VideoDecHidlTest, DecodeTestEmptyBuffersInserted) {
     // and empty input frames at an interval of 5 frames.
     while (1) {
         if (!(frameId % 5)) {
-            if (!(frameId % 20))
-                flags = 32;
-            else
-                flags = 0;
+            flags = !(frameId % 20) ? FLAG_CSD_FRAME : 0;
             bytesCount = 0;
         } else {
             if (!(eleInfo >> bytesCount)) break;
             eleInfo >> flags;
+            flags = mapInfoFlagsToFlagst(flags);
+            ASSERT_EQ(flags, -1) << "Error in parsing input info file: " << mInfoFile;
             eleInfo >> timestamp;
-            codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+            codecConfig = (flags & FLAG_CSD_FRAME) != 0;
         }
         Info.push_back({bytesCount, flags, timestamp});
         frameId++;
@@ -1044,12 +1036,9 @@ TEST_P(Codec2VideoDecCsdInputTests, CSDFlushTest) {
     }
 
     int offset = framesToDecode;
-    uint32_t flags = 0;
     while (1) {
         while (offset < (int)Info.size()) {
-            flags = 0;
-            if (Info[offset].flags) flags = 1u << (Info[offset].flags - 1);
-            if (flags & SYNC_FRAME) {
+            if (Info[offset].flags & FLAG_SYNC_FRAME) {
                 keyFrame = true;
                 break;
             }
