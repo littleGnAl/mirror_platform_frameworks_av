@@ -223,15 +223,16 @@ int32_t populateInfoVector(std::string info, android::Vector<FrameInfo>* frameIn
     }
     int32_t numCsds = 0;
     int32_t bytesCount = 0;
-    uint32_t flags = 0;
+    uint32_t flags = FLAG_EMPTY;
     uint32_t timestamp = 0;
     while (1) {
         if (!(eleInfo >> bytesCount)) break;
         eleInfo >> flags;
+        flags = mapInfoFlagsToFlagst(flags);
         eleInfo >> timestamp;
-        bool codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+        bool codecConfig = (flags & FLAG_CSD_FRAME) != 0 ;
         if (codecConfig) numCsds++;
-        bool nonDisplayFrame = ((flags & FLAG_NON_DISPLAY_FRAME) != 0);
+        bool nonDisplayFrame = (flags & FLAG_NO_SHOW_FRAME) != 0;
         if (timestampDevTest && !codecConfig && !nonDisplayFrame) {
             timestampUslist->push_back(timestamp);
         }
@@ -263,4 +264,12 @@ void verifyFlushOutput(std::list<std::unique_ptr<C2Work>>& flushedWork,
     }
     ASSERT_EQ(flushedIndices.empty(), true);
     flushedWork.clear();
+}
+
+int mapInfoFlagsToFlagst(int flags) {
+    int flagst = FLAG_EMPTY;
+    if (flags & 0x1) flagst |= FLAG_SYNC_FRAME;
+    if (flags & 0x10) flagst |= FLAG_NO_SHOW_FRAME;
+    if (flags & 0x20) flagst |= FLAG_CSD_FRAME;
+    return flagst;
 }

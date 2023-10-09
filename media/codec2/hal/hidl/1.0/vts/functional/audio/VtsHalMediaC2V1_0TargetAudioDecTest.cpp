@@ -316,7 +316,7 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
     int maxRetry = 0;
     while (1) {
         if (frameID == (int)Info->size() || frameID == (offset + range)) break;
-        uint32_t flags = 0;
+        uint32_t flags = FLAG_EMPTY;
         std::unique_ptr<C2Work> work;
         // Prepare C2Work
         while (!work && (maxRetry < MAX_RETRY)) {
@@ -333,7 +333,7 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
             ASSERT_TRUE(false) << "Wait for generating C2Work exceeded timeout";
         }
         int64_t timestamp = (*Info)[frameID].timestamp;
-        flags = ((*Info)[frameID].flags == FLAG_CONFIG_DATA) ? C2FrameData::FLAG_CODEC_CONFIG : 0;
+        flags = ((*Info)[frameID].flags & FLAG_CSD_FRAME) ? C2FrameData::FLAG_CODEC_CONFIG : 0;
         if (signalEOS && ((frameID == (int)Info->size() - 1) || (frameID == (offset + range - 1))))
             flags |= C2FrameData::FLAG_END_OF_STREAM;
 
@@ -529,13 +529,10 @@ TEST_P(Codec2AudioDecHidlTest, ThumbnailTest) {
     // request EOS for thumbnail
     // signal EOS flag with last frame
     size_t i = -1;
-    uint32_t flags;
-    do {
-        i++;
-        flags = 0;
-        if (Info[i].flags) flags = 1u << (Info[i].flags - 1);
-
-    } while (!(flags & SYNC_FRAME));
+    for( i = 0 ; i < Info.size() ; i++)
+    {
+        if(Info[i].flags & FLAG_SYNC_FRAME) break;
+    }
     std::ifstream eleStream;
     eleStream.open(mInputFile, std::ifstream::binary);
     ASSERT_EQ(eleStream.is_open(), true);
@@ -640,14 +637,11 @@ TEST_P(Codec2AudioDecHidlTest, FlushTest) {
     mFlushedIndices.clear();
     int index = numFramesFlushed;
     bool keyFrame = false;
-    uint32_t flags = 0;
     while (index < (int)Info.size()) {
-        if (Info[index].flags) flags = 1u << (Info[index].flags - 1);
-        if ((flags & SYNC_FRAME) == SYNC_FRAME) {
+        if (Info[index].flags & FLAG_SYNC_FRAME) {
             keyFrame = true;
             break;
         }
-        flags = 0;
         eleStream.ignore(Info[index].bytesCount);
         index++;
     }
@@ -680,7 +674,7 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
     android::Vector<FrameInfo> Info;
     int bytesCount = 0;
     uint32_t frameId = 0;
-    uint32_t flags = 0;
+    uint32_t flags = FLAG_EMPTY;
     uint32_t timestamp = 0;
     bool codecConfig = false;
     // This test introduces empty CSD after every 20th frame
@@ -688,15 +682,16 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
     while (1) {
         if (!(frameId % 5)) {
             if (!(frameId % 20))
-                flags = 32;
+                flags = FLAG_CSD_FRAME;
             else
-                flags = 0;
+                flags = FLAG_EMPTY;
             bytesCount = 0;
         } else {
             if (!(eleInfo >> bytesCount)) break;
             eleInfo >> flags;
+            flags = mapInfoFlagsToFlagst(flags);
             eleInfo >> timestamp;
-            codecConfig = flags ? ((1 << (flags - 1)) & C2FrameData::FLAG_CODEC_CONFIG) != 0 : 0;
+            codecConfig = (flags & FLAG_CSD_FRAME) != 0;
         }
         Info.push_back({bytesCount, flags, timestamp});
         frameId++;
