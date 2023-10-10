@@ -16,6 +16,24 @@
       "message": "This only works so far because we have only one device category which is permanently attached.\nI think we need to add a proper BUS device AIDL type in the next AIDL HAL definition for a cleaner solution",
       "revId": "896169d80863bb3095706f0e3bdc1cf0165aa7ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d31e46d_8662105c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-10T16:28:01Z",
+      "side": 1,
+      "message": "I agree that adding a dedicated device type would be ideal. However, this will make impossible using Android U code with auto. Not sure if this is a real problem.",
+      "parentUuid": "07949a58_c228b535",
+      "revId": "896169d80863bb3095706f0e3bdc1cf0165aa7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
