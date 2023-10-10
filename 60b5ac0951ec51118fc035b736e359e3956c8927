@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69ac81a_00909d87",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-10-10T14:05:10Z",
+      "side": 1,
+      "message": "ASSERT_GT(flags, -1) \u003c\u003c \"unrecognized flag entry in info file: \" \u003c\u003c mInfoFile;",
+      "range": {
+        "startLine": 689,
+        "startChar": 11,
+        "endLine": 689,
+        "endChar": 56
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588c52d4_c350f931",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-10-10T14:05:10Z",
+      "side": 1,
+      "message": "```\nif (flags \u003c 0) {\n   ALOGE(\"unrecognized flag entry in info file %s\", mInfoFile);\n   return flags;\n}\n```",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 236,
+        "endChar": 9
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730ca07f_391a3917",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-10-10T14:05:10Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 718,
+        "startChar": 12,
+        "endLine": 718,
+        "endChar": 56
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e994a1_342c924c",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-10-10T14:05:10Z",
+      "side": 1,
+      "message": "formatting issues",
+      "range": {
+        "startLine": 804,
+        "startChar": 12,
+        "endLine": 804,
+        "endChar": 17
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359605e3_43a183de",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-10-10T14:05:10Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 955,
+        "startChar": 12,
+        "endLine": 955,
+        "endChar": 56
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
