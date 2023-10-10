@@ -33,6 +33,24 @@
       "message": "Thanks, Sheena. @Andrew, is it OK to merge this code change now? Or anything else I should do?",
       "revId": "ce22e863b7ea65703ad76eb3be460b8c32b94a72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48012e70_66942429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-10T10:05:41Z",
+      "side": 1,
+      "message": "As far as I know it\u0027s fine to merge now (we just waited to avoid the merge conflicts). Do you anticipate any specific problems?",
+      "parentUuid": "a8c7169b_9b009aef",
+      "revId": "ce22e863b7ea65703ad76eb3be460b8c32b94a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
