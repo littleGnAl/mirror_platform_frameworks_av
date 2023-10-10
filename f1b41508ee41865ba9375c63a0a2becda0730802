@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72677c4_5f08955c",
+        "filename": "media/libaaudio/fuzzer/libaaudio_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-10-10T16:52:50Z",
+      "side": 1,
+      "message": "@aditya thank you for adding the exec / s. Currently it is listed as 15, which is very slow for fuzzing as we aim for \u003e 1000 exec / s.\n\nPerhaps this initialization code is too expensive. Is it possible to refactor the init logic into the `LLVMFuzzerInitialize()` function to increase run speed?\n\nOld:\n\n```\nextern \"C\" int LLVMFuzzerTestOneInput(uint8_t *data, size_t size) {\n  foo_t foo \u003d setup_foo();\n\n  wait_for_slow_thing(foo);\n\n  do_quick_thing(foo, data, size);\n\n  return 0;\n}\n```\n\nNew:\n\n```\nextern \"C\" int LLVMFuzzerInitialize(int *argc, char ***argv) {\n  foo \u003d setup_foo();\n\n  wait_for_slow_thing(foo);\n\n  return 0;\n}\n\nextern \"C\" int LLVMFuzzerTestOneInput(uint8_t *data, size_t size) {\n  do_quick_thing(foo, data, size);\n\n  return 0;\n}\n```",
+      "range": {
+        "startLine": 329,
+        "startChar": 2,
+        "endLine": 331,
+        "endChar": 3
+      },
+      "revId": "f1b41508ee41865ba9375c63a0a2becda0730802",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
