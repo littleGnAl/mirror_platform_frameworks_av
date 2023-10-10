@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07949a58_c228b535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-10-10T08:04:42Z",
+      "side": 1,
+      "message": "This only works so far because we have only one device category which is permanently attached.\nI think we need to add a proper BUS device AIDL type in the next AIDL HAL definition for a cleaner solution",
+      "revId": "896169d80863bb3095706f0e3bdc1cf0165aa7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
