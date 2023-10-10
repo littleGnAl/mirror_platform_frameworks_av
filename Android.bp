@@ -53,7 +53,7 @@ aidl_interface {
         "aidl/android/media/VolumeShaperState.aidl",
     ],
     imports: [
-        "android.media.audio.common.types-V2",
+        "android.media.audio.common.types-V3",
     ],
     backend: {
         cpp: {
