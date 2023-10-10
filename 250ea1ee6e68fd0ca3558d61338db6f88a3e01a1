@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "603b89b4_a7c1fb96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c3f95a3_170fa4b7",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5c9eb68_314b3f7f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-10T11:55:46Z",
       "side": 1,
       "message": "remove this and make it 0.",
+      "range": {
+        "startLine": 319,
+        "startChar": 25,
+        "endLine": 319,
+        "endChar": 35
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aee0d4a7_3e0e2736",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c9eb68_314b3f7f",
       "range": {
         "startLine": 319,
         "startChar": 25,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "293622c6_133c5ad6",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c588c088_7a0220e1",
+      "range": {
+        "startLine": 531,
+        "startChar": 12,
+        "endLine": 531,
+        "endChar": 17
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b757d15_fa1382a9",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-10-10T11:55:46Z",
       "side": 1,
       "message": "```\nfor (i \u003d 0; i \u003c Info.size(); i++) {\n    if (Info[i].flags \u0026 FLAG_SYNC_FRAME) break;\n}\n```",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 532,
+        "endChar": 39
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffa2fab_5d382d13",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b757d15_fa1382a9",
       "range": {
         "startLine": 532,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df806be_f5504011",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3df3cb3_c4d0d5e2",
+      "range": {
+        "startLine": 684,
+        "startChar": 12,
+        "endLine": 687,
+        "endChar": 35
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "187ec7cd_fa698c19",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-10-10T11:55:46Z",
       "side": 1,
       "message": "ASSERT_GE(flags, 0) \u003c\u003c \"Error in parsing input info file: \" \u003c\u003c mInfoFile;",
+      "range": {
+        "startLine": 692,
+        "startChar": 20,
+        "endLine": 692,
+        "endChar": 40
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ddf99dc_695c652f",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "187ec7cd_fa698c19",
       "range": {
         "startLine": 692,
         "startChar": 20,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf9c385_f5f43224",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daffc256_6b957173",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 0
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b6343bb_7c6e5066",
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e18515_54c7607d",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6343bb_7c6e5066",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "886e0183_dd43428b",
@@ -198,6 +390,24 @@
       "writtenOn": "2023-10-10T11:55:46Z",
       "side": 1,
       "message": "nit; blank line",
+      "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eff5ac4_a505c37a",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-10T12:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886e0183_dd43428b",
       "revId": "250ea1ee6e68fd0ca3558d61338db6f88a3e01a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
