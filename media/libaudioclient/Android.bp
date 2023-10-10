@@ -256,7 +256,7 @@ aidl_interface {
         "aidl/android/media/IEffectClient.aidl",
     ],
     imports: [
-        "android.media.audio.common.types-V2",
+        "android.media.audio.common.types-V3",
         "shared-file-region-aidl",
     ],
     backend: {
@@ -310,7 +310,7 @@ aidl_interface {
         "aidl/android/media/SurroundSoundConfig.aidl",
     ],
     imports: [
-        "android.media.audio.common.types-V2",
+        "android.media.audio.common.types-V3",
         "framework-permission-aidl",
     ],
     backend: {
@@ -351,12 +351,9 @@ aidl_interface {
         "aidl/android/media/AudioVolumeGroup.aidl",
         "aidl/android/media/DeviceRole.aidl",
         "aidl/android/media/SoundTriggerSession.aidl",
-        "aidl/android/media/SpatializationLevel.aidl",
-        "aidl/android/media/SpatializationMode.aidl",
-        "aidl/android/media/SpatializerHeadTrackingMode.aidl",
     ],
     imports: [
-        "android.media.audio.common.types-V2",
+        "android.media.audio.common.types-V3",
         "audioclient-types-aidl",
     ],
     backend: {
@@ -403,7 +400,7 @@ aidl_interface {
         "aidl/android/media/SoundDoseRecord.aidl",
     ],
     imports: [
-        "android.media.audio.common.types-V2",
+        "android.media.audio.common.types-V3",
         "audioclient-types-aidl",
         "av-types-aidl",
         "effect-aidl",
@@ -440,7 +437,7 @@ aidl_interface {
         "aidl/android/media/IAudioPolicyServiceClient.aidl",
     ],
     imports: [
-        "android.media.audio.common.types-V2",
+        "android.media.audio.common.types-V3",
         "audioclient-types-aidl",
         "audiopolicy-types-aidl",
         "capture_state_listener-aidl",
@@ -475,6 +472,7 @@ aidl_interface {
         "aidl/android/media/ISpatializerHeadTrackingCallback.aidl",
     ],
     imports: [
+        "android.media.audio.common.types-V3",
         "audiopolicy-types-aidl",
     ],
 
