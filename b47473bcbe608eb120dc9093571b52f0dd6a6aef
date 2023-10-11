@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebcd7209_cb16d09d",
+        "filename": "services/mediaresourcemanager/ResourceModelInterface.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-11T17:33:21Z",
+      "side": 1,
+      "message": "When I think of model, I would also expect this to contain things (input) like - isSecure, isAudio/Video, width/height.\n\nbasically this could contain some sort of:\n\nCodecResources getCodecResources(MediaFormat fmt)\n\nthen some sort of system view:\n\nId add/startedCodec[InstanceResources](CodecResources resources);\nremove/stoppedCodec(Id)\n\nthen some sort of:\n\ngetConflictingClients(CodecResources[] newCodecs, int levelOfAggressiveness)",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "b47473bcbe608eb120dc9093571b52f0dd6a6aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
