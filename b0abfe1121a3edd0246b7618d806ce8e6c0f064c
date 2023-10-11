@@ -16,6 +16,29 @@
       "message": "@Lajos, @Mikhail, @Andrew, could you help to review this code change? According to latest Google policy, it needs at least two reviewers\u0027 \"+2\" before this code is merged. Thanks.",
       "revId": "b0abfe1121a3edd0246b7618d806ce8e6c0f064c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d222dd_0cc624aa",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5204,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-10-11T08:37:20Z",
+      "side": 1,
+      "message": "is this equivalent to the old code? Specifically when `profile \u003d\u003d 1` (which seems to be intended to be supported, based on the comment above)\n\nThe previous code would enter the `else` block in this case and execute L5207-5213. The new code looks like it will still enter the `else` block, but now that\u0027s just a log saying \"undefined profile is undetected\"\n\nWhat about the \u0027unknown\u0027 case in the comment above? It says it should map to AVC but this code seems to map it also to the \"unsupported logging\" `else`. If that\u0027s intentional, we should probably update the comment to match the code.",
+      "range": {
+        "startLine": 5204,
+        "startChar": 0,
+        "endLine": 5204,
+        "endChar": 34
+      },
+      "revId": "b0abfe1121a3edd0246b7618d806ce8e6c0f064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
