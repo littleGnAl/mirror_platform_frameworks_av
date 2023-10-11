@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91b157d_c722fa45",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-11T04:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f69ac81a_00909d87",
+      "range": {
+        "startLine": 689,
+        "startChar": 11,
+        "endLine": 689,
+        "endChar": 56
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "588c52d4_c350f931",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-10T14:05:10Z",
       "side": 1,
       "message": "```\nif (flags \u003c 0) {\n   ALOGE(\"unrecognized flag entry in info file %s\", mInfoFile);\n   return flags;\n}\n```",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 236,
+        "endChar": 9
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7abfcc3_9de1dfee",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-11T04:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "588c52d4_c350f931",
       "range": {
         "startLine": 232,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "328383c6_f39352ed",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-11T04:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730ca07f_391a3917",
+      "range": {
+        "startLine": 718,
+        "startChar": 12,
+        "endLine": 718,
+        "endChar": 56
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33e994a1_342c924c",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "498002f8_425e6479",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-11T04:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33e994a1_342c924c",
+      "range": {
+        "startLine": 804,
+        "startChar": 12,
+        "endLine": 804,
+        "endChar": 17
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "359605e3_43a183de",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-10-10T14:05:10Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 955,
+        "startChar": 12,
+        "endLine": 955,
+        "endChar": 56
+      },
+      "revId": "60b5ac0951ec51118fc035b736e359e3956c8927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da5a9b1_f44869d4",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-10-11T04:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "359605e3_43a183de",
       "range": {
         "startLine": 955,
         "startChar": 12,
