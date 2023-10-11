@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc19ca0_f880f449",
+        "filename": "services/mediaresourcemanager/ResourceManagerMetrics.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-11T17:17:09Z",
+      "side": 0,
+      "message": "it seems we are only need to separate HW vs SW in this part of the code (at least in this CL) that already takes in isHardware. Is there a reason why we want the subtype to distinguish between SW and HW codecs? Being HW vs SW codec could also be a continuum, e.g. fully HW accelerated, mostly HW accelerated, barely HW accelerated. What is the definition of isHardware for RM?",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "ddf30ea49c735c06968f89a0283c74416298dbc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
