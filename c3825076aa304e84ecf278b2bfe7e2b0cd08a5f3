@@ -33,6 +33,23 @@
       "message": "Can we re-use this change ID for the code that\u0027s currently in r.android.com/2745223? Then we will keep all the important comment threads when the change is eventually submitted (vs if we submit that change and abandon this one, in which case the existing comments will be lost).",
       "revId": "c3825076aa304e84ecf278b2bfe7e2b0cd08a5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1827b237_c6d6c1c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-11T23:53:13Z",
+      "side": 1,
+      "message": "Flags are moved to the CL in frameworks/base at https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2745223.\n\nVenkat,\nCan you please abandon this?\nThanks.",
+      "revId": "c3825076aa304e84ecf278b2bfe7e2b0cd08a5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
