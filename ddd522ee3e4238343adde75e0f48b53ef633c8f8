@@ -16,6 +16,24 @@
       "message": "These values aren\u0027t changed after the earlier logging call. Did you mean to output `minFrameQP` and `maxFrameQP` or leave the logging in case the block is modified in the future?",
       "revId": "ddd522ee3e4238343adde75e0f48b53ef633c8f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e4c321_2aee721a",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2023-10-11T12:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5db63b77_f48c856b",
+      "revId": "ddd522ee3e4238343adde75e0f48b53ef633c8f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
