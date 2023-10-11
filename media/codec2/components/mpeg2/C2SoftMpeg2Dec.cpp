@@ -324,6 +324,7 @@ C2SoftMpeg2Dec::C2SoftMpeg2Dec(
         mIvColorformat(IV_YUV_420P),
         mWidth(320),
         mHeight(240),
+        mHeaderDecoded(false),
         mOutIndex(0u) {
     // If input dump is enabled, then open create an empty file
     GENERATE_FILE_NAMES();
@@ -725,6 +726,7 @@ status_t C2SoftMpeg2Dec::resetDecoder() {
     (void) setNumCores();
     mStride = 0;
     mSignalledError = false;
+    mHeaderDecoded = false;
 
     return OK;
 }
@@ -980,6 +982,11 @@ void C2SoftMpeg2Dec::process(
             continue;
         }
         if (0 < s_decode_op.u4_pic_wd && 0 < s_decode_op.u4_pic_ht) {
+            if (mHeaderDecoded == false) {
+                mHeaderDecoded = true;
+                mStride = ALIGN128(s_decode_op.u4_pic_wd);
+                setParams(mStride);
+            }
             if (s_decode_op.u4_pic_wd != mWidth ||  s_decode_op.u4_pic_ht != mHeight) {
                 mWidth = s_decode_op.u4_pic_wd;
                 mHeight = s_decode_op.u4_pic_ht;

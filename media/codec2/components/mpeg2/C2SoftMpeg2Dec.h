@@ -158,6 +158,7 @@ struct C2SoftMpeg2Dec : public SimpleC2Component {
     uint32_t mStride;
     bool mSignalledOutputEos;
     bool mSignalledError;
+    bool mHeaderDecoded;
     std::atomic_uint64_t mOutIndex;
 
     // Color aspects. These are ISO values and are meant to detect changes in aspects to avoid
