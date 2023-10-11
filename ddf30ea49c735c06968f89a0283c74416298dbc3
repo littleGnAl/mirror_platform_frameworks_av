@@ -22,6 +22,30 @@
       },
       "revId": "ddf30ea49c735c06968f89a0283c74416298dbc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b30180_33ba2c6d",
+        "filename": "services/mediaresourcemanager/ResourceManagerMetrics.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-11T21:02:26Z",
+      "side": 0,
+      "message": "when the RM decides to reclaim a client (codec in this case), it finds the one that matches the type (DRM, Secure/Unsecure Codec) and also the subtype (Audio, Video, Image)\nNOTE that the subtype is applicable (as of now) only for codec type.\nBasically it ensures that a foreground app needs a hw video codec, the RM will reclaim from a hw video codec (and not sw video codec)",
+      "parentUuid": "ddc19ca0_f880f449",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "ddf30ea49c735c06968f89a0283c74416298dbc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
