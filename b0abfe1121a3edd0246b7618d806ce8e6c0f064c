@@ -39,6 +39,30 @@
       },
       "revId": "b0abfe1121a3edd0246b7618d806ce8e6c0f064c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06b0047_5976ca77",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5204,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-11T09:15:52Z",
+      "side": 1,
+      "message": "In your example, there is actually no difference since profile 1 is AVC based.\n\nBut in our internal test, there is a negative case which used profile 12 (undefined) HEVC based stream. \"else\" branch is touched too. Then there is a crash at line 5207 since it tries to get AVC CSD. Here is one example crash log in our internal test.\n\nYour comment is valuable. We have an updated version for this code change. I\u0027ll update it soon.\n\n--------- beginning of crash\n05-24 20:16:24.582 1280 1485 F DEBUG : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***\n05-24 20:16:24.582 1280 1485 F DEBUG : Build fingerprint: \u0027Android/aosp_coral/coral:13/TP1A.220624.014/eng.hzhu.20230414.010058:userdebug/test-keys\u0027\n05-24 20:16:24.582 1280 1485 F DEBUG : Revision: \u0027MP1.0\u0027\n05-24 20:16:24.582 1280 1485 F DEBUG : ABI: \u0027arm64\u0027\n05-24 20:16:24.582 1280 1485 F DEBUG : Timestamp: 2023-05-24 20:16:24.428836788+0800\n05-24 20:16:24.582 1280 1485 F DEBUG : Process uptime: 12322s\n05-24 20:16:24.583 1280 1485 F DEBUG : Cmdline: media.extractor aextractor\n05-24 20:16:24.583 1280 1485 F DEBUG : pid: 1280, tid: 1485, name: binder:1280_1 \u003e\u003e\u003e media.extractor \u003c\u003c\u003c\n05-24 20:16:24.583 1280 1485 F DEBUG : uid: 1040\n05-24 20:16:24.583 1280 1485 F DEBUG : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)\n05-24 20:16:24.583 1280 1485 F DEBUG : signal 0 (SIGABRT), code -1 (SI_QUEUE), fault addr --------\n05-24 20:16:24.583 1280 1485 F DEBUG : Abort message: \u0027frameworks/av/media/extractors/mp4/MPEG4Extractor.cpp:5183 CHECK(AMediaFormat_getBuffer(format, AMEDIAFORMAT_KEY_CSD_AVC, \u0026data, \u0026size)) failed.\u0027\n05-24 20:16:24.583 1280 1485 F DEBUG : x0 0000000000000000 x1 00000000000005cd x2 0000000000000006 x3 0000007161fde090\n05-24 20:16:24.583 1280 1485 F DEBUG : x4 6c2e72716e736260 x5 6c2e72716e736260 x6 6c2e72716e736260 x7 7f7f7f7f7f7f7f7f\n05-24 20:16:24.583 1280 1485 F DEBUG : x8 00000000000000f0 x9 00000074087b1a00 x10 0000000000000001 x11 00000074087efce4\n05-24 20:16:24.583 1280 1485 F DEBUG : x12 0000007161fde050 x13 0000000000000091 x14 0000007161fde220 x15 00000000000a3936\n05-24 20:16:24.583 1280 1485 F DEBUG : x16 0000007408854d60 x17 0000007408831b70 x18 00000071615fc000 x19 0000000000000500\n05-24 20:16:24.583 1280 1485 F DEBUG : x20 00000000000005cd x21 00000000ffffffff x22 b400007193e58b28 x23 0000000000000003\n05-24 20:16:24.583 1280 1485 F DEBUG : x24 0000000000000000 x25 0000000000000000 x26 0000000000000000 x27 0000000000000bb8\n05-24 20:16:24.583 1280 1485 F DEBUG : x28 0000000005524925 x29 0000007161fde110\n05-24 20:16:24.583 1280 1485 F DEBUG : lr 00000074087e1868 sp 0000007161fde070 pc 00000074087e1894 pst 0000000000000000",
+      "parentUuid": "29d222dd_0cc624aa",
+      "range": {
+        "startLine": 5204,
+        "startChar": 0,
+        "endLine": 5204,
+        "endChar": 34
+      },
+      "revId": "b0abfe1121a3edd0246b7618d806ce8e6c0f064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
