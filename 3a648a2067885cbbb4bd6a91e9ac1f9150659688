@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d681e5_dfe65fa7",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 5209,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-11T09:39:27Z",
+      "side": 1,
+      "message": "We removed CHECK() to avoid crash. The new patch has been tested by our QA team.",
+      "range": {
+        "startLine": 5209,
+        "startChar": 16,
+        "endLine": 5209,
+        "endChar": 87
+      },
+      "revId": "3a648a2067885cbbb4bd6a91e9ac1f9150659688",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
