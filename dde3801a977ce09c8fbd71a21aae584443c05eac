@@ -22,6 +22,47 @@
       },
       "revId": "dde3801a977ce09c8fbd71a21aae584443c05eac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa617889_1cc4feb6",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5184,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-10-12T08:46:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5f9a8aea_cf17871e",
+      "range": {
+        "startLine": 5184,
+        "startChar": 8,
+        "endLine": 5184,
+        "endChar": 91
+      },
+      "revId": "dde3801a977ce09c8fbd71a21aae584443c05eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df851be6_05cc86d0",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5201,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-10-12T08:46:37Z",
+      "side": 1,
+      "message": "maybe include the profile value here?",
+      "revId": "dde3801a977ce09c8fbd71a21aae584443c05eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
