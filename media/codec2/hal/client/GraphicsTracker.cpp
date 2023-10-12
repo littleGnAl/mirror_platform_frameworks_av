@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//#define LOG_NDEBUG 0
+#define LOG_TAG "GraphicsTracker"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -153,7 +155,8 @@ void GraphicsTracker::BufferCache::unblockSlot(int slot) {
 }
 
 GraphicsTracker::GraphicsTracker(int maxDequeueCount)
-    : mMaxDequeue{maxDequeueCount}, mMaxDequeueRequested{maxDequeueCount},
+    : mBufferCache(new BufferCache()), mMaxDequeue{maxDequeueCount},
+    mMaxDequeueRequested{maxDequeueCount},
     mMaxDequeueCommitted{maxDequeueCount},
     mMaxDequeueRequestedSeqId{0UL}, mMaxDequeueCommittedSeqId{0ULL},
     mDequeueable{maxDequeueCount},
@@ -177,6 +180,7 @@ GraphicsTracker::GraphicsTracker(int maxDequeueCount)
     mWritePipeFd.reset(pipefd[1]);
 
     mEventQueueThread = std::thread([this](){processEvent();});
+    writeIncDequeueable(mDequeueable);
 
     CHECK(ret >= 0);
     CHECK(mEventQueueThread.joinable());
@@ -546,8 +550,9 @@ c2_status_t GraphicsTracker::_allocate(const std::shared_ptr<BufferCache> &cache
         }
         *cached = false;
         *buffer = std::make_shared<BufferItem>(generation, &desc, buf);
+        AHardwareBuffer_release(buf); // remove an acquire count from
+                                      // AHwb_allocate().
         if (!*buffer) {
-            AHardwareBuffer_release(buf);
             return C2_NO_MEMORY;
         }
         return C2_OK;
