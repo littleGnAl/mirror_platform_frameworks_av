@@ -61,6 +61,16 @@ struct ResourceInfo {
     bool pendingRemoval{false};
 };
 
+/*
+ * Resource request info that encapsulates
+ *  - the calling/requesting process pid.
+ *  - the resource requesting (to be reclaimed from others)
+ */
+struct ResourceRequestInfo {
+    int mCallingPid = -1;
+    const ::aidl::android::media::MediaResourceParcel* mResource;
+};
+
 // vector of <PID, UID>
 typedef std::vector<std::pair<int32_t, uid_t>> PidUidVector;
 
@@ -139,16 +149,15 @@ private:
     // Gets the list of all the clients who own the specified resource type.
     // Returns false if any client belongs to a process with higher priority than the
     // calling process. The clients will remain unchanged if returns false.
-    bool getAllClients_l(int callingPid, MediaResource::Type type, MediaResource::SubType subType,
+    bool getAllClients_l(const ResourceRequestInfo& resourceInfo,
             PidUidVector* idList,
             std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
 
     // Gets the client who owns specified resource type from lowest possible priority process.
     // Returns false if the calling process priority is not higher than the lowest process
     // priority. The client will remain unchanged if returns false.
-    bool getLowestPriorityBiggestClient_l(int callingPid, MediaResource::Type type,
-            MediaResource::SubType subType, PidUidVector* idList,
-            std::shared_ptr<IResourceManagerClient> *client);
+    bool getLowestPriorityBiggestClient_l(const ResourceRequestInfo& requestInfo,
+            PidUidVector* idVector, std::shared_ptr<IResourceManagerClient>* client);
 
     // Gets lowest priority process that has the specified resource type.
     // Returns false if failed. The output parameters will remain unchanged if failed.
@@ -170,8 +179,8 @@ private:
 
     // A helper function basically calls getLowestPriorityBiggestClient_l and add
     // the result client to the given Vector.
-    void getClientForResource_l(int callingPid, const MediaResourceParcel *res,
-            PidUidVector* idList,
+    void getClientForResource_l(const ResourceRequestInfo& requestInfo,
+            PidUidVector* idVector,
             std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
 
     void onFirstAdded(const MediaResourceParcel& res, const ResourceInfo& clientInfo);

@@ -478,16 +478,21 @@ public:
 
     void testGetAllClients() {
         addResource();
-        MediaResource::Type type = MediaResource::Type::kSecureCodec;
-        MediaResource::SubType subType = MediaResource::SubType::kUnspecifiedSubType;
 
         std::vector<std::shared_ptr<IResourceManagerClient> > clients;
         PidUidVector idList;
-        EXPECT_FALSE(mService->getAllClients_l(kLowPriorityPid, type, subType, &idList, &clients));
+        MediaResource resource(MediaResource::Type::kSecureCodec,
+                               MediaResource::SubType::kUnspecifiedSubType,
+                               1);
+        ResourceRequestInfo requestInfoHigh { kHighPriorityPid, &resource};
+        ResourceRequestInfo requestInfoMid { kMidPriorityPid, &resource};
+        ResourceRequestInfo requestInfoLow { kLowPriorityPid, &resource};
+
+        EXPECT_FALSE(mService->getAllClients_l(requestInfoLow, &idList, &clients));
         // some higher priority process (e.g. kTestPid2) owns the resource, so getAllClients_l
         // will fail.
-        EXPECT_FALSE(mService->getAllClients_l(kMidPriorityPid, type, subType, &idList, &clients));
-        EXPECT_TRUE(mService->getAllClients_l(kHighPriorityPid, type, subType, &idList, &clients));
+        EXPECT_FALSE(mService->getAllClients_l(requestInfoMid, &idList, &clients));
+        EXPECT_TRUE(mService->getAllClients_l(requestInfoHigh, &idList, &clients));
 
         EXPECT_EQ(2u, clients.size());
         // (OK to require ordering in clients[], as the pid map is sorted)
@@ -756,19 +761,19 @@ public:
     }
 
     void testGetLowestPriorityBiggestClient() {
-        MediaResource::Type type = MediaResource::Type::kGraphicMemory;
-        MediaResource::SubType subType = MediaResource::SubType::kUnspecifiedSubType;
         std::shared_ptr<IResourceManagerClient> client;
         PidUidVector idList;
-        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(kHighPriorityPid, type, subType,
-                &idList, &client));
+        MediaResource resource(MediaResource::Type::kGraphicMemory,
+                               MediaResource::SubType::kUnspecifiedSubType,
+                               1);
+        ResourceRequestInfo requestInfoHigh { kHighPriorityPid, &resource};
+        ResourceRequestInfo requestInfoLow { kLowPriorityPid, &resource};
+        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(requestInfoHigh, &idList, &client));
 
         addResource();
 
-        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(kLowPriorityPid, type, subType,
-                &idList, &client));
-        EXPECT_TRUE(mService->getLowestPriorityBiggestClient_l(kHighPriorityPid, type, subType,
-                &idList, &client));
+        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(requestInfoLow, &idList, &client));
+        EXPECT_TRUE(mService->getLowestPriorityBiggestClient_l(requestInfoHigh, &idList, &client));
 
         // kTestPid1 is the lowest priority process with MediaResource::Type::kGraphicMemory.
         // mTestClient1 has the largest MediaResource::Type::kGraphicMemory within kTestPid1.
