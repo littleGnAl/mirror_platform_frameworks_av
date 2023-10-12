@@ -428,7 +428,7 @@ void ResourceManagerMetrics::pushConcurrentUsageReport(int32_t pid, uid_t uid) {
 void ResourceManagerMetrics::pushReclaimAtom(const ClientInfoParcel& clientInfo,
                         const std::vector<int>& priorities,
                         const std::vector<std::shared_ptr<IResourceManagerClient>>& clients,
-                        const PidUidVector& idList, bool reclaimed) {
+                        const std::vector<std::pair<int32_t, uid_t>>& idList, bool reclaimed) {
     // Construct the metrics for codec reclaim as a pushed atom.
     // 1. Information about the requester.
     //  - UID and the priority (oom score)
@@ -465,7 +465,7 @@ void ResourceManagerMetrics::pushReclaimAtom(const ClientInfoParcel& clientInfo,
     }
     int32_t noOfCodecsReclaimed = clients.size();
     int32_t targetIndex = 1;
-    for (PidUidVector::const_reference id : idList) {
+    for (std::vector<std::pair<int32_t, uid_t>>::const_reference id : idList) {
         int32_t targetUid = id.second;
         int targetPriority = priorities[targetIndex];
         // Post the pushed atom
