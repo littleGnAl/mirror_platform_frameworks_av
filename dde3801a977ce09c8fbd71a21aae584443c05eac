@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9a8aea_cf17871e",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5184,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-12T08:36:58Z",
+      "side": 1,
+      "message": "I have checked with team. Profile 1, 2, 3 are never been mentioned in Dolby Vision public documentation and there is no this kind of stream in test set and real streams in market. So I changed the comments.",
+      "range": {
+        "startLine": 5184,
+        "startChar": 8,
+        "endLine": 5184,
+        "endChar": 91
+      },
+      "revId": "dde3801a977ce09c8fbd71a21aae584443c05eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

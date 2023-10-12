@@ -45,6 +45,30 @@
       },
       "revId": "3a648a2067885cbbb4bd6a91e9ac1f9150659688",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92135a5_658f447e",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 5215,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-12T08:36:58Z",
+      "side": 1,
+      "message": "I updated the code as your suggestion. Let me know whether it matches your thought.",
+      "parentUuid": "71a75802_2e5c199f",
+      "range": {
+        "startLine": 5210,
+        "startChar": 16,
+        "endLine": 5215,
+        "endChar": 55
+      },
+      "revId": "3a648a2067885cbbb4bd6a91e9ac1f9150659688",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
