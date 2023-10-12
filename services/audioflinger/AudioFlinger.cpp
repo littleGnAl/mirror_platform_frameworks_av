@@ -93,6 +93,8 @@ static constexpr char kHardwareLockedString[] = "Hardware lock is taken\n";
 static constexpr char kClientLockedString[] = "Client lock is taken\n";
 static constexpr char kNoEffectsFactory[] = "Effects Factory is absent\n";
 
+extern bool g_isPlayingAssistantStream;
+
 static constexpr char kAudioServiceName[] = "audio";
 
 // In order to avoid invalidating offloaded tracks each time a Visualizer is turned on and off
@@ -1854,6 +1856,12 @@ String8 AudioFlinger::getParameters(audio_io_handle_t ioHandle, const String8& k
 
     if (ioHandle == AUDIO_IO_HANDLE_NONE) {
         String8 out_s8;
+        if (String8("audio_is_playing_assistant") == keys) {
+            ALOGI("[%s:%d] audio_is_playing_assistant:%d", __func__, __LINE__, g_isPlayingAssistantStream);
+            out_s8 = String8("audio_is_playing_assistant=");
+            out_s8 += String8(g_isPlayingAssistantStream? "true" : "false");
+            return out_s8;
+        }
 
         audio_utils::lock_guard lock(hardwareMutex());
         for (size_t i = 0; i < mAudioHwDevs.size(); i++) {

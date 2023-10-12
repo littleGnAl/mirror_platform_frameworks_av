@@ -131,6 +131,7 @@ static constexpr int32_t kMaxSharedAudioHistoryMs = 5000;
 // 50 * ~20msecs = 1 second
 static const int8_t kMaxTrackRetries = 50;
 static const int8_t kMaxTrackStartupRetries = 50;
+bool g_isPlayingAssistantStream = false;
 
 // allow less retry attempts on direct output thread.
 // direct outputs can be a scarce resource in audio hardware and should
@@ -5512,6 +5513,17 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
         std::vector<std::pair<sp<IAfTrack>, size_t>> mUnderrunFrames;
     } deferredOperations(&mixerStatus, &mThreadMetrics);
     // implicit nested scope for variable capture
+
+    bool includeAssistantStream = false;
+    for (size_t i = 0 ; i < count ; i++) {
+        const sp<Track> t = mActiveTracks[i];
+        Track* const track = t.get();
+        if (track->streamType() == AUDIO_STREAM_ASSISTANT) {
+            includeAssistantStream = true;
+        }
+    }
+    ALOGI("[%s:%d] track count:%d includeAssistantStream:%d", __func__, __LINE__, count, includeAssistantStream);
+    g_isPlayingAssistantStream = includeAssistantStream;
 
     bool noFastHapticTrack = true;
     for (size_t i=0 ; i<count ; i++) {
