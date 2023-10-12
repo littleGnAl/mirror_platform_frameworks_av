@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#define LOG_NDEBUG 0
+#define LOG_TAG "GraphicsTracker"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -78,6 +80,7 @@ GraphicsTracker::BufferItem::BufferItem(
         mInit{true}, mGeneration{generation}, mSlot{-1},
         mBuf{pBuf}, mUsage{::android::AHardwareBuffer_convertToGrallocUsageBits(desc->usage)},
         mFence{Fence::NO_FENCE} {
+    AHardwareBuffer_acquire(mBuf);
 }
 
 GraphicsTracker::BufferItem::~BufferItem() {
@@ -153,7 +156,8 @@ void GraphicsTracker::BufferCache::unblockSlot(int slot) {
 }
 
 GraphicsTracker::GraphicsTracker(int maxDequeueCount)
-    : mMaxDequeue{maxDequeueCount}, mMaxDequeueRequested{maxDequeueCount},
+    : mBufferCache(new BufferCache()), mMaxDequeue{maxDequeueCount},
+    mMaxDequeueRequested{maxDequeueCount},
     mMaxDequeueCommitted{maxDequeueCount},
     mMaxDequeueRequestedSeqId{0UL}, mMaxDequeueCommittedSeqId{0ULL},
     mDequeueable{maxDequeueCount},
@@ -177,6 +181,7 @@ GraphicsTracker::GraphicsTracker(int maxDequeueCount)
     mWritePipeFd.reset(pipefd[1]);
 
     mEventQueueThread = std::thread([this](){processEvent();});
+    writeIncDequeueable(mDequeueable);
 
     CHECK(ret >= 0);
     CHECK(mEventQueueThread.joinable());
@@ -492,6 +497,7 @@ void GraphicsTracker::commitAllocate(c2_status_t res, const std::shared_ptr<Buff
             CHECK(it != cache->mBuffers.end());
             it->second->mFence = fence;
             *pBuffer = it->second;
+            ALOGV("an allocated buffer already cached, updated Fence");
         } else if (cache.get() == mBufferCache.get() && mBufferCache->mIgbp) {
             // Cache the buffer if it is allocated from the current IGBP
             CHECK(slot >= 0);
@@ -499,6 +505,7 @@ void GraphicsTracker::commitAllocate(c2_status_t res, const std::shared_ptr<Buff
             if (!ret.second) {
                 ret.first->second = *pBuffer;
             }
+            ALOGV("an allocated buffer not cached from the current IGBP");
         }
         uint64_t bid = (*pBuffer)->mId;
         auto mapRet = mDequeued.emplace(bid, *pBuffer);
@@ -545,11 +552,15 @@ c2_status_t GraphicsTracker::_allocate(const std::shared_ptr<BufferCache> &cache
             return ret == ::android::NO_MEMORY ? C2_NO_MEMORY : C2_CORRUPTED;
         }
         *cached = false;
+        *rSlotId = -1;
+        *rFence = Fence::NO_FENCE;
         *buffer = std::make_shared<BufferItem>(generation, &desc, buf);
+        AHardwareBuffer_release(buf); // remove an acquire count from
+                                      // AHwb_allocate().
         if (!*buffer) {
-            AHardwareBuffer_release(buf);
             return C2_NO_MEMORY;
         }
+        ALOGV("allocate: direct allocate without igbp");
         return C2_OK;
     }
 
@@ -588,9 +599,11 @@ c2_status_t GraphicsTracker::_allocate(const std::shared_ptr<BufferCache> &cache
             return C2_CORRUPTED;
         }
         *cached = false;
-        return C2_OK;
+    } else {
+        *cached = true;
     }
-    *cached = true;
+    ALOGV("allocate: a new allocated buffer from igbp cached %d, slot: %d",
+          *cached, slotId);
     *rSlotId = slotId;
     *rFence = fence;
     return C2_OK;
