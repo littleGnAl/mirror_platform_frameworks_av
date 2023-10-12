@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef4e9c7_a7a9e870",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-10-12T21:49:35Z",
+      "side": 1,
+      "message": "if we set it in the new code above.... we know this will leave it at 32.\nshould the new code be:\n\nif (bits \u003c 0) {\n    ALOGW() [instead of ALOGE, since we do recover from it automatically]\n    bits \u003d 32;\n} else {\n    bits \u003d min( bits, 52);",
+      "range": {
+        "startLine": 905,
+        "startChar": 3,
+        "endLine": 905,
+        "endChar": 78
+      },
+      "revId": "63c3d81c9c3f6d2c29619a7eb258bc6898a0f8bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
