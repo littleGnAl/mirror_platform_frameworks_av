@@ -153,7 +153,8 @@ void GraphicsTracker::BufferCache::unblockSlot(int slot) {
 }
 
 GraphicsTracker::GraphicsTracker(int maxDequeueCount)
-    : mMaxDequeue{maxDequeueCount}, mMaxDequeueRequested{maxDequeueCount},
+    : mBufferCache(new BufferCache()), mMaxDequeue{maxDequeueCount},
+    mMaxDequeueRequested{maxDequeueCount},
     mMaxDequeueCommitted{maxDequeueCount},
     mMaxDequeueRequestedSeqId{0UL}, mMaxDequeueCommittedSeqId{0ULL},
     mDequeueable{maxDequeueCount},
