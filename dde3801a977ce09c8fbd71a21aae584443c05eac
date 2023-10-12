@@ -63,6 +63,24 @@
       "message": "maybe include the profile value here?",
       "revId": "dde3801a977ce09c8fbd71a21aae584443c05eac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40afbca4_f19467cd",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5201,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-12T09:05:11Z",
+      "side": 1,
+      "message": "Change to \"LOG_ALWAYS_FATAL(\"Invalid Dolby Vision profile \u003d %d\", profile);\"\nIs it OK? 😊",
+      "parentUuid": "df851be6_05cc86d0",
+      "revId": "dde3801a977ce09c8fbd71a21aae584443c05eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
