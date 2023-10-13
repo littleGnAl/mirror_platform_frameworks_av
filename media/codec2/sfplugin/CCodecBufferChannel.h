@@ -103,6 +103,11 @@ public:
     void setComponent(const std::shared_ptr<Codec2Client::Component> &component);
 
     /**
+     * Check if the surface is secure; used for secure codecs.
+     **/
+    status_t checkSecureSurface(const sp<Surface>& surface);
+
+    /**
      * Set output graphic surface for rendering.
      */
     status_t setSurface(const sp<Surface> &surface, bool pushBlankBuffer);

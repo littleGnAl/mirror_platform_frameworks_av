@@ -1402,6 +1402,16 @@ status_t CCodecBufferChannel::start(
             outputSurface = output->surface ?
                     output->surface->getIGraphicBufferProducer() : nullptr;
             if (outputSurface) {
+                // check surface for secure codec
+                if (secure && (secureMode == C2Config::SM_READ_PROTECTED ||
+                        secureMode.value == C2Config::SM_READ_PROTECTED_WITH_ENCRYPTED)) {
+                    status_t err = checkSecureSurface(output->surface);
+                    if (err != OK) {
+                        mCCodecCallback->onError(toStatusT(c2_status_t(err),
+                                C2_OPERATION_Component_setOutputSurface), ACTION_CODE_FATAL);
+                        return c2_status_t(err);
+                    }
+                }
                 output->surface->setMaxDequeuedBufferCount(output->maxDequeueBuffers);
             }
             outputGeneration = output->generation;
@@ -2263,12 +2273,38 @@ void CCodecBufferChannel::sendOutputBuffers() {
     }
 }
 
+status_t CCodecBufferChannel::checkSecureSurface(const sp<Surface>& surface) {
+    sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(surface.get());
+    status_t err = OK;
+    int queuesToNativeWindow = 0;
+    err = nativeWindow->query(nativeWindow.get(),
+            NATIVE_WINDOW_QUEUES_TO_WINDOW_COMPOSER, &queuesToNativeWindow);
+    if (err != OK) {
+        ALOGE("error authenticating to native window: (%s)", strerror(-err));
+        return err;
+    }
+
+    int isConsumerProtected = 0;
+    err = nativeWindow->query(nativeWindow.get(),
+            NATIVE_WINDOW_CONSUMER_IS_PROTECTED, &isConsumerProtected);
+    if (err != OK) {
+        ALOGE("error query native window: (%s)", strerror(-err));
+        return err;
+    }
+    // Deny queuing into native window if neither condition is satisfied.
+    if (queuesToNativeWindow != 1 && isConsumerProtected != 1) {
+        ALOGE("native window cannot handle protected buffers: the consumer should "
+            "either be a hardware composer or support hardware protection");
+        return PERMISSION_DENIED;
+    }
+    return err;
+}
+
 status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface, bool pushBlankBuffer) {
     static std::atomic_uint32_t surfaceGeneration{0};
     uint32_t generation = (getpid() << 10) |
             ((surfaceGeneration.fetch_add(1, std::memory_order_relaxed) + 1)
                 & ((1 << 10) - 1));
-
     sp<IGraphicBufferProducer> producer;
     int maxDequeueCount;
     sp<Surface> oldSurface;
@@ -2278,6 +2314,19 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface, bool pus
         oldSurface = outputSurface->surface;
     }
     if (newSurface) {
+        // check surface for secure codec
+        bool secure = mComponent->getName().find(".secure") != std::string::npos;
+        C2SecureModeTuning secureMode{};
+        mComponent->query({&secureMode}, {}, C2_MAY_BLOCK, nullptr);
+        if (secure && (secureMode == C2Config::SM_READ_PROTECTED ||
+            secureMode.value == C2Config::SM_READ_PROTECTED_WITH_ENCRYPTED)) {
+            status_t err = checkSecureSurface(newSurface);
+            if (err != OK) {
+                mCCodecCallback->onError(toStatusT(c2_status_t(err),
+                        C2_OPERATION_Component_setOutputSurface), ACTION_CODE_FATAL);
+                return c2_status_t(err);
+            }
+        }
         newSurface->setScalingMode(NATIVE_WINDOW_SCALING_MODE_SCALE_TO_WINDOW);
         newSurface->setDequeueTimeout(kDequeueTimeoutNs);
         newSurface->setMaxDequeuedBufferCount(maxDequeueCount);
