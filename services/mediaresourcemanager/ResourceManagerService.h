@@ -147,6 +147,12 @@ public:
             PidUidVector* idList,
             std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
 
+    // Gets the list of all the clients who own the specified resource type.
+    // It uses the reclaim policy to find the right target to reclaim resources from.
+    void getClientForResource_l(const ResourceRequestInfo& requestInfo,
+            PidUidVector* idVector,
+            std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
+
 private:
     friend class ResourceManagerServiceTest;
     friend class DeathNotifier;
@@ -183,12 +189,6 @@ private:
             std::shared_ptr<IResourceManagerClient> *client);
 
     bool isCallingPriorityHigher_l(int callingPid, int pid);
-
-    // A helper function basically calls getLowestPriorityBiggestClient_l and add
-    // the result client to the given Vector.
-    void getClientForResource_l(const ResourceRequestInfo& requestInfo,
-            PidUidVector* idVector,
-            std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
 
     void onFirstAdded(const MediaResourceParcel& res, const ResourceInfo& clientInfo);
     void onLastRemoved(const MediaResourceParcel& res, const ResourceInfo& clientInfo);
