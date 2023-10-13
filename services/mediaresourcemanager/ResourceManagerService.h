@@ -205,6 +205,14 @@ private:
     // Get the current concurrent pixel count (associated with the video codecs) for the process.
     long getCurrentConcurrentPixelCount(int pid) const;
 
+    // Handles resource reclaim associated with codecs.
+    // returns a list of clients who owns specified resource type given it matches
+    // the reclaim policy.
+    bool handleCodecResourceReclaim_l(const ClientInfoParcel& clientInfo,
+        const std::vector<MediaResourceParcel>& resources,
+        PidUidVector* idVector,
+        std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
+
     mutable std::mutex mLock;
     sp<ProcessInfoInterface> mProcessInfo;
     sp<SystemCallbackInterface> mSystemCB;
