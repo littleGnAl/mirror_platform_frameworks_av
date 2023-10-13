@@ -140,6 +140,13 @@ public:
 
     Status notifyClientConfigChanged(const ClientConfigParcel& clientConfig) override;
 
+    // Gets the list of all the clients who own the specified resource type.
+    // Returns false if any client belongs to a process with higher priority than the
+    // calling process. The clients will remain unchanged if returns false.
+    bool getAllClients_l(const ResourceRequestInfo& resourceInfo,
+            PidUidVector* idList,
+            std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
+
 private:
     friend class ResourceManagerServiceTest;
     friend class DeathNotifier;
@@ -152,13 +159,6 @@ private:
     // for all clients.
     bool reclaimUnconditionallyFrom(
         const std::vector<std::shared_ptr<IResourceManagerClient>>& clients);
-
-    // Gets the list of all the clients who own the specified resource type.
-    // Returns false if any client belongs to a process with higher priority than the
-    // calling process. The clients will remain unchanged if returns false.
-    bool getAllClients_l(const ResourceRequestInfo& resourceInfo,
-            PidUidVector* idList,
-            std::vector<std::shared_ptr<IResourceManagerClient>>* clients);
 
     // Gets the client who owns specified resource type from lowest possible priority process.
     // Returns false if the calling process priority is not higher than the lowest process

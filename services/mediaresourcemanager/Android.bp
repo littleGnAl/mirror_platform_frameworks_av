@@ -78,6 +78,7 @@ cc_library {
         "ResourceManagerService.cpp",
         "ResourceObserverService.cpp",
         "ResourceManagerServiceUtils.cpp",
+        "ResourceModelSecureCodecCoexistence.cpp",
         "ServiceLog.cpp",
         "UidObserver.cpp",
 
