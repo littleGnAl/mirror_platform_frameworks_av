@@ -215,6 +215,14 @@ private:
                          const std::vector<ClientInfo>& targetClients,
                          bool reclaimed);
 
+    // Handles resource reclaim associated with codecs.
+    // returns a list of clients who owns specified resource type given it matches
+    // the reclaim policy.
+    bool handleCodecResourceReclaim_l(
+        const ClientInfoParcel& clientInfo,
+        const std::vector<MediaResourceParcel>& resources,
+        std::vector<ClientInfo>& targetClients);
+
     // The following utility functions are used only for testing by ResourceManagerServiceTest
     // Gets lowest priority process that has the specified resource type.
     // Returns false if failed. The output parameters will remain unchanged if failed.
