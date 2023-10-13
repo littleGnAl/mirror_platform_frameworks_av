@@ -312,6 +312,8 @@ ResourceManagerService::ResourceManagerService(const sp<ProcessInfoInterface> &p
 void ResourceManagerService::instantiate() {
     std::shared_ptr<ResourceManagerService> service =
             ::ndk::SharedRefBase::make<ResourceManagerService>();
+    service->setUpReclaimPolicies();
+
     binder_status_t status =
                         AServiceManager_addServiceWithFlags(
                         service->asBinder().get(), getServiceName(),
@@ -337,6 +339,15 @@ ResourceManagerService::~ResourceManagerService() {}
 void ResourceManagerService::setObserverService(
         const std::shared_ptr<ResourceObserverService>& observerService) {
     mObserverService = observerService;
+}
+
+void ResourceManagerService::setUpReclaimPolicies() {
+    // Default reclaim policy.
+    mReclaimFunctions.push_back([this](const ResourceRequestInfo& requestInfo,
+                                       PidUidVector* idVector,
+                                       std::shared_ptr<IResourceManagerClient>* client) {
+          return getLowestPriorityBiggestClient_l(requestInfo, idVector, client);
+    });
 }
 
 Status ResourceManagerService::config(const std::vector<MediaResourcePolicyParcel>& policies) {
@@ -605,9 +616,12 @@ void ResourceManagerService::getClientForResource_l(
         return;
     }
 
-    // Now find client(s) from a lowest priority process that has needed resources.
-    if (getLowestPriorityBiggestClient_l(requestInfo, idVector, &client)) {
-        clients->push_back(client);
+    // Run through all the reclaim policies until a client to reclaim from is identified.
+    for (ReclaimFunction reclaimFunction : mReclaimFunctions) {
+        if (reclaimFunction(requestInfo, idVector, &client)) {
+            clients->push_back(client);
+            break;
+        }
     }
 }
 

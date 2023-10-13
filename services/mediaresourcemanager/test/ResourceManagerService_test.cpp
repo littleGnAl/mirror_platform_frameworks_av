@@ -76,6 +76,11 @@ private:
             MediaResource::SubType::kUnspecifiedSubType, 1);
     }
 
+    void SetUp() override {
+        ResourceManagerServiceTestBase::SetUp();
+        mService->setUpReclaimPolicies();
+    }
+
 public:
     ResourceManagerServiceTest() : ResourceManagerServiceTestBase() {}
 

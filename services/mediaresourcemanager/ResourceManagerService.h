@@ -77,6 +77,10 @@ typedef std::vector<std::pair<int32_t, uid_t>> PidUidVector;
 typedef std::map<int64_t, ResourceInfo> ResourceInfos;
 typedef std::map<int, ResourceInfos> PidResourceInfosMap;
 
+// Reclaim Function
+typedef std::function<bool(const ResourceRequestInfo&, PidUidVector*,
+                           std::shared_ptr<IResourceManagerClient>*)> ReclaimFunction;
+
 class ResourceManagerService : public BnResourceManagerService {
 public:
     struct SystemCallbackInterface : public RefBase {
@@ -140,6 +144,9 @@ private:
     friend class ResourceManagerServiceTest;
     friend class DeathNotifier;
     friend class OverrideProcessInfoDeathNotifier;
+
+    // Set up the Reclaim Policies.
+    void setUpReclaimPolicies();
 
     // Reclaims resources from |clients|. Returns true if reclaim succeeded
     // for all clients.
@@ -230,6 +237,7 @@ private:
     std::map<pid_t, ProcessInfoOverride> mProcessInfoOverrideMap;
     std::shared_ptr<ResourceObserverService> mObserverService;
     std::unique_ptr<ResourceManagerMetrics> mResourceManagerMetrics;
+    std::vector<ReclaimFunction> mReclaimFunctions;
 };
 
 // ----------------------------------------------------------------------------
