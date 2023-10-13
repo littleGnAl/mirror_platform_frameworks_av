@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a58ebfda_4232da2d",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-10-13T18:53:12Z",
+      "side": 1,
+      "message": "Even HEVC configuration record doesn\u0027t contain the color aspects in the hvcc box.\nIn case of HEVC, these values are parsed from SPS and populated here.\n\nSimilarly would it be possible to populate profile and level?\nWithout this extractor will not be signalling profile and level and that can lead some issues if a decoder supports only a select few profiles.",
+      "parentUuid": "27dde207_3ea107d0",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ce15fb3_76907003",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 5
@@ -302,6 +320,24 @@
       "side": 1,
       "message": "That\u0027s for Encoding course. Currently no need to do that for VVC.",
       "parentUuid": "8f29050d_71ec18ab",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b95dbd_909fa928",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2023-10-13T18:53:12Z",
+      "side": 1,
+      "message": "If the data is not being assembled like it is done for hevc and avc, then can you please remove these two lines here?\nThese two lines can be added here when reassembleVVCC is added.",
+      "parentUuid": "24d6a4f5_a23b93b9",
       "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
