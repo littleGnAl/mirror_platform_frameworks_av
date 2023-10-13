@@ -36,10 +36,12 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+#include "CommonResourceModel.h"
 #include "IMediaResourceMonitor.h"
 #include "ResourceManagerMetrics.h"
 #include "ResourceManagerService.h"
 #include "ResourceManagerServiceUtils.h"
+#include "ResourceModelSecureCodecCoexistence.h"
 #include "ResourceObserverService.h"
 #include "ServiceLog.h"
 
@@ -312,6 +314,7 @@ ResourceManagerService::ResourceManagerService(const sp<ProcessInfoInterface> &p
 void ResourceManagerService::instantiate() {
     std::shared_ptr<ResourceManagerService> service =
             ::ndk::SharedRefBase::make<ResourceManagerService>();
+    service->setUpResourceModels();
     service->setUpReclaimPolicies();
 
     binder_status_t status =
@@ -341,6 +344,25 @@ void ResourceManagerService::setObserverService(
     mObserverService = observerService;
 }
 
+void ResourceManagerService::setUpResourceModels() {
+    // Default resource model with codec co-existence
+    if (mCodecCoexistenceModel == nullptr) {
+        mCodecCoexistenceModel = std::make_unique<ResourceModelSecureCodecCoexistence>(
+                ref<ResourceManagerService>(),
+                mSupportsMultipleSecureCodecs,
+                mSupportsSecureWithNonSecureCodec);
+    } else {
+        ResourceModelSecureCodecCoexistence* resourceModel =
+            static_cast<ResourceModelSecureCodecCoexistence*>(mCodecCoexistenceModel.get());
+        resourceModel->config(mSupportsMultipleSecureCodecs, mSupportsSecureWithNonSecureCodec);
+    }
+
+    // Default resource model with a generic/common shared resource pool
+    if (mCommonResourceModel == nullptr) {
+        mCommonResourceModel = std::make_unique<CommonResourceModel>(ref<ResourceManagerService>());
+    }
+}
+
 void ResourceManagerService::setUpReclaimPolicies() {
     // Default reclaim policy.
     mReclaimFunctions.push_back([this](const ResourceRequestInfo& requestInfo,
@@ -364,6 +386,9 @@ Status ResourceManagerService::config(const std::vector<MediaResourcePolicyParce
             mSupportsSecureWithNonSecureCodec = (value == "true");
         }
     }
+
+    // Change in the config dictates update to the resource model.
+    setUpResourceModels();
     return Status::ok();
 }
 
@@ -630,53 +655,11 @@ bool ResourceManagerService::handleCodecResourceReclaim_l(
         const std::vector<MediaResourceParcel>& resources,
         PidUidVector* idVector,
         std::vector<std::shared_ptr<IResourceManagerClient>>* clients) {
-    int32_t callingPid = clientInfo.pid;
+    ReclaimRequestInfo requestInfo {clientInfo.pid, resources};
 
     // Ensure secure/non-secure codec co-existence conflict is addressed first.
-    switch (resources[0].type) {
-    case MediaResource::Type::kSecureCodec:
-        // Looking to start a secure codec.
-        // #1. Make sure if multiple secure codecs can coexist
-        if (!mSupportsMultipleSecureCodecs) {
-            MediaResourceParcel mediaResource{.type = MediaResource::Type::kSecureCodec,
-                                              .subType = resources[0].subType};
-            ResourceRequestInfo resourceInfo{callingPid, &mediaResource};
-            if (!getAllClients_l(resourceInfo, idVector, clients)) {
-                // A higher priority process owns an instance of a secure codec.
-                // So this request can't be fulfilled.
-                ALOGE("%s: Conflictcs on multiple secure codecs. Can't reclaim", __func__);
-                return false;
-            }
-        }
-        // #2. Make sure a secure codec can coexist if there is an instance
-        // of non-secure codec running already.
-        if (!mSupportsSecureWithNonSecureCodec) {
-            MediaResourceParcel mediaResource{.type = MediaResource::Type::kNonSecureCodec,
-                                              .subType = resources[0].subType};
-            ResourceRequestInfo resourceInfo{callingPid, &mediaResource};
-            if (!getAllClients_l(resourceInfo, idVector, clients)) {
-                // A higher priority process owns an instance of a non-secure codec.
-                // So this request can't be fulfilled.
-                ALOGE("%s: Conflictcs on secure/unsecure codecs. Can't reclaim", __func__);
-                return false;
-            }
-        }
-        break;
-    case MediaResource::Type::kNonSecureCodec:
-        // Looking to start a non-secure codec.
-        // Make sure a non-secure codec can coexist if there is an instance
-        // of secure codec running already.
-        if (!mSupportsSecureWithNonSecureCodec) {
-            MediaResourceParcel mediaResource{.type = MediaResource::Type::kSecureCodec,
-                                              .subType = resources[0].subType};
-            ResourceRequestInfo resourceInfo{callingPid, &mediaResource};
-            if (!getAllClients_l(resourceInfo, idVector, clients)) {
-                ALOGE("%s: Conflictcs on unsecure/secure codecs. Can't reclaim", __func__);
-                return false;
-            }
-        }
-        break;
-    default:
+    if (!mCodecCoexistenceModel->getClients(requestInfo, idVector, clients)) {
+        ALOGI("%s: There is a secure/non-secure codec conflict. Can't reclaim codec", __func__);
         return false;
     }
 
@@ -687,29 +670,15 @@ bool ResourceManagerService::handleCodecResourceReclaim_l(
 
     // Since there isn't a secure/non-secure codec conflict, handle the other
     // codec resources.
-    if (resources.size() > 1) {
-        ResourceRequestInfo resourceInfo{callingPid, &resources[1]};
-        getClientForResource_l(resourceInfo, idVector, clients);
-    }
-
-    if (clients->size() == 0) {
-        // Since we couldn't find the client to reclaim from, free one codec with the same type.
-        ResourceRequestInfo resourceInfo{callingPid, &resources[0]};
-        getClientForResource_l(resourceInfo, idVector, clients);
-    }
-
-    if (clients->size() == 0) {
-        // Since we couldn't find the client to reclaim from, free one codec with
-        // the different type.
-        MediaResourceType otherType =
-            (resources[0].type == MediaResource::Type::kSecureCodec) ?
-            MediaResource::Type::kNonSecureCodec : MediaResource::Type::kSecureCodec;
-        MediaResourceParcel mediaResource{.type = otherType, .subType = resources[0].subType};
-        ResourceRequestInfo resourceInfo{callingPid, &mediaResource};
-        getClientForResource_l(resourceInfo, idVector, clients);
-    }
-
-    return !clients->empty();
+    // In this Common Resource Model, all the resources (of a particular type,
+    // be it DRM or Codec) are shared from the common resource pool.
+    // We may have have a different Resource Model where in:
+    //   - Resource available for a particular DRM scheme (say widevine or
+    //   playready) is exclusive to that
+    //   - Resource available for a particular Codec implementation (say AVC
+    //   codec) is is exclusive to that.
+    // In such a Resource model, we need to implement it differently.
+    return mCommonResourceModel->getClients(requestInfo, idVector, clients);
 }
 
 Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInfo,
@@ -750,9 +719,8 @@ Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInf
         case MediaResource::Type::kDrmSession:
             {
                 // Handling DRM resource reclaim
-                const MediaResourceParcel* drmSession = &resources[0];
-                ResourceRequestInfo resourceInfo{callingPid, drmSession};
-                getClientForResource_l(resourceInfo, &idVector, &clients);
+                ReclaimRequestInfo requestInfo {callingPid, resources};
+                mCommonResourceModel->getClients(requestInfo, &idVector, &clients);
                 break;
             }
         default:

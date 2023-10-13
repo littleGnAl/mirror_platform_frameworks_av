@@ -30,6 +30,8 @@
 #include <utils/String8.h>
 #include <utils/threads.h>
 
+#include "ResourceModelInterface.h"
+
 namespace android {
 
 class DeathNotifier;
@@ -158,6 +160,9 @@ private:
     friend class DeathNotifier;
     friend class OverrideProcessInfoDeathNotifier;
 
+    // Set up the Resource models.
+    void setUpResourceModels();
+
     // Set up the Reclaim Policies.
     void setUpReclaimPolicies();
 
@@ -238,6 +243,8 @@ private:
     std::shared_ptr<ResourceObserverService> mObserverService;
     std::unique_ptr<ResourceManagerMetrics> mResourceManagerMetrics;
     std::vector<ReclaimFunction> mReclaimFunctions;
+    std::unique_ptr<ResourceModelInterface> mCodecCoexistenceModel;
+    std::unique_ptr<ResourceModelInterface> mCommonResourceModel;
 };
 
 // ----------------------------------------------------------------------------

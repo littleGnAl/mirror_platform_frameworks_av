@@ -78,12 +78,25 @@ private:
 
     void SetUp() override {
         ResourceManagerServiceTestBase::SetUp();
+        mService->setUpResourceModels();
         mService->setUpReclaimPolicies();
     }
 
 public:
     ResourceManagerServiceTest() : ResourceManagerServiceTestBase() {}
 
+    void updateConfig(bool bSupportsMultipleSecureCodecs, bool bSupportsSecureWithNonSecureCodec) {
+        std::vector<MediaResourcePolicyParcel> policies;
+        policies.push_back(
+                MediaResourcePolicy(
+                        IResourceManagerService::kPolicySupportsMultipleSecureCodecs,
+                        bSupportsMultipleSecureCodecs ? "true" : "false"));
+        policies.push_back(
+                MediaResourcePolicy(
+                        IResourceManagerService::kPolicySupportsSecureWithNonSecureCodec,
+                        bSupportsSecureWithNonSecureCodec ? "true" : "false"));
+        mService->config(policies);
+    }
 
     // test set up
     // ---------------------------------------------------------------------------------
@@ -218,29 +231,11 @@ public:
         EXPECT_TRUE(mService->mSupportsMultipleSecureCodecs);
         EXPECT_TRUE(mService->mSupportsSecureWithNonSecureCodec);
 
-        std::vector<MediaResourcePolicyParcel> policies1;
-        policies1.push_back(
-                MediaResourcePolicy(
-                        IResourceManagerService::kPolicySupportsMultipleSecureCodecs,
-                        "true"));
-        policies1.push_back(
-                MediaResourcePolicy(
-                        IResourceManagerService::kPolicySupportsSecureWithNonSecureCodec,
-                        "false"));
-        mService->config(policies1);
+        updateConfig(true, false);
         EXPECT_TRUE(mService->mSupportsMultipleSecureCodecs);
         EXPECT_FALSE(mService->mSupportsSecureWithNonSecureCodec);
 
-        std::vector<MediaResourcePolicyParcel> policies2;
-        policies2.push_back(
-                MediaResourcePolicy(
-                        IResourceManagerService::kPolicySupportsMultipleSecureCodecs,
-                        "false"));
-        policies2.push_back(
-                MediaResourcePolicy(
-                        IResourceManagerService::kPolicySupportsSecureWithNonSecureCodec,
-                        "true"));
-        mService->config(policies2);
+        updateConfig(false, true);
         EXPECT_FALSE(mService->mSupportsMultipleSecureCodecs);
         EXPECT_TRUE(mService->mSupportsSecureWithNonSecureCodec);
     }
@@ -344,8 +339,7 @@ public:
         // ### secure codec can't coexist and secure codec can coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsMultipleSecureCodecs = false;
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(false, true);
 
             // priority too low to reclaim resource
             ClientInfoParcel clientInfo{.pid = static_cast<int32_t>(kLowPriorityPid),
@@ -379,7 +373,7 @@ public:
                                      .name = "none"};
         {
             addResource();
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(true, true);
 
             std::vector<MediaResourceParcel> resources;
             resources.push_back(MediaResource(MediaResource::Type::kNonSecureCodec, 1));
@@ -407,7 +401,7 @@ public:
 
         {
             addResource();
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(true, true);
 
             std::vector<MediaResourceParcel> resources;
             resources.push_back(MediaResource(MediaResource::Type::kNonSecureCodec, 1));
@@ -433,7 +427,7 @@ public:
 
         {
             addResource();
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(true, true);
 
             mService->markClientForPendingRemoval(client2Info);
 
@@ -526,8 +520,7 @@ public:
         // ### secure codec can't coexist and secure codec can coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsMultipleSecureCodecs = false;
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(false, true);
 
             // priority too low
             CHECK_STATUS_FALSE(mService->reclaimResource(lowPriorityClient, resources, &result));
@@ -552,8 +545,7 @@ public:
         // ### secure codecs can't coexist and secure codec can't coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsMultipleSecureCodecs = false;
-            mService->mSupportsSecureWithNonSecureCodec = false;
+            updateConfig(false, false);
 
             // priority too low
             CHECK_STATUS_FALSE(mService->reclaimResource(lowPriorityClient, resources, &result));
@@ -573,8 +565,7 @@ public:
         // ### secure codecs can coexist but secure codec can't coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsMultipleSecureCodecs = true;
-            mService->mSupportsSecureWithNonSecureCodec = false;
+            updateConfig(true, false);
 
             // priority too low
             CHECK_STATUS_FALSE(mService->reclaimResource(lowPriorityClient, resources, &result));
@@ -605,8 +596,7 @@ public:
         // ### secure codecs can coexist and secure codec can coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsMultipleSecureCodecs = true;
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(true, true);
 
             // priority too low
             CHECK_STATUS_FALSE(mService->reclaimResource(lowPriorityClient, resources, &result));
@@ -636,8 +626,7 @@ public:
         // ### secure codecs can coexist and secure codec can coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsMultipleSecureCodecs = true;
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(true, true);
 
             std::vector<MediaResourceParcel> resources;
             resources.push_back(MediaResource(MediaResource::Type::kSecureCodec, 1));
@@ -683,7 +672,7 @@ public:
         // ### secure codec can't coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsSecureWithNonSecureCodec = false;
+            updateConfig(true, false);
 
             // priority too low
             CHECK_STATUS_FALSE(mService->reclaimResource(lowPriorityClient, resources, &result));
@@ -709,7 +698,7 @@ public:
         // ### secure codec can coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(true, true);
 
             // priority too low
             CHECK_STATUS_FALSE(mService->reclaimResource(lowPriorityClient, resources, &result));
@@ -739,7 +728,7 @@ public:
         // ### secure codec can coexist with non-secure codec ###
         {
             addResource();
-            mService->mSupportsSecureWithNonSecureCodec = true;
+            updateConfig(true, true);
 
             std::vector<MediaResourceParcel> resources;
             resources.push_back(MediaResource(MediaResource::Type::kNonSecureCodec, 1));
