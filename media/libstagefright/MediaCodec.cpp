@@ -725,8 +725,9 @@ MediaCodec::BufferInfo::BufferInfo() : mOwnedByClient(false) {}
 
 class MediaCodec::ReleaseSurface {
 public:
-    explicit ReleaseSurface(uint64_t usage) {
+    explicit ReleaseSurface(uint64_t usage, bool isProtected = false) {
         BufferQueue::createBufferQueue(&mProducer, &mConsumer);
+        mConsumer->setConsumerIsProtected(isProtected);
         mSurface = new Surface(mProducer, false /* controlledByApp */);
         struct ConsumerListener : public BnConsumerListener {
             ConsumerListener(const sp<IGraphicBufferConsumer> &consumer) {
@@ -5051,10 +5052,19 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             if (asyncNotify != nullptr && mSurface != NULL) {
                 if (!mReleaseSurface) {
                     uint64_t usage = 0;
+
                     if (mSurface->getConsumerUsage(&usage) != OK) {
                         usage = 0;
                     }
-                    mReleaseSurface.reset(new ReleaseSurface(usage));
+                    int isConsumerProtected = 0;
+                    sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(mSurface.get());
+                    nativeWindow->query(nativeWindow.get(),
+                            NATIVE_WINDOW_CONSUMER_IS_PROTECTED, &isConsumerProtected);
+                    // pre-requisites: set protected if surface is protected or
+                    // used with secure codec and connected directly to surfaceflinger
+                    bool setProtected = (isConsumerProtected != 0) ||
+                            ((mFlags & kFlagIsSecure) && mIsSurfaceToDisplay);
+                    mReleaseSurface.reset(new ReleaseSurface(usage, setProtected));
                 }
                 if (mSurface != mReleaseSurface->getSurface()) {
                     status_t err = connectToSurface(mReleaseSurface->getSurface());
