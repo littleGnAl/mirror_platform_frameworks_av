@@ -589,11 +589,23 @@ void ResourceManagerService::getClientForResource_l(
         const ResourceRequestInfo& resourceRequestInfo,
         std::vector<std::pair<int32_t, uid_t>>* idVector,
         std::vector<std::shared_ptr<IResourceManagerClient>>* clients) {
+    int callingPid = resourceRequestInfo.mCallingPid;
     const MediaResourceParcel* res = resourceRequestInfo.mResource;
     if (res == NULL) {
         return;
     }
+
+    // Before looking into other processes, check if we have clients marked for
+    // pending removal in the same process.
+    uid_t uid = 0;
     std::shared_ptr<IResourceManagerClient> client;
+    if (getBiggestClientPendingRemoval_l(callingPid, res->type, res->subType, uid, &client)) {
+        idVector->emplace_back(callingPid, uid);
+        clients->push_back(client);
+        return;
+    }
+
+    // Now find client(s) from a lowest priority process that has needed resources.
     if (getLowestPriorityBiggestClient_l(resourceRequestInfo, idVector, &client)) {
         clients->push_back(client);
     }
@@ -1004,6 +1016,9 @@ bool ResourceManagerService::getAllClients_l(
     return true;
 }
 
+// Process priority (oom score) based reclaim:
+//   - Find a process with lowest priority (than that of calling process).
+//   - Find the bigegst client (with required resources) from that process.
 bool ResourceManagerService::getLowestPriorityBiggestClient_l(
         const ResourceRequestInfo& resourceRequestInfo,
         std::vector<std::pair<int32_t, uid_t>>* idVector,
@@ -1016,23 +1031,16 @@ bool ResourceManagerService::getLowestPriorityBiggestClient_l(
     int callingPriority;
     uid_t uid = 0;
 
-    // Before looking into other processes, check if we have clients marked for
-    // pending removal in the same process.
-    if (getBiggestClientPendingRemoval_l(callingPid, type, subType, uid, client)) {
-        idVector->emplace_back(callingPid, uid);
-        return true;
-    }
     if (!getPriority_l(callingPid, &callingPriority)) {
-        ALOGE("getLowestPriorityBiggestClient_l: can't get process priority for pid %d",
-                callingPid);
+        ALOGE("%s: can't get process priority for pid %d", __func__, callingPid);
         return false;
     }
     if (!getLowestPriorityPid_l(type, subType, &lowestPriorityPid, &lowestPriority)) {
         return false;
     }
     if (lowestPriority <= callingPriority) {
-        ALOGE("getLowestPriorityBiggestClient_l: lowest priority %d vs caller priority %d",
-                lowestPriority, callingPriority);
+        ALOGE("%s: lowest priority %d vs caller priority %d",
+              __func__, lowestPriority, callingPriority);
         return false;
     }
 
@@ -1040,6 +1048,8 @@ bool ResourceManagerService::getLowestPriorityBiggestClient_l(
         return false;
     }
 
+    ALOGI("%s: CallingProcess(%d:%d) will reclaim from the lowestPriorityProcess(%d:%d)",
+          __func__, callingPid, callingPriority, lowestPriorityPid, lowestPriority);
     idVector->emplace_back(lowestPriorityPid, uid);
     return true;
 }
