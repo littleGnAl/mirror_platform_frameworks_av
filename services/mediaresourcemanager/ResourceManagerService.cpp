@@ -611,6 +611,93 @@ void ResourceManagerService::getClientForResource_l(
     }
 }
 
+bool ResourceManagerService::handleCodecResourceReclaim_l(
+        const ClientInfoParcel& clientInfo,
+        const std::vector<MediaResourceParcel>& resources,
+        std::vector<std::pair<int32_t, uid_t>>* idVector,
+        std::vector<std::shared_ptr<IResourceManagerClient>>* clients) {
+    int32_t callingPid = clientInfo.pid;
+
+    // Ensure secure/non-secure codec co-existence conflict is addressed first.
+    switch (resources[0].type) {
+    case MediaResource::Type::kSecureCodec:
+        // Looking to start a secure codec.
+        // #1. Make sure if multiple secure codecs can coexist
+        if (!mSupportsMultipleSecureCodecs) {
+            MediaResourceParcel mediaResource{.type = MediaResource::Type::kSecureCodec,
+                                              .subType = resources[0].subType};
+            ResourceRequestInfo resourceRequestInfo{callingPid, &mediaResource};
+            if (!getAllClients_l(resourceRequestInfo, idVector, clients)) {
+                // A higher priority process owns an instance of a secure codec.
+                // So this request can't be fulfilled.
+                ALOGE("%s: Conflictcs on multiple secure codecs. Can't reclaim", __func__);
+                return false;
+            }
+        }
+        // #2. Make sure a secure codec can coexist if there is an instance
+        // of non-secure codec running already.
+        if (!mSupportsSecureWithNonSecureCodec) {
+            MediaResourceParcel mediaResource{.type = MediaResource::Type::kNonSecureCodec,
+                                              .subType = resources[0].subType};
+            ResourceRequestInfo resourceRequestInfo{callingPid, &mediaResource};
+            if (!getAllClients_l(resourceRequestInfo, idVector, clients)) {
+                // A higher priority process owns an instance of a non-secure codec.
+                // So this request can't be fulfilled.
+                ALOGE("%s: Conflictcs on secure/unsecure codecs. Can't reclaim", __func__);
+                return false;
+            }
+        }
+        break;
+    case MediaResource::Type::kNonSecureCodec:
+        // Looking to start a non-secure codec.
+        // Make sure a non-secure codec can coexist if there is an instance
+        // of secure codec running already.
+        if (!mSupportsSecureWithNonSecureCodec) {
+            MediaResourceParcel mediaResource{.type = MediaResource::Type::kSecureCodec,
+                                              .subType = resources[0].subType};
+            ResourceRequestInfo resourceRequestInfo{callingPid, &mediaResource};
+            if (!getAllClients_l(resourceRequestInfo, idVector, clients)) {
+                ALOGE("%s: Conflictcs on unsecure/secure codecs. Can't reclaim", __func__);
+                return false;
+            }
+        }
+        break;
+    default:
+        return false;
+    }
+
+    // If we have already found a client to reclaim from, return now.
+    if (!clients->empty()) {
+        return true;
+    }
+
+    // Since there isn't a secure/non-secure codec conflict, handle the other
+    // codec resources.
+    if (resources.size() > 1) {
+        ResourceRequestInfo resourceRequestInfo{callingPid, &resources[1]};
+        getClientForResource_l(resourceRequestInfo, idVector, clients);
+    }
+
+    if (clients->size() == 0) {
+        // Since we couldn't find the client to reclaim from, free one codec with the same type.
+        ResourceRequestInfo resourceRequestInfo{callingPid, &resources[0]};
+        getClientForResource_l(resourceRequestInfo, idVector, clients);
+    }
+
+    if (clients->size() == 0) {
+        // Since we couldn't find the client to reclaim from, free one codec with
+        // the different type.
+        MediaResourceType otherType =
+            (resources[0].type == MediaResource::Type::kSecureCodec) ?
+            MediaResource::Type::kNonSecureCodec : MediaResource::Type::kSecureCodec;
+        MediaResourceParcel mediaResource{.type = otherType, .subType = resources[0].subType};
+        ResourceRequestInfo resourceRequestInfo{callingPid, &mediaResource};
+        getClientForResource_l(resourceRequestInfo, idVector, clients);
+    }
+
+    return !clients->empty();
+}
+
 Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInfo,
         const std::vector<MediaResourceParcel>& resources, bool* _aidl_return) {
     int32_t callingPid = clientInfo.pid;
@@ -619,6 +706,11 @@ Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInf
             callingPid, clientInfo.uid, getString(resources).c_str());
     mServiceLog->add(log);
     *_aidl_return = false;
+
+    // Check if there are any resources to be reclaimed before processing.
+    if (resources.empty()) {
+        return Status::ok();
+    }
 
     std::vector<std::shared_ptr<IResourceManagerClient>> clients;
     std::vector<std::pair<int32_t, uid_t>> idVector;
@@ -630,96 +722,32 @@ Status ResourceManagerService::reclaimResource(const ClientInfoParcel& clientInf
                     callingPid, actualCallingPid);
             callingPid = actualCallingPid;
         }
-        const MediaResourceParcel *secureCodec = NULL;
-        const MediaResourceParcel *nonSecureCodec = NULL;
-        const MediaResourceParcel *graphicMemory = NULL;
-        const MediaResourceParcel *drmSession = NULL;
-        for (size_t i = 0; i < resources.size(); ++i) {
-            switch (resources[i].type) {
-                case MediaResource::Type::kSecureCodec:
-                    secureCodec = &resources[i];
-                    break;
-                case MediaResource::Type::kNonSecureCodec:
-                    nonSecureCodec = &resources[i];
-                    break;
-                case MediaResource::Type::kGraphicMemory:
-                    graphicMemory = &resources[i];
-                    break;
-                case MediaResource::Type::kDrmSession:
-                    drmSession = &resources[i];
-                    break;
-                default:
-                    break;
-            }
-        }
 
-        // first pass to handle secure/non-secure codec conflict
-        if (secureCodec != NULL) {
-            MediaResourceParcel mediaResource{.type = MediaResource::Type::kSecureCodec,
-                                              .subType = secureCodec->subType};
-            ResourceRequestInfo resourceRequestInfo{callingPid, &mediaResource};
-            if (!mSupportsMultipleSecureCodecs) {
-                if (!getAllClients_l(resourceRequestInfo, &idVector, &clients)) {
-                    return Status::ok();
-                }
+        // The resource types that are handled are either Codec
+        // (secure/unsecure) or DRM session
+        switch (resources[0].type) {
+        case MediaResource::Type::kSecureCodec:
+        case MediaResource::Type::kNonSecureCodec:
+            {
+                // Handling codec resource reclaim
+                handleCodecResourceReclaim_l(clientInfo, resources, &idVector, &clients);
+                break;
             }
-            if (!mSupportsSecureWithNonSecureCodec) {
-                mediaResource.type = MediaResource::Type::kNonSecureCodec;
-                if (!getAllClients_l(resourceRequestInfo, &idVector, &clients)) {
-                    return Status::ok();
-                }
-            }
-        }
-        if (nonSecureCodec != NULL) {
-            if (!mSupportsSecureWithNonSecureCodec) {
-                MediaResourceParcel mediaResource{.type = MediaResource::Type::kSecureCodec,
-                                                  .subType = secureCodec->subType};
-                ResourceRequestInfo resourceRequestInfo{callingPid, &mediaResource};
-                if (!getAllClients_l(resourceRequestInfo, &idVector, &clients)) {
-                    return Status::ok();
-                }
-            }
-        }
-
-        if (drmSession != NULL) {
-            ResourceRequestInfo resourceRequestInfo{callingPid, drmSession};
-            getClientForResource_l(resourceRequestInfo, &idVector, &clients);
-            if (clients.size() == 0) {
-                return Status::ok();
-            }
-        }
-
-        if (clients.size() == 0) {
-            // if no secure/non-secure codec conflict, run second pass to handle other resources.
-            ResourceRequestInfo resourceRequestInfo{callingPid, graphicMemory};
-            getClientForResource_l(resourceRequestInfo, &idVector, &clients);
-        }
-
-        if (clients.size() == 0) {
-            // if we are here, run the third pass to free one codec with the same type.
-            if (secureCodec != nullptr) {
-                ResourceRequestInfo resourceRequestInfo{callingPid, secureCodec};
+        case MediaResource::Type::kDrmSession:
+            {
+                // Handling DRM resource reclaim
+                const MediaResourceParcel* drmSession = &resources[0];
+                ResourceRequestInfo resourceRequestInfo{callingPid, drmSession};
                 getClientForResource_l(resourceRequestInfo, &idVector, &clients);
+                break;
             }
-            if (nonSecureCodec != nullptr) {
-                ResourceRequestInfo resourceRequestInfo{callingPid, nonSecureCodec};
-                getClientForResource_l(resourceRequestInfo, &idVector, &clients);
-            }
+        default:
+            break;
         }
+    }
 
-        if (clients.size() == 0) {
-            // if we are here, run the fourth pass to free one codec with the different type.
-            if (secureCodec != NULL) {
-                MediaResource temp(MediaResource::Type::kNonSecureCodec, secureCodec->subType, 1);
-                ResourceRequestInfo resourceRequestInfo{callingPid, &temp};
-                getClientForResource_l(resourceRequestInfo, &idVector, &clients);
-            }
-            if (nonSecureCodec != NULL) {
-                MediaResource temp(MediaResource::Type::kSecureCodec, nonSecureCodec->subType, 1);
-                ResourceRequestInfo resourceRequestInfo{callingPid, &temp};
-                getClientForResource_l(resourceRequestInfo, &idVector, &clients);
-            }
-        }
+    if (clients.size() == 0) {
+        return Status::ok();
     }
 
     *_aidl_return = reclaimUnconditionallyFrom(clients);
