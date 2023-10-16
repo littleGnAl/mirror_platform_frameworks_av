@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2807c9_9c9321fc",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-10-16T18:28:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we want to replace ALOG_ASSERT with silent warning log, do we know why these null devices exist?",
+      "range": {
+        "startLine": 230,
+        "startChar": 12,
+        "endLine": 230,
+        "endChar": 20
+      },
+      "revId": "c7478de800f36b4b20999321d5657fca12ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
