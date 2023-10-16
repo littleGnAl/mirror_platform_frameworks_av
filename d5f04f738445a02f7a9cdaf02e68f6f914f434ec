@@ -16,6 +16,23 @@
       "message": "Hi, Googlers,\n\nIs it a suitable to time review this code contribution? As Dolby, our goal is to add AC-4 Level 4 support in Android 15.\n\nPlease let me know whether this code change is still OK and whether I need to submit a new one. Thanks.\n\nBR,\nYanning",
       "revId": "d5f04f738445a02f7a9cdaf02e68f6f914f434ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2261d7_8f22347b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-16T03:28:47Z",
+      "side": 1,
+      "message": "Hi, Andrew and Ian,\n\nCould you help to review this code change? The purpose of this code change is to add AC-4 Level 4 (Object Based Immersive, internally, we call it AC-4 A-JOC) support. Without this change, there will be a crash when playing AC-4 level 4 stream. This code change is the first update to MPEG-4 extractor. After it is accepted, we have following code updates. There are also corresponding changes in Codec2 component.\n\nThe goal of Dolby is to add full AC-4 level 4 support in Android 15.\n\nThanks in advance.\n\nBR,\nYanning",
+      "revId": "d5f04f738445a02f7a9cdaf02e68f6f914f434ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
