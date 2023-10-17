@@ -50,6 +50,24 @@
       "message": "We are currently planning to replace these extractor implementations with an implementation based on the `androidx.media3` extractors (these are the recommended way for apps to extract from media containers on Android, and are used by ExoPlayer for playback).\n\nWe are therefore not currently accepting new features or functionality here, only bugfixes.\n\nIf changes are needed to the media3 extractors to support the functionality you need, please send them as PRs to the `main` branch here: https://github.com/androidx/media/pulls",
       "revId": "d5f04f738445a02f7a9cdaf02e68f6f914f434ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1504435_c83221fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-17T08:36:18Z",
+      "side": 1,
+      "message": "Ian, thanks for this info.\n\nOK, I\u0027ll discuss with team and prepare patch for media3.\n\nBR,\nYanning",
+      "parentUuid": "69d609ea_4ba6e4ba",
+      "revId": "d5f04f738445a02f7a9cdaf02e68f6f914f434ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
