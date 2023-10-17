@@ -111,6 +111,30 @@
       },
       "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7131800_334a69e1",
+        "filename": "media/module/codecserviceregistrant/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-17T16:25:21Z",
+      "side": 1,
+      "message": "with `runtime_libs`, if I `adb sync`, I see all the libs in `/data/fuzz/x86_64/lib/` and have to run the fuzzer with `LD_LIBRARY_PATH\u003d/data/fuzz/x86_64/lib/`. Otherwise it can\u0027t find the libs in that path.\n\nwith `shared_libs`, I don\u0027t need `LD_LIBRARY_PATH\u003d/data/fuzz/x86_64/lib/` and can just run the fuzzer and it somehow finds the libs in that path by itself.\n\nI think the fuzzing infra handles the library path, so either works. But `runtime_libs` needs more work when running things locally.",
+      "parentUuid": "6024c784_a3bb7099",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
