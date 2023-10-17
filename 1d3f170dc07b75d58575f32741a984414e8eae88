@@ -39,6 +39,30 @@
       },
       "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9fd9cd_c38c144a",
+        "filename": "media/module/codecserviceregistrant/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-17T00:21:55Z",
+      "side": 1,
+      "message": "I don\u0027t know what the difference is, but runtime_libs didn\u0027t work as smoothly. I had to pass the `LD_LIBRARY_PATH\u003d/data/fuzz/x86_64/lib/` with runtime_libs and couldn\u0027t get gdbclient.py to start the fuzzer with that.\n\nMaybe the clusterfuzz infra can handle the runtime_libs just as well? I\u0027m fine with trying to submit that.",
+      "parentUuid": "33c63c79_b9514236",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
