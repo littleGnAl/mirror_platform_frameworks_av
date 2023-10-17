@@ -22,6 +22,30 @@
       },
       "revId": "c7478de800f36b4b20999321d5657fca12ccf5f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6eec26_8971d812",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-10-17T16:20:57Z",
+      "side": 1,
+      "message": "Actually it\u0027s not just fuzzing case which could cause a nullptr in this vector, see this logic:\n\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/av/services/audiopolicy/common/managerdefinitions/src/HwModule.cpp;l\u003d187;drc\u003deacdf1a9591a3f5ba49edfd4380a8598c6bfcec7\n\nIt\u0027s possible for `getDeviceFromTagName` to return nullptr add it will be added to SourceDevices DeviceVector. I wouldn\u0027t be surprised that some other places may also have similar logic.",
+      "parentUuid": "ce2807c9_9c9321fc",
+      "range": {
+        "startLine": 230,
+        "startChar": 12,
+        "endLine": 230,
+        "endChar": 20
+      },
+      "revId": "c7478de800f36b4b20999321d5657fca12ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
