@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5d6714_285f34d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-17T00:15:08Z",
+      "side": 1,
+      "message": "@wonsik the mainline_hook says this should go into tm-mainline first because of the codecserviceregistrant change.\n\nShould I leave that as is, and just add these as shared_libs to the fuzzer explicitly? Or just cp this CL to mainlin branch?",
+      "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
