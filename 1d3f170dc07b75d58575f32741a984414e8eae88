@@ -16,6 +16,29 @@
       "message": "@wonsik the mainline_hook says this should go into tm-mainline first because of the codecserviceregistrant change.\n\nShould I leave that as is, and just add these as shared_libs to the fuzzer explicitly? Or just cp this CL to mainlin branch?",
       "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c63c79_b9514236",
+        "filename": "media/module/codecserviceregistrant/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-17T00:17:58Z",
+      "side": 1,
+      "message": "runtime_libs?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
