@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf350b7_b545a170",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-17T21:38:03Z",
+      "side": 1,
+      "message": "nit: HIDL?",
+      "range": {
+        "startLine": 178,
+        "startChar": 40,
+        "endLine": 178,
+        "endChar": 73
+      },
+      "revId": "4e6838148931bb1d50ece14cf209d077bf0b9560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c448ac6_933b2745",
+        "filename": "media/codec2/hal/aidl/include/codec2/aidl/ParamTypes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-17T21:38:03Z",
+      "side": 1,
+      "message": "will clients ever use just this method, or just the new isSelected?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "4e6838148931bb1d50ece14cf209d077bf0b9560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
