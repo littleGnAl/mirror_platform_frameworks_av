@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db98050_8ae81409",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-17T21:44:39Z",
+      "side": 1,
+      "message": "nit: seems this could be extracted to be common between the two implementations.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 9
+      },
+      "revId": "6f1541680b030d6187f7ec325efc58a7965561cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
