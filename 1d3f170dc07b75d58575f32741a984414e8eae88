@@ -87,6 +87,30 @@
       },
       "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6024c784_a3bb7099",
+        "filename": "media/module/codecserviceregistrant/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-17T00:30:22Z",
+      "side": 1,
+      "message": "Switching from shared_libs to runtime_libs will change the order that libraries are loaded. shared_libs will add them as DT_NEEDED, so they will be loaded before the binary that declares them is loaded, and then when dlopen is called, they will already be cached. runtime_libs is an Android build concept. We are basically declaring \"we will use these at runtime\". If runtime_libs doesn\u0027t work, then it would be considered a bug in the fuzzer infrastructure, because it should take this as a hint and install them. Though - it is a shame that the author of the fuzzer infrastructure would probably have to know about this and manually handle it, it would be just the specific nature of the implementation.",
+      "parentUuid": "4b9fd9cd_c38c144a",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
