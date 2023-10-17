@@ -63,6 +63,30 @@
       },
       "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50db1fb1_e0a286d2",
+        "filename": "media/module/codecserviceregistrant/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-17T00:22:59Z",
+      "side": 1,
+      "message": "changed it runtime_libs",
+      "parentUuid": "4b9fd9cd_c38c144a",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "1d3f170dc07b75d58575f32741a984414e8eae88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
