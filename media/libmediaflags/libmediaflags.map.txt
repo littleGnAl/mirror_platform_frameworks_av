@@ -1,0 +1,6 @@
+LIBMEDIAFLAGS {
+  global:
+    AMediaFlags_isCodec2AidlEnabled; # systemapi
+  local:
+    *;
+};
