@@ -16,6 +16,24 @@
       "message": "If we do this we probably want to exclude HDMI from the selecteable devices for strategy PHONE here:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/enginedefault/src/Engine.cpp;l\u003d294?q\u003dengine.cpp",
       "revId": "f0e379cb531fc2476033f43a702040d5d3f87436",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3965b56_0fa530e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1630064
+      },
+      "writtenOn": "2023-10-18T05:25:32Z",
+      "side": 1,
+      "message": "Done. Done change in Engine for PHONE and sonification cases.",
+      "parentUuid": "b9f23f98_5cee3a81",
+      "revId": "f0e379cb531fc2476033f43a702040d5d3f87436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

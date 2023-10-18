@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f718cebd_60889d61",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1630064
+      },
+      "writtenOn": "2023-10-18T05:25:32Z",
+      "side": 0,
+      "message": "As AUX_DIGITAL can be handled from last connected devices, it can be removed from here, as device2 won\u0027t be empty if aux is connected.",
+      "revId": "1dc7cc18becee6ac6cfc13a4b18ddc697b974e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
