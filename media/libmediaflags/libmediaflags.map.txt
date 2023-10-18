@@ -1,0 +1,6 @@
+LIBMEDIAFLAGS { # introduced=VanillaIceCream
+  global:
+    AMediaFlags_isCodec2AidlEnabled; # systemapi
+  local:
+    *;
+};
