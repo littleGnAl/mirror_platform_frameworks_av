@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebcd8ea2_a61ad0e1",
+        "filename": "media/codec2/hal/aidl/ParamTypes.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-18T00:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cf350b7_b545a170",
+      "range": {
+        "startLine": 178,
+        "startChar": 40,
+        "endLine": 178,
+        "endChar": 73
+      },
+      "revId": "4e6838148931bb1d50ece14cf209d077bf0b9560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c448ac6_933b2745",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-17T21:38:03Z",
       "side": 1,
       "message": "will clients ever use just this method, or just the new isSelected?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "4e6838148931bb1d50ece14cf209d077bf0b9560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fda81c4_e9b5d1a0",
+        "filename": "media/codec2/hal/aidl/include/codec2/aidl/ParamTypes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-18T00:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c448ac6_933b2745",
       "range": {
         "startLine": 41,
         "startChar": 5,
