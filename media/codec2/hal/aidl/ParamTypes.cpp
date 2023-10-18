@@ -20,6 +20,7 @@
 
 #include <android/binder_manager.h>
 #include <android/sysprop/MediaProperties.sysprop.h>
+#include <apex/AMediaFlags.h>
 #include <codec2/aidl/ParamTypes.h>
 #include <codec2/common/ParamTypes.h>
 
@@ -159,11 +160,16 @@ namespace media {
 namespace c2 {
 namespace utils {
 
-bool IsSelected() {
-    // TODO: read from aconfig flags
-    const bool enabled = false;
+bool IsEnabled() {
+    if (__builtin_available(android __ANDROID_API_V__, *)) {
+        return ::AMediaFlags_isCodec2AidlEnabled();
+    } else {
+        return false;
+    }
+}
 
-    if (!enabled) {
+bool IsSelected() {
+    if (!IsEnabled()) {
         // Cannot select AIDL if not enabled
         return false;
     }
