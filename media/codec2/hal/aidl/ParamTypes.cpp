@@ -19,9 +19,14 @@
 #include <android-base/logging.h>
 
 #include <android/binder_manager.h>
+#include <android-base/properties.h>
 // NOTE: due to dependency from mainline modules cannot use libsysprop
 // #include <android/sysprop/MediaProperties.sysprop.h>
+<<<<<<< PATCH SET (7b9416 Add an aconfig flag for media.c2 AIDL impl)
+#include <apex/AMediaFlags.h>
+=======
 #include <android-base/properties.h>
+>>>>>>> BASE      (65febd Add media.c2 AIDL service to media.swcodec)
 #include <codec2/aidl/ParamTypes.h>
 #include <codec2/common/ParamTypes.h>
 
@@ -161,11 +166,16 @@ namespace media {
 namespace c2 {
 namespace utils {
 
-bool IsSelected() {
-    // TODO: read from aconfig flags
-    const bool enabled = false;
+bool IsEnabled() {
+    if (__builtin_available(android __ANDROID_API_V__, *)) {
+        return ::AMediaFlags_isCodec2AidlEnabled();
+    } else {
+        return false;
+    }
+}
 
-    if (!enabled) {
+bool IsSelected() {
+    if (!IsEnabled()) {
         // Cannot select AIDL if not enabled
         return false;
     }
