@@ -30,6 +30,7 @@ cc_library {
         "libcodec2_vndk",
         "libcutils",
         "liblog",
+        "libmediaflags",
         "libnativewindow",
         "libstagefright_aidl_bufferpool2",
         "libutils",
@@ -60,7 +61,6 @@ cc_library {
     apex_available: [
         "//apex_available:platform",
         "com.android.media.swcodec",
-        "test_com.android.media.swcodec",
     ],
 
     srcs: [
@@ -91,6 +91,7 @@ cc_library {
         "libhidlbase",
         "liblog",
         "libnativewindow",
+        "libmediaflags",
         "libstagefright_aidl_bufferpool2",
         "libstagefright_bufferpool@2.0.1",
         "libui",
