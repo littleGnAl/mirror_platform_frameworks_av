@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4716cba1_aac005f0",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-10-19T14:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8990ad72_ff76b45a",
+      "range": {
+        "startLine": 230,
+        "startChar": 12,
+        "endLine": 230,
+        "endChar": 20
+      },
+      "revId": "c7478de800f36b4b20999321d5657fca12ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a6b1f6_dc720142",
@@ -85,6 +109,30 @@
       "writtenOn": "2023-10-17T21:28:02Z",
       "side": 1,
       "message": "In this case, it\u0027s OK to have a warning as this matches the behavior on line 257. We just need to add `DeviceVector::add`, and this will allow to make the message shorter:\n\n```\n\"DeviceVector::add null device\"\n```",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 53
+      },
+      "revId": "c7478de800f36b4b20999321d5657fca12ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f6789e_b85d1bca",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-10-19T14:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a6b1f6_dc720142",
       "range": {
         "startLine": 245,
         "startChar": 0,
