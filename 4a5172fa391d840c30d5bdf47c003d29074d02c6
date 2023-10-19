@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2ed701_f7667bf5",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-19T16:38:27Z",
+      "side": 1,
+      "message": "This will return true if device is a nullptr. We need the opposite check here.",
+      "range": {
+        "startLine": 228,
+        "startChar": 12,
+        "endLine": 228,
+        "endChar": 19
+      },
+      "revId": "4a5172fa391d840c30d5bdf47c003d29074d02c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
