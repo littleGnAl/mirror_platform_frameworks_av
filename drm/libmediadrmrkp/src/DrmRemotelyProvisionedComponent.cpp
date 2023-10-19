@@ -18,11 +18,14 @@
 #include "DrmRemotelyProvisionedComponent.h"
 
 #include <android-base/properties.h>
+#include <android-base/strings.h>
 #include <cppbor.h>
 #include <cppbor_parse.h>
 #include <log/log.h>
 #include <map>
 #include <string>
+
+using android::base::StringReplace;
 
 namespace android::mediadrm {
 DrmRemotelyProvisionedComponent::DrmRemotelyProvisionedComponent(std::shared_ptr<IDrmPlugin> drm,
@@ -103,7 +106,14 @@ ScopedAStatus DrmRemotelyProvisionedComponent::getDeviceInfo(std::vector<uint8_t
                                                        {"manufacturer", "ro.product.manufacturer"},
                                                        {"model", "ro.product.model"},
                                                        {"device", "ro.product.device"},
-                                                       {"product", "ro.product.name"}};
+                                                       {"product", "ro.product.name"},
+                                                       {"vb_state", "ro.boot.verifiedbootstate"},
+                                                       {"bootloader_state", "ro.boot.vbmeta.device_state"},
+                                                       {"vbmeta_digest", "ro.boot.vbmeta.digest"},
+                                                       {"os_version", "ro.build.version.release"},
+                                                       {"system_patch_level", "ro.build.version.security_patch"},
+                                                       {"boot_patch_level", "ro.vendor.boot_security_patch"},
+                                                       {"vendor_patch_level", "ro.vendor.build.security_patch"}};
     for (auto i : keyToProp) {
         auto key = i.first;
         auto prop = i.second;
@@ -116,7 +126,23 @@ ScopedAStatus DrmRemotelyProvisionedComponent::getDeviceInfo(std::vector<uint8_t
                         IRemotelyProvisionedComponent::STATUS_FAILED,
                         "Failed to get OS property."));
             }
-            deviceInfoMap.add(cppbor::Tstr(key), cppbor::Tstr(propValue));
+
+            if (!key.compare("os_version")) {
+               propValue = android::base::StringReplace(propValue.data(), ".",
+                                                 "", /* all */ true);
+               deviceInfoMap.add(cppbor::Tstr(key), cppbor::Tstr(propValue));
+            } else if (!key.compare("system_patch_level") ||
+                       !key.compare("boot_patch_level") ||
+                       !key.compare("vendor_patch_level")) {
+               propValue = android::base::StringReplace(propValue.data(), "-",
+                                                 "", /* all */ true);
+               uint32_t value = std::stoi(propValue);
+               deviceInfoMap.add(cppbor::Tstr(key), cppbor::Uint(value));
+            } else if (!key.compare("vbmeta_digest")) {
+               deviceInfoMap.add(cppbor::Tstr(key), cppbor::Bstr(propValue));
+            } else {
+               deviceInfoMap.add(cppbor::Tstr(key), cppbor::Tstr(propValue));
+            } 
             ALOGI("use OS property %s: %s", prop.c_str(), propValue.c_str());
         } else {
             ALOGI("use verified key %s: %s", key.c_str(), val->asTstr()->value().data());
