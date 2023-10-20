@@ -65,6 +65,9 @@ status_t HwModule::addOutputProfile(const std::string& name, const audio_config_
 
     profile->addAudioProfile(new AudioProfile(config->format, config->channel_mask,
                                               config->sample_rate));
+    if (!audio_is_linear_pcm(config->format)) {
+        profile->setFlags(profile->getFlags() | AUDIO_OUTPUT_FLAG_DIRECT);
+    }
 
     sp<DeviceDescriptor> devDesc =
             new DeviceDescriptor(device, getTagForDevice(device), address.c_str());
@@ -133,6 +136,9 @@ status_t HwModule::addInputProfile(const std::string& name, const audio_config_t
     sp<IOProfile> profile = new InputProfile(name);
     profile->addAudioProfile(new AudioProfile(config->format, config->channel_mask,
                                               config->sample_rate));
+    if (!audio_is_linear_pcm(config->format)) {
+        profile->setFlags(profile->getFlags() | AUDIO_INPUT_FLAG_DIRECT);
+    }
 
     sp<DeviceDescriptor> devDesc =
             new DeviceDescriptor(device, getTagForDevice(device), address.c_str());
