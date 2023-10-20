@@ -16,6 +16,24 @@
       "message": "this is in Android 14, which is imminent.\nand i don\u0027t see the code changes that go along with it,\nso I don\u0027t think we should fold this in.",
       "revId": "ab20a145969027cce6ad5623c7fd7f7c6eae50bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4ac329_b252f77e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1786490
+      },
+      "writtenOn": "2023-10-20T07:36:05Z",
+      "side": 1,
+      "message": "Due to av1 google encoder can be supported only on U, the key word “minsdk” must use in codec configuration file.\nBut the vts tool before U cannot recognize “minsdk” that will cause false alarm in vts test after we add av1 codec into vf projects.\nBecause we should make sure av1 encoder can be supported on U and keep disable before U, we need this keyword.\n\nSo we think vts tool that before U should add “minsdk” support as U for vf projects.",
+      "parentUuid": "bafeaf7e_b4c4bb70",
+      "revId": "ab20a145969027cce6ad5623c7fd7f7c6eae50bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
