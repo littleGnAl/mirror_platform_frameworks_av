@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d222d2ff_3b430600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-20T04:54:51Z",
+      "side": 1,
+      "message": "According to latest Dolby Vision Profile/Level spec, I added level 13 definition into AOSP. This contribution is divided into 3 parts: JAVA API change, Codec2 API change and native layer implementation. This request is part 2.\n\nhttps://professionalsupport.dolby.com/s/article/What-is-Dolby-Vision-Profile?language\u003den_US\u0026lanuage\u003den_US",
+      "revId": "bc406b2dc87e1debd6c67e79f1cd8b806af5fe1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
