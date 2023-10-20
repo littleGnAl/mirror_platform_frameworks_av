@@ -173,6 +173,7 @@ ALookup<C2Config::level_t, int32_t> sDolbyVisionLevels = {
     { C2Config::LEVEL_DV_MAIN_UHD_120, DolbyVisionLevelUhd120 },
     { C2Config::LEVEL_DV_MAIN_8K_30,  DolbyVisionLevel8k30 },
     { C2Config::LEVEL_DV_MAIN_8K_60,  DolbyVisionLevel8k60 },
+    { C2Config::LEVEL_DV_MAIN_8K_120, DolbyVisionLevel8k120 },
 
     // high tiers are not yet supported on android, for now map them to main tier
     { C2Config::LEVEL_DV_HIGH_HD_24,  DolbyVisionLevelHd24 },
@@ -187,6 +188,7 @@ ALookup<C2Config::level_t, int32_t> sDolbyVisionLevels = {
     { C2Config::LEVEL_DV_HIGH_UHD_120, DolbyVisionLevelUhd120 },
     { C2Config::LEVEL_DV_HIGH_8K_30,  DolbyVisionLevel8k30 },
     { C2Config::LEVEL_DV_HIGH_8K_60,  DolbyVisionLevel8k60 },
+    { C2Config::LEVEL_DV_HIGH_8K_120, DolbyVisionLevel8k120 },
 };
 
 ALookup<C2Config::profile_t, int32_t> sDolbyVisionProfiles = {
