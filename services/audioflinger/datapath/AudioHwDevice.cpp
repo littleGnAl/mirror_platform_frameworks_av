@@ -21,10 +21,13 @@
 #include <system/audio.h>
 #include <utils/Log.h>
 
+#include <audio_utils/spdif/SPDIFDecoder.h>
 #include <audio_utils/spdif/SPDIFEncoder.h>
+#include <media/AudioResamplerPublic.h>
 
 #include "AudioHwDevice.h"
 #include "AudioStreamOut.h"
+#include "SpdifStreamIn.h"
 #include "SpdifStreamOut.h"
 
 namespace android {
@@ -93,6 +96,95 @@ status_t AudioHwDevice::openOutputStream(
     }
 
     *ppStreamOut = outputStream;
+    return status;
+}
+
+status_t AudioHwDevice::openInputStream(
+        AudioStreamIn **ppStreamIn,
+        audio_io_handle_t handle,
+        audio_devices_t deviceType,
+        audio_input_flags_t flags,
+        struct audio_config *config,
+        const char *address,
+        audio_source_t source,
+        audio_devices_t outputDevice,
+        const char *outputDeviceAddress) {
+
+    struct audio_config originalConfig = *config;
+    auto inputStream = new AudioStreamIn(this, flags);
+
+    // Try to open the HAL first using the current format.
+    ALOGV("openInputStream(), try "
+            " sampleRate %d, Format %#x, "
+            "channelMask %#x",
+            config->sample_rate,
+            config->format,
+            config->channel_mask);
+    status_t status = inputStream->open(handle, deviceType, config, address, source, outputDevice,
+                                        outputDeviceAddress);
+
+    if (status != NO_ERROR) {
+        delete inputStream;
+        inputStream = nullptr;
+
+        // FIXME Look at any modification to the config.
+        // The HAL might modify the config to suggest a wrapped format.
+        // Log this so we can see what the HALs are doing.
+        ALOGI("openInputStream(), HAL returned"
+            " sampleRate %d, Format %#x, "
+            "channelMask %#x, status %d",
+            config->sample_rate,
+            config->format,
+            config->channel_mask,
+            status);
+
+        // If the data is encoded then try again using wrapped PCM.
+        const bool unwrapperNeeded = !audio_has_proportional_frames(originalConfig.format)
+                && ((flags & AUDIO_INPUT_FLAG_DIRECT) != 0);
+
+        // If the input could not be opened with the requested parameters and we can handle the
+        // conversion internally, try to open again with the proposed parameters.
+        if (status == BAD_VALUE &&
+            audio_is_linear_pcm(originalConfig.format) &&
+            audio_is_linear_pcm(config->format) &&
+            (config->sample_rate <= AUDIO_RESAMPLER_DOWN_RATIO_MAX * config->sample_rate) &&
+            (audio_channel_count_from_in_mask(config->channel_mask) <= FCC_LIMIT) &&
+            (audio_channel_count_from_in_mask(originalConfig.channel_mask) <= FCC_LIMIT)) {
+            // FIXME describe the change proposed by HAL (save old values so we can log them here)
+            ALOGV("openInputStream() reopening with proposed sampling rate and channel mask");
+            status = inputStream->open(handle, deviceType, config, address, source,
+                    outputDevice, outputDeviceAddress);
+            // FIXME log this new status; HAL should not propose any further changes
+        } else if (unwrapperNeeded) {
+            if (SPDIFDecoder::isFormatSupported(originalConfig.format)) {
+                inputStream = new SpdifStreamIn(this, flags, originalConfig.format);
+                status = inputStream->open(handle, deviceType, &originalConfig, address, source,
+                        outputDevice, outputDeviceAddress);
+                if (status != NO_ERROR) {
+                    ALOGE("ERROR - openInputStream(), SPDIF open returned %d",
+                        status);
+                    delete inputStream;
+                    inputStream = nullptr;
+                }
+                // update the config to what was opened on the HAL
+                audio_format_t halFormat;
+                audio_channel_mask_t mChannelMask;
+                uint32_t mSampleRate;
+                status_t halStreamResult = inputStream->stream->getAudioProperties(
+                        &mSampleRate, &mChannelMask, &halFormat);
+                if (halStreamResult == NO_ERROR) {
+                    config->format = halFormat;
+                    config->channel_mask = mChannelMask;
+                    config->sample_rate = mSampleRate;
+                }
+            } else {
+                ALOGE("ERROR - openInputStream(), SPDIFDecoder does not support format 0x%08x",
+                    originalConfig.format);
+            }
+        }
+    }
+
+    *ppStreamIn = inputStream;
     return status;
 }
 

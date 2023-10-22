@@ -52,22 +52,10 @@ status_t SpdifStreamOut::open(
     mApplicationSampleRate = config->sample_rate;
     mApplicationChannelMask = config->channel_mask;
 
-    // Some data bursts run at a higher sample rate.
-    // TODO Move this into the audio_utils as a static method.
-    switch(config->format) {
-        case AUDIO_FORMAT_E_AC3:
-        case AUDIO_FORMAT_E_AC3_JOC:
-            mRateMultiplier = 4;
-            break;
-        case AUDIO_FORMAT_AC3:
-        case AUDIO_FORMAT_DTS:
-        case AUDIO_FORMAT_DTS_HD:
-            mRateMultiplier = 1;
-            break;
-        default:
-            ALOGE("ERROR SpdifStreamOut::open() unrecognized format 0x%08X\n",
-                config->format);
-            return BAD_VALUE;
+    mRateMultiplier = spdif_rate_multiplier(config->format);
+    if (mRateMultiplier <= 0) {
+        ALOGE("ERROR SpdifStreamOut::open() unrecognized format 0x%08X\n", config->format);
+        return BAD_VALUE;
     }
     customConfig.sample_rate = config->sample_rate * mRateMultiplier;
 

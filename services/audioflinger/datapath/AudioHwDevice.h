@@ -30,6 +30,7 @@
 
 namespace android {
 
+class AudioStreamIn;
 class AudioStreamOut;
 
 class AudioHwDevice {
@@ -88,6 +89,17 @@ public:
             audio_output_flags_t flags,
             struct audio_config *config,
             const char *address);
+
+    status_t openInputStream(
+            AudioStreamIn **ppStreamIn,
+            audio_io_handle_t handle,
+            audio_devices_t deviceType,
+            audio_input_flags_t flags,
+            struct audio_config *config,
+            const char *address,
+            audio_source_t source,
+            audio_devices_t outputDevice,
+            const char *outputDeviceAddress);
 
     [[nodiscard]] bool supportsAudioPatches() const;
 
