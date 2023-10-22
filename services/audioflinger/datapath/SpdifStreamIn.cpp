@@ -1,6 +1,6 @@
 /*
 **
-** Copyright 2015, The Android Open Source Project
+** Copyright 2023, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -21,31 +21,33 @@
 #include <system/audio.h>
 #include <utils/Log.h>
 
-#include <audio_utils/spdif/SPDIFEncoder.h>
+#include <audio_utils/spdif/SPDIFDecoder.h>
 
 #include "AudioHwDevice.h"
-#include "SpdifStreamOut.h"
+#include "SpdifStreamIn.h"
 
 namespace android {
 
 /**
- * If the AudioFlinger is processing encoded data and the HAL expects
- * PCM then we need to wrap the data in an SPDIF wrapper.
+ * If the HAL is generating IEC61937 data and AudioFlinger expects elementary stream then we need to
+ * extract the data using an SPDIF decoder.
  */
-SpdifStreamOut::SpdifStreamOut(AudioHwDevice *dev,
-            audio_output_flags_t flags,
+SpdifStreamIn::SpdifStreamIn(AudioHwDevice *dev,
+            audio_input_flags_t flags,
             audio_format_t format)
-        // Tell the HAL that the data will be compressed audio wrapped in a data burst.
-        : AudioStreamOut(dev, (audio_output_flags_t) (flags | AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO))
-        , mSpdifEncoder(this, format)
+        : AudioStreamIn(dev, flags)
+        , mSpdifDecoder(this, format)
 {
 }
 
-status_t SpdifStreamOut::open(
+status_t SpdifStreamIn::open(
                               audio_io_handle_t handle,
                               audio_devices_t devices,
                               struct audio_config *config,
-                              const char *address)
+                              const char *address,
+                              audio_source_t source,
+                              audio_devices_t outputDevice,
+                              const char* outputDeviceAddress)
 {
     struct audio_config customConfig = *config;
 
@@ -55,78 +57,78 @@ status_t SpdifStreamOut::open(
 
     mRateMultiplier = spdif_rate_multiplier(config->format);
     if (mRateMultiplier <= 0) {
-        ALOGE("ERROR SpdifStreamOut::open() unrecognized format 0x%08X\n", config->format);
+        ALOGE("ERROR SpdifStreamIn::open() unrecognized format 0x%08X\n", config->format);
         return BAD_VALUE;
     }
     customConfig.sample_rate = config->sample_rate * mRateMultiplier;
-
     customConfig.format = AUDIO_FORMAT_PCM_16_BIT;
-    customConfig.channel_mask = AUDIO_CHANNEL_OUT_STEREO;
+    customConfig.channel_mask = AUDIO_CHANNEL_IN_STEREO;
 
     // Always print this because otherwise it could be very confusing if the
     // HAL and AudioFlinger are using different formats.
     // Print before open() because HAL may modify customConfig.
-    ALOGI("SpdifStreamOut::open() AudioFlinger requested"
+    ALOGI("SpdifStreamIn::open() AudioFlinger requested"
             " sampleRate %d, format %#x, channelMask %#x",
             config->sample_rate,
             config->format,
             config->channel_mask);
-    ALOGI("SpdifStreamOut::open() HAL configured for"
+    ALOGI("SpdifStreamIn::open() HAL configured for"
             " sampleRate %d, format %#x, channelMask %#x",
             customConfig.sample_rate,
             customConfig.format,
             customConfig.channel_mask);
 
-    const status_t status = AudioStreamOut::open(
+    const status_t status = AudioStreamIn::open(
             handle,
             devices,
             &customConfig,
-            address);
+            address,
+            source,
+            outputDevice,
+            outputDeviceAddress);
 
-    ALOGI("SpdifStreamOut::open() status = %d", status);
+    ALOGI("SpdifStreamIn::open() status = %d", status);
 
 #ifdef TEE_SINK
     if (status == OK) {
         // Don't use PCM 16-bit format to avoid WAV encoding IEC61937 data.
         mTee.set(customConfig.sample_rate,
-                audio_channel_count_from_out_mask(customConfig.channel_mask),
-                AUDIO_FORMAT_IEC61937, NBAIO_Tee::TEE_FLAG_OUTPUT_THREAD);
-        mTee.setId(std::string("_") + std::to_string(handle) + "_D");
+                audio_channel_count_from_in_mask(customConfig.channel_mask),
+                AUDIO_FORMAT_IEC61937, NBAIO_Tee::TEE_FLAG_INPUT_THREAD);
+        mTee.setId(std::string("_") + std::to_string(handle) + "_C");
     }
 #endif
 
     return status;
 }
 
-int SpdifStreamOut::flush()
+int SpdifStreamIn::standby()
 {
-    mSpdifEncoder.reset();
-    return AudioStreamOut::flush();
+    mSpdifDecoder.reset();
+    return AudioStreamIn::standby();
 }
 
-int SpdifStreamOut::standby()
+status_t SpdifStreamIn::readDataBurst(void* buffer, size_t bytes, size_t* read)
 {
-    mSpdifEncoder.reset();
-    return AudioStreamOut::standby();
-}
-
-ssize_t SpdifStreamOut::writeDataBurst(const void* buffer, size_t bytes)
-{
-    const ssize_t written = AudioStreamOut::write(buffer, bytes);
+    status_t status = AudioStreamIn::read(buffer, bytes, read);
 
 #ifdef TEE_SINK
-    if (written > 0) {
-        mTee.write(reinterpret_cast<const char *>(buffer),
-                written / AudioStreamOut::getFrameSize());
+    if (*read > 0) {
+        mTee.write(reinterpret_cast<const char *>(buffer), *read / AudioStreamIn::getFrameSize());
     }
 #endif
-    return written;
+    return status;
 }
 
-ssize_t SpdifStreamOut::write(const void* buffer, size_t numBytes)
+status_t SpdifStreamIn::read(void* buffer, size_t numBytes, size_t* read)
 {
-    // Write to SPDIF wrapper. It will call back to writeDataBurst().
-    return mSpdifEncoder.write(buffer, numBytes);
+    // Read from SPDIF extractor. It will call back to readDataBurst().
+    const auto bytesRead = mSpdifDecoder.read(buffer, numBytes);
+    if (bytesRead >= 0) {
+        *read = bytesRead;
+        return OK;
+    }
+    return NOT_ENOUGH_DATA;
 }
 
 } // namespace android
