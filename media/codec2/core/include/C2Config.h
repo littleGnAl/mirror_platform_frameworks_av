@@ -211,6 +211,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexLayerIndex,
     kParamIndexLayerCount,
     kParamIndexIntraRefresh,
+    kParamIndexDvCcid,
 
     /* ------------------------------------ image components ------------------------------------ */
 
@@ -1950,6 +1951,12 @@ struct C2IntraRefreshStruct {
 typedef C2StreamParam<C2Tuning, C2IntraRefreshStruct, kParamIndexIntraRefresh>
         C2StreamIntraRefreshTuning;
 constexpr char C2_PARAMKEY_INTRA_REFRESH[] = "coding.intra-refresh";
+
+/**
+ * Dolby Vision Cross-compatibility ID (CCID).
+ */
+typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexDvCcid> C2StreamDvCcidInfo;
+constexpr char C2_PARAMKEY_DV_CCID[] = "coded.dv-ccid";
 
 /* ====================================== IMAGE COMPONENTS ====================================== */
 
