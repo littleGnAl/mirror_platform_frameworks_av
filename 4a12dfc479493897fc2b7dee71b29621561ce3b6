@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c3cc44_d8c3ef88",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-23T23:17:27Z",
+      "side": 1,
+      "message": "Do we have a reason to separate joinThreadPool with the configuring?",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 0
+      },
+      "revId": "4a12dfc479493897fc2b7dee71b29621561ce3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
