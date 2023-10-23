@@ -1112,6 +1112,11 @@ status_t convertMetaDataToMessage(
             msg->setBuffer("hdr10-plus-info", buffer);
         }
 
+        int32_t dvCcid = 0;
+        if (meta->findInt32(kKeyDvCcid, &dvCcid)) {
+            msg->setInt32("dv-ccid", dvCcid);
+        }
+
         convertMetaDataToMessageColorAspects(meta, msg);
     } else if (!strncasecmp("audio/", mime, 6)) {
         int32_t numChannels, sampleRate;
@@ -1949,6 +1954,11 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         if (msg->findBuffer("hdr10-plus-info", &hdr10PlusInfo)) {
             meta->setData(kKeyHdr10PlusInfo, 0,
                     hdr10PlusInfo->data(), hdr10PlusInfo->size());
+        }
+
+        int32_t dvCcid;
+        if (msg->findInt32("dv-ccid", &dvCcid)) {
+            meta->setInt32(kKeyDvCcid, dvCcid);
         }
 
         convertMessageToMetaDataColorAspects(msg, meta);

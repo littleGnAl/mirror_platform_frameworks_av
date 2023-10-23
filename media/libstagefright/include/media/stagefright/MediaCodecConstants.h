@@ -785,6 +785,7 @@ inline constexpr char KEY_COLOR_TRANSFER[] = "color-transfer";
 inline constexpr char KEY_COMPLEXITY[] = "complexity";
 inline constexpr char KEY_CREATE_INPUT_SURFACE_SUSPENDED[] = "create-input-buffers-suspended";
 inline constexpr char KEY_DURATION[] = "durationUs";
+inline constexpr char KEY_DV_CCID[] = "dv-ccid";
 inline constexpr char KEY_FEATURE_[] = "feature-";
 inline constexpr char KEY_FLAC_COMPRESSION_LEVEL[] = "flac-compression-level";
 inline constexpr char KEY_FRAME_RATE[] = "frame-rate";

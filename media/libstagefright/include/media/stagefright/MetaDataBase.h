@@ -296,6 +296,9 @@ enum {
 
     // DVB teletext page number
     kKeyDvbTeletextPageNumber = 'ttxp', // int32_t, DVB teletext page number
+
+    // Dolby Vision Cross-compatibility ID (CCID)
+    kKeyDvCcid = 'ccid', // int32_t, Dolby Vision Cross-compatibility ID (CCID)
 };
 
 enum {

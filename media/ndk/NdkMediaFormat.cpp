@@ -412,6 +412,7 @@ EXPORT const char* AMEDIAFORMAT_KEY_DISPLAY_CROP = "crop";
 EXPORT const char* AMEDIAFORMAT_KEY_DISPLAY_HEIGHT = "display-height";
 EXPORT const char* AMEDIAFORMAT_KEY_DISPLAY_WIDTH = "display-width";
 EXPORT const char* AMEDIAFORMAT_KEY_DURATION = "durationUs";
+EXPORT const char* AMEDIAFORMAT_KEY_DV_CCID = "dv-ccid";
 EXPORT const char* AMEDIAFORMAT_KEY_ENCODER_DELAY = "encoder-delay";
 EXPORT const char* AMEDIAFORMAT_KEY_ENCODER_PADDING = "encoder-padding";
 EXPORT const char* AMEDIAFORMAT_KEY_ESDS = "esds";

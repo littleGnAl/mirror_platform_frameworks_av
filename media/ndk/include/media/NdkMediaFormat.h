@@ -367,6 +367,15 @@ extern const char* AMEDIAFORMAT_KEY_MPEGH_PROFILE_LEVEL_INDICATION __INTRODUCED_
  */
 extern const char* AMEDIAFORMAT_KEY_MPEGH_REFERENCE_CHANNEL_LAYOUT __INTRODUCED_IN(32);
 
+/**
+ * Dolby Vision Cross-compatibility ID (CCID).
+ *
+ * See https://professionalsupport.dolby.com/s/article/What-is-Dolby-Vision-Profile?language=en_US
+ *
+ * Available since API level 35.
+ */
+extern const char* AMEDIAFORMAT_KEY_DV_CCID __INTRODUCED_IN(35);
+
 __END_DECLS
 
 #endif // _NDK_MEDIA_FORMAT_H

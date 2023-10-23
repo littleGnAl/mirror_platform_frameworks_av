@@ -582,6 +582,8 @@ void CCodecConfig::initializeStandardParams() {
             }
             return C2Value();
         }));
+    add(ConfigMapper(KEY_DV_CCID, C2_PARAMKEY_DV_CCID, "value")
+        .limitTo(D::VIDEO & D::CODED));
     deprecated(ConfigMapper(PARAMETER_KEY_REQUEST_SYNC_FRAME,
                      "coding.request-sync", "value")
         .limitTo(D::PARAM & D::ENCODER)
