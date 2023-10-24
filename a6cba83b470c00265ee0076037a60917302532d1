@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9740c7c_7432eb9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-10-24T03:28:58Z",
+      "side": 1,
+      "message": "Example calling from APP:\n\n        MediaExtractor mediaExtractor \u003d new MediaExtractor();\n        try {\n            mediaExtractor.setDataSource(\"/sdcard/Download/dv.mp4\");\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        MediaFormat mediaFormat \u003d mediaExtractor.getTrackFormat(0); // Assume the first track is Dolby Vision track\n        String mime \u003d mediaFormat.getString(MediaFormat.KEY_MIME);\n\n        mediaFormat.setInteger(\"dv-ccid\", 4);  // Set CCID \u003d 4\n\t\t// After DV CCID is contributed to AOSP, using below configuration.\n\t\t// mediaFormat.setInteger(MediaFormat.KEY_DV_CCID, 4);  // Set CCID \u003d 4\n\n        MediaCodecList list \u003d new MediaCodecList(MediaCodecList.ALL_CODECS);\n        String name \u003d list.findDecoderForFormat(mediaFormat);\n        Log.e(\"MediaCodecTest\", \"Java, selected codec name \u003d \" + name);\n\n        MediaCodec videoCodec \u003d null;\n        try {\n            videoCodec \u003d MediaCodec.createDecoderByType(mime);\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        assert videoCodec !\u003d null;\n        videoCodec.configure(mediaFormat, null, null, 0);\n        videoCodec.start();",
+      "revId": "a6cba83b470c00265ee0076037a60917302532d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
