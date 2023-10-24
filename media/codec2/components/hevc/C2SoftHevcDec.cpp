@@ -18,6 +18,7 @@
 #define LOG_TAG "C2SoftHevcDec"
 #include <log/log.h>
 
+#include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/foundation/MediaDefs.h>
 
 #include <C2Debug.h>
@@ -192,6 +193,13 @@ public:
                 .withConstValue(new C2StreamPixelFormatInfo::output(
                                      0u, HAL_PIXEL_FORMAT_YCBCR_420_888))
                 .build());
+
+        addParameter(
+                DefineParam(mDvCcid, C2_PARAMKEY_DV_CCID)
+                .withDefault(new C2StreamDvCcidInfo::input(0u, 0))
+                .withFields({C2F(mDvCcid, value).inRange(0, 15)})
+                .withSetter(Setter<decltype(*mDvCcid)>::NonStrictValueWithNoDeps)
+                .build());
     }
 
     static C2R SizeSetter(bool mayBlock, const C2P<C2StreamPictureSizeInfo::output> &oldMe,
@@ -286,6 +294,7 @@ public:
     std::shared_ptr<C2StreamColorAspectsInfo::output> getColorAspects_l() {
         return mColorAspects;
     }
+    int32_t getDvCcid() const { return mDvCcid->value; }
 
 private:
     std::shared_ptr<C2StreamProfileLevelInfo::input> mProfileLevel;
@@ -297,6 +306,7 @@ private:
     std::shared_ptr<C2StreamColorAspectsTuning::output> mDefaultColorAspects;
     std::shared_ptr<C2StreamColorAspectsInfo::output> mColorAspects;
     std::shared_ptr<C2StreamPixelFormatInfo::output> mPixelFormat;
+    std::shared_ptr<C2StreamDvCcidInfo::input> mDvCcid;
 };
 
 static size_t getCpuCoreCount() {
@@ -510,6 +520,9 @@ status_t C2SoftHevcDec::initDecoder() {
     (void) setNumCores();
     if (OK != setParams(mStride, IVD_DECODE_FRAME)) return UNKNOWN_ERROR;
     (void) getVersion();
+
+    int32_t dvCcid = mIntf->getDvCcid();
+    ALOGI("%s() mDvCcid = %d", __FUNCTION__, dvCcid);
 
     return OK;
 }
