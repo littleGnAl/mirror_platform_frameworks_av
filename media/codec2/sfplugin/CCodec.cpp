@@ -1915,8 +1915,8 @@ void CCodec::stop(bool pushBlankBuffer) {
         }
         comp = state->comp;
     }
-    status_t err = comp->stop();
     mChannel->stopUseOutputSurface(pushBlankBuffer);
+    status_t err = comp->stop();
     if (err != C2_OK) {
         // TODO: convert err into status_t
         mCallback->onError(UNKNOWN_ERROR, ACTION_CODE_FATAL);
@@ -2004,8 +2004,8 @@ void CCodec::release(bool sendCallback, bool pushBlankBuffer) {
         }
         comp = state->comp;
     }
-    comp->release();
     mChannel->stopUseOutputSurface(pushBlankBuffer);
+    comp->release();
 
     {
         Mutexed<State>::Locked state(mState);
