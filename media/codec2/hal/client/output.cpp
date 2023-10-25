@@ -339,6 +339,10 @@ void OutputBufferQueue::stop() {
     std::scoped_lock<std::mutex> l(mMutex);
     mStopped = true;
     mOwner.reset(); // destructor of the block will not triger IGBP::cancel()
+    // basically configuring null surface
+    mOldMem = mSyncMem;
+    mSyncMem.reset();
+    mIgbp.clear();
 }
 
 bool OutputBufferQueue::registerBuffer(const C2ConstGraphicBlock& block) {
