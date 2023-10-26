@@ -16,6 +16,24 @@
       "message": "Don\u0027t we need this?",
       "revId": "5675e331586ec4ef621a8cf4980c249fd3306627",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8398b08e_d3c1777a",
+        "filename": "media/codec2/components/dav1d/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-26T18:06:06Z",
+      "side": 0,
+      "message": "Not needed here.\nlibcodec2_soft-defaults included at line 14 has these lines.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/components/base/Android.bp;l\u003d110?q\u003dlibcodec2_soft-defaults\u0026start\u003d11",
+      "parentUuid": "b38e506c_6ea3e0a4",
+      "revId": "5675e331586ec4ef621a8cf4980c249fd3306627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
