@@ -942,6 +942,7 @@ private:
     std::map<C2String, ComponentLoader> mComponents; ///< path -> component module
     std::map<C2String, C2String> mComponentNameToPath; ///< name -> path
     std::vector<std::shared_ptr<const C2Component::Traits>> mComponentList;
+    std::vector<C2String> mLibrariesList; ///< List of libraries
 
     std::shared_ptr<C2ReflectorHelper> mReflector;
     Interface mInterface;
@@ -1070,6 +1071,7 @@ C2PlatformComponentStore::C2PlatformComponentStore()
 
     auto emplace = [this](const char *libPath) {
         mComponents.emplace(libPath, libPath);
+        mLibrariesList.emplace_back(libPath);
     };
 
     // TODO: move this also into a .so so it can be updated
@@ -1120,6 +1122,7 @@ C2PlatformComponentStore::C2PlatformComponentStore(
 
     for(auto const& func: mCodec2FactoryFuncs) {
         mComponents.emplace(std::get<0>(func), func);
+        mLibrariesList.emplace_back(std::get<0>(func));
     }
 }
 
@@ -1148,9 +1151,8 @@ void C2PlatformComponentStore::visitComponents() {
     if (mVisited) {
         return;
     }
-    for (auto &pathAndLoader : mComponents) {
-        const C2String &path = pathAndLoader.first;
-        ComponentLoader &loader = pathAndLoader.second;
+    for (auto &path : mLibrariesList) {
+        ComponentLoader &loader = mComponents.at(path);
         std::shared_ptr<ComponentModule> module;
         if (loader.fetchModule(&module) == C2_OK) {
             std::shared_ptr<const C2Component::Traits> traits = module->getTraits();
