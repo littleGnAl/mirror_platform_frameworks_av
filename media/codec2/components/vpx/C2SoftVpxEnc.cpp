@@ -425,6 +425,19 @@ void C2SoftVpxEnc::onRelease() {
 }
 
 c2_status_t C2SoftVpxEnc::onStop() {
+    IntfImpl::Lock lock = mIntf->lock();
+    std::shared_ptr<C2StreamRequestSyncFrameTuning::output> requestSync = mIntf->getRequestSync_l();
+    lock.unlock();
+    if (requestSync != mRequestSync) {
+        // we can handle IDR immediately
+        if (requestSync->value) {
+            // unset request
+            C2StreamRequestSyncFrameTuning::output clearSync(0u, C2_FALSE);
+            std::vector<std::unique_ptr<C2SettingResult>> failures;
+            mIntf->config({ &clearSync }, C2_MAY_BLOCK, &failures);
+        }
+        mRequestSync = requestSync;
+    }
     onRelease();
     mLastTimestamp = 0x7FFFFFFFFFFFFFFFLL;
     mSignalledOutputEos = false;
