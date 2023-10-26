@@ -50,18 +50,26 @@
  *   human-readable version of the status.
  */
 
-#define VALUE_OR_RETURN(exp)                                                         \
-    ({                                                                               \
-        auto _tmp = (exp);                                                           \
-        if (!_tmp.ok()) return ::android::base::unexpected(std::move(_tmp.error())); \
-        std::move(_tmp.value());                                                     \
+#define VALUE_OR_RETURN(exp)                                                          \
+    ({                                                                                \
+        auto _tmp = (exp);                                                            \
+        if (!_tmp.ok()) {                                                             \
+            ALOGE("Function: %s Line: %d Failed result (%s)", __FUNCTION__, __LINE__, \
+                  errorToString(_tmp.error()).c_str());                               \
+            return ::android::base::unexpected(std::move(_tmp.error()));              \
+        }                                                                             \
+        std::move(_tmp.value());                                                      \
     })
 
-#define VALUE_OR_RETURN_STATUS(exp)                     \
-    ({                                                  \
-        auto _tmp = (exp);                              \
-        if (!_tmp.ok()) return std::move(_tmp.error()); \
-        std::move(_tmp.value());                        \
+#define VALUE_OR_RETURN_STATUS(exp)                                                   \
+    ({                                                                                \
+        auto _tmp = (exp);                                                            \
+        if (!_tmp.ok()) {                                                             \
+            ALOGE("Function: %s Line: %d Failed result (%s)", __FUNCTION__, __LINE__, \
+                  errorToString(_tmp.error()).c_str());                               \
+            return std::move(_tmp.error());                                           \
+        }                                                                             \
+        std::move(_tmp.value());                                                      \
     })
 
 #define VALUE_OR_FATAL(exp)                                                                       \
@@ -72,15 +80,27 @@
         std::move(_tmp.value());                                                                  \
     })
 
-#define RETURN_IF_ERROR(exp) \
-    if (auto _tmp = (exp); !errorIsOk(_tmp)) return ::android::base::unexpected(std::move(_tmp));
+#define RETURN_IF_ERROR(exp)                                                \
+    ({                                                                      \
+        auto _tmp = (exp);                                                  \
+        if (!errorIsOk(_tmp)) {                                             \
+            ALOGE("Function: %s Line: %d Failed ", __FUNCTION__, __LINE__); \
+            return ::android::base::unexpected(std::move(_tmp));            \
+        }                                                                   \
+    })
 
-#define RETURN_STATUS_IF_ERROR(exp) \
-    if (auto _tmp = (exp); !errorIsOk(_tmp)) return _tmp;
+#define RETURN_STATUS_IF_ERROR(exp)                                         \
+    ({                                                                      \
+        auto _tmp = (exp);                                                  \
+        if (!errorIsOk(_tmp)) {                                             \
+            ALOGE("Function: %s Line: %d Failed ", __FUNCTION__, __LINE__); \
+            return _tmp;                                                    \
+        }                                                                   \
+    })
 
 #define FATAL_IF_ERROR(exp)                                                                \
     {                                                                                      \
         auto _tmp = (exp);                                                                 \
         LOG_ALWAYS_FATAL_IF(!errorIsOk(_tmp), "Function: %s Line: %d Failed result: (%s)", \
-                            __FUNCTION__, __LINE__, errorToString(_tmp).c_str());         \
+                            __FUNCTION__, __LINE__, errorToString(_tmp).c_str());          \
     }
