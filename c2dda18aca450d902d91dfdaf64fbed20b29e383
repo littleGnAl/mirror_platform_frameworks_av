@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f535c11_b1be4553",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-27T01:54:29Z",
+      "side": 1,
+      "message": "__ANDROID_API_S__ is 31, \nif 31 \u003c\u003d Ver \u003c35, no service name will be created from L1444 to 1449?",
+      "range": {
+        "startLine": 1451,
+        "startChar": 84,
+        "endLine": 1451,
+        "endChar": 86
+      },
+      "revId": "c2dda18aca450d902d91dfdaf64fbed20b29e383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
