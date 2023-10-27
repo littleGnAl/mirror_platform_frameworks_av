@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b89e6b_4d6c6bcd",
+        "filename": "media/codec2/hal/client/output.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-27T17:28:56Z",
+      "side": 1,
+      "message": "I think there is a chance that mOldMem is not set to mSyncMem if ::stop is called twice (from 2 different threads)\n\nIf that is the case, mStopped \u003d true should be set at the end of this function.",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 25
+      },
+      "revId": "da07ab3099e363f075384e7c94936db07ceae96c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d46137_96de70da",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-27T17:28:56Z",
+      "side": 1,
+      "message": "nit: may be a small comment on why this order (of stop) is changed?\nand at line#2008 too?",
+      "range": {
+        "startLine": 1919,
+        "startChar": 4,
+        "endLine": 1919,
+        "endChar": 32
+      },
+      "revId": "da07ab3099e363f075384e7c94936db07ceae96c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
