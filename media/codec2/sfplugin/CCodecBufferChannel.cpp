@@ -152,6 +152,48 @@ CCodecBufferChannel::CCodecBufferChannel(
       mMetaMode(MODE_NONE),
       mInputMetEos(false),
       mSendEncryptedInfoBuffer(false) {
+          if (pthread_setname_np(mInputTask.native_handle(), "CCBC_InputTask") != 0) {
+              ALOGE("CCBC input task thread name setting fail");
+          }
+          while (true) {
+              std::function<int()> inputTask;
+              {
+                  std::unique_lock<std::mutex> lock(mInputTaskMutex);
+                  mInputTaskWaiting = true;
+                  mInputTaskCond.wait(lock, [this] { return mInputTaskStop || !mInputTaskQueue.empty(); });
+                  mInputTaskWaiting = false;
+                  if (mInputTaskStop && mInputTaskQueue.empty()) return;
+                  inputTask = std::move(mInputTaskQueue.front());
+                  mInputTaskQueue.pop();
+              }
+              int result = inputTask();
+              if (result != 0){
+                  ALOGI("The input result is %d\n", result);
+                  mCCodecCallback->onError(result, ACTION_CODE_FATAL);
+              }
+          }
+      }),
+      mOutputTask([this] {
+          if (pthread_setname_np(mOutputTask.native_handle(), "CCBC_OutputTask") != 0) {
+              ALOGE("CCBC output task thread name setting fail");
+          }
+          while (true) {
+              std::function<int()> outputTask;
+              {
+                  std::unique_lock<std::mutex> lock(mOutputTaskMutex);
+                  mOutputTaskWaiting = true;
+                  mOutputTaskCond.wait(lock, [this] { return mOutputTaskStop || !mOutputTaskQueue.empty(); });
+                  mOutputTaskWaiting = false;
+                  if (mOutputTaskStop && mOutputTaskQueue.empty()) return;
+                  outputTask = std::move(mOutputTaskQueue.front());
+                  mOutputTaskQueue.pop();
+              }
+              int result = outputTask();
+              if (result != 0) {
+                  ALOGI("The output result is %d\n", result);
+              }
+          }
+      }) {
     mOutputSurface.lock()->maxDequeueBuffers = kSmoothnessFactor + kRenderingDepth;
     {
         Mutexed<Input>::Locked input(mInput);
@@ -178,6 +220,18 @@ CCodecBufferChannel::~CCodecBufferChannel() {
     if (mCrypto != nullptr && mHeapSeqNum >= 0) {
         mCrypto->unsetHeap(mHeapSeqNum);
     }
+    {
+        std::unique_lock<std::mutex> lock(mInputTaskMutex);
+        mInputTaskStop = true;
+    }
+    mInputTaskCond.notify_all();
+    mInputTask.join();
+    {
+        std::unique_lock<std::mutex> lock(mOutputTaskMutex);
+        mOutputTaskStop = true;
+    }
+    mOutputTaskCond.notify_all();
+    mOutputTask.join();
 }
 
 void CCodecBufferChannel::setComponent(
@@ -551,22 +605,56 @@ status_t CCodecBufferChannel::attachEncryptedBuffer(
     return OK;
 }
 
-status_t CCodecBufferChannel::queueInputBuffer(const sp<MediaCodecBuffer> &buffer) {
-    QueueGuard guard(mSync);
-    if (!guard.isRunning()) {
-        ALOGD("[%s] No more buffers should be queued at current state.", mName);
-        return -ENOSYS;
+void CCodecBufferChannel::enqueueInputTasks(const sp<MediaCodecBuffer> buffer) {
+    std::unique_lock<std::mutex> lock(mInputTaskMutex);
+    mInputTaskQueue.push([this, buffer] {
+        QueueGuard guard(mSync);
+        if (!guard.isRunning()) {
+            ALOGD("[%s] No more buffers should be queued at current state.", mName);
+            return -ENOSYS;
+        }
+        return this->queueInputBufferInternal(buffer);
+    });
+    if (mInputTaskWaiting) {
+        mInputTaskCond.notify_one();
     }
-    return queueInputBufferInternal(buffer);
 }
+
+void CCodecBufferChannel::enqueueOutputTasks(const sp<MediaCodecBuffer> buffer, int64_t timestampNs)
+{
+    std::unique_lock<std::mutex> lock(mOutputTaskMutex);
+    mOutputTaskQueue.push([this, buffer, timestampNs] {return this->renderOutputBufferInternal(buffer, timestampNs);});
+    if (mOutputTaskWaiting) {
+        mOutputTaskCond.notify_one();
+    }
+}
+
+status_t CCodecBufferChannel::queueInputBuffer(const sp<MediaCodecBuffer> &buffer) {
+    enqueueInputTasks(buffer);
+    return OK;
+}
+
+void CCodecBufferChannel::enqueueSecureInputTasks(std::shared_ptr<QueueGuard> shared_guard,
+        const sp<MediaCodecBuffer> buffer,
+        std::shared_ptr<C2LinearBlock> encryptedBlock,
+        size_t blockSize) {
+    std::unique_lock<std::mutex> lock(mInputTaskMutex);
+    mInputTaskQueue.push([this, shared_guard, buffer, encryptedBlock, blockSize] {
+        return this->queueInputBufferInternal(buffer, encryptedBlock, blockSize);
+    });
+    if (mInputTaskWaiting) {
+        mInputTaskCond.notify_one();
+    }
+}
+
 
 status_t CCodecBufferChannel::queueSecureInputBuffer(
         const sp<MediaCodecBuffer> &buffer, bool secure, const uint8_t *key,
         const uint8_t *iv, CryptoPlugin::Mode mode, CryptoPlugin::Pattern pattern,
         const CryptoPlugin::SubSample *subSamples, size_t numSubSamples,
         AString *errorDetailMsg) {
-    QueueGuard guard(mSync);
-    if (!guard.isRunning()) {
+    auto shared_guard = std::make_shared<QueueGuard>(mSync);
+    if (!shared_guard->isRunning()) {
         ALOGD("[%s] No more buffers should be queued at current state.", mName);
         return -ENOSYS;
     }
@@ -702,7 +790,8 @@ status_t CCodecBufferChannel::queueSecureInputBuffer(
 
     buffer->setRange(codecDataOffset, result - codecDataOffset);
 
-    return queueInputBufferInternal(buffer, block, bufferSize);
+    enqueueSecureInputTasks(shared_guard, buffer, block, bufferSize);
+    return OK;
 }
 
 void CCodecBufferChannel::feedInputBufferIfAvailable() {
@@ -749,6 +838,12 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
 
 status_t CCodecBufferChannel::renderOutputBuffer(
         const sp<MediaCodecBuffer> &buffer, int64_t timestampNs) {
+    enqueueOutputTasks(buffer, timestampNs);
+    return OK;
+}
+
+status_t CCodecBufferChannel::renderOutputBufferInternal(
+        sp<MediaCodecBuffer> buffer, int64_t timestampNs) {
     ALOGV("[%s] renderOutputBuffer: %p", mName, buffer.get());
     std::shared_ptr<C2Buffer> c2Buffer;
     bool released = false;
@@ -1689,6 +1784,19 @@ status_t CCodecBufferChannel::requestInitialInputBuffers(
 }
 
 void CCodecBufferChannel::stop() {
+    ALOGD("Stop, waiting input and output queue empty ...");
+    {
+        while (!mInputTaskQueue.empty()) {
+            usleep(1000);
+        }
+        ALOGD("input queue empty");
+    }
+    {
+        while (!mOutputTaskQueue.empty()) {
+            usleep(1000);
+        }
+        ALOGD("output queue empty");
+    }
     mSync.stop();
     mFirstValidFrameIndex = mFrameIndex.load(std::memory_order_relaxed);
 }
