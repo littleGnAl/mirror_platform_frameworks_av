@@ -22,6 +22,30 @@
       },
       "revId": "efa7a0fccb78a4be921d6bf7762a79750a4fee47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa37e138_9c32979a",
+        "filename": "media/libaaudio/fuzzer/libaaudio_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2023-10-27T05:05:10Z",
+      "side": 1,
+      "message": "The LibAaudioFuzzer functions were profiled and observed that the while loop in LibAaudioFuzzer::Process() was time-consuming. The \"while\" loop consumes a few bytes, hence with more larger data size, they run longer, thereby reducing executions per second. Hence \u0027runs\u0027 variable-based iteration limit was added to limit the iterations and hence boost exec/s. If needed, the runs can be increased to acheive a trade off between iterations/code coverage and execs/s.",
+      "parentUuid": "089f6fa7_47048791",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 26
+      },
+      "revId": "efa7a0fccb78a4be921d6bf7762a79750a4fee47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
