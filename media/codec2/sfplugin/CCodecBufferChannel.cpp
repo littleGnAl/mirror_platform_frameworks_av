@@ -151,7 +151,50 @@ CCodecBufferChannel::CCodecBufferChannel(
       mHasPresentFenceTimes(false),
       mMetaMode(MODE_NONE),
       mInputMetEos(false),
-      mSendEncryptedInfoBuffer(false) {
+      mSendEncryptedInfoBuffer(false),
+      mInputTask([this] {
+          if (pthread_setname_np(mInputTask.native_handle(), "CCBC_InputTask") != 0) {
+              ALOGE("CCBC input task thread name setting fail");
+          }
+          while (true) {
+              std::function<int()> inputTask;
+              {
+                  std::unique_lock<std::mutex> lock(mInputTaskMutex);
+                  mInputTaskWaiting = true;
+                  mInputTaskCond.wait(lock, [this] { return mInputTaskStop || !mInputTaskQueue.empty(); });
+                  mInputTaskWaiting = false;
+                  if (mInputTaskStop && mInputTaskQueue.empty()) return;
+                  inputTask = std::move(mInputTaskQueue.front());
+                  mInputTaskQueue.pop();
+              }
+              int result = inputTask();
+              if (result != 0){
+                  ALOGI("The input result is %d\n", result);
+                  mCCodecCallback->onError(result, ACTION_CODE_FATAL);
+              }
+          }
+      }),
+      mOutputTask([this] {
+          if (pthread_setname_np(mOutputTask.native_handle(), "CCBC_OutputTask") != 0) {
+              ALOGE("CCBC output task thread name setting fail");
+          }
+          while (true) {
+              std::function<int()> outputTask;
+              {
+                  std::unique_lock<std::mutex> lock(mOutputTaskMutex);
+                  mOutputTaskWaiting = true;
+                  mOutputTaskCond.wait(lock, [this] { return mOutputTaskStop || !mOutputTaskQueue.empty(); });
+                  mOutputTaskWaiting = false;
+                  if (mOutputTaskStop && mOutputTaskQueue.empty()) return;
+                  outputTask = std::move(mOutputTaskQueue.front());
+                  mOutputTaskQueue.pop();
+              }
+              int result = outputTask();
+              if (result != 0) {
+                  ALOGI("The output result is %d\n", result);
+              }
+          }
+      }) {
     mOutputSurface.lock()->maxDequeueBuffers = kSmoothnessFactor + kRenderingDepth;
     {
         Mutexed<Input>::Locked input(mInput);
@@ -178,6 +221,18 @@ CCodecBufferChannel::~CCodecBufferChannel() {
     if (mCrypto != nullptr && mHeapSeqNum >= 0) {
         mCrypto->unsetHeap(mHeapSeqNum);
     }
+    {
+        std::unique_lock<std::mutex> lock(mInputTaskMutex);
+        mInputTaskStop = true;
+    }
+    mInputTaskCond.notify_all();
+    mInputTask.join();
+    {
+        std::unique_lock<std::mutex> lock(mOutputTaskMutex);
+        mOutputTaskStop = true;
+    }
+    mOutputTaskCond.notify_all();
+    mOutputTask.join();
 }
 
 void CCodecBufferChannel::setComponent(
@@ -551,22 +606,56 @@ status_t CCodecBufferChannel::attachEncryptedBuffer(
     return OK;
 }
 
-status_t CCodecBufferChannel::queueInputBuffer(const sp<MediaCodecBuffer> &buffer) {
-    QueueGuard guard(mSync);
-    if (!guard.isRunning()) {
-        ALOGD("[%s] No more buffers should be queued at current state.", mName);
-        return -ENOSYS;
+void CCodecBufferChannel::enqueueInputTasks(const sp<MediaCodecBuffer> buffer) {
+    std::unique_lock<std::mutex> lock(mInputTaskMutex);
+    mInputTaskQueue.push([this, buffer] {
+        QueueGuard guard(mSync);
+        if (!guard.isRunning()) {
+            ALOGD("[%s] No more buffers should be queued at current state.", mName);
+            return -ENOSYS;
+        }
+        return this->queueInputBufferInternal(buffer);
+    });
+    if (mInputTaskWaiting) {
+        mInputTaskCond.notify_one();
     }
-    return queueInputBufferInternal(buffer);
 }
+
+void CCodecBufferChannel::enqueueOutputTasks(const sp<MediaCodecBuffer> buffer, int64_t timestampNs)
+{
+    std::unique_lock<std::mutex> lock(mOutputTaskMutex);
+    mOutputTaskQueue.push([this, buffer, timestampNs] {return this->renderOutputBufferInternal(buffer, timestampNs);});
+    if (mOutputTaskWaiting) {
+        mOutputTaskCond.notify_one();
+    }
+}
+
+status_t CCodecBufferChannel::queueInputBuffer(const sp<MediaCodecBuffer> &buffer) {
+    enqueueInputTasks(buffer);
+    return OK;
+}
+
+void CCodecBufferChannel::enqueueSecureInputTasks(std::shared_ptr<QueueGuard> shared_guard,
+        const sp<MediaCodecBuffer> buffer,
+        std::shared_ptr<C2LinearBlock> encryptedBlock,
+        size_t blockSize) {
+    std::unique_lock<std::mutex> lock(mInputTaskMutex);
+    mInputTaskQueue.push([this, shared_guard, buffer, encryptedBlock, blockSize] {
+        return this->queueInputBufferInternal(buffer, encryptedBlock, blockSize);
+    });
+    if (mInputTaskWaiting) {
+        mInputTaskCond.notify_one();
+    }
+}
+
 
 status_t CCodecBufferChannel::queueSecureInputBuffer(
         const sp<MediaCodecBuffer> &buffer, bool secure, const uint8_t *key,
         const uint8_t *iv, CryptoPlugin::Mode mode, CryptoPlugin::Pattern pattern,
         const CryptoPlugin::SubSample *subSamples, size_t numSubSamples,
         AString *errorDetailMsg) {
-    QueueGuard guard(mSync);
-    if (!guard.isRunning()) {
+    auto shared_guard = std::make_shared<QueueGuard>(mSync);
+    if (!shared_guard->isRunning()) {
         ALOGD("[%s] No more buffers should be queued at current state.", mName);
         return -ENOSYS;
     }
@@ -702,7 +791,8 @@ status_t CCodecBufferChannel::queueSecureInputBuffer(
 
     buffer->setRange(codecDataOffset, result - codecDataOffset);
 
-    return queueInputBufferInternal(buffer, block, bufferSize);
+    enqueueSecureInputTasks(shared_guard, buffer, block, bufferSize);
+    return OK;
 }
 
 void CCodecBufferChannel::feedInputBufferIfAvailable() {
@@ -749,6 +839,13 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
 
 status_t CCodecBufferChannel::renderOutputBuffer(
         const sp<MediaCodecBuffer> &buffer, int64_t timestampNs) {
+    ALOGV("[FWK][%s] %s: called renderOutputBuffer: %p", __FUNCTION__, mName, buffer.get());
+    enqueueOutputTasks(buffer, timestampNs);
+    return OK;
+}
+
+status_t CCodecBufferChannel::renderOutputBufferInternal(
+        sp<MediaCodecBuffer> buffer, int64_t timestampNs) {
     ALOGV("[%s] renderOutputBuffer: %p", mName, buffer.get());
     std::shared_ptr<C2Buffer> c2Buffer;
     bool released = false;
@@ -998,7 +1095,10 @@ status_t CCodecBufferChannel::renderOutputBuffer(
 }
 
 void CCodecBufferChannel::initializeFrameTrackingFor(ANativeWindow * window) {
-    mTrackedFrames.clear();
+    {
+        std::unique_lock<std::mutex> lock(mTrackedFramesMutex);
+        mTrackedFrames.clear();
+    }
 
     int isSurfaceToDisplay = 0;
     window->query(window, NATIVE_WINDOW_QUEUES_TO_WINDOW_COMPOSER, &isSurfaceToDisplay);
@@ -1033,7 +1133,10 @@ void CCodecBufferChannel::trackReleasedFrame(const IGraphicBufferProducer::Queue
     frame.desiredRenderTimeNs = desiredRenderTimeNs;
     frame.latchTime = -1;
     frame.presentFence = nullptr;
-    mTrackedFrames.push_back(frame);
+    {
+        std::unique_lock<std::mutex> lock(mTrackedFramesMutex);
+        mTrackedFrames.push_back(frame);
+    }
 }
 
 void CCodecBufferChannel::processRenderedFrames(const FrameEventHistoryDelta& deltas) {
@@ -1050,19 +1153,22 @@ void CCodecBufferChannel::processRenderedFrames(const FrameEventHistoryDelta& de
     // Scan all frames and check to see if the frames that SHOULD have been rendered by now, have,
     // in fact, been rendered.
     int64_t nowNs = systemTime(SYSTEM_TIME_MONOTONIC);
-    while (!mTrackedFrames.empty()) {
-        TrackedFrame & frame = mTrackedFrames.front();
-        // Frames that should have been rendered at least 100ms in the past are checked
-        if (frame.desiredRenderTimeNs > nowNs - 100*1000*1000LL) {
-            break;
-        }
+    {
+        std::unique_lock<std::mutex> lock(mTrackedFramesMutex);
+        while (!mTrackedFrames.empty()) {
+            TrackedFrame & frame = mTrackedFrames.front();
+            // Frames that should have been rendered at least 100ms in the past are checked
+            if (frame.desiredRenderTimeNs > nowNs - 100*1000*1000LL) {
+                break;
+            }
 
-        // If we don't have a render time by now, then consider the frame as dropped
-        int64_t renderTimeNs = getRenderTimeNs(frame);
-        if (renderTimeNs != -1) {
-            mCCodecCallback->onOutputFramesRendered(frame.mediaTimeUs, renderTimeNs);
+            // If we don't have a render time by now, then consider the frame as dropped
+            int64_t renderTimeNs = getRenderTimeNs(frame);
+            if (renderTimeNs != -1) {
+                mCCodecCallback->onOutputFramesRendered(frame.mediaTimeUs, renderTimeNs);
+            }
+            mTrackedFrames.pop_front();
         }
-        mTrackedFrames.pop_front();
     }
 }
 
@@ -1688,7 +1794,39 @@ status_t CCodecBufferChannel::requestInitialInputBuffers(
     return OK;
 }
 
+#define STOP_TIMEOUT (500*1000*1000LL) // 500ms
+#define QUEUE_EMPTY_WAITING_TIME 1000 // 1ms
+
 void CCodecBufferChannel::stop() {
+    ALOGD("Stop, waiting input(%d) and output*(%d) queue empty ...", mInputTaskQueue.size(), mOutputTaskQueue.size());
+    int64_t startNs = systemTime(SYSTEM_TIME_MONOTONIC);
+    {
+        while (!mInputTaskQueue.empty()) {
+            usleep(QUEUE_EMPTY_WAITING_TIME);
+            if ((systemTime(SYSTEM_TIME_MONOTONIC) - startNs) > STOP_TIMEOUT)
+            {
+                ALOGE("input queue stop wait timeout!!!");
+                std::queue<std::function<int()>> emptyQueue;
+                std::swap(mInputTaskQueue, emptyQueue);
+                break;
+            }
+        }
+        ALOGD("input queue empty");
+    }
+    startNs = systemTime(SYSTEM_TIME_MONOTONIC);
+    {
+        while (!mOutputTaskQueue.empty()) {
+            usleep(QUEUE_EMPTY_WAITING_TIME);
+            if ((systemTime(SYSTEM_TIME_MONOTONIC) - startNs) > STOP_TIMEOUT)
+            {
+                ALOGE("output queue stop wait timeout!!!");
+                std::queue<std::function<int()>> emptyQueue;
+                std::swap(mOutputTaskQueue, emptyQueue);
+                break;
+            }
+        }
+        ALOGD("output queue empty");
+    }
     mSync.stop();
     mFirstValidFrameIndex = mFrameIndex.load(std::memory_order_relaxed);
 }
@@ -1727,8 +1865,11 @@ void CCodecBufferChannel::reset() {
         Mutexed<Output>::Locked output(mOutput);
         output->buffers.reset();
     }
-    // reset the frames that are being tracked for onFrameRendered callbacks
-    mTrackedFrames.clear();
+    {
+        // reset the frames that are being tracked for onFrameRendered callbacks
+        std::unique_lock<std::mutex> lock(mTrackedFramesMutex);
+        mTrackedFrames.clear();
+    }
 }
 
 void CCodecBufferChannel::release() {
