@@ -22,6 +22,10 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <thread>
+#include <iostream>
+#include <pthread.h>
+#include <sched.h>
 
 #include <C2Buffer.h>
 #include <C2Component.h>
@@ -272,9 +276,17 @@ private:
 
     void feedInputBufferIfAvailable();
     void feedInputBufferIfAvailableInternal();
+    void enqueueInputTasks(sp<MediaCodecBuffer> buffer);
+    void enqueueOutputTasks(sp<MediaCodecBuffer> buffer, int64_t timestampNs);
+    void enqueueSecureInputTasks(std::shared_ptr<QueueGuard> shared_guard,
+            const sp<MediaCodecBuffer> buffer,
+            std::shared_ptr<C2LinearBlock> encryptedBlock,
+            size_t blockSize);
     status_t queueInputBufferInternal(sp<MediaCodecBuffer> buffer,
                                       std::shared_ptr<C2LinearBlock> encryptedBlock = nullptr,
                                       size_t blockSize = 0);
+    status_t renderOutputBufferInternal(
+            sp<MediaCodecBuffer> buffer, int64_t timestampNs);
     bool handleWork(
             std::unique_ptr<C2Work> work, const sp<AMessage> &outputFormat,
             const C2StreamInitDataInfo::output *initData);
@@ -329,6 +341,7 @@ private:
 
     sp<MemoryDealer> makeMemoryDealer(size_t heapSize);
 
+    std::mutex mTrackedFramesMutex;
     std::deque<TrackedFrame> mTrackedFrames;
     bool mIsSurfaceToDisplay;
     bool mHasPresentFenceTimes;
@@ -368,6 +381,18 @@ private:
     std::atomic_bool mSendEncryptedInfoBuffer;
 
     std::atomic_bool mTunneled;
+    std::queue<std::function<int()>> mInputTaskQueue;
+    std::mutex mInputTaskMutex;
+    std::condition_variable mInputTaskCond;
+    bool mInputTaskStop = false;
+    std::thread mInputTask;
+    bool mInputTaskWaiting = false;
+    std::queue<std::function<int()>> mOutputTaskQueue;
+    std::mutex mOutputTaskMutex;
+    std::condition_variable mOutputTaskCond;
+    bool mOutputTaskStop = false;
+    std::thread mOutputTask;
+    bool mOutputTaskWaiting = true;
 };
 
 // Conversion of a c2_status_t value to a status_t value may depend on the
