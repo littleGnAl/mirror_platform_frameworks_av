@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0975194e_c6b67392",
+        "filename": "media/codec2/hal/client/output.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-10-27T18:34:38Z",
+      "side": 1,
+      "message": "Oh sorry, for some reason I took syncMem for function argument.",
+      "parentUuid": "1b60b7dd_7c869948",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 25
+      },
+      "revId": "da07ab3099e363f075384e7c94936db07ceae96c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d46137_96de70da",
