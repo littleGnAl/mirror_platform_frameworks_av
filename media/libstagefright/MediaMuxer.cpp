@@ -208,6 +208,9 @@ status_t MediaMuxer::writeSampleData(const sp<ABuffer> &buffer, size_t trackInde
         ALOGE("WriteSampleData() get an NULL buffer.");
         return -EINVAL;
     }
+    if (!mWriter->isSampleDataValid(trackIndex, timeUs)) {
+        return INVALID_OPERATION;
+    }
     {
         /* As MediaMuxer's writeSampleData handles inputs from multiple tracks,
          * limited the scope of mMuxerLock to this inner block so that the

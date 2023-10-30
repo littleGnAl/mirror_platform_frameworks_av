@@ -67,6 +67,19 @@ bool WebmWriter::isFdOpenModeValid(int fd) {
     return true;
 }
 
+bool WebmWriter::isSampleDataValid([[maybe_unused]] size_t trackIndex, int64_t timeUs) {
+    if (timeUs < 0 || timeUs < mPrevTimeUs) {
+        return false;
+    } else {
+        int64_t lastDurationUs = timeUs - mPrevTimeUs;
+        if (timeUs > (INT64_MAX / 1000) - lastDurationUs) {
+            return false;
+        }
+    }
+    mPrevTimeUs = timeUs;
+    return true;
+}
+
 WebmWriter::WebmWriter(int fd)
     : mFd(dup(fd)),
       mInitCheck(mFd < 0 ? NO_INIT : OK),
