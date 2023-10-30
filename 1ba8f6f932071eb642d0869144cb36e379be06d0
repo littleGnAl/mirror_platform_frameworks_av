@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4b82d56_fd8e0bea",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-30T20:53:12Z",
+      "side": 1,
+      "message": "I think we need to mark all IGBP-s as \"stopping\" before the HAL::stop() call, so that HAL::stop() implementations can reasonably complete - no fetch fences should be valid at that point. Is that what you mean?",
+      "parentUuid": "7a08061c_6b96df70",
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "539a2927_483b9335",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 5
