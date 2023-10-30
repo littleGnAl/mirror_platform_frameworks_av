@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce4e7f1c_4927e1fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-30T20:51:14Z",
+      "side": 1,
+      "message": "nit: waiters",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d445e848_ec5c59e6",
+        "filename": "media/codec2/hal/client/output.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-30T20:51:14Z",
+      "side": 1,
+      "message": "what happens if mOldMem already has something in it?",
+      "range": {
+        "startLine": 356,
+        "startChar": 8,
+        "endLine": 356,
+        "endChar": 15
+      },
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b563e31_ee37c4c7",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-30T20:51:14Z",
+      "side": 1,
+      "message": "nit: waiters",
+      "range": {
+        "startLine": 1923,
+        "startChar": 78,
+        "endLine": 1923,
+        "endChar": 85
+      },
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a08061c_6b96df70",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 5
@@ -14,6 +83,29 @@
       "writtenOn": "2023-10-30T20:48:31Z",
       "side": 1,
       "message": "shouldn\u0027t we split `stopUseOutputSurface()` in two parts, where the first call would unblock the component to be able to stop, and then the second part does the actual stop?",
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539a2927_483b9335",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-10-30T20:51:14Z",
+      "side": 1,
+      "message": "nit: waiters",
+      "range": {
+        "startLine": 2019,
+        "startChar": 78,
+        "endLine": 2019,
+        "endChar": 85
+      },
       "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
