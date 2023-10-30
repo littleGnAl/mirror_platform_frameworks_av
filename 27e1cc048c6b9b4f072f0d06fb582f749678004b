@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c55b560_9daf9b20",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "Can this method be called from different threads? I am not familiar with the C++ memory model but I noticed that a mutex is taken out below, so I was wondering if this should go after we take out the lock to ensure that any previous timestamp writes are visible.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 58
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440fc0de_70269035",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "- Should this return `-EINVAL` rather than `INVALID_OPERATION`? It seems more similar to the case below on L231.\n- Just to check, what is the effect of returning one of these errors at the Java layer of the API?",
+      "range": {
+        "startLine": 212,
+        "startChar": 15,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2aaf43_1e1638ec",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "Given this looks only at the same metadata, maybe `isSampleTimeValid`? Or `isSampleMetadataValid`?",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5404a7_980cea4f",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "Can this be pure virtual as well? I didn\u0027t spot where this implementation is used.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089b49e1_553ffb18",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "Similarly to the comment above, is this always non-negative?",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf835f0_c35bb720",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "What is the significance of this constant? I am wondering if it should have a comment to explain what\u0027s going on.",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f8cfa6_d3be8c8d",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "Do we need to store a previous timestamp per-track? I was surprised that we have a track index but it\u0027s unused.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef0e979_b68b4875",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "Nit: Should this be initialized with the constructor like the fields just above, or is there a reason for it to be different from the others?",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04512d14_7505b7a0",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-10-30T09:19:48Z",
+      "side": 1,
+      "message": "Can this ever be assigned a negative value? I am wondering if it would be better to make it a uint64_t to make it clearer that the checked time is non-negative.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
