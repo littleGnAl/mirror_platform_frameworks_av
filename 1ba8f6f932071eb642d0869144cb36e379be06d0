@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96b2872_eee97623",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-30T23:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce4e7f1c_4927e1fd",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d445e848_ec5c59e6",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83fa67a1_85530eb9",
+        "filename": "media/codec2/hal/client/output.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-30T23:01:11Z",
+      "side": 1,
+      "message": "mOldMem is already notified when the previous surface change. (not the current surface change to the NULL)\nAlso the surface change is guarded by a specific mutex of CCodecBufferChannel.",
+      "parentUuid": "d445e848_ec5c59e6",
+      "range": {
+        "startLine": 356,
+        "startChar": 8,
+        "endLine": 356,
+        "endChar": 15
+      },
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b563e31_ee37c4c7",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-30T20:51:14Z",
       "side": 1,
       "message": "nit: waiters",
+      "range": {
+        "startLine": 1923,
+        "startChar": 78,
+        "endLine": 1923,
+        "endChar": 85
+      },
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fb66db_2577c9d2",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-30T23:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b563e31_ee37c4c7",
       "range": {
         "startLine": 1923,
         "startChar": 78,
@@ -107,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60489b08_109b37fb",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-30T23:01:11Z",
+      "side": 1,
+      "message": "Lajos is correct.\n\nAnd this is a little bit tircky.\n\n1. configuring local surface to null.\n2. configuring remote(HAL) surface(BqBlockPool) to null.\n3. unblock remote(HAL) side waitors to allocate from the previous surface.\n4. Actual comp-\u003estop()\n\nThis is the illustration of the CL is trying to do. Since we configured null surface to remote, remote can allocate via gralloc without any restrictions until the stop()/release() really happens.\n\nIf we unblock HAL side waitors before surface configuration completes, it may block again with the old surface to allocate since null surface is not configured yet.. \nAlso since CCodecBufferChannel\u0027s mOutputSurface lock is involved, it is hard to separate the logic of 1~3.\n\nWonsik, if you have a good idea please let me know.",
+      "parentUuid": "d4b82d56_fd8e0bea",
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "539a2927_483b9335",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 5
@@ -118,6 +208,30 @@
       "writtenOn": "2023-10-30T20:51:14Z",
       "side": 1,
       "message": "nit: waiters",
+      "range": {
+        "startLine": 2019,
+        "startChar": 78,
+        "endLine": 2019,
+        "endChar": 85
+      },
+      "revId": "1ba8f6f932071eb642d0869144cb36e379be06d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d6682d_f9676e06",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-30T23:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539a2927_483b9335",
       "range": {
         "startLine": 2019,
         "startChar": 78,
