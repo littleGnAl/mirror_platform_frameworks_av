@@ -40,6 +40,13 @@ namespace android {
 
 class MemoryDealer;
 
+template <typename T>
+struct WrapperObject : public RefBase {
+    WrapperObject(const T& v) : value(v) {}
+    WrapperObject(T&& v) : value(std::move(v)) {}
+    T value;
+};
+
 class CCodecCallback {
 public:
     virtual ~CCodecCallback() = default;
