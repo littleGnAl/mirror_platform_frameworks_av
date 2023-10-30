@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f75f72_25c1a807",
+        "filename": "media/codec2/components/aac/C2SoftAacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-10-30T20:59:33Z",
+      "side": 1,
+      "message": "stop() \u003d\u003d reset() \u003d\u003d release().\n\ni realize this is at the c2 handshake level, not at the MediaCodec SDK level,\nbut I would have thought we had some difference of semantics between these three.",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 19
+      },
+      "revId": "576a407e25bc52845d594175e2257eaca136b93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
