@@ -3124,6 +3124,23 @@ status_t MediaCodec::queueInputBuffer(
     return PostAndAwaitResponse(msg, &response);
 }
 
+status_t MediaCodec::queueInputBuffer(size_t index,
+        const std::shared_ptr<std::vector<BufferParams>>& largeFrameInfo) {
+    // No support for OMX;
+    // TODO: may be fail in configure
+    if (mComponentName.startsWith("OMX")) {
+        ALOGE("Large Buffer Audio not supported for OMX");
+        return INVALID_OPERATION;
+    }
+
+    sp<AMessage> msg = new AMessage(kWhatQueueInputLargeFrame, this);
+    msg->setSize("index", index);
+    msg->setPointer("largeFrameInfo", largeFrameInfo.get());
+
+    sp<AMessage> response;
+    return PostAndAwaitResponse(msg, &response);
+}
+
 status_t MediaCodec::queueSecureInputBuffer(
         size_t index,
         size_t offset,
@@ -5195,6 +5212,32 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             break;
         }
 
+        case kWhatQueueInputLargeFrame:
+        {
+            sp<AReplyToken> replyID;
+            CHECK(msg->senderAwaitsResponse(&replyID));
+
+            if (!isExecuting()) {
+                mErrorLog.log(LOG_TAG, base::StringPrintf(
+                        "queueInputBuffer() is valid only at Executing states; currently %s",
+                        apiStateString().c_str()));
+                PostReplyWithError(replyID, INVALID_OPERATION);
+                break;
+            } else if (mFlags & kFlagStickyError) {
+                PostReplyWithError(replyID, getStickyError());
+                break;
+            }
+
+            status_t err = UNKNOWN_ERROR;
+            // TODO: handle leftover buffers if any
+
+            err = onQueueInputLargeFrame(msg);
+            PostReplyWithError(replyID, err);
+
+            ALOGE("kWhatQueueInputLargeFrame - posted response");
+            break;
+        }
+
         case kWhatDequeueOutputBuffer:
         {
             sp<AReplyToken> replyID;
@@ -5843,13 +5886,17 @@ size_t MediaCodec::updateBuffers(
 
 status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     size_t index;
-    size_t offset;
-    size_t size;
-    int64_t timeUs;
-    uint32_t flags;
+    size_t offset = 0;
+    size_t size = 0;
+    int64_t timeUs = 0;
+    uint32_t flags = 0;
+    std::vector<BufferParams> * largeFrameInfo = nullptr;
     CHECK(msg->findSize("index", &index));
-    CHECK(msg->findInt64("timeUs", &timeUs));
-    CHECK(msg->findInt32("flags", (int32_t *)&flags));
+
+    if (!msg->findPointer("largeFrameInfo", (void**)&largeFrameInfo)) {
+        CHECK(msg->findInt64("timeUs", &timeUs));
+        CHECK(msg->findInt32("flags", (int32_t *)&flags));
+    }
     std::shared_ptr<C2Buffer> c2Buffer;
     sp<hardware::HidlMemory> memory;
     sp<RefBase> obj;
@@ -6127,6 +6174,19 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     }
 
     return err;
+}
+
+status_t MediaCodec::onQueueInputLargeFrame(const sp<AMessage>& msg) {
+    size_t index;
+    std::vector<BufferParams> *largeFrameInfo = nullptr;
+    CHECK(msg->findSize("index", &index));
+    CHECK(msg->findPointer("largeFrameInfo", (void**)&largeFrameInfo));
+    BufferInfo *info = &mPortBuffers[kPortIndexInput][index];
+    sp<MediaCodecBuffer> buffer = info->mData;
+
+    buffer->meta()->setPointer("largeFrameInfo", largeFrameInfo);
+    ALOGE("Setting up large frame infos to MediaCodecBuffer");
+    return onQueueInputBuffer(msg);
 }
 
 status_t MediaCodec::handleLeftover(size_t index) {
@@ -6422,8 +6482,12 @@ void MediaCodec::onOutputBufferAvailable() {
         }
         const sp<MediaCodecBuffer> &buffer =
             mPortBuffers[kPortIndexOutput][index].mData;
+        sp<RefBase> largeFrameObj;
+        buffer->meta()->findObject("largeFrameInfo", &largeFrameObj);
         sp<AMessage> msg = mCallback->dup();
-        msg->setInt32("callbackID", CB_OUTPUT_AVAILABLE);
+        int32_t outputCallbackID = largeFrameObj ? CB_LARGE_FRAME_OUTPUT_AVAILABLE :
+                CB_OUTPUT_AVAILABLE;
+        msg->setInt32("callbackID", outputCallbackID);
         msg->setInt32("index", index);
         msg->setSize("offset", buffer->offset());
         msg->setSize("size", buffer->size());
