@@ -229,6 +229,7 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
     int32_t tmp = 0;
     bool eos = false;
     bool tunnelFirstFrame = false;
+    std::vector<BufferParams> *largeFrameInfo = nullptr;
     if (buffer->meta()->findInt32("eos", &tmp) && tmp) {
         eos = true;
         mInputMetEos = true;
@@ -240,9 +241,11 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
     if (buffer->meta()->findInt32("tunnel-first-frame", &tmp) && tmp) {
         tunnelFirstFrame = true;
     }
+    // Getting large frame info.
     if (buffer->meta()->findInt32("decode-only", &tmp) && tmp) {
         flags |= C2FrameData::FLAG_DROP_FRAME;
     }
+    buffer->meta()->findPointer("largeFrameInfo", (void**)&largeFrameInfo);
     ALOGV("[%s] queueInputBuffer: buffer->size() = %zu", mName, buffer->size());
     std::list<std::unique_ptr<C2Work>> items;
     std::unique_ptr<C2Work> work(new C2Work);
@@ -293,6 +296,23 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
                 Mutexed<OutputSurface>::Locked output(mOutputSurface);
                 uint64_t frameIndex = work->input.ordinal.frameIndex.peeku();
                 output->rotation[frameIndex] = rotation;
+            }
+            std::vector<BufferParams> *largeFrameInfo = nullptr;
+            if (buffer->meta()->findPointer("largeFrameInfo", (void**)&largeFrameInfo)
+                    && largeFrameInfo) {
+                ALOGE("ARUN: filling C2Info from largeFrameInfo");
+                std::vector<C2LargeFrameMetadataStruct> largeFrameStructs;
+                for (int i = 0; i< largeFrameInfo->size(); i++) {
+                    largeFrameStructs.push_back({
+                            (*largeFrameInfo)[i].mFlags,
+                            (*largeFrameInfo)[i].mSize,
+                            (*largeFrameInfo)[i].mOffset,
+                            (*largeFrameInfo)[i].mPresentationTimeUs});
+                }
+                const std::shared_ptr<C2LargeFrameMetadata::input> largeFrameMetadata =
+                        C2LargeFrameMetadata::input::AllocShared(
+                        largeFrameStructs.size(), 0u, largeFrameStructs);
+                c2buffer->setInfo(largeFrameMetadata);
             }
             work->input.buffers.push_back(c2buffer);
             if (encryptedBlock) {

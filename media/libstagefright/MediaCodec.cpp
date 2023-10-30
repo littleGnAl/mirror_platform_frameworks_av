@@ -3124,6 +3124,23 @@ status_t MediaCodec::queueInputBuffer(
     return PostAndAwaitResponse(msg, &response);
 }
 
+status_t MediaCodec::queueInputBuffer(size_t index,
+        const std::shared_ptr<std::vector<BufferParams>>& largeBufferInfo) {
+    // No support for OMX;
+    // TODO: may be fail in configure
+    if (mComponentName.startsWith("OMX")) {
+        ALOGE("Large Buffer Audio not supported for OMX");
+        return INVALID_OPERATION;
+    }
+
+    sp<AMessage> msg = new AMessage(kWhatQueueInputLargeBuffer, this);
+    msg->setSize("index", index);
+    msg->setPointer("largeBufferInfo", largeBufferInfo.get());
+
+    sp<AMessage> response;
+    return PostAndAwaitResponse(msg, &response);
+}
+
 status_t MediaCodec::queueSecureInputBuffer(
         size_t index,
         size_t offset,
@@ -5195,6 +5212,32 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             break;
         }
 
+        case kWhatQueueInputLargeBuffer:
+        {
+            sp<AReplyToken> replyID;
+            CHECK(msg->senderAwaitsResponse(&replyID));
+
+            if (!isExecuting()) {
+                mErrorLog.log(LOG_TAG, base::StringPrintf(
+                        "queueInputBuffer() is valid only at Executing states; currently %s",
+                        apiStateString().c_str()));
+                PostReplyWithError(replyID, INVALID_OPERATION);
+                break;
+            } else if (mFlags & kFlagStickyError) {
+                PostReplyWithError(replyID, getStickyError());
+                break;
+            }
+
+            status_t err = UNKNOWN_ERROR;
+            // TODO: handle leftover buffers if any
+
+            err = onQueueInputLargeBuffer(msg);
+            PostReplyWithError(replyID, err);
+
+            ALOGE("kWhatQueueInputLargeBuffer - posted response");
+            break;
+        }
+
         case kWhatDequeueOutputBuffer:
         {
             sp<AReplyToken> replyID;
@@ -5843,13 +5886,17 @@ size_t MediaCodec::updateBuffers(
 
 status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     size_t index;
-    size_t offset;
-    size_t size;
-    int64_t timeUs;
-    uint32_t flags;
+    size_t offset = 0;
+    size_t size = 0;
+    int64_t timeUs = 0;
+    uint32_t flags = 0;
+    std::vector<BufferParams> * largeBufferInfo = nullptr;
     CHECK(msg->findSize("index", &index));
-    CHECK(msg->findInt64("timeUs", &timeUs));
-    CHECK(msg->findInt32("flags", (int32_t *)&flags));
+
+    if (!msg->findPointer("largeBufferInfo", (void**)&largeBufferInfo)) {
+        CHECK(msg->findInt64("timeUs", &timeUs));
+        CHECK(msg->findInt32("flags", (int32_t *)&flags));
+    }
     std::shared_ptr<C2Buffer> c2Buffer;
     sp<hardware::HidlMemory> memory;
     sp<RefBase> obj;
@@ -6127,6 +6174,19 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     }
 
     return err;
+}
+
+status_t MediaCodec::onQueueInputLargeBuffer(const sp<AMessage>& msg) {
+    size_t index;
+    std::vector<BufferParams> *largeBufferInfo = nullptr;
+    CHECK(msg->findSize("index", &index));
+    CHECK(msg->findPointer("largeBufferInfo", (void**)&largeBufferInfo));
+    BufferInfo *info = &mPortBuffers[kPortIndexInput][index];
+    sp<MediaCodecBuffer> buffer = info->mData;
+
+    buffer->meta()->setPointer("largeBufferInfo", largeBufferInfo);
+    ALOGE("ARUN: setting up large buffer infos to MediaCodecBuffer");
+    return onQueueInputBuffer(msg);
 }
 
 status_t MediaCodec::handleLeftover(size_t index) {

@@ -56,6 +56,7 @@ struct AReplyToken;
 struct AString;
 struct BatteryChecker;
 class BufferChannelBase;
+struct BufferParams;
 struct CodecBase;
 struct CodecParameterDescriptor;
 class IBatteryStats;
@@ -183,6 +184,10 @@ struct MediaCodec : public AHandler {
             int64_t presentationTimeUs,
             uint32_t flags,
             AString *errorDetailMsg = NULL);
+
+    status_t queueInputBuffer(
+            size_t index,
+            const std::shared_ptr<std::vector<BufferParams>>& bufferParams);
 
     status_t queueSecureInputBuffer(
             size_t index,
@@ -350,6 +355,7 @@ private:
         kWhatRelease                        = 'rele',
         kWhatDequeueInputBuffer             = 'deqI',
         kWhatQueueInputBuffer               = 'queI',
+        kWhatQueueInputLargeBuffer          = 'quLI',
         kWhatDequeueOutputBuffer            = 'deqO',
         kWhatReleaseOutputBuffer            = 'relO',
         kWhatSignalEndOfInputStream         = 'eois',
@@ -596,6 +602,7 @@ private:
     void returnBuffersToCodecOnPort(int32_t portIndex, bool isReclaim = false);
     size_t updateBuffers(int32_t portIndex, const sp<AMessage> &msg);
     status_t onQueueInputBuffer(const sp<AMessage> &msg);
+    status_t onQueueInputLargeBuffer(const sp<AMessage>& msg);
     status_t onReleaseOutputBuffer(const sp<AMessage> &msg);
     BufferInfo *peekNextPortBuffer(int32_t portIndex);
     ssize_t dequeuePortBuffer(int32_t portIndex);

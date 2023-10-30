@@ -61,6 +61,13 @@ struct SharedBuffer;
 
 using hardware::cas::native::V1_0::IDescrambler;
 
+struct BufferParams {
+    size_t mOffset;
+    size_t mSize;
+    int64_t mPresentationTimeUs;
+    uint32_t mFlags;
+};
+
 struct CodecParameterDescriptor {
     std::string name;
     AMessage::Type type;
