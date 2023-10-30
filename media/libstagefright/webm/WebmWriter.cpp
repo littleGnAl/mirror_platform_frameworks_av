@@ -67,6 +67,24 @@ bool WebmWriter::isFdOpenModeValid(int fd) {
     return true;
 }
 
+bool WebmWriter::isSampleMetadataValid(size_t trackIndex, int64_t timeUs) {
+    int64_t prevTimeUs;
+    if (mPrevAVTimestamp.find(trackIndex) != mPrevAVTimestamp.end()){
+        prevTimeUs = mPrevAVTimestamp[trackIndex];
+    }
+    if (timeUs < 0 || timeUs < prevTimeUs) {
+        return false;
+    } else {
+        int64_t lastDurationUs = timeUs - prevTimeUs;
+        // check to prevent timeUs overflow when adding lastDurationUS in WebmFrameMediaSourceThread.
+        if (timeUs > (INT64_MAX / 1000) - lastDurationUs) {
+            return false;
+        }
+    }
+    mPrevAVTimestamp[trackIndex] = timeUs;
+    return true;
+}
+
 WebmWriter::WebmWriter(int fd)
     : mFd(dup(fd)),
       mInitCheck(mFd < 0 ? NO_INIT : OK),
