@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b82c8f8_a38976fb",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioOutputDescriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-31T17:50:57Z",
+      "side": 1,
+      "message": "Mikhail, \nthis change conflicts with a change that merged in internal branch.\nI tried to cherry-pick that change to aosp/main, but it doesn\u0027t cherry-pick cleanly (may need other CL or CLs to be cherry-picked).\n\nOptions are:\n- Land this in internal branches first and then cherry-pick to aosp/main with a Merged-In line.\n- Revert the change in this file and land this.\n\nCan you please suggest what is preferred?\nThanks.",
+      "revId": "c91aef091ae04ce85808c283f1d4fc939f8a1b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
