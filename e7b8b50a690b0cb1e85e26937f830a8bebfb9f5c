@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6c93bac3_5a90333b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-10-31T17:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebbe53f_0ef26574",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "19b0fb52_25cc0a77",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70ad23d_df130134",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-10-31T17:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9181ccf_92142243",
+      "range": {
+        "startLine": 325,
+        "startChar": 19,
+        "endLine": 325,
+        "endChar": 23
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0aa688b_8d2afdf9",
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b981315_7ff2cb5c",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-10-31T17:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0aa688b_8d2afdf9",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 56
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d546d67_14ec27ca",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-10-31T16:23:15Z",
       "side": 1,
       "message": "Let\u0027s add an `ALOGE` here so that this situation can be identified more easily.",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 5
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5835276_6390de75",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2023-10-31T17:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d546d67_14ec27ca",
       "range": {
         "startLine": 589,
         "startChar": 0,
