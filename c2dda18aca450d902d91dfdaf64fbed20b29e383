@@ -22,6 +22,30 @@
       },
       "revId": "c2dda18aca450d902d91dfdaf64fbed20b29e383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "302b4071_f2b55918",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-10-31T21:32:00Z",
+      "side": 1,
+      "message": "c2_aidl::utils::IsSelected() returning true implies ver \u003e\u003d 35. This really shouldn\u0027t happen but it needs this construct is needed for the compiler to do the right thing.",
+      "parentUuid": "5f535c11_b1be4553",
+      "range": {
+        "startLine": 1451,
+        "startChar": 84,
+        "endLine": 1451,
+        "endChar": 86
+      },
+      "revId": "c2dda18aca450d902d91dfdaf64fbed20b29e383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
