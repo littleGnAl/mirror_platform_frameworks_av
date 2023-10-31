@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebbe53f_0ef26574",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-31T16:23:15Z",
+      "side": 1,
+      "message": "Please add a comment about this expectation in AudioOutputDescriptor.h where `SwAudioOutputDescriptor::mProfile` is declared.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b0fb52_25cc0a77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-31T16:23:15Z",
+      "side": 1,
+      "message": "Thanks Shraddha! Looks good, just a few comments.",
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9181ccf_92142243",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-31T16:23:15Z",
+      "side": 1,
+      "message": "please change to `nullptr` for consistency",
+      "range": {
+        "startLine": 325,
+        "startChar": 19,
+        "endLine": 325,
+        "endChar": 23
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0aa688b_8d2afdf9",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-31T16:23:15Z",
+      "side": 1,
+      "message": "I would prefer to avoid default initializing DeviceVector when there is no need for that. We can leave the `isDuplicated()` branch untouched and make the line 383 to look like this: `return DeviceVector()`.",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 56
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d546d67_14ec27ca",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-31T16:23:15Z",
+      "side": 1,
+      "message": "Let\u0027s add an `ALOGE` here so that this situation can be identified more easily.",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 5
+      },
+      "revId": "e7b8b50a690b0cb1e85e26937f830a8bebfb9f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
