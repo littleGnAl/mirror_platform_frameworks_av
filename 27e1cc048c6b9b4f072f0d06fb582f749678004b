@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7f289d1_a875aa9e",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-31T00:30:13Z",
+      "side": 1,
+      "message": "The lock is only for mState variable and the rest of the members are accessed without a lock.\nSo I don\u0027t think it is necessary to do this after locking.",
+      "parentUuid": "0c55b560_9daf9b20",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 58
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "440fc0de_70269035",
         "filename": "media/libstagefright/MediaMuxer.cpp",
         "patchSetId": 1
@@ -95,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "970040ff_ffbe2989",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-31T00:30:13Z",
+      "side": 1,
+      "message": "Making this pure virtual would mean that every writer needs to implement this.\nThe current plan is to do this only for webmwriter.\n\nA similar approach was taken for isFdOpenModeValid() which was needed webm to do something different than other writers.",
+      "parentUuid": "1c5404a7_980cea4f",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "089b49e1_553ffb18",
         "filename": "media/libstagefright/webm/WebmWriter.cpp",
         "patchSetId": 1
@@ -106,6 +154,30 @@
       "writtenOn": "2023-10-30T09:19:48Z",
       "side": 1,
       "message": "Similarly to the comment above, is this always non-negative?",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439934f7_7bf91ff4",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-31T00:30:13Z",
+      "side": 1,
+      "message": "Given that timeUs is int64_t (because MediaMuxer::writeSampleData takes a int64_t) would it be okay to keep this as int64_t? else we will need some typecasts.",
+      "parentUuid": "089b49e1_553ffb18",
       "range": {
         "startLine": 74,
         "startChar": 8,
@@ -164,6 +236,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16a81826_ff641689",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-31T00:30:13Z",
+      "side": 1,
+      "message": "Andrew, \nThanks for flagging this.\nYes, this needs to be saved per track and computation of lastDurationUs also needs to be per track.\n\nSohail,\nGiven that track index can be an arbitrary value, please use a map to store per track previous timestamp.",
+      "parentUuid": "87f8cfa6_d3be8c8d",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ef0e979_b68b4875",
         "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
         "patchSetId": 1
@@ -198,6 +294,30 @@
       "writtenOn": "2023-10-30T09:19:48Z",
       "side": 1,
       "message": "Can this ever be assigned a negative value? I am wondering if it would be better to make it a uint64_t to make it clearer that the checked time is non-negative.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2750afd5_19660188",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-31T00:30:13Z",
+      "side": 1,
+      "message": "Given that MediaMuxer::writeSampleData takes a int64_t, would it be okay to keep this as int64_t? else we will need some typecasts.",
+      "parentUuid": "04512d14_7505b7a0",
       "range": {
         "startLine": 73,
         "startChar": 4,
