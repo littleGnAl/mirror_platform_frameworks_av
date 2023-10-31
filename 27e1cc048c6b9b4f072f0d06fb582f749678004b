@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60d9bf90_b1a44e14",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-10-31T13:55:19Z",
+      "side": 1,
+      "message": "Updated the return type to -EINVAL.",
+      "parentUuid": "440fc0de_70269035",
+      "range": {
+        "startLine": 212,
+        "startChar": 15,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e2aaf43_1e1638ec",
         "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2023-10-30T09:19:48Z",
       "side": 1,
       "message": "Given this looks only at the same metadata, maybe `isSampleTimeValid`? Or `isSampleMetadataValid`?",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4805d269_23770d66",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-10-31T13:55:19Z",
+      "side": 1,
+      "message": "Updated the method name to isSampleMetadataValid.",
+      "parentUuid": "1e2aaf43_1e1638ec",
       "range": {
         "startLine": 58,
         "startChar": 17,
@@ -211,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb51baf_20465290",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-10-31T13:55:19Z",
+      "side": 1,
+      "message": "Added this check to prevent timesUs overflow when adding lastDurationUs in WebmFrameMediaSourceThread.",
+      "parentUuid": "5cf835f0_c35bb720",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87f8cfa6_d3be8c8d",
@@ -248,6 +320,30 @@
       "side": 1,
       "message": "Andrew, \nThanks for flagging this.\nYes, this needs to be saved per track and computation of lastDurationUs also needs to be per track.\n\nSohail,\nGiven that track index can be an arbitrary value, please use a map to store per track previous timestamp.",
       "parentUuid": "87f8cfa6_d3be8c8d",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f344f2fb_5c63ab59",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-10-31T13:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a81826_ff641689",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -323,6 +419,30 @@
         "startChar": 4,
         "endLine": 73,
         "endChar": 11
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1e5241_ea40b667",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-10-31T13:55:19Z",
+      "side": 1,
+      "message": "Created a map to store the previous timestamp based on the track index.",
+      "parentUuid": "4ef0e979_b68b4875",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 27
       },
       "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
