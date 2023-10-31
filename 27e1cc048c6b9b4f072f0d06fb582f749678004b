@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4caeed77_54b50d1e",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-10-31T14:09:29Z",
+      "side": 1,
+      "message": "\u003e Just to check, what is the effect of returning one of these errors at the Java layer of the API?\n\nIn that case an exception is thrown at Java layer.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/media/jni/android_media_MediaMuxer.cpp;l\u003d130;drc\u003d51804e92e8897a81f2cee4c6fe4bda0b20c3949a",
+      "parentUuid": "60d9bf90_b1a44e14",
+      "range": {
+        "startLine": 212,
+        "startChar": 15,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e2aaf43_1e1638ec",
