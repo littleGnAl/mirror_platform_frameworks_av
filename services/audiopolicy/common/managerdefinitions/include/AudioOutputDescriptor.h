@@ -448,7 +448,8 @@ public:
 
     PortHandleVector getClientsForStream(audio_stream_type_t streamType) const;
 
-    const sp<IOProfile> mProfile;          // I/O profile this output derives from
+    // Output derives from this I/O profile. It is expected to be null for duplicate descriptors.
+    const sp<IOProfile> mProfile;
     audio_io_handle_t mIoHandle;           // output handle
     uint32_t mLatency;                  //
     using AudioOutputDescriptor::mFlags;
