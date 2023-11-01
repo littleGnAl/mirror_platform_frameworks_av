@@ -1059,7 +1059,7 @@ AudioDeviceAddress::Tag suggestDeviceAddressTag(const AudioDeviceDescription& de
     using Tag = AudioDeviceAddress::Tag;
     *legacyType = VALUE_OR_RETURN_STATUS(
             aidl2legacy_AudioDeviceDescription_audio_devices_t(aidl.type));
-    char addressBuffer[AUDIO_DEVICE_MAX_ADDRESS_LEN]{};
+    char addressBuffer[AUDIO_DEVICE_MAX_ADDRESS_LEN+12]{};
     // 'aidl.address' can be empty even when the connection type is not.
     // This happens for device ports that act as "blueprints". In this case
     // we pass an empty string using the 'id' variant.
@@ -1079,7 +1079,7 @@ AudioDeviceAddress::Tag suggestDeviceAddressTag(const AudioDeviceDescription& de
         case Tag::ipv6: {
             const std::vector<int32_t>& ipv6 = aidl.address.get<AudioDeviceAddress::ipv6>();
             if (ipv6.size() != 8) return BAD_VALUE;
-            snprintf(addressBuffer, AUDIO_DEVICE_MAX_ADDRESS_LEN,
+            snprintf(addressBuffer, AUDIO_DEVICE_MAX_ADDRESS_LEN+12,
                     "%04X:%04X:%04X:%04X:%04X:%04X:%04X:%04X",
                     ipv6[0], ipv6[1], ipv6[2], ipv6[3], ipv6[4], ipv6[5], ipv6[6], ipv6[7]);
         } break;
