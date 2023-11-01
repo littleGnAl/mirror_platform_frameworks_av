@@ -88,6 +88,28 @@ static bool areRenderMetricsEnabled() {
     return v == "true";
 }
 
+class OnBufferReleasedListener : public ::android::BnProducerListener {
+private:
+    uint32_t mGeneration;
+    std::weak_ptr<Codec2Client::Component> mComponent;
+public:
+    OnBufferReleasedListener(
+            uint32_t generation,
+            const std::shared_ptr<Codec2Client::Component> &component)
+            : mGeneration(generation), mComponent(component) {}
+    virtual ~OnBufferReleasedListener() = default;
+    virtual void onBufferReleased() {
+        auto p = mComponent.lock();
+        if (p) {
+            p->onBufferReleasedFromOutputSurface(mGeneration);
+        }
+    }
+    virtual void onBufferDetached(int /*slot*/) {
+        onBufferReleased();
+    }
+    virtual bool needsReleaseNotify() { return true; }
+};
+
 }  // namespace
 
 CCodecBufferChannel::QueueGuard::QueueGuard(
@@ -2265,12 +2287,8 @@ void CCodecBufferChannel::sendOutputBuffers() {
     }
 }
 
-status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface, bool pushBlankBuffer) {
-    static std::atomic_uint32_t surfaceGeneration{0};
-    uint32_t generation = (getpid() << 10) |
-            ((surfaceGeneration.fetch_add(1, std::memory_order_relaxed) + 1)
-                & ((1 << 10) - 1));
-
+status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface,
+                                         uint32_t generation, bool pushBlankBuffer) {
     sp<IGraphicBufferProducer> producer;
     int maxDequeueCount;
     sp<Surface> oldSurface;
@@ -2284,7 +2302,6 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface, bool pus
         newSurface->setDequeueTimeout(kDequeueTimeoutNs);
         newSurface->setMaxDequeuedBufferCount(maxDequeueCount);
         producer = newSurface->getIGraphicBufferProducer();
-        producer->setGenerationNumber(generation);
     } else {
         ALOGE("[%s] setting output surface to null", mName);
         return INVALID_OPERATION;
@@ -2325,6 +2342,16 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface, bool pus
         }
     }
 
+    return OK;
+}
+
+status_t CCodecBufferChannel::getIProducerListener(
+        uint32_t generation, sp<IProducerListener> *listener) {
+    sp<IProducerListener> l = new OnBufferReleasedListener(generation, mComponent);
+    if (!l) {
+        return NO_MEMORY;
+    }
+    *listener = l;
     return OK;
 }
 

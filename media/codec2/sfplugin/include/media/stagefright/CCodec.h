@@ -41,6 +41,7 @@ namespace android {
 
 class CCodecBufferChannel;
 class InputSurfaceWrapper;
+class IProducerListener;
 struct CCodecConfig;
 struct MediaCodecInfo;
 
@@ -56,7 +57,9 @@ public:
     virtual void initiateStart() override;
     virtual void initiateShutdown(bool keepComponentAllocated = false) override;
 
-    virtual status_t setSurface(const sp<Surface> &surface) override;
+    virtual status_t setSurface(const sp<Surface> &surface, uint32_t generation) override;
+    virtual status_t getIProducerListener(
+            uint32_t generation, sp<IProducerListener>* listener) override;
 
     virtual void signalFlush() override;
     virtual void signalResume() override;

@@ -38,6 +38,7 @@
 
 namespace android {
 
+class IProducerListener;
 class MemoryDealer;
 
 class CCodecCallback {
@@ -105,7 +106,12 @@ public:
     /**
      * Set output graphic surface for rendering.
      */
-    status_t setSurface(const sp<Surface> &surface, bool pushBlankBuffer);
+    status_t setSurface(const sp<Surface> &surface, uint32_t generation, bool pushBlankBuffer);
+
+    /**
+     * Get IProducerListener for connecting to a Surface
+     */
+    status_t getIProducerListener(uint32_t generation, sp<IProducerListener>* listener);
 
     /**
      * Set GraphicBufferSource object from which the component extracts input
