@@ -2265,12 +2265,8 @@ void CCodecBufferChannel::sendOutputBuffers() {
     }
 }
 
-status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface, bool pushBlankBuffer) {
-    static std::atomic_uint32_t surfaceGeneration{0};
-    uint32_t generation = (getpid() << 10) |
-            ((surfaceGeneration.fetch_add(1, std::memory_order_relaxed) + 1)
-                & ((1 << 10) - 1));
-
+status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface,
+                                         uint32_t generation, bool pushBlankBuffer) {
     sp<IGraphicBufferProducer> producer;
     int maxDequeueCount;
     sp<Surface> oldSurface;
@@ -2284,7 +2280,6 @@ status_t CCodecBufferChannel::setSurface(const sp<Surface> &newSurface, bool pus
         newSurface->setDequeueTimeout(kDequeueTimeoutNs);
         newSurface->setMaxDequeuedBufferCount(maxDequeueCount);
         producer = newSurface->getIGraphicBufferProducer();
-        producer->setGenerationNumber(generation);
     } else {
         ALOGE("[%s] setting output surface to null", mName);
         return INVALID_OPERATION;
