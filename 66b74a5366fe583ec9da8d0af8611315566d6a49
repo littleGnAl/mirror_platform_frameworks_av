@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4333626e_149f485f",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-01T08:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea8dd5d_7c5f39dd",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "66b74a5366fe583ec9da8d0af8611315566d6a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1403525e_788eca75",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "facd54f7_feb65c8a",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-01T08:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1403525e_788eca75",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 101
+      },
+      "revId": "66b74a5366fe583ec9da8d0af8611315566d6a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e42caaa8_97793169",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-31T14:05:48Z",
       "side": 1,
       "message": "size_t to match trackIdx",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "66b74a5366fe583ec9da8d0af8611315566d6a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dcb9bc8_f7bc2139",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-01T08:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e42caaa8_97793169",
       "range": {
         "startLine": 73,
         "startChar": 13,
