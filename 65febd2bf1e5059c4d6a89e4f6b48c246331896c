@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5dba18_30cae36a",
+        "filename": "media/mediaserver/manifest_media_c2_software.xml",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-01T19:39:52Z",
+      "side": 1,
+      "message": "We will need to add `max-level\u003d\"8\"` here for the HIDL service to avoid registering it on devices that have vendor software targeting Android V (level 9). We can still try to register it with hwservicemanager every time, and it will only reject it on those new devices.\n\nThis will be necessary for removing the HIDL interface from Android V\u0027s compatibility_matrix.9.xml. \n\nUnless we wanted to split the service into one HIDL and one AIDL, which I don\u0027t think we would want to do?\n\n(this would be done in a follow up CL)",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 9
+      },
+      "revId": "65febd2bf1e5059c4d6a89e4f6b48c246331896c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
