@@ -1059,7 +1059,7 @@ AudioDeviceAddress::Tag suggestDeviceAddressTag(const AudioDeviceDescription& de
     using Tag = AudioDeviceAddress::Tag;
     *legacyType = VALUE_OR_RETURN_STATUS(
             aidl2legacy_AudioDeviceDescription_audio_devices_t(aidl.type));
-    char addressBuffer[AUDIO_DEVICE_MAX_ADDRESS_LEN]{};
+    char addressBuffer[AUDIO_DEVICE_MAX_ADDRESS_LEN+4]{};
     // 'aidl.address' can be empty even when the connection type is not.
     // This happens for device ports that act as "blueprints". In this case
     // we pass an empty string using the 'id' variant.
