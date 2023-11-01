@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ee4e11_af8ff1f6",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-01T18:43:57Z",
+      "side": 1,
+      "message": "nit: maybe put `queueBuffer` method in the class?",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c139e47_a9408eb4",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-01T18:43:57Z",
+      "side": 1,
+      "message": "nit: put the constants in the class",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9e6505_648350b9",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-01T18:43:57Z",
+      "side": 1,
+      "message": "Is it possible to split each tests (e.g. Allocate and dequeueable test, Blocked allcoate test, etc.) with the setup part being a method in a class?",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72d5d73_24723639",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-01T18:43:57Z",
+      "side": 1,
+      "message": "nit: extra whitespace",
+      "range": {
+        "startLine": 261,
+        "startChar": 32,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a98f68_5432a98f",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-01T18:43:57Z",
+      "side": 1,
+      "message": "why longer sleep here?",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
