@@ -16,6 +16,29 @@
       "message": "Ray,\nAs per \"TestMappingSloChecker\" few of the tests can\u0027t be added to presubmit till they meet SLO in postsubmit.\nShould I change these to postsubmit now?",
       "revId": "32ecb6eb0227d24dda73d161a949a66851c33eca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce8cccd_b1a57113",
+        "filename": "media/module/codecs/amrwb/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2023-11-01T11:39:59Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by TestMappingSloChecker: Test module \"AmrwbDecoderTest\" is being added to presubmit. It needs to meet SLO in postsubmit on all configured targets.\n\nAnalyzer Description: Validates test modules added to presubmit in TEST_MAPPING.\nOwner: android-testing-at-scale@google.com\n\nTest module \"AmrwbDecoderTest\" is being added to presubmit. It needs to meet SLO in postsubmit on all configured targets.\n\nBranch: main, Target: aosp_cf_x86_64_phone-trunk_staging-userdebug\nERROR: No data found for this config.\nDoes not meet SLO. Please consult go/test-mapping-slo-guide\n\nFAIL: This test module does not meet SLO and is not ready to be in presubmit.\n\n\n\n----\n\nthe action item from all of this is that the tests should go into \u0027postsubmit\u0027\nfor a while (probably several weeks) to build up a track record showing their stability.  Once they have that track record, then they can be moved to presubmit.\n\nthis will hold true for all of the changes in this CL.",
+      "range": {
+        "startLine": 0,
+        "startChar": 0,
+        "endLine": 0,
+        "endChar": 0
+      },
+      "revId": "32ecb6eb0227d24dda73d161a949a66851c33eca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
