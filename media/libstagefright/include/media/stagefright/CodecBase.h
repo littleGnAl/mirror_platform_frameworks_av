@@ -239,7 +239,9 @@ struct CodecBase : public AHandler, /* static */ ColorUtils {
     // require an explicit message handler
     virtual void onMessageReceived(const sp<AMessage> &msg) = 0;
 
-    virtual status_t setSurface(const sp<Surface>& /*surface*/) { return INVALID_OPERATION; }
+    virtual status_t setSurface(const sp<Surface>& /*surface*/, uint32_t /*generation*/) {
+        return INVALID_OPERATION;
+    }
 
     virtual void signalFlush() = 0;
     virtual void signalResume() = 0;
