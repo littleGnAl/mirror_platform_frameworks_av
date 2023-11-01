@@ -94,6 +94,7 @@ public:
     virtual status_t discardBuffer(const sp<MediaCodecBuffer> &buffer) override;
     virtual void getInputBufferArray(Vector<sp<MediaCodecBuffer>> *array) override;
     virtual void getOutputBufferArray(Vector<sp<MediaCodecBuffer>> *array) override;
+    virtual void onBufferReleasedFromOutputSurface(uint32_t generation) override;
 
     // Methods below are interface for CCodec to use.
 
@@ -105,7 +106,7 @@ public:
     /**
      * Set output graphic surface for rendering.
      */
-    status_t setSurface(const sp<Surface> &surface, bool pushBlankBuffer);
+    status_t setSurface(const sp<Surface> &surface, uint32_t generation, bool pushBlankBuffer);
 
     /**
      * Set GraphicBufferSource object from which the component extracts input
