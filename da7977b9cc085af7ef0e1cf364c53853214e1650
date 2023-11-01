@@ -16,6 +16,29 @@
       "message": "Does this CL include enabling to read flag from swcodec(apex)?",
       "revId": "da7977b9cc085af7ef0e1cf364c53853214e1650",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dab75d7_5c83f6f9",
+        "filename": "media/libmediaflags/libmediaflags.map.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-01T19:46:36Z",
+      "side": 1,
+      "message": "we are exposing the flag as an API?\n\nThis library is not in the NDK, so I am curious, do we really need the \u0027# introduced\u0027 part or \u0027# systemapi\u0027 part? is it for the mainline module to use it?",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 48
+      },
+      "revId": "da7977b9cc085af7ef0e1cf364c53853214e1650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
