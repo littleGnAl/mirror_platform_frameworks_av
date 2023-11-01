@@ -105,7 +105,7 @@ public:
     /**
      * Set output graphic surface for rendering.
      */
-    status_t setSurface(const sp<Surface> &surface, bool pushBlankBuffer);
+    status_t setSurface(const sp<Surface> &surface, uint32_t generation, bool pushBlankBuffer);
 
     /**
      * Set GraphicBufferSource object from which the component extracts input
