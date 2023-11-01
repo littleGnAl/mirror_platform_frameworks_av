@@ -9,6 +9,8 @@ package {
 
 cc_library {
     name: "libcodec2_soft_av1dec_dav1d",
+    // TODO: b/277797541 - enable once ready
+    enabled: false,
 
     defaults: [
         "libcodec2_soft-defaults",
@@ -17,12 +19,19 @@ cc_library {
     ],
 
     cflags: [
-        "-DCODECNAME=\"c2.android.av1-dav1d.decoder\"",
+        "-DCODECNAME=\"c2.android.dav1d-av1.decoder\"",
         "-Wno-unused-variable",
     ],
 
     srcs: ["C2SoftDav1dDec.cpp", "C2SoftDav1dDump.cpp"],
     static_libs: [
-        "libdav1d",
+        "libdav1d_8bit",
+        "libdav1d_16bit",
     ],
+
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.media.swcodec",
+    ],
+
 }
