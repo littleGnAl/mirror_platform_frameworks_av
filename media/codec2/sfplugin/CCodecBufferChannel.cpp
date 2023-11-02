@@ -1397,8 +1397,9 @@ status_t CCodecBufferChannel::start(
         int maxDequeueCount = 0;
         {
             Mutexed<OutputSurface>::Locked output(mOutputSurface);
-            maxDequeueCount = output->maxDequeueBuffers = numOutputSlots +
+            output->maxDequeueBuffers = numOutputSlots +
                     reorderDepth.value + mRenderingDepth;
+            maxDequeueCount = output->maxDequeueBuffers - mRenderingDepth;
             outputSurface = output->surface ?
                     output->surface->getIGraphicBufferProducer() : nullptr;
             if (outputSurface) {
@@ -2067,8 +2068,9 @@ bool CCodecBufferChannel::handleWork(
         int maxDequeueCount = 0;
         {
             Mutexed<OutputSurface>::Locked output(mOutputSurface);
-            maxDequeueCount = output->maxDequeueBuffers =
+            output->maxDequeueBuffers =
                     numOutputSlots + reorderDepth + mRenderingDepth;
+            maxDequeueCount = output->maxDequeueBuffers - mRenderingDepth;
             if (output->surface) {
                 output->surface->setMaxDequeuedBufferCount(output->maxDequeueBuffers);
             }
