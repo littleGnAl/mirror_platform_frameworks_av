@@ -18,6 +18,7 @@
 #define LOG_TAG "C2SoftGav1Dec"
 #include "C2SoftGav1Dec.h"
 
+#include <android-base/properties.h>
 #include <C2Debug.h>
 #include <C2PlatformSupport.h>
 #include <Codec2BufferUtils.h>
@@ -28,6 +29,10 @@
 #include <log/log.h>
 #include <media/stagefright/foundation/AUtils.h>
 #include <media/stagefright/foundation/MediaDefs.h>
+
+// The number of threads used for the gav1 decoder.
+constexpr int kNumThreadsDefault = 0;
+constexpr char kNumThreadsProperty[] = "debug.c2.gav1.numthreads";
 
 // libyuv version required for I410ToAB30Matrix and I210ToAB30Matrix.
 #if LIBYUV_VERSION >= 1780
@@ -506,6 +511,11 @@ bool C2SoftGav1Dec::initDecoder() {
 
   libgav1::DecoderSettings settings = {};
   settings.threads = GetCPUCoreCount();
+  int32_t numThreads =
+      android::base::GetIntProperty(kNumThreadsProperty, kNumThreadsDefault);
+  if (numThreads > kNumThreadsDefault && numThreads < settings.threads) {
+    settings.threads = numThreads;
+  }
 
   ALOGV("Using libgav1 AV1 software decoder.");
   Libgav1StatusCode status = mCodecCtx->Init(&settings);
