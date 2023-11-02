@@ -661,9 +661,7 @@ AudioPolicyManagerFuzzerDPPlaybackReRouting::AudioPolicyManagerFuzzerDPPlaybackR
 }
 
 AudioPolicyManagerFuzzerDPPlaybackReRouting::~AudioPolicyManagerFuzzerDPPlaybackReRouting() {
-    if (mManager) {
-        mManager->stopInput(mPortId);
-    }
+    mManager->stopInput(mPortId);
 }
 
 bool AudioPolicyManagerFuzzerDPPlaybackReRouting::initialize() {
@@ -775,9 +773,7 @@ AudioPolicyManagerFuzzerDPMixRecordInjection::AudioPolicyManagerFuzzerDPMixRecor
 }
 
 AudioPolicyManagerFuzzerDPMixRecordInjection::~AudioPolicyManagerFuzzerDPMixRecordInjection() {
-    if (mManager) {
-        mManager->stopOutput(mPortId);
-    }
+    mManager->stopOutput(mPortId);
 }
 
 bool AudioPolicyManagerFuzzerDPMixRecordInjection::initialize() {
