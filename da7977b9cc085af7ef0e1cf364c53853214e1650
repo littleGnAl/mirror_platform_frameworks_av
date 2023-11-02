@@ -39,6 +39,30 @@
       },
       "revId": "da7977b9cc085af7ef0e1cf364c53853214e1650",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ff55d1_37dff9e4",
+        "filename": "media/libmediaflags/libmediaflags.map.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-02T18:52:50Z",
+      "side": 1,
+      "message": "Thanks for catching this. I was following go/android-ndk-apex-apis and it seems `# systemapi` is needed but `# introduced` is not.",
+      "parentUuid": "7dab75d7_5c83f6f9",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 48
+      },
+      "revId": "da7977b9cc085af7ef0e1cf364c53853214e1650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
