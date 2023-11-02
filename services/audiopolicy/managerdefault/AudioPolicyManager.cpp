@@ -6054,7 +6054,8 @@ status_t AudioPolicyManager::initialize() {
             !mAvailableOutputDevices.contains(defaultOutputDevice)) {
         ALOGE_IF(defaultOutputDevice != nullptr, "Default device %s is unreachable",
                  defaultOutputDevice->toString().c_str());
-        status = NO_INIT;
+        // Some types of devices (e.g. set-top boxes) can have no attached audio at all.
+        // In this case it's not an error
     }
     ALOGW_IF(mPrimaryOutput == nullptr, "The policy configuration does not declare a primary output");
 
