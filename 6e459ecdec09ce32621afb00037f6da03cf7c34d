@@ -16,6 +16,23 @@
       "message": "This is to route issues like b/300195182 which doesn\u0027t need security review and so that they can be fixed early. Otherwise, fuzzer bugs go into security triage. @wonsik@google.com I will remove this once fuzzer is stabilized.",
       "revId": "6e459ecdec09ce32621afb00037f6da03cf7c34d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e72638_d627f05c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-11-02T21:58:06Z",
+      "side": 1,
+      "message": "This change will help avoid passing issues like b/308739058 to ASA for triage which are fuzzer config/NSI issues.",
+      "revId": "6e459ecdec09ce32621afb00037f6da03cf7c34d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
