@@ -70,6 +70,30 @@
       },
       "revId": "d6581302c1279ce02feb230c5982d4352aa039c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7cc4ed6_8abd2551",
+        "filename": "media/libaudiofoundation/include/media/AudioProfile.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2023-11-03T11:13:58Z",
+      "side": 1,
+      "message": "Yes, I know they are different behavior. I think the real problem is the design of dynamic format is changed and I\u0027m not sure what\u0027s Google\u0027s plan.\nSince the flow is changed, the original flow is treating dynamic format in AudioProfile when xml is described format with \u0027AUDIO_FORMAT_DEFAULT\u0027 and the new flow(with set_device_connected_state_v7() and get_audio_port_v7() supported by AudioHAL) is not. Then the AudioProfile::isDynamicFormat() which is checked by AudioProfileVector::clearProfiles() is not suite to the new flow.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audiopolicy/common/managerdefinitions/src/Serializer.cpp;drc\u003deb747762bdd1889e4d65eae868f11c8cde3a8d7c;l\u003d439\n\nFor my opinion, since the new flow is always clear and get new AudioProfile when digital device is connecting. It\u0027s unnecessary to \"just clear AudioProfile with dynamic format\" but \"clear all AudioProfile\" will be more reasonable.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audiopolicy/managerdefault/AudioPolicyManager.cpp;drc\u003dfd9ffd1d15d5d53e19a4a500cf2fc5892a10d60f;l\u003d5904",
+      "parentUuid": "11ae3116_218ae23d",
+      "range": {
+        "startLine": 132,
+        "startChar": 17,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "d6581302c1279ce02feb230c5982d4352aa039c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
