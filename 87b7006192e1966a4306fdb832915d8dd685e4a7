@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c5ff59_24906a48",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-11-03T01:05:32Z",
+      "side": 1,
+      "message": "This could be localized to the function or just use 0 directly. The use of \u0027Default\u0027 makes it sound like that would be the default for the library, when the core count is.",
+      "revId": "87b7006192e1966a4306fdb832915d8dd685e4a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c283381_bd84b6e1",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-11-03T01:05:32Z",
+      "side": 1,
+      "message": "wrap this in an anonymous namespace.",
+      "revId": "87b7006192e1966a4306fdb832915d8dd685e4a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
