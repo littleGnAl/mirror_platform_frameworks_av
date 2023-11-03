@@ -46,6 +46,30 @@
       },
       "revId": "d6581302c1279ce02feb230c5982d4352aa039c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ae3116_218ae23d",
+        "filename": "media/libaudiofoundation/include/media/AudioProfile.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-03T09:46:41Z",
+      "side": 1,
+      "message": "Current implementation of AudioPort::clearAudioProfiles  calls AudioProfileVector 😊\nclearProfiles();\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudiofoundation/include/media/AudioPort.h;l\u003d63?q\u003dclearAudioProfiles\n\nWhen this method is called by AudioPolicyManager, the intent is to clear the dynamic profiles, not the entire profiles:\n\n\nframeworks/av/services/audiopolicy/managerdefault/AudioPolicyManager.cpp (4 results)\n6291:\ncheckOutputsForDevice(const device, state, outputs)\n{... device-\u003eclearAudioProfiles(); ...}\n6418:\ncheckOutputsForDevice(const device, state, outputs)\n{... profile-\u003eclearAudioProfiles(); ...}\n6450:\ncheckInputsForDevice(const device, state)\n{... device-\u003eclearAudioProfiles(); ...}\n6562:\ncheckInputsForDevice(const device, state)\n{... profile-\u003eclearAudioProfiles(); ...}\n\n If you change the method name wihtout changing the call site, you change the behavior. If you want to keep this renaming for clarity, thne you have to change AudioPort::clearAudioProfiles() and call clearDynamicProfiles() there",
+      "parentUuid": "09e0075e_fb956b43",
+      "range": {
+        "startLine": 132,
+        "startChar": 17,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "d6581302c1279ce02feb230c5982d4352aa039c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
