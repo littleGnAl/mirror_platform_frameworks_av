@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31bc7b5_a7a77516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-03T18:15:28Z",
+      "side": 1,
+      "message": "Jaideep, we are getting some build errors here:\n\n```\n...\n^\nhardware/interfaces/audio/aidl/vts/ModuleConfig.cpp:521:5: error: use of undeclared identifier \u0027LOG_TAG\u0027\nRETURN_STATUS_IF_ERROR(module-\u003egetAudioRoutes(\u0026mRoutes));\n^\nframeworks/av/media/liberror/include/error/expected_utils.h:96:13: note: expanded from macro \u0027RETURN_STATUS_IF_ERROR\u0027\nALOGE(\"Function: %s Line: %d Failed \", __FUNCTION__, __LINE__); \\\n^\nsystem/logging/liblog/include/log/log_main.h:269:43: note: expanded from macro \u0027ALOGE\u0027\n#define ALOGE(...) ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__))\n^\nhardware/interfaces/audio/aidl/vts/ModuleConfig.cpp:538:5: error: use of undeclared identifier \u0027LOG_TAG\u0027\nRETURN_STATUS_IF_ERROR(module-\u003egetAudioPorts(\u0026mPorts));\n^\nframeworks/av/media/liberror/include/error/expected_utils.h:96:13: note: expanded from macro \u0027RETURN_STATUS_IF_ERROR\u0027\nALOGE(\"Function: %s Line: %d Failed \", __FUNCTION__, __LINE__); \\\n^\nsystem/logging/liblog/include/log/log_main.h:269:43: note: expanded from macro \u0027ALOGE\u0027\n#define ALOGE(...) ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__))\n^\nhardware/interfaces/audio/aidl/vts/ModuleConfig.cpp:539:5: error: use of undeclared identifier \u0027LOG_TAG\u0027\nRETURN_STATUS_IF_ERROR(module-\u003egetAudioRoutes(\u0026mRoutes));\n^\nframeworks/av/media/liberror/include/error/expected_utils.h:96:13: note: expanded from macro \u0027RETURN_STATUS_IF_ERROR\u0027\nALOGE(\"Function: %s Line: %d Failed \", __FUNCTION__, __LINE__); \\\n^\nsystem/logging/liblog/include/log/log_main.h:269:43: note: expanded from macro \u0027ALOGE\u0027\n#define ALOGE(...) ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__))\n^\n4 errors generated.\n```\n\nIt is possible that the `_FATAL` macros were not used in these modules, thus the `LOG_TAG` was never used.\n\nI think, we can handle this problem by using the same approach as here: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/include/media/Interpolator.h;l\u003d28;drc\u003d71ba4b37056733c078fafae83cabeaa00bb19f8e",
+      "revId": "041ba24798f2b31934187c9e6f0ee1c3cd011e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
