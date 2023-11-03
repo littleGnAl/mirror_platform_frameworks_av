@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c25046f_1839779e",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-11-03T16:26:10Z",
+      "side": 1,
+      "message": "I think this could still be under an anonymous namespace to avoid leaking it from this module. I\u0027m guessing the others might qualify too.",
+      "revId": "48003b520dd41f71748331fe6cf753a79c5b1f9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9ef30f_379860fc",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-11-03T16:26:10Z",
+      "side": 1,
+      "message": "If this is a debug property something larger than core count could work too, though maybe you\u0027re not interested in testing that. It might only make sense when using frame parallel mode, but that required quite an increase for libgav1.",
+      "range": {
+        "startLine": 514,
+        "startChar": 23,
+        "endLine": 514,
+        "endChar": 53
+      },
+      "revId": "48003b520dd41f71748331fe6cf753a79c5b1f9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
