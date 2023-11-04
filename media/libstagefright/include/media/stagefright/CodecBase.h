@@ -45,6 +45,7 @@ struct RenderedFrameInfo;
 class Surface;
 struct ICrypto;
 class IMemory;
+class IProducerListener;
 
 namespace hardware {
 class HidlMemory;
@@ -240,6 +241,11 @@ struct CodecBase : public AHandler, /* static */ ColorUtils {
     virtual void onMessageReceived(const sp<AMessage> &msg) = 0;
 
     virtual status_t setSurface(const sp<Surface>& /*surface*/, uint32_t /*generation*/) {
+        return INVALID_OPERATION;
+    }
+
+    virtual status_t getIProducerListener(
+            uint32_t /*generation*/, sp<IProducerListener>* /*listener*/) {
         return INVALID_OPERATION;
     }
 
