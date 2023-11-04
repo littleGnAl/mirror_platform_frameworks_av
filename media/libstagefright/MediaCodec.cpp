@@ -6361,7 +6361,14 @@ status_t MediaCodec::connectToSurface(const sp<Surface> &surface, uint32_t *gene
             // to this surface after disconnect/connect, and those free frames would inherit the new
             // generation number. Disconnecting after setting a unique generation prevents this.
             nativeWindowDisconnect(surface.get(), "connectToSurface(reconnect)");
-            err = nativeWindowConnect(surface.get(), "connectToSurface(reconnect)");
+            sp<IProducerListener> listener;
+            err = mCodec->getIProducerListener(*generation, &listener);
+            if (err == OK && bool(listener)) {
+                err = surfaceConnectWithListener(surface, listener,
+                                     "connectToSurface(reconnect-with-listener)");
+            } else {
+                err = nativeWindowConnect(surface.get(), "connectToSurface(reconnect)");
+            }
         }
 
         if (err != OK) {

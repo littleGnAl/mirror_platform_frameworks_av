@@ -20,6 +20,8 @@
 
 #include <C2Buffer.h>
 
+#include <android-base/unique_fd.h>
+
 /*
  * Create a list of fds from fence
  *
@@ -75,6 +77,15 @@ struct _C2FenceFactory {
      *                          pipe()/pipe2() syscall.
      */
     static C2Fence CreatePipeFence(int fd);
+
+    /*
+     * Create C2Fence from a unique_fd created by pipe()/pipe2() syscall.
+     *
+     * \param ufd               A unique_fd representing the write end from a pair
+     *                          of file descriptors which are created by
+     *                          pipe()/pipe2() syscall.
+     */
+    static C2Fence CreatePipeFence(::android::base::unique_fd &&ufd);
 
     /**
      * Create a native handle from fence for marshalling
