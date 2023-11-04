@@ -114,6 +114,10 @@ struct IGraphicBufferSource;
 
 namespace android {
 
+// The class will be used for connecting th the Surface or IGBP from the upper
+// layer.
+class IProducerListener;
+
 // This class is supposed to be called Codec2Client::Configurable, but forward
 // declaration of an inner class is not possible.
 struct Codec2ConfigurableClient {
@@ -435,6 +439,13 @@ struct Codec2Client::Component : public Codec2Client::Configurable {
     typedef ::android::hardware::media::omx::V1_0::
             IGraphicBufferSource HGraphicBufferSource;
 
+    // media.c2 aidl calculates # of avaialble buffers to dequeue/allocate
+    // using ::android::IProducerListner. This should be registered to the
+    // surface when connect() to the producer side of the Surface. This will
+    // be utilized from the upper layer(MediaCodec.cpp).
+    c2_status_t getListenerForOutputSurface(
+            uint32_t generation, sp<::android::IProducerListener> *listener);
+
     // Set the output surface to be used with a blockpool previously created by
     // createBlockPool().
     c2_status_t setOutputSurface(
@@ -474,6 +485,10 @@ struct Codec2Client::Component : public Codec2Client::Configurable {
     void stopUsingOutputSurface(
             C2BlockPool::local_id_t blockPoolId);
 
+    // Register IGBA when the client receives IGBA based blocks.
+    void holdIgbaBlocks(
+            const std::list<std::unique_ptr<C2Work>>& workList);
+
     // Connect to a given InputSurface.
     c2_status_t connectToInputSurface(
             const std::shared_ptr<InputSurface>& inputSurface,
@@ -512,6 +527,9 @@ protected:
     // setSurface and setSurface with ReleaseSurface due to timing issues.
     // In order to prevent the race condition mutex is added.
     std::mutex mOutputMutex;
+
+    struct GraphicBufferAllocators;
+    std::unique_ptr<GraphicBufferAllocators> mGraphicBufferAllocators;
 
     class AidlDeathManager;
     static AidlDeathManager *GetAidlDeathManager();
