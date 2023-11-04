@@ -513,6 +513,9 @@ protected:
     // In order to prevent the race condition mutex is added.
     std::mutex mOutputMutex;
 
+    struct GraphicBufferAllocators;
+    std::unique_ptr<GraphicBufferAllocators> mGraphicBufferAllocators;
+
     class AidlDeathManager;
     static AidlDeathManager *GetAidlDeathManager();
     std::optional<size_t> mAidlDeathSeq;

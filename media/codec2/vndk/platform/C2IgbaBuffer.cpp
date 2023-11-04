@@ -151,19 +151,17 @@ void _C2BlockFactory::DisownIgbaBlock(
 C2IgbaBlockPool::C2IgbaBlockPool(
         const std::shared_ptr<C2Allocator> &allocator,
         const std::shared_ptr<C2IGBA> &igba,
+        ::android::base::unique_fd &&ufd,
         const local_id_t localId) : mAllocator(allocator), mIgba(igba), mLocalId(localId) {
     if (!mIgba) {
         mValid = false;
         return;
     }
-    // TODO: Remove IPC (This is a nested IPC call during c2aidl creatBlockPool().
-    ::ndk::ScopedFileDescriptor fd;
-    ::ndk::ScopedAStatus status = mIgba->getWaitableFd(&fd);
-    if (!status.isOk()) {
+    if (ufd.get() < 0) {
         mValid = false;
         return;
     }
-    mWaitFence = _C2FenceFactory::CreatePipeFence(fd.release());
+    mWaitFence = _C2FenceFactory::CreatePipeFence(std::move(ufd));
     if (!mWaitFence.valid()) {
         mValid = false;
         return;
