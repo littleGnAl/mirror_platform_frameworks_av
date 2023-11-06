@@ -17,6 +17,7 @@
 
 #define LOG_TAG "AudioFlinger"
 //#define LOG_NDEBUG 0
+#include "Configuration.h"
 #include <system/audio.h>
 #include <utils/Log.h>
 
@@ -96,6 +97,13 @@ status_t SpdifStreamOut::open(
 
     ALOGI("SpdifStreamOut::open() status = %d", status);
 
+#ifdef TEE_SINK
+    if (status == OK) {
+        mTee.set(customConfig.sample_rate, audio_channel_count_from_out_mask(customConfig.channel_mask), AUDIO_FORMAT_IEC61937, NBAIO_Tee::TEE_FLAG_OUTPUT_THREAD);
+        mTee.setId(std::string("_") + std::to_string(handle) + "_D");
+    }
+#endif
+
     return status;
 }
 
@@ -113,7 +121,15 @@ int SpdifStreamOut::standby()
 
 ssize_t SpdifStreamOut::writeDataBurst(const void* buffer, size_t bytes)
 {
-    return AudioStreamOut::write(buffer, bytes);
+    ssize_t written = AudioStreamOut::write(buffer, bytes);
+
+#ifdef TEE_SINK
+    if (written > 0) {
+        ALOGD("%s write to tee sink", __func__);
+        mTee.write((char *)buffer, written / 4);
+    }
+#endif
+    return written;
 }
 
 ssize_t SpdifStreamOut::write(const void* buffer, size_t numBytes)
