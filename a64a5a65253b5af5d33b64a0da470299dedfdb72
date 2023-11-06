@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daa84cee_d70dc1cf",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-11-06T23:54:41Z",
+      "side": 1,
+      "message": "nit: Are we expected to have this generation all the time?\nIf not, we may want to initialize it with a default value (in above line), as we are using it with setSurface later (line#901)",
+      "range": {
+        "startLine": 866,
+        "startChar": 62,
+        "endLine": 866,
+        "endChar": 72
+      },
+      "revId": "a64a5a65253b5af5d33b64a0da470299dedfdb72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
