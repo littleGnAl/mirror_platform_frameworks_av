@@ -16,6 +16,23 @@
       "message": "Hi, everyone.\n\nTo be honest, I\u0027m not sure how to solve the problem I mentioned in the topic properly. So any ideas would be appreciated.For now, the best idea I have is to replace the error with a warning.",
       "revId": "02e7ef927c601d997865758ced8ccd6faf935031",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b534893f_3f967636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-07T16:41:32Z",
+      "side": 1,
+      "message": "There is a good reason to mandate the default device to be available which is that most of the routing logic dies not support a null output device selection.\nFor this type of settop boxes, the solution is to include a stub audio module in the audio policy configuration file and to declare the stub output device as default.",
+      "revId": "02e7ef927c601d997865758ced8ccd6faf935031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
