@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612930d9_37a392e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T02:10:05Z",
+      "side": 1,
+      "message": "a few more suggestions after taking a look at the native code OWNERS list.",
+      "revId": "533615c83daf31cece649fdc684edb9c4f7f2e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb8bc20_a9d87b51",
+        "filename": "media/audioserver/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T02:10:05Z",
+      "side": 1,
+      "message": "maybe add elaurent@ and philburk@ (oboeservice) as OWNERS.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "533615c83daf31cece649fdc684edb9c4f7f2e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869da162_89cdf191",
+        "filename": "services/audioflinger/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T02:10:05Z",
+      "side": 1,
+      "message": "should add elaurent@ here.  the AF code is quite complex and only Eric is able to review large parts of AF.\n\nTBH, philburk@ doesn\u0027t do as much work in this directory as jiabin@, so I would suggest jiabin@ as a good reviewer from that team.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "533615c83daf31cece649fdc684edb9c4f7f2e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
