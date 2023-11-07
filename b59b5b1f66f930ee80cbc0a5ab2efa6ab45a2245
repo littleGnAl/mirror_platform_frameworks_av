@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c973da37_d8ab0c3e",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-11-07T00:37:04Z",
+      "side": 1,
+      "message": "Looks like this is input argument and it can be const right?",
+      "range": {
+        "startLine": 478,
+        "startChar": 12,
+        "endLine": 478,
+        "endChar": 39
+      },
+      "revId": "b59b5b1f66f930ee80cbc0a5ab2efa6ab45a2245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
