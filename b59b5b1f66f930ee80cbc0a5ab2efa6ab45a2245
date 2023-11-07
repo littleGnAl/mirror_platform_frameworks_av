@@ -22,6 +22,30 @@
       },
       "revId": "b59b5b1f66f930ee80cbc0a5ab2efa6ab45a2245",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda1d9f9_ee752486",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-07T01:03:26Z",
+      "side": 1,
+      "message": "The fd inside is unique_fd and I would like to transfer the ownership of the fd to the some other component. That\u0027s the reason this is not const.",
+      "parentUuid": "c973da37_d8ab0c3e",
+      "range": {
+        "startLine": 478,
+        "startChar": 12,
+        "endLine": 478,
+        "endChar": 39
+      },
+      "revId": "b59b5b1f66f930ee80cbc0a5ab2efa6ab45a2245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
