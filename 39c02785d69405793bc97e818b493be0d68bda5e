@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42a4c63_74ba5043",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "Some minor nits.",
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1540260c_d16c4a25",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "This is still the same 6.2.1.1. for v.1.2.1.  Maybe add ac4_toc as the section name?\n\n    // See ETSI TS 103 190-2 V1.2.1 6.2.1.1 ac4_toc",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 39
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e819fb0_9edf9f1a",
@@ -19,6 +59,144 @@
         "startChar": 15,
         "endLine": 340,
         "endChar": 30
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd9d0a3_856ad843",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "nit: sequence_counter.",
+      "range": {
+        "startLine": 343,
+        "startChar": 25,
+        "endLine": 343,
+        "endChar": 42
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99180017_f3d29043",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "nit: can these be const?  here and on line 358, 361, 372, 380, 383.",
+      "range": {
+        "startLine": 354,
+        "startChar": 4,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cb432f_12f097c7",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "perhaps we return error here instead of abort?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 71
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4164409e_401d5d2b",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "nit: don\u0027t you have to check that numPresentations \u003e 0?",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 5
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dbbf016_00c56ecf",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "is this duped with line 339?  Shouldn\u0027t we have only one check?",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 92
+      },
+      "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5f6677_d9eb8228",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "please comment that additional parsing is omitted.",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 9
       },
       "revId": "39c02785d69405793bc97e818b493be0d68bda5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

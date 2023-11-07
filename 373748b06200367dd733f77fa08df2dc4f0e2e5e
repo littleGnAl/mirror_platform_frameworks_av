@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "084d336d_00f8769b",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "can you please add more background here with a comment.\n\n/*\nSince AC-4 bitstreams with bitstream version \u003c 2 will not be used in practice, it doesn\u0027t add any value to support these in this implementation and hence we gate them here to avoid bloating the code. Generally these will be the versions of AC-4 bitstreams used in practice:\n\nac-4.02.01.00 // stereo\nac-4.02.01.01 // 5.1\nac-4.02.01.02 // Atmos CBI\nac-4.02.01.03 // Atmos CBI\nac-4.02.01.04 // Atmos Object\nac-4.02.02.00 // IMS\n\nWhere ac-4.xx.yy.zz represents bitstream version xx, presentation version yy and presentation level zz.\n*/\n\nI would also suggest a more specific warning.\n\nALOGW(\"AC4 bitstream_version %u less than or equal to 1 not supported\", bitstreamVersion);",
+      "parentUuid": "9786ad58_5f78f7c6",
+      "range": {
+        "startLine": 339,
+        "startChar": 8,
+        "endLine": 339,
+        "endChar": 75
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e1743e8_78cf6940",
         "filename": "media/module/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "I remember seeing the warning with \u003e2 spaces. If you see this file overall for such comments, I think all comments has that 2 spacing style.",
       "parentUuid": "5e873487_643f30dc",
+      "range": {
+        "startLine": 356,
+        "startChar": 21,
+        "endLine": 356,
+        "endChar": 24
+      },
+      "revId": "373748b06200367dd733f77fa08df2dc4f0e2e5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2405c6c_c5b3c2b0",
+        "filename": "media/module/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T22:07:16Z",
+      "side": 1,
+      "message": "if there\u0027s no presubmit warning, i think it is OK for spaces \u003e\u003d 2.",
+      "parentUuid": "47803d13_1152e54d",
       "range": {
         "startLine": 356,
         "startChar": 21,
