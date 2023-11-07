@@ -22,6 +22,30 @@
       },
       "revId": "a64a5a65253b5af5d33b64a0da470299dedfdb72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039c2e82_00446b10",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-07T01:01:49Z",
+      "side": 1,
+      "message": "We are maintaing this from MediaCodec already as a static var.\nAnd multiple codec should not have the same generation number.\nThat\u0027s the reason it\u0027s static.\n\nAnd also the member var for this is existing. That is keeping the current gen # \nand we are keeping the current surface and the both of them are chaing at the same time from this CL.",
+      "parentUuid": "daa84cee_d70dc1cf",
+      "range": {
+        "startLine": 866,
+        "startChar": 62,
+        "endLine": 866,
+        "endChar": 72
+      },
+      "revId": "a64a5a65253b5af5d33b64a0da470299dedfdb72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
