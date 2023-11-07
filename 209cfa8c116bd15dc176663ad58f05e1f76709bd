@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea410a4_5f36c410",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "had some thoughts here based on recent git history of each of the components.  i think it is a good idea to have at least 2 named owners before going to a fallback.",
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58750711_792601ca",
+        "filename": "media/janitors/audio_OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "nit: alphabetical?\n\nwe could add others i think.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723250c9_ab47a2f7",
+        "filename": "media/libaaudio/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add jiabin@ and robertwu@",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a84f3f0_c1e93dc8",
+        "filename": "media/libaudiohal/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add either elaurent@ or yaoshunkai@",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6180ebb_728fff9d",
+        "filename": "media/libaudioprocessing/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add yaoshunkai@",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc601b23_902f4943",
+        "filename": "media/libcpustats/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add atneya@",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21828c69_ac190c1c",
+        "filename": "media/libeffects/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add yaoshunkai@",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 19
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b5e591_b5e13eaa",
+        "filename": "media/libheadtracking/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add hunga@?  i think i did most of the recent changes to this library?",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 21
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3b72fb_c9f906cf",
+        "filename": "media/libnbaio/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add elaurent@ mnaganov@?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ce8099_854dd2bf",
+        "filename": "media/libshmem/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add yaoshunkai@ as this is used for AIDL.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ebadea_3bf2d978",
+        "filename": "services/audiopolicy/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add elaurent@ and jiabin@?  i think they do a lot of work in this.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0167561_928ae4be",
+        "filename": "services/medialog/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "maybe add elaurent@",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8b7fdc_57b93f4e",
+        "filename": "services/oboeservice/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-07T00:39:34Z",
+      "side": 1,
+      "message": "add elaurent@ robertwu@ jiabin@ as they have committed recently here?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "209cfa8c116bd15dc176663ad58f05e1f76709bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
