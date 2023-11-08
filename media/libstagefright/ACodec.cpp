@@ -22,6 +22,7 @@
 #endif
 
 #include <inttypes.h>
+#include <cutils/ashmem.h>
 #include <utils/Trace.h>
 
 #include <android/hardware/media/omx/1.0/IGraphicBufferSource.h>
@@ -873,7 +874,6 @@ status_t ACodec::setPortMode(int32_t portIndex, IOMX::PortMode mode) {
 status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
     CHECK(portIndex == kPortIndexInput || portIndex == kPortIndexOutput);
 
-    CHECK(mAllocator[portIndex] == NULL);
     CHECK(mBuffers[portIndex].empty());
 
     status_t err;
@@ -939,18 +939,6 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
                 return NO_MEMORY;
             }
 
-            if (mode != IOMX::kPortModePresetSecureBuffer) {
-                mAllocator[portIndex] = TAllocator::getService("ashmem");
-                if (mAllocator[portIndex] == nullptr) {
-                    ALOGE("hidl allocator on port %d is null",
-                            (int)portIndex);
-                    return NO_MEMORY;
-                }
-                // TODO: When Treble has MemoryHeap/MemoryDealer, we should
-                // specify the heap size to be
-                // def.nBufferCountActual * (alignedSize + alignedConvSize).
-            }
-
             const sp<AMessage> &format =
                     portIndex == kPortIndexInput ? mInputFormat : mOutputFormat;
             mBuffers[portIndex].reserve(def.nBufferCountActual);
@@ -978,25 +966,26 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
                             : new SecureBuffer(format, native_handle, bufSize);
                     info.mCodecData = info.mData;
                 } else {
-                    bool success;
-                    auto transStatus = mAllocator[portIndex]->allocate(
-                            bufSize,
-                            [&success, &hidlMemToken](
-                                    bool s,
-                                    hidl_memory const& m) {
-                                success = s;
-                                hidlMemToken = m;
-                            });
+                    int fd = ashmem_create_region("ACodec", bufSize);
+                    if (fd < 0) {
+                         ALOGE("create_ashmem_region failed for size %zu. FD returned: %d",
+                                bufSize, fd);
+                        return NO_MEMORY;
+                    }
 
-                    if (!transStatus.isOk()) {
-                        ALOGE("hidl's AshmemAllocator failed at the "
-                                "transport: %s",
-                                transStatus.description().c_str());
+                    native_handle_t* handle = native_handle_create(1 /*numFds*/, 0/*numInts*/);
+                    if (handle == nullptr) {
+                        ALOGE("Failed to create a native_handle_t");
+                        if (close(fd)) {
+                            ALOGE("Failed to close ashmem fd. errno: %s", strerror(errno));
+                        }
                         return NO_MEMORY;
                     }
-                    if (!success) {
-                        return NO_MEMORY;
-                    }
+                    handle->data[0] = fd;
+                    hardware::hidl_handle memHandle;
+                    memHandle.setTo(handle, true /*shouldOwn*/);
+                    hidl_memory hidlMemToken("ashmem", memHandle, bufSize);
+
                     hidlMem = mapMemory(hidlMemToken);
                     if (hidlMem == nullptr) {
                         return NO_MEMORY;
@@ -1018,18 +1007,22 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
                     // otherwise, reuse codec buffer
                     if (mConverter[portIndex] != NULL) {
                         CHECK_GT(conversionBufferSize, (size_t)0);
-                        bool success;
-                        mAllocator[portIndex]->allocate(
-                                conversionBufferSize,
-                                [&success, &hidlMemToken](
-                                        bool s,
-                                        hidl_memory const& m) {
-                                    success = s;
-                                    hidlMemToken = m;
-                                });
-                        if (!success) {
+                        int fd = ashmem_create_region("ACodec", conversionBufferSize);
+                        if (fd < 0) {
+                             ALOGE("create_ashmem_region failed for size %zu with conversion buffer. FD returned: %d",
+                                    conversionBufferSize, fd);
                             return NO_MEMORY;
                         }
+                        native_handle_t* handle = native_handle_create(1 /*numFds*/, 0/*numInts*/);
+                        if (handle == nullptr) {
+                            ALOGE("Failed to create a native_handle_t");
+                            return NO_MEMORY;
+                        }
+                        handle->data[0] = fd;
+                        hardware::hidl_handle memHandle;
+                        memHandle.setTo(handle, true /*shouldOwn*/);
+                        hidl_memory hidlMemToken("ashmem", memHandle, conversionBufferSize);
+
                         hidlMem = mapMemory(hidlMemToken);
                         if (hidlMem == nullptr) {
                             return NO_MEMORY;
@@ -1604,7 +1597,6 @@ status_t ACodec::freeBuffersOnPort(OMX_U32 portIndex) {
         }
     }
 
-    mAllocator[portIndex].clear();
     return err;
 }
 
@@ -8716,10 +8708,7 @@ bool ACodec::OutputPortSettingsChangedState::onOMXEvent(
                     ALOGE("disabled port should be empty, but has %zu buffers",
                             mCodec->mBuffers[kPortIndexOutput].size());
                     err = FAILED_TRANSACTION;
-                } else {
-                    mCodec->mAllocator[kPortIndexOutput].clear();
                 }
-
                 if (err == OK) {
                     err = mCodec->mOMXNode->sendCommand(
                             OMX_CommandPortEnable, kPortIndexOutput);

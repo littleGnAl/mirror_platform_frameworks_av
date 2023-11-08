@@ -35,7 +35,6 @@
 #include <hardware/gralloc.h>
 #include <nativebase/nativebase.h>
 #include <android/hardware/graphics/common/1.2/types.h>
-#include <android/hidl/allocator/1.0/IAllocator.h>
 #include <android/hidl/memory/1.0/IMemory.h>
 
 #define TRACK_BUFFER_TIMING     0
@@ -59,7 +58,6 @@ struct DescribeColorFormat2Params;
 struct DataConverter;
 
 using android::hardware::graphics::common::V1_2::BufferUsage;
-typedef hidl::allocator::V1_0::IAllocator TAllocator;
 typedef hidl::memory::V1_0::IMemory TMemory;
 
 struct ACodec : public AHierarchicalStateMachine, public CodecBase {
@@ -249,7 +247,6 @@ private:
     sp<IOMX> mOMX;
     sp<IOMXNode> mOMXNode;
     int32_t mNodeGeneration;
-    sp<TAllocator> mAllocator[2];
 
     bool mUsingNativeWindow;
     sp<ANativeWindow> mNativeWindow;
