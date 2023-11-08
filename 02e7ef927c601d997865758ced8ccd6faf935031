@@ -33,6 +33,24 @@
       "message": "There is a good reason to mandate the default device to be available which is that most of the routing logic dies not support a null output device selection.\nFor this type of settop boxes, the solution is to include a stub audio module in the audio policy configuration file and to declare the stub output device as default.",
       "revId": "02e7ef927c601d997865758ced8ccd6faf935031",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eef6e1d_afc8a612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1976945
+      },
+      "writtenOn": "2023-11-08T14:30:24Z",
+      "side": 1,
+      "message": "\u003e There is a good reason to mandate the default device to be available which is that most of the routing logic dies not support a null output device selection.\n\nI see.\n\n\u003e For this type of settop boxes, the solution is to include a stub audio module in the audio policy configuration file and to declare the stub output device as default.\n\nAs far as I understand, it solves the problem only partially. Because in my experience, using a stub device itself may mess up audio routing too. The problem is that APM uses the default audio device not only if other devices are not available, but also if the other devices were filtered out by the audio policy engine. And for example, if a set-top box has only a stub device and an hdmi device, the default policy manager will filter out hdmi for the sonification strategy. And all alarm streams will be rerouted to the default device (to the stub). Using a custom policy engine configuration should fix the routing in this scenario though.\n\n\nIs it the right approach for devices without speakers? I mean introducing a stub device to provide the default route, and then rewriting the routing configuration to avoid this stub as a default output.",
+      "parentUuid": "b534893f_3f967636",
+      "revId": "02e7ef927c601d997865758ced8ccd6faf935031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
