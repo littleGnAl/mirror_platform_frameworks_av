@@ -41,6 +41,7 @@ using aidl::android::media::audio::common::AudioChannelLayout;
 using aidl::android::media::audio::common::AudioConfig;
 using aidl::android::media::audio::common::AudioDevice;
 using aidl::android::media::audio::common::AudioDeviceAddress;
+using aidl::android::media::audio::common::AudioDeviceDescription;
 using aidl::android::media::audio::common::AudioDeviceType;
 using aidl::android::media::audio::common::AudioFormatDescription;
 using aidl::android::media::audio::common::AudioFormatType;
@@ -185,23 +186,66 @@ status_t DeviceHalAidl::initCheck() {
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mModule->getAudioPorts(&ports)));
     ALOGW_IF(ports.empty(), "%s: module %s returned an empty list of audio ports",
             __func__, mInstance.c_str());
-    std::transform(ports.begin(), ports.end(), std::inserter(mPorts, mPorts.end()),
-            [](const auto& p) { return std::make_pair(p.id, p); });
     mDefaultInputPortId = mDefaultOutputPortId = -1;
     const int defaultDeviceFlag = 1 << AudioPortDeviceExt::FLAG_INDEX_DEFAULT_DEVICE;
-    for (const auto& pair : mPorts) {
-        const auto& p = pair.second;
-        if (p.ext.getTag() == AudioPortExt::Tag::device &&
-                (p.ext.get<AudioPortExt::Tag::device>().flags & defaultDeviceFlag) != 0) {
-            if (p.flags.getTag() == AudioIoFlags::Tag::input) {
-                mDefaultInputPortId = p.id;
-            } else if (p.flags.getTag() == AudioIoFlags::Tag::output) {
-                mDefaultOutputPortId = p.id;
+    for (auto it = ports.begin(); it != ports.end(); ) {
+        const auto& port = *it;
+        if (port.ext.getTag() != AudioPortExt::Tag::device) {
+            ++it;
+            continue;
+        }
+        const AudioPortDeviceExt& deviceExt = port.ext.get<AudioPortExt::Tag::device>();
+        if ((deviceExt.flags & defaultDeviceFlag) != 0) {
+            if (port.flags.getTag() == AudioIoFlags::Tag::input) {
+                mDefaultInputPortId = port.id;
+            } else if (port.flags.getTag() == AudioIoFlags::Tag::output) {
+                mDefaultOutputPortId = port.id;
             }
         }
+        // For compatibility with HIDL, hide "template" remote submix ports from ports list.
+        if (const auto& devDesc = deviceExt.device;
+                (devDesc.type.type == AudioDeviceType::IN_SUBMIX ||
+                        devDesc.type.type == AudioDeviceType::OUT_SUBMIX) &&
+                devDesc.type.connection == AudioDeviceDescription::CONNECTION_VIRTUAL) {
+            if (devDesc.type.type == AudioDeviceType::IN_SUBMIX) {
+                mRemoteSubmixIn = port;
+            } else {
+                mRemoteSubmixOut = port;
+            }
+            it = ports.erase(it);
+        } else {
+            ++it;
+        }
     }
+    if (mRemoteSubmixIn.has_value() != mRemoteSubmixOut.has_value()) {
+        ALOGE("%s: The configuration only has input or output remote submix device, must have both",
+                __func__);
+        mRemoteSubmixIn.reset();
+        mRemoteSubmixOut.reset();
+    }
+    if (mRemoteSubmixIn.has_value()) {
+        AudioPort connectedRSubmixIn = *mRemoteSubmixIn;
+        connectedRSubmixIn.ext.get<AudioPortExt::Tag::device>().device.address = "0";
+        ALOGD("%s: connecting remote submix input", __func__);
+        RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mModule->connectExternalDevice(
+                                connectedRSubmixIn, &connectedRSubmixIn)));
+        mDefaultInputPortId = connectedRSubmixIn.id;
+        auto inputProfiles = connectedRSubmixIn.profiles;
+        ports.push_back(std::move(connectedRSubmixIn));
+
+        // Remote submix output must not be connected until the framework actually starts
+        // using it. Instead, provide an augmented "template" port with an address and the same
+        // set of profiles as the input.
+        AudioPort templateRSubmixOut = *mRemoteSubmixOut;
+        templateRSubmixOut.ext.get<AudioPortExt::Tag::device>().device.address = "0";
+        templateRSubmixOut.profiles = std::move(inputProfiles);
+        ports.push_back(std::move(templateRSubmixOut));
+    }
+
     ALOGI("%s: module %s default port ids: input %d, output %d",
             __func__, mInstance.c_str(), mDefaultInputPortId, mDefaultOutputPortId);
+    std::transform(ports.begin(), ports.end(), std::inserter(mPorts, mPorts.end()),
+            [](const auto& p) { return std::make_pair(p.id, p); });
     RETURN_STATUS_IF_ERROR(updateRoutes());
     std::vector<AudioPortConfig> portConfigs;
     RETURN_STATUS_IF_ERROR(
@@ -1104,20 +1148,38 @@ status_t DeviceHalAidl::setConnectedState(const struct audio_port_v7 *port, bool
     }
     if (connected) {
         AudioDevice matchDevice = aidlPort.ext.get<AudioPortExt::device>().device;
-        // Reset the device address to find the "template" port.
-        matchDevice.address = AudioDeviceAddress::make<AudioDeviceAddress::id>();
-        auto portsIt = findPort(matchDevice);
-        if (portsIt == mPorts.end()) {
-            // Since 'setConnectedState' is called for all modules, it is normal when the device
-            // port not found in every one of them.
-            return BAD_VALUE;
+        std::optional<AudioPort> templatePort;
+        auto erasePortAfterConnectionIt = mPorts.end();
+        // Connection of remote submix out with address "0" is a special case. Since there is
+        // already an "augmented template" port with this address in mPorts, we need to replace
+        // it with a connected port.
+        // Connection of remote submix outs with any other address is done as usual except that
+        // the template port is in `mRemoteSubmixOut`.
+        if (mRemoteSubmixOut.has_value() && matchDevice.type.type == AudioDeviceType::OUT_SUBMIX) {
+            if (matchDevice.address == AudioDeviceAddress::make<AudioDeviceAddress::id>("0")) {
+                erasePortAfterConnectionIt = findPort(matchDevice);
+            }
+            templatePort = mRemoteSubmixOut;
         } else {
-            ALOGD("%s: device port for device %s found in the module %s",
-                    __func__, matchDevice.toString().c_str(), mInstance.c_str());
+            // Reset the device address to find the "template" port.
+            matchDevice.address = AudioDeviceAddress::make<AudioDeviceAddress::id>();
+        }
+        if (!templatePort.has_value()) {
+            auto portsIt = findPort(matchDevice);
+            if (portsIt == mPorts.end()) {
+                // Since 'setConnectedState' is called for all modules, it is normal when the device
+                // port not found in every one of them.
+                return BAD_VALUE;
+            } else {
+                ALOGD("%s: device port for device %s found in the module %s",
+                        __func__, matchDevice.toString().c_str(), mInstance.c_str());
+            }
+            templatePort = portsIt->second;
         }
         resetUnusedPatchesAndPortConfigs();
+
         // Use the ID of the "template" port, use all the information from the provided port.
-        aidlPort.id = portsIt->first;
+        aidlPort.id = templatePort->id;
         AudioPort connectedPort;
         RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mModule->connectExternalDevice(
                                 aidlPort, &connectedPort)));
@@ -1127,6 +1189,9 @@ status_t DeviceHalAidl::setConnectedState(const struct audio_port_v7 *port, bool
                 __func__, mInstance.c_str(), connectedPort.toString().c_str(),
                 it->second.toString().c_str());
         mConnectedPorts[connectedPort.id] = false;
+        if (erasePortAfterConnectionIt != mPorts.end()) {
+            mPorts.erase(erasePortAfterConnectionIt);
+        }
     } else {  // !connected
         AudioDevice matchDevice = aidlPort.ext.get<AudioPortExt::device>().device;
         auto portsIt = findPort(matchDevice);
@@ -1139,14 +1204,23 @@ status_t DeviceHalAidl::setConnectedState(const struct audio_port_v7 *port, bool
                     __func__, matchDevice.toString().c_str(), mInstance.c_str());
         }
         resetUnusedPatchesAndPortConfigs();
+
+        // Disconnection of remote submix out with address "0" is a special case. We need to replace
+        // the connected port entry with the "augmented template".
+        const int32_t portId = portsIt->second.id;
+        if (mRemoteSubmixOut.has_value() && matchDevice.type.type == AudioDeviceType::OUT_SUBMIX &&
+                matchDevice.address == AudioDeviceAddress::make<AudioDeviceAddress::id>("0")) {
+            mDisconnectedPortReplacement = std::make_pair(portId, *mRemoteSubmixOut);
+            auto& port = mDisconnectedPortReplacement.second;
+            port.ext.get<AudioPortExt::Tag::device>().device = matchDevice;
+            port.profiles = portsIt->second.profiles;
+        }
         // Streams are closed by AudioFlinger independently from device disconnections.
         // It is possible that the stream has not been closed yet.
-        const int32_t portId = portsIt->second.id;
         if (!isPortHeldByAStream(portId)) {
             RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
                             mModule->disconnectExternalDevice(portId)));
-            mPorts.erase(portsIt);
-            mConnectedPorts.erase(portId);
+            eraseConnectedPort(portId);
         } else {
             ALOGD("%s: since device port ID %d is used by a stream, "
                     "external device disconnection postponed", __func__, portId);
@@ -1214,6 +1288,17 @@ status_t DeviceHalAidl::createOrUpdatePortConfig(
     *result = it;
     *created = inserted;
     return OK;
+}
+
+void DeviceHalAidl::eraseConnectedPort(int32_t portId) {
+    mPorts.erase(portId);
+    mConnectedPorts.erase(portId);
+    if (mDisconnectedPortReplacement.first == portId) {
+        const auto& port = mDisconnectedPortReplacement.second;
+        mPorts.insert(std::make_pair(port.id, port));
+        ALOGD("%s: disconnected port replacement: %s", __func__, port.toString().c_str());
+        mDisconnectedPortReplacement = std::pair<int32_t, AudioPort>();
+    }
 }
 
 status_t DeviceHalAidl::filterAndRetrieveBtA2dpParameters(
@@ -1847,8 +1932,7 @@ void DeviceHalAidl::resetUnusedPortConfigs() {
         if (!isPortHeldByAStream(portId)) {
             TIME_CHECK();
             if (auto status = mModule->disconnectExternalDevice(portId); status.isOk()) {
-                mPorts.erase(portId);
-                mConnectedPorts.erase(portId);
+                eraseConnectedPort(portId);
                 ALOGD("%s: executed postponed external device disconnection for port ID %d",
                         __func__, portId);
             }
@@ -1865,6 +1949,30 @@ status_t DeviceHalAidl::updateRoutes() {
             statusTFromBinderStatus(mModule->getAudioRoutes(&mRoutes)));
     ALOGW_IF(mRoutes.empty(), "%s: module %s returned an empty list of audio routes",
             __func__, mInstance.c_str());
+    if (mRemoteSubmixIn.has_value()) {
+        // Remove mentions of the template remote submix input from routes.
+        int32_t rSubmixInId = mRemoteSubmixIn->id;
+        // Remove mentions of the template remote submix out only if it is not in mPorts
+        // (that means there is a connected port in mPorts).
+        int32_t rSubmixOutId = mPorts.find(mRemoteSubmixOut->id) == mPorts.end() ?
+                mRemoteSubmixOut->id : -1;
+        for (auto it = mRoutes.begin(); it != mRoutes.end();) {
+            auto& route = *it;
+            if (route.sinkPortId == rSubmixOutId) {
+                it = mRoutes.erase(it);
+                continue;
+            }
+            if (auto routeIt = std::find(route.sourcePortIds.begin(), route.sourcePortIds.end(),
+                            rSubmixInId); routeIt != route.sourcePortIds.end()) {
+                route.sourcePortIds.erase(routeIt);
+                if (route.sourcePortIds.empty()) {
+                    it = mRoutes.erase(it);
+                    continue;
+                }
+            }
+            ++it;
+        }
+    }
     mRoutingMatrix.clear();
     for (const auto& r : mRoutes) {
         for (auto portId : r.sourcePortIds) {
