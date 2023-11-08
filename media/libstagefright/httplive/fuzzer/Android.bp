@@ -31,6 +31,7 @@ cc_fuzz {
         "httplive_fuzzer.cpp",
     ],
     static_libs: [
+        "libbase",
         "libstagefright_httplive",
         "libstagefright_id3",
         "libstagefright_metadatautils",
