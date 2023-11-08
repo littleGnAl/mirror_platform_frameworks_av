@@ -23,8 +23,8 @@
 #include "ESQueue.h"
 
 #include <android/hardware/cas/native/1.0/IDescrambler.h>
-#include <android/hidl/allocator/1.0/IAllocator.h>
 #include <android/hidl/memory/1.0/IMemory.h>
+#include <cutils/ashmem.h>
 #include <cutils/native_handle.h>
 #include <hidlmemory/mapping.h>
 #include <media/cas/DescramblerAPI.h>
@@ -46,12 +46,12 @@
 #include <inttypes.h>
 
 namespace android {
+using hardware::hidl_handle;
 using hardware::hidl_string;
 using hardware::hidl_vec;
 using hardware::hidl_memory;
 using namespace hardware::cas::V1_0;
 using namespace hardware::cas::native::V1_0;
-typedef hidl::allocator::V1_0::IAllocator TAllocator;
 typedef hidl::memory::V1_0::IMemory TMemory;
 
 // I want the expression "y" evaluated even if verbose logging is off.
@@ -209,8 +209,6 @@ private:
     bool mScrambled;
     bool mSampleEncrypted;
     sp<AMessage> mSampleAesKeyItem;
-    sp<TMemory> mHidlMemory;
-    sp<TAllocator> mHidlAllocator;
     hardware::cas::native::V1_0::SharedBuffer mDescramblerSrcBuffer;
     sp<ABuffer> mDescrambledBuffer;
     List<SubSampleInfo> mSubSamples;
@@ -1006,41 +1004,21 @@ bool ATSParser::Stream::ensureBufferCapacity(size_t neededSize) {
     sp<ABuffer> newBuffer, newScrambledBuffer;
     sp<TMemory> newMem;
     if (mScrambled) {
-        if (mHidlAllocator == nullptr) {
-            mHidlAllocator = TAllocator::getService("ashmem");
-            if (mHidlAllocator == nullptr) {
-                ALOGE("[stream %d] can't get hidl allocator", mElementaryPID);
-                return false;
-            }
+        int fd = ashmem_create_region("mediaATS", neededSize);
+         if (fd < 0) {
+             ALOGE("[stream %d] create_ashmem_region failed for size %zu. FD returned: %d",
+                    mElementaryPID, neededSize, fd);
+             return false;
         }
 
-        hidl_memory hidlMemToken;
-        bool success;
-        auto transStatus = mHidlAllocator->allocate(
-                neededSize,
-                [&success, &hidlMemToken](
-                        bool s,
-                        hidl_memory const& m) {
-                    success = s;
-                    hidlMemToken = m;
-                });
-
-        if (!transStatus.isOk()) {
-            ALOGE("[stream %d] hidl allocator failed at the transport: %s",
-                    mElementaryPID, transStatus.description().c_str());
-            return false;
-        }
-        if (!success) {
-            ALOGE("[stream %d] hidl allocator failed", mElementaryPID);
-            return false;
-        }
-        newMem = mapMemory(hidlMemToken);
-        if (newMem == nullptr || newMem->getPointer() == nullptr) {
+        void* mappedAddr = mmap(nullptr /* address */, neededSize /* length */, PROT_READ | PROT_WRITE,
+                            MAP_SHARED, fd, 0 /* offset */);
+        if (!mappedAddr) {
             ALOGE("[stream %d] hidl failed to map memory", mElementaryPID);
             return false;
         }
 
-        newScrambledBuffer = new ABuffer(newMem->getPointer(), newMem->getSize());
+        newScrambledBuffer = new ABuffer(mappedAddr, neededSize);
 
         if (mDescrambledBuffer != NULL) {
             memcpy(newScrambledBuffer->data(),
@@ -1049,10 +1027,13 @@ bool ATSParser::Stream::ensureBufferCapacity(size_t neededSize) {
         } else {
             newScrambledBuffer->setRange(0, 0);
         }
-        mHidlMemory = newMem;
         mDescrambledBuffer = newScrambledBuffer;
 
-        mDescramblerSrcBuffer.heapBase = hidlMemToken;
+        native_handle_t* handle = native_handle_create(1 /*numFds*/, 0/*numInts*/);
+        handle->data[0] = fd;
+        hidl_handle memHandle;
+        memHandle.setTo(handle, true /*shouldOwn*/);
+        mDescramblerSrcBuffer.heapBase = hidl_memory("mediaATS", memHandle, neededSize);
         mDescramblerSrcBuffer.offset = 0ULL;
         mDescramblerSrcBuffer.size =  (uint64_t)neededSize;
 
@@ -1548,7 +1529,7 @@ status_t ATSParser::Stream::flushScrambled(SyncEvent *event) {
         return UNKNOWN_ERROR;
     }
 
-    if (mDescrambledBuffer == NULL || mHidlMemory == NULL) {
+    if (mDescrambledBuffer == NULL) {
         ALOGE("received scrambled packets without shared memory!");
 
         return UNKNOWN_ERROR;
