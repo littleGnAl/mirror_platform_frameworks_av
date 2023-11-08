@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e638096_f1e29430",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-08T21:29:51Z",
+      "side": 1,
+      "message": "Same questions for similar ACodec changes in aosp/2823037. That one seems even less likely to run on new devices without HIDL because it looks specific to OMX.",
+      "parentUuid": "7dcf1530_e702cbb8",
+      "revId": "b734f386c50a58409575dca79b066e4806df8946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "200861b5_f0b919f6",
         "filename": "media/module/mpeg2ts/ATSParser.cpp",
         "patchSetId": 3
@@ -49,6 +67,30 @@
       "writtenOn": "2023-11-08T19:18:41Z",
       "side": 1,
       "message": "Do we need to check whether this is nullptr?",
+      "range": {
+        "startLine": 1015,
+        "startChar": 25,
+        "endLine": 1015,
+        "endChar": 31
+      },
+      "revId": "b734f386c50a58409575dca79b066e4806df8946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5372549c_722ba5e6",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-08T21:29:51Z",
+      "side": 1,
+      "message": "Yes, we should! Done.",
+      "parentUuid": "200861b5_f0b919f6",
       "range": {
         "startLine": 1015,
         "startChar": 25,
