@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3e9fff_23836762",
+        "filename": "media/codec2/tests/aidl/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-08T23:25:23Z",
+      "side": 1,
+      "message": "Added to postsubmit, after fulfilling the requirements I will move the test to the presubmit.",
+      "parentUuid": "41298821_487803fe",
+      "revId": "068b67d4d3516f289e1a3fc1a97f282035d052eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "683b8454_fb302dac",

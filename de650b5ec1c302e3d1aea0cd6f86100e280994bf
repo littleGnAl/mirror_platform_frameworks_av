@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62faef0c_c3f8afa1",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-08T23:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71ee4e11_af8ff1f6",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c139e47_a9408eb4",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e2bdd7_3baafb04",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-08T23:25:23Z",
+      "side": 1,
+      "message": "Since this could be different for each test. I will use the plain var name.",
+      "parentUuid": "7c139e47_a9408eb4",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c9e6505_648350b9",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-11-01T18:43:57Z",
       "side": 1,
       "message": "Is it possible to split each tests (e.g. Allocate and dequeueable test, Blocked allcoate test, etc.) with the setup part being a method in a class?",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19257561_1c4add51",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-08T23:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9e6505_648350b9",
       "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -75,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e93ae4_f107f969",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-08T23:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d72d5d73_24723639",
+      "range": {
+        "startLine": 261,
+        "startChar": 32,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0a98f68_5432a98f",
@@ -88,6 +166,24 @@
       "writtenOn": "2023-11-01T18:43:57Z",
       "side": 1,
       "message": "why longer sleep here?",
+      "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10449b9d_85f6c786",
+        "filename": "media/codec2/tests/aidl/GraphicsTracker_test.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-08T23:25:23Z",
+      "side": 1,
+      "message": "Added drain to FrameQueue in order to eliminate sleep here and there.",
+      "parentUuid": "c0a98f68_5432a98f",
       "revId": "de650b5ec1c302e3d1aea0cd6f86100e280994bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
