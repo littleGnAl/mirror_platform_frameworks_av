@@ -2430,6 +2430,10 @@ status_t MPEG4Writer::setNextFd(int fd) {
     return OK;
 }
 
+bool MPEG4Writer::isSampleMetadataValid([[maybe_unused]] size_t trackIndex, int64_t timeUs) {
+    return timeUs >= 0;
+}
+
 bool MPEG4Writer::Track::isExifData(
         MediaBufferBase *buffer, uint32_t *tiffHdrOffset) const {
     if (!mIsHeif) {
