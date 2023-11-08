@@ -307,7 +307,6 @@ cc_library {
         "libhidlallocatorutils",
         "libhidlbase",
         "libhidlmemory",
-        "android.hidl.allocator@1.0",
         "android.hardware.cas.native@1.0",
         "android.hardware.drm@1.0",
         "android.hardware.media.omx@1.0",
@@ -342,7 +341,6 @@ cc_library {
         "libgui",
         "libhidlmemory",
         "libmedia",
-        "android.hidl.allocator@1.0",
         "framework-permission-aidl-cpp",
     ],
 
