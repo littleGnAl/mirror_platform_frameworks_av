@@ -46,6 +46,30 @@
       },
       "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93976ffd_71948e6e",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-09T21:39:44Z",
+      "side": 1,
+      "message": "The problem is the getInputBufferSize request does not include a HW module, the primary hardware dev is always used in the implementation, and if the request is expected to be serviced from another HW module, there is a mismatch.\n\n1. I\u0027ve changed this review scope to createRecord only, to defer this getInputBufferSize decision.\n2. To later implement getInputBufferSize for compressed, this can be done by not adding the fallback configs (PCM, ...). However, if the actual compressed source is to be serviced from another HW module (e.g. remote submix) and the primary doesn\u0027t support it, then this function will need to cycle through mAudioHwDevs.\n3. For the purpose of the loopback passthrough implementation, rather than android.media.AudioPolicy.createAudioRecord using AudioRecord.getMinBufferSize for compressed, the implementation can size the AudioRecord by other means (a look-up table based on codec). Given the AudioRecord API has no codec bitrate controls, the sizing can be done, possibly, based on worst case (maximum bitrate supported by the codec) at the expense of higher latency.",
+      "parentUuid": "20f87849_a1e7035f",
+      "range": {
+        "startLine": 1913,
+        "startChar": 0,
+        "endLine": 1916,
+        "endChar": 5
+      },
+      "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
