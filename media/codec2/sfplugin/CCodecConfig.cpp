@@ -402,9 +402,18 @@ void CCodecConfig::initializeStandardParams() {
 
     add(ConfigMapper(KEY_MAX_INPUT_SIZE, C2_PARAMKEY_INPUT_MAX_BUFFER_SIZE, "value")
         .limitTo(D::INPUT));
+
     // remove when codecs switch to PARAMKEY
     deprecated(ConfigMapper(KEY_MAX_INPUT_SIZE, "coded.max-frame-size", "value")
                .limitTo(D::INPUT));
+
+    // large frame params
+    add(ConfigMapper(KEY_MAX_BUFFER_BATCH_OUTPUT_SIZE,
+            C2_PARAMKEY_OUTPUT_LARGE_FRAME, "max-size")
+        .limitTo(D::AUDIO & D::OUTPUT));
+    add(ConfigMapper(KEY_THRESHOLD_BUFFER_BATCH_OUTPUT_SIZE,
+            C2_PARAMKEY_OUTPUT_LARGE_FRAME, "threshold")
+        .limitTo(D::AUDIO & D::OUTPUT));
 
     // Rotation
     // Note: SDK rotation is clock-wise, while C2 rotation is counter-clock-wise
