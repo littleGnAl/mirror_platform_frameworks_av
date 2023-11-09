@@ -61,6 +61,27 @@ struct SharedBuffer;
 
 using hardware::cas::native::V1_0::IDescrambler;
 
+struct AccessUnitInfo {
+    uint32_t mFlags;
+    uint32_t mSize;
+    int64_t mTimestamp;
+    AccessUnitInfo(uint32_t flags, uint32_t size, int64_t ptsUs)
+            :mFlags(flags), mSize(size), mTimestamp(ptsUs) {
+    }
+    ~AccessUnitInfo() {}
+};
+
+/*
+ * Helper struct for wrapping any object with RefBase.
+ */
+template <typename T>
+struct WrapperObject : public RefBase {
+    WrapperObject(const T& v) : value(v) {}
+    WrapperObject(T&& v) : value(std::move(v)) {}
+    T value;
+};
+typedef WrapperObject<std::vector<AccessUnitInfo>> BufferInfosWrapper;
+
 struct CodecParameterDescriptor {
     std::string name;
     AMessage::Type type;
