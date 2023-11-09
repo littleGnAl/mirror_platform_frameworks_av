@@ -47,7 +47,6 @@ class SkipCutBuffer: public RefBase {
  protected:
     virtual ~SkipCutBuffer();
 
- private:
     void write(const char *src, size_t num);
     size_t read(char *dst, size_t num);
     template <typename T>
