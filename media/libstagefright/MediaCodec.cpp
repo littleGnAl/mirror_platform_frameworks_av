@@ -25,6 +25,7 @@
 #include <random>
 #include <set>
 #include <string>
+#include <com_android_media_codec_flags.h>
 
 #include <C2Buffer.h>
 
@@ -88,6 +89,7 @@
 
 namespace android {
 
+namespace Flags = com::android::media::codec::flags;
 using Status = ::ndk::ScopedAStatus;
 using aidl::android::media::BnResourceManagerClient;
 using aidl::android::media::IResourceManagerClient;
@@ -3166,7 +3168,44 @@ status_t MediaCodec::queueInputBuffer(
     msg->setInt64("timeUs", presentationTimeUs);
     msg->setInt32("flags", flags);
     msg->setPointer("errorDetailMsg", errorDetailMsg);
+    sp<AMessage> response;
+    return PostAndAwaitResponse(msg, &response);
+}
 
+status_t MediaCodec::queueInputBuffers(
+        size_t index,
+        size_t offset,
+        size_t size,
+        const std::vector<AccessUnitInfo> &accessUnitInfo,
+        AString *errorDetailMsg) {
+    sp<AMessage> msg = new AMessage(kWhatQueueInputLargeFrame, this);
+    int64_t minTimeUs = accessUnitInfo.front().mTimestamp;
+    uint32_t bufferFlags = 0;
+    uint32_t flagsinAllAU = BUFFER_FLAG_DECODE_ONLY | BUFFER_FLAG_CODECCONFIG;
+    uint32_t andFlags = flagsinAllAU;
+    int infoIdx = 0;
+    bool foundEndOfStream = false;
+    for ( ; infoIdx < accessUnitInfo.size() && !foundEndOfStream; ++infoIdx) {
+        bufferFlags |= accessUnitInfo[infoIdx].mFlags;
+        andFlags &= accessUnitInfo[infoIdx].mFlags;
+        if (bufferFlags & BUFFER_FLAG_END_OF_STREAM) {
+            foundEndOfStream = true;
+        }
+    }
+    bufferFlags = bufferFlags & (andFlags | (~flagsinAllAU));
+    if (infoIdx != accessUnitInfo.size()) {
+        ALOGE("queueInputBuffers has incorrect access-units");
+        return -EINVAL;
+    }
+    msg->setSize("index", index);
+    msg->setSize("offset", offset);
+    msg->setSize("size", size);
+    msg->setInt64("timeUs", minTimeUs);
+    // Make this represent flags for the entire buffer
+    // decodeOnly Flag is set only when all buffers are decodeOnly
+    msg->setInt32("flags", bufferFlags);
+    msg->setPointer("accessUnitInfo", (void*)&accessUnitInfo);
+    msg->setPointer("errorDetailMsg", errorDetailMsg);
     sp<AMessage> response;
     return PostAndAwaitResponse(msg, &response);
 }
@@ -4750,6 +4789,35 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     }
                 }
             }
+            if (Flags::large_audio_frame()) {
+                    int32_t largeFrameParam;
+                    if (format->findInt32(KEY_MAX_BUFFER_BATCH_OUTPUT_SIZE, &largeFrameParam) ||
+                            format->findInt32(KEY_THRESHOLD_BUFFER_BATCH_OUTPUT_SIZE,
+                            &largeFrameParam)) {
+                        if(mComponentName.startsWith("OMX")) {
+                            mErrorLog.log(LOG_TAG,
+                                    "Large Frame params only works with audio codec");
+                            PostReplyWithError(replyID, INVALID_OPERATION);
+                            break;
+                        }
+                        AString mime;
+                        CHECK(format->findString("mime", &mime));
+                        if (!mime.startsWith("audio")) {
+                            mErrorLog.log(LOG_TAG,
+                                    "Large Frame params only works with audio codec");
+                            PostReplyWithError(replyID, INVALID_OPERATION);
+                            break;
+                        }
+                        if (!(mFlags & kFlagIsAsync)) {
+                                mErrorLog.log(LOG_TAG, "Large Frame audio" \
+                                        "config works only with async mode");
+                            PostReplyWithError(replyID, INVALID_OPERATION);
+                            break;
+                        }
+                        // TODO: set largeFrameConfig detected ??
+                    }
+            }
+
             mReplyID = replyID;
             setState(CONFIGURING);
 
@@ -5246,6 +5314,35 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             }
 
             PostReplyWithError(replyID, err);
+            break;
+        }
+
+        case kWhatQueueInputLargeFrame:
+        {
+            sp<AReplyToken> replyID;
+            CHECK(msg->senderAwaitsResponse(&replyID));
+
+            if (!isExecuting()) {
+                mErrorLog.log(LOG_TAG, base::StringPrintf(
+                        "queueInputBuffer() is valid only at Executing states; currently %s",
+                        apiStateString().c_str()));
+                PostReplyWithError(replyID, INVALID_OPERATION);
+                break;
+            } else if (mFlags & kFlagStickyError) {
+                PostReplyWithError(replyID, getStickyError());
+                break;
+            }
+
+            status_t err = UNKNOWN_ERROR;
+            // TODO: handle leftover buffers if any
+             void *accessUnitInfo;;
+            if (!msg->findPointer("accessUnitInfo", &accessUnitInfo)) {
+                PostReplyWithError(replyID, INVALID_OPERATION);
+                break;
+            }
+            err = onQueueInputLargeFrame(msg);
+            PostReplyWithError(replyID, err);
+
             break;
         }
 
@@ -5898,10 +5995,10 @@ size_t MediaCodec::updateBuffers(
 
 status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     size_t index;
-    size_t offset;
-    size_t size;
-    int64_t timeUs;
-    uint32_t flags;
+    size_t offset = 0;
+    size_t size = 0;
+    int64_t timeUs = 0;
+    uint32_t flags = 0;
     CHECK(msg->findSize("index", &index));
     CHECK(msg->findInt64("timeUs", &timeUs));
     CHECK(msg->findInt32("flags", (int32_t *)&flags));
@@ -6182,6 +6279,21 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     }
 
     return err;
+}
+
+status_t MediaCodec::onQueueInputLargeFrame(const sp<AMessage>& msg) {
+    size_t index;
+    std::vector<AccessUnitInfo> *accessUnitInfo = nullptr;
+    CHECK(msg->findSize("index", &index));
+    if (index >= mPortBuffers[kPortIndexInput].size()) {
+        ALOGE("Large frame index out of range: %zu", index);
+        return -ERANGE;
+    }
+    msg->findPointer("accessUnitInfo", (void**)&accessUnitInfo);
+    BufferInfo *info = &mPortBuffers[kPortIndexInput][index];
+    sp<MediaCodecBuffer> &buffer = info->mData;
+    buffer->meta()->setPointer("accessUnitInfo", accessUnitInfo);
+    return onQueueInputBuffer(msg);
 }
 
 status_t MediaCodec::handleLeftover(size_t index) {
@@ -6495,10 +6607,17 @@ void MediaCodec::onOutputBufferAvailable() {
         if (discardDecodeOnlyOutputBuffer(index)) {
             continue;
         }
+        sp<AMessage> msg = mCallback->dup();
         const sp<MediaCodecBuffer> &buffer =
             mPortBuffers[kPortIndexOutput][index].mData;
-        sp<AMessage> msg = mCallback->dup();
-        msg->setInt32("callbackID", CB_OUTPUT_AVAILABLE);
+        int32_t outputCallbackID = CB_OUTPUT_AVAILABLE;
+        sp<RefBase> accessUnitInfoObj;
+        buffer->meta()->findObject("accessUnitInfo", &accessUnitInfoObj);
+        if (accessUnitInfoObj) {
+            outputCallbackID = CB_LARGE_FRAME_OUTPUT_AVAILABLE;
+            msg->setObject("accessUnitInfo", accessUnitInfoObj);
+        }
+        msg->setInt32("callbackID", outputCallbackID);
         msg->setInt32("index", index);
         msg->setSize("offset", buffer->offset());
         msg->setSize("size", buffer->size());
