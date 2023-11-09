@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "041e80d2_21301e57",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-09T02:46:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a55fa81a_9d75eac9",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "1dda9ca108eb834d55085c3826435aa84bdb9d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c1f0893_1701af50",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-11-08T23:47:42Z",
       "side": 1,
       "message": "As I recall, ALOG_ASSERT doesn\u0027t do anything if LOG_NDEBUG is not set.  I would be fine with an ALOGW here.",
+      "range": {
+        "startLine": 600,
+        "startChar": 8,
+        "endLine": 600,
+        "endChar": 19
+      },
+      "revId": "1dda9ca108eb834d55085c3826435aa84bdb9d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9305e96e_1f5780c1",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-09T02:46:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8c1f0893_1701af50",
       "range": {
         "startLine": 600,
         "startChar": 8,
