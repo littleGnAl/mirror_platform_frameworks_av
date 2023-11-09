@@ -22,6 +22,30 @@
       },
       "revId": "c1c44974d16ddedd3094b6f8ea295a103da255c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3d964e_8151bef9",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2023-11-09T08:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "944cc846_414638d6",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "c1c44974d16ddedd3094b6f8ea295a103da255c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
