@@ -56,6 +56,7 @@ struct AReplyToken;
 struct AString;
 struct BatteryChecker;
 class BufferChannelBase;
+struct AccessUnitInfo;
 struct CodecBase;
 struct CodecParameterDescriptor;
 class IBatteryStats;
@@ -115,6 +116,7 @@ struct MediaCodec : public AHandler {
         CB_OUTPUT_FORMAT_CHANGED = 4,
         CB_RESOURCE_RECLAIMED = 5,
         CB_CRYPTO_ERROR = 6,
+        CB_LARGE_FRAME_OUTPUT_AVAILABLE = 7,
     };
 
     static const pid_t kNoPid = -1;
@@ -183,6 +185,13 @@ struct MediaCodec : public AHandler {
             size_t size,
             int64_t presentationTimeUs,
             uint32_t flags,
+            AString *errorDetailMsg = NULL);
+
+    status_t queueInputBuffers(
+            size_t index,
+            size_t offset,
+            size_t size,
+            const std::vector<AccessUnitInfo> &accessUnitInfo,
             AString *errorDetailMsg = NULL);
 
     status_t queueSecureInputBuffer(
@@ -353,6 +362,7 @@ private:
         kWhatRelease                        = 'rele',
         kWhatDequeueInputBuffer             = 'deqI',
         kWhatQueueInputBuffer               = 'queI',
+        kWhatQueueInputLargeFrame           = 'qulI',
         kWhatDequeueOutputBuffer            = 'deqO',
         kWhatReleaseOutputBuffer            = 'relO',
         kWhatSignalEndOfInputStream         = 'eois',
@@ -601,6 +611,7 @@ private:
     void returnBuffersToCodecOnPort(int32_t portIndex, bool isReclaim = false);
     size_t updateBuffers(int32_t portIndex, const sp<AMessage> &msg);
     status_t onQueueInputBuffer(const sp<AMessage> &msg);
+    status_t onQueueInputLargeFrame(const sp<AMessage>& msg);
     status_t onReleaseOutputBuffer(const sp<AMessage> &msg);
     BufferInfo *peekNextPortBuffer(int32_t portIndex);
     ssize_t dequeuePortBuffer(int32_t portIndex);
