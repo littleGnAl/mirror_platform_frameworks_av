@@ -70,6 +70,24 @@
       "parentUuid": "5c11a681_500eaff6",
       "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8984f78a_7e3c58e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-09T17:32:48Z",
+      "side": 1,
+      "message": "The updated/upgrading devices will still have the HIDL allocator so they wouldn\u0027t need these changes.\n\nIt was allowed for TV devices in U, and we will not allow it in Android V. Here\u0027s that discussion: https://b.corp.google.com/issues/293538526#comment17.",
+      "parentUuid": "cbd57998_0df4964c",
+      "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
