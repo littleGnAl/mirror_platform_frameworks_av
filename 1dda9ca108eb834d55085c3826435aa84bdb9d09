@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "405aba37_a3b8a2c5",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-09T02:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a55fa81a_9d75eac9",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "1dda9ca108eb834d55085c3826435aa84bdb9d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c1f0893_1701af50",
@@ -101,6 +125,30 @@
       "writtenOn": "2023-11-09T02:46:31Z",
       "side": 1,
       "message": "Acknowledged",
+      "parentUuid": "8c1f0893_1701af50",
+      "range": {
+        "startLine": 600,
+        "startChar": 8,
+        "endLine": 600,
+        "endChar": 19
+      },
+      "revId": "1dda9ca108eb834d55085c3826435aa84bdb9d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd4c58d_cee72dcc",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-09T02:47:16Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "8c1f0893_1701af50",
       "range": {
         "startLine": 600,
