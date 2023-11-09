@@ -56,6 +56,7 @@ struct AReplyToken;
 struct AString;
 struct BatteryChecker;
 class BufferChannelBase;
+struct AccessUnitInfo;
 struct CodecBase;
 struct CodecParameterDescriptor;
 class IBatteryStats;
@@ -115,6 +116,7 @@ struct MediaCodec : public AHandler {
         CB_OUTPUT_FORMAT_CHANGED = 4,
         CB_RESOURCE_RECLAIMED = 5,
         CB_CRYPTO_ERROR = 6,
+        CB_LARGE_FRAME_OUTPUT_AVAILABLE = 7,
     };
 
     static const pid_t kNoPid = -1;
@@ -183,6 +185,13 @@ struct MediaCodec : public AHandler {
             size_t size,
             int64_t presentationTimeUs,
             uint32_t flags,
+            AString *errorDetailMsg = NULL);
+
+    status_t queueInputBuffers(
+            size_t index,
+            size_t offset,
+            size_t size,
+            const sp<RefBase> &accessUnitInfo,
             AString *errorDetailMsg = NULL);
 
     status_t queueSecureInputBuffer(
