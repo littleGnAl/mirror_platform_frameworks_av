@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b097df_1f90d23b",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-09T22:04:10Z",
+      "side": 1,
+      "message": "Is this limit? then KEY_OUTPUT_SIZE_LIMIT might be better?",
+      "range": {
+        "startLine": 813,
+        "startChar": 22,
+        "endLine": 813,
+        "endChar": 47
+      },
+      "revId": "cedbcec79b97e52c5525ce3bb8108eb2c77f299f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
