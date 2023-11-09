@@ -88,7 +88,11 @@ hardware::camera2::params::OutputConfiguration convertFromHidl(
     auto &windowHandles = hOutputConfiguration.windowHandles;
     iGBPs.reserve(windowHandles.size());
     for (auto &handle : windowHandles) {
-        iGBPs.push_back(new H2BGraphicBufferProducer(AImageReader_getHGBPFromHandle(handle)));
+        auto igbp = AImageReader_getHGBPFromHandle(handle);
+        if (igbp == nullptr) {
+            continue;
+        }
+        iGBPs.push_back(new H2BGraphicBufferProducer(igbp));
     }
     hardware::camera2::params::OutputConfiguration outputConfiguration(
         iGBPs, convertFromHidl(hOutputConfiguration.rotation),

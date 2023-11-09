@@ -78,7 +78,11 @@ UOutputConfiguration convertFromAidl(const SOutputConfiguration &src) {
 
     for (auto &handle : windowHandles) {
         native_handle_t* nh = makeFromAidl(handle);
-        iGBPs.push_back(new H2BGraphicBufferProducer(AImageReader_getHGBPFromHandle(nh)));
+        auto igbp = AImageReader_getHGBPFromHandle(nh);
+        if (igbp == nullptr) {
+            continue;
+        }
+        iGBPs.push_back(new H2BGraphicBufferProducer(igbp));
         native_handle_delete(nh);
     }
     UOutputConfiguration outputConfiguration(
