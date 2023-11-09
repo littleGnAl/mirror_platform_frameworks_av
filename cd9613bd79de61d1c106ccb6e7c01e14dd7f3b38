@@ -52,6 +52,24 @@
       "parentUuid": "3824b3de_d2cf6126",
       "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd57998_0df4964c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-09T09:40:24Z",
+      "side": 1,
+      "message": "V update device may have OMX, I guess.(The vendors)\nSome new launching TV devices insisted to use OMX before.\n(I don\u0027t know for V, though)\n\nI think we still need the updates.\n@lajos may have more to say.",
+      "parentUuid": "5c11a681_500eaff6",
+      "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
