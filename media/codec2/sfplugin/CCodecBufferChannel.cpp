@@ -90,6 +90,15 @@ static bool areRenderMetricsEnabled() {
     return v == "true";
 }
 
+// these flags can come with individual BufferInfos
+// when used with large frame audio
+const static ALookup<uint32_t, uint32_t> flagMap = {
+        {BUFFER_FLAG_CODEC_CONFIG, C2FrameData::FLAG_CODEC_CONFIG},
+        {BUFFER_FLAG_END_OF_STREAM, C2FrameData::FLAG_END_OF_STREAM},
+        {BUFFER_FLAG_DECODE_ONLY, C2FrameData::FLAG_DROP_FRAME},
+        {BUFFER_FLAG_DECODE_ONLY | BUFFER_FLAG_END_OF_STREAM,
+        C2FrameData::FLAG_DROP_FRAME | C2FrameData::FLAG_END_OF_STREAM}};
+
 }  // namespace
 
 CCodecBufferChannel::QueueGuard::QueueGuard(
@@ -242,10 +251,12 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
     if (buffer->meta()->findInt32("tunnel-first-frame", &tmp) && tmp) {
         tunnelFirstFrame = true;
     }
+    // Getting large frame info.
     if (buffer->meta()->findInt32("decode-only", &tmp) && tmp) {
         flags |= C2FrameData::FLAG_DROP_FRAME;
     }
-    ALOGV("[%s] queueInputBuffer: buffer->size() = %zu", mName, buffer->size());
+    ALOGV("[%s] queueInputBuffer: buffer->size() = %zu time: %lld",
+            mName, buffer->size(), (long long)timeUs);
     std::list<std::unique_ptr<C2Work>> items;
     std::unique_ptr<C2Work> work(new C2Work);
     work->input.ordinal.timestamp = timeUs;
@@ -295,6 +306,28 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
                 Mutexed<OutputSurface>::Locked output(mOutputSurface);
                 uint64_t frameIndex = work->input.ordinal.frameIndex.peeku();
                 output->rotation[frameIndex] = rotation;
+            }
+            std::vector<AccessUnitInfo> *accessUnitInfoVec = nullptr;
+            if (buffer->meta()->findPointer("accessUnitInfo", (void**)&accessUnitInfoVec)
+                    && accessUnitInfoVec) {
+                ALOGV("Filling C2Info from multiple access units");
+                std::vector<C2AccessUnitInfosStruct> multipleAccessUnitInfos;
+                uint32_t flag;
+                for (int i = 0; i< accessUnitInfoVec->size(); i++) {
+                    flag = 0;
+                    flagMap.lookup((*accessUnitInfoVec)[i].mFlags, &flag);
+                    multipleAccessUnitInfos.emplace_back(
+                            flag,
+                            (*accessUnitInfoVec)[i].mSize,
+                            (*accessUnitInfoVec)[i].mTimestamp);
+                    ALOGV("%d) flags: %d, size: %d, time: %llu",
+                            i, flag, (*accessUnitInfoVec)[i].mSize,
+                            (long long)(*accessUnitInfoVec)[i].mTimestamp);
+                }
+                const std::shared_ptr<C2AccessUnitInfos::input> c2AccessUnitInfos =
+                        C2AccessUnitInfos::input::AllocShared(
+                                multipleAccessUnitInfos.size(), 0u, multipleAccessUnitInfos);
+                c2buffer->setInfo(c2AccessUnitInfos);
             }
             work->input.buffers.push_back(c2buffer);
             if (encryptedBlock) {
@@ -2259,12 +2292,41 @@ void CCodecBufferChannel::sendOutputBuffers() {
         case OutputBuffers::DISCARD:
             break;
         case OutputBuffers::NOTIFY_CLIENT:
+        {
             // TRICKY: we want popped buffers reported in order, so sending
             // the callback while holding the lock here. This assumes that
             // onOutputBufferAvailable() does not block. onOutputBufferAvailable()
             // callbacks are always sent with the Output lock held.
+
+            // TODO: update meta() with additional info about AccessUnitInfo (metadata)
+            if (c2Buffer) {
+                std::shared_ptr<const C2AccessUnitInfos::output> bufferMetadata =
+                        std::static_pointer_cast<const C2AccessUnitInfos::output>(
+                        c2Buffer->getInfo(C2AccessUnitInfos::output::PARAM_TYPE));
+                if (bufferMetadata) {
+                    uint32_t flag = 0;
+                    std::vector<AccessUnitInfo> accessUnitInfos;
+                    for (int nMeta = 0; nMeta < bufferMetadata->flexCount(); nMeta++) {
+                        const C2AccessUnitInfosStruct &bufferMetadataStruct =
+                                bufferMetadata->m.values[nMeta];
+                        flag = 0;
+                        flagMap.rlookup(bufferMetadataStruct.flags, &flag);
+                        accessUnitInfos.emplace_back(flag,
+                                static_cast<size_t>(bufferMetadataStruct.size),
+                                static_cast<size_t>(bufferMetadataStruct.timestamp));
+                        ALOGV("MultiAccessUnitInfo : flag:%d, size : %d, ts: %lld",
+                                flag, bufferMetadataStruct.size,
+                                (long long)bufferMetadataStruct.timestamp);
+                    }
+                    sp<WrapperObject<std::vector<AccessUnitInfo>>> obj{
+                        new WrapperObject<std::vector<AccessUnitInfo>>{accessUnitInfos}};
+                    outBuffer->meta()->setObject("accessUnitInfo", obj);
+                }
+            }
             mCallback->onOutputBufferAvailable(index, outBuffer);
+
             break;
+        }
         case OutputBuffers::REALLOCATE:
             if (++reallocTryNum > kMaxReallocTry) {
                 output.unlock();
