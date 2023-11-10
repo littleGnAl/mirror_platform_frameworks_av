@@ -16,6 +16,24 @@
       "message": "Given the size of this \"workaround\", isn\u0027t it simpler to force a legacy remote submix input device connection in audio policy manager after parsing the audio policy config and if no legacy remote submix in is attached?",
       "revId": "a545fa0c1d30170996ceecb169ae2bc0bc53b436",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c226c48d_fb196a6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-10T18:19:06Z",
+      "side": 1,
+      "message": "The auto connection part is just a handful of lines in `AudioPolicyConfig.cpp`. Technically, this code is part of the APM.\n\nInitially, I tried doing just this, however I found that when both the \"template device port\" (with no address and dynamic profiles), and the connected device port (with address and profiles) are both visible to APM, it tends to pick just one randomly for \"Supported devices.\" If it ends up to be the template port, then APM never matches it when looking for the device because remote submix \"distinguishes on address.\" I now realized that the concept of the \"template device port\" did not exist before in APM, I think it \"attaches\" the template port instead, and then \"detaches\" it on device disconnection. This discrepancy is not really important for other removable devices because currently only remote submix and bus devices are marked as \"distinguishes on address.\"\n\nAnd, I don\u0027t want to change any logic in the APM besides trivial safe fixes. Our idea was that all discrepancies between HIDL and AIDL behavior are handled at the libaudiohal level.",
+      "parentUuid": "80f7a775_6ac82dd7",
+      "revId": "a545fa0c1d30170996ceecb169ae2bc0bc53b436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
