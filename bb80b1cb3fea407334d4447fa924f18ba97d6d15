@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa8ea0b_f69aaff5",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-10T05:55:37Z",
+      "side": 0,
+      "message": "this was previously used only by PlaybackThread::readOutputParameters_l, and has been replaced with calling stream-\u003egetAudioProperties directly. It\u0027s removed to avoid confusion when AudioStreamOut is inherited by SpdifStreamOut.",
+      "range": {
+        "startLine": 173,
+        "startChar": 36,
+        "endLine": 173,
+        "endChar": 54
+      },
+      "revId": "bb80b1cb3fea407334d4447fa924f18ba97d6d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

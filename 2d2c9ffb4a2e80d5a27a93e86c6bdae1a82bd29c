@@ -22,6 +22,30 @@
       },
       "revId": "2d2c9ffb4a2e80d5a27a93e86c6bdae1a82bd29c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbd290d_04e1657e",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-10T05:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92c25415_d01ffc4a",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 87
+      },
+      "revId": "2d2c9ffb4a2e80d5a27a93e86c6bdae1a82bd29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
