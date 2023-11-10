@@ -76,19 +76,14 @@ public:
     virtual ssize_t write(const void *buffer, size_t bytes);
 
     /**
-     * @return frame size from the perspective of the application and the AudioFlinger.
+     * @return frame size of the stream presented to AudioFlinger.
      */
     [[nodiscard]] virtual size_t getFrameSize() const { return mHalFrameSize; }
 
     /**
-     * @return audio stream configuration: channel mask, format, sample rate:
-     *   - channel mask from the perspective of the application and the AudioFlinger,
-     *     The HAL is in stereo mode when playing multi-channel compressed audio over HDMI;
-     *   - format from the perspective of the application and the AudioFlinger;
-     *   - sample rate from the perspective of the application and the AudioFlinger,
-     *     The HAL may be running at a higher sample rate if, for example, playing wrapped EAC3.
+     * @return format of the stream presented to AudioFlinger.
      */
-    [[nodiscard]] virtual audio_config_base_t getAudioProperties() const;
+    [[nodiscard]] virtual audio_format_t getFormat() const { return mHalAudioConfig.format; }
 
     virtual status_t flush();
     virtual status_t standby();
@@ -105,6 +100,7 @@ protected:
     uint64_t             mFramesWrittenAtStandby = 0;
     uint64_t             mRenderPosition = 0; // reset by flush, standby, or presentation complete
     int                  mRateMultiplier = 1;
+    audio_config_base_t  mHalAudioConfig = AUDIO_CONFIG_BASE_INITIALIZER;
     bool                 mHalFormatHasProportionalFrames = false;
     size_t               mHalFrameSize = 0;
     bool                 mExpectRetrograde = false; // see presentationComplete
