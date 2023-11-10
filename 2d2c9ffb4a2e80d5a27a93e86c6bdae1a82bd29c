@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c25415_d01ffc4a",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-10T05:04:01Z",
+      "side": 1,
+      "message": "while we are at it, we can probably fix this comment, because it\u0027s not correct, and we are changing a similar comment in getFormat to something similarly incorrect.",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 87
+      },
+      "revId": "2d2c9ffb4a2e80d5a27a93e86c6bdae1a82bd29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
