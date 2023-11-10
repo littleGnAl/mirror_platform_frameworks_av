@@ -1493,16 +1493,19 @@ status_t AudioPolicyManager::openDirectOutput(audio_stream_type_t stream,
 
     status_t status =
             outputDesc->open(config, nullptr /* mixerConfig */, devices, stream, flags, output);
-
+    if (status != NO_ERROR) {
+        *output = AUDIO_IO_HANDLE_NONE;
+        return BAD_VALUE;
+    }
     // only accept an output with the requested parameters
-    if (status != NO_ERROR ||
+    /*if (status != NO_ERROR ||
         (config->sample_rate != 0 && config->sample_rate != outputDesc->getSamplingRate()) ||
         (config->format != AUDIO_FORMAT_DEFAULT && config->format != outputDesc->getFormat()) ||
         (config->channel_mask != 0 && config->channel_mask != outputDesc->getChannelMask())) {
-        ALOGV("%s failed opening direct output: output %d sample rate %d %d,"
-                "format %d %d, channel mask %04x %04x", __func__, *output, config->sample_rate,
-                outputDesc->getSamplingRate(), config->format, outputDesc->getFormat(),
-                config->channel_mask, outputDesc->getChannelMask());
+        ALOGV("%s failed opening direct output: status %d output %d sample rate %d %d,"
+                "format %#x %#x, channel mask %04x %04x", __func__, status, *output,
+                config->sample_rate, outputDesc->getSamplingRate(), config->format,
+                outputDesc->getFormat(), config->channel_mask, outputDesc->getChannelMask());
         if (*output != AUDIO_IO_HANDLE_NONE) {
             outputDesc->close();
         }
@@ -1513,7 +1516,7 @@ status_t AudioPolicyManager::openDirectOutput(audio_stream_type_t stream,
         }
         *output = AUDIO_IO_HANDLE_NONE;
         return BAD_VALUE;
-    }
+    }*/
     outputDesc->mDirectOpenCount = 1;
     outputDesc->mDirectClientSession = session;
 
