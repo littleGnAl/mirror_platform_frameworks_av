@@ -105,6 +105,24 @@
       "message": "If ACodec is only used on devices with OMX, then this won\u0027t matter for Android V, so we can leave these codepaths unchanged and focus on the other change in this topic?",
       "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6628a229_1d0db35a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-10T00:18:06Z",
+      "side": 1,
+      "message": "Right, that\u0027s what the thread with Sungtak in this CL is discussing.",
+      "parentUuid": "5fd9eea9_1525e55a",
+      "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
