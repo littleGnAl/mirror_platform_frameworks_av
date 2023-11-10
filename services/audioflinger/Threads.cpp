@@ -3126,15 +3126,20 @@ NO_THREAD_SAFETY_ANALYSIS
 // 'moveEffectChain_ll' requires holding mutex 'AudioFlinger_Mutex' exclusively
 {
     // unfortunately we have no way of recovering from errors here, hence the LOG_ALWAYS_FATAL
-    const audio_config_base_t audioConfig = mOutput->getAudioProperties();
-    mSampleRate = audioConfig.sample_rate;
-    mChannelMask = audioConfig.channel_mask;
+    status_t result = mOutput->stream->getAudioProperties(&mSampleRate, &mChannelMask, &mHALFormat);
+    LOG_ALWAYS_FATAL_IF(result != OK, "Error retrieving audio properties from HAL: %d", result);
     if (!audio_is_output_channel(mChannelMask)) {
         LOG_ALWAYS_FATAL("HAL channel mask %#x not valid for output", mChannelMask);
     }
     if (hasMixer() && !isValidPcmSinkChannelMask(mChannelMask)) {
         LOG_ALWAYS_FATAL("HAL channel mask %#x not supported for mixed output",
                 mChannelMask);
+    }
+    if (!audio_is_valid_format(mHALFormat)) {
+        LOG_ALWAYS_FATAL("HAL format %#x not valid for output", mHALFormat);
+    }
+    if (hasMixer() && !isValidPcmSinkFormat(mHALFormat)) {
+        LOG_FATAL("HAL format %#x not supported for mixed output", mHALFormat);
     }
 
     if (mMixerChannelMask == AUDIO_CHANNEL_NONE) {
@@ -3145,20 +3150,9 @@ NO_THREAD_SAFETY_ANALYSIS
     mBalance.setChannelMask(mChannelMask);
 
     uint32_t mixerChannelCount = audio_channel_count_from_out_mask(mMixerChannelMask);
-
-    // Get actual HAL format.
-    status_t result = mOutput->stream->getAudioProperties(nullptr, nullptr, &mHALFormat);
-    LOG_ALWAYS_FATAL_IF(result != OK, "Error when retrieving output stream format: %d", result);
     // Get format from the shim, which will be different than the HAL format
     // if playing compressed audio over HDMI passthrough.
-    mFormat = audioConfig.format;
-    if (!audio_is_valid_format(mFormat)) {
-        LOG_ALWAYS_FATAL("HAL format %#x not valid for output", mFormat);
-    }
-    if (hasMixer() && !isValidPcmSinkFormat(mFormat)) {
-        LOG_FATAL("HAL format %#x not supported for mixed output",
-                mFormat);
-    }
+    mFormat = mOutput->getFormat();
     mFrameSize = mOutput->getFrameSize();
     result = mOutput->stream->getBufferSize(&mBufferSize);
     LOG_ALWAYS_FATAL_IF(result != OK,
