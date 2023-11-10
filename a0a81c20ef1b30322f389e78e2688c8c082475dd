@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c61d7b_eb6e3875",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3155,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-10T06:14:32Z",
+      "side": 1,
+      "message": "now that mFormat is the raw format rather than the HAL format in the case where teh SpdifStreamOut wrapper is in the path, the timing of DirectOutputThread (e.g. all instances of audio_has_proportional_frames(mFormat), should be evaluated), but it would at least be consistent with the timing of encoded output streams that don\u0027t take the SpdifStreamOut path.",
+      "range": {
+        "startLine": 3155,
+        "startChar": 4,
+        "endLine": 3155,
+        "endChar": 35
+      },
+      "revId": "a0a81c20ef1b30322f389e78e2688c8c082475dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
