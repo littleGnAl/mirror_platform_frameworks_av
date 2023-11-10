@@ -123,6 +123,24 @@
       "parentUuid": "5fd9eea9_1525e55a",
       "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d610937_76e7bcb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-10T00:20:27Z",
+      "side": 1,
+      "message": "I know, but if they have OMX, they already have HIDL, so they can install the HIDL allocator. OMX\u003c-\u003eAcodec coupling means we shouldn\u0027t have to change this, because if this is used, they\u0027ll already be using HIDL and remove the allocator doesn\u0027t buy us that much more, so I don\u0027t think we need to risk it.\n\nThat being said, they SHOULD NOT have HIDL... what is this? Can we move this discussion to another thread or bug?",
+      "parentUuid": "6628a229_1d0db35a",
+      "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
