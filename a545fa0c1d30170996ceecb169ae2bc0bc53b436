@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f7a775_6ac82dd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-10T10:42:33Z",
+      "side": 1,
+      "message": "Given the size of this \"workaround\", isn\u0027t it simpler to force a legacy remote submix input device connection in audio policy manager after parsing the audio policy config and if no legacy remote submix in is attached?",
+      "revId": "a545fa0c1d30170996ceecb169ae2bc0bc53b436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
