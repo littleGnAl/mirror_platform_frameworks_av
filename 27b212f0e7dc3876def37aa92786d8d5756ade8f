@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23adffad_d0e41b95",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-11T09:56:52Z",
+      "side": 1,
+      "message": "I guess we nee to close fd here also.",
+      "revId": "27b212f0e7dc3876def37aa92786d8d5756ade8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
