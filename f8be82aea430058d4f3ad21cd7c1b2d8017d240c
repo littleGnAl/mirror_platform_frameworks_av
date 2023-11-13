@@ -22,6 +22,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d25fe44_cd16e322",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-11-13T23:05:06Z",
+      "side": 1,
+      "message": "surface have to include undequeued buffers(mRenderingDepth). on the other hand, OutputBufferQueue in Codec2Client can only have buffers except for undequeued buffers. that is why maxDequeueCount is differerent.",
+      "parentUuid": "45aeb90d_644e54fa",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
