@@ -46,6 +46,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0937d3f_e20c97fe",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-13T23:57:16Z",
+      "side": 1,
+      "message": "In the case L2079 should have output-\u003emaxDequeueBuffers instead?\n(ensuring mRendderingDepth out of maxDequeueCount not being dequeued.)",
+      "parentUuid": "8d25fe44_cd16e322",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
