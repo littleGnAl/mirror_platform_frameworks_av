@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d769fa8_d09d979c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-13T18:50:26Z",
+      "side": 1,
+      "message": "I didn\u0027t add new createBlockPool interface to frameworks/av/media/codec2/vndk/include/C2PlatformStorePluginLoader.h\n\nIs it necessary?",
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
