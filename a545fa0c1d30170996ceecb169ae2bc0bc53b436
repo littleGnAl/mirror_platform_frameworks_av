@@ -34,6 +34,24 @@
       "parentUuid": "80f7a775_6ac82dd7",
       "revId": "a545fa0c1d30170996ceecb169ae2bc0bc53b436",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c83dbc_5efe6820",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-13T08:33:38Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\n\nI would like to discuss the observation \"pick just one randomly for \"Supported devices.\"\". In which context exactly? If this was true in all context, we would have a problem to match a specific remote submix device when more than one dynamic audio policy mixes are installed, each with a different address.\nWe could merge this CL as is but I would like to understand better/fix any discrepancy between the handling of detachable devices that distinguish on address and others.",
+      "parentUuid": "c226c48d_fb196a6b",
+      "revId": "a545fa0c1d30170996ceecb169ae2bc0bc53b436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
