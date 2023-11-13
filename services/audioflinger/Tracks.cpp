@@ -451,6 +451,9 @@ Status TrackHandle::getTimestamp(media::AudioTimestampInternal* timestamp,
     if (*_aidl_return != OK) {
         return Status::ok();
     }
+    if (legacy.mPosition > INT_MAX) {
+        legacy.mPosition = legacy.mPosition & INT_MAX;
+    }
     *timestamp = legacy2aidl_AudioTimestamp_AudioTimestampInternal(legacy).value();
     return Status::ok();
 }
