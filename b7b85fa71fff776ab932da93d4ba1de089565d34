@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704888b3_e2607a3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-11-13T12:08:53Z",
+      "side": 1,
+      "message": "Do you have a bug that describes how to reproduce this problem exactly? \n\nPlease also note that the scaling mode shouldn\u0027t be set when configuring the codec but only when receiving output buffers. See https://developer.android.com/reference/android/media/MediaCodec#setVideoScalingMode(int) where this is explained on the codec Java APIs.",
+      "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
