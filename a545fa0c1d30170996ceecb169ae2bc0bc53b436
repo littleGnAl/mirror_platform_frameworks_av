@@ -52,6 +52,24 @@
       "parentUuid": "c226c48d_fb196a6b",
       "revId": "a545fa0c1d30170996ceecb169ae2bc0bc53b436",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f4c8c9_5b883d29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-13T17:14:26Z",
+      "side": 1,
+      "message": "Sure. This is the example of the dump that I observed when libaudiohal@aidl does not \"hide\" the \"template device port\" (no address, dynamic profiles) from the APM.\n\nFirst, the expected dump which happens sometimes:\n\n```\n   - Input MixPorts (1):\n      1. \"r_submix input\"; 0x0000 (AUDIO_INPUT_FLAG_NONE)\n       - Profiles (1):\n          1. \"\"; AUDIO_FORMAT_PCM_16_BIT (0x1)\n             sampling rates: 8000, 11025, 16000, 32000, 44100, 48000\n             channel masks: 0x000c, 0x0010\n             AUDIO_ENCAPSULATION_TYPE_NONE\n       - Supported devices (1):\n\u003e\u003e\u003e       1. \"Remote Submix In\"; {AUDIO_DEVICE_IN_REMOTE_SUBMIX, @:0}\n           Encapsulation modes: 0, metadata types: 0\n       - maxOpenCount: 20; curOpenCount: 0\n       - maxActiveCount: 10; curActiveCount: 0\n       - recommendedMuteDurationMs: 0 ms\n   - Declared devices (3):\n    1. \"Remote Submix Out\"; {AUDIO_DEVICE_OUT_REMOTE_SUBMIX, @:}\n       Encapsulation modes: 0, metadata types: 0\n     - Profiles (1):\n        1. \"\"; [dynamic format][dynamic channels][dynamic rates]; AUDIO_FORMAT_DEFAULT (0x0)\n           AUDIO_ENCAPSULATION_TYPE_NONE\n    2. \"Remote Submix In\"; {AUDIO_DEVICE_IN_REMOTE_SUBMIX, @:0}\n       Encapsulation modes: 0, metadata types: 0\n     - Profiles (1):\n        1. \"\"; AUDIO_FORMAT_PCM_16_BIT (0x1)\n           sampling rates: 8000, 11025, 16000, 32000, 44100, 48000\n           channel masks: 0x000c, 0x0010\n           AUDIO_ENCAPSULATION_TYPE_NONE\n    3. \"Remote Submix In\"; {AUDIO_DEVICE_IN_REMOTE_SUBMIX, @:}\n       Encapsulation modes: 0, metadata types: 0\n     - Profiles (1):\n        1. \"\"; [dynamic format][dynamic channels][dynamic rates]; AUDIO_FORMAT_DEFAULT (0x0)\n           AUDIO_ENCAPSULATION_TYPE_NONE\n   - Audio Routes (2):\n      1. Mix; Sink: \"Remote Submix Out\"\n         Sources: \"r_submix output\"\n      2. Mix; Sink: \"r_submix input\"\n         Sources: \"Remote Submix In\", \"Remote Submix In\"\n```\n\nSecond, the dump which also happens sometimes, where \"Supported devices\" picks up the \"template device port\":\n\n```\n   - Input MixPorts (1):\n      1. \"r_submix input\"; 0x0000 (AUDIO_INPUT_FLAG_NONE)\n       - Profiles (1):\n          1. \"\"; AUDIO_FORMAT_PCM_16_BIT (0x1)\n             sampling rates: 8000, 11025, 16000, 32000, 44100, 48000\n             channel masks: 0x000c, 0x0010\n             AUDIO_ENCAPSULATION_TYPE_NONE\n       - Supported devices (1):\n\u003e\u003e\u003e       1. \"Remote Submix In\"; {AUDIO_DEVICE_IN_REMOTE_SUBMIX, @:}\n           Encapsulation modes: 0, metadata types: 0\n       - maxOpenCount: 20; curOpenCount: 0\n       - maxActiveCount: 10; curActiveCount: 0\n       - recommendedMuteDurationMs: 0 ms\n   - Declared devices (3):\n    1. \"Remote Submix Out\"; {AUDIO_DEVICE_OUT_REMOTE_SUBMIX, @:0}\n       Encapsulation modes: 0, metadata types: 0\n     - Profiles (1):\n        1. \"\"; [dynamic format][dynamic channels][dynamic rates]; AUDIO_FORMAT_DEFAULT (0x0)\n           AUDIO_ENCAPSULATION_TYPE_NONE\n    2. \"Remote Submix In\"; {AUDIO_DEVICE_IN_REMOTE_SUBMIX, @:}\n       Encapsulation modes: 0, metadata types: 0\n     - Profiles (1):\n        1. \"\"; [dynamic format][dynamic channels][dynamic rates]; AUDIO_FORMAT_DEFAULT (0x0)\n           AUDIO_ENCAPSULATION_TYPE_NONE\n    3. \"Remote Submix In\"; {AUDIO_DEVICE_IN_REMOTE_SUBMIX, @:0}\n       Encapsulation modes: 0, metadata types: 0\n     - Profiles (1):\n        1. \"\"; AUDIO_FORMAT_PCM_16_BIT (0x1)\n           sampling rates: 8000, 11025, 16000, 32000, 44100, 48000\n           channel masks: 0x000c, 0x0010\n           AUDIO_ENCAPSULATION_TYPE_NONE\n   - Audio Routes (2):\n      1. Mix; Sink: \"Remote Submix Out\"\n         Sources: \"r_submix output\"\n      2. Mix; Sink: \"r_submix input\"\n         Sources: \"Remote Submix In\", \"Remote Submix In\"\n```\n\nIt seems that the first port in the list of \"Declared devices\" gets picked.\n\nThe situation when only the \"template device port\" is in the list of supported devices is problematic as APM can\u0027t choose it because r_submix \"distinguishes on address\", this an input for \"R_SUBMIX @0\" can\u0027t be found which results in a failure when opening a stream.",
+      "parentUuid": "77c83dbc_5efe6820",
+      "revId": "a545fa0c1d30170996ceecb169ae2bc0bc53b436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
