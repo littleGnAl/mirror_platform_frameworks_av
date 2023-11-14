@@ -198,8 +198,8 @@ private:
 
             // determine number of frames for Tee
             if (frames == 0) {
-                // TODO: consider varying frame count based on type.
-                frames = DEFAULT_TEE_FRAMES;
+                frames = (static_cast<long long>(DEFAULT_TEE_DURATION_MS) * format.mSampleRate)
+                            / 1000;
             }
 
             // TODO: should we check minimum number of frames?
@@ -260,8 +260,7 @@ private:
         static NBAIO_SinkSource makeSinkSource(
                 const NBAIO_Format &format, size_t frames, bool *enabled);
 
-        // 0x200000 stereo 16-bit PCM frames = 47.5 seconds at 44.1 kHz, 8 megabytes
-        static constexpr size_t DEFAULT_TEE_FRAMES = 0x200000;
+        static constexpr size_t DEFAULT_TEE_DURATION_MS = 60000;
 
         // atomic status checking
         std::atomic<bool> mEnabled{false};
