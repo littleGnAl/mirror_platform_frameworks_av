@@ -94,6 +94,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ec7e51_4fb69b14",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-14T06:36:05Z",
+      "side": 1,
+      "message": "L2075 is not setting max buffer, it\u0027s setting max dequeued buffer.\n\nmax dequeued buffer \u003d max buffers - min undequeued buffers.\n\nAs long as max dequeued buffer count was set by L2073.\nL2079 should configured with same max dequeued buffer.\n\n1) Initial dequeueed buffer count  withtout queueBuffer \u003d max buffers \n2) cancel buffers \u003d min undequeued buffers.\n\nAfter first queueBuffer to surface your max dequeued buffer count is \u0027max dequeued buffer count\u0027\n\nSo In this code, you seems to mix \u0027max bufers\u0027 and \u0027max dequeued buffer count\u0027.",
+      "parentUuid": "d6fea76f_fc44ce54",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
