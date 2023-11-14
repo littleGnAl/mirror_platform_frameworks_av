@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcf8eab_13e62270",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-14T18:34:55Z",
+      "side": 1,
+      "message": "The default ports in this context are local to the module. They are used when the framework specifies the `DEFAULT` device to use, see https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudiohal/impl/DeviceHalAidl.cpp;l\u003d1179;drc\u003da7761edc8d3d49a3e9bf684fe76127221ad8959e.\n\nIn HIDL, the configuration actually only specifies the default output device (see an example https://cs.android.com/android/platform/superproject/main/+/main:device/generic/goldfish/audio/policy/primary_audio_policy_configuration.xml;l\u003d11;drc\u003d6ba0137604792943447a3b8aa88ae9c367cbf63b). And the APM configuration only has a field for default output as well: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audiopolicy/common/managerdefinitions/include/AudioPolicyConfig.h;l\u003d155;drc\u003d9e459d7393179e7df286601c7536210c6011f090. If multiple modules claim to have the default output, then the first one wins: \nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audiopolicy/common/managerdefinitions/src/Serializer.cpp;l\u003d762;drc\u003d4d83efb34903f694fbcedab81dc3d93ea036b4d8. As I understand it, in the XML there is typically only one default output, although this isn\u0027t strictly enforced.\n\nRegarding \"default input\", since there isn\u0027t a notion of it in the legacy HAL configuration, I don\u0027t know whether the framework actually pushes the request to open a default input down to the HAL or resolves it on its own level.\n\nSo, yes, it\u0027s a bit of a speculation that remote submix input is a default input device, based on an assumption that remote submix devices are always in a separate module. It is more correct to overwrite this only in the case when the default input hasn\u0027t been set.\n\nI also realized I need to fix the code which assigns the default output from the AIDL config. It should also not overwrite the default output if it was already assigned. When processing the AIDL config, the primary module is always put first in the list, thus we will preserve the legacy behavior completely, see https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudiohal/impl/DevicesFactoryHalAidl.cpp;l\u003d85;drc\u003d1f8cf3d2c1e44bacc01227fbea75b46dfb75abf2.",
+      "parentUuid": "c0abf162_ddd1b947",
+      "range": {
+        "startLine": 234,
+        "startChar": 8,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79ea0d62_a1e091aa",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-14T09:36:41Z",
       "side": 1,
       "message": "we should add remotesubmixout in the name to make it clear that this port is only for remote submix out",
+      "range": {
+        "startLine": 1223,
+        "startChar": 12,
+        "endLine": 1223,
+        "endChar": 40
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b805a7_f580cac9",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-14T18:34:55Z",
+      "side": 1,
+      "message": "It\u0027s actually intentional the the mechanism for port replacement on disconnection is generic. The code just checks the `portId` and replaces the removed port with the substitute.",
+      "parentUuid": "79ea0d62_a1e091aa",
       "range": {
         "startLine": 1223,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97ecbe9_0affe33d",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-14T18:34:55Z",
+      "side": 1,
+      "message": "As I\u0027ve mentioned, the port replacement action is generic and is not tailored for remote submix specifically. That\u0027s why we just provide a full port here. \n\nThanks to your comment, I\u0027ve reconsidered the logic for populating the profiles of the \"augmented template\" for the output port. I think it is more proper to connect and then disconnect the output in order to get actual profiles from the HAL. Assigning profiles of the input port assumes that they are the same between input and output ports—although it\u0027s true for now, this is not guaranteed. It is safer to actually retrieve them from the HAL.",
+      "parentUuid": "cb7d25e4_7011c4e2",
+      "range": {
+        "startLine": 1224,
+        "startChar": 0,
+        "endLine": 1224,
+        "endChar": 61
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b7174b3_35fe1e1c",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-14T09:36:41Z",
       "side": 1,
       "message": "sourceIt",
+      "range": {
+        "startLine": 1975,
+        "startChar": 21,
+        "endLine": 1975,
+        "endChar": 28
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1770968_9ce5bc6d",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-14T18:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b7174b3_35fe1e1c",
       "range": {
         "startLine": 1975,
         "startChar": 21,
