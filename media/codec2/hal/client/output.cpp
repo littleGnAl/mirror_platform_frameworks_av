@@ -141,9 +141,12 @@ status_t attachToBufferQueue(const C2ConstGraphicBlock& block,
                             "status = " << INVALID_OPERATION << ".";
             return INVALID_OPERATION;
         }
+        syncVar->notifyDequeuedLocked();
+        syncVar->unlock();
         result = igbp->attachBuffer(bqSlot, graphicBuffer);
-        if (result == OK) {
-            syncVar->notifyDequeuedLocked();
+        syncVar->lock();
+        if (result != OK) {
+            syncVar->notifyQueuedLocked();
         }
         syncVar->unlock();
     } else {
@@ -435,9 +438,9 @@ status_t OutputBufferQueue::outputBuffer(
 
         auto syncVar = syncMem ? syncMem->mem() : nullptr;
         if(syncVar) {
-            syncVar->lock();
             status = outputIgbp->queueBuffer(static_cast<int>(bqSlot),
                                          input, output);
+            syncVar->lock();
             if (status == OK) {
                 syncVar->notifyQueuedLocked();
             }
@@ -490,9 +493,9 @@ status_t OutputBufferQueue::outputBuffer(
     auto syncVar = syncMem ? syncMem->mem() : nullptr;
     status_t status = OK;
     if (syncVar) {
-        syncVar->lock();
         status = outputIgbp->queueBuffer(static_cast<int>(bqSlot),
                                                   input, output);
+        syncVar->lock();
         if (status == OK) {
             syncVar->notifyQueuedLocked();
         }
