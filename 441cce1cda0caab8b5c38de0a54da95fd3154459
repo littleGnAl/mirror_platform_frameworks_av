@@ -16,6 +16,23 @@
       "message": "Hi Mikhail,\n\nThis is same keystone change : https://keystone-qcom-review.googlesource.com/c/platform/frameworks/av/+/1581796 \n\nI have removed FM for now, as I am discussing regarding FM internally, will conclude on that, will create new CL if needed.\n\n\nAFE_PROXY/ IN_OUT are more like submix at DSP level, and these are connected as set device connection state, so I think these qualify for virtual devices.",
       "revId": "441cce1cda0caab8b5c38de0a54da95fd3154459",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6768a395_3628386b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-14T21:46:20Z",
+      "side": 1,
+      "message": "Shunkai, could you please approve?",
+      "revId": "441cce1cda0caab8b5c38de0a54da95fd3154459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
