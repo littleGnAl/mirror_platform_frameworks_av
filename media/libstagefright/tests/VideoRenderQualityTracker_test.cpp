@@ -127,6 +127,7 @@ TEST_F(VideoRenderQualityTrackerTest, getFromServerConfigurableFlags_withDefault
     EXPECT_EQ(c.maxExpectedContentFrameDurationUs, d.maxExpectedContentFrameDurationUs);
     EXPECT_EQ(c.frameRateDetectionToleranceUs, d.frameRateDetectionToleranceUs);
     EXPECT_EQ(c.liveContentFrameDropToleranceUs, d.liveContentFrameDropToleranceUs);
+    EXPECT_EQ(c.pauseAudioLatencyUs, d.pauseAudioLatencyUs);
     EXPECT_EQ(c.freezeDurationMsHistogramBuckets, d.freezeDurationMsHistogramBuckets);
     EXPECT_EQ(c.freezeDurationMsHistogramToScore, d.freezeDurationMsHistogramToScore);
     EXPECT_EQ(c.freezeDistanceMsHistogramBuckets, d.freezeDistanceMsHistogramBuckets);
@@ -154,6 +155,7 @@ TEST_F(VideoRenderQualityTrackerTest, getFromServerConfigurableFlags_withEmpty) 
     EXPECT_EQ(c.maxExpectedContentFrameDurationUs, d.maxExpectedContentFrameDurationUs);
     EXPECT_EQ(c.frameRateDetectionToleranceUs, d.frameRateDetectionToleranceUs);
     EXPECT_EQ(c.liveContentFrameDropToleranceUs, d.liveContentFrameDropToleranceUs);
+    EXPECT_EQ(c.pauseAudioLatencyUs, d.pauseAudioLatencyUs);
     EXPECT_EQ(c.freezeDurationMsHistogramBuckets, d.freezeDurationMsHistogramBuckets);
     EXPECT_EQ(c.freezeDurationMsHistogramToScore, d.freezeDurationMsHistogramToScore);
     EXPECT_EQ(c.freezeDistanceMsHistogramBuckets, d.freezeDistanceMsHistogramBuckets);
@@ -181,6 +183,7 @@ TEST_F(VideoRenderQualityTrackerTest, getFromServerConfigurableFlags_withInvalid
     EXPECT_EQ(c.maxExpectedContentFrameDurationUs, d.maxExpectedContentFrameDurationUs);
     EXPECT_EQ(c.frameRateDetectionToleranceUs, d.frameRateDetectionToleranceUs);
     EXPECT_EQ(c.liveContentFrameDropToleranceUs, d.liveContentFrameDropToleranceUs);
+    EXPECT_EQ(c.pauseAudioLatencyUs, d.pauseAudioLatencyUs);
     EXPECT_EQ(c.freezeDurationMsHistogramBuckets, d.freezeDurationMsHistogramBuckets);
     EXPECT_EQ(c.freezeDurationMsHistogramToScore, d.freezeDurationMsHistogramToScore);
     EXPECT_EQ(c.freezeDistanceMsHistogramBuckets, d.freezeDistanceMsHistogramBuckets);
@@ -208,6 +211,8 @@ TEST_F(VideoRenderQualityTrackerTest, getFromServerConfigurableFlags_withAlmostV
                 return "10b0";
             } else if (flag == "render_metrics_live_content_frame_drop_tolerance_us") {
                 return "c100";
+            } else if (flag == "render_metrics_pause_audio_latency_us") {
+                return "1ab0";
             } else if (flag == "render_metrics_freeze_duration_ms_histogram_buckets") {
                 return "1,5300,3b400,123";
             } else if (flag == "render_metrics_freeze_duration_ms_histogram_to_score") {
@@ -243,6 +248,7 @@ TEST_F(VideoRenderQualityTrackerTest, getFromServerConfigurableFlags_withAlmostV
     EXPECT_EQ(c.maxExpectedContentFrameDurationUs, d.maxExpectedContentFrameDurationUs);
     EXPECT_EQ(c.frameRateDetectionToleranceUs, d.frameRateDetectionToleranceUs);
     EXPECT_EQ(c.liveContentFrameDropToleranceUs, d.liveContentFrameDropToleranceUs);
+    EXPECT_EQ(c.pauseAudioLatencyUs, d.pauseAudioLatencyUs);
     EXPECT_EQ(c.freezeDurationMsHistogramBuckets, d.freezeDurationMsHistogramBuckets);
     EXPECT_EQ(c.freezeDurationMsHistogramToScore, d.freezeDurationMsHistogramToScore);
     EXPECT_EQ(c.freezeDistanceMsHistogramBuckets, d.freezeDistanceMsHistogramBuckets);
@@ -270,6 +276,8 @@ TEST_F(VideoRenderQualityTrackerTest, getFromServerConfigurableFlags_withValid) 
                 return "3000";
             } else if (flag == "render_metrics_live_content_frame_drop_tolerance_us") {
                 return "4000";
+            } else if (flag == "render_metrics_pause_audio_latency_us") {
+                return "300000";
             } else if (flag == "render_metrics_freeze_duration_ms_histogram_buckets") {
                 return "100,200,300,400";
             } else if (flag == "render_metrics_freeze_duration_ms_histogram_to_score") {
@@ -314,6 +322,8 @@ TEST_F(VideoRenderQualityTrackerTest, getFromServerConfigurableFlags_withValid) 
     EXPECT_NE(c.frameRateDetectionToleranceUs, d.frameRateDetectionToleranceUs);
     EXPECT_EQ(c.liveContentFrameDropToleranceUs, 4000);
     EXPECT_NE(c.liveContentFrameDropToleranceUs, d.liveContentFrameDropToleranceUs);
+    EXPECT_EQ(c.pauseAudioLatencyUs, 300000);
+    EXPECT_NE(c.pauseAudioLatencyUs, d.pauseAudioLatencyUs);
     {
         std::vector<int32_t> expected({100,200,300,400});
         EXPECT_EQ(c.freezeDurationMsHistogramBuckets, expected);
@@ -1022,6 +1032,54 @@ TEST_F(VideoRenderQualityTrackerTest, capturesOverallJudderScore) {
     h.render({20, 20, 14, 20, 20}); // bucket = 1, bucket count = 3, bucket score = 300
     h.render({20, 20, 10, 20, 20}); // bucket = 2, bucket count = 2, bucket score = 2000
     EXPECT_EQ(h.getMetrics().judderScore, 10 + 300 + 2000);
+}
+
+TEST_F(VideoRenderQualityTrackerTest, doesNotCountCatchUpAfterPauseAsFreeze) {
+    Configuration c;
+    c.enabled = true;
+    c.pauseAudioLatencyUs = 200 * 1000; // allows for up to 10 frames to be dropped to catch up
+                                        // to the audio position
+    Helper h(20, c);
+    // A few frames followed by a long pause
+    h.render({20, 20, 1000});
+    h.drop(10); // simulate catching up to audio
+    h.render({20, 20, 1000});
+    h.drop(11); // simulate catching up to audio but then also dropping frames
+    h.render({20});
+
+    // Only 1 freeze is counted because the first freeze (200ms) because it's equal to or below the
+    // pause latency allowance, and the algorithm assumes a legitimate case of the video trying to
+    // catch up to the audio position, which continued to play for a short period of time (less than
+    // 200ms) after the pause was initiated
+    EXPECT_EQ(h.getMetrics().freezeDurationMsHistogram.getCount(), 1);
+}
+
+TEST_F(VideoRenderQualityTrackerTest, capturesMaximumContentDroppedAfterPause) {
+    Configuration c;
+    c.enabled = true;
+    c.pauseAudioLatencyUs = 200 * 1000; // allows for up to 10 frames to be dropped to catch up
+                                        // to the audio position
+    Helper h(20, c);
+
+    // Freezes are below the pause latency are captured
+    h.render({20, 20, 1000});
+    h.drop(6);
+    h.render({20, 20, 1000});
+    h.drop(8);
+    h.render({20, 20, 1000});
+    h.drop(7);
+    h.render({20});
+    EXPECT_EQ(h.getMetrics().maxContentDroppedAfterPauseMs, 8 * 20);
+
+    // Freezes are above the pause latency are also captured
+    h.render({20, 20, 1000});
+    h.drop(10);
+    h.render({20, 20, 1000});
+    h.drop(12);
+    h.render({20, 20, 1000});
+    h.drop(11);
+    h.render({20});
+    EXPECT_EQ(h.getMetrics().maxContentDroppedAfterPauseMs, 12 * 20);
 }
 
 } // android
