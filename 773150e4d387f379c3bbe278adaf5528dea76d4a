@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42800cc2_5542a6c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-14T23:59:15Z",
+      "side": 1,
+      "message": "Sorry, Aditya, that\u0027s not the right way to fix this problem. The proper way is to take aosp/2826596 and complement it with a change that also updates places like this one: https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/common/all-versions/default/HidlUtils.cpp;l\u003d194;drc\u003db52e93f5165c5f909e2a22478891750870969a88. There are classes generated from HIDL that use hardcoded value of 32 characters for the address: https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/common/6.0/types.hal;l\u003d1090;drc\u003dc91b679ac1ae75ac60a277be7d4a6f573e4c22bf and https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/common/6.0/types.hal;l\u003d1146;drc\u003dc91b679ac1ae75ac60a277be7d4a6f573e4c22bf. When filling them, we need to take the minimum of the array length and AUDIO_DEVICE_MAX_ADDRESS_LEN.",
+      "revId": "773150e4d387f379c3bbe278adaf5528dea76d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
