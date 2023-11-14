@@ -118,6 +118,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d989d602_4645e1f6",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-14T07:13:37Z",
+      "side": 1,
+      "message": "FYI \nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/nativewindow/include/vndk/window.h;drc\u003d538cedc381f66f6b07265f82be65e5bc725c7e87;l\u003d69",
+      "parentUuid": "34ec7e51_4fb69b14",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
