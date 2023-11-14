@@ -141,6 +141,24 @@
       "parentUuid": "6628a229_1d0db35a",
       "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a3669d_78e2af04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-14T21:10:14Z",
+      "side": 1,
+      "message": "I think this is not needed because of my previous comments + @smoreland@google.com\u0027s. I\u0027m going to abandon this CL now.",
+      "parentUuid": "8984f78a_7e3c58e1",
+      "revId": "cd9613bd79de61d1c106ccb6e7c01e14dd7f3b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
