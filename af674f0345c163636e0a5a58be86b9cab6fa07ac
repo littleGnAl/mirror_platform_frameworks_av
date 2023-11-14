@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0abf162_ddd1b947",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-14T09:36:41Z",
+      "side": 1,
+      "message": "Why are we overwriting the default input port with the remote submix input device.\n\nThis is for a given module: how does the APM handle the case where sevreal modules expose a default input device (e.g. remote submix and stub module)?",
+      "range": {
+        "startLine": 234,
+        "startChar": 8,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ea0d62_a1e091aa",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-14T09:36:41Z",
+      "side": 1,
+      "message": "we should add remotesubmixout in the name to make it clear that this port is only for remote submix out",
+      "range": {
+        "startLine": 1223,
+        "startChar": 12,
+        "endLine": 1223,
+        "endChar": 40
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7d25e4_7011c4e2",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-14T09:36:41Z",
+      "side": 1,
+      "message": "I don\u0027t understand this part: why not create a new fully configure profile for the remote submix out device in initCheck() when cloned form the input remote submix profile instead of copying this into mDisconnectedPortReplacement? Does the config for the remote submix out with address 0 change?",
+      "range": {
+        "startLine": 1224,
+        "startChar": 0,
+        "endLine": 1224,
+        "endChar": 61
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7174b3_35fe1e1c",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-14T09:36:41Z",
+      "side": 1,
+      "message": "sourceIt",
+      "range": {
+        "startLine": 1975,
+        "startChar": 21,
+        "endLine": 1975,
+        "endChar": 28
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
