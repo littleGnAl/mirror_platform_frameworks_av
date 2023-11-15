@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed2ca0f_ee1efab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T05:02:26Z",
+      "side": 1,
+      "message": "looks good, minor doc nits.",
+      "revId": "c84acf22bb54aaabc826ef530bfdf798f4fb65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee22ee3f_90ae4dd7",
+        "filename": "services/audioflinger/afutils/NBAIO_Tee.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T05:02:26Z",
+      "side": 1,
+      "message": "nit 0 /* RAW */);",
+      "range": {
+        "startLine": 444,
+        "startChar": 77,
+        "endLine": 444,
+        "endChar": 80
+      },
+      "revId": "c84acf22bb54aaabc826ef530bfdf798f4fb65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a335b07_ccd70768",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T05:02:26Z",
+      "side": 1,
+      "message": "nit: ... WAV encoding IEC61937 data.",
+      "range": {
+        "startLine": 102,
+        "startChar": 51,
+        "endLine": 102,
+        "endChar": 60
+      },
+      "revId": "c84acf22bb54aaabc826ef530bfdf798f4fb65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c077c3c2_3c5a3c51",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T05:02:26Z",
+      "side": 1,
+      "message": "nit: prefer reinterpret_cast\u003cconst char *\u003e to avoid const issues.",
+      "range": {
+        "startLine": 131,
+        "startChar": 18,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "c84acf22bb54aaabc826ef530bfdf798f4fb65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb868c0_2de7061a",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T05:02:26Z",
+      "side": 1,
+      "message": "nit: a slight preference not to have this space alignment forward going.\n\n    NBAIO_TEE mTee;",
+      "range": {
+        "startLine": 121,
+        "startChar": 13,
+        "endLine": 121,
+        "endChar": 25
+      },
+      "revId": "c84acf22bb54aaabc826ef530bfdf798f4fb65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
