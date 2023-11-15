@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2826f84a_2c8d1134",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T20:23:12Z",
+      "side": 1,
+      "message": "Sorry for the late reply - some minor nits.",
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "260fa274_1e771f30",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T20:23:12Z",
+      "side": 1,
+      "message": "nit: maybe use for (const auto\u0026 paramPair : mParamPairs) {",
+      "range": {
+        "startLine": 2836,
+        "startChar": 4,
+        "endLine": 2836,
+        "endChar": 57
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c68b381_05845546",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2837,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T20:23:12Z",
+      "side": 1,
+      "message": "nit: maybe we take the lock outside in a nested block so this is more atomic?",
+      "range": {
+        "startLine": 2837,
+        "startChar": 0,
+        "endLine": 2837,
+        "endChar": 34
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c32436_8feeafaf",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2838,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T20:23:12Z",
+      "side": 1,
+      "message": "no need for this (), C++ precedence associates this properly as left to right.",
+      "range": {
+        "startLine": 2838,
+        "startChar": 39,
+        "endLine": 2838,
+        "endChar": 40
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578db1ad_2b8afe87",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2839,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T20:23:12Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2839,
+        "startChar": 0,
+        "endLine": 2839,
+        "endChar": 103
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a3989f_c4255c69",
+        "filename": "media/libaudioclient/include/media/AudioTrack.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T20:23:12Z",
+      "side": 1,
+      "message": "nit: std::vector might be better now.",
+      "range": {
+        "startLine": 1160,
+        "startChar": 4,
+        "endLine": 1160,
+        "endChar": 10
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
