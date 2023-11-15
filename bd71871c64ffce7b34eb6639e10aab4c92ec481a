@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95d8534_aed752e0",
+        "filename": "services/audioflinger/afutils/NBAIO_Tee.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T17:13:15Z",
+      "side": 1,
+      "message": "nit: the LL is superfluous here.  The left operand is already a LL.",
+      "range": {
+        "startLine": 202,
+        "startChar": 33,
+        "endLine": 202,
+        "endChar": 36
+      },
+      "revId": "bd71871c64ffce7b34eb6639e10aab4c92ec481a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661b34a5_de74f673",
+        "filename": "services/audioflinger/afutils/NBAIO_Tee.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T17:13:15Z",
+      "side": 1,
+      "message": "nit: can you make a comment why this is chosen?  not sure if the legacy value is really appropriate - why not 60 seconds?",
+      "range": {
+        "startLine": 263,
+        "startChar": 58,
+        "endLine": 263,
+        "endChar": 63
+      },
+      "revId": "bd71871c64ffce7b34eb6639e10aab4c92ec481a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
