@@ -238,6 +238,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbde0ef_0d11f72f",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-11-15T08:11:56Z",
+      "side": 1,
+      "message": "could you review pa/2829237 and pa/2829238?\nit brings similar effect like as pa/2815918.\n\nI would like to focus that the most important is mMaxDequeueCount at C2SyncVariables.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/vndk/platform/C2SurfaceSyncObj.cpp;l\u003d210;drc\u003d8e2e2c60ded9b5f5eb87095ab2d7bb07c516d74b",
+      "parentUuid": "76c5bb7f_21f64c89",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
