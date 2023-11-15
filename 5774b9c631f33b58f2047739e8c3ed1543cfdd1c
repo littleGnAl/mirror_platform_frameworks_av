@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "687e1a54_c0b6c44c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-15T10:37:01Z",
+      "side": 1,
+      "message": "This change is wanted as a precursor to SpdifStreamIn incoming where the same logic should apply for RecordThread::readInputParameters_l() and the fast capture path should be disabled when mFormat is not PCM.",
+      "revId": "5774b9c631f33b58f2047739e8c3ed1543cfdd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
