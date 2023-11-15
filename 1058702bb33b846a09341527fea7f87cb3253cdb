@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ab5e97_91644b98",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T17:01:14Z",
+      "side": 1,
+      "message": "i am wondering if we should alias AUDIO_FORMAT_IEC61937 as AUDIO_FORMAT_PCM_16_BIT in memcpy_by_audio_format.  Eric and Mikhail what do you think?",
+      "range": {
+        "startLine": 1229,
+        "startChar": 12,
+        "endLine": 1229,
+        "endChar": 34
+      },
+      "revId": "1058702bb33b846a09341527fea7f87cb3253cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
