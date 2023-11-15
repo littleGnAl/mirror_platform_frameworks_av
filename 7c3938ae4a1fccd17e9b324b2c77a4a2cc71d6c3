@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9fe5a1_4f623458",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T16:56:23Z",
+      "side": 1,
+      "message": "just a note - i have a bug to remove this and replace with a compile flag in the .bp.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "7c3938ae4a1fccd17e9b324b2c77a4a2cc71d6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151bbebe_75cca486",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T16:56:23Z",
+      "side": 1,
+      "message": "nit: could be const.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 4
+      },
+      "revId": "7c3938ae4a1fccd17e9b324b2c77a4a2cc71d6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
