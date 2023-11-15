@@ -190,6 +190,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449618d4_e9900b61",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1942201
+      },
+      "writtenOn": "2023-11-15T06:19:15Z",
+      "side": 1,
+      "message": "`so, I think mRenderingDepth means a role of min undequeued buffers.`\nI agree with this and I think currently CCodec is calling setMaxDequeueBufferCount() with extra mRenderingDepth(3) frames. \n\nThat\u0027s why I requested Wonsik to make mRenderingDepth configurable and hopefully change it to 0. The goal is the same with change setMaxDequeuedBufferCount() to setBufferCount() but using a different approach.\n\nAnd if we get rid of mRenderingDepth, it will not be wrong to set max buffers directly.",
+      "parentUuid": "e79333a5_abc561f3",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
