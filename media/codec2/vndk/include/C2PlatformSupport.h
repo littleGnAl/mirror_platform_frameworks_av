@@ -17,6 +17,7 @@
 #ifndef STAGEFRIGHT_CODEC2_PLATFORM_SUPPORT_H_
 #define STAGEFRIGHT_CODEC2_PLATFORM_SUPPORT_H_
 
+#include <C2BufferPriv.h>
 #include <C2Component.h>
 #include <C2ComponentFactory.h>
 
@@ -106,6 +107,83 @@ public:
     };
 };
 
+class Codec2BlockPoolManager {
+public:
+    ~Codec2BlockPoolManager() = default;
+
+    /**
+    * Retrieves a block pool for a component.
+    *
+    * \param id        the local ID of the block pool
+    * \param component the component using the block pool (must be non-null)
+    * \param pool      pointer to where the obtained block pool shall be stored on success. nullptr
+    *                  will be stored here on failure
+    *
+    * \retval C2_OK        the operation was successful
+    * \retval C2_BAD_VALUE the component is null
+    * \retval C2_NOT_FOUND if the block pool does not exist
+    * \retval C2_NO_MEMORY not enough memory to fetch the block pool (this return value is only
+    *                      possible for basic pools)
+    * \retval C2_TIMED_OUT the operation timed out (this return value is only possible for basic pools)
+    * \retval C2_REFUSED   no permission to complete any required allocation (this return value is only
+    *                      possible for basic pools)
+    * \retval C2_CORRUPTED some unknown, unrecoverable error occured during operation (unexpected,
+    *                      this return value is only possible for basic pools)
+    */
+    c2_status_t getBlockPool(
+            C2BlockPool::local_id_t id, std::shared_ptr<const C2Component> component,
+            std::shared_ptr<C2BlockPool> *pool) const;
+
+    /**
+    * Creates a block pool.
+    * \param allocatorId  the allocator ID which is used to allocate blocks
+    * \param component     the component using the block pool (must be non-null)
+    * \param pool          pointer to where the created block pool shall be store on success.
+    *                      nullptr will be stored here on failure
+    *
+    * \retval C2_OK        the operation was successful
+    * \retval C2_BAD_VALUE the component is null
+    * \retval C2_NOT_FOUND if the allocator does not exist
+    * \retval C2_NO_MEMORY not enough memory to create a block pool
+    */
+    c2_status_t createBlockPool(
+            C2PlatformAllocatorStore::id_t allocatorId,
+            std::shared_ptr<const C2Component> component,
+            std::shared_ptr<C2BlockPool> *pool) const;
+
+    /**
+    * Creates a block pool.
+    * \param allocatorId  the allocator ID which is used to allocate blocks
+    * \param components    the components using the block pool
+    * \param pool          pointer to where the created block pool shall be store on success.
+    *                      nullptr will be stored here on failure
+    *
+    * \retval C2_OK        the operation was successful
+    * \retval C2_BAD_VALUE the component is null
+    * \retval C2_NOT_FOUND if the allocator does not exist
+    * \retval C2_NO_MEMORY not enough memory to create a block pool
+    */
+    c2_status_t createBlockPool(
+            C2PlatformAllocatorStore::id_t allocatorId,
+            const std::vector<std::shared_ptr<const C2Component>> &components,
+            std::shared_ptr<C2BlockPool> *pool) const;
+
+    static const Codec2BlockPoolManager &Get(C2PooledBlockPool::BufferPoolVer version);
+
+private:
+    Codec2BlockPoolManager() = delete;
+    explicit Codec2BlockPoolManager(C2PooledBlockPool::BufferPoolVer version);
+
+    template <C2PooledBlockPool::BufferPoolVer VER>
+    static const Codec2BlockPoolManager &GetImpl() {
+        static Codec2BlockPoolManager sInstance(VER);
+        return sInstance;
+    }
+
+    class _C2BlockPoolCache;
+    std::unique_ptr<_C2BlockPoolCache> mBlockPoolCache;
+};
+
 /**
  * Retrieves a block pool for a component.
  *
@@ -125,6 +203,7 @@ public:
  * \retval C2_CORRUPTED some unknown, unrecoverable error occured during operation (unexpected,
  *                      this return value is only possible for basic pools)
  */
+[[deprecated("Use Codec2BlockPoolManager")]]
 c2_status_t GetCodec2BlockPool(
         C2BlockPool::local_id_t id, std::shared_ptr<const C2Component> component,
         std::shared_ptr<C2BlockPool> *pool);
@@ -141,6 +220,7 @@ c2_status_t GetCodec2BlockPool(
  * \retval C2_NOT_FOUND if the allocator does not exist
  * \retval C2_NO_MEMORY not enough memory to create a block pool
  */
+[[deprecated("Use Codec2BlockPoolManager")]]
 c2_status_t CreateCodec2BlockPool(
         C2PlatformAllocatorStore::id_t allocatorId,
         std::shared_ptr<const C2Component> component,
@@ -158,6 +238,7 @@ c2_status_t CreateCodec2BlockPool(
  * \retval C2_NOT_FOUND if the allocator does not exist
  * \retval C2_NO_MEMORY not enough memory to create a block pool
  */
+[[deprecated("Use Codec2BlockPoolManager")]]
 c2_status_t CreateCodec2BlockPool(
         C2PlatformAllocatorStore::id_t allocatorId,
         const std::vector<std::shared_ptr<const C2Component>> &components,

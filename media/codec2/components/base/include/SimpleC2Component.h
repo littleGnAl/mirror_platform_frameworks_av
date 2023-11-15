@@ -22,6 +22,7 @@
 
 #include <C2Component.h>
 #include <C2Config.h>
+#include <C2PlatformSupport.h>
 
 #include <media/stagefright/foundation/AHandler.h>
 #include <media/stagefright/foundation/ALooper.h>
@@ -219,6 +220,8 @@ protected:
 
     C2ReadView mDummyReadView;
     int getHalPixelFormatForBitDepth10(bool allowRGBA1010102);
+
+    static const Codec2BlockPoolManager &GetBlockPoolManager();
 
 private:
     const std::shared_ptr<C2ComponentInterface> mIntf;

@@ -280,6 +280,8 @@ struct Codec2Client : public Codec2ConfigurableClient {
             std::shared_ptr<Codec2ConfigurableClient::AidlBase> const& configurable,
             size_t serviceIndex);
 
+    static const Codec2BlockPoolManager &GetBlockPoolManager();
+
 protected:
     sp<HidlBase1_0> mHidlBase1_0;
     sp<HidlBase1_1> mHidlBase1_1;

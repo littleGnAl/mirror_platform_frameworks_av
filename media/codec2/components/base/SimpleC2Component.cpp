@@ -20,6 +20,7 @@
 
 #include <android/hardware_buffer.h>
 #include <cutils/properties.h>
+#include <codec2/aidl/ParamTypes.h>
 #include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AUtils.h>
 
@@ -1092,7 +1093,7 @@ bool SimpleC2Component::processQueue() {
             }
 
             std::shared_ptr<C2BlockPool> blockPool;
-            err = GetCodec2BlockPool(poolId, shared_from_this(), &blockPool);
+            err = GetBlockPoolManager().getBlockPool(poolId, shared_from_this(), &blockPool);
             ALOGD("Using output block pool with poolID %llu => got %llu - %d",
                     (unsigned long long)poolId,
                     (unsigned long long)(
@@ -1231,6 +1232,15 @@ std::shared_ptr<C2Buffer> SimpleC2Component::createLinearBuffer(
 std::shared_ptr<C2Buffer> SimpleC2Component::createGraphicBuffer(
         const std::shared_ptr<C2GraphicBlock> &block, const C2Rect &crop) {
     return C2Buffer::CreateGraphicBuffer(block->share(crop, ::C2Fence()));
+}
+
+// static
+const Codec2BlockPoolManager &SimpleC2Component::GetBlockPoolManager() {
+    static const Codec2BlockPoolManager &sManager = Codec2BlockPoolManager::Get(
+            ::aidl::android::hardware::media::c2::utils::IsSelected()
+            ? C2PooledBlockPool::VER_AIDL2
+            : C2PooledBlockPool::VER_HIDL);
+    return sManager;
 }
 
 } // namespace android

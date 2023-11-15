@@ -52,7 +52,6 @@ cc_library {
         "com.android.media.swcodec",
     ],
 
-
     srcs: [
         "C2AllocatorBlob.cpp",
         "C2AllocatorIon.cpp",

@@ -1772,6 +1772,13 @@ std::shared_ptr<Codec2Client::InputSurface> Codec2Client::CreateInputSurface(
     return nullptr;
 }
 
+// static
+const Codec2BlockPoolManager &Codec2Client::GetBlockPoolManager() {
+    static const Codec2BlockPoolManager &sManager = Codec2BlockPoolManager::Get(
+        c2_aidl::utils::IsSelected() ? C2PooledBlockPool::VER_AIDL2 : C2PooledBlockPool::VER_HIDL);
+    return sManager;
+}
+
 // Codec2Client::Interface
 Codec2Client::Interface::Interface(const sp<HidlBase>& base)
       : Configurable{

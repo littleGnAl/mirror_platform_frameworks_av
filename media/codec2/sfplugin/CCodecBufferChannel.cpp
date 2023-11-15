@@ -1293,7 +1293,8 @@ status_t CCodecBufferChannel::start(
 
             // TODO: use C2Component wrapper to associate this pool with ourselves
             if ((poolMask >> pools->inputAllocatorId) & 1) {
-                err = CreateCodec2BlockPool(pools->inputAllocatorId, nullptr, &pool);
+                err = Codec2Client::GetBlockPoolManager().createBlockPool(
+                        pools->inputAllocatorId, nullptr, &pool);
                 ALOGD("[%s] Created input block pool with allocatorID %u => poolID %llu - %s (%d)",
                         mName, pools->inputAllocatorId,
                         (unsigned long long)(pool ? pool->getLocalId() : 111000111),
@@ -1304,7 +1305,8 @@ status_t CCodecBufferChannel::start(
             if (err != C2_OK) {
                 C2BlockPool::local_id_t inputPoolId =
                     graphic ? C2BlockPool::BASIC_GRAPHIC : C2BlockPool::BASIC_LINEAR;
-                err = GetCodec2BlockPool(inputPoolId, nullptr, &pool);
+                err = Codec2Client::GetBlockPoolManager().getBlockPool(
+                        inputPoolId, nullptr, &pool);
                 ALOGD("[%s] Using basic input block pool with poolID %llu => got %llu - %s (%d)",
                         mName, (unsigned long long)inputPoolId,
                         (unsigned long long)(pool ? pool->getLocalId() : 111000111),

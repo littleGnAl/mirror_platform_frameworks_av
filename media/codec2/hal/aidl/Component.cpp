@@ -288,16 +288,19 @@ protected:
 ScopedAStatus Component::createBlockPool(
         const IComponent::BlockPoolAllocator &allocator,
         IComponent::BlockPool *blockPool) {
+    using ::android::Codec2BlockPoolManager;
     std::shared_ptr<C2BlockPool> c2BlockPool;
     static constexpr IComponent::BlockPoolAllocator::Tag ALLOCATOR_ID =
         IComponent::BlockPoolAllocator::allocatorId;
     static constexpr IComponent::BlockPoolAllocator::Tag IGBA =
         IComponent::BlockPoolAllocator::allocator;
+    static const Codec2BlockPoolManager &sManager = Codec2BlockPoolManager::Get(
+            utils::IsSelected() ? C2PooledBlockPool::VER_AIDL2 : C2PooledBlockPool::VER_HIDL);
     c2_status_t status = C2_OK;
     switch (allocator.getTag()) {
         case ALLOCATOR_ID:
 #ifdef __ANDROID_APEX__
-            status = ::android::CreateCodec2BlockPool(
+            status = sManager.createBlockPool(
                     static_cast<::android::C2PlatformAllocatorStore::id_t>(
                             allocator.get<ALLOCATOR_ID>()),
                     mComponent,

@@ -445,11 +445,12 @@ C2PlatformAllocatorStore::id_t GetPreferredLinearAllocatorId(int poolMask) {
                                                               : C2PlatformAllocatorStore::ION;
 }
 
-namespace {
-
-class _C2BlockPoolCache {
+class Codec2BlockPoolManager::_C2BlockPoolCache {
 public:
-    _C2BlockPoolCache() : mBlockPoolSeqId(C2BlockPool::PLATFORM_START + 1) {}
+    explicit _C2BlockPoolCache(C2PooledBlockPool::BufferPoolVer version)
+        : mBlockPoolSeqId(C2BlockPool::PLATFORM_START + 1),
+          mBufferPoolVer(version) {
+    }
 
 private:
     c2_status_t _createBlockPool(
@@ -477,7 +478,7 @@ private:
                         C2PlatformAllocatorStore::ION, &allocator);
                 if (res == C2_OK) {
                     std::shared_ptr<C2BlockPool> ptr(
-                            new C2PooledBlockPool(allocator, poolId), deleter);
+                            new C2PooledBlockPool(allocator, poolId, mBufferPoolVer), deleter);
                     *pool = ptr;
                     mBlockPools[poolId] = ptr;
                     mComponents[poolId].insert(
@@ -490,7 +491,7 @@ private:
                         C2PlatformAllocatorStore::BLOB, &allocator);
                 if (res == C2_OK) {
                     std::shared_ptr<C2BlockPool> ptr(
-                            new C2PooledBlockPool(allocator, poolId), deleter);
+                            new C2PooledBlockPool(allocator, poolId, mBufferPoolVer), deleter);
                     *pool = ptr;
                     mBlockPools[poolId] = ptr;
                     mComponents[poolId].insert(
@@ -504,7 +505,7 @@ private:
                         C2AllocatorStore::DEFAULT_GRAPHIC, &allocator);
                 if (res == C2_OK) {
                     std::shared_ptr<C2BlockPool> ptr(
-                        new C2PooledBlockPool(allocator, poolId), deleter);
+                        new C2PooledBlockPool(allocator, poolId, mBufferPoolVer), deleter);
                     *pool = ptr;
                     mBlockPools[poolId] = ptr;
                     mComponents[poolId].insert(
@@ -590,26 +591,39 @@ private:
     // is invoked while the mutex is held.
     std::recursive_mutex mMutex;
     C2BlockPool::local_id_t mBlockPoolSeqId;
+    C2PooledBlockPool::BufferPoolVer mBufferPoolVer;
 
     std::map<C2BlockPool::local_id_t, std::weak_ptr<C2BlockPool>> mBlockPools;
     std::map<C2BlockPool::local_id_t, std::vector<std::weak_ptr<const C2Component>>> mComponents;
 };
 
-static std::unique_ptr<_C2BlockPoolCache> sBlockPoolCache =
-    std::make_unique<_C2BlockPoolCache>();
+Codec2BlockPoolManager::Codec2BlockPoolManager(C2PooledBlockPool::BufferPoolVer version)
+    : mBlockPoolCache(std::make_unique<_C2BlockPoolCache>(version)) {
+}
 
-} // anynymous namespace
+// static
+const Codec2BlockPoolManager &Codec2BlockPoolManager::Get(C2PooledBlockPool::BufferPoolVer version) {
+    constexpr C2PooledBlockPool::BufferPoolVer VER_HIDL = C2PooledBlockPool::VER_HIDL;
+    constexpr C2PooledBlockPool::BufferPoolVer VER_AIDL2 = C2PooledBlockPool::VER_AIDL2;
+    switch (version) {
+        case C2PooledBlockPool::VER_AIDL2:
+            return GetImpl<VER_AIDL2>();
+        case C2PooledBlockPool::VER_HIDL:
+        default:
+            return GetImpl<VER_HIDL>();
+    }
+}
 
-c2_status_t GetCodec2BlockPool(
+c2_status_t Codec2BlockPoolManager::getBlockPool(
         C2BlockPool::local_id_t id, std::shared_ptr<const C2Component> component,
-        std::shared_ptr<C2BlockPool> *pool) {
+        std::shared_ptr<C2BlockPool> *pool) const {
     pool->reset();
     std::shared_ptr<C2AllocatorStore> allocatorStore = GetCodec2PlatformAllocatorStore();
     std::shared_ptr<C2Allocator> allocator;
     c2_status_t res = C2_NOT_FOUND;
 
     if (id >= C2BlockPool::PLATFORM_START) {
-        return sBlockPoolCache->getBlockPool(id, component, pool);
+        return mBlockPoolCache->getBlockPool(id, component, pool);
     }
 
     switch (id) {
@@ -631,22 +645,51 @@ c2_status_t GetCodec2BlockPool(
     return res;
 }
 
+c2_status_t Codec2BlockPoolManager::createBlockPool(
+        C2PlatformAllocatorStore::id_t allocatorId,
+        const std::vector<std::shared_ptr<const C2Component>> &components,
+        std::shared_ptr<C2BlockPool> *pool) const {
+    pool->reset();
+
+    return mBlockPoolCache->createBlockPool(allocatorId, components, pool);
+}
+
+c2_status_t Codec2BlockPoolManager::createBlockPool(
+        C2PlatformAllocatorStore::id_t allocatorId,
+        std::shared_ptr<const C2Component> component,
+        std::shared_ptr<C2BlockPool> *pool) const {
+    pool->reset();
+
+    return mBlockPoolCache->createBlockPool(allocatorId, {component}, pool);
+}
+
+// Deprecated
+c2_status_t GetCodec2BlockPool(
+        C2BlockPool::local_id_t id, std::shared_ptr<const C2Component> component,
+        std::shared_ptr<C2BlockPool> *pool) {
+    static const Codec2BlockPoolManager &sManager = Codec2BlockPoolManager::Get(
+            C2PooledBlockPool::VER_HIDL);
+    return sManager.getBlockPool(id, component, pool);
+}
+
+// Deprecated
 c2_status_t CreateCodec2BlockPool(
         C2PlatformAllocatorStore::id_t allocatorId,
         const std::vector<std::shared_ptr<const C2Component>> &components,
         std::shared_ptr<C2BlockPool> *pool) {
-    pool->reset();
-
-    return sBlockPoolCache->createBlockPool(allocatorId, components, pool);
+    static const Codec2BlockPoolManager &sManager = Codec2BlockPoolManager::Get(
+            C2PooledBlockPool::VER_HIDL);
+    return sManager.createBlockPool(allocatorId, components, pool);
 }
 
+// Deprecated
 c2_status_t CreateCodec2BlockPool(
         C2PlatformAllocatorStore::id_t allocatorId,
         std::shared_ptr<const C2Component> component,
         std::shared_ptr<C2BlockPool> *pool) {
-    pool->reset();
-
-    return sBlockPoolCache->createBlockPool(allocatorId, {component}, pool);
+    static const Codec2BlockPoolManager &sManager = Codec2BlockPoolManager::Get(
+            C2PooledBlockPool::VER_HIDL);
+    return sManager.createBlockPool(allocatorId, component, pool);
 }
 
 class C2PlatformComponentStore : public C2ComponentStore {

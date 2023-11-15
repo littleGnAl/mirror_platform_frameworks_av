@@ -21,7 +21,10 @@ cc_library_headers {
 
 cc_library {
     name: "libcodec2_soft_common",
-    defaults: ["libcodec2-impl-defaults"],
+    defaults: [
+        "libcodec2-aidl-defaults",
+        "libcodec2-impl-defaults",
+    ],
     vendor_available: true,
 
     srcs: [

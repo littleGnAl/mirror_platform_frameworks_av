@@ -2927,7 +2927,8 @@ static std::shared_ptr<C2BlockPool> GetPool(C2Allocator::id_t allocId) {
     std::shared_ptr<C2BlockPool> pool;
     auto it = sPools.find(allocId);
     if (it == sPools.end()) {
-        c2_status_t err = CreateCodec2BlockPool(allocId, nullptr, &pool);
+        c2_status_t err = Codec2Client::GetBlockPoolManager().createBlockPool(
+                allocId, nullptr, &pool);
         if (err == OK) {
             sPools.emplace(allocId, pool);
         } else {
@@ -3016,7 +3017,8 @@ std::shared_ptr<C2GraphicBlock> CCodec::FetchGraphicBlock(
     std::shared_ptr<C2GraphicBlock> block;
     for (C2Allocator::id_t allocId : allocators) {
         std::shared_ptr<C2BlockPool> pool;
-        c2_status_t err = CreateCodec2BlockPool(allocId, nullptr, &pool);
+        c2_status_t err = Codec2Client::GetBlockPoolManager().createBlockPool(
+                allocId, nullptr, &pool);
         if (err != C2_OK || !pool) {
             continue;
         }
