@@ -16,6 +16,24 @@
       "message": "Do you have a bug that describes how to reproduce this problem exactly? \n\nPlease also note that the scaling mode shouldn\u0027t be set when configuring the codec but only when receiving output buffers. See https://developer.android.com/reference/android/media/MediaCodec#setVideoScalingMode(int) where this is explained on the codec Java APIs.",
       "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7166c4_343b055e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2067060
+      },
+      "writtenOn": "2023-11-15T12:51:53Z",
+      "side": 1,
+      "message": "when playing video through mediaplayer, setting the scaling mode to SCALE_TO_FIT_WITH_CROPPING,and the content and surface have different aspect ratios;\nBug:the first few frames are streteched, and the remaining frames are cropped to fit the surface;\nExpectation: all frames are cropped to fit the surface;\nWhen the app calls setVideoScalingMode, and neither the surface nor the decoder is ready, scaling mode cannot be set to MediaCodec. Until MediaCodec receives outputFormatChanged, NuPlayer begins to set scaling mode through setParams. Before it takes effect,MediaCodec has decoded and rendered some frames, and these frames are stretched for display",
+      "parentUuid": "704888b3_e2607a3d",
+      "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
