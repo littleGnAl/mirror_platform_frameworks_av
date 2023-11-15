@@ -166,6 +166,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e79333a5_abc561f3",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-15T03:28:12Z",
+      "side": 1,
+      "message": "I understand basic idea. But to me this is kinda wrong.\nIn this case surface-\u003esetMaxDequeuedBufferCount() should be replaced with surface-\u003esetBufferCount() as you said using the same number.\n\n1) Could you experiment with the replacement?\n2) Even undequeued is kept inside surface, still rendering delay might be affect to allocate buffer, So you are saying that if we keep undequeued # restriction, after queue, dequeue can be done immediately?\n\nI will discuss this /w Graphics folk a little bit.\nThanks for the heads up.",
+      "parentUuid": "456c52ae_708dad8e",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
