@@ -16,6 +16,29 @@
       "message": "This change is wanted as a precursor to SpdifStreamIn incoming where the same logic should apply for RecordThread::readInputParameters_l() and the fast capture path should be disabled when mFormat is not PCM.",
       "revId": "5774b9c631f33b58f2047739e8c3ed1543cfdd1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc9ee21_62123a6a",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T17:08:34Z",
+      "side": 1,
+      "message": "nit: I think we put the closing brace on a separate line.  I\u0027m fine as is, but this could return a const ref.",
+      "range": {
+        "startLine": 74,
+        "startChar": 35,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "5774b9c631f33b58f2047739e8c3ed1543cfdd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
