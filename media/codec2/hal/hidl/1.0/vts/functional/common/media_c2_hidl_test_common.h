@@ -19,6 +19,7 @@
 
 #include <C2Component.h>
 #include <C2Config.h>
+#include <C2PlatformSupport.h>
 
 #include <codec2/hidl/client.h>
 #include <getopt.h>
@@ -125,6 +126,8 @@ struct CodecListener : public android::Codec2Client::Listener {
     // std::list<std::unique_ptr<C2Work>> mWorkQueue;
     std::function<void(std::list<std::unique_ptr<C2Work>>& workItems)> callBack;
 };
+
+C2PooledBlockPool::BufferPoolVer getBufferPoolVer();
 
 void parseArgs(int argc, char** argv);
 
