@@ -33,6 +33,23 @@
       "message": "Split merge of aosp/2816322. Retrying treehugger.",
       "revId": "bcfd9e1e1cc5071138b7304c63b9e578133d3c7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f26570c_b7b6e88b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T22:45:03Z",
+      "side": 1,
+      "message": "Clean cherry-pick of internal ag/24813834.",
+      "revId": "bcfd9e1e1cc5071138b7304c63b9e578133d3c7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
