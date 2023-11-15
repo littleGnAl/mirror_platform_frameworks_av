@@ -91,7 +91,10 @@ public:
     status_t renderOutputBuffer(
             const sp<MediaCodecBuffer> &buffer, int64_t timestampNs) override;
     void pollForRenderedBuffers() override;
+<<<<<<< PATCH SET (bf52ee Code review cleanup)
+=======
     void onBufferReleasedFromOutputSurface(uint32_t generation) override;
+>>>>>>> BASE      (da30ff Merge changes Ic93dd0c7,Ibabbb998,I3a26f901,I9708086f into m)
     status_t discardBuffer(const sp<MediaCodecBuffer> &buffer) override;
     void getInputBufferArray(Vector<sp<MediaCodecBuffer>> *array) override;
     void getOutputBufferArray(Vector<sp<MediaCodecBuffer>> *array) override;
