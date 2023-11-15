@@ -214,6 +214,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c5bb7f_21f64c89",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-15T06:49:43Z",
+      "side": 1,
+      "message": "L2075 and L2079 should be done with the same number or \nL2075 should be done with setMaxBuffer.\nThat\u0027s what I meant.\n\nThis codes try to dequeue only maxDequeueCount(not includeing mRenderingDepth aka min undequeued) at most.\nWhich is correct.\n\nBut This code configures IGBP to max dequeue to output-\u003emaxDequeueBuffers.\nSo the max # of allocation will be output-\u003emaxDequeueBuffers + min Undequeued.\n\nIn the case min undequeued of buffers could be wasted.\nMaybe BQ optimizes not to waste that memory. but to me there is a risk of over-allocating\n\nBut again you are right sicne we are already over allocating by mRendeingDepth.\nThis idea does not harm if it is compared to current status quo.\n\nBut we\u0027d better fix it properly.\nSo I asked to experiment two things in the previous comments.\nLet\u0027s find a better way.",
+      "parentUuid": "449618d4_e9900b61",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
