@@ -70,6 +70,30 @@
       },
       "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28c9c1a_67108eb0",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T03:28:50Z",
+      "side": 1,
+      "message": "I like the suggestion in #3.  For compressed audio formats, we should have an idea of the nominal and maximum bitrate per codec on the framework side (although querying the proper HAL device would be optimal).  Typically we have assumed something like 1byte x 48khz \u003d 384 kbps regardless of (a) # channels, (b) sampling rate, or (c) codec.  It isn\u0027t bad, but it isn\u0027t great.\n\nAs Dolby does do authoring tools as well as standards, would you be able to furnish some bitrate data for AC3/EAC3(JOC)/AC4 based on (a)(b)(c)?  I guess this might also depend on profile and level, but it would be handy if we expand this code later.  There is also a similar problem on the playback side as well.\n\nFor now, maybe we let it go with a comment?",
+      "parentUuid": "93976ffd_71948e6e",
+      "range": {
+        "startLine": 1913,
+        "startChar": 0,
+        "endLine": 1916,
+        "endChar": 5
+      },
+      "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
