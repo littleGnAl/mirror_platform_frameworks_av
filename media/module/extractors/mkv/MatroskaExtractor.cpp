@@ -520,15 +520,26 @@ void BlockIterator::seek(
 
     const mkvparser::CuePoint::TrackPosition *pTP = NULL;
     const mkvparser::Track *thisTrack = pTracks->GetTrackByNumber(mTrackNum);
+    int64_t videoActualSeekTimeNs;
     if (thisTrack->GetType() == 1) { // video
         MatroskaExtractor::TrackInfo& track = mExtractor->mTracks.editItemAt(mIndex);
-        pTP = track.find(seekTimeNs);
+        pCues->Find(seekTimeNs, track.getTrack(), pCP, pTP);
+        if (pCP != NULL) {
+            videoActualSeekTimeNs = pCP->GetTime(pSegment);
+        } else {
+            videoActualSeekTimeNs = seekTimeNs;
+        }
     } else {
         // The Cue index is built around video keyframes
         unsigned long int trackCount = pTracks->GetTracksCount();
         for (size_t index = 0; index < trackCount; ++index) {
             const mkvparser::Track *pTrack = pTracks->GetTrackByIndex(index);
             if (pTrack && pTrack->GetType() == 1 && pCues->Find(seekTimeNs, pTrack, pCP, pTP)) {
+                if (pCP != NULL) {
+                    videoActualSeekTimeNs = pCP->GetTime(pSegment);
+                } else {
+                    videoActualSeekTimeNs = seekTimeNs;
+                }
                 ALOGV("Video track located at %zu", index);
                 break;
             }
@@ -560,7 +571,7 @@ void BlockIterator::seek(
         if (isAudio || block()->IsKey()) {
             // Accept the first key frame
             int64_t frameTimeUs = (block()->GetTime(mCluster) + 500LL) / 1000LL;
-            if (thisTrack->GetType() == 1 || frameTimeUs >= seekTimeUs) {
+            if (thisTrack->GetType() == 1 || (frameTimeUs * 1000LL) >= videoActualSeekTimeNs) {
                 *actualFrameTimeUs = frameTimeUs;
                 ALOGV("Requested seek point: %" PRId64 " actual: %" PRId64,
                       seekTimeUs, *actualFrameTimeUs);
