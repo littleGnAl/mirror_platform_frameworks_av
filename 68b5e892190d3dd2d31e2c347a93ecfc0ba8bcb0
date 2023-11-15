@@ -94,6 +94,30 @@
       },
       "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17026e52_f5168ce1",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-15T19:28:06Z",
+      "side": 1,
+      "message": "I agree with letting this go with a comment for now. I\u0027ll do that in a separate CL.\n\nWith regards to bitrate info. The standards specify min and max and this info can be provided at a later point. Nominal rates are possible to provide, too, but are a bit harder to set as technology and use cases evolve.",
+      "parentUuid": "c28c9c1a_67108eb0",
+      "range": {
+        "startLine": 1913,
+        "startChar": 0,
+        "endLine": 1916,
+        "endChar": 5
+      },
+      "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
