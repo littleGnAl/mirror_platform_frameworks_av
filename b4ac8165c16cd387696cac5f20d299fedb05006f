@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f3c8de_c9c41aa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-11-15T09:57:46Z",
+      "side": 1,
+      "message": "Yes, b/297141696",
+      "parentUuid": "380efc23_da88adbf",
+      "revId": "b4ac8165c16cd387696cac5f20d299fedb05006f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bffafa25_049ed6f6",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-15T02:52:25Z",
       "side": 1,
       "message": "nit: can you please make a comment here.  Also you can always \u0026\u003d if you wish as it is shorter (but that is up to you).\n\n    // restrict position modulo INT_MAX to avoid integer sanitization abort.\n    legacy.mPosition \u0026\u003d INT_MAX;",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 5
+      },
+      "revId": "b4ac8165c16cd387696cac5f20d299fedb05006f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544531a7_c579d22c",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2023-11-15T09:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bffafa25_049ed6f6",
       "range": {
         "startLine": 454,
         "startChar": 0,
