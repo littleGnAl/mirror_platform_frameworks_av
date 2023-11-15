@@ -45,6 +45,29 @@
       },
       "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3f43bb_ab592e5f",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-15T19:03:51Z",
+      "side": 1,
+      "message": "this makes switching to AIDL a significant effort for vendor HALs. Is this necessary?",
+      "range": {
+        "startLine": 206,
+        "startChar": 18,
+        "endLine": 206,
+        "endChar": 40
+      },
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
