@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05622372_6aa8aab2",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-15T19:02:49Z",
+      "side": 1,
+      "message": "I don\u0027t think we can deprecate this. This is a public API for codec implementations (incl. vendor implementations) to get the blockpool based on the ID received from the platform. As such, it would need to pick the manager based on the device configuration.",
+      "range": {
+        "startLine": 667,
+        "startChar": 12,
+        "endLine": 667,
+        "endChar": 30
+      },
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5c58d6_fe382b8d",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-15T19:02:49Z",
+      "side": 1,
+      "message": "this would need to read this from the device config.",
+      "range": {
+        "startLine": 671,
+        "startChar": 31,
+        "endLine": 671,
+        "endChar": 39
+      },
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
