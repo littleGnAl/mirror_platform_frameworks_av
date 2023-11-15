@@ -22,6 +22,30 @@
       },
       "revId": "a0a81c20ef1b30322f389e78e2688c8c082475dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b491898_201375b1",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3155,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-15T09:19:50Z",
+      "side": 1,
+      "message": "All instances of audio_has_proportional_frames(mFormat) look ok to me.",
+      "parentUuid": "20c61d7b_eb6e3875",
+      "range": {
+        "startLine": 3155,
+        "startChar": 4,
+        "endLine": 3155,
+        "endChar": 35
+      },
+      "revId": "a0a81c20ef1b30322f389e78e2688c8c082475dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
