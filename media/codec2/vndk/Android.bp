@@ -52,6 +52,9 @@ cc_library {
         "com.android.media.swcodec",
     ],
 
+    defaults: [
+        "libcodec2_hal_selection",
+    ],
 
     srcs: [
         "C2AllocatorBlob.cpp",

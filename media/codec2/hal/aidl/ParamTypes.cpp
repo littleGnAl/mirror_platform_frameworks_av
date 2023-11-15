@@ -24,6 +24,7 @@
 #include <android-base/properties.h>
 #include <apex/AMediaFlags.h>
 #include <codec2/aidl/ParamTypes.h>
+#include <codec2/common/HalSelection.h>
 #include <codec2/common/ParamTypes.h>
 
 #include "ParamTypes-specialization.h"
@@ -162,46 +163,8 @@ namespace media {
 namespace c2 {
 namespace utils {
 
-bool IsEnabled() {
-    if (__builtin_available(android __ANDROID_API_FUTURE__, *)) {
-        return ::AMediaFlags_isCodec2AidlEnabled();
-    } else {
-        return false;
-    }
-}
-
 bool IsSelected() {
-    if (!IsEnabled()) {
-        // Cannot select AIDL if not enabled
-        return false;
-    }
-#if 0
-    // NOTE: due to dependency from mainline modules cannot use libsysprop
-    using ::android::sysprop::MediaProperties::codec2_hal_selection;
-    using ::android::sysprop::MediaProperties::codec2_hal_selection_values;
-    constexpr codec2_hal_selection_values AIDL = codec2_hal_selection_values::AIDL;
-    constexpr codec2_hal_selection_values HIDL = codec2_hal_selection_values::HIDL;
-    codec2_hal_selection_values selection = codec2_hal_selection().value_or(HIDL);
-    switch (selection) {
-    case AIDL:
-        return true;
-    case HIDL:
-        return false;
-    default:
-        LOG(FATAL) << "Unexpected codec2 HAL selection value: " << (int)selection;
-    }
-#else
-    std::string selection = ::android::base::GetProperty("media.c2.hal.selection", "hidl");
-    if (selection == "aidl") {
-        return true;
-    } else if (selection == "hidl") {
-        return false;
-    } else {
-        LOG(FATAL) << "Unexpected codec2 HAL selection value: " << selection;
-    }
-#endif
-
-    return false;
+    return ::android::IsCodec2AidlHalSelected();
 }
 
 const char* asString(Status status, const char* def) {

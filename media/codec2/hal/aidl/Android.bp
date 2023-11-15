@@ -7,6 +7,10 @@ package {
 cc_library {
     name: "libcodec2_aidl_client",
 
+    defaults: [
+        "libcodec2_hal_selection",
+    ],
+
     srcs: [
         "BufferTypes.cpp",
         "ParamTypes.cpp",
@@ -29,7 +33,6 @@ cc_library {
         "libcodec2_vndk",
         "libcutils",
         "liblog",
-        "libmediaflags",
         "libnativewindow",
         "libstagefright_aidl_bufferpool2",
         "libutils",
@@ -61,6 +64,10 @@ cc_library {
         "com.android.media.swcodec",
     ],
 
+    defaults: [
+        "libcodec2_hal_selection",
+    ],
+
     srcs: [
         "BufferTypes.cpp",
         "Component.cpp",
@@ -89,7 +96,6 @@ cc_library {
         "libhidlbase",
         "liblog",
         "libnativewindow",
-        "libmediaflags",
         "libstagefright_aidl_bufferpool2",
         "libstagefright_bufferpool@2.0.1",
         "libui",
