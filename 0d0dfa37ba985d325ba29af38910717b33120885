@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036bb6fd_a7689084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-15T19:05:19Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "0d0dfa37ba985d325ba29af38910717b33120885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec5d75d_f5c4f20b",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-15T19:05:19Z",
+      "side": 1,
+      "message": "do we need to join the thread pool at the end?",
+      "range": {
+        "startLine": 935,
+        "startChar": 11,
+        "endLine": 935,
+        "endChar": 24
+      },
+      "revId": "0d0dfa37ba985d325ba29af38910717b33120885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
