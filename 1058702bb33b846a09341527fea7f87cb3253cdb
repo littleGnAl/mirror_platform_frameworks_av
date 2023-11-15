@@ -22,6 +22,30 @@
       },
       "revId": "1058702bb33b846a09341527fea7f87cb3253cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "618465fd_1cb73e4c",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T17:03:28Z",
+      "side": 1,
+      "message": "Maybe not, as the translation wouldn\u0027t make sense in the 8 bit case.  And we might only allow in 16b to 16b.",
+      "parentUuid": "99ab5e97_91644b98",
+      "range": {
+        "startLine": 1229,
+        "startChar": 12,
+        "endLine": 1229,
+        "endChar": 34
+      },
+      "revId": "1058702bb33b846a09341527fea7f87cb3253cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
