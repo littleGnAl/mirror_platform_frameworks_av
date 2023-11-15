@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c24cb1a4_f81ea666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-15T20:02:57Z",
+      "side": 1,
+      "message": "I mean If we have a static method to use from C2Store.",
+      "parentUuid": "09c6ac7c_0c302a5c",
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05622372_6aa8aab2",
         "filename": "media/codec2/vndk/C2Store.cpp",
         "patchSetId": 1
