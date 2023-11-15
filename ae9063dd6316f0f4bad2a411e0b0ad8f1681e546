@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0db7fca_981ab1fe",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-15T10:14:33Z",
+      "side": 1,
+      "message": "no else needed after returning in if()",
+      "range": {
+        "startLine": 1191,
+        "startChar": 14,
+        "endLine": 1191,
+        "endChar": 20
+      },
+      "revId": "ae9063dd6316f0f4bad2a411e0b0ad8f1681e546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

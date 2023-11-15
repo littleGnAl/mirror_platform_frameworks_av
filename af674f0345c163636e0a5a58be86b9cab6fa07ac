@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209ebafa_c360f902",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-15T10:14:33Z",
+      "side": 1,
+      "message": "I also think that the APM only refers to the DEFAULT device when it is actually the STUB device (same enum in legacy).",
+      "parentUuid": "bdcf8eab_13e62270",
+      "range": {
+        "startLine": 234,
+        "startChar": 8,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79ea0d62_a1e091aa",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6860b541_2abd5070",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-15T10:14:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1b805a7_f580cac9",
+      "range": {
+        "startLine": 1223,
+        "startChar": 12,
+        "endLine": 1223,
+        "endChar": 40
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb7d25e4_7011c4e2",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "As I\u0027ve mentioned, the port replacement action is generic and is not tailored for remote submix specifically. That\u0027s why we just provide a full port here. \n\nThanks to your comment, I\u0027ve reconsidered the logic for populating the profiles of the \"augmented template\" for the output port. I think it is more proper to connect and then disconnect the output in order to get actual profiles from the HAL. Assigning profiles of the input port assumes that they are the same between input and output ports—although it\u0027s true for now, this is not guaranteed. It is safer to actually retrieve them from the HAL.",
       "parentUuid": "cb7d25e4_7011c4e2",
+      "range": {
+        "startLine": 1224,
+        "startChar": 0,
+        "endLine": 1224,
+        "endChar": 61
+      },
+      "revId": "af674f0345c163636e0a5a58be86b9cab6fa07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8390ac_ef86ed71",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-15T10:14:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d97ecbe9_0affe33d",
       "range": {
         "startLine": 1224,
         "startChar": 0,
