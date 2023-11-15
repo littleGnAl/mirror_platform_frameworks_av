@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1e3ea5_4104ca29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-15T23:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c24cb1a4_f81ea666",
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05622372_6aa8aab2",
@@ -49,6 +67,30 @@
       "writtenOn": "2023-11-15T19:02:49Z",
       "side": 1,
       "message": "I don\u0027t think we can deprecate this. This is a public API for codec implementations (incl. vendor implementations) to get the blockpool based on the ID received from the platform. As such, it would need to pick the manager based on the device configuration.",
+      "range": {
+        "startLine": 667,
+        "startChar": 12,
+        "endLine": 667,
+        "endChar": 30
+      },
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6648995f_fdcc72bc",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-15T23:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05622372_6aa8aab2",
       "range": {
         "startLine": 667,
         "startChar": 12,
@@ -82,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76951df4_8d421e4c",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-15T23:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5c58d6_fe382b8d",
+      "range": {
+        "startLine": 671,
+        "startChar": 31,
+        "endLine": 671,
+        "endChar": 39
+      },
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf3f43bb_ab592e5f",
@@ -95,6 +161,30 @@
       "writtenOn": "2023-11-15T19:03:51Z",
       "side": 1,
       "message": "this makes switching to AIDL a significant effort for vendor HALs. Is this necessary?",
+      "range": {
+        "startLine": 206,
+        "startChar": 18,
+        "endLine": 206,
+        "endChar": 40
+      },
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0283f5d5_6e477c03",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-15T23:22:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bf3f43bb_ab592e5f",
       "range": {
         "startLine": 206,
         "startChar": 18,
