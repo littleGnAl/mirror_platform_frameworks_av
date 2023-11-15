@@ -118,6 +118,30 @@
       },
       "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b4ce60_30a6c3d6",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-15T19:35:37Z",
+      "side": 1,
+      "message": "If you can ask around Dolby to get the bitrate info, it would definitely help - and would improve future codec compat. Thanks!",
+      "parentUuid": "17026e52_f5168ce1",
+      "range": {
+        "startLine": 1913,
+        "startChar": 0,
+        "endLine": 1916,
+        "endChar": 5
+      },
+      "revId": "68b5e892190d3dd2d31e2c347a93ecfc0ba8bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
