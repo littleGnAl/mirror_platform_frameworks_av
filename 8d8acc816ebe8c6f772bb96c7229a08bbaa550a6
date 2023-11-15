@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c6ac7c_0c302a5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-15T20:02:19Z",
+      "side": 1,
+      "message": "Simply using Flags inside GetCodec2BlockPool/CreateCodec2BlockPool does not work?\n\nSince either Codec2 is supposed to use AIDL bufferpool or HIDL at any given moment.",
+      "revId": "8d8acc816ebe8c6f772bb96c7229a08bbaa550a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05622372_6aa8aab2",
