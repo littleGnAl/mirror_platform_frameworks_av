@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9399e8cc_90440475",
+        "filename": "services/audioflinger/afutils/NBAIO_Tee.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-15T18:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a95d8534_aed752e0",
+      "range": {
+        "startLine": 202,
+        "startChar": 33,
+        "endLine": 202,
+        "endChar": 36
+      },
+      "revId": "bd71871c64ffce7b34eb6639e10aab4c92ec481a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "661b34a5_de74f673",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-15T17:13:15Z",
       "side": 1,
       "message": "nit: can you make a comment why this is chosen?  not sure if the legacy value is really appropriate - why not 60 seconds?",
+      "range": {
+        "startLine": 263,
+        "startChar": 58,
+        "endLine": 263,
+        "endChar": 63
+      },
+      "revId": "bd71871c64ffce7b34eb6639e10aab4c92ec481a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af86368c_e54b73ce",
+        "filename": "services/audioflinger/afutils/NBAIO_Tee.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-15T18:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "661b34a5_de74f673",
       "range": {
         "startLine": 263,
         "startChar": 58,
