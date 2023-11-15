@@ -142,6 +142,30 @@
       },
       "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456c52ae_708dad8e",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2023-11-15T01:02:26Z",
+      "side": 1,
+      "message": "ACodec considers undequeued buffer and it added into the number of total buffers.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libstagefright/ACodec.cpp;l\u003d1204;drc\u003db90912eb8de815539033e66eed07bee090beff91\n(* max buffer count :\u003d min buffers(required by component) + min undequeued buffers(required by surface flinger))\n\nmeanwhile, CCodec does not consider it. I mean that CCodec does not query MIN_UNDEQUEUED_BUFFERS.\nCCodec just sets the max number of dequeued buffers with mRenderingDepth.\nso, I think mRenderingDepth means a role of min undequeued buffers.\n\nin order to support blocking operation at fetchGraphicBlock() with C2Fence since C2 HIDL 1.2,\nOutputBufferQueue should know the number of actual dequeueable buffers what does not include undequeued buffers.\nthat is why I would like to assert that actual dequeueable buffers has to be set to OutputBufferQueue.\non the other hands, max buffers what includes undequeued buffers have to be set to surface for managing total count.\n\ncurrently, OutputBuffersQueue knows there is dequeueable buffers,\nand it tries to call dequeueBuffer(). but, the result of dequeueBuffer() is failed.\nso, c2 component doesn\u0027t get valid C2Fence and it affects that blocking operation cannot be supported by fetchGraphicBlock().\n\nin my opinion,\nit would be better than now, if CCodecBufferChannel calls setBufferCount() of surface instead of setMaxDequeueBufferCount() and\nCCodecBufferChannel does not consider mRenderingDepth,\nbecause Surface considers undequeued buffers at setBufferCount().\n\nanyway, you can see setBufferCount() and it hope to be you help understanding what I mean to fix through this patch.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/gui/Surface.cpp;l\u003d2013;drc\u003d0f0c9770c8ff2e86c2c91106d6808bec557279f9",
+      "parentUuid": "d989d602_4645e1f6",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 74
+      },
+      "revId": "f8be82aea430058d4f3ad21cd7c1b2d8017d240c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
