@@ -39,6 +39,30 @@
       },
       "revId": "5774b9c631f33b58f2047739e8c3ed1543cfdd1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c716c31c_46f35402",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-15T19:10:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0dc9ee21_62123a6a",
+      "range": {
+        "startLine": 74,
+        "startChar": 35,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "5774b9c631f33b58f2047739e8c3ed1543cfdd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
