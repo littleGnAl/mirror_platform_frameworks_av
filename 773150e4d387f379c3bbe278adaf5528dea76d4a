@@ -16,6 +16,24 @@
       "message": "Sorry, Aditya, that\u0027s not the right way to fix this problem. The proper way is to take aosp/2826596 and complement it with a change that also updates places like this one: https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/common/all-versions/default/HidlUtils.cpp;l\u003d194;drc\u003db52e93f5165c5f909e2a22478891750870969a88. There are classes generated from HIDL that use hardcoded value of 32 characters for the address: https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/common/6.0/types.hal;l\u003d1090;drc\u003dc91b679ac1ae75ac60a277be7d4a6f573e4c22bf and https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/common/6.0/types.hal;l\u003d1146;drc\u003dc91b679ac1ae75ac60a277be7d4a6f573e4c22bf. When filling them, we need to take the minimum of the array length and AUDIO_DEVICE_MAX_ADDRESS_LEN.",
       "revId": "773150e4d387f379c3bbe278adaf5528dea76d4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a258aaf3_edb74e74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-11-16T18:21:21Z",
+      "side": 1,
+      "message": "Yeah i only added this change to make progress with the compiler update. I\u0027ll wait for your patch to land. For now i reopened the issue as your fix in https://android-review.googlesource.com/2826596 was reverted.",
+      "parentUuid": "42800cc2_5542a6c7",
+      "revId": "773150e4d387f379c3bbe278adaf5528dea76d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
