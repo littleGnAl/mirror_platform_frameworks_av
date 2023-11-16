@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67c41cf_0efe4a7b",
+        "filename": "services/mediaresourcemanager/aidl/android/media/ClientConfigParcel.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-16T21:03:42Z",
+      "side": 1,
+      "message": "Just out of curiosity, Why don\u0027t we have MediaResourceType here?",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "277c4a440023036b8d8119fe9ca034ec59fcfe07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
