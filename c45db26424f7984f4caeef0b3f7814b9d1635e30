@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "802add94_ccfdc4c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-16T08:29:03Z",
+      "side": 1,
+      "message": "crashes",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "538458f4_ea350123",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-16T08:29:03Z",
+      "side": 1,
+      "message": "be lost",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c022b78f_79163ec9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-16T08:29:03Z",
+      "side": 1,
+      "message": "restore.",
+      "range": {
+        "startLine": 12,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2826f84a_2c8d1134",
@@ -14,6 +83,29 @@
       "writtenOn": "2023-11-15T20:23:12Z",
       "side": 1,
       "message": "Sorry for the late reply - some minor nits.",
+      "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9d567f_d93abf42",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-16T08:29:03Z",
+      "side": 1,
+      "message": "why clear on stop()? Are all parameters refreshed on start()",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 24
+      },
       "revId": "c45db26424f7984f4caeef0b3f7814b9d1635e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
