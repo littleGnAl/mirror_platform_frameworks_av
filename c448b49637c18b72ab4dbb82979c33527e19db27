@@ -34,6 +34,24 @@
       "parentUuid": "9b9fb050_3970be6d",
       "revId": "c448b49637c18b72ab4dbb82979c33527e19db27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8daa7ef6_70fd5866",
+        "filename": "services/mediaresourcemanager/aidl/android/media/MediaResourceSubType.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-16T21:31:24Z",
+      "side": 1,
+      "message": "Eventually we\u0027d want to be able to track the [owner](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libmedia/include/media/MediaCodecInfo.h;drc\u003d8ee46469bc996b7ea44508950cdccf10d0127570;l\u003d233) so we reclaim the resources from the same owner.\n\nWe can maybe refactor later.",
+      "parentUuid": "81ec3989_92e31496",
+      "revId": "c448b49637c18b72ab4dbb82979c33527e19db27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
