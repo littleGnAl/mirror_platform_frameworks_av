@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1d7b6d_da9a077b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1086523
+      },
+      "writtenOn": "2023-11-16T21:33:18Z",
+      "side": 1,
+      "message": "The TEST_MAPPING change looks harmless to me.\n\nIt actually passed the following check:\n\n```\nimport json\nimport re\n\njsonarray \u003d open(\"test.json\").readlines()\n_COMMENTS_RE \u003d re.compile(r\u0027^\\s*//\u0027)\njson.loads(\u0027\u0027.join(\u0027\\n\u0027 if _COMMENTS_RE.match(x) else x for x in jsonarray))\n{\u0027presubmit\u0027: [{\u0027name\u0027: \u0027codec2_vndk_test\u0027}], \u0027presubmit-large\u0027: [{\u0027name\u0027: \u0027CtsMediaAudioTestCases\u0027, \u0027options\u0027: [{\u0027include-annotation\u0027: \u0027android.platform.test.annotations.Presubmit\u0027}, {\u0027exclude-annotation\u0027: \u0027android.platform.test.annotations.RequiresDevice\u0027}, {\u0027exclude-filter\u0027: \u0027android.media.audio.cts.AudioPlaybackCaptureTest\u0027}, {\u0027exclude-filter\u0027: \u0027android.media.audio.cts.AudioRecordTest\u0027}]}], \u0027postsubmit\u0027: [{\u0027name\u0027: \u0027c2aidl_gtracker_test\u0027}]}\n\n```\n\nLooking at the messages, it appears that the analyzer thought the processed json was empty, which sounded like a glitch, and I think it\u0027s fine to bypass this check.",
+      "revId": "787f3fd71f39b2d03a1e4d7963e529e32b3ae422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
