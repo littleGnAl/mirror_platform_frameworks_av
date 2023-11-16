@@ -59,6 +59,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dffc628_423f278d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 2069151
+      },
+      "writtenOn": "2023-11-16T09:43:20Z",
+      "side": 1,
+      "message": "The code to waive SPATIALIZED_SESSION flag due to track being terminated:\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Threads.h;l\u003d459;drc\u003d0b80090e02814093f2187c2ce7e64f87cb917edc",
+      "parentUuid": "759a9852_7ada766d",
+      "revId": "a9e217ff89b8af761e3f7629f42bc91a4e5e636e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7794788c_2a6b9c12",
