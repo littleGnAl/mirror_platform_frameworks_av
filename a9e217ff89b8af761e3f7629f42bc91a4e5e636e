@@ -41,6 +41,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "759a9852_7ada766d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 2069151
+      },
+      "writtenOn": "2023-11-16T09:40:55Z",
+      "side": 1,
+      "message": "Let\u0027s check the case:\n1. Spatial thread is created, and opens one audio HAL stream with stereo channel mask; \n2. Multi-ch AudioTrack(\u003e2.0) is created, and attached to this spatial thread. The mMixerChannelMask is multi-ch, while mChannelMask is 2.0;\n3. During each loop to render the track, EffectChain will calculate the reset buffer size as  mMixerChannelMask * sample-size * frame count;\n4. When AudioTrack is stopped and released, it is possible that Spatial thread is still alive to render data, and at this time, it will calculate the buffer size as mChannelMask * sample-size * frame-count. As result, the dirty data is produced.\n\nCheck the code:\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Effects.cpp;l\u003d2200-2202?q\u003dEffects.cpp\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Effects.cpp;l\u003d3105-3107;drc\u003d0b80090e02814093f2187c2ce7e64f87cb917edc?q\u003dEffects.cpp\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Threads.h;drc\u003d0b80090e02814093f2187c2ce7e64f87cb917edc;bpv\u003d1;bpt\u003d1;l\u003d444",
+      "parentUuid": "1ea02225_07975c21",
+      "revId": "a9e217ff89b8af761e3f7629f42bc91a4e5e636e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7794788c_2a6b9c12",
