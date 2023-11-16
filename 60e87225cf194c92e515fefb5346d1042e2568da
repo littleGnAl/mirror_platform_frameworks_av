@@ -22,6 +22,30 @@
       },
       "revId": "60e87225cf194c92e515fefb5346d1042e2568da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b89608a_b17b42f9",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-16T23:05:12Z",
+      "side": 1,
+      "message": "They are of different types. `audio_config_base_t mApplicationConfig` vs. `audio_config` for `*config`.",
+      "parentUuid": "e192961d_77341359",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "60e87225cf194c92e515fefb5346d1042e2568da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
