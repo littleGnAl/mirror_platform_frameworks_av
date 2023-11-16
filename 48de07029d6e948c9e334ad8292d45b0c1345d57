@@ -34,6 +34,523 @@
       "parentUuid": "0d769fa8_d09d979c",
       "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ca422a_dea68fac",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "it feels a bit strange to have this AIDL structure be the allocator parameter for a single CreateCodec2BlockPool. It may be better to have multiple Create calls, e.g. CreateCodec2BlockPool (for bufferpool blockpools), and CreateCodec2IgbaBlockPool (for IGBA backed pools), etc.",
+      "range": {
+        "startLine": 297,
+        "startChar": 15,
+        "endLine": 297,
+        "endChar": 42
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99a570c_595d8195",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "nit: same line",
+      "range": {
+        "startLine": 334,
+        "startChar": 4,
+        "endLine": 335,
+        "endChar": 5
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7b5592_d979c599",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "is this some sort of todo? do we want to track it in a bug?",
+      "range": {
+        "startLine": 336,
+        "startChar": 11,
+        "endLine": 336,
+        "endChar": 13
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc9794f_6c45a259",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "nit: remove (This holds...), or This will hold",
+      "range": {
+        "startLine": 1049,
+        "startChar": 8,
+        "endLine": 1049,
+        "endChar": 12
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5915abee_9fc59f0c",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "Can you make this a doxygen comment block and describe what this means so everyone understands it without reading the design doc?",
+      "range": {
+        "startLine": 1050,
+        "startChar": 12,
+        "endLine": 1050,
+        "endChar": 21
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf579873_7c2824ae",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "why would someone want to use this?",
+      "range": {
+        "startLine": 1060,
+        "startChar": 50,
+        "endLine": 1060,
+        "endChar": 65
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "495f8dd4_99a0b503",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "or this? (and below)\n\nplease add doxygen docs for all new methods.\n\nInstead of tying it to the actual calls (e.g. setOutputSurface), describe the expected behavior abstractly, and use setOutputSurface as an example.",
+      "range": {
+        "startLine": 1070,
+        "startChar": 50,
+        "endLine": 1070,
+        "endChar": 60
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc7ce299_9c69b89a",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "this will not replace an already existing element in mOld, and then mCurrent will be lost. Is that a concern?",
+      "range": {
+        "startLine": 1088,
+        "startChar": 12,
+        "endLine": 1088,
+        "endChar": 17
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ae6078_79ddfbd6",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "is this an AIDL convention? does allocator not have a useful constructor?",
+      "range": {
+        "startLine": 2028,
+        "startChar": 0,
+        "endLine": 2028,
+        "endChar": 80
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a46136_9e245119",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2455,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "do we need a tracking bug here?",
+      "range": {
+        "startLine": 2455,
+        "startChar": 11,
+        "endLine": 2455,
+        "endChar": 15
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078d1c24_4d408e53",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "nit: this is not expected (nor the ones below), we could annotate if (!work) [[unlikely]] {\n}\n\nit is C++20, but clang seems to support them since C++11",
+      "range": {
+        "startLine": 2510,
+        "startChar": 13,
+        "endLine": 2510,
+        "endChar": 17
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee15628_47a72bf4",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "nit: this may be easier to read as if (!worklet) {\\n continue;\\n } as above, and also in the next one to limit nesting.",
+      "range": {
+        "startLine": 2514,
+        "startChar": 16,
+        "endLine": 2514,
+        "endChar": 23
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6891055_956ccca1",
+        "filename": "media/codec2/hal/client/include/codec2/hidl/client.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "what does this mean exactly?",
+      "range": {
+        "startLine": 488,
+        "startChar": 7,
+        "endLine": 488,
+        "endChar": 20
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e29d5dc_05b4849e",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "could we reimplement this based on the implementation below instead of duplicating? e.g. create a uniquefd from this int?",
+      "range": {
+        "startLine": 502,
+        "startChar": 25,
+        "endLine": 502,
+        "endChar": 40
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b728fd95_fe79b472",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "is there a reason to keep this?",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 61
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089d201b_fd5fb224",
+        "filename": "media/codec2/vndk/include/C2IgbaBufferPriv.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "what does this uniquefd do?",
+      "range": {
+        "startLine": 39,
+        "startChar": 41,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbe91be_68061a87",
+        "filename": "media/codec2/vndk/include/C2IgbaBufferPriv.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "doxygen?",
+      "range": {
+        "startLine": 108,
+        "startChar": 9,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c9dcae5_f02c01e1",
+        "filename": "media/codec2/vndk/internal/C2BlockInternal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "what does marking mean? perhaps \"remember/store the\"",
+      "range": {
+        "startLine": 483,
+        "startChar": 70,
+        "endLine": 483,
+        "endChar": 74
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359b7e63_5ba37048",
+        "filename": "media/codec2/vndk/internal/C2BlockInternal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "why is this not certain? what about \"from which the block was allocated\"?",
+      "range": {
+        "startLine": 484,
+        "startChar": 47,
+        "endLine": 484,
+        "endChar": 52
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741db0e0_8dd6d213",
+        "filename": "media/codec2/vndk/internal/C2BlockInternal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "nit: what about \"This will be used in the dtor to deallocate the buffer.\"?",
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c6936b_86f9ca52",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 6367,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "nit: can we indent after first ( and use 8 continuing indent?",
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c863bd_a05afb16",
+        "filename": "media/libstagefright/SurfaceUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "to?",
+      "range": {
+        "startLine": 326,
+        "startChar": 25,
+        "endLine": 326,
+        "endChar": 26
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b7d38f_b995d2b9",
+        "filename": "media/libstagefright/include/media/stagefright/SurfaceUtils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 1,
+      "message": "hit: can we use an 8 continuing indent like methods above?",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

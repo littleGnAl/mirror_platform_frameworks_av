@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3430c15f_127f25e1",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-16T00:02:11Z",
+      "side": 0,
+      "message": "why is this no longer needed? Is ufd this waitable fd in a constant form?",
+      "range": {
+        "startLine": 161,
+        "startChar": 41,
+        "endLine": 161,
+        "endChar": 54
+      },
+      "revId": "6050c419e02cffd228def8abdc55e55f7d44c8bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
