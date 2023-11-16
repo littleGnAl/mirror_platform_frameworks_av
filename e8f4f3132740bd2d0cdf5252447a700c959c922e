@@ -16,6 +16,23 @@
       "message": "hello",
       "revId": "e8f4f3132740bd2d0cdf5252447a700c959c922e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c6cb86_0744bd0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-16T16:43:34Z",
+      "side": 1,
+      "message": "We need more time to review the implications of this proposal and see if a more generic approach can be used to avoid invalidating tracks when the preferred device is changed",
+      "revId": "e8f4f3132740bd2d0cdf5252447a700c959c922e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
