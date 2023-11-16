@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a18d774_40269037",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-16T09:05:52Z",
+      "side": 1,
+      "message": "I think we should rather assert if the profile is declared with compressed formats and not on a direct output: this is a configuration error by the OEM.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "a034f408ad0ff0a9a41d3fd7bc6e097d99ec5feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
