@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e12224_c7b7c21c",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-16T23:38:04Z",
+      "side": 1,
+      "message": "if these are overrides, please state it explicitly, e.g.:\n\n```suggestion\n    void onBufferReleased() override {\n```",
+      "revId": "4a5f6632f0581420230aa7b8ead9b868444b91b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a1921a_ce7bd25a",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-16T23:38:04Z",
+      "side": 1,
+      "message": "I\u0027d prefer a common private method to be called from both callbacks. e.g.:\n\n```\nprivate:\n    void sendBufferReleased() { ... }\npublic:\n    void onBufferReleased() override {\n        sendBufferReleased();\n    }\n    void onBufferDetached([[maybe_unused]] int slot) {\n        sendBufferReleased();\n    }\n```",
+      "revId": "4a5f6632f0581420230aa7b8ead9b868444b91b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e558cf1a_1e259417",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 6365,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-16T23:38:04Z",
+      "side": 1,
+      "message": "can we pull this from CodecBase to MediaCodec? Instead of CodecBase::getIProducerListener, we could add BufferChannelBase::onBufferReleasedFromOutputSurface(int generation), which in turn call Codec2Client::onBufferReleasedFromOutputSurface (or no-op in ACodec)\n\nI think this way we can also not expose generation to the CodecBase impls.",
+      "revId": "4a5f6632f0581420230aa7b8ead9b868444b91b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
