@@ -22,6 +22,30 @@
       },
       "revId": "a034f408ad0ff0a9a41d3fd7bc6e097d99ec5feb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57ae445_88348ee5",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-16T14:47:20Z",
+      "side": 1,
+      "message": "Acknowledged. I\u0027ve amended and in PS3 the flags are now passed in from registerPolicyMixes. What I\u0027m wanting to achieve is something similar to AudioPolicyManagerTestMsd::SetUpManagerConfig() profiles where the flags are manually set. It seems for remote submix, the IO profiles aren\u0027t added from the parsed audio policy XML / config, but need to be manually added as part of registerPolicyMixes so I\u0027m needing to add the DIRECT flags so that inputs / outputs can be found by APM on AudioRecord / AudioTrack requests.",
+      "parentUuid": "4a18d774_40269037",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "a034f408ad0ff0a9a41d3fd7bc6e097d99ec5feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
