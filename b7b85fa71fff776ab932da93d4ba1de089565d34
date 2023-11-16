@@ -34,6 +34,24 @@
       "parentUuid": "704888b3_e2607a3d",
       "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab04a20_77ba87b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-11-16T09:40:53Z",
+      "side": 1,
+      "message": "\u003e Until MediaCodec receives outputFormatChanged, NuPlayer begins to set scaling mode through setParams\n\nI assume you are referring to the call on L1151? \n\n@wonsik@google.com / @lajos@google.com: Based on previous guidance, calling this method after a change in output format was considered the correct timing (see [internal: b/28131249#comment6]) and this is also how it\u0027s documented on the MediaCodec Java API. But this change attempts to set it earlier while instantiating a codec (which also looks sensible). Has something changed that requires setting the scaling mode earlier again?",
+      "parentUuid": "0f7166c4_343b055e",
+      "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
