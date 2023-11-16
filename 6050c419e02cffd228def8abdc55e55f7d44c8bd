@@ -22,6 +22,30 @@
       },
       "revId": "6050c419e02cffd228def8abdc55e55f7d44c8bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e576785c_ad06eace",
+        "filename": "media/codec2/vndk/platform/C2IgbaBuffer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-16T12:34:54Z",
+      "side": 0,
+      "message": "C2IgbaBlockPool is created via aidl remote call.\nDuring processing the remote call, this mIgba-\u003egetWaitableFd() will happen. (This is another remote call in the reverse direction, HAL -\u003e client)\n\nSince this requires a nesting RPC, and requires an additional thread count.\nHAL interface was modified to bundle waitableFD when BlockPool creation is requested.",
+      "parentUuid": "3430c15f_127f25e1",
+      "range": {
+        "startLine": 161,
+        "startChar": 41,
+        "endLine": 161,
+        "endChar": 54
+      },
+      "revId": "6050c419e02cffd228def8abdc55e55f7d44c8bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
