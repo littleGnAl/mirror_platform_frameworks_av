@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e192961d_77341359",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2023-11-16T22:58:15Z",
+      "side": 1,
+      "message": "Nit, could this just be:\n\n    mApplicationConfig \u003d *config;",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "60e87225cf194c92e515fefb5346d1042e2568da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
