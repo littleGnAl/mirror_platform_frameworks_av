@@ -52,6 +52,24 @@
       "parentUuid": "0f7166c4_343b055e",
       "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aafaebd_5d4bb9ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2067060
+      },
+      "writtenOn": "2023-11-17T12:08:34Z",
+      "side": 1,
+      "message": "Nothing has changed.As mentioned before,app calls setVideoScalingMode after setDataSource(https://developer.android.com/reference/android/media/MediaPlayer#setVideoScalingMode(int)),expeting to crop the content to fit the surface. But,because the codec is NULL(L2229),until outputFormatChanged, the scaling mode is set to the app\u0027s expected(NATIVE_WINDOW_SCALING_MODE_SCALE_CROP), and it was the default value(VIDEO_SCALING_MODE_SCALE_TO_FIT) before that. Therefore, it is necessary to synchronize the value to the decoder instance when instantiating a codec , ensure that all frames are cropped to fit the surface.",
+      "parentUuid": "8ab04a20_77ba87b2",
+      "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
