@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10fb4b2e_c9425fa3",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-17T22:50:12Z",
+      "side": 1,
+      "message": "you might want to put this below `getOutputBufferArray` to workaround merge conflict",
+      "revId": "1028ad0ddfcb213913c7cb85a6b6470f1e560963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
