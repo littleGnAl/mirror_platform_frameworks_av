@@ -47,7 +47,7 @@ TunerFilter::TunerFilter(const shared_ptr<IFilter> filter, const shared_ptr<Filt
         mTunerService(tuner) {}
 
 TunerFilter::~TunerFilter() {
-    close();
+    //close();
     freeSharedFilterToken("");
     {
         Mutex::Autolock _l(mLock);
