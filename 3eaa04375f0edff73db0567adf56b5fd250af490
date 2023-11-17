@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88ad292_58357b3d",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T09:33:50Z",
+      "side": 1,
+      "message": "we could also lock at construction and have a getter for the resource.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378f0323_4585dd51",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T09:33:50Z",
+      "side": 1,
+      "message": "why unlock between each clean up?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c3f9811_1eafd0bd",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T09:33:50Z",
+      "side": 1,
+      "message": "why change from (mModule \u003d\u003d nullptr) and leave (mTelephony \u003d\u003d nullptr)?",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a2c4bc_89a8b321",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T09:33:50Z",
+      "side": 1,
+      "message": "ideally all methods should go to the mapper for consistency.\nmaybe in a latter CL. For now, clearly document which method has to",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 69
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3cf4947_5561db96",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T09:33:50Z",
+      "side": 1,
+      "message": "why isn\u0027t this moved to the mapper?",
+      "range": {
+        "startLine": 249,
+        "startChar": 16,
+        "endLine": 249,
+        "endChar": 28
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddef8aae_4778fea9",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T09:33:50Z",
+      "side": 1,
+      "message": "whynot use the variant with cleanups?",
+      "range": {
+        "startLine": 135,
+        "startChar": 35,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
