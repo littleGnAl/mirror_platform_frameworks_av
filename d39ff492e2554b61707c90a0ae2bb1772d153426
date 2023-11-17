@@ -22,6 +22,30 @@
       },
       "revId": "d39ff492e2554b61707c90a0ae2bb1772d153426",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9d48d7_55a5e950",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T18:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56074b4b_0e6a988b",
+      "range": {
+        "startLine": 171,
+        "startChar": 72,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "d39ff492e2554b61707c90a0ae2bb1772d153426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
