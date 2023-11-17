@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c34f83_103a4bba",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd31cd7_68386df0",
+      "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4524015a_6ee5038b",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-17T00:04:58Z",
       "side": 1,
       "message": "nit:\n```suggestion\n            c2_aidl::IComponent::BlockPoolAllocator allocator \u003d\n                c2_aidl::IComponent::BlockPoolAllocator::make(\n                        c2_aidl::IComponent::BlockPoolAllocator::allocator,\n                        { c2_aidl::IGraphicBufferAllocator::fromBinder(gba-\u003easBinder()),\n                          std::move(waitableFd) });\n```",
+      "range": {
+        "startLine": 2058,
+        "startChar": 12,
+        "endLine": 2063,
+        "endChar": 42
+      },
+      "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5532aebd_82b46e3e",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2063,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:26Z",
+      "side": 1,
+      "message": "I tried it before, but got this error.\n\n\n```\nframeworks/av/media/codec2/hal/client/client.cpp:2060:21: error: no matching function for call to \u0027make\u0027\n                    c2_aidl::IComponent::BlockPoolAllocator::make(\n                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nout/soong/.intermediates/hardware/interfaces/media/c2/aidl/android.hardware.media.c2-V1-ndk-source/gen/include/aidl/android/hardware/media/c2/IComponent.h:172:31: note: candidate template ignored: could not match \u0027std::initializer_list\u003c_Tp\u003e\u0027 against \u0027Tag\u0027\n    static BlockPoolAllocator make(std::initializer_list\u003c_Tp\u003e _il, _Up\u0026\u0026... _args) {\n                              ^\nout/soong/.intermediates/hardware/interfaces/media/c2/aidl/android.hardware.media.c2-V1-ndk-source/gen/include/aidl/android/hardware/media/c2/IComponent.h:167:31: note: candidate template ignored: couldn\u0027t infer template argument \u0027_tag\u0027\n    static BlockPoolAllocator make(_Tp\u0026\u0026... _args) {\n                              ^\n1 error generated.\n08:46:28 ninja failed with: exit status 1\n```",
+      "parentUuid": "4524015a_6ee5038b",
       "range": {
         "startLine": 2058,
         "startChar": 12,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f13921_35265694",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7721bed_9c1be126",
+      "range": {
+        "startLine": 2071,
+        "startChar": 7,
+        "endLine": 2072,
+        "endChar": 14
+      },
+      "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34a070ed_1967ca68",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-11-17T00:04:58Z",
       "side": 1,
       "message": "is this TODO still valid?",
+      "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c73691_7bb9d6ce",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a070ed_1967ca68",
       "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73eb2f6_bd536d47",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2466,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e984eaa4_bc13899b",
+      "range": {
+        "startLine": 2466,
+        "startChar": 19,
+        "endLine": 2466,
+        "endChar": 29
+      },
+      "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b645650_f25d65a3",
@@ -117,6 +225,24 @@
       "writtenOn": "2023-11-17T00:04:58Z",
       "side": 1,
       "message": "nit: not used in the header?",
+      "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bdf3ca8_334b66c5",
+        "filename": "media/codec2/hal/client/include/codec2/hidl/client.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b645650_f25d65a3",
       "revId": "c2cf7a0e825cf80ac952211f1788037d1b73eff1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
