@@ -25,6 +25,7 @@
 #include <C2Component.h>
 #include <C2PlatformSupport.h>
 
+#include <android/hidl/manager/1.2/IServiceManager.h>
 #include <codec2/hidl/1.0/ComponentStore.h>
 #include <codec2/hidl/1.1/ComponentStore.h>
 #include <codec2/hidl/1.2/ComponentStore.h>
@@ -823,9 +824,19 @@ extern "C" void RegisterCodecServices() {
                 std::make_shared<H2C2ComponentStore>(nullptr));
         hidlVer = "1.0";
     }
-    if (hidlStore->registerAsService("software") != android::OK) {
-        LOG(ERROR) << "Cannot register software Codec2 v" << hidlVer << " service.";
-        return;
+    // If the software component store isn't declared in the manifest, we don't
+    // need to try and register it as it will fail.
+    using ::android::hidl::manager::V1_2::IServiceManager;
+    IServiceManager::Transport transport =
+        android::hardware::defaultServiceManager1_2()->getTransport(V1_2::utils::ComponentStore::descriptor,
+                                                                    "software");
+    if (transport == IServiceManager::Transport::HWBINDER && hidlStore->registerAsService("software") != android::OK) {
+        // Expected to fail when HIDL is not supported and if the service isn't
+        // declared in the manifest(deprecated).
+        if (android::hardware::isHidlSupported()) {
+            LOG(ERROR) << "Cannot register HIDL software Codec2 v" << hidlVer << " service.";
+            return;
+        }
     }
 
     LOG(INFO) << "Software Codec2 service created and registered.";
