@@ -824,8 +824,13 @@ extern "C" void RegisterCodecServices() {
         hidlVer = "1.0";
     }
     if (hidlStore->registerAsService("software") != android::OK) {
-        LOG(ERROR) << "Cannot register software Codec2 v" << hidlVer << " service.";
-        return;
+        // Expected to fail in Android V+ when hwservicemanager is no longer
+        // installed.
+        int vendorVersion = ::android::base::GetIntProperty("ro.vendor.api_level", -1);
+        if (vendorVersion < __ANDROID_API_V__) {
+            LOG(ERROR) << "Cannot register HIDL software Codec2 v" << hidlVer << " service.";
+            return;
+        }
     }
 
     LOG(INFO) << "Software Codec2 service created and registered.";
