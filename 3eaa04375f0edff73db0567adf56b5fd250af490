@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04688a99_f6b2e754",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T17:18:03Z",
+      "side": 1,
+      "message": "I thought what you had in mind is to define a scoped accessor class (like a unique_lock) that would auto lock and unlock whne going out of scope",
+      "parentUuid": "6fb17e21_f15dba2a",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "378f0323_4585dd51",
