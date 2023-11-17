@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5296ad_cd254013",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:32:24Z",
+      "side": 1,
+      "message": "For that I could just use `unique_lock` directly. The problem that LockedAccessor solves is obtaining a reference to the protected resource without first taking a lock on it, and at the same time satisfying static checks for thread safety. This is needed because we need to take a reference to the Hal2AidlMapper class instance when creating a Cleanups object, but we don\u0027t want to take a lock just for that. Taking a lock will only be needed when cleanups are executed, and this might not even occur.",
+      "parentUuid": "8ff02654_26afdc26",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "378f0323_4585dd51",
