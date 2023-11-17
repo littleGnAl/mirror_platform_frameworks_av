@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c1eab8_dcb75230",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e12224_c7b7c21c",
+      "revId": "4a5f6632f0581420230aa7b8ead9b868444b91b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99a1921a_ce7bd25a",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "315f0756_9cd22c4d",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a1921a_ce7bd25a",
+      "revId": "4a5f6632f0581420230aa7b8ead9b868444b91b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e558cf1a_1e259417",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-11-16T23:38:04Z",
       "side": 1,
       "message": "can we pull this from CodecBase to MediaCodec? Instead of CodecBase::getIProducerListener, we could add BufferChannelBase::onBufferReleasedFromOutputSurface(int generation), which in turn call Codec2Client::onBufferReleasedFromOutputSurface (or no-op in ACodec)\n\nI think this way we can also not expose generation to the CodecBase impls.",
+      "revId": "4a5f6632f0581420230aa7b8ead9b868444b91b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4f6a45_9fd38d68",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 6365,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e558cf1a_1e259417",
       "revId": "4a5f6632f0581420230aa7b8ead9b868444b91b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
