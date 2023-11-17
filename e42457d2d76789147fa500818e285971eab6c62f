@@ -16,6 +16,24 @@
       "message": "I think this change is pretty risky to land unflagged as it looks like a reimplementation of the old reclaim",
       "revId": "e42457d2d76789147fa500818e285971eab6c62f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae49107_53d0b68f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-11-17T16:40:21Z",
+      "side": 1,
+      "message": "I will be dropping this change and bringing in a set of other changes. I will discuss with you/team about whether we need to flag them or not before that.",
+      "parentUuid": "acf8b813_bf2a66c1",
+      "revId": "e42457d2d76789147fa500818e285971eab6c62f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
