@@ -22,6 +22,30 @@
       },
       "revId": "f1f0299a295bece6296d4a90aeda57bfb0abf3c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65a97b0_ca9eec2a",
+        "filename": "media/utils/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-17T20:19:11Z",
+      "side": 1,
+      "message": "How about leaving this as \"gnu++17\" in this change and reverting aosp/2833039 (ideally after default gets bumped to gnu++20)?",
+      "parentUuid": "9f380bb4_bd19c5e1",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "f1f0299a295bece6296d4a90aeda57bfb0abf3c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
