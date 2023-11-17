@@ -46,6 +46,30 @@
       },
       "revId": "a034f408ad0ff0a9a41d3fd7bc6e097d99ec5feb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5196c0_15747584",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T16:19:00Z",
+      "side": 1,
+      "message": "This is in order to support compressed audio on the remote submix path?\nIs there a CL modifying the remote submix module to support non PCM data?\nin this case are we exposing both PCm static profiles and dynamic output profiles in the audio policy config file for remote submix?",
+      "parentUuid": "b57ae445_88348ee5",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "a034f408ad0ff0a9a41d3fd7bc6e097d99ec5feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
