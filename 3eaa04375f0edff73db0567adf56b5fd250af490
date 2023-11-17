@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff02654_26afdc26",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T17:22:17Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "04688a99_f6b2e754",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "378f0323_4585dd51",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "You have probably misread this. The cleanups loop is below, line `93`.",
       "parentUuid": "378f0323_4585dd51",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "149be4e6_3f91168a",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T17:22:17Z",
+      "side": 1,
+      "message": "yes, I for some reason I mixed it up with the if() statement",
+      "parentUuid": "9cb763c9_fae9ffed",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -213,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefa4309_afccb59c",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T17:22:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39b82cf6_ced41042",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 69
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3cf4947_5561db96",
@@ -250,6 +322,30 @@
       "side": 1,
       "message": "It does not interact with any other field in the mapper, so I decided it makes more sense to leave it here.",
       "parentUuid": "e3cf4947_5561db96",
+      "range": {
+        "startLine": 249,
+        "startChar": 16,
+        "endLine": 249,
+        "endChar": 28
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca57952_07c86354",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-11-17T17:22:17Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "4fc97bbe_7b5f7905",
       "range": {
         "startLine": 249,
         "startChar": 16,
