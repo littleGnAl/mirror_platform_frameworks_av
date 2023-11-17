@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb17e21_f15dba2a",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:10:51Z",
+      "side": 1,
+      "message": "The idea of the accessor is that we postpone locking until actually needed. This way, we can clone the accessor without taking any locks. Potentially, this behavior could be parametrized, however since both the copy constructor (which is used in this example) and the copy assignment operator do not accept extra arguments, I don\u0027t see a clean way to express this immediate locking behavior.",
+      "parentUuid": "b88ad292_58357b3d",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "378f0323_4585dd51",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-17T09:33:50Z",
       "side": 1,
       "message": "why unlock between each clean up?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb763c9_fae9ffed",
+        "filename": "media/libaudiohal/impl/Cleanups.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:10:51Z",
+      "side": 1,
+      "message": "You have probably misread this. The cleanups loop is below, line `93`.",
+      "parentUuid": "378f0323_4585dd51",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "939c08b0_c01b0f9d",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:10:51Z",
+      "side": 1,
+      "message": "Right, that looks inconsistent. I tend to use `!mModule` for brevity, and used an explicit comparison with `nullptr` for other pointers to indicate that it\u0027s a pointer. I think, it\u0027s better to stick to `nullptr` for consistency.",
+      "parentUuid": "7c3f9811_1eafd0bd",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2a2c4bc_89a8b321",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-17T09:33:50Z",
       "side": 1,
       "message": "ideally all methods should go to the mapper for consistency.\nmaybe in a latter CL. For now, clearly document which method has to",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 69
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b82cf6_ced41042",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:10:51Z",
+      "side": 1,
+      "message": "My point of view is that the mapper exist only because the framework was not yet updated to operate on AIDL-based structures directly. Mapper does the job of translating the \"legacy\" way of identifying ports and port configs (by device addresses and I/O handles) into AIDL IDs. If we update the framework to provide these IDs directly to libaudiohal, the need for the mapper will cease.\n\nSo, in the long term, there should be no mapper at all, and libaudiohal@aidl should be just a thin layer which directs calls to the HAL. I\u0027ve added a comment about this to the Hal2AidlMapper header file.\n\nAlso, please note that the thread safety concern which this CL addresses is about the access to the mapping data structures only, it\u0027s not about calling interface methods. Since we use a single binder to access IModule, all calls to it are serialized by the Binder framework.",
+      "parentUuid": "d2a2c4bc_89a8b321",
       "range": {
         "startLine": 173,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fc97bbe_7b5f7905",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:10:51Z",
+      "side": 1,
+      "message": "It does not interact with any other field in the mapper, so I decided it makes more sense to leave it here.",
+      "parentUuid": "e3cf4947_5561db96",
+      "range": {
+        "startLine": 249,
+        "startChar": 16,
+        "endLine": 249,
+        "endChar": 28
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddef8aae_4778fea9",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-11-17T09:33:50Z",
       "side": 1,
       "message": "whynot use the variant with cleanups?",
+      "range": {
+        "startLine": 135,
+        "startChar": 35,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "3eaa04375f0edff73db0567adf56b5fd250af490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8484bc7e_5301f677",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-17T17:10:51Z",
+      "side": 1,
+      "message": "Good point! I missed this usage which indeed can be converted. Thanks!",
+      "parentUuid": "ddef8aae_4778fea9",
       "range": {
         "startLine": 135,
         "startChar": 35,
