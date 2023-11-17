@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce42b4c_0e0d89fd",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-17T09:11:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "69e29cef_8a925e1b",
+      "range": {
+        "startLine": 297,
+        "startChar": 15,
+        "endLine": 297,
+        "endChar": 42
+      },
+      "revId": "48de07029d6e948c9e334ad8292d45b0c1345d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b99a570c_595d8195",
