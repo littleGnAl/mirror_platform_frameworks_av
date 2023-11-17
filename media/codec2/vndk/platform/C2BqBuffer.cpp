@@ -754,6 +754,7 @@ public:
 
     void invalidate() {
         std::scoped_lock<std::mutex> lock(mMutex);
+        mIgbpValidityToken.reset();
         mInvalidated = true;
     }
 
