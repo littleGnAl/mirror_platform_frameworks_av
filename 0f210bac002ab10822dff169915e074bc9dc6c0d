@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5318eb78_92bc19be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-17T00:09:44Z",
+      "side": 1,
+      "message": "could you briefly state which bug does this fix?",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "0f210bac002ab10822dff169915e074bc9dc6c0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7e474b1_66ca7d71",
         "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
         "patchSetId": 1
