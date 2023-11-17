@@ -70,6 +70,24 @@
       "parentUuid": "8ab04a20_77ba87b2",
       "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82274f5_ce7880d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-17T21:14:50Z",
+      "side": 1,
+      "message": "There\u0027s a mention of \"before the release of any new buffers\" and from the description it sounds like the frames can render before the scaling mode is set.",
+      "parentUuid": "8aafaebd_5d4bb9ae",
+      "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
