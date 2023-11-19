@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d8f913_dbff6f7c",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "nit:\n\n```suggestion\n    if (blockPool \u003d\u003d nullptr) {\n        return ScopedAStatus::fromServiceSpecificError(C2_BAD_VALUE);\n    }\n    if (status !\u003d C2_OK) {\n```",
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdbaef45_d7e23c9f",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "nit: maybe `AidlGraphicBufferAllocator`",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aec58d7_3e5e7b6a",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9c9b4d_0bc82954",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "This seems to be here to retain the ref count until explicitly removed. Please comment so that its role is clear.",
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb75fc1a_41aebf9b",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "nit: blockpool",
+      "range": {
+        "startLine": 1098,
+        "startChar": 22,
+        "endLine": 1098,
+        "endChar": 31
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9910fb0_8b06b4e2",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "this part may not be needed, as this is already handled in std",
+      "range": {
+        "startLine": 1116,
+        "startChar": 13,
+        "endLine": 1116,
+        "endChar": 38
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740cc084_af48c74b",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "nit: null check?",
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b25eeb_3227d538",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:13:58Z",
+      "side": 1,
+      "message": "maybe `C2PlatformAllocatorDesc` or `C2PlatformAllocatorParam`?",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
