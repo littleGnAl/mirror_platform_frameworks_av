@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9908b60e_d0246524",
+        "filename": "media/codec2/hal/aidl/BufferTypes.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-19T07:09:48Z",
+      "side": 1,
+      "message": "is this dup of handle same for hidl?",
+      "range": {
+        "startLine": 204,
+        "startChar": 39,
+        "endLine": 204,
+        "endChar": 48
+      },
+      "revId": "220f8a8a060fb7a97867da37f8f5b0b26e3afb7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
