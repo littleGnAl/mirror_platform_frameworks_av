@@ -70,6 +70,30 @@
       },
       "revId": "a034f408ad0ff0a9a41d3fd7bc6e097d99ec5feb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3e28d8_50490895",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-19T21:39:37Z",
+      "side": 1,
+      "message": "Yes this is to support compressed audio wrapped as IEC61937 and signalled as PCM through the remote submix HAL.\n\nhttps://android-review.googlesource.com/c/platform/hardware/interfaces/+/2832731 is the only remote submix HAL patch we have so far, and the change centres on signalling to support AudioFlinger to attempt the raw E-AC3-JOC stream open, for it to fail, and for AudioFlinger to try-again as wrapped IEC61937 but signalled as PCM (as per its current AudioFlinger SpdifStreamOut implementation).\n\nFor remote submix we are updating AIDL implementation so far only which has the config read in from the HAL itself rather than from a config (XML) file.",
+      "parentUuid": "ff5196c0_15747584",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "a034f408ad0ff0a9a41d3fd7bc6e097d99ec5feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
