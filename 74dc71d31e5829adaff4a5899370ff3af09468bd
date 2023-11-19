@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18348463_720749f2",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:31:12Z",
+      "side": 1,
+      "message": "maybe equivalent to:\n\n```suggestion\n            int delta \u003d std::min(mMaxDequeue - maxDequeueCount, mDequeueable);\n            maxDequeueToCommit \u003d mMaxDequeue - delta;\n            mDequeueable -\u003d delta;\n```",
+      "range": {
+        "startLine": 322,
+        "startChar": 12,
+        "endLine": 330,
+        "endChar": 13
+      },
+      "revId": "74dc71d31e5829adaff4a5899370ff3af09468bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f6eb797_bcfb8fc8",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-19T23:31:12Z",
+      "side": 1,
+      "message": "is it a fatal failure that `ret \u003c dec`? if not please log an error and continue here.",
+      "revId": "74dc71d31e5829adaff4a5899370ff3af09468bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
