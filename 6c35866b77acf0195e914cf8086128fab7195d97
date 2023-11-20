@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb00b94_bd871b5b",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T10:05:14Z",
+      "side": 1,
+      "message": "Optional: Just `return timeUs \u003e\u003d 0`? (I\u0027d be tempted to inline it in the header as well if that works.)",
+      "range": {
+        "startLine": 2434,
+        "startChar": 0,
+        "endLine": 2437,
+        "endChar": 16
+      },
+      "revId": "6c35866b77acf0195e914cf8086128fab7195d97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
