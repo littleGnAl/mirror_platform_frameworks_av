@@ -95,4 +95,85 @@ ResourceInfo& getResourceInfoForEdit(const ClientInfoParcel& clientInfo,
     return found->second;
 }
 
+///////////////////////////////////////////////////////////////////////
+////////////// Death Notifier implementation   ////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+DeathNotifier::DeathNotifier(const std::shared_ptr<IResourceManagerClient>& client,
+                             const std::shared_ptr<ResourceManagerService>& service,
+                             const ClientInfoParcel& clientInfo)
+    : mClient(client), mService(service), mClientInfo(clientInfo),
+      mCookie(nullptr),
+      mDeathRecipient(::ndk::ScopedAIBinder_DeathRecipient(
+                      AIBinder_DeathRecipient_new(BinderDiedCallback))) {
+    // Setting callback notification when DeathRecipient gets deleted.
+    AIBinder_DeathRecipient_setOnUnlinked(mDeathRecipient.get(), BinderUnlinkedCallback);
+}
+
+//static
+void DeathNotifier::BinderUnlinkedCallback(void* cookie) {
+    BinderDiedContext* context = reinterpret_cast<BinderDiedContext*>(cookie);
+    // Since we don't need the context anymore, we are deleting it now.
+    delete context;
+}
+
+//static
+void DeathNotifier::BinderDiedCallback(void* cookie) {
+    BinderDiedContext* context = reinterpret_cast<BinderDiedContext*>(cookie);
+
+    // Validate the context and check if the DeathNotifier object is still in scope.
+    if (context != nullptr) {
+        std::shared_ptr<DeathNotifier> thiz = context->mDeathNotifier.lock();
+        if (thiz != nullptr) {
+            thiz->binderDied();
+        } else {
+            ALOGI("DeathNotifier is out of scope already");
+        }
+    }
+}
+
+void DeathNotifier::binderDied() {
+    // Don't check for pid validity since we know it's already dead.
+    std::shared_ptr<ResourceManagerService> service = mService.lock();
+    if (service == nullptr) {
+        ALOGW("ResourceManagerService is dead as well.");
+        return;
+    }
+
+    service->overridePid(mClientInfo.pid, -1);
+    // thiz is freed in the call below, so it must be last call referring thiz
+    service->removeResource(mClientInfo, false /*checkValid*/);
+}
+
+void OverrideProcessInfoDeathNotifier::binderDied() {
+    // Don't check for pid validity since we know it's already dead.
+    std::shared_ptr<ResourceManagerService> service = mService.lock();
+    if (service == nullptr) {
+        ALOGW("ResourceManagerService is dead as well.");
+        return;
+    }
+
+    service->removeProcessInfoOverride(mClientInfo.pid);
+}
+
+std::shared_ptr<DeathNotifier> DeathNotifier::Create(
+    const std::shared_ptr<IResourceManagerClient>& client,
+    const std::shared_ptr<ResourceManagerService>& service,
+    const ClientInfoParcel& clientInfo,
+    bool overrideProcessInfo) {
+    std::shared_ptr<DeathNotifier> deathNotifier = nullptr;
+    if (overrideProcessInfo) {
+        deathNotifier = std::make_shared<OverrideProcessInfoDeathNotifier>(
+            client, service, clientInfo);
+    } else {
+        deathNotifier = std::make_shared<DeathNotifier>(client, service, clientInfo);
+    }
+
+    if (deathNotifier) {
+        deathNotifier->link();
+    }
+
+    return deathNotifier;
+}
+
 } // namespace android
