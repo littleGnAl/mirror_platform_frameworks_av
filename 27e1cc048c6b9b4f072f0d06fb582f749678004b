@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cfe43f4_c7d7e4c9",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "Resolving as the code changed.",
+      "parentUuid": "d7f289d1_a875aa9e",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 58
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "440fc0de_70269035",
@@ -213,6 +237,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f729924e_14b826e5",
+        "filename": "media/libstagefright/include/media/stagefright/MediaWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "I see, thanks for the info.",
+      "parentUuid": "970040ff_ffbe2989",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "089b49e1_553ffb18",
@@ -250,6 +298,30 @@
       "side": 1,
       "message": "Given that timeUs is int64_t (because MediaMuxer::writeSampleData takes a int64_t) would it be okay to keep this as int64_t? else we will need some typecasts.",
       "parentUuid": "089b49e1_553ffb18",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb189d8_4f536c2c",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "439934f7_7bf91ff4",
       "range": {
         "startLine": 74,
         "startChar": 8,
@@ -491,6 +563,30 @@
         "startChar": 23,
         "endLine": 73,
         "endChar": 27
+      },
+      "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc513e02_e07e6f62",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2750afd5_19660188",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 11
       },
       "revId": "27e1cc048c6b9b4f072f0d06fb582f749678004b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

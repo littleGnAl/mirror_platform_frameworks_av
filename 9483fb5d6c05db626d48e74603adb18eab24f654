@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd485bc6_906300df",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "It might be worth adding a comment to say that WebM has monotonically increasing timestamps here.\n\nOut of interest, how are timestamps set on golden frames used only as reference? Are they allowed to duplicate a previous frame\u0027s timestamp?",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc3825a2_f45d2614",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "Super-nit: `lastDurationUs`",
+      "range": {
+        "startLine": 80,
+        "startChar": 23,
+        "endLine": 80,
+        "endChar": 37
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e63c12_cf9fb646",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "Optional nit: Move out of else block, given the other branch always returns early? I think this makes the return early pattern more obvious, and it also reduces indentation.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07f260e_144f7ea9",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "Nit: it would be helpful to have the meaning of the key in the field name as well -- how about `mLastTimestampUsByTrackIndex`?",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb4c99a_26aa8d8a",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-20T09:59:40Z",
+      "side": 1,
+      "message": "Super-nit: Please run a code formatter on modified lines in this CL. This needs a space after `if` for consistency, and WebmWriter is missing a space before `{` (there may be others).",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 81
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
