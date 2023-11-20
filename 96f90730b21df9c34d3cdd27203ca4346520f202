@@ -39,6 +39,30 @@
       },
       "revId": "96f90730b21df9c34d3cdd27203ca4346520f202",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab2de49_51ccf82e",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2253,
+      "author": {
+        "id": 2069151
+      },
+      "writtenOn": "2023-11-20T07:06:12Z",
+      "side": 1,
+      "message": "Eric, it looks like you have refactored this code on 2021 as below. +1 on the idea to force to use mMixerChannelMask\n\nhttps://cs.android.com/android/_/android/platform/frameworks/av/+/b62d0361c27aca4854b248e5c3707277f6699124",
+      "parentUuid": "7ebf9d11_3b6b8d9b",
+      "range": {
+        "startLine": 2253,
+        "startChar": 31,
+        "endLine": 2253,
+        "endChar": 45
+      },
+      "revId": "96f90730b21df9c34d3cdd27203ca4346520f202",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
