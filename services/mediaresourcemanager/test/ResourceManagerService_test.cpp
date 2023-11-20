@@ -77,7 +77,7 @@ private:
     }
 
 public:
-    ResourceManagerServiceTest() : ResourceManagerServiceTestBase() {}
+    ResourceManagerServiceTest(bool newRM = false) : ResourceManagerServiceTestBase(newRM) {}
 
 
     // test set up
@@ -495,8 +495,8 @@ public:
 
         EXPECT_EQ(2u, targetClients.size());
         // (OK to require ordering in clients[], as the pid map is sorted)
-        EXPECT_EQ(mTestClient3, targetClients[0].mClient);
-        EXPECT_EQ(mTestClient1, targetClients[1].mClient);
+        EXPECT_EQ(getId(mTestClient3), targetClients[0].mClientId);
+        EXPECT_EQ(getId(mTestClient1), targetClients[1].mClientId);
     }
 
     void testReclaimResourceSecure() {
@@ -775,7 +775,7 @@ public:
 
         // kTestPid1 is the lowest priority process with MediaResource::Type::kGraphicMemory.
         // mTestClient1 has the largest MediaResource::Type::kGraphicMemory within kTestPid1.
-        EXPECT_EQ(mTestClient1, clientInfo.mClient);
+        EXPECT_EQ(getId(mTestClient1), clientInfo.mClientId);
     }
 
     void testGetLowestPriorityPid() {
@@ -1512,6 +1512,11 @@ public:
     }
 };
 
+class ResourceManagerServiceNewTest : public ResourceManagerServiceTest {
+public:
+    ResourceManagerServiceNewTest(bool newRM = true) : ResourceManagerServiceTest(newRM) {}
+};
+
 TEST_F(ResourceManagerServiceTest, config) {
     testConfig();
 }
@@ -1595,6 +1600,93 @@ TEST_F(ResourceManagerServiceTest,
 }
 
 TEST_F(ResourceManagerServiceTest, concurrentCodecs) {
+    testConcurrentCodecs();
+}
+
+/////// test cases for ResourceManagerServiceNew ////
+TEST_F(ResourceManagerServiceNewTest, config) {
+    testConfig();
+}
+
+TEST_F(ResourceManagerServiceNewTest, addResource) {
+    addResource();
+}
+
+TEST_F(ResourceManagerServiceNewTest, combineResource) {
+    testCombineResource();
+}
+
+TEST_F(ResourceManagerServiceNewTest, combineResourceNegative) {
+    testCombineResourceWithNegativeValues();
+}
+
+TEST_F(ResourceManagerServiceNewTest, removeResource) {
+    testRemoveResource();
+}
+
+TEST_F(ResourceManagerServiceNewTest, removeClient) {
+    testRemoveClient();
+}
+
+TEST_F(ResourceManagerServiceNewTest, reclaimResource) {
+    testReclaimResourceSecure();
+    testReclaimResourceNonSecure();
+}
+
+TEST_F(ResourceManagerServiceNewTest, getAllClients_l) {
+    testGetAllClients();
+}
+
+TEST_F(ResourceManagerServiceNewTest, getLowestPriorityBiggestClient_l) {
+    testGetLowestPriorityBiggestClient();
+}
+
+TEST_F(ResourceManagerServiceNewTest, getLowestPriorityPid_l) {
+    testGetLowestPriorityPid();
+}
+
+TEST_F(ResourceManagerServiceNewTest, isCallingPriorityHigher_l) {
+    testIsCallingPriorityHigher();
+}
+
+TEST_F(ResourceManagerServiceNewTest, batteryStats) {
+    testBatteryStats();
+}
+
+TEST_F(ResourceManagerServiceNewTest, cpusetBoost) {
+    testCpusetBoost();
+}
+
+TEST_F(ResourceManagerServiceNewTest, overridePid) {
+    testOverridePid();
+}
+
+TEST_F(ResourceManagerServiceNewTest, markClientForPendingRemoval) {
+    testMarkClientForPendingRemoval();
+}
+
+TEST_F(ResourceManagerServiceNewTest, reclaimResources_withVideoCodec_reclaimsOnlyVideoCodec) {
+    testReclaimResources_withVideoCodec_reclaimsOnlyVideoCodec();
+}
+
+TEST_F(ResourceManagerServiceNewTest, reclaimResources_withAudioCodec_reclaimsOnlyAudioCodec) {
+    testReclaimResources_withAudioCodec_reclaimsOnlyAudioCodec();
+}
+
+TEST_F(ResourceManagerServiceNewTest, reclaimResources_withImageCodec_reclaimsOnlyImageCodec) {
+    testReclaimResources_withImageCodec_reclaimsOnlyImageCodec();
+}
+
+TEST_F(ResourceManagerServiceNewTest, reclaimResources_whenPartialResourceMatch_reclaims) {
+    testReclaimResources_whenPartialResourceMatch_reclaims();
+}
+
+TEST_F(ResourceManagerServiceNewTest,
+        reclaimResourcesFromMarkedClients_removesBiggestMarkedClientForSomeResources) {
+    testReclaimResourcesFromMarkedClients_removesBiggestMarkedClientForSomeResources();
+}
+
+TEST_F(ResourceManagerServiceNewTest, concurrentCodecs) {
     testConcurrentCodecs();
 }
 

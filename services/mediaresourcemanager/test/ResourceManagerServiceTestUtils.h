@@ -198,8 +198,8 @@ public:
         return static_cast<TestClient*>(testClient.get());
     }
 
-    ResourceManagerServiceTestBase() {
-        ALOGI("ResourceManagerServiceTestBase created");
+    ResourceManagerServiceTestBase(bool newRM = false) : mNewRM(newRM) {
+        ALOGI("ResourceManagerServiceTestBase created with %s RM", newRM ? "new" : "old");
     }
 
     void SetUp() override {
@@ -207,8 +207,11 @@ public:
         // silently ignored.
         ABinderProcess_startThreadPool();
         mSystemCB = new TestSystemCallback();
-        mService = ::ndk::SharedRefBase::make<ResourceManagerService>(
-            new TestProcessInfo, mSystemCB);
+        if (mNewRM) {
+            mService = ResourceManagerService::CreateNew(new TestProcessInfo, mSystemCB);
+        } else {
+            mService = ResourceManagerService::Create(new TestProcessInfo, mSystemCB);
+        }
         mTestClient1 = ::ndk::SharedRefBase::make<TestClient>(kTestPid1, kTestUid1, mService);
         mTestClient2 = ::ndk::SharedRefBase::make<TestClient>(kTestPid2, kTestUid2, mService);
         mTestClient3 = ::ndk::SharedRefBase::make<TestClient>(kTestPid2, kTestUid2, mService);
@@ -245,6 +248,8 @@ protected:
         EXPECT_EQ(client, info.client);
         EXPECT_TRUE(isEqualResources(resources, info.resources));
     }
+
+    bool mNewRM = false;
 };
 
 } // namespace android

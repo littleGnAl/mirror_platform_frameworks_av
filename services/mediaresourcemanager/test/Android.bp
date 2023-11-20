@@ -25,6 +25,7 @@ cc_test {
         "libstatspull",
         "libstatssocket",
         "libactivitymanager_aidl",
+        "aconfig_mediacodec_flags_c_lib",
     ],
     include_dirs: [
         "frameworks/av/include",
@@ -75,6 +76,7 @@ cc_test {
         "libstatspull",
         "libstatssocket",
         "libactivitymanager_aidl",
+        "aconfig_mediacodec_flags_c_lib",
     ],
     include_dirs: [
         "frameworks/av/include",
