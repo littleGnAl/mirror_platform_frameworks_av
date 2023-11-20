@@ -30,9 +30,10 @@
 #include <utils/String8.h>
 #include <utils/threads.h>
 
+#include "ResourceManagerServiceUtils.h"
+
 namespace android {
 
-class DeathNotifier;
 class ResourceObserverService;
 class ServiceLog;
 struct ProcessInfoInterface;
@@ -46,57 +47,6 @@ using ::aidl::android::media::MediaResourcePolicyParcel;
 using ::aidl::android::media::ClientInfoParcel;
 using ::aidl::android::media::ClientConfigParcel;
 
-typedef std::map<std::tuple<
-        MediaResource::Type, MediaResource::SubType, std::vector<uint8_t>>,
-        MediaResourceParcel> ResourceList;
-
-struct ResourceInfo {
-    uid_t uid;
-    int64_t clientId;
-    std::string name;
-    std::shared_ptr<IResourceManagerClient> client;
-    std::shared_ptr<DeathNotifier> deathNotifier = nullptr;
-    ResourceList resources;
-    bool pendingRemoval{false};
-};
-
-/*
- * Resource request info that encapsulates
- *  - the calling/requesting process pid.
- *  - the resource requesting (to be reclaimed from others)
- */
-struct ResourceRequestInfo {
-    // uid of the calling/requesting process.
-    int mCallingPid = -1;
-    // resources requested.
-    const ::aidl::android::media::MediaResourceParcel* mResource;
-};
-
-/*
- * Structure that defines the Client - a possible target to relcaim from.
- * This encapsulates pid, uid of the process and the client.
- * based on the reclaim policy.
- */
-struct ClientInfo {
-    // pid of the process.
-    pid_t mPid;
-    // uid of the process.
-    uid_t mUid;
-    // Client to relcaim from.
-    std::shared_ptr<::aidl::android::media::IResourceManagerClient> mClient;
-    ClientInfo(
-        pid_t pid = -1,
-        uid_t uid = -1,
-        const std::shared_ptr<::aidl::android::media::IResourceManagerClient>& client = nullptr)
-        : mPid(pid),
-          mUid(uid),
-          mClient(client) {
-    }
-};
-
-typedef std::map<int64_t, ResourceInfo> ResourceInfos;
-typedef std::map<int, ResourceInfos> PidResourceInfosMap;
-
 class ResourceManagerService : public BnResourceManagerService {
 public:
     struct SystemCallbackInterface : public RefBase {
@@ -109,13 +59,20 @@ public:
     static char const *getServiceName() { return "media.resource_manager"; }
     static void instantiate();
 
-    virtual inline binder_status_t dump(
+        // Static creation methods.
+    static std::shared_ptr<ResourceManagerService> Create();
+    static std::shared_ptr<ResourceManagerService> Create(
+        const sp<ProcessInfoInterface>& processInfo,
+        const sp<SystemCallbackInterface>& systemResource);
+
+    virtual binder_status_t dump(
             int /*fd*/, const char** /*args*/, uint32_t /*numArgs*/);
 
     ResourceManagerService();
     explicit ResourceManagerService(const sp<ProcessInfoInterface> &processInfo,
             const sp<SystemCallbackInterface> &systemResource);
     virtual ~ResourceManagerService();
+
     void setObserverService(const std::shared_ptr<ResourceObserverService>& observerService);
 
     // IResourceManagerService interface
@@ -234,7 +191,6 @@ private:
     bool mSupportsMultipleSecureCodecs;
     bool mSupportsSecureWithNonSecureCodec;
     int32_t mCpuBoostCount;
-    ::ndk::ScopedAIBinder_DeathRecipient mDeathRecipient;
     struct ProcessInfoOverride {
         std::shared_ptr<DeathNotifier> deathNotifier = nullptr;
         std::shared_ptr<IResourceManagerClient> client;

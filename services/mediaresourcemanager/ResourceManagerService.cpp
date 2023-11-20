@@ -24,142 +24,22 @@
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <cutils/sched_policy.h>
-#include <dirent.h>
 #include <media/MediaResourcePolicy.h>
 #include <media/stagefright/foundation/ABase.h>
 #include <mediautils/BatteryNotifier.h>
 #include <mediautils/ProcessInfo.h>
 #include <mediautils/SchedulingPolicyService.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include <com_android_media_codec_flags.h>
 
 #include "IMediaResourceMonitor.h"
 #include "ResourceManagerMetrics.h"
-#include "ResourceManagerService.h"
-#include "ResourceManagerServiceUtils.h"
+#include "ResourceManagerServiceNew.h"
 #include "ResourceObserverService.h"
 #include "ServiceLog.h"
 
+namespace CodecFeatureFlags = com::android::media::codec::flags;
+
 namespace android {
-
-class DeathNotifier : public std::enable_shared_from_this<DeathNotifier> {
-
-    // BinderDiedContext defines the cookie that is passed as DeathRecipient.
-    // Since this can maintain more context than a raw pointer, we can
-    // validate the scope of DeathNotifier, before deferencing it upon the binder death.
-    struct BinderDiedContext {
-        std::weak_ptr<DeathNotifier> mDeathNotifier;
-    };
-public:
-    DeathNotifier(const std::shared_ptr<IResourceManagerClient>& client,
-                  const std::shared_ptr<ResourceManagerService>& service,
-                  const ClientInfoParcel& clientInfo,
-                  AIBinder_DeathRecipient* recipient);
-
-    virtual ~DeathNotifier() {
-        unlink();
-    }
-
-    void unlink() {
-        if (mClient != nullptr) {
-            // Register for the callbacks by linking to death notification.
-            AIBinder_unlinkToDeath(mClient->asBinder().get(), mRecipient, mCookie);
-            mClient = nullptr;
-        }
-    }
-
-    // Implement death recipient
-    static void BinderDiedCallback(void* cookie);
-    static void BinderUnlinkedCallback(void* cookie);
-    virtual void binderDied();
-
-private:
-    void link() {
-        // Create the context that is passed as cookie to the binder death notification.
-        // The context gets deleted at BinderUnlinkedCallback.
-        mCookie = new BinderDiedContext{.mDeathNotifier = weak_from_this()};
-        // Register for the callbacks by linking to death notification.
-        AIBinder_linkToDeath(mClient->asBinder().get(), mRecipient, mCookie);
-    }
-
-protected:
-    std::shared_ptr<IResourceManagerClient> mClient;
-    std::weak_ptr<ResourceManagerService> mService;
-    const ClientInfoParcel mClientInfo;
-    AIBinder_DeathRecipient* mRecipient;
-    BinderDiedContext* mCookie;
-};
-
-DeathNotifier::DeathNotifier(const std::shared_ptr<IResourceManagerClient>& client,
-                             const std::shared_ptr<ResourceManagerService>& service,
-                             const ClientInfoParcel& clientInfo,
-                             AIBinder_DeathRecipient* recipient)
-    : mClient(client), mService(service), mClientInfo(clientInfo),
-      mRecipient(recipient), mCookie(nullptr) {
-    link();
-}
-
-//static
-void DeathNotifier::BinderUnlinkedCallback(void* cookie) {
-    BinderDiedContext* context = reinterpret_cast<BinderDiedContext*>(cookie);
-    // Since we don't need the context anymore, we are deleting it now.
-    delete context;
-}
-
-//static
-void DeathNotifier::BinderDiedCallback(void* cookie) {
-    BinderDiedContext* context = reinterpret_cast<BinderDiedContext*>(cookie);
-
-    // Validate the context and check if the DeathNotifier object is still in scope.
-    if (context != nullptr) {
-        std::shared_ptr<DeathNotifier> thiz = context->mDeathNotifier.lock();
-        if (thiz != nullptr) {
-            thiz->binderDied();
-        } else {
-            ALOGI("DeathNotifier is out of scope already");
-        }
-    }
-}
-
-void DeathNotifier::binderDied() {
-    // Don't check for pid validity since we know it's already dead.
-    std::shared_ptr<ResourceManagerService> service = mService.lock();
-    if (service == nullptr) {
-        ALOGW("ResourceManagerService is dead as well.");
-        return;
-    }
-
-    service->overridePid(mClientInfo.pid, -1);
-    // thiz is freed in the call below, so it must be last call referring thiz
-    service->removeResource(mClientInfo, false /*checkValid*/);
-}
-
-class OverrideProcessInfoDeathNotifier : public DeathNotifier {
-public:
-    OverrideProcessInfoDeathNotifier(const std::shared_ptr<IResourceManagerClient>& client,
-                                     const std::shared_ptr<ResourceManagerService>& service,
-                                     const ClientInfoParcel& clientInfo,
-                                     AIBinder_DeathRecipient* recipient)
-            : DeathNotifier(client, service, clientInfo, recipient) {}
-
-    virtual ~OverrideProcessInfoDeathNotifier() {}
-
-    virtual void binderDied();
-};
-
-void OverrideProcessInfoDeathNotifier::binderDied() {
-    // Don't check for pid validity since we know it's already dead.
-    std::shared_ptr<ResourceManagerService> service = mService.lock();
-    if (service == nullptr) {
-        ALOGW("ResourceManagerService is dead as well.");
-        return;
-    }
-
-    service->removeProcessInfoOverride(mClientInfo.pid);
-}
 
 static void notifyResourceGranted(int pid, const std::vector<MediaResourceParcel>& resources) {
     static const char* const kServiceName = "media_resource_monitor";
@@ -300,9 +180,7 @@ ResourceManagerService::ResourceManagerService(const sp<ProcessInfoInterface> &p
       mServiceLog(new ServiceLog()),
       mSupportsMultipleSecureCodecs(true),
       mSupportsSecureWithNonSecureCodec(true),
-      mCpuBoostCount(0),
-      mDeathRecipient(::ndk::ScopedAIBinder_DeathRecipient(
-                      AIBinder_DeathRecipient_new(DeathNotifier::BinderDiedCallback))) {
+      mCpuBoostCount(0) {
     mSystemCB->noteResetVideo();
     // Create ResourceManagerMetrics that handles all the metrics.
     mResourceManagerMetrics = std::make_unique<ResourceManagerMetrics>(mProcessInfo);
@@ -310,8 +188,7 @@ ResourceManagerService::ResourceManagerService(const sp<ProcessInfoInterface> &p
 
 //static
 void ResourceManagerService::instantiate() {
-    std::shared_ptr<ResourceManagerService> service =
-            ::ndk::SharedRefBase::make<ResourceManagerService>();
+    std::shared_ptr<ResourceManagerService> service = Create();
     binder_status_t status =
                         AServiceManager_addServiceWithFlags(
                         service->asBinder().get(), getServiceName(),
@@ -330,6 +207,20 @@ void ResourceManagerService::instantiate() {
     // move this to mediaserver main() when other services in mediaserver
     // are converted to ndk-platform aidl.
     //ABinderProcess_startThreadPool();
+}
+
+std::shared_ptr<ResourceManagerService> ResourceManagerService::Create() {
+    return Create(new ProcessInfo(), new SystemCallbackImpl());
+}
+
+std::shared_ptr<ResourceManagerService> ResourceManagerService::Create(
+        const sp<ProcessInfoInterface>& processInfo,
+        const sp<SystemCallbackInterface>& systemResource) {
+    // If codec importance feature is on, create the refactored implementation.
+    if (CodecFeatureFlags::codec_importance()) {
+        return ::ndk::SharedRefBase::make<ResourceManagerServiceNew>(processInfo, systemResource);
+    }
+    return ::ndk::SharedRefBase::make<ResourceManagerService>(processInfo, systemResource);
 }
 
 ResourceManagerService::~ResourceManagerService() {}
@@ -459,8 +350,8 @@ Status ResourceManagerService::addResource(const ClientInfoParcel& clientInfo,
         }
     }
     if (info.deathNotifier == nullptr && client != nullptr) {
-        info.deathNotifier = std::make_shared<DeathNotifier>(
-            client, ref<ResourceManagerService>(), clientInfo, mDeathRecipient.get());
+        info.deathNotifier = DeathNotifier::Create(
+            client, ref<ResourceManagerService>(), clientInfo);
     }
     if (mObserverService != nullptr && !resourceAdded.empty()) {
         mObserverService->onResourceAdded(uid, pid, resourceAdded);
@@ -858,8 +749,8 @@ Status ResourceManagerService::overrideProcessInfo(
                                 .uid = 0,
                                 .id = 0,
                                 .name = "<unknown client>"};
-    auto deathNotifier = std::make_shared<OverrideProcessInfoDeathNotifier>(
-            client, ref<ResourceManagerService>(), clientInfo, mDeathRecipient.get());
+    auto deathNotifier = DeathNotifier::Create(
+        client, ref<ResourceManagerService>(), clientInfo, true);
 
     mProcessInfoOverrideMap.emplace(pid, ProcessInfoOverride{deathNotifier, client});
 
