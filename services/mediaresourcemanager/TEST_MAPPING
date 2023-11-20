@@ -1,13 +1,21 @@
 {
-  "presubmit": [
-    {
-       "name": "ResourceManagerService_test"
-    },
-    {
-       "name": "ServiceLog_test"
-    },
-    {
-       "name": "ResourceObserverService_test"
-    }
-  ]
+    "presubmit": [
+        {
+            "name": "CtsMediaMiscTestCases",
+            "options": [
+                {
+                    "include-filter": "android.media.misc.cts.ResourceManagerTest"
+                }
+            ]
+        },
+        {
+            "name": "ResourceManagerService_test"
+        },
+        {
+            "name": "ServiceLog_test"
+        },
+        {
+            "name": "ResourceObserverService_test"
+        }
+    ]
 }
