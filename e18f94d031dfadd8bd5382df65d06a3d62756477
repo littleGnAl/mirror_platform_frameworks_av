@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6824f94d_0adede35",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 5285,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-11-21T19:50:52Z",
+      "side": 1,
+      "message": "nit: void *largeFrameInfo",
+      "range": {
+        "startLine": 5285,
+        "startChar": 11,
+        "endLine": 5285,
+        "endChar": 34
+      },
+      "revId": "e18f94d031dfadd8bd5382df65d06a3d62756477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67564e17_5bff6375",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 6235,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-11-21T19:50:52Z",
+      "side": 1,
+      "message": "This CHECK is redundant as its taken care of already at line#5286",
+      "range": {
+        "startLine": 6235,
+        "startChar": 4,
+        "endLine": 6235,
+        "endChar": 9
+      },
+      "revId": "e18f94d031dfadd8bd5382df65d06a3d62756477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb5d7f2_6d66ea98",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-11-21T19:50:52Z",
+      "side": 1,
+      "message": "To be in consistent with other 3 queue[Secure][Input]Buffers, should we include errorDetailMsg too?\nnit: doxygen comment for this function would help",
+      "range": {
+        "startLine": 189,
+        "startChar": 13,
+        "endLine": 189,
+        "endChar": 30
+      },
+      "revId": "e18f94d031dfadd8bd5382df65d06a3d62756477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
