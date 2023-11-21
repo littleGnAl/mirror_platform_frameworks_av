@@ -208,9 +208,10 @@ GraphicsTracker::~GraphicsTracker() {
     }
 }
 
-bool GraphicsTracker::adjustDequeueConfLocked(bool *updateDequeue) {
+bool GraphicsTracker::adjustDequeueConfLocked(bool *updateDequeue, int *decrease) {
     // TODO: can't we adjust during config? not committing it may safe?
     *updateDequeue = false;
+    *decrease = 0;
     if (!mInConfig && mMaxDequeueRequested.has_value() && mMaxDequeueRequested < mMaxDequeue) {
         int delta = mMaxDequeue - mMaxDequeueRequested.value();
         int drained = 0;
@@ -226,7 +227,7 @@ bool GraphicsTracker::adjustDequeueConfLocked(bool *updateDequeue) {
             mDequeueable = 0;
         }
         if (drained > 0) {
-            drainDequeueableLocked(drained);
+            *decrease = drainDequeueableLocked(drained);
         }
         if (mMaxDequeueRequested == mMaxDequeue && mMaxDequeueRequested != mMaxDequeueCommitted) {
             *updateDequeue = true;
@@ -326,7 +327,13 @@ c2_status_t GraphicsTracker::configureMaxDequeueCount(int maxDequeueCount) {
             maxDequeueToCommit = mMaxDequeue - delta;
             mDequeueable -= delta;
             if (delta > 0) {
-                drainDequeueableLocked(delta);
+                int leftOver = drainDequeueableLocked(delta);
+                if (leftOver > 0) {
+                    l.unlock();
+                    ALOGD("draining dequeuble partial: target(%d) -> remained(%d)",
+                            delta, leftOver);
+                    readDecDequeueable(leftOver);
+                }
             }
         }
     }
@@ -450,11 +457,14 @@ void GraphicsTracker::stop() {
     std::unique_lock<std::mutex> l(mEventLock);
     bool updated = mStopped.compare_exchange_strong(expected, true);
     if (updated) {
-        // TODO: synchronize close and other i/o.
-        int writeFd = mWritePipeFd.release();
-        ::close(writeFd);
-        int readFd = mReadPipeFd.release();
-        ::close(readFd);
+        {
+            std::unique_lock<std::mutex> fl(mWritePipeLock);
+            int writeFd = mWritePipeFd.release();
+            ::close(writeFd);
+        }
+        // Do not close the reading end.
+        // the reading end will be automatically closed
+        // during destruction.
         mEventCv.notify_one();
     }
 }
@@ -468,8 +478,16 @@ void GraphicsTracker::writeIncDequeueable(int inc) {
         if (mStopped) {
             return;
         }
-        CHECK(mWritePipeFd.get() >= 0);
-        int ret = ::write(mWritePipeFd.get(), buf, inc);
+        int ret = 0;
+        {
+            std::unique_lock<std::mutex> fl(mWritePipeLock);
+            int writeFd = mWritePipeFd.get();
+            if (writeFd < 0) {
+                // writeFd will be closed only on stop()
+                return;
+            }
+            ret = ::write(writeFd, buf, inc);
+        }
         if (ret == inc) {
             return;
         }
@@ -477,29 +495,47 @@ void GraphicsTracker::writeIncDequeueable(int inc) {
 
         // Partial write or EINTR. This will not happen in a real scenario.
         mIncDequeueable += diff;
-        if (mIncDequeueable > 0) {
+        if (mIncDequeueable != 0) {
             l.unlock();
             mEventCv.notify_one();
-            ALOGW("updating dequeueable to pipefd pending");
+            ALOGW("increasing dequeueable to pipefd pending %d", diff);
         }
     }
 }
 
-void GraphicsTracker::drainDequeueableLocked(int dec) {
+void GraphicsTracker::readDecDequeueable(int dec) {
     CHECK(dec > 0 && dec < kMaxDequeueMax);
-    thread_local char buf[kMaxDequeueMax];
+    std::unique_lock<std::mutex> l(mEventLock);
     if (mStopped) {
         return;
     }
-    CHECK(mReadPipeFd.get() >= 0);
-    int ret = ::read(mReadPipeFd.get(), buf, dec);
-    if (ret < 0 && errno == EINTR) {
-        // signal cancel try again.
-        ret = ::read(mReadPipeFd.get(), buf, dec);
+    mIncDequeueable -= dec;
+    if (mIncDequeueable != 0) {
+        l.unlock();
+        mEventCv.notify_one();
+        ALOGW("decreasing dequeueable to pipefd pending %d", dec);
     }
-    CHECK(mStopped || ret == dec);
-    // TODO: remove CHECK
-    // if ret < dec, drain the amount from EventThread.
+}
+
+int GraphicsTracker::drainDequeueableLocked(int dec) {
+    CHECK(dec > 0 && dec < kMaxDequeueMax);
+    thread_local char buf[kMaxDequeueMax];
+    if (mStopped) {
+        return 0;
+    }
+    int ret = ::read(mReadPipeFd.get(), buf, dec);
+    if (ret < 0) {
+        // EINTR  : canceled by signal
+        // EAGAIN : not enough readable data (write may be pending)
+        // others : better to abort?
+        ALOGE("decreasing dequeuable by ::read failed %d", errno);
+        return dec;
+    }
+    if (ret == 0) {
+        // EOF: write end is closed, stopped status
+        return 0;
+    }
+    return dec - ret;
 }
 
 void GraphicsTracker::processEvent() {
@@ -513,7 +549,15 @@ void GraphicsTracker::processEvent() {
         }
         if (mIncDequeueable > 0) {
             int inc = mIncDequeueable > kMaxDequeueMax ? kMaxDequeueMax : mIncDequeueable;
-            int ret = ::write(mWritePipeFd.get(), buf, inc);
+            int ret = 0;
+            {
+                std::unique_lock<std::mutex> fl(mWritePipeLock);
+                int writeFd = mWritePipeFd.get();
+                if (writeFd < 0) {
+                    break;
+                }
+                ret = ::write(writeFd, buf, inc);
+            }
             int written = ret <= 0 ? 0 : ret;
             mIncDequeueable -= written;
             if (mIncDequeueable > 0) {
@@ -522,6 +566,24 @@ void GraphicsTracker::processEvent() {
                     ALOGE("write to writing end failed %d", errno);
                 } else {
                     ALOGW("partial write %d(%d)", inc, written);
+                }
+                continue;
+            }
+        } else if (mIncDequeueable < 0) {
+            int dec = -mIncDequeueable;
+            int ret = 0;
+            if (dec > kMaxDequeueMax) {
+                dec = kMaxDequeueMax;
+            }
+            ret = ::read(mReadPipeFd.get(), buf, dec);
+            int rd = ret <= 0 ? 0 : ret;
+            mIncDequeueable += rd;
+            if (mIncDequeueable < 0) {
+                l.unlock();
+                if (ret < 0) {
+                    ALOGE("read to reading end failed %d", errno);
+                } else {
+                    ALOGW("partial read %d(%d)", dec, rd);
                 }
                 continue;
             }
@@ -599,7 +661,12 @@ void GraphicsTracker::commitAllocate(c2_status_t res, const std::shared_ptr<Buff
         auto mapRet = mDequeued.emplace(bid, *pBuffer);
         CHECK(mapRet.second);
     } else {
-        if (adjustDequeueConfLocked(updateDequeue)) {
+        int decrease;
+        if (adjustDequeueConfLocked(updateDequeue, &decrease)) {
+            if (decrease > 0) {
+                l.unlock();
+                readDecDequeueable(decrease);
+            }
             return;
         }
         mDequeueable++;
@@ -775,7 +842,12 @@ c2_status_t GraphicsTracker::requestDeallocate(uint64_t bid, const sp<Fence> &fe
     } else { // buffer is not from the current underlying Graphics.
         mDequeued.erase(bid);
         *completed = true;
-        if (adjustDequeueConfLocked(updateDequeue)) {
+        int decrease = 0;
+        if (adjustDequeueConfLocked(updateDequeue, &decrease)) {
+            if (decrease > 0) {
+                l.unlock();
+                readDecDequeueable(decrease);
+            }
             return C2_OK;
         }
         mDequeueable++;
@@ -794,7 +866,12 @@ void GraphicsTracker::commitDeallocate(
     if (cache) {
         cache->unblockSlot(slotId);
     }
-    if (adjustDequeueConfLocked(updateDequeue)) {
+    int decrease = 0;
+    if (adjustDequeueConfLocked(updateDequeue, &decrease)) {
+        if (decrease > 0) {
+            l.unlock();
+            readDecDequeueable(decrease);
+        }
         return;
     }
     mDequeueable++;
@@ -851,7 +928,12 @@ c2_status_t GraphicsTracker::requestRender(uint64_t bid, std::shared_ptr<BufferC
         // reclaim the buffer for dequeue.
         // TODO: is this correct for API wise?
         mDequeued.erase(it);
-        if (adjustDequeueConfLocked(updateDequeue)) {
+        int decrease;
+        if (adjustDequeueConfLocked(updateDequeue, &decrease)) {
+            if (decrease > 0) {
+                l.unlock();
+                readDecDequeueable(decrease);
+            }
             return C2_BAD_STATE;
         }
         mDequeueable++;
@@ -894,7 +976,12 @@ void GraphicsTracker::commitRender(const std::shared_ptr<BufferCache> &cache,
 
     if (cache.get() != mBufferCache.get() || bufferReplaced) {
         // Surface changed, no need to wait for buffer being released.
-        if (adjustDequeueConfLocked(updateDequeue)) {
+        int decrease = 0;
+        if (adjustDequeueConfLocked(updateDequeue, &decrease)) {
+            if (decrease > 0) {
+                l.unlock();
+                readDecDequeueable(decrease);
+            }
             return;
         }
         mDequeueable++;
@@ -985,7 +1072,13 @@ void GraphicsTracker::onReleased(uint32_t generation) {
     {
         std::unique_lock<std::mutex> l(mLock);
         if (mBufferCache->mGeneration == generation) {
-            if (!adjustDequeueConfLocked(&updateDequeue)) {
+            int decrease = 0;
+            if (adjustDequeueConfLocked(&updateDequeue, &decrease)) {
+                if (decrease > 0) {
+                    l.unlock();
+                    readDecDequeueable(decrease);
+                }
+            } else {
                 mDequeueable++;
                 l.unlock();
                 writeIncDequeueable(1);
