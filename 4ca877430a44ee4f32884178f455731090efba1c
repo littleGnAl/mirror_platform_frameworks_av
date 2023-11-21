@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cf34ea7_b477e65a",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1874507
+      },
+      "writtenOn": "2023-11-21T01:48:15Z",
+      "side": 1,
+      "message": "Could you please elaborate what happens if result is C2_BLOCKING?",
+      "revId": "4ca877430a44ee4f32884178f455731090efba1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be63ec82_24ceb690",
         "filename": "media/codec2/vndk/C2Buffer.cpp",
         "patchSetId": 1
