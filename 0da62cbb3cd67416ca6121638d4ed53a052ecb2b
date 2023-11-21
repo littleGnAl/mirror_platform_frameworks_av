@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b15ee00_120d8b47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-11-21T02:08:13Z",
+      "side": 1,
+      "message": "James, Wonsik,\nThis brings C2 gav1 plugin in sync with C2 dav1d w.r.t. libyuv usage.\nWhile we continue to explore what can be done further to simplify/cleanup the conversion calls, it would be good to get this merged to keep the libyuv calls in sync between the two decoders.",
+      "revId": "0da62cbb3cd67416ca6121638d4ed53a052ecb2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
