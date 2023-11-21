@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca39a4e_a980736d",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-11-21T03:34:05Z",
+      "side": 1,
+      "message": "Ian, Toni,\nFew teams prefer to have a seperate alias for fuzzer issues.\n- So that fuzzers issues can be triaged separately from other issues.\n- Easier to add more users to the fuzzer alias without adding to the android-media-playback group.\n\nIf that is preferred here, can you please create an alias and then I will update the CL to include that alias.",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
