@@ -166,6 +166,30 @@
       },
       "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11bdb96_18fed791",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-11-21T16:44:51Z",
+      "side": 1,
+      "message": "\u003e This field is called cc, so I assumed it would be CC\u0027d on things.\n\nThat is right. Whatever is in this field will be added to cc in the initial stages.\n\n\u003e I guess I\u0027m saying that this plan sounds slightly incorrect to me. Bugs should be assigned to an \u0027assignee\u0027 alias, not a \u0027cc\u0027 one!\n\nThere is no assignee field in fuzz_config. So as a last resort, if the triaging team doesn\u0027t know who to assign it to they assign to the cc listed in this.",
+      "parentUuid": "64c57923_5bf8dfb0",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
