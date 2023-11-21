@@ -88,6 +88,24 @@
       "parentUuid": "8aafaebd_5d4bb9ae",
       "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0a4754_34959888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643016
+      },
+      "writtenOn": "2023-11-21T11:24:25Z",
+      "side": 1,
+      "message": "\u003e from the description it sounds like the frames can render before the scaling mode is set.\n\nYes, this seems to be the issue. Looks like the underlying problem is that NuPlayerDecoder sends a message when the output size changed (which is handled here and then the parameter change sends another message). But in the meantime, NuPlayerDecoder can release buffers with the wrong scaling mode.\n\nThe fix here looks fairly safe because it only sets a parameter that will be set anyway a short time later so we can accept it as it is.",
+      "parentUuid": "d82274f5_ce7880d0",
+      "revId": "b7b85fa71fff776ab932da93d4ba1de089565d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
