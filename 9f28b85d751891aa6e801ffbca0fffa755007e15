@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fdc5261_b895021c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-11-21T22:33:32Z",
+      "side": 1,
+      "message": "ok. This is a setting to the component. So We can add another key output.max-large-frame-size ?",
+      "parentUuid": "72468dd0_2627de13",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 31
+      },
+      "revId": "9f28b85d751891aa6e801ffbca0fffa755007e15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62b8c80f_d341351e",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2023-11-21T19:37:15Z",
       "side": 1,
       "message": "note: we could add some enum here to help the component advertise support for frame parsing or partial access units... or we can define some parsing support struct for that.\n\nlet\u0027s revisit in a follow-up CL",
+      "revId": "9f28b85d751891aa6e801ffbca0fffa755007e15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e913fc5_934cee19",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-11-21T22:33:32Z",
+      "side": 1,
+      "message": "ok. Can be done in a follow up CL",
+      "parentUuid": "62b8c80f_d341351e",
       "revId": "9f28b85d751891aa6e801ffbca0fffa755007e15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de79df8f_3ad5d8d6",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-11-21T22:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9ec487_ee872f6d",
+      "range": {
+        "startLine": 1132,
+        "startChar": 28,
+        "endLine": 1133,
+        "endChar": 41
+      },
+      "revId": "9f28b85d751891aa6e801ffbca0fffa755007e15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0590c594_79dae96f",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-11-21T19:37:15Z",
       "side": 1,
       "message": "nit: naming convention is output.large-frame",
+      "range": {
+        "startLine": 1138,
+        "startChar": 51,
+        "endLine": 1138,
+        "endChar": 75
+      },
+      "revId": "9f28b85d751891aa6e801ffbca0fffa755007e15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb60bba_d043b440",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-11-21T22:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0590c594_79dae96f",
       "range": {
         "startLine": 1138,
         "startChar": 51,
