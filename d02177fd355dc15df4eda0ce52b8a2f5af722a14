@@ -142,6 +142,30 @@
       },
       "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c57923_5bf8dfb0",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-11-21T16:35:50Z",
+      "side": 1,
+      "message": "This field is called `cc`, so I assumed it would be CC\u0027d on things. For that purpose `android-media-playback+bugs@google.com` is correct. For assigning bugs to, we would prefer `android-media-playback@google.com`.\n\n\u003e the plan is to ask the triaging team to assign the issues based on cc\n\nI guess I\u0027m saying that this plan sounds slightly incorrect to me. Bugs should be assigned to an \u0027assignee\u0027 alias, not a \u0027cc\u0027 one!",
+      "parentUuid": "7facf7e2_42c35670",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
