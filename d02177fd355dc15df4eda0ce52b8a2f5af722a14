@@ -46,6 +46,30 @@
       },
       "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c482e7d_70c73b74",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-11-21T15:06:31Z",
+      "side": 1,
+      "message": "The cc field is handy for people triaging the issues and also some of the tools look at this.\nShould I change the cc to android-media-playback+bugs@google.com instead?",
+      "parentUuid": "1ad019dc_da396a01",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
