@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f8b39e_8e20def1",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "blockPool is provided by the AIDL interface as an output param.\nCould it be null? (I guess that will not happen.)",
+      "parentUuid": "e0d8f913_dbff6f7c",
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdbaef45_d7e23c9f",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-19T23:13:58Z",
       "side": 1,
       "message": "nit: maybe `AidlGraphicBufferAllocator`",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818a235f_c2d348a2",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdbaef45_d7e23c9f",
       "range": {
         "startLine": 102,
         "startChar": 6,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb25b57_3350a5ca",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aec58d7_3e5e7b6a",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d9c9b4d_0bc82954",
@@ -81,6 +147,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eea6128_adc3d3c9",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9c9b4d_0bc82954",
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb75fc1a_41aebf9b",
@@ -94,6 +178,30 @@
       "writtenOn": "2023-11-19T23:13:58Z",
       "side": 1,
       "message": "nit: blockpool",
+      "range": {
+        "startLine": 1098,
+        "startChar": 22,
+        "endLine": 1098,
+        "endChar": 31
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472c09bd_442e5f99",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb75fc1a_41aebf9b",
       "range": {
         "startLine": 1098,
         "startChar": 22,
@@ -127,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2fe850_4507f2f1",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9910fb0_8b06b4e2",
+      "range": {
+        "startLine": 1116,
+        "startChar": 13,
+        "endLine": 1116,
+        "endChar": 38
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "740cc084_af48c74b",
@@ -144,6 +276,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e624db81_8b015039",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "740cc084_af48c74b",
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21b25eeb_3227d538",
@@ -157,6 +307,30 @@
       "writtenOn": "2023-11-19T23:13:58Z",
       "side": 1,
       "message": "maybe `C2PlatformAllocatorDesc` or `C2PlatformAllocatorParam`?",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "997ea49519e6108675af1d89e0518b7dd2be9034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170f0ffa_b33752a4",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-21T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b25eeb_3227d538",
       "range": {
         "startLine": 178,
         "startChar": 7,
