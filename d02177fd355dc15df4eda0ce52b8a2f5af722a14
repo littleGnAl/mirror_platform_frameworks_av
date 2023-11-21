@@ -118,6 +118,30 @@
       },
       "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7facf7e2_42c35670",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-11-21T16:31:42Z",
+      "side": 1,
+      "message": "also the idea is to update these fields (across different fuzzers) to ensure that module owners are in the loop for issues that get filed irrespective which component this ends up.\n\ncurrently these issues aren\u0027t getting assigned to right people/teams after triage and the plan is to ask the triaging team to assign the issues based on cc present in the fuzzers.",
+      "parentUuid": "dc92fd08_651632ab",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
