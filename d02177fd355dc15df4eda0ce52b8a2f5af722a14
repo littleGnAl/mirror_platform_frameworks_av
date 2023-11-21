@@ -94,6 +94,30 @@
       },
       "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc92fd08_651632ab",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-11-21T16:18:14Z",
+      "side": 1,
+      "message": "The bugs get moved across different components (because not all components give write access to people triaging the issues) during the initial triage and once the issues are triaged appropriately, then someone reassigns the issues looking at the template.",
+      "parentUuid": "6dc8e26b_456c90d1",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
