@@ -70,6 +70,30 @@
       },
       "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc8e26b_456c90d1",
+        "filename": "media/module/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-11-21T15:59:14Z",
+      "side": 1,
+      "message": "Not sure I understand why any info beyond the buganizer component ID is needed for triage purposes? If there\u0027s a bug that needs to be triaged, it can be put in the specified component (and then the appropriate mailing lists will be auto-CC\u0027d). If there isn\u0027t a bug, one can be filed 😊.\n\nIf the email needs to be duplicated here, and it\u0027s going to be CC\u0027d on bugs, then yes android-media-playback+bugs@google.com is the correct alias - but I would like to avoid that, since I don\u0027t see why it\u0027s needed in addition to a buganizer component.",
+      "parentUuid": "4c482e7d_70c73b74",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "d02177fd355dc15df4eda0ce52b8a2f5af722a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
