@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be63ec82_24ceb690",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1874507
+      },
+      "writtenOn": "2023-11-21T01:45:52Z",
+      "side": 1,
+      "message": "It seems the fence will never be signaled, so what will happen to the fence.wait()?",
+      "revId": "4ca877430a44ee4f32884178f455731090efba1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
