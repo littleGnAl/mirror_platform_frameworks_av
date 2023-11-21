@@ -272,6 +272,8 @@ private:
     // by returning POLLHUP event from the reading end.
     ::android::base::unique_fd mReadPipeFd;   // The reading end file descriptor
     ::android::base::unique_fd mWritePipeFd;  // The writing end file descriptor
+    std::mutex mWritePipeLock;  // synchronize write() and/or close() to the
+                                // writing end.
 
     std::atomic<bool> mStopped;
     std::thread mEventQueueThread; // Thread to handle interrupted
@@ -289,7 +291,10 @@ private:
     // {@code updateDequeueConf} is an output parameter, and returns
     // {@code true} only when the current dequeue conf is required to be
     // updated to IGBP(BQ) as a result of the adjust.
-    bool adjustDequeueConfLocked(bool *updateDequeueConf);
+    // {@code decrease} is an output parameter, and returns the value to
+    // decrease the current dequeueable which is managed by two fds created
+    // pipe.
+    bool adjustDequeueConfLocked(bool *updateDequeueConf, int *decrease);
 
     void updateDequeueConf();
     void clearCacheIfNecessaryLocked(
@@ -326,8 +331,14 @@ private:
             bool *cached, int *rSlotId, sp<Fence> *rFence,
             std::shared_ptr<BufferItem> *buffer);
 
+    void readDecDequeueable(int dec);
     void writeIncDequeueable(int inc);
-    void drainDequeueableLocked(int dec);
+
+    // Drain(decrement) the current dequeueable value by \p dec
+    // If drain(decrement) was done partially, the left-over amount
+    // will be returned. Returns 0 if drain was successfly and there
+    // is no left-over.
+    int drainDequeueableLocked(int dec);
     void processEvent();
 };
 
