@@ -16,6 +16,23 @@
       "message": "James, Wonsik,\nThis brings C2 gav1 plugin in sync with C2 dav1d w.r.t. libyuv usage.\nWhile we continue to explore what can be done further to simplify/cleanup the conversion calls, it would be good to get this merged to keep the libyuv calls in sync between the two decoders.",
       "revId": "0da62cbb3cd67416ca6121638d4ed53a052ecb2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929aa086_919ab99d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2023-11-21T23:52:47Z",
+      "side": 1,
+      "message": "Harish, can you do some manual testing with avif files that hit each of the formats please?",
+      "revId": "0da62cbb3cd67416ca6121638d4ed53a052ecb2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
