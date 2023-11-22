@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b253a6f4_f66bd751",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2023-11-22T12:55:19Z",
+      "side": 1,
+      "message": "Thanks for the info. Resolving.",
+      "parentUuid": "4eaaeeec_30f94216",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc3825a2_f45d2614",
