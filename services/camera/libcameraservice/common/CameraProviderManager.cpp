@@ -119,9 +119,16 @@ status_t CameraProviderManager::tryToInitAndAddHidlProvidersLocked(
         /* instance name, empty means no filter */ "",
         this);
     if (!success) {
-        ALOGE("%s: Unable to register with hardware service manager for notifications "
-                "about camera providers", __FUNCTION__);
-        return INVALID_OPERATION;
+        if (hardware::isHidlSupported()) {
+            ALOGE("%s: Unable to register with hardware service manager for notifications "
+                    "about camera providers.", __FUNCTION__);
+            return INVALID_OPERATION;
+        } else {
+            ALOGV("%s: Unable to register with hardware service manager for notifications "
+                    "about camera providers. This is expected on new devices without HIDL.",
+                    __FUNCTION__);
+            return OK;
+        }
     }
 
     for (const auto& instance : mHidlServiceProxy->listServices()) {
