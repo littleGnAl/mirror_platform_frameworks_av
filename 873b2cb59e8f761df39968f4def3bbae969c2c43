@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0512d881_80be02b4",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2023-11-22T22:57:49Z",
+      "side": 1,
+      "message": "no need to log here in normal operation, so please change this to ALOGV.",
+      "range": {
+        "startLine": 129,
+        "startChar": 13,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "873b2cb59e8f761df39968f4def3bbae969c2c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec9fdd40_3425c919",
         "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
         "patchSetId": 1
