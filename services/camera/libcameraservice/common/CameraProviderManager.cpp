@@ -37,6 +37,7 @@
 #include <hidl/ServiceManagement.h>
 #include <functional>
 #include <camera_metadata_hidden.h>
+#include <android/api-level.h>
 #include <android-base/parseint.h>
 #include <android-base/logging.h>
 #include <cutils/properties.h>
@@ -119,9 +120,17 @@ status_t CameraProviderManager::tryToInitAndAddHidlProvidersLocked(
         /* instance name, empty means no filter */ "",
         this);
     if (!success) {
-        ALOGE("%s: Unable to register with hardware service manager for notifications "
-                "about camera providers", __FUNCTION__);
-        return INVALID_OPERATION;
+        auto apiLevel = property_get_int64("ro.vendor.api_level", 0);
+        if (apiLevel < __ANDROID_API_V__) {
+            ALOGE("%s: Unable to register with hardware service manager for notifications "
+                    "about camera providers.", __FUNCTION__);
+            return INVALID_OPERATION;
+        } else {
+            ALOGI("%s: Unable to register with hardware service manager for notifications "
+                    "about camera providers. This is expected on new devices without HIDL.",
+                    __FUNCTION__);
+            return OK;
+        }
     }
 
     for (const auto& instance : mHidlServiceProxy->listServices()) {
