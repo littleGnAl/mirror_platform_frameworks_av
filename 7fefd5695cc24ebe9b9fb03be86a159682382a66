@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b65020d_6773cd29",
+        "filename": "media/codec2/hal/client/output.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1307008
+      },
+      "writtenOn": "2023-11-22T10:45:15Z",
+      "side": 1,
+      "message": "miss mMutex.unlock(); It will cause CTS stuck when I run \"android.media.decoder.cts.AdaptivePlaybackTest#test_earlyEos\"",
+      "range": {
+        "startLine": 525,
+        "startChar": 8,
+        "endLine": 525,
+        "endChar": 15
+      },
+      "revId": "7fefd5695cc24ebe9b9fb03be86a159682382a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
