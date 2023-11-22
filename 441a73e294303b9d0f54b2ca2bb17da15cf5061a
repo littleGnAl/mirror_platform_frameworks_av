@@ -16,6 +16,24 @@
       "message": "William,\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2822051 depends on the change that is being reverted here.\nIf this revert is being merged, then other CL also needs to be reverted.\n\nCan you please share details on which test is failing because of this?\nThanks.",
       "revId": "441a73e294303b9d0f54b2ca2bb17da15cf5061a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bcbbeba_00959065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014370
+      },
+      "writtenOn": "2023-11-22T23:58:45Z",
+      "side": 1,
+      "message": "Understood. I\u0027ve replied via private chat with more info. Sounds like the issue is more complicated than just this one change. I\u0027ll go ahead and abandon the change for now.",
+      "parentUuid": "bfc57852_af88fce0",
+      "revId": "441a73e294303b9d0f54b2ca2bb17da15cf5061a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
