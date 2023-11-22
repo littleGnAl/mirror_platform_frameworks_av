@@ -22,6 +22,30 @@
       },
       "revId": "7fefd5695cc24ebe9b9fb03be86a159682382a66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0370f9_cf76ba5e",
+        "filename": "media/codec2/hal/client/output.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-22T18:09:29Z",
+      "side": 1,
+      "message": "Thanks for catching!",
+      "parentUuid": "2b65020d_6773cd29",
+      "range": {
+        "startLine": 525,
+        "startChar": 8,
+        "endLine": 525,
+        "endChar": 15
+      },
+      "revId": "7fefd5695cc24ebe9b9fb03be86a159682382a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
