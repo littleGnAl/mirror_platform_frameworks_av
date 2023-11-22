@@ -22,6 +22,30 @@
       },
       "revId": "873b2cb59e8f761df39968f4def3bbae969c2c43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a8ab38b_c75ba8a6",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-22T22:27:16Z",
+      "side": 1,
+      "message": "kk that sounds good. I\u0027ll do that first.",
+      "parentUuid": "ec9fdd40_3425c919",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "873b2cb59e8f761df39968f4def3bbae969c2c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
