@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "651bffbc_b6019d5d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 5285,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-11-22T00:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6824f94d_0adede35",
+      "range": {
+        "startLine": 5285,
+        "startChar": 11,
+        "endLine": 5285,
+        "endChar": 34
+      },
+      "revId": "e18f94d031dfadd8bd5382df65d06a3d62756477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67564e17_5bff6375",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-21T19:50:52Z",
       "side": 1,
       "message": "This CHECK is redundant as its taken care of already at line#5286",
+      "range": {
+        "startLine": 6235,
+        "startChar": 4,
+        "endLine": 6235,
+        "endChar": 9
+      },
+      "revId": "e18f94d031dfadd8bd5382df65d06a3d62756477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f725483e_e16736ef",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 6235,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-11-22T00:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67564e17_5bff6375",
       "range": {
         "startLine": 6235,
         "startChar": 4,
