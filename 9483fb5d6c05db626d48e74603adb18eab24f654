@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eaaeeec_30f94216",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-22T05:36:56Z",
+      "side": 1,
+      "message": "VP9 packs two frames in a single packet and marks the reference frames as no show frames. Thus all the timestamps are monotonically increasing.",
+      "parentUuid": "fd485bc6_906300df",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc3825a2_f45d2614",
         "filename": "media/libstagefright/webm/WebmWriter.cpp",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-20T09:59:40Z",
       "side": 1,
       "message": "Super-nit: `lastDurationUs`",
+      "range": {
+        "startLine": 80,
+        "startChar": 23,
+        "endLine": 80,
+        "endChar": 37
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66337f42_7bad75f2",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-22T05:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc3825a2_f45d2614",
       "range": {
         "startLine": 80,
         "startChar": 23,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b3d5fc2_80aca136",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-22T05:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e63c12_cf9fb646",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c07f260e_144f7ea9",
@@ -93,6 +165,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbeb129_a52a2b5b",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-22T05:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c07f260e_144f7ea9",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30154bb_e1fc3101",
+        "filename": "media/libstagefright/webm/include/webm/WebmWriter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-22T05:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c07f260e_144f7ea9",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb4c99a_26aa8d8a",
@@ -106,6 +226,30 @@
       "writtenOn": "2023-11-20T09:59:40Z",
       "side": 1,
       "message": "Super-nit: Please run a code formatter on modified lines in this CL. This needs a space after `if` for consistency, and WebmWriter is missing a space before `{` (there may be others).",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 81
+      },
+      "revId": "9483fb5d6c05db626d48e74603adb18eab24f654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f7b056a_d49c0bf7",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2023-11-22T05:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb4c99a_26aa8d8a",
       "range": {
         "startLine": 212,
         "startChar": 0,
