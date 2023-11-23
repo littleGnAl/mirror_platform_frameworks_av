@@ -22,6 +22,7 @@
 #include <mediautils/ProcessInfo.h>
 
 #include "DefaultResourceModel.h"
+#include "ClientImportanceReclaimPolicy.h"
 #include "ProcessPriorityReclaimPolicy.h"
 #include "ResourceManagerServiceNew.h"
 #include "ResourceTracker.h"
@@ -62,6 +63,8 @@ void ResourceManagerServiceNew::setUpReclaimPolicies() {
     mReclaimPolicies.clear();
     // Process priority (oom score) as the Default reclaim policy.
     mReclaimPolicies.push_back(std::make_unique<ProcessPriorityReclaimPolicy>(mResourceTracker));
+    // Reclaim policy based on client/codec importance.
+    mReclaimPolicies.push_back(std::make_unique<ClientImportanceReclaimPolicy>(mResourceTracker));
 }
 
 Status ResourceManagerServiceNew::config(const std::vector<MediaResourcePolicyParcel>& policies) {
@@ -211,6 +214,11 @@ Status ResourceManagerServiceNew::notifyClientStopped(const ClientConfigParcel& 
 
 Status ResourceManagerServiceNew::notifyClientConfigChanged(
         const ClientConfigParcel& clientConfig) {
+    {
+        // Update the ResourceTracker about the change in the configuration.
+        std::scoped_lock lock{mLock};
+        mResourceTracker->updateResource(clientConfig.clientInfo);
+    }
     return ResourceManagerService::notifyClientConfigChanged(clientConfig);
 }
 
@@ -224,9 +232,10 @@ binder_status_t ResourceManagerServiceNew::dump(int fd, const char** args, uint3
 }
 
 bool ResourceManagerServiceNew::getTargetClients(
-        int callingPid,
+        const ClientInfoParcel& clientInfo,
         const std::vector<MediaResourceParcel>& resources,
         std::vector<ClientInfo>& targetClients) {
+    int32_t callingPid = clientInfo.pid;
     std::scoped_lock lock{mLock};
     if (!mProcessInfo->isPidTrusted(callingPid)) {
         pid_t actualCallingPid = IPCThreadState::self()->getCallingPid();
@@ -237,7 +246,11 @@ bool ResourceManagerServiceNew::getTargetClients(
 
     // Use the Resource Model to get a list of all the clients that hold the
     // needed/requested resources.
-    ReclaimRequestInfo reclaimRequestInfo{callingPid, resources};
+    uint32_t callingImportance = 0;
+    if (clientInfo.importance > 0) {
+        callingImportance = static_cast<uint32_t>(clientInfo.importance);
+    }
+    ReclaimRequestInfo reclaimRequestInfo{callingPid, callingImportance, resources};
     std::vector<ClientInfo> clients;
     if (!mDefaultResourceModel->getAllClients(reclaimRequestInfo, clients)) {
         if (clients.empty()) {
@@ -289,7 +302,7 @@ bool ResourceManagerServiceNew::getLowestPriorityBiggestClient_l(
 
     // Use the DefaultResourceModel to get all the clients with the resources requested.
     std::vector<MediaResourceParcel> resources{*resourceRequestInfo.mResource};
-    ReclaimRequestInfo reclaimRequestInfo{resourceRequestInfo.mCallingPid, resources};
+    ReclaimRequestInfo reclaimRequestInfo{resourceRequestInfo.mCallingPid, 0, resources};
     std::vector<ClientInfo> clients;
     mDefaultResourceModel->getAllClients(reclaimRequestInfo, clients);
 
@@ -356,6 +369,19 @@ bool ResourceManagerServiceNew::removeClient(int pid, const int64_t& clientId) {
 
 const std::map<int, ResourceInfos>& ResourceManagerServiceNew::getResourceMap() const {
     return mResourceTracker->getResourceMap();
+}
+
+void ResourceManagerServiceNew::setReclaimPolicy(bool processPriority, bool clientImportance) {
+    mReclaimPolicies.clear();
+    if (processPriority) {
+        // Process priority (oom score) as the Default reclaim policy.
+        mReclaimPolicies.push_back(std::make_unique<ProcessPriorityReclaimPolicy>(
+            mResourceTracker));
+    }
+    if (clientImportance) {
+        mReclaimPolicies.push_back(std::make_unique<ClientImportanceReclaimPolicy>(
+            mResourceTracker));
+    }
 }
 
 } // namespace android
