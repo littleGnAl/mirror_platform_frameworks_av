@@ -170,7 +170,7 @@ private:
     // Returns false if any client belongs to a process with higher priority than the
     // calling process. The clients will remain unchanged if returns false.
     virtual bool getTargetClients(
-        int32_t callingPid,
+        const ClientInfoParcel& clientInfo,
         const std::vector<MediaResourceParcel>& resources,
         std::vector<ClientInfo>& targetClients);
 
@@ -228,6 +228,12 @@ private:
     // Returns a unmodifiable reference to the internal resource state as a map
     virtual const std::map<int, ResourceInfos>& getResourceMap() const {
         return mMap;
+    }
+    // enable/disable process priority based reclaim and client importance based reclaim
+    virtual void setReclaimPolicy(bool processPriority, bool clientImportance) {
+        // Implemented by the refactored/new RMService
+        (void)processPriority;
+        (void)clientImportance;
     }
     // END: TEST only functions
 
