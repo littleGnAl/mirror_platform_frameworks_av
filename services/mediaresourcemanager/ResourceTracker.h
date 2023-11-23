@@ -90,9 +90,12 @@ public:
     void removeProcessInfoOverride(int pid);
 
     // Find all clients that have given resources.
+    // If applicable, match the primary type too.
     // returns true when it finds at least one client, false otherwise (no clients).
-    bool getAllClients(const ResourceRequestInfo& resourceRequestInfo,
-                       std::vector<ClientInfo>& clients);
+    bool getAllClients(
+        const ResourceRequestInfo& resourceRequestInfo,
+        std::vector<ClientInfo>& clients,
+        MediaResource::SubType primarySubType = MediaResource::SubType::kUnspecifiedSubType);
 
     // Look for the lowest priority process with the given resources.
     // Upon success lowestPriorityPid and lowestPriority are
@@ -101,13 +104,25 @@ public:
     bool getLowestPriorityPid(MediaResource::Type type, MediaResource::SubType subType,
                               int& lowestPriorityPid, int& lowestPriority);
 
+    // Look for the lowest priority process with the given client list.
+    // returns true on success, false otherwise.
+    bool getLowestPriorityPid(const std::vector<ClientInfo>& clients,
+                              int& lowestPriorityPid, int& lowestPriority);
+
+    // Find the biggest client of the given process with given resources,
+    // that is marked as pending to be removed.
+    // returns true on success, false otherwise.
+    bool getBiggestClientPendingRemoval(
+        int pid, MediaResource::Type type, MediaResource::SubType subType,
+        ClientInfo& clientInfo);
+
     // Find the biggest client of the given process with given resources.
     // If pendingRemovalOnly is set, then it will look for only those clients
     // that are marked for removing.
     // Returns true when a client is found and clientInfo is updated accordingly.
     // Upon failure to find a client, it will return false.
     bool getBiggestClient(int pid, MediaResource::Type type, MediaResource::SubType subType,
-                          ClientInfo& clientInfo, bool pendingRemovalOnly = false);
+                          ClientInfo& clientInfo);
 
     // Find the client that belongs to given process(pid) and with the given clientId.
     // A nullptr is returned upon failure to find the client.
