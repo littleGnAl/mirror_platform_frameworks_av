@@ -90,8 +90,13 @@ ResourceInfos& getResourceInfosForEdit(int pid, PidResourceInfosMap& map) {
 ResourceInfo& getResourceInfoForEdit(const ClientInfoParcel& clientInfo,
                                      const std::shared_ptr<IResourceManagerClient>& client,
                                      ResourceInfos& infos) {
-    ResourceInfos::iterator found = infos.find(clientInfo.id);
 
+    uint32_t importance = 0;
+    if (clientInfo.importance > 0) {
+        importance = static_cast<uint32_t>(clientInfo.importance);
+    }
+
+    ResourceInfos::iterator found = infos.find(clientInfo.id);
     if (found == infos.end()) {
         ResourceInfo info{.pid = clientInfo.pid,
                           .uid = static_cast<uid_t>(clientInfo.uid),
@@ -99,9 +104,13 @@ ResourceInfo& getResourceInfoForEdit(const ClientInfoParcel& clientInfo,
                           .name = clientInfo.name.empty()? "<unknown client>" : clientInfo.name,
                           .client = client,
                           .deathNotifier = nullptr,
-                          .pendingRemoval = false};
+                          .pendingRemoval = false,
+                          .importance = importance};
         auto [it, inserted] = infos.emplace(clientInfo.id, info);
         found = it;
+    } else {
+        // Update the client importance.
+        found->second.importance = importance;
     }
 
     return found->second;
