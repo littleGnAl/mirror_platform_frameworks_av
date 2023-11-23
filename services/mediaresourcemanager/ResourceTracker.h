@@ -100,10 +100,15 @@ public:
     bool getLowestPriorityPid(MediaResource::Type type, MediaResource::SubType subType,
                               int& lowestPriorityPid, int& lowestPriority);
 
-    // Look for the lowest priority process with the given client list.
+    // Look for the lowest priority process with the given resources
+    // among the given client list.
+    // If applicable, match the primary type too.
     // returns true on success, false otherwise.
-    bool getLowestPriorityPid(const std::vector<ClientInfo>& clients,
-                              int& lowestPriorityPid, int& lowestPriority);
+    bool getLowestPriorityPid(
+        MediaResource::Type type, MediaResource::SubType subType,
+        MediaResource::SubType primarySubType,
+        const std::vector<ClientInfo>& clients,
+        int& lowestPriorityPid, int& lowestPriority);
 
     // Find the biggest client of the given process with given resources,
     // that is marked as pending to be removed.
@@ -112,10 +117,16 @@ public:
         int pid, MediaResource::Type type, MediaResource::SubType subType,
         ClientInfo& clientInfo);
 
-    // Find the biggest client of the given process with given resources.
+    // Find the biggest client from the process pid, selecting them from the list of clients.
+    // If applicable, match the primary type too.
     // returns true on success, false otherwise.
-    bool getBiggestClient(int pid, MediaResource::Type type, MediaResource::SubType subType,
-                          ClientInfo& clientInfo);
+    bool getBiggestClient(
+        int targetPid,
+        MediaResource::Type type,
+        MediaResource::SubType subType,
+        const std::vector<ClientInfo>& clients,
+        ClientInfo& clientInfo,
+        MediaResource::SubType primarySubType = MediaResource::SubType::kUnspecifiedSubType);
 
     // Find the client that belongs to given process(pid) and with the given clientId.
     std::shared_ptr<::aidl::android::media::IResourceManagerClient> getClient(
@@ -154,6 +165,10 @@ private:
     // A helper function that returns true if the callingPid has higher priority than pid.
     // Returns false otherwise.
     bool isCallingPriorityHigher(int callingPid, int pid);
+
+    // Locate the resource info corresponding to the process pid and
+    // the client clientId.
+    const ResourceInfo* getResourceInfo(int pid, const int64_t& clientId) const;
 
     // Notify when a resource is added for the first time.
     void onFirstAdded(const MediaResourceParcel& resource, uid_t uid);
