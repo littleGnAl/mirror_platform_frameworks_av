@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae9cd9c_f3e802cf",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-24T21:51:02Z",
+      "side": 1,
+      "message": "I think we should test the behavior regardless of the flag being enabled on the device or not.",
+      "revId": "74d0ffe4768e97037cae9b58a1ebc6ded4454d0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
