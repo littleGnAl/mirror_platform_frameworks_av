@@ -34,6 +34,24 @@
       "parentUuid": "d0d3a806_b6fbc61b",
       "revId": "62951fed87c979c043d4d769bd3735a0340aa1b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85a2fbc_7eab1e88",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-25T22:17:14Z",
+      "side": 1,
+      "message": "This is my only explanation for https://b.corp.google.com/issues/300350761#comment51.",
+      "parentUuid": "297395e5_d98282a3",
+      "revId": "62951fed87c979c043d4d769bd3735a0340aa1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
