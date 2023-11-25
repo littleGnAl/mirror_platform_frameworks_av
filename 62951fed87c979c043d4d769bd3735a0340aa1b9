@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d3a806_b6fbc61b",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-11-25T18:44:42Z",
+      "side": 1,
+      "message": "mComponent is shared_ptr itself, so a null check should be sufficient in this case.",
+      "revId": "62951fed87c979c043d4d769bd3735a0340aa1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
