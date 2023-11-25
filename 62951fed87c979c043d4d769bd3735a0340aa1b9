@@ -52,6 +52,24 @@
       "parentUuid": "297395e5_d98282a3",
       "revId": "62951fed87c979c043d4d769bd3735a0340aa1b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899da4db_15bb9cc7",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-25T22:24:04Z",
+      "side": 1,
+      "message": "```#include \u003ciostream\u003e\n#include \u003cmemory\u003e\n#include \u003cthread\u003e\n\n\nstruct Test {\n  ~Test() {\n      std::cout \u003c\u003c \"Test::dtor \" \u003c\u003c this \u003c\u003c std::endl;\n  }\n  void test() {\n      std::cout \u003c\u003c \"sleep start \" \u003c\u003c this \u003c\u003c std::endl;\n      ::usleep(5000000);\n      std::cout \u003c\u003c \"sleep end \" \u003c\u003c this \u003c\u003c std::endl;\n  }\n};\n\nstd::shared_ptr\u003cTest\u003e gTest;\n\n\nvoid shrDtorTest() {\n    gTest-\u003etest();\n}\n\nint main() {\n    gTest \u003d std::make_shared\u003cTest\u003e();\n    std::thread thr(shrDtorTest);\n    ::usleep(100);\n    gTest.reset();\n    std::cout \u003c\u003c \"shared_ptr reseted\" \u003c\u003c std::endl;\n\n    if (thr.joinable()) {\n        thr.join();\n    }\n\n}\n\ntaklee@taklee-android:~/workspace/TEST$ ./a.out\nsleep start 0x55ac9cd852c0\nTest::dtor 0x55ac9cd852c0\nshared_ptr reseted\nsleep end 0x55ac9cd852c0\n```",
+      "parentUuid": "c85a2fbc_7eab1e88",
+      "revId": "62951fed87c979c043d4d769bd3735a0340aa1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
