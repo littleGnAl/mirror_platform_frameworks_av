@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22aeb68_1d11834f",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-27T23:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d12a3db_dbb53f49",
+      "range": {
+        "startLine": 413,
+        "startChar": 22,
+        "endLine": 413,
+        "endChar": 30
+      },
+      "revId": "10247277e1b1af5aa6595c4564db3891bb578313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "090ea752_ddca54ba",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28618316_df3fc4c0",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-27T23:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "090ea752_ddca54ba",
+      "revId": "10247277e1b1af5aa6595c4564db3891bb578313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f8f886a_252ff629",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-11-27T17:39:03Z",
       "side": 1,
       "message": "this block looks equivalent to:\n\n```suggestion\n    if (aidl) {\n        // AIDL does not support blockpool-less mode.\n        c2_status_t poolRet \u003d component-\u003ecreateBlockPool(\n                C2PlatformAllocatorStore::IGBA, \u0026poolId, \u0026configurable);\n        ASSERT_EQ(poolRet, C2_OK) \u003c\u003c \"setOutputSurface failed\";\n    }\n\n    if (surfMode \u003d\u003d SURFACE) {\n        BufferQueue::createBufferQueue(\u0026producer, \u0026consumer);\n        ASSERT_NE(producer, nullptr) \u003c\u003c \"createBufferQueue returned invalid producer\";\n        ASSERT_NE(consumer, nullptr) \u003c\u003c \"createBufferQueue returned invalid consumer\";\n\n        texture \u003d\n                new GLConsumer(consumer, 0 /* tex */, GLConsumer::TEXTURE_EXTERNAL,\n                               true /* useFenceSync */, false /* isControlledByApp */);\n\n        gSurface \u003d new Surface(producer);\n        ASSERT_NE(gSurface, nullptr) \u003c\u003c \"getSurface failed\";\n\n        producer-\u003esetGenerationNumber(generation);\n    }\n}\n\n```",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 0
+      },
+      "revId": "10247277e1b1af5aa6595c4564db3891bb578313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba054bb_9dfcc51b",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-27T23:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8f886a_252ff629",
       "range": {
         "startLine": 422,
         "startChar": 0,
