@@ -16,6 +16,23 @@
       "message": "thanks!",
       "revId": "ff5eb3cd17ecb2005914a60f5db6cc1b9bba6fdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1fb0ee_112a0936",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2023-11-27T07:15:45Z",
+      "side": 1,
+      "message": "for proxy effects, we either can set either \"Flags::Volume::CTRL\" or \"Flags::Volume::NONE\" from above logic ( default CTRL, NONE on override)\n\nIf any of effect is having volume in MONITOR/IND mode, that won\u0027t be reflected.\n\nI am not sure how widely that is used, but I feel it may cause difference in states.",
+      "revId": "ff5eb3cd17ecb2005914a60f5db6cc1b9bba6fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
