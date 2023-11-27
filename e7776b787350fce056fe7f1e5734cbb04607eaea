@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9abe1f9_e58cecd9",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-27T23:02:55Z",
+      "side": 1,
+      "message": "if this used as bit flags, define as bit flags. And guard it with a proper namespace as below.\n\n```\nnamespace android::media::vts {\n    enum c2_vts_flags_t ...\n}\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "e7776b787350fce056fe7f1e5734cbb04607eaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
