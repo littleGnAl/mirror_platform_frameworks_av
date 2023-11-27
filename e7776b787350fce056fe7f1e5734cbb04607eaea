@@ -69,6 +69,30 @@
       },
       "revId": "e7776b787350fce056fe7f1e5734cbb04607eaea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db961b61_4660f31f",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-27T23:49:09Z",
+      "side": 1,
+      "message": "Though I don\u0027t understand detail.\n\u0027Bitwise and\u0027 with value 3 is very strange and hard to understand.",
+      "parentUuid": "9db46564_1a8e1326",
+      "range": {
+        "startLine": 464,
+        "startChar": 42,
+        "endLine": 464,
+        "endChar": 56
+      },
+      "revId": "e7776b787350fce056fe7f1e5734cbb04607eaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
