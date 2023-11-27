@@ -45,6 +45,30 @@
       },
       "revId": "e7776b787350fce056fe7f1e5734cbb04607eaea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db46564_1a8e1326",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-11-27T23:13:45Z",
+      "side": 1,
+      "message": "sungtak, enum flags_t are not bit flags, they are enum constants. the flags present in info files are converted to these labels during fread using the function https://android-review.googlesource.com/c/platform/frameworks/av/+/2780767/7/media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp#273\n\nWhile making calls to c2 api, these enum consts are translated to c2 flags.",
+      "parentUuid": "24eae4ef_e3f1523b",
+      "range": {
+        "startLine": 464,
+        "startChar": 42,
+        "endLine": 464,
+        "endChar": 56
+      },
+      "revId": "e7776b787350fce056fe7f1e5734cbb04607eaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
