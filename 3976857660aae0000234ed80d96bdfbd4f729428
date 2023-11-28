@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f836c3b3_b9cb6760",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3199,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-28T20:47:08Z",
+      "side": 1,
+      "message": "nit: we prefer `nullptr` in modern code.",
+      "range": {
+        "startLine": 3199,
+        "startChar": 33,
+        "endLine": 3199,
+        "endChar": 37
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c21f69_b0f8ac68",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-28T20:47:08Z",
+      "side": 1,
+      "message": "nit: Why `Format` is capitalized? Also on the line `147`.",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1262de_659a7a82",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-28T20:47:08Z",
+      "side": 1,
+      "message": "Please don\u0027t use `m` prefix on local variables, it is reserved for class members.",
+      "range": {
+        "startLine": 171,
+        "startChar": 41,
+        "endLine": 171,
+        "endChar": 53
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca49147_53875b7d",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-28T20:47:08Z",
+      "side": 1,
+      "message": "nit: also capitalized `Format`",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 46
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "545b4e59_63682c42",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-28T20:47:08Z",
+      "side": 1,
+      "message": "Note that `mHalFrameSize` is `size_t`, thus it can\u0027t be negative.",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
