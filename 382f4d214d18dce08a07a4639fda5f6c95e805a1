@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e73cad_e240c93b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-28T00:12:58Z",
+      "side": 1,
+      "message": "hey - did we talk since last update here? are we going to fix this underneath the NoServiceManager layer, to pretend to accept service notifications for now? Otherwise, we\u0027ll need a fix like this in any platform code which is registering for notifications.",
+      "revId": "382f4d214d18dce08a07a4639fda5f6c95e805a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
