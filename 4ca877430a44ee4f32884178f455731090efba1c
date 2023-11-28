@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7a30b3_f80c3658",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-11-28T17:47:45Z",
+      "side": 1,
+      "message": "Pooled allocator will return C2_BLOCKING in someday future, if we define the allocation limit configuration semantics?\n\nShall we have some query interface to C2BlockPool for which fetch interfaces are supported in the future?",
+      "parentUuid": "7f4b09cd_4c43cebc",
+      "revId": "4ca877430a44ee4f32884178f455731090efba1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be63ec82_24ceb690",
