@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "288da8c5_6f9001a7",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3199,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T22:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f836c3b3_b9cb6760",
+      "range": {
+        "startLine": 3199,
+        "startChar": 33,
+        "endLine": 3199,
+        "endChar": 37
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c21f69_b0f8ac68",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a96c0ae_bb23f86b",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T22:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c21f69_b0f8ac68",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e1262de_659a7a82",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-11-28T20:47:08Z",
       "side": 1,
       "message": "Please don\u0027t use `m` prefix on local variables, it is reserved for class members.",
+      "range": {
+        "startLine": 171,
+        "startChar": 41,
+        "endLine": 171,
+        "endChar": 53
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f3701e_1dba6b07",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T22:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e1262de_659a7a82",
       "range": {
         "startLine": 171,
         "startChar": 41,
@@ -106,6 +178,30 @@
       "writtenOn": "2023-11-28T20:47:08Z",
       "side": 1,
       "message": "Note that `mHalFrameSize` is `size_t`, thus it can\u0027t be negative.",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "3976857660aae0000234ed80d96bdfbd4f729428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b57abe1_6d7bbc1c",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T22:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "545b4e59_63682c42",
       "range": {
         "startLine": 110,
         "startChar": 28,
