@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be25094e_8ede3220",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-28T01:09:38Z",
+      "side": 1,
+      "message": "This is an assertion as this default implementation will not work if the underlying fetch returns C2_BLOCKING (in that case a real fence is needed to be returned). If the underlying fetch may return C2_BLOCKING, this default implementation cannot be used, but the basic/pooled allocators will not return C2_BLOCKING (as of this CL).",
+      "parentUuid": "2cf34ea7_b477e65a",
+      "revId": "4ca877430a44ee4f32884178f455731090efba1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be63ec82_24ceb690",
         "filename": "media/codec2/vndk/C2Buffer.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-21T01:45:52Z",
       "side": 1,
       "message": "It seems the fence will never be signaled, so what will happen to the fence.wait()?",
+      "revId": "4ca877430a44ee4f32884178f455731090efba1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2561b5c_034099c6",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-11-28T01:09:38Z",
+      "side": 1,
+      "message": "This is a null fence that is equivalent to an already signaled fence. wait will always return C2_OK. See: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/vndk/C2Fence.cpp;drc\u003de715fa6c242c11fa2f3d4544e9433c00d3d428c2;l\u003d78",
+      "parentUuid": "be63ec82_24ceb690",
       "revId": "4ca877430a44ee4f32884178f455731090efba1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
