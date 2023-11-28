@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "257f3a7a_99774ca8",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T10:38:05Z",
+      "side": 1,
+      "message": "Done. Fixed in PS6.",
+      "parentUuid": "8a2d750b_95b97d00",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 65
+      },
+      "revId": "5137ccf4e18d32384770133fdfffa001686f3206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11abf277_e9395067",
