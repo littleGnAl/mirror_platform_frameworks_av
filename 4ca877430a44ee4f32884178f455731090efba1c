@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98310fdd_fe59db5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1874507
+      },
+      "writtenOn": "2023-11-28T17:38:02Z",
+      "side": 1,
+      "message": "I verified this change with video playback and CTSs tests:\nandroid.media.decoder.cts.ImageReaderDecoderTest",
+      "revId": "4ca877430a44ee4f32884178f455731090efba1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cf34ea7_b477e65a",
