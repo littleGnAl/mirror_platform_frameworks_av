@@ -34,6 +34,24 @@
       "parentUuid": "c3e73cad_e240c93b",
       "revId": "382f4d214d18dce08a07a4639fda5f6c95e805a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15eb3836_b42127e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-28T00:45:42Z",
+      "side": 1,
+      "message": "aosp/2847957 makes this change unnecessary while we have `NoHwServiceManager`",
+      "parentUuid": "e54bbecf_c9bac36c",
+      "revId": "382f4d214d18dce08a07a4639fda5f6c95e805a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
