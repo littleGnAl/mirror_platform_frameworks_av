@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5c3e29_8f4490b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-11-28T18:53:40Z",
+      "side": 1,
+      "message": "This needs couple of CLs from internal branches to be cherry-picked to aosp/main.\nWill first get those CLs to aosp/main and then rebase this.",
+      "revId": "a2c82a54177b76749a57117d34a760b5e14710b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
