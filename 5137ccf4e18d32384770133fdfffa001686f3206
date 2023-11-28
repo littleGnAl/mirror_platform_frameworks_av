@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3601dd5_8a039676",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T10:32:35Z",
+      "side": 1,
+      "message": "This is resolved in PS5 by separating the PCM and Spdif fallback paths.",
+      "parentUuid": "ed050598_749bd580",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 55
+      },
+      "revId": "5137ccf4e18d32384770133fdfffa001686f3206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eda2e585_77e87619",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-27T22:14:28Z",
       "side": 1,
       "message": "Here a similar issue—note that `inputStream` could have been deleted on the line 166.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 65
+      },
+      "revId": "5137ccf4e18d32384770133fdfffa001686f3206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2d750b_95b97d00",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T10:32:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eda2e585_77e87619",
       "range": {
         "startLine": 173,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69388b22_db77bf9f",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T10:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11abf277_e9395067",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 68
+      },
+      "revId": "5137ccf4e18d32384770133fdfffa001686f3206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb84d057_9ed113a9",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-11-27T22:14:28Z",
       "side": 1,
       "message": "nit: This isn\u0027t needed. The compiler will add a default implementation of a virtual destructor automatically.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "5137ccf4e18d32384770133fdfffa001686f3206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37655bd1_2f10539b",
+        "filename": "services/audioflinger/datapath/SpdifStreamIn.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-28T10:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb84d057_9ed113a9",
       "range": {
         "startLine": 43,
         "startChar": 0,
