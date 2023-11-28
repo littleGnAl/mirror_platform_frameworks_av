@@ -16,6 +16,24 @@
       "message": "hey - did we talk since last update here? are we going to fix this underneath the NoServiceManager layer, to pretend to accept service notifications for now? Otherwise, we\u0027ll need a fix like this in any platform code which is registering for notifications.",
       "revId": "382f4d214d18dce08a07a4639fda5f6c95e805a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54bbecf_c9bac36c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-11-28T00:16:51Z",
+      "side": 1,
+      "message": "Ah, yeah we can do that instead. Return true from `NoHwServiceManager` and do nothing about it. I\u0027ll try that and abandon this CL if it works.",
+      "parentUuid": "c3e73cad_e240c93b",
+      "revId": "382f4d214d18dce08a07a4639fda5f6c95e805a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
