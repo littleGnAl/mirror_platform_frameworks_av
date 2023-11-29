@@ -157,6 +157,30 @@
       },
       "revId": "9ec4719bb886f57832a7c323a1516628ade21b98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca8a066_f9df0e32",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T23:04:47Z",
+      "side": 1,
+      "message": "Really this is more of a nit.  I guess it depends on the style. Typically alphabetical in the header file.  In the .cpp file, the associated header file is often first to catch missing includes.\n\nAs opposed to Java includes, there\u0027s a few different thoughts in C++ includes. After internal discussion we think it is better to have the local headers first followed by the system headers (as that will catch missing includes better), though Google style suggests otherwise.\n\nIn any case, not sure why you chose this order.",
+      "parentUuid": "0fbb696f_7d856f8f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "9ec4719bb886f57832a7c323a1516628ade21b98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
