@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dd0929e_b029fb0b",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-11-29T07:15:41Z",
+      "side": 1,
+      "message": "most of the code is in global namespace, it looks little misplaced when only enum is under a namespace",
+      "parentUuid": "a9abe1f9_e58cecd9",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "e7776b787350fce056fe7f1e5734cbb04607eaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24eae4ef_e3f1523b",
         "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
         "patchSetId": 7
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Though I don\u0027t understand detail.\n\u0027Bitwise and\u0027 with value 3 is very strange and hard to understand.",
       "parentUuid": "9db46564_1a8e1326",
+      "range": {
+        "startLine": 464,
+        "startChar": 42,
+        "endLine": 464,
+        "endChar": 56
+      },
+      "revId": "e7776b787350fce056fe7f1e5734cbb04607eaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1129a1_0194d41e",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-11-29T07:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db961b61_4660f31f",
       "range": {
         "startLine": 464,
         "startChar": 42,
