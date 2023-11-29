@@ -614,7 +614,7 @@ android_dataspace ColorUtils::getDataSpaceForColorAspects(ColorAspects &aspects,
             (gfxRange << HAL_DATASPACE_RANGE_SHIFT) |
             (gfxStandard << HAL_DATASPACE_STANDARD_SHIFT) |
             (gfxTransfer << HAL_DATASPACE_TRANSFER_SHIFT));
-    (void)sLegacyDataSpaceToV0.rlookup(dataSpace, &dataSpace);
+    // (void)sLegacyDataSpaceToV0.rlookup(dataSpace, &dataSpace);
 
     if (!mayExpand) {
         // update codec aspects based on dataspace
