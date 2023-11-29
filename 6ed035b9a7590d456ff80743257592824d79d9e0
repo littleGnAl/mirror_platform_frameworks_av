@@ -1,0 +1,360 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581fed96_b3222175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "minor nits.",
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7eddefd_0b29ee86",
+        "filename": "services/audioflinger/datapath/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: alphabetical",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48dcfecb_6666fcc3",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "aesthetically i wonder if this should be a unique ptr and be moved out on success or auto-deleted on failure.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 54
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3956dd71_8b459f92",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: sometimes the extra space is at the end, sometimes the beginning.  Here and on line 147.",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede68d46_6565c8b0",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: if this fails, should you delete inputStream?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 80
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b775c703_b1b4e38e",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: make this the first to catch any include issues?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9630eb0d_34c6ab43",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: extra space.",
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f6557ae_c9a3dcb9",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: is this still true?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea22381_8b08bb1c",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: as a class, we would use mStream, but structs often omit the m (or trailing undercore).  do you want to keep this a struct?",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6831e3cd_94b9288e",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: is this override?  here and on line 61, 63?",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b6f3f90_82b503cf",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: perhaps don\u0027t align these declaration/definitions.",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eefda8ea_26297c70",
+        "filename": "services/audioflinger/datapath/SpdifStreamIn.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: i think we do single * here.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 2
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5898ef1_abe11b33",
+        "filename": "services/audioflinger/datapath/SpdifStreamIn.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: maybe just indent by 8 here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3995d216_39034fb2",
+        "filename": "services/audioflinger/datapath/SpdifStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: #pragma once.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae24141d_5c46cf01",
+        "filename": "services/audioflinger/datapath/SpdifStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "not sure if there is a rationale here in the include ordering, maybe just go alphabetical?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604f30e3_066f518b",
+        "filename": "services/audioflinger/datapath/SpdifStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-29T03:50:15Z",
+      "side": 1,
+      "message": "nit: perhaps the variable name alignment isn\u0027t needed.",
+      "range": {
+        "startLine": 124,
+        "startChar": 17,
+        "endLine": 124,
+        "endChar": 23
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
