@@ -390,6 +390,9 @@ private:
             c2_status_t c2Status;
             if (syncVar) {
                 uint32_t waitId;
+                if (mInvalidated.load()) {
+                    return C2_BAD_STATE;
+                }
                 syncVar->lock();
                 if (!syncVar->isDequeueableLocked(&waitId)) {
                     syncVar->unlock();
@@ -411,6 +414,9 @@ private:
                 c2Status = dequeueBuffer(width, height, format, androidUsage,
                               &slot, &bufferNeedsReallocation, &fence);
                 if (c2Status != C2_OK) {
+                    if (mInvalidated.load()) {
+                        return C2_BAD_STATE;
+                    }
                     syncVar->lock();
                     syncVar->notifyQueuedLocked();
                     syncVar->unlock();
@@ -605,7 +611,7 @@ public:
         static int kMaxIgbpRetryDelayUs = 10000;
 
         std::unique_lock<std::mutex> lock(mMutex);
-        if (mInvalidated) {
+        if (mInvalidated.load()) {
             return C2_BAD_STATE;
         }
         if (mLastDqLogTs == 0) {
