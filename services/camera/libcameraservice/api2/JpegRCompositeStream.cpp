@@ -26,7 +26,7 @@
 
 #include "common/CameraProviderManager.h"
 #include <gui/Surface.h>
-#include <ultrahdr/jpegr.h>
+#include <jpegr.h>
 #include <utils/ExifUtils.h>
 #include <utils/Log.h>
 #include "utils/SessionConfigurationUtils.h"
