@@ -382,6 +382,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8924de27_b1d4c088",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-29T22:24:38Z",
+      "side": 1,
+      "message": "OK. I don\u0027t see any reference to m prefix in this style guide. That guide talks about snake case, which AOSP doesn\u0027t seem to like. It would be helpful to know what minimum cpplint checks should be run on review patchsets, what legacy code should be fixed when pushing new patchsets, and so on.",
+      "parentUuid": "75081896_062bcde5",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6831e3cd_94b9288e",
