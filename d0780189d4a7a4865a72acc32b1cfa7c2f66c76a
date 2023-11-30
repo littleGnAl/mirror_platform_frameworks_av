@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02e7272_d4d11453",
+        "filename": "media/libaudioclient/AudioEffect.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-30T20:10:30Z",
+      "side": 1,
+      "message": "nit: AutoMutex lock(mLock);",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 21
+      },
+      "revId": "d0780189d4a7a4865a72acc32b1cfa7c2f66c76a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
