@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930f7c98_ca60df11",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 10992,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-30T18:58:57Z",
+      "side": 1,
+      "message": "Good point. If the string is not null-terminated, it will be rejected during legacy to AIDL conversion: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/audioaidlconversion/AidlConversionCppNdk.cpp;l\u003d128;drc\u003dd4035b6eb1192f71af7adae47bf17d22c7356fa1\n\nHowever, I think we need to fix this issue systematically. There are more places where we do not subtract `1`, for example:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Tracks.cpp;l\u003d1610;drc\u003d93d4e88032821ebeb57f365fcfb3581a6fe80ba4\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Tracks.cpp;l\u003d3083;drc\u003d93d4e88032821ebeb57f365fcfb3581a6fe80ba4\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Threads.cpp;l\u003d11162;drc\u003d61ff90cc752a00287e3823a57e57c533bcfb8766",
+      "range": {
+        "startLine": 10992,
+        "startChar": 62,
+        "endLine": 10992,
+        "endChar": 96
+      },
+      "revId": "3bb45c20f133a3905fd419b4d849099a359d3a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
