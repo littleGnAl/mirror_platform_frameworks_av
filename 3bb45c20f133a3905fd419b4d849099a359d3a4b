@@ -22,6 +22,30 @@
       },
       "revId": "3bb45c20f133a3905fd419b4d849099a359d3a4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7de818_2a08142c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 10992,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-30T22:53:18Z",
+      "side": 1,
+      "message": "We have a plain and zero-fill (safely cleans the unused buffer space) string copy which works for fixed size char arrays.  No need to specify the size.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/media/audio_utils/include/audio_utils/string.h;drc\u003df262821315d4050b5d857a21639f46b00e0319b1;l\u003d41",
+      "parentUuid": "930f7c98_ca60df11",
+      "range": {
+        "startLine": 10992,
+        "startChar": 62,
+        "endLine": 10992,
+        "endChar": 96
+      },
+      "revId": "3bb45c20f133a3905fd419b4d849099a359d3a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
