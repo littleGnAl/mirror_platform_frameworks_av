@@ -22,6 +22,30 @@
       },
       "revId": "d0780189d4a7a4865a72acc32b1cfa7c2f66c76a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df46dbc_e8a5efa9",
+        "filename": "media/libaudioclient/AudioEffect.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1881060
+      },
+      "writtenOn": "2023-11-30T20:12:54Z",
+      "side": 1,
+      "message": "If you do that, the lock will be remove at the end of the scope, but we need to unlock lin 403",
+      "parentUuid": "a02e7272_d4d11453",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 21
+      },
+      "revId": "d0780189d4a7a4865a72acc32b1cfa7c2f66c76a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
