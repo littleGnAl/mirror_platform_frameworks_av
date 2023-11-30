@@ -46,6 +46,30 @@
       },
       "revId": "d0780189d4a7a4865a72acc32b1cfa7c2f66c76a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd33b8eb_42f0ed85",
+        "filename": "media/libaudioclient/AudioEffect.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-30T20:53:20Z",
+      "side": 1,
+      "message": "Good point. Perhaps std::unique_lock(mLock, std::defer_lock) on line 368 and a manual lock on line 370.",
+      "parentUuid": "7df46dbc_e8a5efa9",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 21
+      },
+      "revId": "d0780189d4a7a4865a72acc32b1cfa7c2f66c76a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
