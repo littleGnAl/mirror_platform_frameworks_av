@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9426a0_52837305",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1859273
+      },
+      "writtenOn": "2023-11-30T15:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d47761_ba6e6d39",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "b33b4b928303984ff23cac05f8566fc77ae27212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f00d9b39_a453ff24",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-11-29T23:32:54Z",
       "side": 1,
       "message": "It can be helpful to note what behavior this is fixing in the commit message. What would the observed behavior be previously?",
+      "revId": "b33b4b928303984ff23cac05f8566fc77ae27212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "446a4572_c82f99ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1859273
+      },
+      "writtenOn": "2023-11-30T15:05:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f00d9b39_a453ff24",
       "revId": "b33b4b928303984ff23cac05f8566fc77ae27212",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
