@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844c59c3_32167f68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-11-30T18:49:58Z",
+      "side": 1,
+      "message": "Please add an empty line between lines 7 and 8 and between lines 11 and 12 (before `Test:`). Also, please remove an empty line between `Test:` and `Bug:` lines.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "54aa3733ba801bcb231a67b40569c7cab5394715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
