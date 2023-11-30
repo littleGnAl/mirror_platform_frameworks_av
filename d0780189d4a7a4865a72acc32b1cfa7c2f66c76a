@@ -70,6 +70,30 @@
       },
       "revId": "d0780189d4a7a4865a72acc32b1cfa7c2f66c76a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26830945_e8e625c1",
+        "filename": "media/libaudioclient/AudioEffect.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-11-30T21:05:54Z",
+      "side": 1,
+      "message": "Okay, the code frag compiles for me:\n\n    std::unique_lock ul(mLock, std::defer_lock);\n    if (cmdCode \u003d\u003d EFFECT_CMD_ENABLE || cmdCode \u003d\u003d EFFECT_CMD_DISABLE) {\n        ul.lock();\n        ...\n        \nwith this approach, the unlock on line 403 needs to be removed.  Would prefer to use RAII locking if possible, otherwise the code becomes fragile and folks (including me :-) will make mistakes.",
+      "parentUuid": "dd33b8eb_42f0ed85",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 21
+      },
+      "revId": "d0780189d4a7a4865a72acc32b1cfa7c2f66c76a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
