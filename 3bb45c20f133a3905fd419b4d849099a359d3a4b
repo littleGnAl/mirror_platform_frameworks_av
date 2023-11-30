@@ -46,6 +46,30 @@
       },
       "revId": "3bb45c20f133a3905fd419b4d849099a359d3a4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a86c09f_4e640872",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 10992,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2023-11-30T23:26:08Z",
+      "side": 1,
+      "message": "+1; can we grep all str[l|n]cpy and replace with the reasonable alternatives in audio_utils.",
+      "parentUuid": "df7de818_2a08142c",
+      "range": {
+        "startLine": 10992,
+        "startChar": 62,
+        "endLine": 10992,
+        "endChar": 96
+      },
+      "revId": "3bb45c20f133a3905fd419b4d849099a359d3a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
