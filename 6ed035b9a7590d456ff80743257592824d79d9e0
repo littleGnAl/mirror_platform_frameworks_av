@@ -88,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff98013_6211c536",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-11-30T02:38:33Z",
+      "side": 1,
+      "message": "Acknowledged. Perhaps this can be improved in a later CL.",
+      "parentUuid": "48dcfecb_6666fcc3",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 54
+      },
+      "revId": "6ed035b9a7590d456ff80743257592824d79d9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3956dd71_8b459f92",
