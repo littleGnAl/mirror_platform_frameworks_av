@@ -10989,7 +10989,7 @@ ThreadBase::MetadataUpdate MmapPlaybackThread::updateMetadata_l()
                 .gain = mHalVolFloat, // TODO: propagate from aaudio pre-mix volume
         };
         trackMetadata.channel_mask = track->channelMask(),
-        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE - 1);
         metadata.tracks.push_back(trackMetadata);
     }
     mOutput->stream->updateSourceMetadata(metadata);
