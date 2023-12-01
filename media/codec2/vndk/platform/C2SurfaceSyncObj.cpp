@@ -127,6 +127,11 @@ namespace {
 int C2SyncVariables::lock() {
     uint32_t old = FUTEX_UNLOCKED;
 
+    if (mStatus.load() & STATUS_INVALID) {
+        // lock is invalid and meaningless
+        return -1;
+    }
+
     // see if we can lock uncontended immediately (if previously unlocked)
     if (mLock.compare_exchange_strong(old, FUTEX_LOCKED_UNCONTENDED)) {
         return 0;
@@ -154,6 +159,10 @@ int C2SyncVariables::lock() {
 
     // while the futex is still locked by someone else
     while (old != FUTEX_UNLOCKED) {
+        if (mStatus.load() & STATUS_INVALID) {
+            // lock is invalid and meaningless
+            return -1;
+        }
         // wait until other side releases the lock (and still contented)
         (void)syscall(__NR_futex, &mLock, FUTEX_WAIT, FUTEX_LOCKED_CONTENDED, NULL, NULL, 0);
         // try to relock
@@ -243,21 +252,43 @@ void C2SyncVariables::notifyDequeuedLocked() {
 }
 
 void C2SyncVariables::setSyncStatusLocked(SyncStatus status) {
-    mStatus = status;
-    if (mStatus == STATUS_ACTIVE) {
+    uint32_t old;
+    uint32_t flag;
+    do {
+        old = mStatus.load();
+        // In order to retain STATUS_INVALID flag even
+        // the falg is set between load() and cmpxhg()
+        if (old & STATUS_INVALID) {
+            flag = STATUS_INVALID;
+        } else {
+            flag = 0;
+        }
+    } while (mStatus.compare_exchange_strong(old, status | flag));
+
+    if (status == STATUS_ACTIVE) {
         broadcast();
     }
 }
 
 C2SyncVariables::SyncStatus C2SyncVariables::getSyncStatusLocked() {
-    return mStatus;
+    uint32_t status = mStatus.load();
+    uint32_t ret = status & ~STATUS_INVALID;
+    return static_cast<SyncStatus>(ret);
 }
 
 void C2SyncVariables::updateMaxDequeueCountLocked(int32_t maxDequeueCount) {
     mMaxDequeueCount = maxDequeueCount;
-    if (mStatus == STATUS_ACTIVE) {
+    if (getSyncStatusLocked() == STATUS_ACTIVE) {
         broadcast();
     }
+}
+
+void C2SyncVariables::invalidate() {
+    // lock() will return -1 and invalidated after this
+    mStatus.fetch_or(STATUS_INVALID);
+    ::usleep(10000);
+    unlock(); // If lock is held by a dead process.
+    broadcast(); // wake up all waiter
 }
 
 c2_status_t C2SyncVariables::waitForChange(uint32_t waitId, c2_nsecs_t timeoutNs) {
@@ -294,7 +325,7 @@ int C2SyncVariables::signal() {
 int C2SyncVariables::broadcast() {
     mCond++;
 
-    (void) syscall(__NR_futex, &mCond, FUTEX_REQUEUE, 1, (void *)INT_MAX, &mLock, 0);
+    (void) syscall(__NR_futex, &mCond, FUTEX_REQUEUE, INT_MAX, (void *)INT_MAX, &mLock, 0);
     return 0;
 }
 
