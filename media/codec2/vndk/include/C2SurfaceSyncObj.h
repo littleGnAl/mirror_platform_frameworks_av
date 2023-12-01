@@ -35,6 +35,7 @@ struct C2SyncVariables {
            STATUS_SWITCHING = 2,    // When the surface is replaced by a new surface
                                     // during surface configuration.
                                     // STATUS_ACTIVE -> STATUS_SWITCHING
+           STATUS_INVALID = (1 << 5),
     };
 
     /**
@@ -113,6 +114,11 @@ struct C2SyncVariables {
     c2_status_t waitForChange(uint32_t waitId, c2_nsecs_t timeoutNs);
 
     /**
+     * Invalidate the current status. lock() will return -1 after.
+     */
+    void invalidate();
+
+    /**
      * Wake up and expire all waitors.
      */
     void notifyAll();
@@ -139,7 +145,7 @@ private:
     std::atomic<uint32_t> mCond;
     int32_t mMaxDequeueCount;
     int32_t mCurDequeueCount;
-    SyncStatus mStatus;
+    std::atomic<uint32_t> mStatus;
 };
 
 /**

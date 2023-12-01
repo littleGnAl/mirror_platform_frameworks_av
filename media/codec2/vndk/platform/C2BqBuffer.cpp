@@ -390,7 +390,9 @@ private:
             c2_status_t c2Status;
             if (syncVar) {
                 uint32_t waitId;
-                syncVar->lock();
+                if (syncVar->lock() < 0) {
+                    return C2_BAD_STATE;
+                }
                 if (!syncVar->isDequeueableLocked(&waitId)) {
                     syncVar->unlock();
                     if (c2Fence) {
@@ -411,9 +413,12 @@ private:
                 c2Status = dequeueBuffer(width, height, format, androidUsage,
                               &slot, &bufferNeedsReallocation, &fence);
                 if (c2Status != C2_OK) {
-                    syncVar->lock();
-                    syncVar->notifyQueuedLocked();
-                    syncVar->unlock();
+                    if (syncVar->lock() >=  0) {
+                        syncVar->notifyQueuedLocked();
+                        syncVar->unlock();
+                    } else {
+                        c2Status = C2_BAD_STATE;
+                    }
                 }
             } else {
                 c2Status = dequeueBuffer(width, height, format, usage,
@@ -445,9 +450,12 @@ private:
                 // fence is not signalled yet.
                 if (syncVar) {
                     (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
-                    syncVar->lock();
-                    dequeueable = syncVar->notifyQueuedLocked(&waitId);
-                    syncVar->unlock();
+                    if (syncVar->lock() >= 0) {
+                        dequeueable = syncVar->notifyQueuedLocked(&waitId);
+                        syncVar->unlock();
+                    } else {
+                        return C2_BAD_STATE;
+                    }
                     if (c2Fence) {
                         *c2Fence = dequeueable ? C2Fence() :
                                 _C2FenceFactory::CreateSurfaceFence(mSyncMem, waitId);
@@ -461,9 +469,12 @@ private:
                 ALOGD("buffer fence wait error %d", status);
                 if (syncVar) {
                     (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
-                    syncVar->lock();
-                    syncVar->notifyQueuedLocked();
-                    syncVar->unlock();
+                    if (syncVar->lock() >= 0) {
+                        syncVar->notifyQueuedLocked();
+                        syncVar->unlock();
+                    } else {
+                        return C2_BAD_STATE;
+                    }
                     if (c2Fence) {
                         *c2Fence = C2Fence();
                     }
@@ -511,9 +522,12 @@ private:
                 slotBuffer.clear();
                 if (syncVar) {
                     (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
-                    syncVar->lock();
-                    syncVar->notifyQueuedLocked();
-                    syncVar->unlock();
+                    if (syncVar->lock() >= 0) {
+                        syncVar->notifyQueuedLocked();
+                        syncVar->unlock();
+                    } else {
+                        return C2_BAD_STATE;
+                    }
                     if (c2Fence) {
                         *c2Fence = C2Fence();
                     }
@@ -559,9 +573,12 @@ private:
             slotBuffer.clear();
             if (syncVar) {
                 (void)mProducer->cancelBuffer(slot, hFenceWrapper.getHandle()).isOk();
-                syncVar->lock();
-                syncVar->notifyQueuedLocked();
-                syncVar->unlock();
+                if (syncVar->lock() >= 0) {
+                    syncVar->notifyQueuedLocked();
+                    syncVar->unlock();
+                } else {
+                    return C2_BAD_STATE;
+                }
                 if (c2Fence) {
                     *c2Fence = C2Fence();
                 }
@@ -708,16 +725,28 @@ public:
                 mGeneration = 0;
                 ALOGD("configuring null producer: igbp_information(%d)", bqInformation);
             }
-            oldMem = mSyncMem; // preven destruction while locked.
-            mSyncMem = c2SyncMem;
+            {
+                std::scoped_lock<std::mutex> memLock(mSyncMemMutex);
+                if (mInvalidated) {
+                    return;
+                }
+                mOldMem = mSyncMem; // preven destruction while locked.
+                mSyncMem = c2SyncMem;
+            }
             C2SyncVariables *syncVar = mSyncMem ? mSyncMem->mem() : nullptr;
             if (syncVar) {
-                syncVar->lock();
-                syncVar->setSyncStatusLocked(C2SyncVariables::STATUS_ACTIVE);
-                syncVar->unlock();
+                if (syncVar->lock() >= 0) {
+                    syncVar->setSyncStatusLocked(C2SyncVariables::STATUS_ACTIVE);
+                    syncVar->unlock();
+                } else {
+                    return;
+                }
             }
             if (mProducer && bqInformation) { // migrate buffers
                 for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                    if (mInvalidated) {
+                        break;
+                    }
                     std::shared_ptr<C2BufferQueueBlockPoolData> data =
                             mPoolDatas[i].lock();
                     if (data) {
@@ -754,8 +783,26 @@ public:
     }
 
     void invalidate() {
-        mInvalidated = true;
+        std::shared_ptr<C2SurfaceSyncMemory> mem;
+        std::shared_ptr<C2SurfaceSyncMemory> oldMem;
+        {
+            std::scoped_lock<std::mutex> l(mSyncMemMutex);
+            if (mInvalidated) {
+                return;
+            }
+            mInvalidated = true;
+            mem = mSyncMem;
+            oldMem = mOldMem;
+        }
         mIgbpValidityToken.reset();
+        C2SyncVariables *syncVar = mem ? mem->mem(): nullptr;
+        if (syncVar) {
+            syncVar->invalidate();
+        }
+        C2SyncVariables *oldVar = oldMem ? oldMem->mem(): nullptr;
+        if (oldVar) {
+            oldVar->invalidate();
+        }
     }
 
 private:
@@ -780,7 +827,9 @@ private:
     sp<GraphicBuffer> mBuffers[NUM_BUFFER_SLOTS];
     std::weak_ptr<C2BufferQueueBlockPoolData> mPoolDatas[NUM_BUFFER_SLOTS];
 
+    std::mutex mSyncMemMutex;
     std::shared_ptr<C2SurfaceSyncMemory> mSyncMem;
+    std::shared_ptr<C2SurfaceSyncMemory> mOldMem;
 
     // IGBP invalidation notification token.
     // The buffers(C2BufferQueueBlockPoolData) has the reference to the IGBP where
@@ -831,10 +880,11 @@ C2BufferQueueBlockPoolData::~C2BufferQueueBlockPoolData() {
             C2SyncVariables *syncVar = mSyncMem ? mSyncMem->mem() : nullptr;
             if (syncVar) {
                 mIgbp->cancelBuffer(mBqSlot, hidl_handle{}).isOk();
-                syncVar->lock();
-                syncVar->notifyQueuedLocked(nullptr,
-                        syncVar->getSyncStatusLocked() == C2SyncVariables::STATUS_ACTIVE);
-                syncVar->unlock();
+                if (syncVar->lock() >= 0) {
+                    syncVar->notifyQueuedLocked(nullptr,
+                            syncVar->getSyncStatusLocked() == C2SyncVariables::STATUS_ACTIVE);
+                    syncVar->unlock();
+                }
             } else {
                 mIgbp->cancelBuffer(mBqSlot, hidl_handle{}).isOk();
             }
@@ -946,9 +996,10 @@ int C2BufferQueueBlockPoolData::migrate(
 
     C2SyncVariables *syncVar = syncMem ? syncMem->mem() : nullptr;
     if (syncVar) {
-        syncVar->lock();
-        syncVar->notifyDequeuedLocked();
-        syncVar->unlock();
+        if (syncVar->lock() >= 0) {
+            syncVar->notifyDequeuedLocked();
+            syncVar->unlock();
+        }
     }
     return slot;
 }
