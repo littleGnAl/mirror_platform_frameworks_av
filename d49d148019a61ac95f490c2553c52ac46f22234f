@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a1aed6_8f262f22",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-12-01T00:57:51Z",
+      "side": 0,
+      "message": "Per b/313024794, there is a nonOffloadableGlobalEffect enabled on the deepbuffer within the last two hours, which prevents the Offload track from starting.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/AudioFlinger.cpp;drc\u003d2b558d8050c3baae4bc3686c1cfe9830a61c8c91;l\u003d4492\n\nI have annotated the bug with a comment.",
+      "range": {
+        "startLine": 1180,
+        "startChar": 16,
+        "endLine": 1180,
+        "endChar": 49
+      },
+      "revId": "d49d148019a61ac95f490c2553c52ac46f22234f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
