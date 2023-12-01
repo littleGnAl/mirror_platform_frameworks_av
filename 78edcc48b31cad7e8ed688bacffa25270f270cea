@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac1c126_04e06b6b",
+        "filename": "media/libaudioclient/AudioEffect.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-12-01T19:59:15Z",
+      "side": 1,
+      "message": "do you mean `lock.unlock()`?",
+      "range": {
+        "startLine": 373,
+        "startChar": 12,
+        "endLine": 373,
+        "endChar": 17
+      },
+      "revId": "78edcc48b31cad7e8ed688bacffa25270f270cea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
