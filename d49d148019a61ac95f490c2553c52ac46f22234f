@@ -22,6 +22,30 @@
       },
       "revId": "d49d148019a61ac95f490c2553c52ac46f22234f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfba75ea_7f143623",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-12-01T09:58:36Z",
+      "side": 0,
+      "message": "There is a good reason why we do not allow offload when non offloadable effects are present. If a global effect is applicable to music and active, it is expected that no music track can be offloaded.\nIf this is breaking a test, the test has to be fixed by disabling any global effect before starting",
+      "parentUuid": "d9a1aed6_8f262f22",
+      "range": {
+        "startLine": 1180,
+        "startChar": 16,
+        "endLine": 1180,
+        "endChar": 49
+      },
+      "revId": "d49d148019a61ac95f490c2553c52ac46f22234f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
