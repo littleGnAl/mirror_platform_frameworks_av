@@ -16,6 +16,23 @@
       "message": "LGTM, but I would wait for a day or two to make sure the main change sticks.",
       "revId": "37b784a2106de3a16832a69b56908827e24cc6ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0edc0dd1_f43349f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-12-01T00:06:27Z",
+      "side": 1,
+      "message": "Tomasz, is there really a concern here?  Please note that the fix (parent CL) works for both C++17 and C++20.  So this CL is not needed anymore.\n\nBTW, thanks for the main change to C++20.  Looking forward to using constraints, concepts, spans, ranges, etc.",
+      "revId": "37b784a2106de3a16832a69b56908827e24cc6ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
