@@ -33,6 +33,24 @@
       "message": "Tomasz, is there really a concern here?  Please note that the fix (parent CL) works for both C++17 and C++20.  So this CL is not needed anymore.\n\nBTW, thanks for the main change to C++20.  Looking forward to using constraints, concepts, spans, ranges, etc.",
       "revId": "37b784a2106de3a16832a69b56908827e24cc6ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbc3877_51c6a5b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-12-01T02:49:21Z",
+      "side": 1,
+      "message": "Not a concern, just a hint of a risk - not a big deal. It\u0027s just that with so many moving pieces I try to be super cautious.\n\nI\u0027m happy with C++20 bump as well! But please note not all C++20 features are available in Android yet (e.g. std::filesystem) - they depend on clang and libstdc++ versions which are not the newest as of now. They are all WIP though.",
+      "parentUuid": "0edc0dd1_f43349f8",
+      "revId": "37b784a2106de3a16832a69b56908827e24cc6ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
