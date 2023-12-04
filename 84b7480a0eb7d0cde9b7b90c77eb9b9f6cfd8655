@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42c884e_6ee0ddd7",
+        "filename": "media/codec2/vndk/include/C2SurfaceSyncObj.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-04T19:32:41Z",
+      "side": 1,
+      "message": "How about `tryLockFor(ms)`?",
+      "revId": "84b7480a0eb7d0cde9b7b90c77eb9b9f6cfd8655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca15370_703b50df",
+        "filename": "media/codec2/vndk/platform/C2SurfaceSyncObj.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-04T19:32:41Z",
+      "side": 1,
+      "message": "nit: size_t\n\nalso why 30ms?",
+      "range": {
+        "startLine": 321,
+        "startChar": 14,
+        "endLine": 321,
+        "endChar": 17
+      },
+      "revId": "84b7480a0eb7d0cde9b7b90c77eb9b9f6cfd8655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
