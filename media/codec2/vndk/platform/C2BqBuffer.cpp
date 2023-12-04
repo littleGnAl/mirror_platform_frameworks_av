@@ -753,6 +753,24 @@ public:
     void invalidate() {
         mInvalidated = true;
         mIgbpValidityToken.reset();
+<<<<<<< HEAD   (51f4e9 Merge "Codec2Cient: Do not hold lock during IGBP operations")
+=======
+        C2SyncVariables *syncVar = syncMem ? syncMem->mem(): nullptr;
+        if (syncVar) {
+            syncVar->invalidate();
+        }
+        C2SyncVariables *oldVar = oldMem ? oldMem->mem(): nullptr;
+        if (oldVar) {
+            oldVar->invalidate();
+        }
+        // invalidate pending lock from a dead process if any
+        if (syncVar) {
+            syncVar->clearLockIfNecessary();
+        }
+        if (oldVar) {
+            oldVar->clearLockIfNecessary();
+        }
+>>>>>>> CHANGE (d74617 Codec2 vndk: clear pending lock by a dead client process)
     }
 
 private:
