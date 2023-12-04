@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d03c120b_ecaae84a",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-04T19:16:34Z",
+      "side": 1,
+      "message": "nit: prevent",
+      "range": {
+        "startLine": 723,
+        "startChar": 39,
+        "endLine": 723,
+        "endChar": 45
+      },
+      "revId": "9a0cfab1827787ebd381c5695092b87458e53df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c62ab0_2a0bfec8",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-04T19:16:34Z",
+      "side": 1,
+      "message": "before the change `oldMem` released reference at the end of `configureProducer()` but now it seems it can be holding reference a lot longer. If this was an intended behavior, please explain in a comment.",
+      "revId": "9a0cfab1827787ebd381c5695092b87458e53df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
