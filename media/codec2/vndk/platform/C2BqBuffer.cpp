@@ -790,6 +790,13 @@ public:
         if (oldVar) {
             oldVar->invalidate();
         }
+        // invalidate pending lock from a dead process if any
+        if (syncVar) {
+            syncVar->clearLockIfNecessary();
+        }
+        if (oldVar) {
+            oldVar->clearLockIfNecessary();
+        }
     }
 
 private:
