@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfc540f_ae34ba2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-12-04T18:55:32Z",
+      "side": 1,
+      "message": "We really need to make an intrinsic version of this that can parallelize, as the exp is executed once per audio frame.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libeffects/loudness/EffectLoudnessEnhancer.cpp;drc\u003da9d3b5b323a676af06e6c8dd10113438bc89f56b;l\u003d313\n\nThat being said, the exp is not that far off from a multiply according to gcc benchmarks.\n\nhttps://stackoverflow.com/questions/70911865/benchmark-functions-in-cmath-with-gcc-and-msvs\n\nAnd the approx code ExpApproximationViaTaylorExpansionOrder5() has 8 multiplies and 5 adds, so it isn\u0027t cheap either.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libeffects/loudness/common/core/math.h;drc\u003d6cc3a9948b51193dfdcb0c3527d7f3d1ca38aa3c;l\u003d58\n\nNote that the approx code could be optimized by Horner or Estrin\u0027s algorithm.",
+      "revId": "65d3568758fc148fd7ae956e0ff1bee1bde1f259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
