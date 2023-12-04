@@ -46,6 +46,30 @@
       },
       "revId": "d49d148019a61ac95f490c2553c52ac46f22234f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18efc85b_988d72c4",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1928382
+      },
+      "writtenOn": "2023-12-04T01:49:48Z",
+      "side": 0,
+      "message": "The global sound effect will always be there and will not be destroyed when the music stops playing. \nWhy can\u0027t I allow offloads when there are non-offloaded global sound effects?\nThis code doesn\u0027t seem to do anything, so it wouldn\u0027t be a problem if I deleted it, would it?",
+      "parentUuid": "d9a1aed6_8f262f22",
+      "range": {
+        "startLine": 1180,
+        "startChar": 16,
+        "endLine": 1180,
+        "endChar": 49
+      },
+      "revId": "d49d148019a61ac95f490c2553c52ac46f22234f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
