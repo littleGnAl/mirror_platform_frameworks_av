@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c98e5a25_e8016465",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-04T19:17:49Z",
+      "side": 1,
+      "message": "Considering line#396 (and 408) ensures c2Fence is valid before dereferencing it, shouldn\u0027t we be doing that here as well (and line#413)",
+      "range": {
+        "startLine": 400,
+        "startChar": 25,
+        "endLine": 400,
+        "endChar": 32
+      },
+      "revId": "9a0cfab1827787ebd381c5695092b87458e53df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d03c120b_ecaae84a",
         "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
         "patchSetId": 5
