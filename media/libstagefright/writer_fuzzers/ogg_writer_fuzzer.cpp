@@ -40,7 +40,23 @@ bool OGGWriterFuzzer::createWriter() {
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-    OGGWriterFuzzer writerFuzzer;
-    writerFuzzer.initFileWriterAndProcessData(data, size);
-    return 0;
+   OGGWriterFuzzer writerFuzzer;
+   FuzzedDataProvider stream(data, size);
+
+   while (stream.remaining_bytes() > 0) {
+      // Check if there's enough data to write a complete Ogg page or packet.
+      if (!writerFuzzer.mWriter->isValidData(data, stream.remaining_bytes())) {
+         // Discard the remaining data.
+         stream.ConsumeRemainingBytes();
+         continue;
+      }
+
+      // Write the data to the OggWriter object.
+      if (!writerFuzzer.writeData(stream)) {
+         // Handle error.
+         break;
+      }
+   }
+
+   return 0;
 }
