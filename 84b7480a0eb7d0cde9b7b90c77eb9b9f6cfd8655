@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e938e6d8_4e74cd60",
+        "filename": "media/codec2/vndk/include/C2SurfaceSyncObj.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-12-05T06:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c42c884e_6ee0ddd7",
+      "revId": "84b7480a0eb7d0cde9b7b90c77eb9b9f6cfd8655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca15370_703b50df",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-04T19:32:41Z",
       "side": 1,
       "message": "nit: size_t\n\nalso why 30ms?",
+      "range": {
+        "startLine": 321,
+        "startChar": 14,
+        "endLine": 321,
+        "endChar": 17
+      },
+      "revId": "84b7480a0eb7d0cde9b7b90c77eb9b9f6cfd8655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa1909a_5f8ada72",
+        "filename": "media/codec2/vndk/platform/C2SurfaceSyncObj.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-12-05T06:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca15370_703b50df",
       "range": {
         "startLine": 321,
         "startChar": 14,
