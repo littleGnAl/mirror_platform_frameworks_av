@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8629042_d97a6ae5",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-12-05T05:58:58Z",
+      "side": 1,
+      "message": "Thanks for catching!",
+      "parentUuid": "c98e5a25_e8016465",
+      "range": {
+        "startLine": 400,
+        "startChar": 25,
+        "endLine": 400,
+        "endChar": 32
+      },
+      "revId": "9a0cfab1827787ebd381c5695092b87458e53df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d03c120b_ecaae84a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84ab4f1_cef2c811",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-12-05T05:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03c120b_ecaae84a",
+      "range": {
+        "startLine": 723,
+        "startChar": 39,
+        "endLine": 723,
+        "endChar": 45
+      },
+      "revId": "9a0cfab1827787ebd381c5695092b87458e53df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54c62ab0_2a0bfec8",
@@ -60,6 +108,24 @@
       "writtenOn": "2023-12-04T19:16:34Z",
       "side": 1,
       "message": "before the change `oldMem` released reference at the end of `configureProducer()` but now it seems it can be holding reference a lot longer. If this was an intended behavior, please explain in a comment.",
+      "revId": "9a0cfab1827787ebd381c5695092b87458e53df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db806303_6c10417e",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-12-05T05:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54c62ab0_2a0bfec8",
       "revId": "9a0cfab1827787ebd381c5695092b87458e53df6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
