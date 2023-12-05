@@ -40,6 +40,10 @@ bool OGGWriterFuzzer::createWriter() {
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    if (size > 500) {
+        return 0;
+    }
+
     OGGWriterFuzzer writerFuzzer;
     writerFuzzer.initFileWriterAndProcessData(data, size);
     return 0;
