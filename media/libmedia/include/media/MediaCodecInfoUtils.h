@@ -19,7 +19,10 @@
 #define MEDIA_CODEC_INFO_UTILS_H_
 
 #include <algorithm>
+#include <cmath>
 #include <vector>
+
+#include <media/stagefright/foundation/AUtils.h>
 
 namespace android {
 
@@ -47,6 +50,10 @@ struct Range {
         return lower_ <= value && upper_ > value;
     }
 
+    bool contains(Range<T> range) const {
+        return (range.lower_ >= lower_) && (range.upper_ <= upper_);
+    }
+
     // Clamp a value in the range
     T clamp(T value) const{
         if (value < lower_) {
@@ -60,7 +67,7 @@ struct Range {
 
     // Return the intersected range
     Range<T> intersect(Range<T> range) const {
-        if (range.lower() < lower_ && range.upper() > upper_) {
+        if (lower_ > range.lower() && range.upper() > upper_) {
             // range includes this
             return *this;
         } else if (range.lower() > lower_ && range.upper() < upper_) {
@@ -96,39 +103,31 @@ struct Range {
 
     /**
      * Returns the smallest range that includes this range and
-     * another {@code range}.
+     * another range.
      *
-     * E.g. if a {@code <} b {@code <} c {@code <} d, the
+     * E.g. if a < b < c < d, the
      * extension of [a, c] and [b, d] ranges is [a, d].
      * As the endpoints are object references, there is no guarantee
      * which specific endpoint reference is used from the input ranges:
      *
-     * E.g. if a {@code ==} a' {@code <} b {@code <} c, the
+     * E.g. if a == a' < b < c, the
      * extension of [a, b] and [a', c] ranges could be either
      * [a, c] or ['a, c], where ['a, c] could be either the exact
      * input range, or a newly created range with the same endpoints.
      *
-     * @param range a non-{@code null} {@code Range<T>} reference
+     * @param range a non-null Range<T> reference
      * @return the extension of this range and the other range.
-     *
-     * @throws NullPointerException if {@code range} was {@code null}
      */
-    public Range<T> extend(Range<T> range) {
-        checkNotNull(range, "range must not be null");
+    Range<T> extend(Range<T> range) {
 
-        int cmpLower = range.mLower.compareTo(mLower);
-        int cmpUpper = range.mUpper.compareTo(mUpper);
-
-        if (cmpLower <= 0 && cmpUpper >= 0) {
+        if (lower_ >= range.lower_ && upper_ <= range.upper_) {
             // other includes this
             return range;
-        } else if (cmpLower >= 0 && cmpUpper <= 0) {
+        } else if (lower_ <= range.lower_ && upper_ >= range.upper_) {
             // this inludes other
-            return this;
+            return *this;
         } else {
-            return Range.create(
-                    cmpLower >= 0 ? mLower : range.mLower,
-                    cmpUpper <= 0 ? mUpper : range.mUpper);
+            return Range<T>(std::min(lower_, range.lower_), std::max(upper_, range.upper_));
         }
     }
 
@@ -136,6 +135,7 @@ private:
     T lower_;
     T upper_;
 };
+
 
 /**
  * Sorts distinct (non-intersecting) range array in ascending order.
@@ -186,234 +186,156 @@ static inline std::vector<Range<T>> intersectSortedDistinctRanges(
     return result;
 }
 
-/** Returns the equivalent factored range {@code newrange}, where for every
- * {@code e}: {@code newrange.contains(e)} implies that {@code range.contains(e * factor)},
- * and {@code !newrange.contains(e)} implies that {@code !range.contains(e * factor)}.
- */
-static Range<Integer>factorRange(Range<Integer> range, int factor) {
-    if (factor == 1) {
-        return range;
-    }
-    return Range.create(divUp(range.getLower(), factor), range.getUpper() / factor);
-}
-
-/** Returns the equivalent factored range {@code newrange}, where for every
- * {@code e}: {@code newrange.contains(e)} implies that {@code range.contains(e * factor)},
- * and {@code !newrange.contains(e)} implies that {@code !range.contains(e * factor)}.
- */
-static Range<Long>factorRange(Range<Long> range, long factor) {
-    if (factor == 1) {
-        return range;
-    }
-    return Range.create(divUp(range.getLower(), factor), range.getUpper() / factor);
-}
-
-static Range<Rational> scaleRange(Range<Rational> range, int num, int den) {
-    if (num == den) {
-        return range;
-    }
-    return Range.create(
-            scaleRatio(range.getLower(), num, den),
-            scaleRatio(range.getUpper(), num, den));
-}
-
-static Range<Integer> alignRange(Range<Integer> range, int align) {
-    return range.intersect(
-            divUp(range.getLower(), align) * align,
-            (range.getUpper() / align) * align);
-}
-
 /**
  * Immutable class for describing width and height dimensions in pixels.
  */
-public final class Size {
+struct VideoSize {
     /**
-     * Create a new immutable Size instance.
+     * Create a new immutable VideoSize instance.
      *
      * @param width The width of the size, in pixels
      * @param height The height of the size, in pixels
      */
-    public Size(int width, int height) {
-        mWidth = width;
-        mHeight = height;
-    }
+    VideoSize(int width, int height) : mWidth(width), mHeight(height) {}
+
+    // default constructor
+    VideoSize() : mWidth(0), mHeight(0) {}
 
     /**
      * Get the width of the size (in pixels).
      * @return width
      */
-    public int getWidth() {
-        return mWidth;
-    }
+    int getWidth() const { return mWidth; }
 
     /**
      * Get the height of the size (in pixels).
      * @return height
      */
-    public int getHeight() {
-        return mHeight;
-    }
+    int getHeight() const { return mHeight; }
 
     /**
      * Check if this size is equal to another size.
-     * <p>
+     *
      * Two sizes are equal if and only if both their widths and heights are
      * equal.
-     * </p>
-     * <p>
+     *
      * A size object is never equal to any other type of object.
-     * </p>
      *
-     * @return {@code true} if the objects were equal, {@code false} otherwise
+     * @return true if the objects were equal, false otherwise
      */
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof Size) {
-            Size other = (Size) obj;
-            return mWidth == other.mWidth && mHeight == other.mHeight;
-        }
-        return false;
+    bool equals(VideoSize other) const {
+        return mWidth == other.mWidth && mHeight == other.mHeight;
     }
 
-    /**
-     * Return the size represented as a string with the format {@code "WxH"}
-     *
-     * @return string representation of the size
-     */
-    @Override
-    public String toString() {
-        return mWidth + "x" + mHeight;
-    }
-
-    private static NumberFormatException invalidSize(String s) {
-        throw new NumberFormatException("Invalid Size: \"" + s + "\"");
+    std::string toString() const {
+        return std::to_string(mWidth) + "x" + std::to_string(mHeight);
     }
 
     /**
      * Parses the specified string as a size value.
-     * <p>
+     *
      * The ASCII characters {@code \}{@code u002a} ('*') and
      * {@code \}{@code u0078} ('x') are recognized as separators between
-     * the width and height.</p>
-     * <p>
-     * For any {@code Size s}: {@code Size.parseSize(s.toString()).equals(s)}.
+     * the width and height.
+     *
+     * For any {@code VideoSize s}: {@code VideoSize::ParseSize(s.toString()).equals(s)}.
      * However, the method also handles sizes expressed in the
-     * following forms:</p>
-     * <p>
+     * following forms:
+     *
      * "<i>width</i>{@code x}<i>height</i>" or
-     * "<i>width</i>{@code *}<i>height</i>" {@code => new Size(width, height)},
+     * "<i>width</i>{@code *}<i>height</i>" {@code => new VideoSize(width, height)},
      * where <i>width</i> and <i>height</i> are string integers potentially
-     * containing a sign, such as "-10", "+7" or "5".</p>
+     * containing a sign, such as "-10", "+7" or "5".
      *
      * <pre>{@code
-     * Size.parseSize("3*+6").equals(new Size(3, 6)) == true
-     * Size.parseSize("-3x-6").equals(new Size(-3, -6)) == true
-     * Size.parseSize("4 by 3") => throws NumberFormatException
+     * VideoSize::ParseSize("3*+6").equals(new VideoSize(3, 6)) == true
+     * VideoSize::ParseSize("-3x-6").equals(new VideoSize(-3, -6)) == true
+     * VideoSize::ParseSize("4 by 3") => throws NumberFormatException
      * }</pre>
      *
      * @param string the string representation of a size value.
      * @return the size value represented by {@code string}.
-     *
-     * @throws NumberFormatException if {@code string} cannot be parsed
-     * as a size value.
-     * @throws NullPointerException if {@code string} was {@code null}
      */
-    public static Size parseSize(String string)
-            throws NumberFormatException {
-        checkNotNull(string, "string must not be null");
+    static std::optional<VideoSize> ParseSize(std::string str) {
+        if (str.empty()) {
+            return std::nullopt;
+        }
 
-        int sep_ix = string.indexOf('*');
+        int sep_ix = str.find_first_of('*');
         if (sep_ix < 0) {
-            sep_ix = string.indexOf('x');
+            sep_ix = str.find_first_of('x');
         }
         if (sep_ix < 0) {
-            throw invalidSize(string);
+            return std::nullopt;
         }
-        try {
-            return new Size(Integer.parseInt(string.substring(0, sep_ix)),
-                    Integer.parseInt(string.substring(sep_ix + 1)));
-        } catch (NumberFormatException e) {
-            throw invalidSize(string);
+
+        // strtol() returns 0 if unable to parse a number
+        int w = strtol(str.substr(0, sep_ix).c_str(), NULL, 10);
+        int h = strtol(str.substr(sep_ix + 1).c_str(), NULL, 10);
+        if ((w == 0 && (str.substr(0, sep_ix) != "0"))
+                || (h == 0 && (str.substr(sep_ix + 1) != "0"))) {
+            ALOGW("could not parse size %s", str.c_str());
+            return std::nullopt;
         }
+
+        return std::make_optional(VideoSize(w, h));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
+    int hashCode() const {
         // assuming most sizes are <2^16, doing a rotate will give us perfect hashing
-        return mHeight ^ ((mWidth << (Integer.SIZE / 2)) | (mWidth >>> (Integer.SIZE / 2)));
+        return mHeight ^ ((mWidth << (sizeof(int) / 2)) | (mWidth >> (sizeof(int) / 2)));
     }
 
-    private final int mWidth;
-    private final int mHeight;
-}
+    bool empty() const {
+        return mWidth <= 0 || mHeight <= 0;
+    }
 
-/**
- * <p>An immutable data type representation a rational number.</p>
- *
- * <p>Contains a pair of {@code int}s representing the numerator and denominator of a
- * Rational number. </p>
- */
-public final class Rational extends Number implements Comparable<Rational> {
+private:
+    int mWidth;
+    int mHeight;
+};
+
+struct VideoSizeCompare {
+    bool operator() (const VideoSize& lhs, const VideoSize& rhs) const {
+        if (lhs.getWidth() == rhs.getWidth()) {
+            return lhs.getHeight() < rhs.getHeight();
+        } else {
+            return lhs.getWidth() < rhs.getWidth();
+        }
+    }
+};
+
+struct Rational {
     /**
-     * Constant for the <em>Not-a-Number (NaN)</em> value of the {@code Rational} type.
+     * Calculates the greatest common divisor using Euclid's algorithm.
      *
-     * <p>A {@code NaN} value is considered to be equal to itself (that is {@code NaN.equals(NaN)}
-     * will return {@code true}; it is always greater than any non-{@code NaN} value (that is
-     * {@code NaN.compareTo(notNaN)} will return a number greater than {@code 0}).</p>
+     * <p><em>Visible for testing only.</em></p>
      *
-     * <p>Equivalent to constructing a new rational with both the numerator and denominator
-     * equal to {@code 0}.</p>
+     * @param numerator the numerator in a fraction
+     * @param denominator the denominator in a fraction
+     *
+     * @return An int value representing the GCD. Always positive.
      */
-    public static final Rational NaN = new Rational(0, 0);
+    static int GCD(int numerator, int denominator) {
+        /*
+         * Non-recursive implementation of Euclid's algorithm:
+         *
+         *  GCD(a, 0) := a
+         *  GCD(a, b) := GCD(b, a mod b)
+         *
+         */
+        int a = numerator;
+        int b = denominator;
 
-    /**
-     * Constant for the positive infinity value of the {@code Rational} type.
-     *
-     * <p>Equivalent to constructing a new rational with a positive numerator and a denominator
-     * equal to {@code 0}.</p>
-     */
-    public static final Rational POSITIVE_INFINITY = new Rational(1, 0);
+        while (b != 0) {
+            int oldB = b;
 
-    /**
-     * Constant for the negative infinity value of the {@code Rational} type.
-     *
-     * <p>Equivalent to constructing a new rational with a negative numerator and a denominator
-     * equal to {@code 0}.</p>
-     */
-    public static final Rational NEGATIVE_INFINITY = new Rational(-1, 0);
+            b = a % b;
+            a = oldB;
+        }
 
-    /**
-     * Constant for the zero value of the {@code Rational} type.
-     *
-     * <p>Equivalent to constructing a new rational with a numerator equal to {@code 0} and
-     * any non-zero denominator.</p>
-     */
-    public static final Rational ZERO = new Rational(0, 1);
-
-    /**
-     * Unique version number per class to be compliant with {@link java.io.Serializable}.
-     *
-     * <p>Increment each time the fields change in any way.</p>
-     */
-    private static final long serialVersionUID = 1L;
-
-    /*
-     * Do not change the order of these fields or add new instance fields to maintain the
-     * Serializable compatibility across API revisions.
-     */
-    @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
-    private final int mNumerator;
-    @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
-    private final int mDenominator;
+        return std::abs(a);
+    }
 
     /**
      * <p>Create a {@code Rational} with a given numerator and denominator.</p>
@@ -436,8 +358,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      *
      * @see #equals
      */
-    public Rational(int numerator, int denominator) {
-
+    Rational(int numerator, int denominator) {
         if (denominator < 0) {
             numerator = -numerator;
             denominator = -denominator;
@@ -457,11 +378,16 @@ public final class Rational extends Number implements Comparable<Rational> {
             mNumerator = 0;
             mDenominator = 1;
         } else {
-            int gcd = gcd(numerator, denominator);
+            int gcd = GCD(numerator, denominator);
 
             mNumerator = numerator / gcd;
             mDenominator = denominator / gcd;
         }
+    }
+
+    // default constructor;
+    Rational() {
+        Rational(0, 0);
     }
 
     /**
@@ -470,7 +396,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      * <p>The numerator will always return {@code 1} if this rational represents
      * infinity (that is, the denominator is {@code 0}).</p>
      */
-    public int getNumerator() {
+    int getNumerator() {
         return mNumerator;
     }
 
@@ -483,7 +409,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      *
      * <p>The denominator will always return {@code 1} if the numerator is {@code 0}.
      */
-    public int getDenominator() {
+    int getDenominator() {
         return mDenominator;
     }
 
@@ -495,7 +421,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      * @return {@code true} if this rational is a <em>Not-a-Number (NaN)</em> value;
      *         {@code false} if this is a (potentially infinite) number value
      */
-    public boolean isNaN() {
+    bool isNaN() const {
         return mDenominator == 0 && mNumerator == 0;
     }
 
@@ -507,7 +433,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      * @return {@code true} if this rational is a (positive or negative) infinite value;
      *         {@code false} if this is a finite number value (or {@code NaN})
      */
-    public boolean isInfinite() {
+    bool isInfinite() {
         return mNumerator != 0 && mDenominator == 0;
     }
 
@@ -520,7 +446,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      * @return {@code true} if this rational is a (positive or negative) infinite value;
      *         {@code false} if this is a finite number value (or {@code NaN})
      */
-    public boolean isFinite() {
+    bool isFinite() {
         return mDenominator != 0;
     }
 
@@ -532,54 +458,8 @@ public final class Rational extends Number implements Comparable<Rational> {
      * @return {@code true} if this rational is finite zero value;
      *         {@code false} otherwise
      */
-    public boolean isZero() {
+    bool isZero() {
         return isFinite() && mNumerator == 0;
-    }
-
-    private boolean isPosInf() {
-        return mDenominator == 0 && mNumerator > 0;
-    }
-
-    private boolean isNegInf() {
-        return mDenominator == 0 && mNumerator < 0;
-    }
-
-    /**
-     * <p>Compare this Rational to another object and see if they are equal.</p>
-     *
-     * <p>A Rational object can only be equal to another Rational object (comparing against any
-     * other type will return {@code false}).</p>
-     *
-     * <p>A Rational object is considered equal to another Rational object if and only if one of
-     * the following holds:</p>
-     * <ul><li>Both are {@code NaN}</li>
-     *     <li>Both are infinities of the same sign</li>
-     *     <li>Both have the same numerator and denominator in their reduced form</li>
-     * </ul>
-     *
-     * <p>A reduced form of a Rational is calculated by dividing both the numerator and the
-     * denominator by their greatest common divisor.</p>
-     *
-     * <pre>{@code
-     * (new Rational(1, 2)).equals(new Rational(1, 2)) == true   // trivially true
-     * (new Rational(2, 3)).equals(new Rational(1, 2)) == false  // trivially false
-     * (new Rational(1, 2)).equals(new Rational(2, 4)) == true   // true after reduction
-     * (new Rational(0, 0)).equals(new Rational(0, 0)) == true   // NaN.equals(NaN)
-     * (new Rational(1, 0)).equals(new Rational(5, 0)) == true   // both are +infinity
-     * (new Rational(1, 0)).equals(new Rational(-1, 0)) == false // +infinity != -infinity
-     * }</pre>
-     *
-     * @param obj a reference to another object
-     *
-     * @return A boolean that determines whether or not the two Rational objects are equal.
-     */
-    @Override
-    public boolean equals(@Nullable Object obj) {
-        return obj instanceof Rational && equals((Rational) obj);
-    }
-
-    private boolean equals(Rational other) {
-        return (mNumerator == other.mNumerator && mDenominator == other.mDenominator);
     }
 
     /**
@@ -595,8 +475,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      * values.
      * </ul></p>
      */
-    @Override
-    public String toString() {
+    std::string toString() {
         if (isNaN()) {
             return "NaN";
         } else if (isPosInf()) {
@@ -604,62 +483,17 @@ public final class Rational extends Number implements Comparable<Rational> {
         } else if (isNegInf()) {
             return "-Infinity";
         } else {
-            return mNumerator + "/" + mDenominator;
+            return std::to_string(mNumerator) + "/" + std::to_string(mDenominator);
         }
     }
 
-    /**
-     * <p>Convert to a floating point representation.</p>
-     *
-     * @return The floating point representation of this rational number.
-     * @hide
-     */
-    public float toFloat() {
-        // TODO: remove this duplicate function (used in CTS and the shim)
-        return floatValue();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
+    int hashCode() {
         // Bias the hash code for the first (2^16) values for both numerator and denominator
-        int numeratorFlipped = mNumerator << 16 | mNumerator >>> 16;
+        // ToDo: In Java, it uses a unsigned right shift >>> which C++ does not have.
+        //       int numeratorFlipped = mNumerator << 16 | mNumerator >>> 16;
+        int numeratorFlipped = mNumerator << 16 | mNumerator >> 16;
 
         return mDenominator ^ numeratorFlipped;
-    }
-
-    /**
-     * Calculates the greatest common divisor using Euclid's algorithm.
-     *
-     * <p><em>Visible for testing only.</em></p>
-     *
-     * @param numerator the numerator in a fraction
-     * @param denominator the denominator in a fraction
-     *
-     * @return An int value representing the gcd. Always positive.
-     * @hide
-     */
-    public static int gcd(int numerator, int denominator) {
-        /*
-         * Non-recursive implementation of Euclid's algorithm:
-         *
-         *  gcd(a, 0) := a
-         *  gcd(a, b) := gcd(b, a mod b)
-         *
-         */
-        int a = numerator;
-        int b = denominator;
-
-        while (b != 0) {
-            int oldB = b;
-
-            b = a % b;
-            a = oldB;
-        }
-
-        return Math.abs(a);
     }
 
     /**
@@ -671,8 +505,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      *
      * @return the divided value of the numerator and denominator as a {@code double}.
      */
-    @Override
-    public double doubleValue() {
+    double doubleValue() {
         double num = mNumerator;
         double den = mDenominator;
 
@@ -688,8 +521,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      *
      * @return the divided value of the numerator and denominator as a {@code float}.
      */
-    @Override
-    public float floatValue() {
+    float floatValue() {
         float num = mNumerator;
         float den = mDenominator;
 
@@ -703,26 +535,15 @@ public final class Rational extends Number implements Comparable<Rational> {
      * by dividing the numerator by the denominator; conversion for non-finite values happens
      * identically to casting a floating point value to an {@code int}, in particular:
      *
-     * <p>
-     * <ul>
-     * <li>Positive infinity saturates to the largest maximum integer
-     * {@link Integer#MAX_VALUE}</li>
-     * <li>Negative infinity saturates to the smallest maximum integer
-     * {@link Integer#MIN_VALUE}</li>
-     * <li><em>Not-A-Number (NaN)</em> returns {@code 0}.</li>
-     * </ul>
-     * </p>
-     *
      * @return the divided value of the numerator and denominator as a {@code int}.
      */
-    @Override
-    public int intValue() {
+    int intValue() {
         // Mimic float to int conversion rules from JLS 5.1.3
 
         if (isPosInf()) {
-            return Integer.MAX_VALUE;
+            return INT_MAX;
         } else if (isNegInf()) {
-            return Integer.MIN_VALUE;
+            return INT_MIN;
         } else if (isNaN()) {
             return 0;
         } else { // finite
@@ -737,26 +558,15 @@ public final class Rational extends Number implements Comparable<Rational> {
      * by dividing the numerator by the denominator; conversion for non-finite values happens
      * identically to casting a floating point value to a {@code long}, in particular:
      *
-     * <p>
-     * <ul>
-     * <li>Positive infinity saturates to the largest maximum long
-     * {@link Long#MAX_VALUE}</li>
-     * <li>Negative infinity saturates to the smallest maximum long
-     * {@link Long#MIN_VALUE}</li>
-     * <li><em>Not-A-Number (NaN)</em> returns {@code 0}.</li>
-     * </ul>
-     * </p>
-     *
      * @return the divided value of the numerator and denominator as a {@code long}.
      */
-    @Override
-    public long longValue() {
+    long longValue() {
         // Mimic float to long conversion rules from JLS 5.1.3
 
         if (isPosInf()) {
-            return Long.MAX_VALUE;
+            return LONG_MAX;
         } else if (isNegInf()) {
-            return Long.MIN_VALUE;
+            return LONG_MIN;
         } else if (isNaN()) {
             return 0;
         } else { // finite
@@ -773,8 +583,7 @@ public final class Rational extends Number implements Comparable<Rational> {
      *
      * @return the divided value of the numerator and denominator as a {@code short}.
      */
-    @Override
-    public short shortValue() {
+    short shortValue() {
         return (short) intValue();
     }
 
@@ -797,13 +606,9 @@ public final class Rational extends Number implements Comparable<Rational> {
      *
      * @return a negative integer, zero, or a positive integer as this object is less than,
      *         equal to, or greater than the specified rational.
-     *
-     * @throws NullPointerException if {@code another} was {@code null}
      */
-    @Override
-    public int compareTo(Rational another) {
-        checkNotNull(another, "another must not be null");
-
+    // bool operator> (const Rational& another) {
+    int compareTo(Rational another) const {
         if (equals(another)) {
             return 0;
         } else if (isNaN()) { // NaN is greater than the other non-NaN value
@@ -833,110 +638,151 @@ public final class Rational extends Number implements Comparable<Rational> {
         }
     }
 
-    /*
-     * Serializable implementation.
-     *
-     * The following methods are omitted:
-     * >> writeObject - the default is sufficient (field by field serialization)
-     * >> readObjectNoData - the default is sufficient (0s for both fields is a NaN)
-     */
-
-    /**
-     * writeObject with default serialized form - guards against
-     * deserializing non-reduced forms of the rational.
-     *
-     * @throws InvalidObjectException if the invariants were violated
-     */
-    private void readObject(java.io.ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-
-        /*
-         * Guard against trying to deserialize illegal values (in this case, ones
-         * that don't have a standard reduced form).
-         *
-         * - Non-finite values must be one of [0, 1], [0, 0], [0, 1], [0, -1]
-         * - Finite values must always have their greatest common divisor as 1
-         */
-
-        if (mNumerator == 0) { // either zero or NaN
-            if (mDenominator == 1 || mDenominator == 0) {
-                return;
-            }
-            throw new InvalidObjectException(
-                    "Rational must be deserialized from a reduced form for zero values");
-        } else if (mDenominator == 0) { // either positive or negative infinity
-            if (mNumerator == 1 || mNumerator == -1) {
-                return;
-            }
-            throw new InvalidObjectException(
-                    "Rational must be deserialized from a reduced form for infinity values");
-        } else { // finite value
-            if (gcd(mNumerator, mDenominator) > 1) {
-                throw new InvalidObjectException(
-                        "Rational must be deserialized from a reduced form for finite values");
-            }
-        }
+    bool operator > (const Rational& another) const {
+        return compareTo(another) > 0;
     }
 
-    private static NumberFormatException invalidRational(String s) {
-        throw new NumberFormatException("Invalid Rational: \"" + s + "\"");
+    bool operator >= (const Rational& another) const {
+        return compareTo(another) >= 0;
     }
 
-    /**
-     * Parses the specified string as a rational value.
-     * <p>The ASCII characters {@code \}{@code u003a} (':') and
-     * {@code \}{@code u002f} ('/') are recognized as separators between
-     * the numerator and denumerator.</p>
-     * <p>
-     * For any {@code Rational r}: {@code Rational.parseRational(r.toString()).equals(r)}.
-     * However, the method also handles rational numbers expressed in the
-     * following forms:</p>
-     * <p>
-     * "<i>num</i>{@code /}<i>den</i>" or
-     * "<i>num</i>{@code :}<i>den</i>" {@code => new Rational(num, den);},
-     * where <i>num</i> and <i>den</i> are string integers potentially
-     * containing a sign, such as "-10", "+7" or "5".</p>
-     *
-     * <pre>{@code
-     * Rational.parseRational("3:+6").equals(new Rational(1, 2)) == true
-     * Rational.parseRational("-3/-6").equals(new Rational(1, 2)) == true
-     * Rational.parseRational("4.56") => throws NumberFormatException
-     * }</pre>
-     *
-     * @param string the string representation of a rational value.
-     * @return the rational value represented by {@code string}.
-     *
-     * @throws NumberFormatException if {@code string} cannot be parsed
-     * as a rational value.
-     * @throws NullPointerException if {@code string} was {@code null}
-     */
-    public static Rational parseRational(String string)
-            throws NumberFormatException {
-        checkNotNull(string, "string must not be null");
-
-        if (string.equals("NaN")) {
-            return NaN;
-        } else if (string.equals("Infinity")) {
-            return POSITIVE_INFINITY;
-        } else if (string.equals("-Infinity")) {
-            return NEGATIVE_INFINITY;
-        }
-
-        int sep_ix = string.indexOf(':');
-        if (sep_ix < 0) {
-            sep_ix = string.indexOf('/');
-        }
-        if (sep_ix < 0) {
-            throw invalidRational(string);
-        }
-        try {
-            return new Rational(Integer.parseInt(string.substring(0, sep_ix)),
-                    Integer.parseInt(string.substring(sep_ix + 1)));
-        } catch (NumberFormatException e) {
-            throw invalidRational(string);
-        }
+    bool operator < (const Rational& another) const {
+        return compareTo(another) < 0;
     }
+
+    bool operator <= (const Rational& another) const {
+        return compareTo(another) <= 0;
+    }
+
+    bool operator == (const Rational& another) const {
+        return equals(another);
+    }
+
+private:
+    int mNumerator;
+    int mDenominator;
+
+    bool isPosInf() const {
+        return mDenominator == 0 && mNumerator > 0;
+    }
+
+    bool isNegInf() const {
+        return mDenominator == 0 && mNumerator < 0;
+    }
+
+    bool equals(Rational other) const {
+        return (mNumerator == other.mNumerator && mDenominator == other.mDenominator);
+    }
+};
+
+static const Rational NaN = Rational(0, 0);
+static const Rational POSITIVE_INFINITY = Rational(1, 0);
+static const Rational NEGATIVE_INFINITY = Rational(-1, 0);
+static const Rational ZERO = Rational(0, 1);
+
+/**
+ * Parses the specified string as a rational value.
+ * <p>The ASCII characters {@code \}{@code u003a} (':') and
+ * {@code \}{@code u002f} ('/') are recognized as separators between
+ * the numerator and denominator.</p>
+ * <p>
+ * For any {@code Rational r}: {@code Rational::parseRational(r.toString()).equals(r)}.
+ * However, the method also handles rational numbers expressed in the
+ * following forms:</p>
+ * <p>
+ * "<i>num</i>{@code /}<i>den</i>" or
+ * "<i>num</i>{@code :}<i>den</i>" {@code => new Rational(num, den);},
+ * where <i>num</i> and <i>den</i> are string integers potentially
+ * containing a sign, such as "-10", "+7" or "5".</p>
+ *
+ * Rational::ParseRational("3:+6").equals(new Rational(1, 2)) == true
+ * Rational::ParseRational("-3/-6").equals(new Rational(1, 2)) == true
+ * Rational::ParseRational("4.56") => return std::nullopt
+ *
+ * @param str the string representation of a rational value.
+ * @return the rational value wrapped by std::optional represented by str.
+ */
+static inline std::optional<Rational> ParseRational(std::string str) {
+    if (str.compare("NaN") == 0) {
+        return std::make_optional(NaN);
+    } else if (str.compare("Infinity") == 0) {
+        return std::make_optional(POSITIVE_INFINITY);
+    } else if (str.compare("-Infinity") == 0) {
+        return std::make_optional(NEGATIVE_INFINITY);
+    }
+
+    int sep_ix = str.find_first_of(':');
+    if (sep_ix < 0) {
+        sep_ix = str.find_first_of('/');
+    }
+    if (sep_ix < 0) {
+        return std::nullopt;
+    }
+
+    int numerator = strtol(str.substr(0, sep_ix).c_str(), NULL, 10);
+    int denominator = strtol(str.substr(sep_ix + 1).c_str(), NULL, 10);
+    if ((numerator == 0 && str.substr(0, sep_ix) != "0")
+            || (denominator == 0 && str.substr(sep_ix + 1) != "0")) {
+        ALOGW("could not parse string: %s to Rational", str.c_str());
+        return std::nullopt;
+    }
+    return std::make_optional(Rational(numerator, denominator));
+}
+
+/**
+ * Returns the equivalent factored range newrange, where for every
+ * e : newrange.contains(e) implies that range.contains(e * factor),
+ * and !newrange.contains(e) implies that !range.contains(e * factor).
+ */
+static inline Range<int> FactorRange(Range<int> range, int factor) {
+    if (factor == 1) {
+        return range;
+    }
+    return Range(divUp(range.lower(), factor), range.upper() / factor);
+}
+
+/**
+ * Returns the equivalent factored range newrange, where for every
+ * e : newrange.contains(e) implies that range.contains(e * factor),
+ * and !newrange.contains(e) implies that !range.contains(e * factor).
+ */
+static inline Range<long> FactorRange(Range<long> range, long factor) {
+    if (factor == 1) {
+        return range;
+    }
+    return Range(divUp(range.lower(), factor), range.upper() / factor);
+}
+
+static inline Rational ScaleRatio(Rational ratio, int num, int den) {
+    int common = Rational::GCD(num, den);
+    num /= common;
+    den /= common;
+    return Rational(
+            (int)(ratio.getNumerator() * (double)num),     // saturate to int
+            (int)(ratio.getDenominator() * (double)den));  // saturate to int
+}
+
+static inline Range<Rational> ScaleRange(Range<Rational> range, int num, int den) {
+    if (num == den) {
+        return range;
+    }
+    return Range(
+            ScaleRatio(range.lower(), num, den),
+            ScaleRatio(range.upper(), num, den));
+}
+
+static inline Range<int> IntRangeFor(double v) {
+    return Range((int)v, (int)ceil(v));
+}
+
+static inline Range<long> LongRangeFor(double v) {
+    return Range((long)v, (long)ceil(v));
+}
+
+static inline Range<int> AlignRange(Range<int> range, int align) {
+    return range.intersect(
+            divUp(range.lower(), align) * align,
+            (range.upper() / align) * align);
 }
 
 // parse string into int range
@@ -966,70 +812,71 @@ static inline std::optional<Range<int>> ParseIntRange(const std::string &str) {
     return std::make_optional<Range<int>>(lower, upper);
 }
 
-static Range<Long> parseLongRange(Object o, Range<Long> fallback) {
-    if (o == null) {
-        return fallback;
+static inline std::optional<Range<long>> ParseLongRange(const std::string str) {
+    if (str.empty()) {
+        ALOGW("could not parse long range: %s", str.c_str());
+        return std::nullopt;
     }
-    try {
-        String s = (String)o;
-        int ix = s.indexOf('-');
-        if (ix >= 0) {
-            return Range.create(
-                    Long.parseLong(s.substring(0, ix), 10),
-                    Long.parseLong(s.substring(ix + 1), 10));
+    long lower, upper;
+    int ix = str.find_first_of('-');
+    if (ix >= 0) {
+        lower = strtol(str.substr(0, ix).c_str(), NULL, 10);
+        upper = strtol(str.substr(ix + 1).c_str(), NULL, 10);
+        // differentiate between unable to parse a number and the parsed number is 0
+        if ((lower == 0 && str.substr(0, ix) != "0") || (upper == 0 && str.substr(ix + 1) != "0")) {
+            ALOGW("could not parse long range: %s", str.c_str());
+            return std::nullopt;
         }
-        long value = Long.parseLong(s);
-        return Range.create(value, value);
-    } catch (ClassCastException e) {
-    } catch (NumberFormatException e) {
-    } catch (IllegalArgumentException e) {
+    } else {
+        long value = strtol(str.c_str(), NULL, 10);
+        if (value == 0 && str != "0") {
+            ALOGW("could not parse long range: %s", str.c_str());
+            return std::nullopt;
+        }
+        lower = upper = value;
     }
-    Log.w(TAG, "could not parse long range '" + o + "'");
-    return fallback;
+    return std::make_optional<Range<long>>(lower, upper);
 }
 
-static Range<Rational> parseRationalRange(Object o, Range<Rational> fallback) {
-    if (o == null) {
-        return fallback;
-    }
-    try {
-        String s = (String)o;
-        int ix = s.indexOf('-');
-        if (ix >= 0) {
-            return Range.create(
-                    Rational.parseRational(s.substring(0, ix)),
-                    Rational.parseRational(s.substring(ix + 1)));
+static inline std::optional<Range<Rational>> ParseRationalRange(const std::string str) {
+    int ix = str.find_first_of('-');
+    if (ix >= 0) {
+        std::optional<Rational> lower = ParseRational(str.substr(0, ix));
+        std::optional<Rational> upper = ParseRational(str.substr(ix + 1));
+        if (!lower || !upper) {
+            return std::nullopt;
         }
-        Rational value = Rational.parseRational(s);
-        return Range.create(value, value);
-    } catch (ClassCastException e) {
-    } catch (NumberFormatException e) {
-    } catch (IllegalArgumentException e) {
+        return std::make_optional<Range<Rational>>(lower.value(), upper.value());
+    } else {
+        std::optional<Rational> value = ParseRational(str);
+        if (!value) {
+            return std::nullopt;
+        }
+        return std::make_optional<Range<Rational>>(value.value(), value.value());
     }
-    Log.w(TAG, "could not parse rational range '" + o + "'");
-    return fallback;
 }
 
-static Pair<Size, Size> parseSizeRange(Object o) {
-    if (o == null) {
-        return null;
-    }
-    try {
-        String s = (String)o;
-        int ix = s.indexOf('-');
-        if (ix >= 0) {
-            return Pair.create(
-                    Size.parseSize(s.substring(0, ix)),
-                    Size.parseSize(s.substring(ix + 1)));
+static inline std::optional<std::pair<VideoSize, VideoSize>> ParseSizeRange(const std::string str) {
+    int ix = str.find_first_of('-');
+    if (ix >= 0) {
+        std::optional<VideoSize> lowerOpt = VideoSize::ParseSize(str.substr(0, ix));
+        std::optional<VideoSize> upperOpt = VideoSize::ParseSize(str.substr(ix + 1));
+        if (!lowerOpt || !upperOpt) {
+            return std::nullopt;
         }
-        Size value = Size.parseSize(s);
-        return Pair.create(value, value);
-    } catch (ClassCastException e) {
-    } catch (NumberFormatException e) {
-    } catch (IllegalArgumentException e) {
+        return std::make_optional(
+                std::pair<VideoSize, VideoSize>(lowerOpt.value(), upperOpt.value()));
+    } else {
+        std::optional<VideoSize> opt = VideoSize::ParseSize(str);
+        if (!opt) {
+            return std::nullopt;
+        }
+        return std::make_optional(std::pair<VideoSize, VideoSize>(opt.value(), opt.value()));
     }
-    Log.w(TAG, "could not parse size range '" + o + "'");
-    return null;
+}
+
+static inline long divUpLong(long num, long den) {
+    return (num + den - 1) / den;
 }
 
 }
