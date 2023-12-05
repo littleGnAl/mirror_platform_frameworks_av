@@ -434,7 +434,7 @@ AImageReader::acquireImageLocked(/*out*/AImage** image, /*out*/int* acquireFence
                 return AMEDIA_ERROR_UNKNOWN;
             }
         }
-        return AMEDIA_IMGREADER_NO_BUFFER_AVAILABLE;
+        //return AMEDIA_IMGREADER_NO_BUFFER_AVAILABLE;
     }
 
     const int bufferWidth = getBufferWidth(buffer);
