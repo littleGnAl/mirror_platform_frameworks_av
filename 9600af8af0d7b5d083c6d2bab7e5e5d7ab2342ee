@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e7be55_d2d0bf4d",
+        "filename": "services/mediaresourcemanager/TEST_MAPPING",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-06T22:10:02Z",
+      "side": 1,
+      "message": "You could put `CtsMediaMiscTestCases` in postsubmit for a week and then promote to presubmit to appease the linter.\n\n---\n\nPlease fix this ERROR reported by TestMappingSloChecker: Test module \"CtsMediaMiscTestCases\" is being added to presubmit. It needs to meet SLO in postsubmit on all configured targets.\n\nAnalyzer Description: Validates test modules added to presubmit in TEST_MAPPING.\nOwner: android-testing-at-scale@google.com\n\nTest module \"CtsMediaMiscTestCases\" is being added to presubmit. It needs to meet SLO in postsubmit on all configured targets.\n\nBranch: main, Target: aosp_cf_x86_64_phone-trunk_staging-userdebug\nERROR: No data found for this config.\nDoes not meet SLO. Please consult go/test-mapping-slo-guide\n\nFAIL: This test module does not meet SLO and is not ready to be in presubmit.",
+      "range": {
+        "startLine": 0,
+        "startChar": 0,
+        "endLine": 0,
+        "endChar": 0
+      },
+      "revId": "9600af8af0d7b5d083c6d2bab7e5e5d7ab2342ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
