@@ -16,6 +16,23 @@
       "message": "Hi, @Lajos and @Wonsik,\n\nSince Android 14 is formally released, could you help to check this code change? It\u0027s part of our AC-4 level 4 code contribution. Dolby\u0027s goal is to contribute all AC-4 level 4 related code into Android 15.\n\nI have solved the merge confliction and updated the patch set to version 4.\n\nThanks.",
       "revId": "65af2cfecb8ac1708d74ee4563c80839ddfa06d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b29e8ec_a67a893a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-06T00:44:55Z",
+      "side": 1,
+      "message": "The \"codecs string\" needs to be parsed to profile \u0026 level. I don\u0027t see the need to pass this info as a raw string.",
+      "revId": "65af2cfecb8ac1708d74ee4563c80839ddfa06d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
