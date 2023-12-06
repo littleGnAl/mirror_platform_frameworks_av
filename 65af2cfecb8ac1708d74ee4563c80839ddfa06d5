@@ -33,6 +33,24 @@
       "message": "The \"codecs string\" needs to be parsed to profile \u0026 level. I don\u0027t see the need to pass this info as a raw string.",
       "revId": "65af2cfecb8ac1708d74ee4563c80839ddfa06d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d8e2c1c_fb54166f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2023-12-06T00:52:22Z",
+      "side": 1,
+      "message": "@Wonsik, KEY_CODECS_STRING is an exist key in MediaFormat. https://developer.android.com/reference/android/media/MediaFormat#KEY_CODECS_STRING\n\nIf it is available in JAVA API, why we don\u0027t support in native layer? Currently, app can set it via JAVA API but this key will be ignored in native layer.",
+      "parentUuid": "4b29e8ec_a67a893a",
+      "revId": "65af2cfecb8ac1708d74ee4563c80839ddfa06d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
