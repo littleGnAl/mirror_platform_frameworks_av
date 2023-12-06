@@ -87,6 +87,30 @@
       },
       "revId": "65d3568758fc148fd7ae956e0ff1bee1bde1f259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f28d21c8_54dc0d46",
+        "filename": "media/libeffects/loudness/dsp/core/dynamic_range_compression.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2023-12-06T10:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61ed18f_a77b65e8",
+      "range": {
+        "startLine": 94,
+        "startChar": 24,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "65d3568758fc148fd7ae956e0ff1bee1bde1f259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
