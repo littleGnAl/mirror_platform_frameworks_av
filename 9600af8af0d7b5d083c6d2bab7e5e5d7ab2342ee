@@ -22,6 +22,30 @@
       },
       "revId": "9600af8af0d7b5d083c6d2bab7e5e5d7ab2342ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6738aa22_802054aa",
+        "filename": "services/mediaresourcemanager/TEST_MAPPING",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-06T22:13:06Z",
+      "side": 1,
+      "message": "Thanks Wonsik.\nI was told by @dshi that we can ignore the linter as there is an open bug for this  b/315087826",
+      "parentUuid": "51e7be55_d2d0bf4d",
+      "range": {
+        "startLine": 0,
+        "startChar": 0,
+        "endLine": 0,
+        "endChar": 0
+      },
+      "revId": "9600af8af0d7b5d083c6d2bab7e5e5d7ab2342ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
