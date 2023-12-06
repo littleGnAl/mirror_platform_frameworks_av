@@ -1,6 +1,9 @@
 {
   "presubmit": [
     {
+      "name": "hello_world_test"
+    },
+    {
        "name": "ResourceManagerService_test"
     },
     {
