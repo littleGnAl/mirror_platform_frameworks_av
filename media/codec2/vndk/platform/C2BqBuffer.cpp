@@ -400,6 +400,7 @@ private:
                         if (c2Fence) {
                             *c2Fence = C2Fence();
                         }
+                        ALOGD("trying to allocate after invalidated - process dead");
                         return C2_BAD_STATE;
                     }
                     return C2_BLOCKING;
@@ -414,6 +415,7 @@ private:
                         if (c2Fence) {
                             *c2Fence = C2Fence();
                         }
+                        ALOGD("trying to allocate after invalidated - process dead");
                         return C2_BAD_STATE;
                     }
                     return C2_BLOCKING;
@@ -809,6 +811,7 @@ public:
         if (oldVar) {
             oldVar->clearLockIfNecessary();
         }
+        ALOGD("invalidate after a client process died");
     }
 
 private:

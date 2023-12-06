@@ -328,6 +328,7 @@ void C2SyncVariables::clearLockIfNecessary() {
     if (!locked) {
         ALOGW("A dead process might be holding the lock");
     }
+    ALOGD("trying to clear pending lock");
 }
 
 int C2SyncVariables::signal() {
