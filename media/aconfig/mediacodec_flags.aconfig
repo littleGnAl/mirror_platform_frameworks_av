@@ -20,3 +20,10 @@ flag {
   description: "Feature flags for enabling AIDL HAL handling"
   bug: "251850069"
 }
+
+flag {
+  name: "aidl_hal_inputsurface"
+  namespace: "codec_fwk"
+  description: "Feature flags for enabling AIDL HAL InputSurface handling"
+  bug: "201479783"
+}
