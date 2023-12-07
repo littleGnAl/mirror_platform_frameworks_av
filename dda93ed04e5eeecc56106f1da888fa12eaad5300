@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca7a465_058dae4d",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2023-12-07T21:11:39Z",
+      "side": 1,
+      "message": "LCU",
+      "range": {
+        "startLine": 1981,
+        "startChar": 73,
+        "endLine": 1981,
+        "endChar": 75
+      },
+      "revId": "dda93ed04e5eeecc56106f1da888fa12eaad5300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18dcbf2c_506542db",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2023-12-07T21:11:39Z",
+      "side": 1,
+      "message": "Hi @lajos@google.com, could you comment on this part?\n\nI think in C2 level it is not recommended using string type, so we will have a workaround in the framework that framework will convert the string type from user input to an array in the format of `[top1, left1, bottom1, right1, offset1, ...]`, and here this key should take array type.",
+      "range": {
+        "startLine": 1990,
+        "startChar": 3,
+        "endLine": 1991,
+        "endChar": 76
+      },
+      "revId": "dda93ed04e5eeecc56106f1da888fa12eaad5300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2fb487_99476909",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2023-12-07T21:11:39Z",
+      "side": 1,
+      "message": "LCUs",
+      "range": {
+        "startLine": 1994,
+        "startChar": 63,
+        "endLine": 1994,
+        "endChar": 66
+      },
+      "revId": "dda93ed04e5eeecc56106f1da888fa12eaad5300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
