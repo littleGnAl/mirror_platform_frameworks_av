@@ -211,6 +211,8 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexLayerIndex,
     kParamIndexLayerCount,
     kParamIndexIntraRefresh,
+    kParamIndexRoIQpMapConfig,
+    kParamIndexRoIRectConfig,
 
     /* ------------------------------------ image components ------------------------------------ */
 
@@ -1950,6 +1952,34 @@ struct C2IntraRefreshStruct {
 typedef C2StreamParam<C2Tuning, C2IntraRefreshStruct, kParamIndexIntraRefresh>
         C2StreamIntraRefreshTuning;
 constexpr char C2_PARAMKEY_INTRA_REFRESH[] = "coding.intra-refresh";
+
+/**
+ * Region of Interest in the form of Quantization Map
+ *
+ * Region of interest information allows video components to encode desired sections
+ * at better quality to improve overall viewing experience. These sections are communicated
+ * as byte array for the entire video frame at 16x16 granularity in the form of qp offsets.
+ *
+ * While this information is optional, when present, encoders MUST use QPFrame + QPOffset
+ * for quantizing the CU
+ */
+typedef C2StreamParam<C2Info, C2BlobValue, kParamIndexRoIQpMapConfig>
+        C2StreamRoIQpMapConfig;
+constexpr char C2_PARAMKEY_INPUT_ROI_QP_MAP_CONFIG[] = "input.roi-qp-map-config";
+
+/**
+ * Region of Interest in the form of Rectangular Map
+ *
+ * Region of interest information allows video components to encode desired sections
+ * at better quality to improve overall viewing experience. These sections are communicated
+ * as string “top1,left1-bottom1,right1=offset1;top2,left2-bottom2,right2=offset2;...”
+ *
+ * top, left, bottom, right constitutes the vertices of a rectangle,
+ * offset indicates the QPOffset to be used for quantizing the CUs of the rectangle
+ */
+typedef C2StreamParam<C2Info, C2StringValue, kParamIndexRoIRectConfig>
+        C2StreamRoIRectsConfig;
+constexpr char C2_PARAMKEY_INPUT_ROI_RECTS_CONFIG[] = "input.roi-rects-config";
 
 /* ====================================== IMAGE COMPONENTS ====================================== */
 
