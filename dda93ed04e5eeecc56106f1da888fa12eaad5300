@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d713d8b5_73f6d642",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2023-12-07T22:25:46Z",
+      "side": 1,
+      "message": "No, this is not preferred. We expect hardware to be able to support both types for greater efficiency, and this has been confirmed by certain hardware vendors.",
+      "parentUuid": "e9622b5b_a4c8f614",
+      "range": {
+        "startLine": 1990,
+        "startChar": 3,
+        "endLine": 1991,
+        "endChar": 76
+      },
+      "revId": "dda93ed04e5eeecc56106f1da888fa12eaad5300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f2fb487_99476909",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 3
