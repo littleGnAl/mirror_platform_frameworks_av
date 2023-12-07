@@ -62,6 +62,7 @@ struct C2Config {
     enum hdr_dynamic_metadata_type_t : uint32_t;  ///< HDR dynamic metadata type
     enum hdr_format_t : uint32_t;           ///< HDR format
     enum intra_refresh_mode_t : uint32_t;   ///< intra refresh modes
+    enum roi_type_t : uint32_t;             ///< RoI types
     enum level_t : uint32_t;                ///< coding level
     enum ordinal_key_t : uint32_t;          ///< work ordering keys
     enum pcm_encoding_t : uint32_t;         ///< PCM encoding
@@ -211,6 +212,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexLayerIndex,
     kParamIndexLayerCount,
     kParamIndexIntraRefresh,
+    kParamIndexRoIType,
+    kParamIndexRoIQpMapConfig,
+    kParamIndexRoIRectConfig,
 
     /* ------------------------------------ image components ------------------------------------ */
 
@@ -1950,6 +1954,48 @@ struct C2IntraRefreshStruct {
 typedef C2StreamParam<C2Tuning, C2IntraRefreshStruct, kParamIndexIntraRefresh>
         C2StreamIntraRefreshTuning;
 constexpr char C2_PARAMKEY_INTRA_REFRESH[] = "coding.intra-refresh";
+
+/**
+ * RoI Type
+ *
+ * Region of interest information allows video components to encode desired / critical sections
+ * at better quality to improve overall viewing experience. The RoI types tells encoder, if
+ * region of interest encoding is enabled or disabled. If enabled, how RoI information is
+ * communicated.
+ */
+C2ENUM(C2Config::roi_type_t, uint32_t,
+    ROI_DISABLED,          ///< roi encoding disabled
+    ROI_TYPE_QP_MAP,       ///< roi enabled, roi communicated as qp map
+    ROI_TYPE_RECTANGLE,    ///< roi enabled, roi communicated as array of rects
+)
+
+typedef C2StreamParam<C2Tuning, C2SimpleValueStruct<C2Config::roi_type_t>, kParamIndexRoIType>
+        C2StreamRoITypeTuning;
+constexpr char C2_PARAMKEY_ROI_TYPE[] = "coding.roi-type";
+
+/**
+ * Region of Interest in the form of Quantization Map
+ *
+ * Critical sections are communicated as byte array for the entire video frame at
+ * 16x16 granularity in the form of qp offsets. While this information is optional,
+ * when present, encoders MUST use QPFrame + QPOffset for quantizing the CU
+ */
+typedef C2StreamParam<C2Info, C2BlobValue, kParamIndexRoIQpMapConfig>
+        C2StreamRoIQpMapConfig;
+constexpr char C2_PARAMKEY_ROI_QP_MAP_CONFIG[] = "coding.roi-qp-map-config";
+
+/**
+ * Region of Interest in the form of Rectangular Map
+ *
+ * Critical sections are communicated as string
+ * “top1,left1-bottom1,right1=offset1;top2,left2-bottom2,right2=offset2;...”
+ *
+ * top, left, bottom, right constitutes the vertices of a rectangle,
+ * offset indicates the QPOffset to be used for quantizing the CUs of the rectangle
+ */
+typedef C2StreamParam<C2Info, C2StringValue, kParamIndexRoIRectConfig>
+        C2StreamRoIRectsConfig;
+constexpr char C2_PARAMKEY_ROI_RECTS_CONFIG[] = "coding.roi-rects-config";
 
 /* ====================================== IMAGE COMPONENTS ====================================== */
 
