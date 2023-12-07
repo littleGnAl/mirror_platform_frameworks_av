@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9622b5b_a4c8f614",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2023-12-07T22:13:48Z",
+      "side": 1,
+      "message": "Dichen,\nWould it be a better option to completely remove C2_PARAMKEY_ROI_RECTS_CONFIG from C2Config.h and instead convert from this format to QP_MAP_CONFIG format in MediaCodec level and send only that?",
+      "parentUuid": "18dcbf2c_506542db",
+      "range": {
+        "startLine": 1990,
+        "startChar": 3,
+        "endLine": 1991,
+        "endChar": 76
+      },
+      "revId": "dda93ed04e5eeecc56106f1da888fa12eaad5300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f2fb487_99476909",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 3
