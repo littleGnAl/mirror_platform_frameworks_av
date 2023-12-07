@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398e13a8_5a38b834",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-07T21:57:09Z",
+      "side": 1,
+      "message": "can we abort the session instead of the whole process? form the user\u0027s perspective this will be a crash in the app, but it would be nicer to just stop the video playback.",
+      "revId": "6b7356a1440584febf8f331fda275daab8198438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c823bb8_22ccfdbe",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-07T21:57:09Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "6b7356a1440584febf8f331fda275daab8198438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
