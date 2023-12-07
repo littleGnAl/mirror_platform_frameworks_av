@@ -201,6 +201,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexPictureQuantization,
     kParamIndexHdrDynamicMetadata,
     kParamIndexHdrFormat,
+    kParamIndexQpOffsetMap,
+    kParamIndexQpOffsetRect,
+    kParamIndexQpOffsetRects,
 
     /* ------------------------------------ video components ------------------------------------ */
 
@@ -1392,6 +1395,61 @@ struct C2RotationStruct {
 typedef C2StreamParam<C2Info, C2RotationStruct, kParamIndexRotation> C2StreamRotationInfo;
 constexpr char C2_PARAMKEY_ROTATION[] = "raw.rotation";
 constexpr char C2_PARAMKEY_VUI_ROTATION[] = "coded.vui.rotation";
+
+
+/**
+ * Region of Interest communicated in the form of Quantization Map
+ *
+ * Critical sections are communicated as byte array for the entire video frame at
+ * 16x16 granularity in the form of qp offsets. Non negative offsets represent background regions
+ * and negative offsets represent regions of interest. The encoders are expected to use
+ * QPFrame + QPOffset for quantizing the LCU.
+ */
+typedef C2StreamParam<C2Info, C2BlobValue, kParamIndexQpOffsetMap> C2StreamQpOffsetMap;
+constexpr char C2_PARAMKEY_QP_OFFSET_MAP_INFO[] = "coding.qp-offset-map-info";
+
+/**
+ * Region of Interest communicated in the form of Rectangular Map
+ *
+ * Critical sections are communicated as array of C2QpOffsetRectStruct
+ * Fields of C2RectStruct form a bounding box contouring RoI,
+ * offset indicates the QPOffset to be used for quantizing the LCUs of the bounding box.
+ */
+
+struct C2QpOffsetRectStruct {
+    C2QpOffsetRectStruct() = default;
+    C2QpOffsetRectStruct(int32_t width_, int32_t height_, int32_t left_, int32_t top_,
+                         int32_t qpOffset_)
+        : width(width_), height(height_), left(left_), top(top_), qpOffset(qpOffset_) {}
+
+    bool operator==(const C2QpOffsetRectStruct &) = delete;
+    bool operator!=(const C2QpOffsetRectStruct &) = delete;
+
+    int32_t width;
+    int32_t height;
+    int32_t left;
+    int32_t top;
+    int32_t qpOffset;
+
+    DEFINE_AND_DESCRIBE_C2STRUCT(QpOffsetRect)
+    C2FIELD(width, "width")
+    C2FIELD(height, "height")
+    C2FIELD(left, "left")
+    C2FIELD(top, "top")
+    C2FIELD(qpOffset, "qpOffset")
+};
+
+/**
+ * The number of elements in C2StreamQpOffsetRectsInfo array is not limited by C2 specification.
+ * However platforms may mandate a limit. Implementations shall drop/ignore the rectangles that
+ * are beyond the supported limits. Hence it is preferable to place the rects in descending order
+ * of importance. Also, if the bounding boxes overlap, then the most preferred rectangle's qp
+ * offset (first rectangle) qp offset will be used to quantize the lcu.
+ */
+
+typedef C2StreamParam<C2Info, C2SimpleArrayStruct<C2QpOffsetRectStruct>, kParamIndexQpOffsetRects>
+        C2StreamQpOffsetRectsInfo;
+constexpr char C2_PARAMKEY_QP_OFFSET_RECTS_INFO[] = "coding.qp-offset-rects-info";
 
 /**
  * Pixel (sample) aspect ratio.
