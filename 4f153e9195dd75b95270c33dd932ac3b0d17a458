@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8279b4_e1b14e26",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-12-08T07:51:34Z",
+      "side": 1,
+      "message": "Since this could be blocking a little bit(30ms), locating here is intentional.\nAlso I want to separate this change from the other changes for easier cherry-picking and merging to other branches.",
+      "parentUuid": "697c7026_1c833474",
+      "range": {
+        "startLine": 807,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 44
+      },
+      "revId": "4f153e9195dd75b95270c33dd932ac3b0d17a458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72284ecf_3d2b93f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-07T19:03:30Z",
       "side": 1,
       "message": "nit: else isn\u0027t needed here",
+      "range": {
+        "startLine": 48,
+        "startChar": 6,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "4f153e9195dd75b95270c33dd932ac3b0d17a458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9399a4_6706751e",
+        "filename": "media/codec2/vndk/platform/C2SurfaceSyncObj.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-12-08T07:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72284ecf_3d2b93f8",
       "range": {
         "startLine": 48,
         "startChar": 6,
