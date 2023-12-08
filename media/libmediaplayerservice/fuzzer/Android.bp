@@ -29,6 +29,7 @@ package {
 cc_defaults {
     name: "libmediaplayerserviceFuzzer_defaults",
     static_libs: [
+        "aconfig_mediacodec_flags_c_lib",
         "libmediaplayerservice",
         "liblog",
     ],
@@ -42,6 +43,7 @@ cc_defaults {
         "libutils",
         "libsfplugin_ccodec_utils",
         "libstagefright_foundation",
+        "server_configurable_flags",
     ],
     fuzz_config: {
         cc: [

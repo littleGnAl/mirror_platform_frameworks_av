@@ -76,6 +76,7 @@ cc_defaults {
         "libstagefright_foundation",
         "libstagefright_httplive",
         "libutils",
+        "server_configurable_flags",
         "packagemanager_aidl-cpp",
     ],
 
@@ -87,6 +88,7 @@ cc_defaults {
     ],
 
     static_libs: [
+        "aconfig_mediacodec_flags_c_lib",
         "libplayerservice_datasource",
         "libstagefright_nuplayer",
         "libstagefright_rtsp",

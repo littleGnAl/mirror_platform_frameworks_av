@@ -20,3 +20,10 @@ flag {
   description: "Feature flags for enabling AIDL HAL handling"
   bug: "251850069"
 }
+
+flag {
+  name: "thumbnail_check_p010_support"
+  namespace: "codec_fwk"
+  description: "Check if P010 is supported before generating 10-bit thumbnails"
+  bug: "295816285"
+}

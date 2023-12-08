@@ -25,6 +25,7 @@
 #include "StagefrightMetadataRetriever.h"
 #include "FrameDecoder.h"
 
+#include <com_android_media_codec_flags.h>
 #include <datasource/PlayerServiceDataSourceFactory.h>
 #include <datasource/PlayerServiceFileSource.h>
 #include <media/IMediaHTTPService.h>
@@ -240,7 +241,8 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
             }
         }
     }
-    if (bitDepth == 10) {
+    if (com::android::media::codec::flags::provider_->thumbnail_check_p010_support()
+            && bitDepth == 10) {
         static const bool isP010Supported =
             isHalPixelFormatSupported(AHARDWAREBUFFER_FORMAT_YCbCr_P010);
         if (!isP010Supported) {
