@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67180e08_b8db3e90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-12-08T11:27:59Z",
+      "side": 1,
+      "message": "this should never happens as audio policy always picks the propertied from the profiles before opening. Is it in case of dynamic profiles when opening the stream initially before calling getParameters to query supported properties? This should not happen in AIDL?\nOr is it when audioflinger negociates the stream parameter when opening? Is this still needed with AIDL. for the negociation, the HAL was supposed to return a status -22 with suggester properties.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "3ab3332dc0b610f3c94cfc360cd2bdecd4114205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f128be4_66ab85d4",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-12-08T11:27:59Z",
+      "side": 1,
+      "message": "shouldn\u0027t we return with BAD_VALUE and propose a working config?\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/AudioFlinger.cpp;l\u003d3217?q\u003dopenOutputStream%20l:cpp%20audioflinger\n\nAt least for input streams?",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 95
+      },
+      "revId": "3ab3332dc0b610f3c94cfc360cd2bdecd4114205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
