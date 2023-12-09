@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d895ba96_814cb137",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-09T00:20:27Z",
+      "side": 1,
+      "message": "I\u0027m seeing this while running `CtsVirtualDevicesTestCases`. This happens when the client app is doing playback for float data type: https://cs.android.com/android/platform/superproject/main/+/main:cts/tests/tests/virtualdevice/app/src/android/virtualdevice/streamedtestapp/MainActivity.java;l\u003d164;drc\u003dd4035b6eb1192f71af7adae47bf17d22c7356fa1 and then tries to capture it, also in float: https://cs.android.com/android/platform/superproject/main/+/main:cts/tests/tests/virtualdevice/app/src/android/virtualdevice/streamedtestapp/MainActivity.java;l\u003d188;drc\u003dd4035b6eb1192f71af7adae47bf17d22c7356fa1, see b/315528763.\n\nEven after I fixed the issue in libaudiohal@aidl with properly returning the suggested config to the framework, it still uses float format later when setting a patch for this mix port. This indeed looks like a bug in the framework, however I don\u0027t have time to investigate it now, so I just documented it as b/315528763.",
+      "parentUuid": "67180e08_b8db3e90",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "3ab3332dc0b610f3c94cfc360cd2bdecd4114205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f128be4_66ab85d4",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-08T11:27:59Z",
       "side": 1,
       "message": "shouldn\u0027t we return with BAD_VALUE and propose a working config?\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/AudioFlinger.cpp;l\u003d3217?q\u003dopenOutputStream%20l:cpp%20audioflinger\n\nAt least for input streams?",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 95
+      },
+      "revId": "3ab3332dc0b610f3c94cfc360cd2bdecd4114205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def232d8_955e3884",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-09T00:20:27Z",
+      "side": 1,
+      "message": "Thanks for pointing out this omission! Turns out, libaudiohal@aidl wasn\u0027t handling correctly the case when a suggested config needs to be returned to the framework as a result of a stream opening attempt.\n\nI must note that the framework behavior seems to be inconsistent for input and output streams in this aspect. It retries opening input streams, however for output streams it only retries for non-PCM formats: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/datapath/AudioHwDevice.cpp;l\u003d74;drc\u003dd4035b6eb1192f71af7adae47bf17d22c7356fa1\n\nAddressed this issue in a separate CLs on this topic.",
+      "parentUuid": "8f128be4_66ab85d4",
       "range": {
         "startLine": 715,
         "startChar": 0,
