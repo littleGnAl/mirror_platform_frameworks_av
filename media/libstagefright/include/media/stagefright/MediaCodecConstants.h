@@ -825,6 +825,7 @@ inline constexpr char KEY_PROFILE[] = "profile";
 inline constexpr char KEY_PUSH_BLANK_BUFFERS_ON_STOP[] = "push-blank-buffers-on-shutdown";
 inline constexpr char KEY_QUALITY[] = "quality";
 inline constexpr char KEY_REPEAT_PREVIOUS_FRAME_AFTER[] = "repeat-previous-frame-after";
+inline constexpr char KEY_ROI_TYPE[] = "roi-type";
 inline constexpr char KEY_ROTATION[] = "rotation-degrees";
 inline constexpr char KEY_SAMPLE_RATE[] = "sample-rate";
 inline constexpr char KEY_SLICE_HEIGHT[] = "slice-height";
