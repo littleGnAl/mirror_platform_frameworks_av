@@ -582,6 +582,23 @@ void CCodecConfig::initializeStandardParams() {
             }
             return C2Value();
         }));
+    add(ConfigMapper(KEY_ROI_TYPE, C2_PARAMKEY_ROI_TYPE, "value")
+        .limitTo(D::VIDEO & D::ENCODER & D::CONFIG)
+        .withMapper([](C2Value v) -> C2Value {
+            int32_t value;
+            if (!v.get(&value)) {
+                switch (value) {
+                    case 1: return C2Config::ROI_TYPE_QP_MAP;
+                    case 2: return C2Config::ROI_TYPE_RECTANGLE;
+                    default: return C2Config::ROI_DISABLED;
+                }
+            }
+            return C2Value();
+        }));
+    add(ConfigMapper(PARAMETER_KEY_ROI_QP_MAP_CONFIG, C2_PARAMKEY_ROI_QP_MAP_CONFIG, "value")
+        .limitTo(D::VIDEO & D::PARAM & D::ENCODER));
+    add(ConfigMapper(C2_PARAMKEY_ROI_RECTS_CONFIG, C2_PARAMKEY_ROI_RECTS_CONFIG, "value")
+        .limitTo(D::VIDEO & D::PARAM & D::ENCODER));
     deprecated(ConfigMapper(PARAMETER_KEY_REQUEST_SYNC_FRAME,
                      "coding.request-sync", "value")
         .limitTo(D::PARAM & D::ENCODER)
