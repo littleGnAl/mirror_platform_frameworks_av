@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0eb0d589_073a96b6",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-12-11T08:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e4b4632_7a556cfb",
+      "range": {
+        "startLine": 240,
+        "startChar": 8,
+        "endLine": 240,
+        "endChar": 13
+      },
+      "revId": "d7d162b481017aea0c1f0e01f6f94bf99e9aae1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4d73fbd0_5e9e4165",
         "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
         "patchSetId": 10
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-09T09:08:27Z",
       "side": 1,
       "message": "Just curiosity.\nInput flag and returned flag do not have multiple bits turning on?",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 16
+      },
+      "revId": "d7d162b481017aea0c1f0e01f6f94bf99e9aae1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "274e6136_125a5698",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-12-11T08:58:02Z",
+      "side": 1,
+      "message": "multiple bits are not turned on",
+      "parentUuid": "4d73fbd0_5e9e4165",
       "range": {
         "startLine": 283,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2023-12-09T09:08:27Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 721,
+        "startChar": 12,
+        "endLine": 721,
+        "endChar": 17
+      },
+      "revId": "d7d162b481017aea0c1f0e01f6f94bf99e9aae1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5df50c_66d44d25",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 2039259
+      },
+      "writtenOn": "2023-12-11T08:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab47499_421ea122",
       "range": {
         "startLine": 721,
         "startChar": 12,
