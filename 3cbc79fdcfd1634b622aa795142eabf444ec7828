@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccce42a9_66eb7bc2",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-11T23:02:35Z",
+      "side": 1,
+      "message": "Is there any preference in using this vs com::android::media::codec::flags::thumbnail_check_p010_support() instead?",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 84
+      },
+      "revId": "3cbc79fdcfd1634b622aa795142eabf444ec7828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
