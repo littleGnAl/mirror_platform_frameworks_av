@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "372e1508_6555f67c",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2023-12-11T09:02:13Z",
+      "side": 1,
+      "message": "Even if they are accidentally turned on mapInfoFlagstoVtsFlags will return 0xff.\nAs assertion is added at mapInfoFlagstoVtsFlags() that value returned is never 0xff.",
+      "parentUuid": "274e6136_125a5698",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 16
+      },
+      "revId": "d7d162b481017aea0c1f0e01f6f94bf99e9aae1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fab47499_421ea122",
