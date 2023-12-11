@@ -235,6 +235,30 @@ public:
                             })
                             .withSetter(Setter<C2StreamProfileLevelInfo::output>)
                             .build());
+
+                    addParameter(DefineParam(mInputQpOffsetMap, C2_PARAMKEY_QP_OFFSET_MAP_INFO)
+                                         .withDefault(C2StreamQpOffsetMap::output::AllocShared(0))
+                                         .withFields({
+                                                 C2F(mInputQpOffsetMap, m.value).any(),
+                                         })
+                                         .withSetter(Setter<C2StreamQpOffsetMap::output>)
+                                         .build());
+
+                    std::vector<C2QpOffsetRectStruct> c2QpOffsetRectsInfo;
+                    addParameter(
+                            DefineParam(mInputQpOffsetRectsInfo, C2_PARAMKEY_QP_OFFSET_RECTS_INFO)
+                                    .withDefault(C2StreamQpOffsetRectsInfo::output::AllocShared(
+                                            c2QpOffsetRectsInfo.size(), 0, c2QpOffsetRectsInfo))
+                                    .withFields({
+                                            C2F(mInputQpOffsetRectsInfo, m.values[0].qpOffset)
+                                                    .inRange(-128, 127),
+                                            C2F(mInputQpOffsetRectsInfo, m.values[0].left).any(),
+                                            C2F(mInputQpOffsetRectsInfo, m.values[0].top).any(),
+                                            C2F(mInputQpOffsetRectsInfo, m.values[0].width).any(),
+                                            C2F(mInputQpOffsetRectsInfo, m.values[0].height).any(),
+                                    })
+                                    .withSetter(Setter<C2StreamQpOffsetRectsInfo::output>)
+                                    .build());
                 }
 
                 // TODO: more SDK params
@@ -254,6 +278,8 @@ public:
             std::shared_ptr<C2StreamBitrateInfo::output> mOutputBitrate;
             std::shared_ptr<C2StreamProfileLevelInfo::input> mInputProfileLevel;
             std::shared_ptr<C2StreamProfileLevelInfo::output> mOutputProfileLevel;
+            std::shared_ptr<C2StreamQpOffsetMap::output> mInputQpOffsetMap;
+            std::shared_ptr<C2StreamQpOffsetRectsInfo::output> mInputQpOffsetRectsInfo;
 
             template<typename T>
             static C2R Setter(bool, C2P<T> &) {
@@ -635,5 +661,57 @@ INSTANTIATE_TEST_SUITE_P(
         CCodecConfig,
         HdrProfilesTest,
         ::testing::ValuesIn(kHdrProfilesParams));
+
+TEST_F(CCodecConfigTest, SetRegionOfInterestParams) {
+    init(C2Component::DOMAIN_VIDEO, C2Component::KIND_ENCODER, MIMETYPE_VIDEO_VP9);
+
+    ASSERT_EQ(OK, mConfig.initialize(mReflector, mConfigurable));
+
+    const int kWidth = 32;
+    const int kHeight = 32;
+    const int kNumBlocks = ((kWidth + 15) / 16) * ((kHeight + 15) / 16);
+    int8_t mapInfo[kNumBlocks] = {-1, 0, 1, 1};
+    int top[kNumBlocks] = {0, 0, 16, 16};
+    int left[kNumBlocks] = {0, 16, 0, 16};
+    int bottom[kNumBlocks] = {16, 16, 32, 32};
+    int right[kNumBlocks] = {16, 32, 16, 32};
+    sp<AMessage> format{new AMessage};
+    format->setInt32(KEY_WIDTH, 32);
+    format->setInt32(KEY_HEIGHT, 32);
+    format->setString(KEY_QP_OFFSET_RECTS_INFO,
+                      "0,0-16,16=-1;0,16-16,32=0;16,0-32,16=1;16,16-32,32=1;");
+    format->setBuffer(KEY_QP_OFFSET_MAP_INFO, ABuffer::CreateAsCopy(mapInfo, sizeof(mapInfo)));
+
+    std::vector<std::unique_ptr<C2Param>> configUpdate;
+    ASSERT_EQ(OK, mConfig.getConfigUpdateFromSdkParams(mConfigurable, format, D::CONFIG,
+                                                       C2_MAY_BLOCK, &configUpdate));
+
+    EXPECT_EQ(2u, configUpdate.size());
+
+    C2StreamQpOffsetMap::output* qpMapParam =
+            FindParam<std::remove_pointer<decltype(qpMapParam)>::type>(configUpdate);
+    ASSERT_NE(nullptr, qpMapParam);
+    ASSERT_EQ(kNumBlocks, qpMapParam->flexCount()) << "qpMap buffer size is not as expected";
+    for (auto i = 0; i < kNumBlocks; i++) {
+        ASSERT_EQ(mapInfo[i], (int8_t)qpMapParam->m.value[i])
+                << "qp offset for index " << i << " is not as expected ";
+    }
+    C2StreamQpOffsetRectsInfo::output* qpRectParam =
+            FindParam<std::remove_pointer<decltype(qpRectParam)>::type>(configUpdate);
+    ASSERT_NE(nullptr, qpRectParam);
+    ASSERT_EQ(4, qpRectParam->flexCount());
+    for (auto i = 0; i < kNumBlocks; i++) {
+        EXPECT_EQ(mapInfo[i], (int8_t)qpRectParam->m.values[i].qpOffset)
+                << "qp offset for index " << i << " is not as expected ";
+        EXPECT_EQ(left[i], (int8_t)qpRectParam->m.values[i].left)
+                << "left for index " << i << " is not as expected ";
+        EXPECT_EQ(top[i], (int8_t)qpRectParam->m.values[i].top)
+                << "top for index " << i << " is not as expected ";
+        EXPECT_EQ(right[i] - left[i], (int8_t)qpRectParam->m.values[i].width)
+                << "width for index " << i << " is not as expected ";
+        EXPECT_EQ(bottom[i] - top[i], (int8_t)qpRectParam->m.values[i].height)
+                << "height for index " << i << " is not as expected ";
+    }
+}
 
 } // namespace android
