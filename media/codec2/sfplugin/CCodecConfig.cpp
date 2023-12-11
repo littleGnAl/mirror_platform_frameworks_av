@@ -591,6 +591,10 @@ void CCodecConfig::initializeStandardParams() {
             }
             return C2Value();
         }));
+    add(ConfigMapper(KEY_QP_OFFSET_MAP_INFO, C2_PARAMKEY_QP_OFFSET_MAP_INFO, "value")
+        .limitTo((D::VIDEO | D::IMAGE) & (D::CONFIG | D::PARAM) & D::ENCODER & D::INPUT));
+    add(ConfigMapper(C2_PARAMKEY_QP_OFFSET_RECTS_INFO, C2_PARAMKEY_QP_OFFSET_RECTS_INFO, "value")
+        .limitTo((D::VIDEO | D::IMAGE) & (D::CONFIG | D::PARAM) & D::ENCODER & D::INPUT));
     deprecated(ConfigMapper(PARAMETER_KEY_REQUEST_SYNC_FRAME,
                      "coding.request-sync", "value")
         .limitTo(D::PARAM & D::ENCODER)
@@ -1478,6 +1482,25 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
         }
     }
 
+    { // convert c2QpOffsetRectsInfo to qpOffsetRectsInfo
+        sp<ABuffer> tmp;
+        if (msg->findBuffer(C2_PARAMKEY_QP_OFFSET_RECTS_INFO, &tmp) && tmp != nullptr) {
+            C2StreamQpOffsetRectsInfo *regions =
+                C2StreamQpOffsetRectsInfo::From(C2Param::From(tmp->data(), tmp->size()));
+            AString info;
+            for (int i = 0; i < regions->flexCount(); i++) {
+                int left = regions->m.values[i].left;
+                int top = regions->m.values[i].top;
+                int right = left + regions->m.values[i].width;
+                int bot = top + regions->m.values[i].height;
+                int qpOffset = regions->m.values[i].qpOffset;
+                info.append(AStringPrintf("%d,%d-%d,%d=%d;", top, left, bot, right, qpOffset));
+            }
+            msg->setString(KEY_QP_OFFSET_RECTS_INFO, info);
+            msg->removeEntryAt(msg->findEntryByName(C2_PARAMKEY_QP_OFFSET_RECTS_INFO));
+        }
+    }
+
     // Remove KEY_AAC_SBR_MODE from SDK message if it is outside supported range
     // as SDK doesn't have a way to signal default sbr mode based on profile and
     // requires that the key isn't present in format to signal that
@@ -1867,6 +1890,33 @@ ReflectedParamUpdater::Dict CCodecConfig::getReflectedFormat(
                 params->setInt32((prefix + ".type").c_str(),
                                  HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
                 params->setBuffer((prefix + ".data").c_str(), hdrDynamicInfo);
+            }
+        }
+    }
+
+    {   // reflect set of qpoffset-rect-map into a binary blob
+        AString qpOffsetRectsInfo;
+        if (params->findString(KEY_QP_OFFSET_RECTS_INFO, &qpOffsetRectsInfo)) {
+            std::vector<C2QpOffsetRectStruct> c2QpOffsetRectsInfo;
+            char *box = strtok(strdup(qpOffsetRectsInfo.c_str()), ";");
+            while (box != nullptr) {
+                int top, left, bot, right;
+                int qpOffset;
+                if (sscanf(box, "%d,%d-%d,%d=%d", &top, &left, &bot, &right, &qpOffset) == 5) {
+                    C2Rect rect(right - left, bot - top);
+                    rect.at(left, top);
+                    c2QpOffsetRectsInfo.push_back(C2QpOffsetRectStruct(rect, qpOffset));
+                } else {
+                    ALOGD("Ignoring contour %s", box);
+                }
+                box = strtok(nullptr, ";");
+            }
+            if (c2QpOffsetRectsInfo.size() > 0) {
+                const std::unique_ptr<C2StreamQpOffsetRectsInfo::input> regions =
+                        C2StreamQpOffsetRectsInfo::input::AllocUnique(
+                                c2QpOffsetRectsInfo.size(), 0u, c2QpOffsetRectsInfo);
+                params->setBuffer(C2_PARAMKEY_QP_OFFSET_RECTS_INFO,
+                                  ABuffer::CreateAsCopy(regions.get(), regions->size()));
             }
         }
     }
