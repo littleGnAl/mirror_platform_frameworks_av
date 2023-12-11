@@ -47,15 +47,6 @@ class BundleContext final : public EffectContext {
     RetCode disable();
     RetCode disableOperatingMode();
 
-    void setSampleRate(const int sampleRate) { mSampleRate = sampleRate; }
-    int getSampleRate() const { return mSampleRate; }
-
-    void setChannelMask(const aidl::android::media::audio::common::AudioChannelLayout& chMask) {
-        mChMask = chMask;
-    }
-    aidl::android::media::audio::common::AudioChannelLayout getChannelMask() const {
-        return mChMask;
-    }
     bool isDeviceSupportedBassBoost(
             const std::vector<aidl::android::media::audio::common::AudioDeviceDescription>&
                     devices);
@@ -80,7 +71,7 @@ class BundleContext final : public EffectContext {
     RetCode setBassBoostStrength(int strength);
     int getBassBoostStrength() const { return mBassStrengthSaved; }
 
-    RetCode setVolumeLevel(float level);
+    RetCode setVolumeLevel(int16_t level);
     float getVolumeLevel() const;
 
     RetCode setVolumeMute(bool mute);
@@ -111,9 +102,7 @@ class BundleContext final : public EffectContext {
     LVM_Handle_t mInstance GUARDED_BY(mMutex);
 
     aidl::android::media::audio::common::AudioDeviceDescription mVirtualizerForcedDevice;
-    aidl::android::media::audio::common::AudioChannelLayout mChMask;
 
-    int mSampleRate = LVM_FS_44100;
     int mSamplesPerSecond = 0;
     int mSamplesToExitCountEq = 0;
     int mSamplesToExitCountBb = 0;
@@ -135,7 +124,7 @@ class BundleContext final : public EffectContext {
     int mBassStrengthSaved = 0;
     // Equalizer
     int mCurPresetIdx = lvm::PRESET_CUSTOM; /* Current preset being used */
-    std::array<int, lvm::MAX_NUM_BANDS> mBandGainMdB; /* band gain in millibels */
+    std::array<int, lvm::MAX_NUM_BANDS> mBandGaindB; /* band gain */
     // Virtualizer
     int mVirtStrengthSaved = 0; /* Conversion between Get/Set */
     bool mVirtualizerTempDisabled = false;
