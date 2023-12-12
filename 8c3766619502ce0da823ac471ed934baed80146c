@@ -16,6 +16,92 @@
       "message": "Hi @lajos@google.com, @wonsik@google.com, could you help to review this change? Thank you!",
       "revId": "8c3766619502ce0da823ac471ed934baed80146c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc0393e_a7a8276f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-12T01:00:09Z",
+      "side": 1,
+      "message": "Will the component handle the rectangle config, or will the HAL layer convert it into a QP MAP, and component only handles the map version?",
+      "range": {
+        "startLine": 1969,
+        "startChar": 4,
+        "endLine": 1969,
+        "endChar": 22
+      },
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5917e099_91a16b6f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-12T01:00:09Z",
+      "side": 1,
+      "message": "is the expectation that this can change at run-time?",
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14be8242_b877b5a6",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-12T01:00:09Z",
+      "side": 1,
+      "message": "Few questions\n\n1) Are these configs sticky, or does it have to be specified for each frame. E.g. sticky means that if unspecified, the last value should be used, whereas non-sticky means, if unspecified for a frame, the QP offsets should be zero.\n\n2) Do you support float offsets? x264 seems to support that.\n\n3) Do these represent QP offset for I LCUs only? Is there some arithmetic to be applied when LCU is coded as P or B (similarly to how QP bounds are specified separately for I, P and B?",
+      "range": {
+        "startLine": 1984,
+        "startChar": 30,
+        "endLine": 1984,
+        "endChar": 41
+      },
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fdf4fd_dcbdc333",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-12T01:00:09Z",
+      "side": 1,
+      "message": "Do we need to create a rectangular configuration option? The handling of this is underspecified, so it may lead to device specific behaviors. E.g. what happens if the coordinates are in the middle of macroblocks/LCUs? What happens if the coordinates are overlapped (are these additive, last one wins, first one wins?).",
+      "range": {
+        "startLine": 1989,
+        "startChar": 3,
+        "endLine": 1989,
+        "endChar": 65
+      },
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
