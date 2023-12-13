@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9602a8ff_57dd1a6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-13T00:04:06Z",
+      "side": 1,
+      "message": "Hi Shunkai! Since the attempt to land a full topic to switch CF to AIDL HAL did not succeed again, this time due to BT HAL module issues, at least let\u0027s land in the short term safe fixes for problems that we have found the last time. This is the same as aosp/2863906.",
+      "revId": "f5c7fdb1de0260935f7c177aae969758f551521f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
