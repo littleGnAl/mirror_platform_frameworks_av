@@ -16,6 +16,24 @@
       "message": "Why are we reverting all the CLs instead of just the ones enabling the AIDL HAL?",
       "revId": "6b76711f3c631d7274d950f09224e4dc85132b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c499b3_9b8360fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-13T17:53:15Z",
+      "side": 1,
+      "message": "I think it\u0027s more straightforward to revert the topic.\n\nI have uploaded and merged all but one fixes as separate CLs: aosp/2870265, aosp/2871423 and aosp/2871422, aosp/2871775",
+      "parentUuid": "5dac4f74_816cbb10",
+      "revId": "6b76711f3c631d7274d950f09224e4dc85132b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
