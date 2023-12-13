@@ -22,6 +22,30 @@
       },
       "revId": "3cbc79fdcfd1634b622aa795142eabf444ec7828",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61244e3f_62f437d4",
+        "filename": "media/libmediaplayerservice/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-13T19:08:35Z",
+      "side": 1,
+      "message": "`com::android::media::codec::flags::flag_provider_interface` objects can in theory be injected into implementations. In this case they don\u0027t have any difference.",
+      "parentUuid": "ccce42a9_66eb7bc2",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 84
+      },
+      "revId": "3cbc79fdcfd1634b622aa795142eabf444ec7828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
