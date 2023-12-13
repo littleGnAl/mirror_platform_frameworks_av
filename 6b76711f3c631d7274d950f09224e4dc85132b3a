@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dac4f74_816cbb10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-12-13T08:48:58Z",
+      "side": 1,
+      "message": "Why are we reverting all the CLs instead of just the ones enabling the AIDL HAL?",
+      "revId": "6b76711f3c631d7274d950f09224e4dc85132b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
