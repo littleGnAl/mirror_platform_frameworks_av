@@ -142,6 +142,7 @@ cc_library {
         "libbinder_ndk",
         "libbase",
     ],
+    exclude_shared_libs: ["framework-permission-aidl-cpp", "libbinder"],
     static_libs: [
         "libaudioaidlcommon",
     ],
