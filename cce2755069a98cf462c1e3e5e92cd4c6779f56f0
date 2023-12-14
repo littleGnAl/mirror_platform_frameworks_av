@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "159ec3b8_58eb54d5",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-12-14T22:38:33Z",
+      "side": 1,
+      "message": "I was asked by Andy in https://android-review.googlesource.com/c/platform/frameworks/av/+/2833452/comment/b775c703_b1b4e38e/ for AudioStreamIn.cpp to include the AudioStreamIn.h first, so I\u0027ve done the same here for AudioStreamOut.",
+      "parentUuid": "9c8470df_fdb6dcd6",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88d5acaa_6b89594d",
         "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
         "patchSetId": 11
@@ -77,6 +101,30 @@
       "writtenOn": "2023-12-14T17:39:35Z",
       "side": 1,
       "message": "Also here, the sorting order is being reversed with this change.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a76211_c3d536fb",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-12-14T22:38:33Z",
+      "side": 1,
+      "message": "Please see conversation in https://android-review.googlesource.com/c/platform/frameworks/av/+/2833452/comment/859d0fa1_2e3893f0/ . If it needs to be swapped, please tell me.",
+      "parentUuid": "88d5acaa_6b89594d",
       "range": {
         "startLine": 27,
         "startChar": 0,
