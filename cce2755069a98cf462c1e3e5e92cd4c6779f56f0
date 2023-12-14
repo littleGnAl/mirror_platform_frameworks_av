@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "507f95a0_1aba876a",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-12-14T23:36:42Z",
+      "side": 1,
+      "message": "Sorry for not being clear, the associated header to a source file should be first in the include list to check missing headers.  Can you please move this to line 21?  Thanks!",
+      "parentUuid": "159ec3b8_58eb54d5",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88d5acaa_6b89594d",
         "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
         "patchSetId": 11
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "Please see conversation in https://android-review.googlesource.com/c/platform/frameworks/av/+/2833452/comment/859d0fa1_2e3893f0/ . If it needs to be swapped, please tell me.",
       "parentUuid": "88d5acaa_6b89594d",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687e2482_0e93174a",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2023-12-14T23:36:42Z",
+      "side": 1,
+      "message": "This should be alphabetical.",
+      "parentUuid": "e2a76211_c3d536fb",
       "range": {
         "startLine": 27,
         "startChar": 0,
