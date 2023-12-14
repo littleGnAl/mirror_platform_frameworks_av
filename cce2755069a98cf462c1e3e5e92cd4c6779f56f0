@@ -16,6 +16,75 @@
       "message": "\"Topic e-ac3-joc remote submix removed\" so that merge of this CL isn\u0027t blocked unnecessarily by other CLs.",
       "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7840790_10a63af0",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-14T17:39:35Z",
+      "side": 1,
+      "message": "Are you sure this is needed? Normally, the HAL modifies the provided config (in this case this variable is called `originalConfig`, which might be misleading) to reflect the actual configuration that is used to open the stream, see the code in `services/audioflinger/AudioFlinger.cpp` removed in this CL.\n\nAs an example, refer to the BT HAL module implementation here: https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Bluetooth/system/audio_bluetooth_hw/device_port_proxy.cc;l\u003d392;drc\u003dd4035b6eb1192f71af7adae47bf17d22c7356fa1 and here: https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Bluetooth/system/audio_bluetooth_hw/stream_apis.cc;l\u003d1299;drc\u003db062d0547ebeacfdf051ea17e0ae0433c9b22329.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8470df_fdb6dcd6",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-14T17:39:35Z",
+      "side": 1,
+      "message": "Weren\u0027t they sorted before? :)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d5acaa_6b89594d",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-14T17:39:35Z",
+      "side": 1,
+      "message": "Also here, the sorting order is being reversed with this change.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
