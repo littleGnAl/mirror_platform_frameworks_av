@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901fc7b2_a53f6064",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:58:04Z",
+      "side": 1,
+      "message": "declared but not defined?",
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1707e51b_9bd7aa7e",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:58:04Z",
+      "side": 1,
+      "message": "nit: this looks equivalent to:\n\n```suggestion\n    setReclaimPolicy(true /* processPriority */, true /* clientImportance */);\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d22b8d_062096a7",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:58:04Z",
+      "side": 1,
+      "message": "nit: maybe equivalent to:\n\n```suggestion\n    uint32_t callingImportance \u003d std::max(0, clientInfo.importance);\n```\n\nAlso does negative importance mean something special? or it\u0027s not supposed to happen?",
+      "range": {
+        "startLine": 249,
+        "startChar": 21,
+        "endLine": 252,
+        "endChar": 5
+      },
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5ba8a7a_cbf45f58",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:58:04Z",
+      "side": 1,
+      "message": "`getResourceInfoForEdit()` to update importance seems a bit out of place; do we need an explicit update method?",
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac91ad6d_b49aae32",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:58:04Z",
+      "side": 1,
+      "message": "nit: \n```suggestion\n    bool getLeastImportantBiggestClient(int targetPid, int32_t importance,\n```",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 40
+      },
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f11a7b_f35cb3ed",
+        "filename": "services/mediaresourcemanager/aidl/android/media/ClientInfoParcel.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:58:04Z",
+      "side": 1,
+      "message": "nit: maybe a single blank line would be enough?",
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
