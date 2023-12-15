@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84da398_d69f8c61",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-15T19:40:52Z",
+      "side": 1,
+      "message": "I will note it and use next time. For some reason, I was under the impression that the preference was to avoid using auto (as much as possible)",
+      "parentUuid": "92697d3f_5d7fd305",
+      "revId": "5486664df0fde82fe577c36968ab6dc8984b744f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcf68202_46e41cd9",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2997471_73274a18",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-15T19:40:52Z",
+      "side": 1,
+      "message": "Thanks Wonsik.\nI am adding this note in both ResourceManagerService and ResourceManagerServiceNew headers",
+      "parentUuid": "dcf68202_46e41cd9",
+      "revId": "5486664df0fde82fe577c36968ab6dc8984b744f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5aec053_7e5a0437",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-12-15T19:19:38Z",
       "side": 1,
       "message": "typo?",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "5486664df0fde82fe577c36968ab6dc8984b744f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b99d6b4_9dc5e03b",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-15T19:40:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b5aec053_7e5a0437",
       "range": {
         "startLine": 42,
         "startChar": 51,
