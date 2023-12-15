@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84ee2f6_bb1b9d99",
+        "filename": "services/mediaresourcemanager/DefaultResourceModel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:37:49Z",
+      "side": 1,
+      "message": "nit: assignment at here may not be necessary",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 50
+      },
+      "revId": "ccc8701a61be3dc3f706bbcd50320c4cf9644284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5113b96_cdb9a011",
+        "filename": "services/mediaresourcemanager/IResourceModel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:37:49Z",
+      "side": 1,
+      "message": "typo:\n```suggestion\n     * @param[in]  reclaimRequestInfo Information about the Reclaim request\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "ccc8701a61be3dc3f706bbcd50320c4cf9644284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af51d1d2_83b34ac7",
+        "filename": "services/mediaresourcemanager/IResourceModel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:37:49Z",
+      "side": 1,
+      "message": "typo:\n\n```suggestion\n    virtual bool getAllClients(const ReclaimRequestInfo\u0026 reclaimRequestInfo,\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 57,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "ccc8701a61be3dc3f706bbcd50320c4cf9644284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4deced0f_d22ccb59",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:37:49Z",
+      "side": 1,
+      "message": "this seems to have exact same description as `getAllClients_l`. Maybe helpful to highlight the difference.",
+      "revId": "ccc8701a61be3dc3f706bbcd50320c4cf9644284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fcabf1_6352597c",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:37:49Z",
+      "side": 1,
+      "message": "Should we just declare `mDefaultResourceModel` as `std::unique_ptr\u003cDefaultResourceModel\u003e`?",
+      "revId": "ccc8701a61be3dc3f706bbcd50320c4cf9644284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f2d596_9fabe0e2",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:37:49Z",
+      "side": 1,
+      "message": "we have a method with the same name below that is a override vs. this one that is not. Can we rename the method so it\u0027s clear that this is not an override?",
+      "revId": "ccc8701a61be3dc3f706bbcd50320c4cf9644284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2193ed5_f447ea20",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T20:37:49Z",
+      "side": 1,
+      "message": "`contains()`?",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "ccc8701a61be3dc3f706bbcd50320c4cf9644284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
