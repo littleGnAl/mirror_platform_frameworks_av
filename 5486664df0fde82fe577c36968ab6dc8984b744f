@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92697d3f_5d7fd305",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T19:19:38Z",
+      "side": 1,
+      "message": "nit: you can use `const auto` for iterators",
+      "revId": "5486664df0fde82fe577c36968ab6dc8984b744f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf68202_46e41cd9",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T19:19:38Z",
+      "side": 1,
+      "message": "Maybe add a comment that we eventually want to phase out the old ResourceManagerService and having private virtual methods overridden is the best (easiest?) way to maintain both implementation.",
+      "revId": "5486664df0fde82fe577c36968ab6dc8984b744f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5aec053_7e5a0437",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-15T19:19:38Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "5486664df0fde82fe577c36968ab6dc8984b744f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
