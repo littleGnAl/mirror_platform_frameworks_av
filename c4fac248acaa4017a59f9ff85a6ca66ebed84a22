@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4176b830_c51c9413",
+        "filename": "services/mediaresourcemanager/ProcessPriorityReclaimPolicy.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-16T02:49:17Z",
+      "side": 1,
+      "message": "No, this will only list all the clients with the given resources.\n\nThe reclaim policy is the one that picks the client(s) based on the policy.",
+      "parentUuid": "921a1304_049a2162",
+      "revId": "c4fac248acaa4017a59f9ff85a6ca66ebed84a22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99c44ea6_78d201cf",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-12-15T20:43:56Z",
       "side": 1,
       "message": "nit: const?",
+      "revId": "c4fac248acaa4017a59f9ff85a6ca66ebed84a22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b797e2be_1633fbe9",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-16T02:49:17Z",
+      "side": 1,
+      "message": "Since getClients isn\u0027t a const function, this is intentionally made non-const",
+      "parentUuid": "99c44ea6_78d201cf",
       "revId": "c4fac248acaa4017a59f9ff85a6ca66ebed84a22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
