@@ -859,18 +859,25 @@ NO_THREAD_SAFETY_ANALYSIS  // conditional try lock
             dprintf(fd, "\nIEffect binder call profile:\n");
             write(fd, timeCheckStats.c_str(), timeCheckStats.size());
 
-            // Automatically fetch HIDL statistics.
-            std::shared_ptr<std::vector<std::string>> hidlClassNames =
-                    mediautils::getStatisticsClassesForModule(
-                            METHOD_STATISTICS_MODULE_NAME_AUDIO_HIDL);
-            if (hidlClassNames) {
-                for (const auto& className : *hidlClassNames) {
-                    auto stats = mediautils::getStatisticsForClass(className);
-                    if (stats) {
-                        timeCheckStats = stats->dump();
-                        dprintf(fd, "\n%s binder call profile:\n", className.c_str());
-                        write(fd, timeCheckStats.c_str(), timeCheckStats.size());
-                    }
+            // Automatically fetch HIDL and AIDL statistics.
+            std::vector<std::string> halClassNames = []() {
+                std::vector<std::string> classNames;
+                std::shared_ptr<std::vector<std::string>> hidlClassNames =
+                        mediautils::getStatisticsClassesForModule(
+                                METHOD_STATISTICS_MODULE_NAME_AUDIO_HIDL);
+                std::shared_ptr<std::vector<std::string>> aidlClassNames =
+                        mediautils::getStatisticsClassesForModule(
+                                METHOD_STATISTICS_MODULE_NAME_AUDIO_AIDL);
+                classNames.insert(classNames.end(), hidlClassNames->begin(), hidlClassNames->end());
+                classNames.insert(classNames.end(), aidlClassNames->begin(), aidlClassNames->end());
+                return classNames;
+            }();
+            for (const auto& className : halClassNames) {
+                auto stats = mediautils::getStatisticsForClass(className);
+                if (stats) {
+                    timeCheckStats = stats->dump();
+                    dprintf(fd, "\n%s binder call profile:\n", className.c_str());
+                    write(fd, timeCheckStats.c_str(), timeCheckStats.size());
                 }
             }
 
