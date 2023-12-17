@@ -450,6 +450,8 @@ private:
     void dumpClients_ll(int fd, const Vector<String16>& args) REQUIRES(mutex(), clientMutex());
     void dumpInternals_l(int fd, const Vector<String16>& args) REQUIRES(mutex());
 
+    std::vector<std::string> getHalClassNames() const EXCLUDES_AudioFlinger_Mutex;
+
     SimpleLog mThreadLog{16}; // 16 Thread history limit
 
     void dumpToThreadLog_l(const sp<IAfThreadBase>& thread) REQUIRES(mutex());

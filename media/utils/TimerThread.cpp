@@ -104,10 +104,13 @@ std::string TimerThread::SnapshotAnalysis::toString() const {
 //
 /* static */
 bool TimerThread::isRequestFromHal(const std::shared_ptr<const Request>& request) {
-    const size_t hidlPos = request->tag.asStringView().find("Hidl");
-    if (hidlPos == std::string::npos) return false;
-    // should be a separator afterwards Hidl which indicates the string was in the class.
-    const size_t separatorPos = request->tag.asStringView().find("::", hidlPos);
+    size_t halStrPos = std::string::npos;
+    for (const auto& s : {"Hidl", "Aidl"}) {
+        halStrPos = request->tag.asStringView().find(s);
+    }
+    if (halStrPos == std::string::npos) return false;
+    // should be a separator afterwards Hidl/Aidl which indicates the string was in the class.
+    const size_t separatorPos = request->tag.asStringView().find("::", halStrPos);
     return separatorPos != std::string::npos;
 }
 

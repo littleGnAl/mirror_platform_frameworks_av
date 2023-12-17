@@ -717,6 +717,23 @@ void AudioFlinger::dumpPermissionDenial(int fd, const Vector<String16>& args __u
     write(fd, result.c_str(), result.size());
 }
 
+std::vector<std::string> AudioFlinger::getHalClassNames() const {
+    std::shared_ptr<std::vector<std::string>> hidlClassNames =
+            mediautils::getStatisticsClassesForModule(METHOD_STATISTICS_MODULE_NAME_AUDIO_HIDL);
+    std::shared_ptr<std::vector<std::string>> aidlClassNames =
+            mediautils::getStatisticsClassesForModule(METHOD_STATISTICS_MODULE_NAME_AUDIO_AIDL);
+
+    std::vector<std::string> classNames = {};
+    if (hidlClassNames) {
+        classNames.insert(classNames.end(), hidlClassNames->begin(), hidlClassNames->end());
+    }
+    if (aidlClassNames) {
+        classNames.insert(classNames.end(), aidlClassNames->begin(), aidlClassNames->end());
+    }
+
+    return classNames;
+}
+
 status_t AudioFlinger::dump(int fd, const Vector<String16>& args)
 NO_THREAD_SAFETY_ANALYSIS  // conditional try lock
 {
@@ -859,18 +876,14 @@ NO_THREAD_SAFETY_ANALYSIS  // conditional try lock
             dprintf(fd, "\nIEffect binder call profile:\n");
             write(fd, timeCheckStats.c_str(), timeCheckStats.size());
 
-            // Automatically fetch HIDL statistics.
-            std::shared_ptr<std::vector<std::string>> hidlClassNames =
-                    mediautils::getStatisticsClassesForModule(
-                            METHOD_STATISTICS_MODULE_NAME_AUDIO_HIDL);
-            if (hidlClassNames) {
-                for (const auto& className : *hidlClassNames) {
-                    auto stats = mediautils::getStatisticsForClass(className);
-                    if (stats) {
-                        timeCheckStats = stats->dump();
-                        dprintf(fd, "\n%s binder call profile:\n", className.c_str());
-                        write(fd, timeCheckStats.c_str(), timeCheckStats.size());
-                    }
+            // Automatically fetch HIDL and AIDL statistics.
+            const std::vector<std::string> halClassNames = getHalClassNames();
+            for (const auto& className : halClassNames) {
+                auto stats = mediautils::getStatisticsForClass(className);
+                if (stats) {
+                    timeCheckStats = stats->dump();
+                    dprintf(fd, "\n%s binder call profile:\n", className.c_str());
+                    write(fd, timeCheckStats.c_str(), timeCheckStats.size());
                 }
             }
 
