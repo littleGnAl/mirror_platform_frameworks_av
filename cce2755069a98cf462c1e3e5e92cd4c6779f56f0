@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c459d7_590b30e8",
+        "filename": "services/audioflinger/datapath/AudioHwDevice.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-12-18T00:22:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be needed anymore.",
+      "parentUuid": "c7840790_10a63af0",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c8470df_fdb6dcd6",
@@ -112,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0909514f_cb977d97",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-12-18T00:22:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507f95a0_1aba876a",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88d5acaa_6b89594d",
@@ -173,6 +221,30 @@
       "side": 1,
       "message": "This should be alphabetical.",
       "parentUuid": "e2a76211_c3d536fb",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "cce2755069a98cf462c1e3e5e92cd4c6779f56f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc7e8974_53650599",
+        "filename": "services/audioflinger/datapath/SpdifStreamOut.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2023-12-18T00:22:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "687e2482_0e93174a",
       "range": {
         "startLine": 27,
         "startChar": 0,
