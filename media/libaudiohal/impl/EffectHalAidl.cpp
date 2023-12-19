@@ -57,6 +57,7 @@ using ::aidl::android::hardware::audio::effect::Descriptor;
 using ::aidl::android::hardware::audio::effect::IEffect;
 using ::aidl::android::hardware::audio::effect::IFactory;
 using ::aidl::android::hardware::audio::effect::State;
+using ::aidl::android::hardware::audio::effect::Spatializer;
 
 namespace android {
 namespace effect {
@@ -135,8 +136,10 @@ status_t EffectHalAidl::createAidlConversion(
                 effect, sessionId, ioId, desc, mIsProxyEffect);
     } else if (typeUuid ==
                ::aidl::android::hardware::audio::effect::getEffectTypeUuidSpatializer()) {
+        mIsEffectDefined = IS_PARAMETER_SUPPORTED_BY_HAL(effect, Spatializer, spatializerTag,
+                                                         Spatializer::vendor);
         mConversion = std::make_unique<android::effect::AidlConversionSpatializer>(
-                effect, sessionId, ioId, desc, mIsProxyEffect);
+                effect, sessionId, ioId, desc, mIsProxyEffect, mIsEffectDefined);
     } else if (typeUuid ==
                ::aidl::android::hardware::audio::effect::getEffectTypeUuidVirtualizer()) {
         mConversion = std::make_unique<android::effect::AidlConversionVirtualizer>(

@@ -63,3 +63,45 @@ cc_test {
     ],
     header_libs: ["libaudiohalimpl_headers"],
 }
+
+cc_test {
+    name: "EffectHalAidlTest",
+    srcs: [
+        "EffectHalAidl_test.cpp",
+        ":audio_effect_hal_aidl_src_files",
+        ":audio_effectproxy_src_files",
+    ],
+    defaults: [
+        "libaudiohal_aidl_test_default",
+        "use_libaidlvintf_gtest_helper_static",
+    ],
+    shared_libs: [
+        "libbinder_ndk",
+        "libutils",
+    ],
+    static_libs: [
+        "libgmock",
+    ],
+    header_libs: ["libaudiohalimpl_headers"],
+}
+
+cc_test {
+    name: "EffectHalAidlSpatializerTest",
+    srcs: [
+        "EffectHalAidlSpatializer_test.cpp",
+        ":audio_effect_hal_aidl_src_files",
+        ":audio_effectproxy_src_files",
+    ],
+    defaults: [
+        "libaudiohal_aidl_test_default",
+        "use_libaidlvintf_gtest_helper_static",
+    ],
+    shared_libs: [
+        "libbinder_ndk",
+        "libutils",
+    ],
+    static_libs: [
+        "libgmock",
+    ],
+    header_libs: ["libaudiohalimpl_headers"],
+}

@@ -79,6 +79,29 @@ ConversionResult<F> getParameterSpecificField(const P& u) {
                 aidl::android::aidl2legacy_Parameter_EffectParameterWriter(_aidlParam, _param));  \
     }
 
+/**
+ * Macro to check if an effect parameter can be supported by HAL implementation.
+ *
+ * If an effect implementation return BAD_VALUE for getParameter, consider it as an older version
+ * which doesn't have the parameter definition.
+ *
+ * Quote from: <a href="https://source.android.com/docs/core/architecture/aidl/stable-aidl">
+ * Trying to send a union with a new field fails if the receiver is old and doesn't know about the
+ * field. The implementation will never see the union with the new field. The failure is ignored if
+ * it's a oneway transaction; otherwise the error is BAD_VALUE(for the C++ or NDK backend) or
+ * IllegalArgumentException(for the Java backend). The error is received if the client is sending a
+ * union set to the new field to an old server, or when it's an old client receiving the union from
+ * a new server.
+ */
+#define IS_PARAMETER_SUPPORTED_BY_HAL(_effect, _spec, _tag, _field)                  \
+    ({                                                                               \
+        if (_effect == nullptr) return false;                                        \
+        const auto id = MAKE_SPECIFIC_PARAMETER_ID(_spec, _tag, _field);             \
+        ::aidl::android::hardware::audio::effect::Parameter param;                   \
+        const auto ret = statusTFromBinderStatus(_effect->getParameter(id, &param)); \
+        ret != BAD_VALUE;                                                            \
+    })
+
 ConversionResult<uint32_t> aidl2legacy_Flags_Type_uint32(
         ::aidl::android::hardware::audio::effect::Flags::Type type);
 ConversionResult<uint32_t> aidl2legacy_Flags_Insert_uint32(
