@@ -19,6 +19,7 @@
 #include <android-base/logging.h>
 
 #include <android/binder_auto_utils.h>
+#include <android-base/hex.h>
 #include <codec2/aidl/Configurable.h>
 #include <codec2/aidl/ParamTypes.h>
 
@@ -75,7 +76,7 @@ ScopedAStatus CachedConfigurable::query(
     if (!CreateParamsBlob(params, c2heapParams)) {
         LOG(WARNING) << "query -- invalid output params.";
     }
-    if (c2res == C2_OK) {
+    if (c2res == C2_OK || c2res == C2_BAD_INDEX) {
         return ScopedAStatus::ok();
     }
     return ScopedAStatus::fromServiceSpecificError(c2res);
@@ -115,7 +116,7 @@ ScopedAStatus CachedConfigurable::config(
     if (!CreateParamsBlob(&result->params, c2params)) {
         LOG(DEBUG) << "config -- invalid output params.";
     }
-    if (c2res == C2_OK) {
+    if (c2res == C2_OK || c2res == C2_BAD_INDEX) {
         return ScopedAStatus::ok();
     }
     return ScopedAStatus::fromServiceSpecificError(c2res);
@@ -139,8 +140,6 @@ ScopedAStatus CachedConfigurable::querySupportedParams(
                 LOG(WARNING) << "querySupportedParams -- invalid output params.";
                 break;
             }
-        } else {
-            res = Status::BAD_INDEX;
         }
     }
     paramDesc->resize(dstIx);
@@ -185,7 +184,7 @@ ScopedAStatus CachedConfigurable::querySupportedValues(
             break;
         }
     }
-    if (c2res == C2_OK) {
+    if (c2res == C2_OK || c2res == C2_BAD_INDEX) {
         return ScopedAStatus::ok();
     }
     return ScopedAStatus::fromServiceSpecificError(c2res);

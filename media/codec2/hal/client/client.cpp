@@ -638,15 +638,13 @@ c2_status_t Codec2ConfigurableClient::AidlImpl::query(
     c2_aidl::Params result;
     ndk::ScopedAStatus transStatus = mBase->query(indices, (mayBlock == C2_MAY_BLOCK), &result);
     c2_status_t status = GetC2Status(transStatus, "query");
-    if (status != C2_OK) {
-        return status;
-    }
 
     std::vector<C2Param*> paramPointers;
     if (!c2_aidl::utils::ParseParamsBlob(&paramPointers, result)) {
         LOG(ERROR) << "query -- error while parsing params.";
         return C2_CORRUPTED;
     }
+    LOG(INFO) << "paramPointers.size() = " << paramPointers.size()  << " result size = " << result.params.size();
     size_t i = 0;
     for (auto it = paramPointers.begin();
             it != paramPointers.end(); ) {
@@ -711,9 +709,6 @@ c2_status_t Codec2ConfigurableClient::AidlImpl::config(
     c2_aidl::IConfigurable::ConfigResult result;
     ndk::ScopedAStatus transStatus = mBase->config(aidlParams, (mayBlock == C2_MAY_BLOCK), &result);
     c2_status_t status = GetC2Status(transStatus, "config");
-    if (status != C2_OK) {
-        return status;
-    }
     size_t i = failures->size();
     failures->resize(i + result.failures.size());
     for (const c2_aidl::SettingResult& sf : result.failures) {
