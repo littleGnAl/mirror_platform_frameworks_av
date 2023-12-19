@@ -40,6 +40,7 @@
 #include <system/audio_effects/effect_hapticgenerator.h>
 #include <system/audio_effects/effect_loudnessenhancer.h>
 #include <system/audio_effects/effect_ns.h>
+#include <system/audio_effects/effect_spatializer.h>
 #include <utils/RefBase.h>
 #include <vibrator/ExternalVibrationUtils.h>
 
@@ -223,6 +224,10 @@ std::vector<EffectParamTestTuple> testPairs = {
         std::make_tuple(FX_IID_NS,
                         createEffectParamCombination(NS_PARAM_LEVEL, 1 /* level */,
                                                      sizeof(int32_t) /* returnValueSize */)),
+        std::make_tuple(FX_IID_SPATIALIZER,
+                        createEffectParamCombination(SPATIALIZER_PARAM_LEVEL, 1 /* level */,
+                                                     sizeof(int32_t) /* returnValueSize */)),
+
         std::make_tuple(&EXTEND_EFFECT_TYPE_UUID,
                         createEffectParamCombination(8, kVendorExtensionData,
                                                      sizeof(kVendorExtensionData)))};

@@ -64,6 +64,7 @@ class EffectHalAidl : public EffectHalInterface {
 
     // for TIME_CHECK
     const std::string getClassName() const { return "EffectHalAidl"; }
+    bool isEffectDefined() const { return mIsEffectDefined; };
 
   private:
     friend class sp<EffectHalAidl>;
@@ -73,6 +74,8 @@ class EffectHalAidl : public EffectHalInterface {
     const int32_t mSessionId;
     const int32_t mIoId;
     const bool mIsProxyEffect;
+
+    bool mIsEffectDefined = false;
 
     std::unique_ptr<EffectConversionHelperAidl> mConversion;
 
