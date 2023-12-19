@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bfdd4f_b388eefb",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "These fields are already describe at their location so no need to add this here.\n\nHow about:\n\nThis structure describes the size limits for large frames (frames with multiple\naccess units.)",
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65998f6_ed2eaf9a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "maxSize",
+      "range": {
+        "startLine": 1130,
+        "startChar": 13,
+        "endLine": 1130,
+        "endChar": 26
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df47eec2_aeae34a1",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "delete (this is not just output here)\n\nadd in bytes, e.g. \"maximum size of the buffer in bytes\"",
+      "range": {
+        "startLine": 1130,
+        "startChar": 55,
+        "endLine": 1130,
+        "endChar": 61
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f52fee34_91e5f626",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "\"for the buffer in bytes\". A buffer can be considered full if its size reaches this limit.",
+      "range": {
+        "startLine": 1131,
+        "startChar": 58,
+        "endLine": 1131,
+        "endChar": 64
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd6e7648_aa78b5f2",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "/**\n  This tuning controls the size limits for large output frames for the component.\n  The default value for this tuning is platform specific.\n*/",
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21f43bf_621c429c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "C2_PARAMKEY_OUTPUT_LARGE_FRAME?",
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3c6548_f3982731",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2182,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "nit: space before (\n\nthis needs to be a simple comment as this is not for the Struct below.\n\nFor the struct, please say something specific to the struct itself.\n\nE.g.\n\n/**\n Information for an access unit in a large frame (containing multiple access units)\n */\n \nThen move this whole comment to the C2StreamParam below.",
+      "range": {
+        "startLine": 2182,
+        "startChar": 0,
+        "endLine": 2182,
+        "endChar": 55
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9fe29d_d92ea4df",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-19T18:09:46Z",
+      "side": 1,
+      "message": "uint32_t (Codec 2.0 does not support sizes beyond 32 bits)",
+      "range": {
+        "startLine": 2205,
+        "startChar": 4,
+        "endLine": 2205,
+        "endChar": 12
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
