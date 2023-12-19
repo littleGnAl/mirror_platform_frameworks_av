@@ -2430,6 +2430,26 @@ status_t MPEG4Writer::setNextFd(int fd) {
     return OK;
 }
 
+bool MPEG4Writer::isSampleMetadataValid(size_t trackIndex, int64_t timeUs) {
+    int64_t timeScale = mTimeScaleByTrackIndex[trackIndex];
+
+    // Ensure that the timeUs value does not overflow,
+    // when adding lastDurationUs in the Mpeg4Thread.
+    // for negative timeUs
+    if (timeUs < 0 && timeUs <= (INT64_MIN) / timeScale) {
+        return false;
+    }
+    // for positive timeUs
+    if (abs(timeUs) >= (INT64_MAX - 5E5) / timeScale) {
+        return false;
+    }
+    // check for ctts box
+    if (abs(timeUs) + (30 * 60 * 1000000LL) >= INT64_MAX / timeScale) {
+        return false;
+    }
+    return true;
+}
+
 bool MPEG4Writer::Track::isExifData(
         MediaBufferBase *buffer, uint32_t *tiffHdrOffset) const {
     if (!mIsHeif) {
@@ -2625,6 +2645,7 @@ void MPEG4Writer::Track::setTimeScale() {
     }
 
     CHECK_GT(mTimeScale, 0);
+    mTimeScaleByTrackIndex.push_back(mTimeScale);
 }
 
 void MPEG4Writer::onMessageReceived(const sp<AMessage> &msg) {
@@ -3903,6 +3924,9 @@ status_t MPEG4Writer::Track::threadEntry() {
                 mTrackDurationUs = timestampUs;
             }
 
+            if (timestampUs >= INT64_MAX / mTimeScale) {
+                break;
+            }
             // We need to use the time scale based ticks, rather than the
             // timestamp itself to determine whether we have to use a new
             // stts entry, since we may have rounding errors.
@@ -4877,11 +4901,17 @@ void MPEG4Writer::Track::writeEdtsBox() {
         } else if (mFirstSampleStartOffsetUs > 0) {
             // Track with start time < 0 / negative start offset.
             ALOGV("Normal edit list entry");
-            int32_t mediaTime = (mFirstSampleStartOffsetUs * mTimeScale + 5E5) / 1E6;
-            int32_t firstSampleOffsetTicks =
-                    (mFirstSampleStartOffsetUs * mvhdTimeScale + 5E5) / 1E6;
-            // samples before 0 don't count in for duration, hence subtract firstSampleOffsetTicks.
-            addOneElstTableEntry(tkhdDurationTicks - firstSampleOffsetTicks, mediaTime, 1, 0);
+            if (mFirstSampleStartOffsetUs < (INT64_MAX / mTimeScale)) {
+                int32_t mediaTime = (mFirstSampleStartOffsetUs * mTimeScale + 5E5) / 1E6;
+                int32_t firstSampleOffsetTicks =
+                        (mFirstSampleStartOffsetUs * mvhdTimeScale + 5E5) / 1E6;
+                // samples before 0 don't count in for duration, hence subtract
+                // firstSampleOffsetTicks.
+                if (tkhdDurationTicks >= firstSampleOffsetTicks) {
+                    addOneElstTableEntry(tkhdDurationTicks - firstSampleOffsetTicks, mediaTime, 1,
+                                         0);
+                }
+            }
         } else {
             // Track starting at zero.
             ALOGV("No edit list entry required for this track");
@@ -4902,9 +4932,12 @@ void MPEG4Writer::Track::writeEdtsBox() {
                     int32_t mediaTimeTicks = (mFirstSampleStartOffsetUs * mTimeScale + 5E5) / 1E6;
                     int32_t firstSampleOffsetTicks =
                             (mFirstSampleStartOffsetUs * mvhdTimeScale + 5E5) / 1E6;
+
                     // Samples before 0 don't count for duration, subtract firstSampleOffsetTicks.
-                    addOneElstTableEntry(tkhdDurationTicks - firstSampleOffsetTicks, mediaTimeTicks,
-                                         1, 0);
+                    if (tkhdDurationTicks >= firstSampleOffsetTicks) {
+                        addOneElstTableEntry(tkhdDurationTicks - firstSampleOffsetTicks,
+                                             mediaTimeTicks, 1, 0);
+                    }
                 }
             } else {
                 // Track with B Frames.
