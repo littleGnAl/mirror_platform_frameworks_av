@@ -638,9 +638,6 @@ c2_status_t Codec2ConfigurableClient::AidlImpl::query(
     c2_aidl::Params result;
     ndk::ScopedAStatus transStatus = mBase->query(indices, (mayBlock == C2_MAY_BLOCK), &result);
     c2_status_t status = GetC2Status(transStatus, "query");
-    if (status != C2_OK) {
-        return status;
-    }
 
     std::vector<C2Param*> paramPointers;
     if (!c2_aidl::utils::ParseParamsBlob(&paramPointers, result)) {
@@ -648,8 +645,8 @@ c2_status_t Codec2ConfigurableClient::AidlImpl::query(
         return C2_CORRUPTED;
     }
     size_t i = 0;
-    for (auto it = paramPointers.begin();
-            it != paramPointers.end(); ) {
+    size_t numUpdatedStackParams = 0;
+    for (auto it = paramPointers.begin(); it != paramPointers.end(); ) {
         C2Param* paramPointer = *it;
         if (numStackIndices > 0) {
             --numStackIndices;
@@ -676,7 +673,9 @@ c2_status_t Codec2ConfigurableClient::AidlImpl::query(
                 status = C2_BAD_INDEX;
                 continue;
             }
-            if (!stackParams[i++]->updateFrom(*paramPointer)) {
+            if (stackParams[i++]->updateFrom(*paramPointer)) {
+                ++numUpdatedStackParams;
+            } else {
                 LOG(WARNING) << "query -- param update failed: "
                                 "index = "
                              << paramPointer->index() << ".";
@@ -696,6 +695,13 @@ c2_status_t Codec2ConfigurableClient::AidlImpl::query(
         }
         ++it;
     }
+    size_t numQueried = numUpdatedStackParams;
+    if (heapParams) {
+        numQueried += heapParams.size();
+    }
+    if (status == C2_OK && indices.size() != numQueried) {
+        status = C2_BAD_INDEX;
+    }
     return status;
 }
 
@@ -711,9 +717,6 @@ c2_status_t Codec2ConfigurableClient::AidlImpl::config(
     c2_aidl::IConfigurable::ConfigResult result;
     ndk::ScopedAStatus transStatus = mBase->config(aidlParams, (mayBlock == C2_MAY_BLOCK), &result);
     c2_status_t status = GetC2Status(transStatus, "config");
-    if (status != C2_OK) {
-        return status;
-    }
     size_t i = failures->size();
     failures->resize(i + result.failures.size());
     for (const c2_aidl::SettingResult& sf : result.failures) {
