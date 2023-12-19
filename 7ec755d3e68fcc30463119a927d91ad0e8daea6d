@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d65edf4_f662acad",
+        "filename": "media/libeffects/downmix/aidl/DownmixContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-12-19T19:17:37Z",
+      "side": 1,
+      "message": "That\u0027s good idea, I will keep this as a followup and add it in AudioChannelLayout.aidl",
+      "parentUuid": "59b3238e_4d4179d7",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 91
+      },
+      "revId": "7ec755d3e68fcc30463119a927d91ad0e8daea6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3567be03_03770e73",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-12-19T19:05:22Z",
       "side": 1,
       "message": "nit: should be a single line like line 33 for consistency?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 5
+      },
+      "revId": "7ec755d3e68fcc30463119a927d91ad0e8daea6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d630b83_85c19cc8",
+        "filename": "media/libeffects/downmix/aidl/DownmixContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-12-19T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3567be03_03770e73",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea5e093_2716fc45",
+        "filename": "media/libeffects/downmix/aidl/DownmixContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-12-19T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ead7b011_e7e19671",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "7ec755d3e68fcc30463119a927d91ad0e8daea6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d96cea7_ab1d9f8a",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf13f676_66a4d4fc",
+        "filename": "media/libeffects/downmix/aidl/DownmixContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-12-19T19:17:37Z",
+      "side": 1,
+      "message": "Keeping this as ERROR to align with other `return false` path, Downmix effect will not work with this configuration",
+      "parentUuid": "8d96cea7_ab1d9f8a",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "7ec755d3e68fcc30463119a927d91ad0e8daea6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd2dd642_02b4ec64",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-12-19T19:05:22Z",
       "side": 1,
       "message": "is the error logged twice?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 52
+      },
+      "revId": "7ec755d3e68fcc30463119a927d91ad0e8daea6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "273aa97b_2fe2d575",
+        "filename": "media/libeffects/downmix/aidl/EffectDownmix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-12-19T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd2dd642_02b4ec64",
       "range": {
         "startLine": 197,
         "startChar": 0,
