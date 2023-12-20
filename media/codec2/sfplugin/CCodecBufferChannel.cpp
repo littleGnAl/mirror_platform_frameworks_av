@@ -1479,6 +1479,10 @@ status_t CCodecBufferChannel::start(
                                         { C2PortSurfaceAllocatorTuning::output::PARAM_TYPE },
                                         C2_DONT_BLOCK,
                                         &params);
+                if (err == C2_OK && params.size() == 0) {
+                    // AIDL does not return C2_BAD_INDEX
+                    err = C2_BAD_INDEX;
+                }
                 if ((err != C2_OK && err != C2_BAD_INDEX) || params.size() != 1) {
                     ALOGD("[%s] Query output surface allocator returned %zu params => %s (%u)",
                             mName, params.size(), asString(err), err);
