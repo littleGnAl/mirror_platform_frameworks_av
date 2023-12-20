@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "787baa11_e5ed340f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-20T23:37:51Z",
+      "side": 1,
+      "message": "threshold size?\n\nthreshold is defined as \"limit\" below which there is no action so by adding size, we can be specific that it is a size limit.",
+      "range": {
+        "startLine": 1129,
+        "startChar": 35,
+        "endLine": 1129,
+        "endChar": 39
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc450fbe_1744a014",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 9
