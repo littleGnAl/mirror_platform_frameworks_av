@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaac9997_2af2509c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-20T23:34:50Z",
+      "side": 1,
+      "message": "Thanks for the rework. I thought of a one more thing.",
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc450fbe_1744a014",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-20T23:34:50Z",
+      "side": 1,
+      "message": "nit: if",
+      "range": {
+        "startLine": 1130,
+        "startChar": 51,
+        "endLine": 1130,
+        "endChar": 53
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a98317d_fa8afb03",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-20T23:34:50Z",
+      "side": 1,
+      "message": "this needs to match the name of the field, e.g. \"threshold-size\" or alternately the field needs to be named \"threshold\"",
+      "range": {
+        "startLine": 1141,
+        "startChar": 28,
+        "endLine": 1141,
+        "endChar": 37
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972a208e_4a83a9b6",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2203,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-20T23:34:50Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 2203,
+        "startChar": 63,
+        "endLine": 2203,
+        "endChar": 67
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6dd0a3f_9addbe43",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2208,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-20T23:34:50Z",
+      "side": 1,
+      "message": "this would need to be \"presentation-time-us\" to match the id; however, I recommend calling this simply \"timestamp\" as we use that same notation for the C2WorkOrdinal:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/core/include/C2Work.h;drc\u003d155651d8727d83ddbd5209997257d3344741e227;l\u003d99",
+      "range": {
+        "startLine": 2208,
+        "startChar": 33,
+        "endLine": 2208,
+        "endChar": 51
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
