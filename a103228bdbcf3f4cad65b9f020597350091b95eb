@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d93eaa73_447c3709",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1bfdd4f_b388eefb",
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a65998f6_ed2eaf9a",
@@ -64,6 +82,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a8758b_aa902463",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a65998f6_ed2eaf9a",
+      "range": {
+        "startLine": 1130,
+        "startChar": 13,
+        "endLine": 1130,
+        "endChar": 26
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "402717b2_2bfad8dc",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df47eec2_aeae34a1",
+      "range": {
+        "startLine": 1130,
+        "startChar": 55,
+        "endLine": 1130,
+        "endChar": 61
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f52fee34_91e5f626",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-12-19T18:09:46Z",
       "side": 1,
       "message": "\"for the buffer in bytes\". A buffer can be considered full if its size reaches this limit.",
+      "range": {
+        "startLine": 1131,
+        "startChar": 58,
+        "endLine": 1131,
+        "endChar": 64
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d316ac43_786dd339",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f52fee34_91e5f626",
       "range": {
         "startLine": 1131,
         "startChar": 58,
@@ -104,6 +194,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5b7932_f1eb6f23",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd6e7648_aa78b5f2",
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f21f43bf_621c429c",
@@ -117,6 +225,24 @@
       "writtenOn": "2023-12-19T18:09:46Z",
       "side": 1,
       "message": "C2_PARAMKEY_OUTPUT_LARGE_FRAME?",
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a338a85e_bb144476",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f21f43bf_621c429c",
       "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -144,6 +270,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82954566_d94126c1",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2182,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d3c6548_f3982731",
+      "range": {
+        "startLine": 2182,
+        "startChar": 0,
+        "endLine": 2182,
+        "endChar": 55
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e9fe29d_d92ea4df",
@@ -157,6 +307,30 @@
       "writtenOn": "2023-12-19T18:09:46Z",
       "side": 1,
       "message": "uint32_t (Codec 2.0 does not support sizes beyond 32 bits)",
+      "range": {
+        "startLine": 2205,
+        "startChar": 4,
+        "endLine": 2205,
+        "endChar": 12
+      },
+      "revId": "a103228bdbcf3f4cad65b9f020597350091b95eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7017f2ae_77b3816c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-20T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9fe29d_d92ea4df",
       "range": {
         "startLine": 2205,
         "startChar": 4,
