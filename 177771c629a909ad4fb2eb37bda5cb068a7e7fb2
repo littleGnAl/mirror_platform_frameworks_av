@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be6bc3a_36418886",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "nit: 4 space continuation indent",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaee3061_3092c1ea",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "then 6 here to line things up like here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "148860e2_d399bb27",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "can we use a named struct for this?",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c269b48_191f605a",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "is there are reason why we don\u0027t need getResourceInfosForEdit/getResourceInfoForEdit when removing resources? Is it because the resources are already added?",
+      "range": {
+        "startLine": 135,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebd1748_bb78b080",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "does the ordering matter here? If so, is this some policy bleeding into the model?",
+      "range": {
+        "startLine": 279,
+        "startChar": 37,
+        "endLine": 282,
+        "endChar": 69
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4d9f40_134d82fe",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "does this have a simple type? We are limiting auto to iterators and at times to tuple capture.",
+      "range": {
+        "startLine": 336,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 8
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f5673d8_ded9704a",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "can we comment the type of infos and info?\n\ne.g. auto\u0026 [pid, /* ResourceInfos */ infos]\n\nhere and many places below",
+      "range": {
+        "startLine": 358,
+        "startChar": 21,
+        "endLine": 358,
+        "endChar": 26
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf758cb_50b39dbd",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "seems that it is not used. Can we use comprehension:\n\n(MediaResourceParcel \u0026resource : resources) instead?",
+      "range": {
+        "startLine": 422,
+        "startChar": 13,
+        "endLine": 422,
+        "endChar": 69
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a0aa89_0e4e8f1b",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "why does addResource need a client, but removeResource does not?",
+      "range": {
+        "startLine": 54,
+        "startChar": 92,
+        "endLine": 54,
+        "endChar": 98
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9aa73dd_25079c8a",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "what does this parameter do?",
+      "range": {
+        "startLine": 64,
+        "startChar": 87,
+        "endLine": 64,
+        "endChar": 97
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1c5836_8d943c80",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "what does returning false mean? E.g. are no clients appended in that case, or can some still be appended\n\nFor either true/false, is clients cleared first?\n\nDo we add at lease one client to clients if returning true?",
+      "range": {
+        "startLine": 91,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ba1e29_cadcd579",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "is there a correlation between return value and the resulting values in lowerPriorityPid and lowestPriority?\n\nWe could also return a optional\u003cstruct\u003cpid, priority\u003e\u003e to make this function signature more friendly.",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2707691d_defe6602",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "is there a correlation between return value and clientInfo?\n\nAlternatively we could return optional\u003cClientInfo\u003e\n\nIf ClientInfo is expensive to copy, we could use some sort of smart pointer to it, e.g. shared_ptr\u003cconst ClientInfo\u003e",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c1efff_a3876d0d",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "what happens if none are found?",
+      "range": {
+        "startLine": 105,
+        "startChar": 77,
+        "endLine": 105,
+        "endChar": 85
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467b1cc1_aa9ee157",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "nit: should this be some string writer class?",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94d05e0_778cf496",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "what is the return value mean? should we use an optional\u003cint\u003e here?",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5bdbc8f_54495c63",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "nit: delete (has conflicting clients)",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 48
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b051ce82_a71853b3",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "and return true.",
+      "range": {
+        "startLine": 125,
+        "startChar": 69,
+        "endLine": 125,
+        "endChar": 76
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4bc9bca_c95bfae3",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "what does \"successfully resolved\" mean?",
+      "range": {
+        "startLine": 125,
+        "startChar": 22,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6975731b_244813a2",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T18:11:18Z",
+      "side": 1,
+      "message": "this may be better said expanded.\n\n// get ResourceInfos associated with the given process. If none exists, this method will create an empty object and return it.",
+      "range": {
+        "startLine": 136,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
