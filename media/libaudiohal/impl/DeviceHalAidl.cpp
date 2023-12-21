@@ -903,15 +903,26 @@ status_t DeviceHalAidl::getSoundDoseInterface(const std::string& module,
 }
 
 status_t DeviceHalAidl::prepareToDisconnectExternalDevice(const struct audio_port_v7* port) {
-    // There is not AIDL API defined for `prepareToDisconnectExternalDevice`.
-    // Call `setConnectedState` instead.
-    // TODO(b/279824103): call prepareToDisconnectExternalDevice when it is added.
-    RETURN_STATUS_IF_ERROR(setConnectedState(port, false /*connected*/));
-    std::lock_guard l(mLock);
-    mDeviceDisconnectionNotified.insert(port->id);
-    // Return that there was no error as otherwise the disconnection procedure will not be
-    // considered complete for upper layers, and 'setConnectedState' will not be called again
-    return OK;
+    ALOGD("%p %s::%s", this, getClassName().c_str(), __func__);
+    TIME_CHECK();
+    if (mModule == nullptr) return NO_INIT;
+    if (port == nullptr) {
+        return BAD_VALUE;
+    }
+    const auto status =
+            statusTFromBinderStatus(mModule->prepareToDisconnectExternalDevice(port->id));
+    if (status == UNKNOWN_TRANSACTION) {
+        // If there is not AIDL API defined for `prepareToDisconnectExternalDevice`.
+        // Call `setConnectedState` instead.
+        RETURN_STATUS_IF_ERROR(setConnectedState(port, false /*connected*/));
+        std::lock_guard l(mLock);
+        mDeviceDisconnectionNotified.insert(port->id);
+        // Return that there was no error as otherwise the disconnection procedure will not be
+        // considered complete for upper layers, and 'setConnectedState' will not be called again
+        return OK;
+    } else {
+        return status;
+    }
 }
 
 status_t DeviceHalAidl::setConnectedState(const struct audio_port_v7 *port, bool connected) {
