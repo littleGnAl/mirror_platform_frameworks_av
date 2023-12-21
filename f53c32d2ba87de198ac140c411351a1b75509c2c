@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d639e898_836ad2c6",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-21T23:22:47Z",
+      "side": 1,
+      "message": "nit: importance?",
+      "range": {
+        "startLine": 401,
+        "startChar": 34,
+        "endLine": 401,
+        "endChar": 42
+      },
+      "revId": "f53c32d2ba87de198ac140c411351a1b75509c2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70179c64_4a2b4940",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-12-21T23:22:47Z",
+      "side": 1,
+      "message": "nit: introduced in 35\n\nalso need corresponding change in NdkMediaFormat.cpp",
+      "revId": "f53c32d2ba87de198ac140c411351a1b75509c2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
