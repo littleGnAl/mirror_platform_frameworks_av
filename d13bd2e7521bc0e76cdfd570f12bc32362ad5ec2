@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d88d072_57e79764",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T21:21:44Z",
+      "side": 1,
+      "message": "I am still hoping for a miracle that we can drop the _BUFFER_",
+      "revId": "d13bd2e7521bc0e76cdfd570f12bc32362ad5ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2aadb87_c918f60d",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T21:21:44Z",
+      "side": 1,
+      "message": "these normally match the name, e.g. max-buffer-batch-output-size",
+      "range": {
+        "startLine": 812,
+        "startChar": 60,
+        "endLine": 812,
+        "endChar": 81
+      },
+      "revId": "d13bd2e7521bc0e76cdfd570f12bc32362ad5ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
