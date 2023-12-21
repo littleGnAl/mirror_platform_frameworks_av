@@ -28,11 +28,11 @@
 namespace android {
 
 bool IsCodec2AidlHalSelected() {
+#if 0
     if (!com::android::media::codec::flags::provider_->aidl_hal()) {
         // Cannot select AIDL if not enabled
         return false;
     }
-#if 0
     // NOTE: due to dependency from mainline modules cannot use libsysprop
     using ::android::sysprop::MediaProperties::codec2_hal_selection;
     using ::android::sysprop::MediaProperties::codec2_hal_selection_values;
