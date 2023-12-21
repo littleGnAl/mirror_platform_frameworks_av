@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888dc24c_a00eba67",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T17:43:26Z",
+      "side": 1,
+      "message": "nit: we would need a JavaDoc for the class itself (not the methods that are overriden/inherited)",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "1340db9ff0eb38515fb6883554b5e47f40d70509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
