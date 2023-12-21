@@ -92,6 +92,8 @@ class Hal2AidlMapper {
     void resetUnusedPatchesAndPortConfigs();
     status_t setDevicePortConnectedState(
             const ::aidl::android::media::audio::common::AudioPort& devicePort, bool connected);
+    status_t prepareToDisconnectExternalDevice(
+            const ::aidl::android::media::audio::common::AudioPort& devicePort);
 
   private:
     // IDs of ports for connected external devices, and whether they are held by streams.

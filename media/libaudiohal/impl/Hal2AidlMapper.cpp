@@ -991,4 +991,13 @@ status_t Hal2AidlMapper::updateRoutes() {
     return OK;
 }
 
+status_t Hal2AidlMapper::prepareToDisconnectExternalDevice(
+        const ::aidl::android::media::audio::common::AudioPort& devicePort) {
+    auto portsIt = findPort(devicePort.ext.get<AudioPortExt::device>().device);
+    if (portsIt == mPorts.end()) {
+        return BAD_VALUE;
+    }
+    return statusTFromBinderStatus(mModule->prepareToDisconnectExternalDevice(portsIt->second.id));
+}
+
 } // namespace android
