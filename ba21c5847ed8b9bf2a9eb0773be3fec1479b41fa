@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b69a8b83_4b5717e5",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-21T00:58:10Z",
+      "side": 1,
+      "message": "I think it makes sense for thresholdSize, but should it be more specific like \"buffer should be considered full if its size reaches this limit\" ?",
+      "parentUuid": "787baa11_e5ed340f",
+      "range": {
+        "startLine": 1129,
+        "startChar": 35,
+        "endLine": 1129,
+        "endChar": 39
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc450fbe_1744a014",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 9
@@ -54,6 +78,30 @@
       "writtenOn": "2023-12-20T23:34:50Z",
       "side": 1,
       "message": "nit: if",
+      "range": {
+        "startLine": 1130,
+        "startChar": 51,
+        "endLine": 1130,
+        "endChar": 53
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cfe24a1_c67a9a26",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-21T00:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc450fbe_1744a014",
       "range": {
         "startLine": 1130,
         "startChar": 51,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f741967_46c1cb7b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-21T00:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a98317d_fa8afb03",
+      "range": {
+        "startLine": 1141,
+        "startChar": 28,
+        "endLine": 1141,
+        "endChar": 37
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "972a208e_4a83a9b6",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16dc0780_6c211088",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2203,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-21T00:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972a208e_4a83a9b6",
+      "range": {
+        "startLine": 2203,
+        "startChar": 63,
+        "endLine": 2203,
+        "endChar": 67
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6dd0a3f_9addbe43",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-12-20T23:34:50Z",
       "side": 1,
       "message": "this would need to be \"presentation-time-us\" to match the id; however, I recommend calling this simply \"timestamp\" as we use that same notation for the C2WorkOrdinal:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/core/include/C2Work.h;drc\u003d155651d8727d83ddbd5209997257d3344741e227;l\u003d99",
+      "range": {
+        "startLine": 2208,
+        "startChar": 33,
+        "endLine": 2208,
+        "endChar": 51
+      },
+      "revId": "ba21c5847ed8b9bf2a9eb0773be3fec1479b41fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29b9acc_5ea11864",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2208,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-21T00:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6dd0a3f_9addbe43",
       "range": {
         "startLine": 2208,
         "startChar": 33,
