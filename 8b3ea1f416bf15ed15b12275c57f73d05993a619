@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f1704d_f672822f",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2023-12-21T22:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d831667_beb1a436",
+      "range": {
+        "startLine": 913,
+        "startChar": 79,
+        "endLine": 913,
+        "endChar": 87
+      },
+      "revId": "8b3ea1f416bf15ed15b12275c57f73d05993a619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3098e8f5_8fbbd597",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-21T22:19:46Z",
       "side": 1,
       "message": "This comment needs to be updated.",
+      "range": {
+        "startLine": 939,
+        "startChar": 50,
+        "endLine": 940,
+        "endChar": 55
+      },
+      "revId": "8b3ea1f416bf15ed15b12275c57f73d05993a619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0540fd68_979ab9c2",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2023-12-21T22:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3098e8f5_8fbbd597",
       "range": {
         "startLine": 939,
         "startChar": 50,
