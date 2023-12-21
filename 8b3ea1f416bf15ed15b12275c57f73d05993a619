@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d831667_beb1a436",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T22:19:46Z",
+      "side": 1,
+      "message": "This is the APM\u0027s port ID, but the HAL needs its own ID. I think, this calls needs actually be implemented inside `Hal2Aidl\u0027 mapper, you can check the `setConnectedState` implementation.",
+      "range": {
+        "startLine": 913,
+        "startChar": 79,
+        "endLine": 913,
+        "endChar": 87
+      },
+      "revId": "8b3ea1f416bf15ed15b12275c57f73d05993a619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3098e8f5_8fbbd597",
+        "filename": "media/libaudiohal/impl/DeviceHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T22:19:46Z",
+      "side": 1,
+      "message": "This comment needs to be updated.",
+      "range": {
+        "startLine": 939,
+        "startChar": 50,
+        "endLine": 940,
+        "endChar": 55
+      },
+      "revId": "8b3ea1f416bf15ed15b12275c57f73d05993a619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
