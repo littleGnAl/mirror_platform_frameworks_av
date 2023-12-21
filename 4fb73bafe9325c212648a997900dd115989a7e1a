@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5582de_99f10b75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T23:07:57Z",
+      "side": 1,
+      "message": "Looks good, please address comments.",
+      "revId": "4fb73bafe9325c212648a997900dd115989a7e1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a12739f_b97245a5",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T23:07:57Z",
+      "side": 1,
+      "message": "Also please move up to reflect the order of definitions in the header file.",
+      "range": {
+        "startLine": 994,
+        "startChar": 0,
+        "endLine": 994,
+        "endChar": 58
+      },
+      "revId": "4fb73bafe9325c212648a997900dd115989a7e1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d14fcf_0187e19b",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T23:07:57Z",
+      "side": 1,
+      "message": "Should be just `AudioPort` thanks to `using` directives.",
+      "range": {
+        "startLine": 995,
+        "startChar": 14,
+        "endLine": 995,
+        "endChar": 62
+      },
+      "revId": "4fb73bafe9325c212648a997900dd115989a7e1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46299d4_07d6af27",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T23:07:57Z",
+      "side": 1,
+      "message": "Please move up to preserve alphabetic order.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 80
+      },
+      "revId": "4fb73bafe9325c212648a997900dd115989a7e1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
