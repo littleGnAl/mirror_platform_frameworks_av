@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "130ef8be_f7298a6d",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Responding to both here.\n\nThe Android Framework C++ Code Style Guidelines suggests using 8 spaces for Constructor initializer lists (and moving : to the same line as constructor)",
+      "parentUuid": "eaee3061_3092c1ea",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "148860e2_d399bb27",
         "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
         "patchSetId": 5
@@ -60,6 +84,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "can we use a named struct for this?",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa82d61f_a5ba719f",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "addressing this in aosp/2871414",
+      "parentUuid": "148860e2_d399bb27",
       "range": {
         "startLine": 75,
         "startChar": 29,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "907e0176_001035bb",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Yeah, thats right. Removing only those resources that are added (If we don\u0027t have one, we don\u0027t do anything)",
+      "parentUuid": "8c269b48_191f605a",
+      "range": {
+        "startLine": 135,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ebd1748_bb78b080",
         "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
         "patchSetId": 5
@@ -106,6 +178,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "does the ordering matter here? If so, is this some policy bleeding into the model?",
+      "range": {
+        "startLine": 279,
+        "startChar": 37,
+        "endLine": 282,
+        "endChar": 69
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4c10e3_dc6fad0b",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "The order doesn\u0027t matter in this case.\nThis function is used to get the list of all the clients that are marked to be (pending) removed and reclaim them for a given process.\nSo, all of them will be reclaimed.",
+      "parentUuid": "0ebd1748_bb78b080",
       "range": {
         "startLine": 279,
         "startChar": 37,
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec133107_a35d41ff",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4d9f40_134d82fe",
+      "range": {
+        "startLine": 336,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 8
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f5673d8_ded9704a",
@@ -152,6 +272,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "can we comment the type of infos and info?\n\ne.g. auto\u0026 [pid, /* ResourceInfos */ infos]\n\nhere and many places below",
+      "range": {
+        "startLine": 358,
+        "startChar": 21,
+        "endLine": 358,
+        "endChar": 26
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95181535_70e2905d",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f5673d8_ded9704a",
       "range": {
         "startLine": 358,
         "startChar": 21,
@@ -187,6 +331,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03e9dde3_20c88366",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Its taken care of in aosp/2871414",
+      "parentUuid": "bdf758cb_50b39dbd",
+      "range": {
+        "startLine": 422,
+        "startChar": 13,
+        "endLine": 422,
+        "endChar": 69
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0a0aa89_0e4e8f1b",
         "filename": "services/mediaresourcemanager/ResourceTracker.h",
         "patchSetId": 5
@@ -198,6 +366,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "why does addResource need a client, but removeResource does not?",
+      "range": {
+        "startLine": 54,
+        "startChar": 92,
+        "endLine": 54,
+        "endChar": 98
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad1eb87_ff008a77",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "- addResource basically adds the client in to the map using client info (id) as a key, along with the resources. For the subsequent call, it updates the resources (that are being added)\n- removeResource removes the resources associated with the client (using id as the key)",
+      "parentUuid": "a0a0aa89_0e4e8f1b",
       "range": {
         "startLine": 54,
         "startChar": 92,
@@ -233,6 +425,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65ccd086_72fbf513",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "All the binder calls through IResourceManagerService is validated through its pid (checking whether its a trusted process - which is defined in media/utils/ProcessInfo.cpp)",
+      "parentUuid": "c9aa73dd_25079c8a",
+      "range": {
+        "startLine": 64,
+        "startChar": 87,
+        "endLine": 64,
+        "endChar": 97
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a1c5836_8d943c80",
         "filename": "services/mediaresourcemanager/ResourceTracker.h",
         "patchSetId": 5
@@ -244,6 +460,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "what does returning false mean? E.g. are no clients appended in that case, or can some still be appended\n\nFor either true/false, is clients cleared first?\n\nDo we add at lease one client to clients if returning true?",
+      "range": {
+        "startLine": 91,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9c09fb_0efd5328",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "It returns true upon finding at lease one client with the given resource request info.\nUpdating the implementation to ensure the same.\nThe clients (list) isn\u0027t cleared by this function (to allow calling this multiple time for different resources)",
+      "parentUuid": "4a1c5836_8d943c80",
       "range": {
         "startLine": 91,
         "startChar": 38,
@@ -279,6 +519,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3d3af57_13ca63d8",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "the pid/priority of the lowest priority process (lowestPriorityPid and lowestPriority) are set only upon success (that is when we find a lower priority process with given resource).\nIf we can\u0027t find one (unsuccessful), lowestPriorityPid and lowestPriority aren\u0027t updated.\nI will make a note of this suggestion (using) optional for the further refactoring changes.",
+      "parentUuid": "91ba1e29_cadcd579",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2707691d_defe6602",
         "filename": "services/mediaresourcemanager/ResourceTracker.h",
         "patchSetId": 5
@@ -290,6 +554,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "is there a correlation between return value and clientInfo?\n\nAlternatively we could return optional\u003cClientInfo\u003e\n\nIf ClientInfo is expensive to copy, we could use some sort of smart pointer to it, e.g. shared_ptr\u003cconst ClientInfo\u003e",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4480cf8_facd0df6",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "the client info (pid/uid/client-id) of the biggest client from the given process is set only upon success.\n\nI will make a note of this suggestion (using) optional for the further refactoring changes.",
+      "parentUuid": "2707691d_defe6602",
       "range": {
         "startLine": 101,
         "startChar": 7,
@@ -325,6 +613,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2a5cfe0_6a3afcce",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Failure to find a client with the given info will return with nullptr.\nThe caller will have to validate it.",
+      "parentUuid": "51c1efff_a3876d0d",
+      "range": {
+        "startLine": 105,
+        "startChar": 77,
+        "endLine": 105,
+        "endChar": 85
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "467b1cc1_aa9ee157",
         "filename": "services/mediaresourcemanager/ResourceTracker.h",
         "patchSetId": 5
@@ -336,6 +648,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "nit: should this be some string writer class?",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d37fec_477ce7a8",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "I think in C++ (unlike Java), there aren\u0027t any good string builder/writer. One option I explored was std::stringstream, but std::string is efficient.",
+      "parentUuid": "467b1cc1_aa9ee157",
       "range": {
         "startLine": 119,
         "startChar": 19,
@@ -371,6 +707,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1d73821_be4ba678",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "If we fail to get the priority (oom score) of the process with given pid, this will return false.",
+      "parentUuid": "d94d05e0_778cf496",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5bdbc8f_54495c63",
         "filename": "services/mediaresourcemanager/ResourceTracker.h",
         "patchSetId": 5
@@ -382,6 +742,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "nit: delete (has conflicting clients)",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 48
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f0e16ea_07aa461a",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bdbc8f_54495c63",
       "range": {
         "startLine": 124,
         "startChar": 47,
@@ -440,6 +824,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "646cda0e_1982ac5f",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Here, the ResourceTracker only looks for resources from lower priority processes.                                                                                         If there is a higher or same priority process with the given resource - that is defined as conflict - and the function returns false.",
+      "parentUuid": "c4bc9bca_c95bfae3",
+      "range": {
+        "startLine": 125,
+        "startChar": 22,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6975731b_244813a2",
         "filename": "services/mediaresourcemanager/ResourceTracker.h",
         "patchSetId": 5
@@ -451,6 +859,30 @@
       "writtenOn": "2023-12-21T18:11:18Z",
       "side": 1,
       "message": "this may be better said expanded.\n\n// get ResourceInfos associated with the given process. If none exists, this method will create an empty object and return it.",
+      "range": {
+        "startLine": 136,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942e6869_7a51e198",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-21T22:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6975731b_244813a2",
       "range": {
         "startLine": 136,
         "startChar": 7,
