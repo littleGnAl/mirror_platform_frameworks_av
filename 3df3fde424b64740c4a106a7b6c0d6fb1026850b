@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b7f867_22ac2f69",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2203,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2023-12-21T17:32:10Z",
+      "side": 1,
+      "message": "nit: microseconds (it is more clear if we avoid the abbreviation)",
+      "range": {
+        "startLine": 2203,
+        "startChar": 40,
+        "endLine": 2203,
+        "endChar": 42
+      },
+      "revId": "3df3fde424b64740c4a106a7b6c0d6fb1026850b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
