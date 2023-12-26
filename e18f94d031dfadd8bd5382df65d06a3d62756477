@@ -116,6 +116,30 @@
       },
       "revId": "e18f94d031dfadd8bd5382df65d06a3d62756477",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42885a2_0aa92327",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2023-12-26T23:12:50Z",
+      "side": 1,
+      "message": "Updated with errorDetailMsg. These follows the other MediaCodec APIs the actual external APIs in \"base\" have documentation.",
+      "parentUuid": "1eb5d7f2_6d66ea98",
+      "range": {
+        "startLine": 189,
+        "startChar": 13,
+        "endLine": 189,
+        "endChar": 30
+      },
+      "revId": "e18f94d031dfadd8bd5382df65d06a3d62756477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
