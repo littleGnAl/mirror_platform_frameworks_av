@@ -133,6 +133,8 @@ protected:
 
     friend struct ComponentStore;
 
+    friend struct LargeBufferHandler;
+
     struct Listener;
 
     using HwDeathRecipient = ::android::hardware::hidl_death_recipient;

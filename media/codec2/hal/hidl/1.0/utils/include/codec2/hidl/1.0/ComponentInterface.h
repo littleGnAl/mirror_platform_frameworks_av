@@ -23,9 +23,11 @@
 #include <android/hardware/media/c2/1.0/IComponentInterface.h>
 #include <hidl/Status.h>
 
+#include <C2Config.h>
 #include <C2Component.h>
 #include <C2Buffer.h>
 #include <C2.h>
+#include <util/C2InterfaceHelper.h>
 
 #include <memory>
 
@@ -42,9 +44,24 @@ using ::android::sp;
 
 struct ComponentStore;
 
+struct LargeBufferInterface : public C2InterfaceHelper {
+    explicit LargeBufferInterface(
+            const std::shared_ptr<C2ReflectorHelper> &helper);
+
+    std::shared_ptr<C2LargeFrame::output> get() const;
+
+protected:
+    std::shared_ptr<C2LargeFrame::output> mLargeFrameParams;
+};
+
 struct ComponentInterface : public IComponentInterface {
     ComponentInterface(
             const std::shared_ptr<C2ComponentInterface>& interface,
+            const std::shared_ptr<ParameterCache>& cache);
+
+    ComponentInterface(
+            const std::shared_ptr<C2ComponentInterface>& interface,
+            const std::shared_ptr<LargeBufferInterface>& largeBufferIntf,
             const std::shared_ptr<ParameterCache>& cache);
     c2_status_t status() const;
     virtual Return<sp<IConfigurable>> getConfigurable() override;
