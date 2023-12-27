@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 The Android Open Source Project
+ * Copyright 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,27 +14,26 @@
  * limitations under the License.
  */
 
-#ifndef CODEC2_HIDL_V1_1_UTILS_COMPONENT_INTERFACE_H
-#define CODEC2_HIDL_V1_1_UTILS_COMPONENT_INTERFACE_H
+#ifndef CODEC2_HIDL_V1_2_UTILS_MULTI_ACCESSUNIT_HANDLER_H
+#define CODEC2_HIDL_V1_2_UTILS_MULTI_ACCESSUNIT_HANDLER_H
 
-#include <codec2/hidl/1.0/ComponentInterface.h>
-#include <codec2/hidl/1.1/types.h>
+#include <codec2/hidl/1.0/MultiAccessUnitHandler.h>
+#include <codec2/hidl/1.2/types.h>
 
 namespace android {
 namespace hardware {
 namespace media {
 namespace c2 {
-namespace V1_1 {
+namespace V1_2 {
 namespace utils {
 
-using ::android::hardware::media::c2::V1_0::utils::MultiAccessUnitInterface;
-using ::android::hardware::media::c2::V1_0::utils::ComponentInterface;
+using ::android::hardware::media::c2::V1_0::utils::MultiAccessUnitHandler;
 
 } // namespace utils
-} // namespace V1_1
+} // namespace V1_2
 } // namespace c2
 } // namespace media
 } // namespace hardware
 } // namespace android
 
-#endif // CODEC2_HIDL_V1_1_UTILS_COMPONENT_INTERFACE_H
+#endif // CODEC2_HIDL_V1_2_UTILS_MULTI_ACCESSUNIT_HANDLER_H
