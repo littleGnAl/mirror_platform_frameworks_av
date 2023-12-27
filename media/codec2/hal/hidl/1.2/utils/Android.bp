@@ -81,6 +81,7 @@ cc_library {
         "InputBufferManager.cpp",
         "InputSurface.cpp",
         "InputSurfaceConnection.cpp",
+        "MultiAccessUnitHandler.cpp",
         "types.cpp",
     ],
 
