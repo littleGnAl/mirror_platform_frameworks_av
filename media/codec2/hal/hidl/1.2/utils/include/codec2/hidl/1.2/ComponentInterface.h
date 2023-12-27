@@ -27,6 +27,7 @@ namespace c2 {
 namespace V1_2 {
 namespace utils {
 
+using ::android::hardware::media::c2::V1_0::utils::MultiAccessUnitInterface;
 using ::android::hardware::media::c2::V1_0::utils::ComponentInterface;
 
 } // namespace utils
