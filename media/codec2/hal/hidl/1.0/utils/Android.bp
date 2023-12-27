@@ -74,6 +74,7 @@ cc_library {
         "InputBufferManager.cpp",
         "InputSurface.cpp",
         "InputSurfaceConnection.cpp",
+        "MultiAccessUnitHandler.cpp",
         "types.cpp",
     ],
 
@@ -103,6 +104,8 @@ cc_library {
         "libstagefright_bufferqueue_helper_novndk",
         "libui",
         "libutils",
+        "server_configurable_flags",
+        "aconfig_mediacodec_flags_c_lib",
     ],
 
     target: {

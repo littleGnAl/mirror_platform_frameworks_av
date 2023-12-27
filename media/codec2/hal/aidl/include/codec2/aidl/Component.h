@@ -20,6 +20,7 @@
 #include <codec2/aidl/ComponentInterface.h>
 #include <codec2/aidl/Configurable.h>
 #include <codec2/aidl/BufferTypes.h>
+#include <codec2/aidl/MultiAccessUnitHandler.h>
 #include <codec2/aidl/ParamTypes.h>
 
 #include <aidl/android/hardware/media/bufferpool2/IClientManager.h>
@@ -77,6 +78,8 @@ protected:
     std::shared_ptr<C2Component> mComponent;
     std::shared_ptr<ComponentInterface> mInterface;
     std::shared_ptr<IComponentListener> mListener;
+    std::shared_ptr<MultiAccessUnitInterface> mMultiAccessUnitIntf;
+    std::shared_ptr<MultiAccessUnitHandler> mMultiAccessUnitHdl;
     std::shared_ptr<ComponentStore> mStore;
     DefaultBufferPoolSender mBufferPoolSender;
 
@@ -93,6 +96,8 @@ protected:
     friend struct ComponentStore;
 
     struct Listener;
+
+    friend struct MultiAccessUnitListener;
 
     ::ndk::ScopedAIBinder_DeathRecipient mDeathRecipient;
     static void OnBinderDied(void *cookie);
