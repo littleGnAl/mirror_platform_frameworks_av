@@ -75,6 +75,7 @@ cc_library {
         "ComponentStore.cpp",
         "Configurable.cpp",
         "InputBufferManager.cpp",
+        "MultiAccessUnitHandler.cpp",
         "ParamTypes.cpp",
     ],
 
