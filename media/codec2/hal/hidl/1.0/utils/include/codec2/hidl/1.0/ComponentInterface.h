@@ -25,8 +25,11 @@
 
 #include <C2Component.h>
 #include <C2Buffer.h>
+#include <C2Config.h>
+#include <util/C2InterfaceHelper.h>
 #include <C2.h>
 
+#include <set>
 #include <memory>
 
 namespace android {
@@ -42,9 +45,26 @@ using ::android::sp;
 
 struct ComponentStore;
 
+struct MultiAccessUnitInterface : public C2InterfaceHelper {
+    explicit MultiAccessUnitInterface(
+            std::shared_ptr<C2ReflectorHelper> helper);
+
+    bool isParamSupported(C2Param::Index index);
+    std::shared_ptr<C2LargeFrame::output> get() const;
+
+protected:
+    std::shared_ptr<C2LargeFrame::output> mLargeFrameParams;
+    std::set<C2Param::Index> mSupportedParamIndexSet;
+};
+
 struct ComponentInterface : public IComponentInterface {
     ComponentInterface(
             const std::shared_ptr<C2ComponentInterface>& interface,
+            const std::shared_ptr<ParameterCache>& cache);
+
+    ComponentInterface(
+            const std::shared_ptr<C2ComponentInterface>& interface,
+            const std::shared_ptr<MultiAccessUnitInterface>& largeBufferIntf,
             const std::shared_ptr<ParameterCache>& cache);
     c2_status_t status() const;
     virtual Return<sp<IConfigurable>> getConfigurable() override;
