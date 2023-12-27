@@ -19,6 +19,7 @@
 
 #include <codec2/hidl/1.0/ComponentInterface.h>
 #include <codec2/hidl/1.0/Configurable.h>
+#include <codec2/hidl/1.0/MultiAccessUnitHandler.h>
 #include <codec2/hidl/1.0/types.h>
 
 #include <android/hardware/media/bufferpool/2.0/IClientManager.h>
@@ -27,6 +28,7 @@
 #include <android/hardware/media/c2/1.0/IComponentListener.h>
 #include <android/hardware/media/c2/1.0/IComponentStore.h>
 #include <android/hardware/media/c2/1.0/IInputSink.h>
+
 #include <hidl/Status.h>
 #include <hwbinder/IBinder.h>
 
@@ -113,6 +115,8 @@ protected:
     std::shared_ptr<C2Component> mComponent;
     sp<ComponentInterface> mInterface;
     sp<IComponentListener> mListener;
+    std::shared_ptr<MultiAccessUnitInterface> mMultiAccessUnitIntf;
+    std::shared_ptr<MultiAccessUnitHandler> mMultiAccessUnitHdl;
     sp<ComponentStore> mStore;
     ::android::hardware::media::c2::V1_0::utils::DefaultBufferPoolSender
             mBufferPoolSender;
@@ -134,6 +138,8 @@ protected:
     friend struct ComponentStore;
 
     struct Listener;
+
+    friend struct MultiAccessUnitListener;
 
     using HwDeathRecipient = ::android::hardware::hidl_death_recipient;
     sp<HwDeathRecipient> mDeathRecipient;
