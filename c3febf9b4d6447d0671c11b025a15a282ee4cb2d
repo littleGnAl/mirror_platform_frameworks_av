@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d46a7a_63adcccb",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-27T18:50:58Z",
+      "side": 1,
+      "message": "Wonsik mentioned that, it should be 35.\n(For the next line too)",
+      "range": {
+        "startLine": 189,
+        "startChar": 81,
+        "endLine": 189,
+        "endChar": 83
+      },
+      "revId": "c3febf9b4d6447d0671c11b025a15a282ee4cb2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a33fd6d_eac7ffb0",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2023-12-27T18:50:58Z",
+      "side": 1,
+      "message": "And these needs to be defined in media/ndk/NdkMediaFormat.cpp",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 91
+      },
+      "revId": "c3febf9b4d6447d0671c11b025a15a282ee4cb2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
