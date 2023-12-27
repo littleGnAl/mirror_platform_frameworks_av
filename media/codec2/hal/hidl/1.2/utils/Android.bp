@@ -102,6 +102,7 @@ cc_library {
         "android.hardware.media.omx@1.0",
         "libbase",
         "libcodec2",
+        "libcodec2_hal_common",
         "libcodec2_hidl@1.0",
         "libcodec2_hidl@1.1",
         "libcodec2_hidl_plugin_stub",
