@@ -590,7 +590,7 @@ void CCodecConfig::initializeStandardParams() {
         .withMapper(makeFloat));
     // C2 priorities are inverted
     add(ConfigMapper(KEY_PRIORITY,         C2_PARAMKEY_PRIORITY,           "value")
-        .withMappers(negate, negate));
+        .limitTo(D::VIDEO | D::ENCODER ));
     // remove when codecs switch to PARAMKEY
     deprecated(ConfigMapper(KEY_OPERATING_RATE,   "ctrl.operating-rate",     "value")
                .withMapper(makeFloat));
