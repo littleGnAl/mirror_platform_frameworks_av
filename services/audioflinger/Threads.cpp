@@ -2950,7 +2950,8 @@ bool PlaybackThread::destroyTrack_l(const sp<IAfTrack>& track)
     track->setState(IAfTrackBase::STOPPED);
     if (!trackActive) {
         removeTrack_l(track);
-    } else if (track->isFastTrack() || track->isOffloaded() || track->isDirect()) {
+    } else if (track->isFastTrack() || track->isOffloaded() || track->isDirect()
+                                                            || mType == OFFLOAD) {
         if (track->isPausePending()) {
             track->pauseAck();
         }

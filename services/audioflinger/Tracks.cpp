@@ -1388,7 +1388,7 @@ void Track::flush()
             (void)mServerProxy->flushBufferIfNeeded();
         }
 
-        if (isOffloaded()) {
+        if (isOffloaded() || playbackThread->type() == ThreadBase::OFFLOAD) {
             // If offloaded we allow flush during any state except terminated
             // and keep the track active to avoid problems if user is seeking
             // rapidly and underlying hardware has a significant delay handling
@@ -1440,7 +1440,7 @@ void Track::flush()
 // must be called with thread lock held
 void Track::flushAck()
 {
-    if (!isOffloaded() && !isDirect()) {
+    if (!isOffloaded() && !isDirect() && !isInOffloadThread()) {
         return;
     }
 
