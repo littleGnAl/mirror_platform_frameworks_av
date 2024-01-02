@@ -55,6 +55,8 @@ class EffectProxy final : public ::aidl::android::hardware::audio::effect::BnEff
      */
     ndk::ScopedAStatus destroy();
 
+    ndk::ScopedAStatus reopen(OpenEffectReturn*) override;
+
     // IEffect interfaces override
     ndk::ScopedAStatus open(
             const ::aidl::android::hardware::audio::effect::Parameter::Common& common,
