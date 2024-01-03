@@ -83,6 +83,9 @@ bool isEffectDefaultOnRecord(const effect_uuid_t* type, const effect_uuid_t* uui
     if (ret != OK) {
         return false;
     }
+    ASSERT_TRUE(numEffects <= AudioEffect::kMaxPreProcessing)
+            << "Got more preprocessing effects (" + std::to_string(numEffects) + ") than max (" +
+            << std::to_string(AudioEffect::kMaxPreProcessing) + ")";
     for (int i = 0; i < numEffects; i++) {
         if ((memcmp(&descriptors[i].type, type, sizeof(effect_uuid_t)) == 0) &&
             (memcmp(&descriptors[i].uuid, uuid, sizeof(effect_uuid_t)) == 0)) {
@@ -247,6 +250,7 @@ TEST(AudioEffectTest, ManageSourceDefaultEffects) {
             ASSERT_NE(capture, nullptr) << "Unable to create Record Application";
             EXPECT_EQ(NO_ERROR, capture->create());
             EXPECT_EQ(NO_ERROR, capture->start());
+            ASSERT_NE(capture->getAudioRecordHandle(), nullptr);
             if (!isEffectDefaultOnRecord(&descriptors[i].type, &descriptors[i].uuid,
                                          capture->getAudioRecordHandle())) {
                 selectedEffect = i;
@@ -265,6 +269,7 @@ TEST(AudioEffectTest, ManageSourceDefaultEffects) {
     ASSERT_NE(capture, nullptr) << "Unable to create Record Application";
     EXPECT_EQ(NO_ERROR, capture->create());
     EXPECT_EQ(NO_ERROR, capture->start());
+    ASSERT_NE(capture->getAudioRecordHandle(), nullptr);
     EXPECT_FALSE(isEffectDefaultOnRecord(selectedEffectType, selectedEffectUuid,
                                          capture->getAudioRecordHandle()))
             << "Effect should not have been default on record. " << type;
@@ -287,6 +292,7 @@ TEST(AudioEffectTest, ManageSourceDefaultEffects) {
     ASSERT_NE(capture, nullptr) << "Unable to create Record Application";
     EXPECT_EQ(NO_ERROR, capture->create());
     EXPECT_EQ(NO_ERROR, capture->start());
+    ASSERT_NE(capture->getAudioRecordHandle(), nullptr);
     EXPECT_TRUE(isEffectDefaultOnRecord(selectedEffectType, selectedEffectUuid,
                                         capture->getAudioRecordHandle()))
             << "Effect should have been default on record. " << type;
@@ -304,6 +310,7 @@ TEST(AudioEffectTest, ManageSourceDefaultEffects) {
     ASSERT_NE(capture, nullptr) << "Unable to create Record Application";
     EXPECT_EQ(NO_ERROR, capture->create());
     EXPECT_EQ(NO_ERROR, capture->start());
+    ASSERT_NE(capture->getAudioRecordHandle(), nullptr);
     EXPECT_FALSE(isEffectDefaultOnRecord(selectedEffectType, selectedEffectUuid,
                                          capture->getAudioRecordHandle()))
             << "Effect should not have been default on record. " << type;
