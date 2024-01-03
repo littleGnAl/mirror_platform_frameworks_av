@@ -3264,26 +3264,48 @@ status_t MediaCodec::queueSecureInputBuffer(
 status_t MediaCodec::queueBuffer(
         size_t index,
         const std::shared_ptr<C2Buffer> &buffer,
-        int64_t presentationTimeUs,
-        uint32_t flags,
+        const sp<BufferInfosWrapper> &bufferInfos,
         const sp<AMessage> &tunings,
         AString *errorDetailMsg) {
     if (errorDetailMsg != NULL) {
         errorDetailMsg->clear();
     }
-
+    if (bufferInfos == nullptr || bufferInfos->value.empty()) {
+        return BAD_VALUE;
+    }
     sp<AMessage> msg = new AMessage(kWhatQueueInputBuffer, this);
     msg->setSize("index", index);
     sp<WrapperObject<std::shared_ptr<C2Buffer>>> obj{
         new WrapperObject<std::shared_ptr<C2Buffer>>{buffer}};
     msg->setObject("c2buffer", obj);
-    msg->setInt64("timeUs", presentationTimeUs);
-    msg->setInt32("flags", flags);
+    msg->setInt64("timeUs", bufferInfos->value[0].mTimestamp);
+    msg->setInt32("flags", bufferInfos->value[0].mFlags);
+    // will prevent any access-unit info copy.
+    if (bufferInfos->value.size() > 1) {
+        uint32_t bufferFlags = 0;
+        uint32_t flagsinAllAU = BUFFER_FLAG_DECODE_ONLY | BUFFER_FLAG_CODECCONFIG;
+        uint32_t andFlags = flagsinAllAU;
+        int infoIdx = 0;
+        bool foundEndOfStream = false;
+        for ( ; infoIdx < bufferInfos->value.size() && !foundEndOfStream; ++infoIdx) {
+            bufferFlags |= bufferInfos->value[infoIdx].mFlags;
+            andFlags &= bufferInfos->value[infoIdx].mFlags;
+            if (bufferFlags & BUFFER_FLAG_END_OF_STREAM) {
+                foundEndOfStream = true;
+            }
+        }
+        bufferFlags = bufferFlags & (andFlags | (~flagsinAllAU));;
+        if (infoIdx != bufferInfos->value.size()) {
+            ALOGE("queueBuffer has incorrect access-units");
+            return -EINVAL;
+        }
+        msg->setInt32("flags", bufferFlags);
+        msg->setObject("accessUnitInfo", bufferInfos);
+    }
     if (tunings && tunings->countEntries() > 0) {
         msg->setMessage("tunings", tunings);
     }
     msg->setPointer("errorDetailMsg", errorDetailMsg);
-
     sp<AMessage> response;
     status_t err = PostAndAwaitResponse(msg, &response);
 
@@ -3300,14 +3322,15 @@ status_t MediaCodec::queueEncryptedBuffer(
         const uint8_t iv[16],
         CryptoPlugin::Mode mode,
         const CryptoPlugin::Pattern &pattern,
-        int64_t presentationTimeUs,
-        uint32_t flags,
+        const sp<BufferInfosWrapper> &bufferInfos,
         const sp<AMessage> &tunings,
         AString *errorDetailMsg) {
     if (errorDetailMsg != NULL) {
         errorDetailMsg->clear();
     }
-
+    if (bufferInfos == nullptr || bufferInfos->value.empty()) {
+        return BAD_VALUE;
+    }
     sp<AMessage> msg = new AMessage(kWhatQueueInputBuffer, this);
     msg->setSize("index", index);
     sp<WrapperObject<sp<hardware::HidlMemory>>> memory{
@@ -3321,8 +3344,29 @@ status_t MediaCodec::queueEncryptedBuffer(
     msg->setInt32("mode", mode);
     msg->setInt32("encryptBlocks", pattern.mEncryptBlocks);
     msg->setInt32("skipBlocks", pattern.mSkipBlocks);
-    msg->setInt64("timeUs", presentationTimeUs);
-    msg->setInt32("flags", flags);
+    msg->setInt64("timeUs", bufferInfos->value[0].mTimestamp);
+    msg->setInt32("flags", bufferInfos->value[0].mFlags);
+    if (bufferInfos->value.size() > 1) {
+        uint32_t bufferFlags = 0;
+        uint32_t flagsinAllAU = BUFFER_FLAG_DECODE_ONLY | BUFFER_FLAG_CODECCONFIG;
+        uint32_t andFlags = flagsinAllAU;
+        int infoIdx = 0;
+        bool foundEndOfStream = false;
+        for ( ; infoIdx < bufferInfos->value.size() && !foundEndOfStream; ++infoIdx) {
+            bufferFlags |= bufferInfos->value[infoIdx].mFlags;
+            andFlags &= bufferInfos->value[infoIdx].mFlags;
+            if (bufferFlags & BUFFER_FLAG_END_OF_STREAM) {
+                foundEndOfStream = true;
+            }
+        }
+        bufferFlags = bufferFlags & (andFlags | (~flagsinAllAU));;
+        if (infoIdx != bufferInfos->value.size()) {
+            ALOGE("queueBuffer has incorrect access-units");
+            return -EINVAL;
+        }
+        msg->setInt32("flags", bufferFlags);
+        msg->setObject("accessUnitInfo", bufferInfos);
+    }
     if (tunings && tunings->countEntries() > 0) {
         msg->setMessage("tunings", tunings);
     }
