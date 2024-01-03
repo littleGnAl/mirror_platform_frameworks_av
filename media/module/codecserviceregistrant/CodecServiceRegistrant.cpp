@@ -747,6 +747,7 @@ extern "C" void RegisterCodecServices() {
     android::sp<V1_0::IComponentStore> hidlStore;
     std::shared_ptr<c2_aidl::IComponentStore> aidlStore;
     const char *hidlVer = "(unknown)";
+#if 0
     if (aidlSelected) {
         aidlStore = ::ndk::SharedRefBase::make<c2_aidl::utils::ComponentStore>(store);
     } else if (platformVersion >= __ANDROID_API_S__) {
@@ -763,6 +764,7 @@ extern "C" void RegisterCodecServices() {
                       " is not supported.";
         return;
     }
+#endif
     if (!ionPropertiesDefined()) {
         using IComponentStore =
             ::android::hardware::media::c2::V1_0::IComponentStore;
