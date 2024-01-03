@@ -3249,8 +3249,7 @@ status_t MediaCodec::queueSecureInputBuffer(
 status_t MediaCodec::queueBuffer(
         size_t index,
         const std::shared_ptr<C2Buffer> &buffer,
-        int64_t presentationTimeUs,
-        uint32_t flags,
+        const sp<RefBase> &infos,
         const sp<AMessage> &tunings,
         AString *errorDetailMsg) {
     if (errorDetailMsg != NULL) {
@@ -3262,8 +3261,10 @@ status_t MediaCodec::queueBuffer(
     sp<WrapperObject<std::shared_ptr<C2Buffer>>> obj{
         new WrapperObject<std::shared_ptr<C2Buffer>>{buffer}};
     msg->setObject("c2buffer", obj);
-    msg->setInt64("timeUs", presentationTimeUs);
-    msg->setInt32("flags", flags);
+    sp<MediaCodec::WrapperObject<std::vector<AccessUnitInfo>>> bufferInfos{
+                (decltype(bufferInfos.get()))infos.get()};
+    msg->setInt64("timeUs", bufferInfos->value.at(0).mTimestamp);
+    msg->setInt32("flags", bufferInfos->value.at(0).mFlags);
     if (tunings && tunings->countEntries() > 0) {
         msg->setMessage("tunings", tunings);
     }
@@ -3285,8 +3286,7 @@ status_t MediaCodec::queueEncryptedBuffer(
         const uint8_t iv[16],
         CryptoPlugin::Mode mode,
         const CryptoPlugin::Pattern &pattern,
-        int64_t presentationTimeUs,
-        uint32_t flags,
+        const sp<RefBase> &infos,
         const sp<AMessage> &tunings,
         AString *errorDetailMsg) {
     if (errorDetailMsg != NULL) {
@@ -3306,8 +3306,10 @@ status_t MediaCodec::queueEncryptedBuffer(
     msg->setInt32("mode", mode);
     msg->setInt32("encryptBlocks", pattern.mEncryptBlocks);
     msg->setInt32("skipBlocks", pattern.mSkipBlocks);
-    msg->setInt64("timeUs", presentationTimeUs);
-    msg->setInt32("flags", flags);
+    sp<MediaCodec::WrapperObject<std::vector<AccessUnitInfo>>> bufferInfos{
+                (decltype(bufferInfos.get()))infos.get()};
+    msg->setInt64("timeUs", bufferInfos->value.at(0).mTimestamp);
+    msg->setInt32("flags", bufferInfos->value.at(0).mFlags);
     if (tunings && tunings->countEntries() > 0) {
         msg->setMessage("tunings", tunings);
     }
