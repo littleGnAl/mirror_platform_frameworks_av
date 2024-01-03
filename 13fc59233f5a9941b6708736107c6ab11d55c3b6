@@ -16,6 +16,24 @@
       "message": "do we need a check for timeScale to be non-zero?\n\natest CtsMediaV2TestCases:MuxerUnitTest fails with divide by zero error.",
       "revId": "13fc59233f5a9941b6708736107c6ab11d55c3b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cabd6b2_b2bda93a",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-03T03:36:08Z",
+      "side": 1,
+      "message": "There is a check for timeScale \u003e 0 before it is pushed to the vector. I will check the atest failure.",
+      "parentUuid": "b51415a3_6e6d0b13",
+      "revId": "13fc59233f5a9941b6708736107c6ab11d55c3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
