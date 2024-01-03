@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51415a3_6e6d0b13",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-03T00:55:15Z",
+      "side": 1,
+      "message": "do we need a check for timeScale to be non-zero?\n\natest CtsMediaV2TestCases:MuxerUnitTest fails with divide by zero error.",
+      "revId": "13fc59233f5a9941b6708736107c6ab11d55c3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
