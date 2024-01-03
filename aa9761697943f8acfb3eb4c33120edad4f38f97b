@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d97ee4b_46d257a0",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-03T10:37:41Z",
+      "side": 1,
+      "message": "I wasn\u0027t familiar with the appending feature in the MP4 writer before so I spent some time trying to understand it. I saw that it is part of seamless transcoding, to allow resuming producing an output file, and that `kKeySampleFileOffset` is used to track the byte offset of a sample when it\u0027s read by an extractor, and that this method seems to implement skipping over samples that are already present. Please correct me if any of this is wrong.\n\nI was wondering about a few things:\n- Where do samples being written here come from? If they come from the extractor directly then I\u0027m not sure why they can go backwards, because they should be read from the extractor and written to the muxer in decode order, right?\n- What prevents this method skipping writing samples in use cases that aren\u0027t appending in seamless transcoding? It seems that any MP4 media extraction can set the sample byte offsets, and if those samples end up being muxed then we end up here, even if the file description being read/written is for a completely different file. I think I must be misunderstanding how this works, so would be grateful for any info.",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 40
+      },
+      "revId": "aa9761697943f8acfb3eb4c33120edad4f38f97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5392907_c98c5672",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-03T10:37:41Z",
+      "side": 1,
+      "message": "Nit: `appended`",
+      "revId": "aa9761697943f8acfb3eb4c33120edad4f38f97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
