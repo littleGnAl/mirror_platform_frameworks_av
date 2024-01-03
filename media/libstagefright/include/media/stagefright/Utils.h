@@ -29,6 +29,7 @@
 namespace android {
 
 struct AMessage;
+struct AccessUnitInfo;
 status_t convertMetaDataToMessage(
         const MetaDataBase *meta, sp<AMessage> *format);
 status_t convertMetaDataToMessage(
@@ -80,6 +81,11 @@ void readFromAMessage(
 
 void writeToAMessage(const sp<AMessage> &msg, const BufferingSettings &buffering);
 void readFromAMessage(const sp<AMessage> &msg, BufferingSettings *buffering /* nonnull */);
+
+// helper for multi access units
+typedef WrapperObject<std::vector<AccessUnitInfo>> BufferInfosWrapper;
+status_t generateFlagsFromAccessUnitInfo(sp<AMessage> &msg,
+        const sp<BufferInfosWrapper> &bufferInfos);
 
 }  // namespace android
 
