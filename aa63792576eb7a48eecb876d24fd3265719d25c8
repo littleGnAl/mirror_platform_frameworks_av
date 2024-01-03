@@ -3,6 +3,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64e77bfd_8afa58fa",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-03T21:25:36Z",
+      "side": 1,
+      "message": "I think we need to remove these. Otherwise the caller still get no params queried as the returned params are not parsed.",
+      "range": {
+        "startLine": 644,
+        "startChar": 1,
+        "endLine": 646,
+        "endChar": 5
+      },
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2adbd3b_1cbd126b",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-03T21:25:36Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda22470_37097ec5",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-03T21:25:36Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf026983_13b24ddf",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-03T21:25:36Z",
+      "side": 1,
+      "message": "we shouldn\u0027t return here",
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e0f06bc_068163dd",
         "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
         "patchSetId": 1
@@ -20,6 +94,47 @@
         "endLine": 342,
         "endChar": 79
       },
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94e9f57_474c2753",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-03T21:25:36Z",
+      "side": 1,
+      "message": "same --- we shouldn\u0027t return here",
+      "parentUuid": "2e0f06bc_068163dd",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 79
+      },
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c313ee_334a797a",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-03T21:25:36Z",
+      "side": 1,
+      "message": "same here",
       "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
