@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf8bd20_ed822da8",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-03T08:45:22Z",
+      "side": 0,
+      "message": "Can you explain why this logic added by https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2457749 is not needed anymore?",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 50
+      },
+      "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
