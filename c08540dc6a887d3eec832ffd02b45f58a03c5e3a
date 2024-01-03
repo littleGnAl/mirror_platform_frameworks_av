@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "389ca173_08c53123",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-03T20:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901fc7b2_a53f6064",
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1707e51b_9bd7aa7e",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-15T20:58:04Z",
       "side": 1,
       "message": "nit: this looks equivalent to:\n\n```suggestion\n    setReclaimPolicy(true /* processPriority */, true /* clientImportance */);\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1638b5e_570fb00f",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-03T20:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1707e51b_9bd7aa7e",
       "range": {
         "startLine": 63,
         "startChar": 10,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69c284af_6f03b3ba",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-03T20:49:30Z",
+      "side": 1,
+      "message": "importance shouldn\u0027t be negative. So, we are ignoring negative importance in here",
+      "parentUuid": "b4d22b8d_062096a7",
+      "range": {
+        "startLine": 249,
+        "startChar": 21,
+        "endLine": 252,
+        "endChar": 5
+      },
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5ba8a7a_cbf45f58",
         "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.cpp",
         "patchSetId": 6
@@ -77,6 +143,24 @@
       "writtenOn": "2023-12-15T20:58:04Z",
       "side": 1,
       "message": "`getResourceInfoForEdit()` to update importance seems a bit out of place; do we need an explicit update method?",
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305e5791_1b039584",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-03T20:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5ba8a7a_cbf45f58",
       "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b559e6d4_2f1acf6e",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-03T20:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac91ad6d_b49aae32",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 40
+      },
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3f11a7b_f35cb3ed",
@@ -117,6 +225,24 @@
       "writtenOn": "2023-12-15T20:58:04Z",
       "side": 1,
       "message": "nit: maybe a single blank line would be enough?",
+      "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472246da_6cbfaf70",
+        "filename": "services/mediaresourcemanager/aidl/android/media/ClientInfoParcel.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-03T20:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3f11a7b_f35cb3ed",
       "revId": "c08540dc6a887d3eec832ffd02b45f58a03c5e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
