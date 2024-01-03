@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d7b646_7a03e481",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-03T21:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e77bfd_8afa58fa",
+      "range": {
+        "startLine": 644,
+        "startChar": 1,
+        "endLine": 646,
+        "endChar": 5
+      },
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2adbd3b_1cbd126b",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-01-03T21:25:36Z",
       "side": 1,
       "message": "same here",
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbbaf0b_d8764cd5",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-03T21:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2adbd3b_1cbd126b",
       "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd56204_7ddda6d9",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-03T21:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda22470_37097ec5",
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf026983_13b24ddf",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-01-03T21:25:36Z",
       "side": 1,
       "message": "we shouldn\u0027t return here",
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a825be_b6fae3be",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-03T21:57:04Z",
+      "side": 1,
+      "message": "just logging, not returning here.",
+      "parentUuid": "cf026983_13b24ddf",
       "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -122,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e52be3a_0cbc3561",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-03T21:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e94e9f57_474c2753",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 79
+      },
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c313ee_334a797a",
@@ -135,6 +237,24 @@
       "writtenOn": "2024-01-03T21:25:36Z",
       "side": 1,
       "message": "same here",
+      "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55e3e6b_e557f054",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-03T21:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28c313ee_334a797a",
       "revId": "aa63792576eb7a48eecb876d24fd3265719d25c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
