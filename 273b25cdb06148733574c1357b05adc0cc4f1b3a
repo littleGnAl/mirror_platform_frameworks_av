@@ -46,6 +46,30 @@
       },
       "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5abf54_6f33cb34",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-03T23:55:24Z",
+      "side": 0,
+      "message": "Let me chime in here. In the case when we run `audioeffect_analysis` test, I see a change in the `frameCount` field. I can see that it is used when creating the FMQs: https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/default/include/effect-impl/EffectContext.h;l\u003d54;drc\u003d074cf23ff62d4922b7381ed18b28185a74208bfc. That means, at least the FMQs must be re-created—since they are managed by this helper, this is not something that the effect implementation can handle.",
+      "parentUuid": "73fbe9b0_5a1ecae7",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 50
+      },
+      "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
