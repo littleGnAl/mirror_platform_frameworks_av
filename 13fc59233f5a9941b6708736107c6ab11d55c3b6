@@ -34,6 +34,24 @@
       "parentUuid": "b51415a3_6e6d0b13",
       "revId": "13fc59233f5a9941b6708736107c6ab11d55c3b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a1f5ea_51037a69",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-03T05:05:22Z",
+      "side": 1,
+      "message": "What I saw was SIGFPE.\nI haven\u0027t investigated further to check if it was indeed divide by zero or some other error.",
+      "parentUuid": "3cabd6b2_b2bda93a",
+      "revId": "13fc59233f5a9941b6708736107c6ab11d55c3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
