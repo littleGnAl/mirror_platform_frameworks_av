@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca18f30_9b68bc47",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:50:50Z",
+      "side": 1,
+      "message": "does this method need to be reentrant?",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "5df1640c2854ae766bd1acfea29f759f6079dd64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71ca113_6b17e014",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:50:50Z",
+      "side": 1,
+      "message": "nit: isHwCodec",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "5df1640c2854ae766bd1acfea29f759f6079dd64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb3304f_2f0341da",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:50:50Z",
+      "side": 1,
+      "message": "seems only it-\u003esecond is used. Can we use comprehension, e.g. for(const Resource \u0026resource : resources)?",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "5df1640c2854ae766bd1acfea29f759f6079dd64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
