@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47978050_ab4acfed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705a3312_00fed81f",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "I think this can be explained more clearly as a doxygen comment. E.g.\n\n```\n/**\n * Track or update resources for |clientInfo|.\n *\n * If |clientInfo| is not tracked, it records its associated |client| and adds\n * |resources| to the tracked resources. If |clientInfo| is already tracked,\n * it updates the tracked resources by adding |resources| to them (|client| in\n * this case is unused and unchecked).\n * Returns true on success, false otherwise.\n */\n ```\n \n Not sure why it would ever return false though based on the description.",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 79
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d8b383_04b9337e",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "Can we explain what pid being validated means?  E.g.\n\n```\n/**\n * Remove all resources tracked for |clientInfo|.\n *\n * If |checkValid| is true, the (pid of the) calling process is validated that it\n * is from a trusted process.\n * Returns true on success (|clientInfo| was tracked (and optionally the caller\n * was a validated trusted process), false otherwise (|clientInfo| was not tracked,\n * or the caller was not a trusted process)\n */\n```\n \n Also, based on this description\nshould this be called validateCallingPid? Also, do we ever not want to validate this?",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df00a7f_3fc89064",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "and lowestPriorityPid and lowerPriority are not updated.",
+      "range": {
+        "startLine": 100,
+        "startChar": 88,
+        "endLine": 100,
+        "endChar": 93
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf1921a_5176aa0c",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "and clientInfo is not modified.",
+      "range": {
+        "startLine": 108,
+        "startChar": 53,
+        "endLine": 108,
+        "endChar": 58
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d88b07_e4155923",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "nit: such as",
+      "range": {
+        "startLine": 135,
+        "startChar": 67,
+        "endLine": 135,
+        "endChar": 68
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66b03b1_7f8ce68f",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "is/are only higher or same priority process/es",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d118b01_c4f7c7ab",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "nit; create and associate an empty object and return it.",
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

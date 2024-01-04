@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d745af81_2523e33d",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "ACK. this is in services/ so there may not be a consistent style between all the teams here. In frameworks/av/media/ we mostly use 4 continuing indent for : (https://cs.android.com/search?q\u003d%5E%5B%5C040%5D*:%5B%5C040%5D\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject:frameworks%2Fav%2Fmedia%2F)",
+      "parentUuid": "130ef8be_f7298a6d",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "148860e2_d399bb27",
         "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
         "patchSetId": 5
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "The order doesn\u0027t matter in this case.\nThis function is used to get the list of all the clients that are marked to be (pending) removed and reclaim them for a given process.\nSo, all of them will be reclaimed.",
       "parentUuid": "0ebd1748_bb78b080",
+      "range": {
+        "startLine": 279,
+        "startChar": 37,
+        "endLine": 282,
+        "endChar": 69
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a62f246_391a0b4c",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "ACK. We could add a note to that affect, so there is no question later when we may want to add another type to this list.",
+      "parentUuid": "eb4c10e3_dc6fad0b",
       "range": {
         "startLine": 279,
         "startChar": 37,
@@ -353,6 +401,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff6d27d_c6924dca",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "03e9dde3_20c88366",
+      "range": {
+        "startLine": 422,
+        "startChar": 13,
+        "endLine": 422,
+        "endChar": 69
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0a0aa89_0e4e8f1b",
@@ -484,6 +556,30 @@
       "side": 1,
       "message": "It returns true upon finding at lease one client with the given resource request info.\nUpdating the implementation to ensure the same.\nThe clients (list) isn\u0027t cleared by this function (to allow calling this multiple time for different resources)",
       "parentUuid": "4a1c5836_8d943c80",
+      "range": {
+        "startLine": 91,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe789ad_b4e3da27",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-04T21:31:57Z",
+      "side": 1,
+      "message": "Can you add that info to the comment? You can say exactly that.",
+      "parentUuid": "fd9c09fb_0efd5328",
       "range": {
         "startLine": 91,
         "startChar": 38,
