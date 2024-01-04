@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf02043_f0a7f82e",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-04T19:37:46Z",
+      "side": 1,
+      "message": "Filed an issue, will handle later with another CL.",
+      "parentUuid": "398e13a8_5a38b834",
+      "revId": "6b7356a1440584febf8f331fda275daab8198438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c823bb8_22ccfdbe",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-12-07T21:57:09Z",
       "side": 1,
       "message": "same here",
+      "revId": "6b7356a1440584febf8f331fda275daab8198438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852455a2_c71c7692",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-04T19:37:46Z",
+      "side": 1,
+      "message": "Filed an issue, will handle later with another CL.",
+      "parentUuid": "5c823bb8_22ccfdbe",
       "revId": "6b7356a1440584febf8f331fda275daab8198438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
