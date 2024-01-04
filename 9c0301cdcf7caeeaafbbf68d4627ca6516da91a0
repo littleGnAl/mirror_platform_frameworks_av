@@ -16,6 +16,24 @@
       "message": "we\u0027ll need to do something similar to https://r.android.com/c/platform/frameworks/av/+/2881576/4/media/codec2/hal/client/client.cpp#698 here instead of https://r.android.com/2884851",
       "revId": "9c0301cdcf7caeeaafbbf68d4627ca6516da91a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce5725d_b6458aa6",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-04T00:33:33Z",
+      "side": 1,
+      "message": "Will handle on a separate CL.",
+      "parentUuid": "8f555727_a90ad31c",
+      "revId": "9c0301cdcf7caeeaafbbf68d4627ca6516da91a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
