@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e45eee5_8a6e3f93",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d745af81_2523e33d",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "148860e2_d399bb27",
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "ACK. We could add a note to that affect, so there is no question later when we may want to add another type to this list.",
       "parentUuid": "eb4c10e3_dc6fad0b",
+      "range": {
+        "startLine": 279,
+        "startChar": 37,
+        "endLine": 282,
+        "endChar": 69
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6419e388_998227d0",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a62f246_391a0b4c",
       "range": {
         "startLine": 279,
         "startChar": 37,
@@ -580,6 +628,30 @@
       "side": 1,
       "message": "Can you add that info to the comment? You can say exactly that.",
       "parentUuid": "fd9c09fb_0efd5328",
+      "range": {
+        "startLine": 91,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e391dbb_203a59f0",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe789ad_b4e3da27",
       "range": {
         "startLine": 91,
         "startChar": 38,

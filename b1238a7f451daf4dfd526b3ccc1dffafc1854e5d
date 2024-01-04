@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "802a1124_c384af13",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705a3312_00fed81f",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 79
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4d8b383_04b9337e",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-04T21:31:57Z",
       "side": 1,
       "message": "Can we explain what pid being validated means?  E.g.\n\n```\n/**\n * Remove all resources tracked for |clientInfo|.\n *\n * If |checkValid| is true, the (pid of the) calling process is validated that it\n * is from a trusted process.\n * Returns true on success (|clientInfo| was tracked (and optionally the caller\n * was a validated trusted process), false otherwise (|clientInfo| was not tracked,\n * or the caller was not a trusted process)\n */\n```\n \n Also, based on this description\nshould this be called validateCallingPid? Also, do we ever not want to validate this?",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd2af78_84a36aac",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d8b383_04b9337e",
       "range": {
         "startLine": 63,
         "startChar": 5,
@@ -133,6 +181,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec70d00_4e135af9",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d88b07_e4155923",
+      "range": {
+        "startLine": 135,
+        "startChar": 67,
+        "endLine": 135,
+        "endChar": 68
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66b03b1_7f8ce68f",
@@ -156,6 +228,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e455f623_5620971f",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66b03b1_7f8ce68f",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d118b01_c4f7c7ab",
@@ -169,6 +265,24 @@
       "writtenOn": "2024-01-04T21:31:57Z",
       "side": 1,
       "message": "nit; create and associate an empty object and return it.",
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2573d42a_f54c09d8",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d118b01_c4f7c7ab",
       "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
