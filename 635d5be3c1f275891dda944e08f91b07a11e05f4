@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa80c494_e1563e25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-04T10:09:12Z",
+      "side": 1,
+      "message": "Only offloaded tracks should be attached to an offload thread.\nCan you explain more precisely the problem you are trying to solve and the scenario leading to this situation?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
