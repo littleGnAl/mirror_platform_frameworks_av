@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d559e872_463099db",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceNew.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:34:31Z",
+      "side": 1,
+      "message": "Thank you for catching this Lajos. I need to acquire the lock here.",
+      "parentUuid": "fca18f30_9b68bc47",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "5df1640c2854ae766bd1acfea29f759f6079dd64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b71ca113_6b17e014",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05a4910_a96c98a1",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:34:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b71ca113_6b17e014",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "5df1640c2854ae766bd1acfea29f759f6079dd64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcb3304f_2f0341da",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-04T21:50:50Z",
       "side": 1,
       "message": "seems only it-\u003esecond is used. Can we use comprehension, e.g. for(const Resource \u0026resource : resources)?",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "5df1640c2854ae766bd1acfea29f759f6079dd64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f88c395_b7d5be06",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-04T23:34:31Z",
+      "side": 1,
+      "message": "covered by aosp/2871414",
+      "parentUuid": "dcb3304f_2f0341da",
       "range": {
         "startLine": 42,
         "startChar": 9,
