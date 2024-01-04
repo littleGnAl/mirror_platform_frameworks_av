@@ -70,6 +70,30 @@
       },
       "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da0cff0_03bce125",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-04T00:04:16Z",
+      "side": 0,
+      "message": "This is the HIDL code where the change of frameCount is handled: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudiohal/impl/EffectHalHidl.cpp;l\u003d150;drc\u003dc6308716b3c035196ce7cea009af989d8bb003fb",
+      "parentUuid": "cd5abf54_6f33cb34",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 50
+      },
+      "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
