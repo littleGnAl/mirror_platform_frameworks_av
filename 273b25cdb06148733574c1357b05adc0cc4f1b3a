@@ -141,6 +141,30 @@
       },
       "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84c74f2_fccdd099",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-05T23:41:53Z",
+      "side": 0,
+      "message": "Yes, will followup on this, I was trying to get the AIDL change merged, but it looks like I need to submit into git_main first because of the HAL implementation dependencies.",
+      "parentUuid": "588924b2_76ff6396",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 5
+      },
+      "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
