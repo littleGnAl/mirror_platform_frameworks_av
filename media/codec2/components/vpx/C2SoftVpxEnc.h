@@ -233,6 +233,9 @@ constexpr char COMPONENT_NAME[] = "c2.android.vp8.encoder";
 const char *MEDIA_MIMETYPE_VIDEO = MEDIA_MIMETYPE_VIDEO_VP8;
 #endif
 
+// Property used to control the number of threads used in the vpx encoders.
+constexpr char kNumThreadsProperty[] = "debug.c2.vpxenc.numthreads";
+
 } // namepsace
 
 class C2SoftVpxEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
