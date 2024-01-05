@@ -22,6 +22,30 @@
       },
       "revId": "a1f8c243d05eaddec3c2398696f506f7c0ad8d19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f652e54_c7412dc6",
+        "filename": "media/libaudiohal/impl/EffectProxy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-05T22:39:07Z",
+      "side": 1,
+      "message": "EffectProxy rely on sub-effects so maybe it make sense to add a fatal check in constructor to make sure mSubEffects is not null.\nFor now I changed the return code from EX_ILLEGAL_ARGUMENT to EX_ILLEGAL_STATE",
+      "parentUuid": "6cc00055_2c8c8835",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 53
+      },
+      "revId": "a1f8c243d05eaddec3c2398696f506f7c0ad8d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
