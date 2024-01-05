@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4e7c93_a00c73b9",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-05T20:46:56Z",
+      "side": 1,
+      "message": "nit: should this be a CHECK as this should never happen? (E.g. we should set mStopped to true if we could not create the pipe.)",
+      "range": {
+        "startLine": 464,
+        "startChar": 8,
+        "endLine": 464,
+        "endChar": 20
+      },
+      "revId": "7c6940285136ffbb5dfc89f178151216524a759d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36212c71_85e5476d",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-05T20:46:56Z",
+      "side": 1,
+      "message": "nit: do not",
+      "range": {
+        "startLine": 478,
+        "startChar": 13,
+        "endLine": 478,
+        "endChar": 19
+      },
+      "revId": "7c6940285136ffbb5dfc89f178151216524a759d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c566d3_c5a8b399",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-05T20:46:56Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 21
+      },
+      "revId": "7c6940285136ffbb5dfc89f178151216524a759d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
