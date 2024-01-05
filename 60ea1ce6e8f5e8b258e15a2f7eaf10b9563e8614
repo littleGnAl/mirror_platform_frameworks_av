@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c5db12_ec82e36b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-01-05T23:55:54Z",
+      "side": 1,
+      "message": "Unfortunately, presubmit did not build the mokey target as it should have (b/318887529).\n\nI locally cherry-picked this to make sure it wouldn\u0027t break mokey (at least with an incremental build).\n\n```\n$ find out/target/product/ | grep libstagefright_soft | xargs rm -r\n$ m installclean; make -j71\n```\n\nThat boots and things like YouTube in Chrome are fine.\n\nSo I\u0027m a +1 in terms of impact to a device that still is claiming some OMX support.",
+      "revId": "60ea1ce6e8f5e8b258e15a2f7eaf10b9563e8614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
