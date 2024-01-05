@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b1a3139_58d9005d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-05T11:23:50Z",
+      "side": 1,
+      "message": "Millibells",
+      "parentUuid": "5c36f182_6529e907",
+      "range": {
+        "startLine": 510,
+        "startChar": 30,
+        "endLine": 510,
+        "endChar": 41
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ae56fbc_29b9e395",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-12T21:28:29Z",
       "side": 1,
       "message": "`tempLevel` elements are ints. Why is this type coercion needed for?",
+      "range": {
+        "startLine": 522,
+        "startChar": 27,
+        "endLine": 522,
+        "endChar": 32
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26f4fb6_c098447d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-05T11:23:50Z",
+      "side": 1,
+      "message": "Wasn\u0027t required, removed it.",
+      "parentUuid": "7ae56fbc_29b9e395",
       "range": {
         "startLine": 522,
         "startChar": 27,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f13272e_f7abac1a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-05T11:23:50Z",
+      "side": 1,
+      "message": "I couldn\u0027t find such a check in the base class.\nDownmix has a check where it marks this unsupported config during createContext, should I add something like that?\n\nAnd we might not need to extract the chMask this way if we fix the conversion.",
+      "parentUuid": "9d07e09d_44a1729c",
+      "range": {
+        "startLine": 615,
+        "startChar": 52,
+        "endLine": 615,
+        "endChar": 82
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ab1341a_9eb80327",
         "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
         "patchSetId": 1
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "857e4c3e_f99361a6",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-05T11:23:50Z",
+      "side": 1,
+      "message": "I tried adding this conversion but it is returning incorrect value.\nIn case of LAYOUT_STEREO(3), this method return 12.\nI have commented that out for now.",
+      "parentUuid": "3ab1341a_9eb80327",
+      "range": {
+        "startLine": 619,
+        "startChar": 20,
+        "endLine": 619,
+        "endChar": 50
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "509e46ec_f225d292",
         "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2023-12-12T21:28:29Z",
       "side": 1,
       "message": "Don\u0027t we lose a possibility to specify fractions of dB for gains with this change? I think, that\u0027s the intention behind the use of milliBels.",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 68
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9c4ceb_103229c1",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-05T11:23:50Z",
+      "side": 1,
+      "message": "Restored the change",
+      "parentUuid": "509e46ec_f225d292",
       "range": {
         "startLine": 127,
         "startChar": 3,
