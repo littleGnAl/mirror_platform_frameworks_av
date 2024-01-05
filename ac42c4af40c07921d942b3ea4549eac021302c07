@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181233ab_b5f78ca9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-05T19:11:13Z",
+      "side": 1,
+      "message": "C2SoftHevcDec: keep threads active for entire sequence",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "ac42c4af40c07921d942b3ea4549eac021302c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf291a0_8e729117",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-05T19:11:13Z",
+      "side": 1,
+      "message": "Mention which CTS and VTS tests were run",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "ac42c4af40c07921d942b3ea4549eac021302c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
