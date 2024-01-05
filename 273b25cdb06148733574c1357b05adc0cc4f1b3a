@@ -118,6 +118,29 @@
       },
       "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588924b2_76ff6396",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-05T22:57:17Z",
+      "side": 0,
+      "message": "Do you plan to add code that checks FMQs and calls `reopen` in this CL or in a separate CL?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 5
+      },
+      "revId": "273b25cdb06148733574c1357b05adc0cc4f1b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
