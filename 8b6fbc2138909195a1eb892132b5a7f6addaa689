@@ -262,6 +262,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2577ab33_676cb1b8",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2024-01-05T20:40:34Z",
+      "side": 1,
+      "message": "I don\u0027t have any VVC clips to share.\nCan you please try generating some using the standard reference encoder?",
+      "parentUuid": "27e1d1af_e14aac5e",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ce15fb3_76907003",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 5
