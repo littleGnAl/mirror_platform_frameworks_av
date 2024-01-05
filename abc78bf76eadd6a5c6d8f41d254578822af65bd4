@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15fa645_9ea049ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-01-05T19:04:58Z",
+      "side": 1,
+      "message": "I think this will be handled by aosp/2897677 and will certainly conflict with it. So this CL should not be submitted before aosp/2897677, and maybe shouldn\u0027t be submitted at all.",
+      "revId": "abc78bf76eadd6a5c6d8f41d254578822af65bd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
