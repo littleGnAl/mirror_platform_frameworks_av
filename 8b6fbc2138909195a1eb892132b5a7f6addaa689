@@ -244,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27e1d1af_e14aac5e",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-01-05T09:40:08Z",
+      "side": 1,
+      "message": "We have confirmed the setting of HDR metadata and color aspects for VVC, and the majority of the code has been written. However, there is currently a lack of VVC MP4 bitstream containing SPS with VUI. Can you provide it for our verification?",
+      "parentUuid": "a58ebfda_4232da2d",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ce15fb3_76907003",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 5
