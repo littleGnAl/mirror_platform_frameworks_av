@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6de22a3_0dfdb5c9",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-05T17:31:13Z",
+      "side": 1,
+      "message": "What I mean is that if the passed `channelMask` does not happen to be a `layoutMask`, this retrieval will crash. Thus, if we use it like this here, there must be some code up in the chain call which ensures that the tag is right.\n\nAgree that if we get the conversion work, then this line is not needed.",
+      "parentUuid": "9f13272e_f7abac1a",
+      "range": {
+        "startLine": 615,
+        "startChar": 52,
+        "endLine": 615,
+        "endChar": 82
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ab1341a_9eb80327",
         "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "I tried adding this conversion but it is returning incorrect value.\nIn case of LAYOUT_STEREO(3), this method return 12.\nI have commented that out for now.",
       "parentUuid": "3ab1341a_9eb80327",
+      "range": {
+        "startLine": 619,
+        "startChar": 20,
+        "endLine": 619,
+        "endChar": 50
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c49682c6_b0559522",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-05T17:31:13Z",
+      "side": 1,
+      "message": "`12` is actually a stereo mask for the input direction (`0x4+0x8`): https://cs.android.com/android/platform/superproject/main/+/main:system/media/audio/include/system/audio-hal-enums.h;l\u003d108;drc\u003d5adbe2b9fea0bd3605b0c2d615013d5ca1b69ad8. Which value of `isInput` are you providing to `aidl2legacy_AudioChannelLayout_audio_channel_mask_t`? From the removed code on the line `664` it seems that the effect is expecting an output direction mask.",
+      "parentUuid": "857e4c3e_f99361a6",
       "range": {
         "startLine": 619,
         "startChar": 20,
