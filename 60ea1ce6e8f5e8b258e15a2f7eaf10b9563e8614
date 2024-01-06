@@ -16,6 +16,24 @@
       "message": "Unfortunately, presubmit did not build the mokey target as it should have (b/318887529).\n\nI locally cherry-picked this to make sure it wouldn\u0027t break mokey (at least with an incremental build).\n\n```\n$ find out/target/product/ | grep libstagefright_soft | xargs rm -r\n$ m installclean; make -j71\n```\n\nThat boots and things like YouTube in Chrome are fine.\n\nSo I\u0027m a +1 in terms of impact to a device that still is claiming some OMX support.",
       "revId": "60ea1ce6e8f5e8b258e15a2f7eaf10b9563e8614",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1b6a05_eaab475a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-06T00:01:35Z",
+      "side": 1,
+      "message": "Greg,\nThank you for confirming this.\n\nI don\u0027t have access to mokey (both source and the device) and had no way to confirm this.",
+      "parentUuid": "80c5db12_ec82e36b",
+      "revId": "60ea1ce6e8f5e8b258e15a2f7eaf10b9563e8614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
