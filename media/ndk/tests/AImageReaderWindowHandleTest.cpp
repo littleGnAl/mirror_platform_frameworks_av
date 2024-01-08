@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <android-base/properties.h>
 #include <gtest/gtest.h>
 #include <media/NdkImageReader.h>
 #include <media/NdkImage.h>
@@ -130,6 +131,11 @@ static void fillRGBA8Buffer(uint8_t* buf, int w, int h, int stride) {
 }
 
 TEST_F(AImageReaderWindowHandleTest, CreateWindowNativeHandle) {
+    int apiLevel = android::base::GetIntProperty("ro.vendor.api_level", 0);
+    if (apiLevel > __ANDROID_API_U__) {
+      GTEST_SKIP() << "HIDL Token manager is not supported on this device so this test is not required";
+      return;
+    }
     // Check that we can create a native_handle_t corresponding to the
     // AImageReader.
     native_handle_t *nh = nullptr;
