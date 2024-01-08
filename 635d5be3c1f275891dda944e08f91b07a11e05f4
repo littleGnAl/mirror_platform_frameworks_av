@@ -46,6 +46,23 @@
       },
       "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d60d46e_bfc5d70a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-08T14:08:16Z",
+      "side": 1,
+      "message": "If the problem is that some tracks are supposed to operate in offload mode and are not tagged as such, I would prefer to fix at the root and update the track flags in audio flinger when a track is attached to an offload thread.",
+      "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
