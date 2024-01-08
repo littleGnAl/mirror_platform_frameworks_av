@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <android-base/properties.h>
 #include <gtest/gtest.h>
 #include <media/NdkImageReader.h>
 #include <media/NdkImage.h>
@@ -133,7 +134,15 @@ TEST_F(AImageReaderWindowHandleTest, CreateWindowNativeHandle) {
     // Check that we can create a native_handle_t corresponding to the
     // AImageReader.
     native_handle_t *nh = nullptr;
-    AImageReader_getWindowNativeHandle(imageReader_, &nh);
+    media_status_t status = AImageReader_getWindowNativeHandle(imageReader_, &nh);
+
+    int apiLevel = android::base::GetIntProperty("ro.vendor.api_level", 0);
+    if (apiLevel > __ANDROID_API_U__) {
+      // After vendor level U AImageReader_getWindowNativeHandle is deprecated
+      // and we expect and error to be returned.
+      EXPECT_EQ(status, AMEDIA_ERROR_UNKNOWN);
+      return;
+    }
     ASSERT_NE(nh, nullptr);
 
     // Check that there are only ints in the handle.
