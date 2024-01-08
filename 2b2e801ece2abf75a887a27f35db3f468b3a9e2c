@@ -22,6 +22,30 @@
       },
       "revId": "2b2e801ece2abf75a887a27f35db3f468b3a9e2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aee8a80e_a36fc892",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-08T20:13:50Z",
+      "side": 1,
+      "message": "`hidlStore \u003d\u003d nullptr` implies that the device is using AIDL. In that case the HIDL manifest (if exists) will be of the latest version which is 1.2.",
+      "parentUuid": "4373d330_6f439e7d",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 69
+      },
+      "revId": "2b2e801ece2abf75a887a27f35db3f468b3a9e2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
