@@ -46,6 +46,30 @@
       },
       "revId": "2b2e801ece2abf75a887a27f35db3f468b3a9e2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75d0b9f_f3aa0c3a",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-08T22:33:48Z",
+      "side": 1,
+      "message": "Should we add some comment in these sections pointing to the test case/reasoning on\nwhy we need to register empty HIDL and AIDL services? This seems to me as a bug in the requirement.\n\nAlso, I missed the fact that these are empty services. We could perhaps point that out in comments above.",
+      "parentUuid": "aee8a80e_a36fc892",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 69
+      },
+      "revId": "2b2e801ece2abf75a887a27f35db3f468b3a9e2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
