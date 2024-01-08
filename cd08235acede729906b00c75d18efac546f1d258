@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5560e7e_46a4c0f1",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2024-01-08T20:26:05Z",
+      "side": 1,
+      "message": "per the NDK reference docs, it doesn\u0027t mention vendor API level, just API level - is the doc wrong here?",
+      "range": {
+        "startLine": 139,
+        "startChar": 50,
+        "endLine": 139,
+        "endChar": 69
+      },
+      "revId": "cd08235acede729906b00c75d18efac546f1d258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
