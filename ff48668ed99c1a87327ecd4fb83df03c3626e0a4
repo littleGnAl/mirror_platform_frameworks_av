@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eadf1dfb_ab66f227",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-08T06:32:43Z",
+      "side": 1,
+      "message": "I have added the conversion, this query isn\u0027t required anymore.",
+      "parentUuid": "a6de22a3_0dfdb5c9",
+      "range": {
+        "startLine": 615,
+        "startChar": 52,
+        "endLine": 615,
+        "endChar": 82
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ab1341a_9eb80327",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "`12` is actually a stereo mask for the input direction (`0x4+0x8`): https://cs.android.com/android/platform/superproject/main/+/main:system/media/audio/include/system/audio-hal-enums.h;l\u003d108;drc\u003d5adbe2b9fea0bd3605b0c2d615013d5ca1b69ad8. Which value of `isInput` are you providing to `aidl2legacy_AudioChannelLayout_audio_channel_mask_t`? From the removed code on the line `664` it seems that the effect is expecting an output direction mask.",
       "parentUuid": "857e4c3e_f99361a6",
+      "range": {
+        "startLine": 619,
+        "startChar": 20,
+        "endLine": 619,
+        "endChar": 50
+      },
+      "revId": "ff48668ed99c1a87327ecd4fb83df03c3626e0a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd382e51_fd4973e6",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-08T06:32:43Z",
+      "side": 1,
+      "message": "There is comment in LVM library explicitly stating if input channel Mask is required or output, thus the confusion.\nBased on reference usage I have added output channel Mask and output channel count.",
+      "parentUuid": "c49682c6_b0559522",
       "range": {
         "startLine": 619,
         "startChar": 20,
