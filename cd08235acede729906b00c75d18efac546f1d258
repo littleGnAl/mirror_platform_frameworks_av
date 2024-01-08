@@ -118,6 +118,30 @@
       },
       "revId": "cd08235acede729906b00c75d18efac546f1d258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69c6501_71bc217a",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-08T21:16:53Z",
+      "side": 1,
+      "message": "This code should not use ro.vendor.api_level which is a policy thing. It should test the API if it is available instead. For instance, using __builtin_available",
+      "parentUuid": "11020689_67090ad6",
+      "range": {
+        "startLine": 139,
+        "startChar": 50,
+        "endLine": 139,
+        "endChar": 69
+      },
+      "revId": "cd08235acede729906b00c75d18efac546f1d258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
