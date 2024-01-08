@@ -142,6 +142,30 @@
       },
       "revId": "cd08235acede729906b00c75d18efac546f1d258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8121303_1d8c048e",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-01-08T21:19:25Z",
+      "side": 1,
+      "message": "or, since this is a policy, we should still call these APIs and make sure they return an error on \u003e\u003d V",
+      "parentUuid": "f69c6501_71bc217a",
+      "range": {
+        "startLine": 139,
+        "startChar": 50,
+        "endLine": 139,
+        "endChar": 69
+      },
+      "revId": "cd08235acede729906b00c75d18efac546f1d258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
