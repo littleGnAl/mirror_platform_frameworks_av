@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce42550_c91a19c4",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-08T22:14:40Z",
+      "side": 1,
+      "message": "we might want to move it to `frameworks/av/media/module/foundation/include/media/stagefright/foundation/AMessage.h`",
+      "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef13e542_78b3821a",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-08T22:14:40Z",
+      "side": 1,
+      "message": "if this is read only, it could be:\n\n```suggestion\n        .limitTo(D::AUDIO \u0026 D::OUTPUT \u0026 D::READ));\n```\n\nit ensures the framework don\u0027t attempt to configure the setting.",
+      "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
