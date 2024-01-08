@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853bc6b2_afed8a94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-08T19:14:07Z",
+      "side": 1,
+      "message": "Logic is good, but we need proper error handling.",
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5de65d_dc497eb6",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-08T19:14:07Z",
+      "side": 1,
+      "message": "Since we can encounter errors in the parameters here, it\u0027s better to return a `RetCode` which can be checked by the caller.",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 4
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf30fe1_788bd7c3",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-08T19:14:07Z",
+      "side": 1,
+      "message": "Note that `getChannelCount` can return `0` in case the channel mask is not valid (see https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/common/include/Utils.h;l\u003d84;drc\u003d79d8461a4a44bd509ad69ae63e0086d1d1319634). This should be checked.",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 627,
+        "endChar": 45
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab4210a_bb651045",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-08T19:14:07Z",
+      "side": 1,
+      "message": "I usually add a comment `/*isInput*/` to clarify what this boolean stands for.",
+      "range": {
+        "startLine": 629,
+        "startChar": 50,
+        "endLine": 629,
+        "endChar": 51
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476e4056_ab0378d6",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-08T19:14:07Z",
+      "side": 1,
+      "message": "This will crash if the conversion fails. I would recommend checking that the returned result does not indicate an error.",
+      "range": {
+        "startLine": 629,
+        "startChar": 51,
+        "endLine": 629,
+        "endChar": 60
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7e0d49_c39b6129",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-08T19:14:07Z",
+      "side": 1,
+      "message": "Same note about the possibility for `inputChannelCount` to become `0` in which case `SourceFormat` will be left uninitialized.",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 44
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
