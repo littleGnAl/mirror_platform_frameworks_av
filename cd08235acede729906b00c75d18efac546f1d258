@@ -94,6 +94,30 @@
       },
       "revId": "cd08235acede729906b00c75d18efac546f1d258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11020689_67090ad6",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-01-08T21:02:54Z",
+      "side": 1,
+      "message": "It\u0027s in the `llndk`: https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/av/media/ndk/libmediandk.map.txt;drc\u003d16e210e8824d6d4d41da4998d1122d414a4c793d;l\u003d7\n\nIIUC, when there is no tag after the symbol in the map files, it\u0027s in the ndk AND llndk. If the `llndk` tag is set for a symbol then it\u0027s just in the `llndk`. This is how we can get away with wrapping AImageReader_getWindowNativeHandle in the `ifdef __ANDROID_VNDK__`.\n\nThe vendors get access to those symbols when they target the right vendor API level (those levels used to have the same numbers before trunk stable).",
+      "parentUuid": "6bce6ec5_ab85f7d3",
+      "range": {
+        "startLine": 139,
+        "startChar": 50,
+        "endLine": 139,
+        "endChar": 69
+      },
+      "revId": "cd08235acede729906b00c75d18efac546f1d258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
