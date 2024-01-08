@@ -46,6 +46,30 @@
       },
       "revId": "cd08235acede729906b00c75d18efac546f1d258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5681a239_c97238ed",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-01-08T20:37:12Z",
+      "side": 1,
+      "message": "aosp/2901071",
+      "parentUuid": "d5421a7f_13e32ebf",
+      "range": {
+        "startLine": 139,
+        "startChar": 50,
+        "endLine": 139,
+        "endChar": 69
+      },
+      "revId": "cd08235acede729906b00c75d18efac546f1d258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
