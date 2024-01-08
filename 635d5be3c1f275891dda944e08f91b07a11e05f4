@@ -22,6 +22,30 @@
       },
       "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aeef88f_ae7380ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-01-08T13:51:00Z",
+      "side": 1,
+      "message": "The issue happened when multi-channel PCM profile is designed to go through with offload output thread in primary_audio_policy_configuration.xml file, but applications (for example, exoplayer) create audio track with flag FLAG_DEEP_BUFFER only.\nWhen exoplayer calls pause-\u003eflush to stop offload thread, the expected audio track state is PAUSING--\u003eFlushPending--\u003eSTOPPING_1. But as the track carries no OFFLOAD flag, the state is PAUSING--\u003eFLUSHED, this causes the output stream in audio HAL not to pause and offload thread keeps writing 0 data. Therefore, the offload thread is unable to exit normally and release output.\nThe CR is to align the calling sequence in such use case.\n\nReference for the multi channel PCM profile.\n25         \u003cmixPort name\u003d\"offload output\" role\u003d\"source\"\n26                  flags\u003d\"AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD\" maxOpenCount\u003d\"2\" maxActiveCount\u003d\"2\"\u003e\n27             \u003cprofile name\u003d\"\" format\u003d\"AUDIO_FORMAT_PCM_16_BIT\"\n28                      samplingRates\u003d\"48000\"\n29                      channelMasks\u003d\"AUDIO_CHANNEL_OUT_5POINT1\"/\u003e",
+      "parentUuid": "fa80c494_e1563e25",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
