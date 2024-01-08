@@ -34,6 +34,23 @@
       "parentUuid": "51201c0f_b293ab31",
       "revId": "a144117ec9313ad7cf1a0fdaf6b067f4611213fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7a9927_af9005c1",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2024-01-08T19:42:26Z",
+      "side": 1,
+      "message": "per the reference doc (https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/av/media/ndk/include/media/NdkImageReader.h;drc\u003dfca69efdd117e24fe799e136d6d89b2a03f70f30;l\u003d552), this should return AMEDIA_ERROR_UNKNOWN on API level 35 or higher, so can we test for that behavior here instead of just skipping?",
+      "revId": "a144117ec9313ad7cf1a0fdaf6b067f4611213fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
