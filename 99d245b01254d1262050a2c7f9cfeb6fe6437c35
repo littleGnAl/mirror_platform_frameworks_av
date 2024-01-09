@@ -34,6 +34,24 @@
       "parentUuid": "9f8a3f8c_8b3dc3e4",
       "revId": "99d245b01254d1262050a2c7f9cfeb6fe6437c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15bc323d_b8aae661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2024-01-09T23:51:45Z",
+      "side": 1,
+      "message": "To be precise, std::vector\u003cT\u003e (and std::unique_ptr\u003cT\u003e, which also keeps coming up) always require a complete type T. The issue is that, after upgrading libc++, certain parts of vector or unique_ptr are instantiated earlier than before the libc++ upgrade, and that results in a usage of the incomplete T before it is completed. For this class of build failures, T is usually defined later in the translation unit.\n\nI did look into this more closely at one point, and IIRC, the cause was something like: certain parts of vector or unique_ptr were marked constexpr in newer language dialects (e.g. C++20), and the old libc++ didn\u0027t mark the thing constexpr, but the newer libc++ does. Clang instantiated the constexpr thing earlier than a non-constexpr thing.",
+      "parentUuid": "25349013_c7803294",
+      "revId": "99d245b01254d1262050a2c7f9cfeb6fe6437c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
