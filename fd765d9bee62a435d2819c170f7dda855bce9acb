@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c5376c8_742ab487",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-09T21:13:44Z",
+      "side": 1,
+      "message": "Not always.\n- remove return false if the resource is not found in the list (of resources).\n- it returns true if the resource is not found in the list (of resources).\nUpon \"true\", removedEntryValue is updated only when the resource has been removed from the list (which happens when the value associated with the resource becomes 0)",
+      "parentUuid": "a3554be3_07330888",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ade7991_e6617283",
         "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
         "patchSetId": 12
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-09T19:47:51Z",
       "side": 1,
       "message": "if we don\u0027t use this out param we could just pass nullptr (if we change it to take pointer) or use/define `add` method without the out param",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e36b4d_178fb87b",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-09T21:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ade7991_e6617283",
       "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc08832_9c518bf3",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-09T21:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a2673fe_1dd4158f",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ad51fee_6b989350",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e60c3e7_181c307f",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-09T21:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad51fee_6b989350",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea843976_aefa80f1",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-01-09T19:47:51Z",
       "side": 1,
       "message": "nit:\n```suggestion\n    std::string\u0026\u0026 toString() const {\n```",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac049aa_8853ddc4",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-09T21:13:44Z",
+      "side": 1,
+      "message": "Returning reference to stack memory associated with local variable isn\u0027t allowed right?\n\n```\n    std::string\u0026\u0026 toString() const {\n        std::string str;\n         for (const ::aidl::android::media::MediaResourceParcel\u0026 res : mResourceList) {\n             str.append(android::toString(res).c_str());\n             str.append(\"\\n\");\n         }\n\n        return std::move(str);\n     }\n```\n     \nOr did I miss something?\n\nI can change it to \n```\n     std::string\u0026 toString() const {\n        std::string str;\n         for (const ::aidl::android::media::MediaResourceParcel\u0026 res : mResourceList) {\n             str.append(android::toString(res).c_str());\n             str.append(\"\\n\");\n         }\n\n        return str;\n     }\n```",
+      "parentUuid": "ea843976_aefa80f1",
       "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
