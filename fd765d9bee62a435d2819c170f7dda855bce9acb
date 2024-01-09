@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2caa282e_4ac3f92e",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T21:22:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6c5376c8_742ab487",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ade7991_e6617283",
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "Returning reference to stack memory associated with local variable isn\u0027t allowed right?\n\n```\n    std::string\u0026\u0026 toString() const {\n        std::string str;\n         for (const ::aidl::android::media::MediaResourceParcel\u0026 res : mResourceList) {\n             str.append(android::toString(res).c_str());\n             str.append(\"\\n\");\n         }\n\n        return std::move(str);\n     }\n```\n     \nOr did I miss something?\n\nI can change it to \n```\n     std::string\u0026 toString() const {\n        std::string str;\n         for (const ::aidl::android::media::MediaResourceParcel\u0026 res : mResourceList) {\n             str.append(android::toString(res).c_str());\n             str.append(\"\\n\");\n         }\n\n        return str;\n     }\n```",
       "parentUuid": "ea843976_aefa80f1",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f40c72_863d36db",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T21:22:52Z",
+      "side": 1,
+      "message": "sorry I got confused --- the return type should not be a rvalue or lvalue reference.\n\n```cpp\n    std::string toString() const {\n        std::string str;\n         for (const ::aidl::android::media::MediaResourceParcel\u0026 res : mResourceList) {\n             str.append(android::toString(res).c_str());\n             str.append(\"\\n\");\n         }\n\n        return std::move(str);\n     }\n```",
+      "parentUuid": "3ac049aa_8853ddc4",
       "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
