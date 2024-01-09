@@ -183,7 +183,7 @@ C2SoftVpxEnc::IntfImpl::IntfImpl(const std::shared_ptr<C2ReflectorHelper> &helpe
     addParameter(
             DefineParam(mCodedColorAspects, C2_PARAMKEY_VUI_COLOR_ASPECTS)
             .withDefault(new C2StreamColorAspectsInfo::output(
-                    0u, C2Color::RANGE_LIMITED, C2Color::PRIMARIES_UNSPECIFIED,
+                    0u, C2Color::RANGE_UNSPECIFIED, C2Color::PRIMARIES_UNSPECIFIED,
                     C2Color::TRANSFER_UNSPECIFIED, C2Color::MATRIX_UNSPECIFIED))
             .withFields({
                 C2F(mCodedColorAspects, range).inRange(
