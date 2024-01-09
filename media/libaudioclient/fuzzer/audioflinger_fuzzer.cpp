@@ -22,16 +22,20 @@
       Binder DeathRecipient, where the fuzzer aborts if AudioFlinger dies
  */
 
-#include <android_audio_policy_configuration_V7_0-enums.h>
+#include <AudioFlinger.h>
 #include <android/content/AttributionSourceState.h>
+#include <android_audio_policy_configuration_V7_0-enums.h>
 #include <binder/IServiceManager.h>
 #include <binder/MemoryDealer.h>
+#include <fakeservicemanager/FakeServiceManager.h>
+#include <fuzzbinder/random_binder.h>
 #include <media/AidlConversion.h>
 #include <media/AudioEffect.h>
 #include <media/AudioRecord.h>
 #include <media/AudioSystem.h>
 #include <media/AudioTrack.h>
 #include <media/IAudioFlinger.h>
+#include <service/AudioPolicyService.h>
 #include "fuzzer/FuzzedDataProvider.h"
 
 #define MAX_STRING_LENGTH 256
@@ -48,6 +52,8 @@ namespace xsd {
 using namespace ::android::audio::policy::configuration::V7_0;
 }
 
+[[clang::no_destroy]] static std::once_flag gSmOnce;
+sp<FakeServiceManager> gFakeServiceManager;
 using android::content::AttributionSourceState;
 
 constexpr audio_unique_id_use_t kUniqueIds[] = {
@@ -205,13 +211,51 @@ class AudioFlingerFuzzer {
 };
 
 AudioFlingerFuzzer::AudioFlingerFuzzer(const uint8_t *data, size_t size) : mFdp(data, size) {
-    sp<IServiceManager> sm = defaultServiceManager();
-    sp<IBinder> binder = sm->getService(String16("media.audio_flinger"));
-    if (binder == nullptr) {
+    std::call_once(gSmOnce, [&] {
+        /* Create a FakeServiceManager instance and add required services */
+        gFakeServiceManager = sp<FakeServiceManager>::make();
+        setDefaultServiceManager(gFakeServiceManager);
+    });
+    gFakeServiceManager->clear();
+
+    for (const char* service : {"activity", "sensor_privacy", "permission", "scheduling_policy",
+                                "android.hardware.audio.core.IConfig", "batterystats",
+                                "media.metrics", "media.audio_flinger", "media.audio_policy"}) {
+        sp<IBinder> binder = getRandomBinder(&mFdp);
+        if (binder == nullptr) {
+            return;
+        }
+        auto status = gFakeServiceManager->addService(String16(service), binder);
+        if (status != NO_ERROR) {
+            return;
+        }
+    }
+
+    const auto audioFlinger = sp<AudioFlinger>::make();
+    const auto afAdapter = sp<AudioFlingerServerAdapter>::make(audioFlinger);
+
+    auto status = gFakeServiceManager->addService(
+            String16(IAudioFlinger::DEFAULT_SERVICE_NAME), IInterface::asBinder(afAdapter),
+            false /* allowIsolated */, IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
+    if (status != NO_ERROR) {
         return;
     }
+
+    AudioSystem::get_audio_flinger_for_fuzzer();
+    const auto audioPolicyService = sp<AudioPolicyService>::make();
+
+    status = gFakeServiceManager->addService(String16("media.audio_policy"), audioPolicyService,
+                                             false /* allowIsolated */,
+                                             IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
+    if (status != NO_ERROR) {
+        return;
+    }
+
+    sp<IBinder> audioFlingerServiceBinder =
+            gFakeServiceManager->getService(String16(IAudioFlinger::DEFAULT_SERVICE_NAME));
+
     mDeathNotifier = new DeathNotifier();
-    binder->linkToDeath(mDeathNotifier);
+    audioFlingerServiceBinder->linkToDeath(mDeathNotifier);
 }
 
 void AudioFlingerFuzzer::invokeAudioTrack() {
