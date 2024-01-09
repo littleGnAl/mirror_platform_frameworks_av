@@ -212,10 +212,11 @@ ndk::ScopedAStatus DynamicsProcessingImpl::open(const Parameter::Common& common,
                       common.input.base.format.pcm != PcmType::FLOAT_32_BIT,
               EX_ILLEGAL_ARGUMENT, "dataMustBe32BitsFloat");
     RETURN_OK_IF(mState != State::INIT);
-    auto context = createContext(common);
-    RETURN_IF(!context, EX_NULL_POINTER, "createContextFailed");
+    std::lock_guard lg(mImplMutex);
+    mImplContext = createContext(common);
+    RETURN_IF(!mContext, EX_NULL_POINTER, "createContextFailed");
+    mEventFlag = mImplContext->getStatusEventFlag();
 
-    RETURN_IF_ASTATUS_NOT_OK(setParameterCommon(common), "setCommParamErr");
     if (specific.has_value()) {
         RETURN_IF_ASTATUS_NOT_OK(setParameterSpecific(specific.value()), "setSpecParamErr");
     } else {
@@ -227,8 +228,8 @@ ndk::ScopedAStatus DynamicsProcessingImpl::open(const Parameter::Common& common,
     }
 
     mState = State::IDLE;
-    context->dupeFmq(ret);
-    RETURN_IF(createThread(context, getEffectName()) != RetCode::SUCCESS, EX_UNSUPPORTED_OPERATION,
+    mContext->dupeFmq(ret);
+    RETURN_IF(createThread(getEffectName()) != RetCode::SUCCESS, EX_UNSUPPORTED_OPERATION,
               "FailedToCreateWorker");
     return ndk::ScopedAStatus::ok();
 }
