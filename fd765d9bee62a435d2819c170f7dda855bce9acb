@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3554be3_07330888",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T19:47:51Z",
+      "side": 1,
+      "message": "isn\u0027t this always true if `remove()` returned true?",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ade7991_e6617283",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T19:47:51Z",
+      "side": 1,
+      "message": "if we don\u0027t use this out param we could just pass nullptr (if we change it to take pointer) or use/define `add` method without the out param",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2673fe_1dd4158f",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T19:47:51Z",
+      "side": 1,
+      "message": "nit: for out params we prefer pass by pointer, e.g.:\n\n```suggestion\n    bool add(const ::aidl::android::media::MediaResourceParcel\u0026 res, bool* isNewEntry);\n```\n\n```cpp\n  // At caller side\n  resourceList.add(res, \u0026isNewEntry);\n```",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad51fee_6b989350",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T19:47:51Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea843976_aefa80f1",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T19:47:51Z",
+      "side": 1,
+      "message": "nit:\n```suggestion\n    std::string\u0026\u0026 toString() const {\n```",
+      "revId": "fd765d9bee62a435d2819c170f7dda855bce9acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
