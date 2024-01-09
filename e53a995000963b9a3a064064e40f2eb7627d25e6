@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a094f16_7d5fbe16",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T23:37:30Z",
+      "side": 1,
+      "message": "nit:\n\n```suggestion\n            resourceLog.append(resources.toString());\n```",
+      "range": {
+        "startLine": 77,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "e53a995000963b9a3a064064e40f2eb7627d25e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc87291_4a9441f7",
+        "filename": "services/mediaresourcemanager/ResourceManagerServiceUtils.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T23:37:30Z",
+      "side": 1,
+      "message": "non-trivial impl needs to move to `.cpp` file",
+      "revId": "e53a995000963b9a3a064064e40f2eb7627d25e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
