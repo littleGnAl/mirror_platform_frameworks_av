@@ -16,6 +16,24 @@
       "message": "What is the relationship between this change and the bug?",
       "revId": "99d245b01254d1262050a2c7f9cfeb6fe6437c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25349013_c7803294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2024-01-09T22:40:17Z",
+      "side": 1,
+      "message": "The new `std::vector\u003cT\u003e` implementation requires `T` to be a complete type.\n\nPTAL at the error output: https://paste.googleplex.com/5003361437351936?raw",
+      "parentUuid": "9f8a3f8c_8b3dc3e4",
+      "revId": "99d245b01254d1262050a2c7f9cfeb6fe6437c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
