@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ce7a33_0f81c523",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-09T10:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b5de65d_dc497eb6",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 4
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebf30fe1_788bd7c3",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-08T19:14:07Z",
       "side": 1,
       "message": "Note that `getChannelCount` can return `0` in case the channel mask is not valid (see https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/common/include/Utils.h;l\u003d84;drc\u003d79d8461a4a44bd509ad69ae63e0086d1d1319634). This should be checked.",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 627,
+        "endChar": 45
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2931bc_3c19f0df",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-09T10:40:49Z",
+      "side": 1,
+      "message": "Added a CL (https://android-review.googlesource.com/c/platform/hardware/interfaces/+/2902252) to validate channel count for all effects",
+      "parentUuid": "ebf30fe1_788bd7c3",
       "range": {
         "startLine": 626,
         "startChar": 0,
@@ -110,6 +158,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c6825c_c4635953",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-09T10:40:49Z",
+      "side": 1,
+      "message": "Added a CL (https://android-review.googlesource.com/c/platform/hardware/interfaces/+/2902252) to validate channel count for all effects",
+      "parentUuid": "dab4210a_bb651045",
+      "range": {
+        "startLine": 629,
+        "startChar": 50,
+        "endLine": 629,
+        "endChar": 51
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca009e0_a139645a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-09T10:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476e4056_ab0378d6",
+      "range": {
+        "startLine": 629,
+        "startChar": 51,
+        "endLine": 629,
+        "endChar": 60
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7e0d49_c39b6129",
@@ -123,6 +219,30 @@
       "writtenOn": "2024-01-08T19:14:07Z",
       "side": 1,
       "message": "Same note about the possibility for `inputChannelCount` to become `0` in which case `SourceFormat` will be left uninitialized.",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 44
+      },
+      "revId": "cb7cc9abc3ace0279ebc7bf430f55f52e19861c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19b777d_84e470a3",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-01-09T10:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b7e0d49_c39b6129",
       "range": {
         "startLine": 635,
         "startChar": 0,
