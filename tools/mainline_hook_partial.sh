@@ -180,12 +180,12 @@ files in ${RED}${REPO_ROOT}/${filelist_file}${NORMAL}.
 EOF
         echo "===== Mainline files ====="
         echo -e ${RED}
-        echo ${mainline_yes} | sed -e 's/ //g'
+        echo ${mainline_yes} | tr ' ' '\n'
         echo -e ${NORMAL}
 
         echo "===== Non-Mainline files ====="
         echo -e ${RED}
-        echo ${mainline_no} | sed -e 's/ //g'
+        echo ${mainline_no} | tr ' ' '\n'
         echo -e ${NORMAL}
 
     cat - <<EOF
