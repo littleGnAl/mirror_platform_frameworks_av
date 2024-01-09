@@ -22,16 +22,20 @@
       Binder DeathRecipient, where the fuzzer aborts if AudioFlinger dies
  */
 
-#include <android_audio_policy_configuration_V7_0-enums.h>
+#include <AudioFlinger.h>
 #include <android/content/AttributionSourceState.h>
+#include <android_audio_policy_configuration_V7_0-enums.h>
 #include <binder/IServiceManager.h>
 #include <binder/MemoryDealer.h>
+#include <fakeservicemanager/FakeServiceManager.h>
+#include <fuzzbinder/random_binder.h>
 #include <media/AidlConversion.h>
 #include <media/AudioEffect.h>
 #include <media/AudioRecord.h>
 #include <media/AudioSystem.h>
 #include <media/AudioTrack.h>
 #include <media/IAudioFlinger.h>
+#include <service/AudioPolicyService.h>
 #include "fuzzer/FuzzedDataProvider.h"
 
 #define MAX_STRING_LENGTH 256
@@ -48,6 +52,8 @@ namespace xsd {
 using namespace ::android::audio::policy::configuration::V7_0;
 }
 
+[[clang::no_destroy]] static std::once_flag gSmOnce;
+sp<FakeServiceManager> gFakeServiceManager;
 using android::content::AttributionSourceState;
 
 constexpr audio_unique_id_use_t kUniqueIds[] = {
@@ -189,6 +195,7 @@ class DeathNotifier : public IBinder::DeathRecipient {
 class AudioFlingerFuzzer {
    public:
     AudioFlingerFuzzer(const uint8_t *data, size_t size);
+    status_t init();
     void process();
 
    private:
@@ -200,18 +207,49 @@ class AudioFlingerFuzzer {
     status_t invokeAudioInputDevice();
     status_t invokeAudioOutputDevice();
     void invokeAudioPatch();
-
-    sp<DeathNotifier> mDeathNotifier;
 };
 
 AudioFlingerFuzzer::AudioFlingerFuzzer(const uint8_t *data, size_t size) : mFdp(data, size) {
-    sp<IServiceManager> sm = defaultServiceManager();
-    sp<IBinder> binder = sm->getService(String16("media.audio_flinger"));
-    if (binder == nullptr) {
-        return;
+    std::call_once(gSmOnce, [&] {
+        /* Create a FakeServiceManager instance and add required services */
+        gFakeServiceManager = sp<FakeServiceManager>::make();
+        setDefaultServiceManager(gFakeServiceManager);
+    });
+    gFakeServiceManager->clear();
+}
+
+status_t AudioFlingerFuzzer::init() {
+    for (const char* service : {"activity", "sensor_privacy", "permission", "scheduling_policy",
+                                "android.hardware.audio.core.IConfig", "batterystats",
+                                "media.metrics"}) {
+        sp<IBinder> binder = getRandomBinder(&mFdp);
+        if (binder == nullptr) {
+            return UNEXPECTED_NULL;
+        }
+        auto status = gFakeServiceManager->addService(String16(service), binder);
+        if (status != NO_ERROR) {
+            return status;
+        }
     }
-    mDeathNotifier = new DeathNotifier();
-    binder->linkToDeath(mDeathNotifier);
+    const auto audioFlinger = sp<AudioFlinger>::make();
+    const auto afAdapter = sp<AudioFlingerServerAdapter>::make(audioFlinger);
+
+    auto status = gFakeServiceManager->addService(
+            String16(IAudioFlinger::DEFAULT_SERVICE_NAME), IInterface::asBinder(afAdapter),
+            false /* allowIsolated */, IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
+    if (status != NO_ERROR) {
+        return status;
+    }
+
+    const auto audioPolicyService = sp<AudioPolicyService>::make();
+    status = gFakeServiceManager->addService(String16("media.audio_policy"), audioPolicyService,
+                                             false /* allowIsolated */,
+                                             IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
+    if (status != NO_ERROR) {
+        return status;
+    }
+
+    return NO_ERROR;
 }
 
 void AudioFlingerFuzzer::invokeAudioTrack() {
@@ -437,7 +475,7 @@ status_t AudioFlingerFuzzer::invokeAudioEffect() {
     std::string opPackageName = static_cast<std::string>(mFdp.ConsumeRandomLengthString().c_str());
     AudioDeviceTypeAddr device;
 
-    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger();
+    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger_for_fuzzer();
     if (!af) {
         return NO_ERROR;
     }
@@ -576,7 +614,7 @@ void AudioFlingerFuzzer::invokeAudioSystem() {
         pids.insert(pids.begin() + i, static_cast<pid_t>(mFdp.ConsumeIntegral<int32_t>()));
     }
     AudioSystem::setAudioHalPids(pids);
-    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger();
+    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger_for_fuzzer();
     if (!af) {
         return;
     }
@@ -593,7 +631,7 @@ void AudioFlingerFuzzer::invokeAudioSystem() {
 }
 
 status_t AudioFlingerFuzzer::invokeAudioInputDevice() {
-    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger();
+    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger_for_fuzzer();
     if (!af) {
         return NO_ERROR;
     }
@@ -651,7 +689,7 @@ status_t AudioFlingerFuzzer::invokeAudioInputDevice() {
 }
 
 status_t AudioFlingerFuzzer::invokeAudioOutputDevice() {
-    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger();
+    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger_for_fuzzer();
     if (!af) {
         return NO_ERROR;
     }
@@ -713,7 +751,7 @@ status_t AudioFlingerFuzzer::invokeAudioOutputDevice() {
 }
 
 void AudioFlingerFuzzer::invokeAudioPatch() {
-    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger();
+    sp<IAudioFlinger> af = AudioSystem::get_audio_flinger_for_fuzzer();
     if (!af) {
         return;
     }
@@ -776,6 +814,9 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
         return 0;
     }
     AudioFlingerFuzzer audioFuzzer(data, size);
-    audioFuzzer.process();
+    auto status = audioFuzzer.init();
+    if (status == NO_ERROR) {
+        audioFuzzer.process();
+    }
     return 0;
 }
