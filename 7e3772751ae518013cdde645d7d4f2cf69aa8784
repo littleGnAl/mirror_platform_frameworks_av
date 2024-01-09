@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13449f08_cf7346b5",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T19:32:27Z",
+      "side": 1,
+      "message": "nit: codec",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 34
+      },
+      "revId": "7e3772751ae518013cdde645d7d4f2cf69aa8784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ece6b8_7e60f949",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-09T19:32:27Z",
+      "side": 1,
+      "message": "nit:\n```suggestion\n    explicit ClientImportanceReclaimPolicy(const std::shared_ptr\u003cResourceTracker\u003e\u0026 resourceTracker);\n```",
+      "revId": "7e3772751ae518013cdde645d7d4f2cf69aa8784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
