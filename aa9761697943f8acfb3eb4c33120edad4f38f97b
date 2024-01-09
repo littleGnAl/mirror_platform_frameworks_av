@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8eb3a58d_4ffec66b",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-09T11:16:47Z",
+      "side": 1,
+      "message": "The samples here come from MediaAppender. The `kKeySampleFileOffset` variable is set [here](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libstagefright/MediaAppender.cpp;drc\u003da2a02af41323aebc259b5d5e6b92af6f330be508;l\u003d352). It looks like the appender is adding the samples from the output file into the `mSDI` (Sample Data Info) variable at init. So, the behaviour I see is that in the first iteration, there are no buffers with `kKeySampleFileOffset` set. In the second iteration of append, I see the buffers of the first iteration input to MPEG4Writer with `kKeySampleFileOffset` set to their respective offsets.\n\nSince the buffers with `kKeySampleFileOffset` set are already present in the output file, I think it is used only to seek to the farthest point the file has already been written to (update `mMaxOffsetAppend` and seek file to that point). In case `mMaxOffsetAppend` is already ahead of the current buffer\u0027s offset, I believe we could ignore the buffer. Instead, if we set the mOffset back, it will pull the `mMaxOffsetAppend` variable also back at the end of the iteration (`mMaxOffsetAppend` is updated at the end, just before fsync).",
+      "parentUuid": "2d97ee4b_46d257a0",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 40
+      },
+      "revId": "aa9761697943f8acfb3eb4c33120edad4f38f97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5392907_c98c5672",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2024-01-03T10:37:41Z",
       "side": 1,
       "message": "Nit: `appended`",
+      "revId": "aa9761697943f8acfb3eb4c33120edad4f38f97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f43888d_94b4bad0",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-09T11:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5392907_c98c5672",
       "revId": "aa9761697943f8acfb3eb4c33120edad4f38f97b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
