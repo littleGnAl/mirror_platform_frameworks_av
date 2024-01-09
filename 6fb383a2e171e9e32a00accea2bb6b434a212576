@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acddd67b_8de9361a",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-01-09T00:06:46Z",
+      "side": 1,
+      "message": "Now that this has effectively been replaced with `AImageReader_getWindow`/`NativeWindow`, would it be worth writing a test making sure the output of `AImageReader_getWindow` can be converted back to IGBP by the framework? \n\nI know there are VNDK and CTS tests that check end to end functionality, but having a more focused test like this one would be helpful in catching and debugging issues in the future. I apologize if such a test already exists and I missed it (please do point me to them!).",
+      "range": {
+        "startLine": 137,
+        "startChar": 37,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "6fb383a2e171e9e32a00accea2bb6b434a212576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
