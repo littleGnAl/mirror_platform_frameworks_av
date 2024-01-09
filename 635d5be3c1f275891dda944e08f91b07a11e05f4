@@ -63,6 +63,24 @@
       "message": "If the problem is that some tracks are supposed to operate in offload mode and are not tagged as such, I would prefer to fix at the root and update the track flags in audio flinger when a track is attached to an offload thread.",
       "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20497610_9d685d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-01-09T09:41:08Z",
+      "side": 1,
+      "message": "Updating the track flag while creating/ attaching offload thread could cause CTS failure. \nI see a similar issue being handled https://android-review.googlesource.com/c/platform/frameworks/av/+/2625182. This was abandoned due to CTS failure.",
+      "parentUuid": "5d60d46e_bfc5d70a",
+      "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
