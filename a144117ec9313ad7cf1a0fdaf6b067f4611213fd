@@ -87,6 +87,24 @@
       "parentUuid": "90211ce4_61364771",
       "revId": "a144117ec9313ad7cf1a0fdaf6b067f4611213fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff8b602_f19f1f67",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-01-09T00:26:35Z",
+      "side": 1,
+      "message": "Removed the API level connection here by looking for TokenManager. It\u0027s effectively the same thing since TokenManager won\u0027t be there after vendor level 34, but this way that policy isn\u0027t encoded here as well.",
+      "parentUuid": "8a0e1140_e3374951",
+      "revId": "a144117ec9313ad7cf1a0fdaf6b067f4611213fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
