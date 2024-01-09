@@ -16,6 +16,24 @@
       "message": "@arakesh@google.com, is this the kind of test you had in mind?",
       "revId": "f619155975c1f8ce42a89b214ad0286e4ef15042",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ac41b0_68e17912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-01-09T19:34:14Z",
+      "side": 1,
+      "message": "Yeah, pretty much exactly this! (Not sure about the location though because the Test file is explicitly named `AImageReaderWindowHandleTest`, which I am presuming refers to `NativeHandle`).",
+      "parentUuid": "a743f7ef_5f23fef4",
+      "revId": "f619155975c1f8ce42a89b214ad0286e4ef15042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
