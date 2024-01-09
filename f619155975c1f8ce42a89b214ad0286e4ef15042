@@ -34,6 +34,29 @@
       "parentUuid": "a743f7ef_5f23fef4",
       "revId": "f619155975c1f8ce42a89b214ad0286e4ef15042",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6671bfc4_b28765db",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-01-09T19:36:59Z",
+      "side": 1,
+      "message": "libgui already has this conversion: https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/native/libs/gui/include/gui/Surface.h;drc\u003dd49f15fbd6f51b0cb49afa3b4641669b83a69b8b;l\u003d116\n\nIt is probably better to use the libgui impl as the test isn\u0027t testing the actual conversion logic, only that it can be converted.",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 55
+      },
+      "revId": "f619155975c1f8ce42a89b214ad0286e4ef15042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
