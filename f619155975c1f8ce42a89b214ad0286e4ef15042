@@ -57,6 +57,54 @@
       },
       "revId": "f619155975c1f8ce42a89b214ad0286e4ef15042",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c529106d_8058d3dc",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-01-10T17:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6671bfc4_b28765db",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 55
+      },
+      "revId": "f619155975c1f8ce42a89b214ad0286e4ef15042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c175ab62_0321bedc",
+        "filename": "media/ndk/tests/AImageReaderWindowHandleTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-01-10T17:26:20Z",
+      "side": 1,
+      "message": "I tried using that initially and",
+      "parentUuid": "6671bfc4_b28765db",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 55
+      },
+      "revId": "f619155975c1f8ce42a89b214ad0286e4ef15042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
