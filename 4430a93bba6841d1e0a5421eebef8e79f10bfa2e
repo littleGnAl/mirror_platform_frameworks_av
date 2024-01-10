@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756e7711_b793325b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2024-01-10T14:03:47Z",
+      "side": 1,
+      "message": "The TunnelPerfectSeek test was added in android U, but the bug says the issue is in Android R. But the commit title says \"Fix CTS failure\". Can you update the description so that we can have a clearer understanding?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 111
+      },
+      "revId": "4430a93bba6841d1e0a5421eebef8e79f10bfa2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
