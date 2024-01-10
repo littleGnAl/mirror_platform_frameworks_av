@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6423fad_8e42ba71",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T19:06:48Z",
+      "side": 1,
+      "message": "nit: other than that...",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "4bebb155092a932c426eb12a5c3c1b8747019f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cebead4_19c7bfd4",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T19:06:48Z",
+      "side": 1,
+      "message": "nit: least\n\nlowest importance could mean lowest value which is the most important.",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "4bebb155092a932c426eb12a5c3c1b8747019f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b4f724_3c54718e",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T19:06:48Z",
+      "side": 1,
+      "message": "nit: least",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "4bebb155092a932c426eb12a5c3c1b8747019f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573e4b29_e9a2caab",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T19:06:48Z",
+      "side": 1,
+      "message": "type: secondary",
+      "range": {
+        "startLine": 37,
+        "startChar": 46,
+        "endLine": 37,
+        "endChar": 57
+      },
+      "revId": "4bebb155092a932c426eb12a5c3c1b8747019f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36be232d_e8502812",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T19:06:48Z",
+      "side": 1,
+      "message": "what codec conflict?",
+      "range": {
+        "startLine": 38,
+        "startChar": 41,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "4bebb155092a932c426eb12a5c3c1b8747019f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5713802c_80d88eb6",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T19:06:48Z",
+      "side": 1,
+      "message": "nit: that we?\n\nor \n\nit is not required for this policy to ...",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "4bebb155092a932c426eb12a5c3c1b8747019f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23590a7_72c90666",
+        "filename": "services/mediaresourcemanager/ClientImportanceReclaimPolicy.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T19:06:48Z",
+      "side": 1,
+      "message": "should we add that we will only return codecs from the requesting process?",
+      "range": {
+        "startLine": 50,
+        "startChar": 50,
+        "endLine": 50,
+        "endChar": 59
+      },
+      "revId": "4bebb155092a932c426eb12a5c3c1b8747019f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
