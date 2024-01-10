@@ -135,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eeee8c0_3d1f1e47",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df00a7f_3fc89064",
+      "range": {
+        "startLine": 100,
+        "startChar": 88,
+        "endLine": 100,
+        "endChar": 93
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bf1921a_5176aa0c",
@@ -148,6 +172,30 @@
       "writtenOn": "2024-01-04T21:31:57Z",
       "side": 1,
       "message": "and clientInfo is not modified.",
+      "range": {
+        "startLine": 108,
+        "startChar": 53,
+        "endLine": 108,
+        "endChar": 58
+      },
+      "revId": "b1238a7f451daf4dfd526b3ccc1dffafc1854e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e84fdd_5d6588aa",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bf1921a_5176aa0c",
       "range": {
         "startLine": 108,
         "startChar": 53,

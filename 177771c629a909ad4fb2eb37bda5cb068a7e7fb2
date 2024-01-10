@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bb3577_8ff09442",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2be6bc3a_36418886",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaee3061_3092c1ea",
@@ -166,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e0ecacf_27c9a6ef",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fa82d61f_a5ba719f",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c269b48_191f605a",
@@ -203,6 +251,30 @@
       "side": 1,
       "message": "Yeah, thats right. Removing only those resources that are added (If we don\u0027t have one, we don\u0027t do anything)",
       "parentUuid": "8c269b48_191f605a",
+      "range": {
+        "startLine": 135,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9587c1d8_c150a972",
+        "filename": "services/mediaresourcemanager/ResourceTracker.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "907e0176_001035bb",
       "range": {
         "startLine": 135,
         "startChar": 25,
@@ -520,6 +592,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79b30a2_e1257e5b",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2ad1eb87_ff008a77",
+      "range": {
+        "startLine": 54,
+        "startChar": 92,
+        "endLine": 54,
+        "endChar": 98
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9aa73dd_25079c8a",
@@ -557,6 +653,30 @@
       "side": 1,
       "message": "All the binder calls through IResourceManagerService is validated through its pid (checking whether its a trusted process - which is defined in media/utils/ProcessInfo.cpp)",
       "parentUuid": "c9aa73dd_25079c8a",
+      "range": {
+        "startLine": 64,
+        "startChar": 87,
+        "endLine": 64,
+        "endChar": 97
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb54e9e_3137a13a",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "65ccd086_72fbf513",
       "range": {
         "startLine": 64,
         "startChar": 87,
@@ -709,6 +829,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c450fd9_41bff372",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b3d3af57_13ca63d8",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2707691d_defe6602",
@@ -746,6 +890,30 @@
       "side": 1,
       "message": "the client info (pid/uid/client-id) of the biggest client from the given process is set only upon success.\n\nI will make a note of this suggestion (using) optional for the further refactoring changes.",
       "parentUuid": "2707691d_defe6602",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d225c798_87fc8e79",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a4480cf8_facd0df6",
       "range": {
         "startLine": 101,
         "startChar": 7,
@@ -803,6 +971,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74344c02_313a1b57",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a5cfe0_6a3afcce",
+      "range": {
+        "startLine": 105,
+        "startChar": 77,
+        "endLine": 105,
+        "endChar": 85
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "467b1cc1_aa9ee157",
@@ -850,6 +1042,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "321ccf16_b6904916",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "09d37fec_477ce7a8",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d94d05e0_778cf496",
@@ -887,6 +1103,30 @@
       "side": 1,
       "message": "If we fail to get the priority (oom score) of the process with given pid, this will return false.",
       "parentUuid": "d94d05e0_778cf496",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf2fbcdd_e13e72a8",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b1d73821_be4ba678",
       "range": {
         "startLine": 122,
         "startChar": 4,
@@ -1004,6 +1244,54 @@
       "side": 1,
       "message": "Here, the ResourceTracker only looks for resources from lower priority processes.                                                                                         If there is a higher or same priority process with the given resource - that is defined as conflict - and the function returns false.",
       "parentUuid": "c4bc9bca_c95bfae3",
+      "range": {
+        "startLine": 125,
+        "startChar": 22,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a07ea29_e7949b7d",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b051ce82_a71853b3",
+      "range": {
+        "startLine": 125,
+        "startChar": 69,
+        "endLine": 125,
+        "endChar": 76
+      },
+      "revId": "177771c629a909ad4fb2eb37bda5cb068a7e7fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c981b71c_3d29aade",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-10T18:44:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "646cda0e_1982ac5f",
       "range": {
         "startLine": 125,
         "startChar": 22,
