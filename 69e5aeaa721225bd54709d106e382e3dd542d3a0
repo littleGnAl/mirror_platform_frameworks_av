@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a8227a3_39efe598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-10T17:43:38Z",
+      "side": 1,
+      "message": "b/313861641 is the issue where this was a proposed fix.\n\nthe bug is now closed with a fix in the vendor codec.\n\nnguyenrobert@google.com\ncan you please abandon this?\nThanks.",
+      "revId": "69e5aeaa721225bd54709d106e382e3dd542d3a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "893caedc_ab4cf03b",
         "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
         "patchSetId": 1
