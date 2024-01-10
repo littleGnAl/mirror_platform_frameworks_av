@@ -16,6 +16,23 @@
       "message": "Bypass lint because the test is just renamed. Created a bug to fix the lint: b/319451571",
       "revId": "4b4ce0314a5e30a0d8dc5fe1a0ce85aa072e4388",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd1e1f27_b271751b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-01-10T18:55:24Z",
+      "side": 1,
+      "message": "unrelated pre-existing device boot test failing: b/285748554",
+      "revId": "4b4ce0314a5e30a0d8dc5fe1a0ce85aa072e4388",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
