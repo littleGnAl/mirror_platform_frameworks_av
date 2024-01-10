@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d37db5b_949f6456",
+        "filename": "services/mediaresourcemanager/IReclaimPolicy.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-10T23:01:19Z",
+      "side": 1,
+      "message": "Making a NOTE of this - thank you",
+      "parentUuid": "a8ac4661_db9e2deb",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "66b8c55112d553465eb8c43c72cf3d8f96975fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30eb7699_c5fde671",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-10T18:51:57Z",
       "side": 1,
       "message": "nit: continuing indent is 8 here and below",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "66b8c55112d553465eb8c43c72cf3d8f96975fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "179735d0_992f6d0c",
+        "filename": "services/mediaresourcemanager/ResourceTracker.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-10T23:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30eb7699_c5fde671",
       "range": {
         "startLine": 135,
         "startChar": 0,
