@@ -1,22 +1,22 @@
 package: "com.android.media.codec.flags"
 
 flag {
-  name: "large_audio_frame"
+  name: "aidl_hal"
   namespace: "codec_fwk"
-  description: "Feature flags for large audio frame support"
-  bug: "297219557"
+  description: "Feature flag for enabling AIDL HAL handling"
+  bug: "251850069"
 }
 
 flag {
   name: "codec_importance"
   namespace: "codec_fwk"
-  description: "Feature flags for media codec importance"
+  description: "Feature flag for media codec importance"
   bug: "297929011"
 }
 
 flag {
-  name: "aidl_hal"
+  name: "large_audio_frame"
   namespace: "codec_fwk"
-  description: "Feature flags for enabling AIDL HAL handling"
-  bug: "251850069"
+  description: "Feature flag for large audio frame support"
+  bug: "297219557"
 }
