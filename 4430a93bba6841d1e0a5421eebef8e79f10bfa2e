@@ -22,6 +22,23 @@
       },
       "revId": "4430a93bba6841d1e0a5421eebef8e79f10bfa2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c613f84e_9ee4b803",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1952631
+      },
+      "writtenOn": "2024-01-11T10:06:39Z",
+      "side": 1,
+      "message": "As Harish has pointed out in aosp/2852667, the correct bug is b/313861641 and the test failure is already fixed by MTK.",
+      "revId": "4430a93bba6841d1e0a5421eebef8e79f10bfa2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
