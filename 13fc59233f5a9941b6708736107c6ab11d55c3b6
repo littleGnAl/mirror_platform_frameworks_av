@@ -52,6 +52,24 @@
       "parentUuid": "3cabd6b2_b2bda93a",
       "revId": "13fc59233f5a9941b6708736107c6ab11d55c3b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a7f684_5d59f41c",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-11T15:33:02Z",
+      "side": 1,
+      "message": "It was a divide by zero, the timeScale was reading from outside the vector range. It would read random values, and failed whenever it read a zero into timeScale. testIfWriteSampleDataRejectsInvalidTrackIndex() sends a trackIndex outside the valid range.",
+      "parentUuid": "55a1f5ea_51037a69",
+      "revId": "13fc59233f5a9941b6708736107c6ab11d55c3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
