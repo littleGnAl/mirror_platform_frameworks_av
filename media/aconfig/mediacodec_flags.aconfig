@@ -15,6 +15,13 @@ flag {
 }
 
 flag {
+  name: "null_output_surface"
+  namespace: "codec_fwk"
+  description: "Feature flag for null output Surface support"
+  bug: "297920102"
+}
+
+flag {
   name: "large_audio_frame"
   namespace: "codec_fwk"
   description: "Feature flags for large audio frame support"
