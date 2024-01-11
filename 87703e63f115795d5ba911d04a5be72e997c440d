@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dabf29a_164645f0",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-11T00:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce42550_c91a19c4",
+      "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef13e542_78b3821a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-08T22:14:40Z",
       "side": 1,
       "message": "if this is read only, it could be:\n\n```suggestion\n        .limitTo(D::AUDIO \u0026 D::OUTPUT \u0026 D::READ));\n```\n\nit ensures the framework don\u0027t attempt to configure the setting.",
+      "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b97c98_c19077df",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-11T00:42:15Z",
+      "side": 1,
+      "message": "The setting is finally decided by the component. Would it be good to let framework also able to request configurations if the application does not configure based on memory/resouces etc?",
+      "parentUuid": "ef13e542_78b3821a",
       "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
