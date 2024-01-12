@@ -1704,7 +1704,9 @@ status_t AudioTrack::setOutputDevice(audio_port_handle_t deviceId) {
             __func__, mPortId, deviceId, mSelectedDeviceId, mRoutedDeviceId);
     if (mSelectedDeviceId != deviceId) {
         mSelectedDeviceId = deviceId;
-        if (mStatus == NO_ERROR && mSelectedDeviceId != mRoutedDeviceId) {
+        if (mStatus == NO_ERROR && (mSelectedDeviceId != mRoutedDeviceId || !isPlaying_l())) {
+            // allow track invalidation when track is not playing to propagate
+            // the updated mSelectedDeviceId
             if (isPlaying_l()) {
                 android_atomic_or(CBLK_INVALID, &mCblk->mFlags);
                 mProxy->interrupt();
