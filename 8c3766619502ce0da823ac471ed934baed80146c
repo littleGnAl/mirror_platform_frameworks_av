@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5acffd2_aef0cc10",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "1) C2 configs as this are generally sticky, so if this is not sticky, there needs to be a justification for why not. E.g. what is the expected cost of having the client specify this for each frame and will apps specify this explicitly for each frame. This config as it stands is marshaled across binder for each frame, so that would not work for a non-sticky config.\n\nAn option would be to use an InfoBuffer with PixelFormatY8 - though MediaCodec.java does not currently support InfoBuffers.\n\n2) This was really a question on why this is not a float since x264 (e.g.) has this as a float. (e.g. we would not be able to support all x264 configurations with this being an integer.) The consensus is that having this as a float increases bandwidth requirements 4x, and also QP being an integer, this may cause confusion for clients. E.g. on most implementations a +0.2 QP would get ignored, and this is not what apps would expect if this was a float.\n\n3) This was another question on why have a single value, instead of having separate value for each macroblock types. We discussed this in detail, and the conclusion is that when QP bounds are specified, the P and B QPs are derived from the I QP using an offset",
+      "parentUuid": "09e8bb9c_6aee190e",
+      "range": {
+        "startLine": 1984,
+        "startChar": 30,
+        "endLine": 1984,
+        "endChar": 41
+      },
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43fdf4fd_dcbdc333",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 7

@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85587cb_fcdb5948",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "I prefer not to have this.",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a4f39e_0e6125a3",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "Config should not be part of the index name. Also, these should be part of the Video/Image portion, not the video portion.\n\nAlso, \"ROI\" is application specific, so should be dropped. Let\u0027s call this QpOffset.\n\nThis should be kParamIndexQpOffsetMap and kParamIndexQpOffsetRects.\n\nYou will also need a separate index for QpOffsetRect structure\n\nSee my comment about QpOffsetType below.",
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748bf130_e2332dfc",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "C2 does not recommend pre-selecting a configuration type. In C2\u0027s view a component that supports QP offset should be able to accept a QP offset at any moment (for any frame). Therefore, preselecting this type does not make sense for C2.",
+      "range": {
+        "startLine": 1959,
+        "startChar": 3,
+        "endLine": 1959,
+        "endChar": 6
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09b4380_2c19d59e",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "coding.qp-offset-map",
+      "range": {
+        "startLine": 1986,
+        "startChar": 57,
+        "endLine": 1986,
+        "endChar": 74
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61951e2a_cc0465d5",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "C2QpOffsetRectStruct\n\ndrop Config",
+      "range": {
+        "startLine": 1996,
+        "startChar": 7,
+        "endLine": 1996,
+        "endChar": 28
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9e3863_40eb4c39",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "this needs a doxygen as well.\n\nFundamentally we need to convey that the order of the rects are from most important to least important, and as such if there is an overlap, the first rectangle\u0027s qp offset will be used.\n\nAlso, we must say that C2 spec itself does not mandate the minimum # of rects that implementations must support, but platforms may mandate a minimum limit. Implementations shall drop/ignore the rectangles that are beyond the supported limits.",
+      "range": {
+        "startLine": 2013,
+        "startChar": 0,
+        "endLine": 2013,
+        "endChar": 7
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c781e0b4_ba358ea3",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "C2StreamQpOffsetRectsInfo",
+      "range": {
+        "startLine": 2014,
+        "startChar": 8,
+        "endLine": 2014,
+        "endChar": 30
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81462ebd_9ce9f8cb",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-12T23:10:04Z",
+      "side": 1,
+      "message": "coding.qp-offset-rects",
+      "range": {
+        "startLine": 2015,
+        "startChar": 49,
+        "endLine": 2015,
+        "endChar": 72
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
