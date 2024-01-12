@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eddc3a9b_0416c0ed",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1720,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-12T17:18:49Z",
+      "side": 1,
+      "message": "maybe more readable like this:\n       if (mStatus \u003d\u003d NO_ERROR) {\n            // allow track invalidation when track is not playing to propagate\n            // the updated mSelectedDeviceId\n            if (isPlaying_l()) {\n                if (mSelectedDeviceId !\u003d mRoutedDeviceId) {            \n                    android_atomic_or(CBLK_INVALID, \u0026mCblk-\u003emFlags);\n                    mProxy-\u003einterrupt();\n                }\n            } else {\n                // if the track is idle, try to restore now and\n                // defer to next start if not possible\n                if (restoreTrack_l(\"setOutputDevice\") !\u003d OK) {\n                    android_atomic_or(CBLK_INVALID, \u0026mCblk-\u003emFlags);\n                }\n            }\n        }",
+      "range": {
+        "startLine": 1707,
+        "startChar": 0,
+        "endLine": 1720,
+        "endChar": 9
+      },
+      "revId": "d98446ff5801ef58b91a8c23ffc96fee753ca2a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
