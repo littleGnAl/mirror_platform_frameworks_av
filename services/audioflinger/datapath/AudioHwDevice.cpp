@@ -79,6 +79,11 @@ status_t AudioHwDevice::openOutputStream(
                     delete outputStream;
                     outputStream = nullptr;
                 }
+                ALOGI("openOutputStream(), spdif stream out returned originalConfig sampleRate %d, format %#x, channelMask %#x,"
+                        , originalConfig.sample_rate, originalConfig.format, originalConfig.channel_mask);
+                config->sample_rate = originalConfig.sample_rate;
+                config->format = originalConfig.format;
+                config->channel_mask = originalConfig.channel_mask;
             } else {
                 ALOGE("ERROR - openOutputStream(), SPDIFEncoder does not support format 0x%08x",
                     originalConfig.format);
@@ -152,6 +157,11 @@ status_t AudioHwDevice::openInputStream(
                     delete inputStream;
                     inputStream = nullptr;
                 }
+                ALOGI("openInputStream(), spdif stream in returned originalConfig sampleRate %d, format %#x, channelMask %#x,"
+                        , originalConfig.sample_rate, originalConfig.format, originalConfig.channel_mask);
+                config->sample_rate = originalConfig.sample_rate;
+                config->format = originalConfig.format;
+                config->channel_mask = originalConfig.channel_mask;
             } else {
                 ALOGE("ERROR - openInputStream(), SPDIFDecoder does not support format 0x%08x",
                     originalConfig.format);
