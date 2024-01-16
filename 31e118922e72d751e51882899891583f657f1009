@@ -16,6 +16,24 @@
       "message": "Please typedef the info in the header as:\n\n```\ntypedef WrapperObject\u003cstd::vector\u003cAccessUnitInfo\u003e\u003e BufferInfosWrapper;\n```\n\nand use it for the param type:\n\n```suggestion\n        const sp\u003cBufferInfosWrapper\u003e \u0026infos,\n```",
       "revId": "31e118922e72d751e51882899891583f657f1009",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86475c83_1cd62570",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3262,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-16T20:11:41Z",
+      "side": 1,
+      "message": "this call is made through android_media_MediaCodec.h (struct JMediaCodec)which has a bare minimum includes and AMessage is not one of them. MediaCodec.h is not included in that file. But other files are using the typedef defined in MediaCodec.h",
+      "parentUuid": "5f7bcc01_0772573b",
+      "revId": "31e118922e72d751e51882899891583f657f1009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
