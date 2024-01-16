@@ -94,6 +94,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1403254a_b97cf7de",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2024-01-16T18:55:37Z",
+      "side": 1,
+      "message": "\u003e This does seem cleaner. What kind of changes would that require exactly?\n\nThe only callee of destroy directly is OpenSLES.\n\nAs long as moving up the pointer clear [here](https://cs.android.com/android/platform/superproject/main/+/dd7a7ea69100ba31545b399f40f8480b07a1b508:frameworks/wilhelm/src/android/AudioPlayer_to_android.cpp;drc\u003d53ac8c773c6601a8d4e98db50dad3c390f717f7c;l\u003d1943) is valid (see after the switch statement), it should work (we are deferring handling concurrency on methods a layer up).\n\nThis is the only place I think we should have this race (but it seems very hard to hit, so I wonder if there is an issue anywhere else), since (if we call the method from sp\u003c\u003e), we can never call the dtor while holding the object to call another method. \n\nAs mentioned, we also need to check the write references since the member is public.",
+      "parentUuid": "89ec91fc_544c777e",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
