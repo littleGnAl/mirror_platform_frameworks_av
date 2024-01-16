@@ -70,6 +70,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ec91fc_544c777e",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2024-01-16T18:27:44Z",
+      "side": 1,
+      "message": "To provide some more context: we\u0027re seeing occasional crashes (null pointer dereferences) in the wild in AudioTrack\u0027s `applyVolumeShaper` [here](https://android.googlesource.com/platform/frameworks/av/+/0d238df741687e4205546a0b682e5d69e0514f40/media/libaudioclient/AudioTrack.cpp#3055), called from [TrackPlayerBase](https://android.googlesource.com/platform/frameworks/av/+/0d238df741687e4205546a0b682e5d69e0514f40/media/libaudioclient/TrackPlayerBase.cpp#146), because the `AudioTrack` had already been destructed (so its `sp\u003cmedia::IAudioTrack\u003e` is null).\n\nMy main goal was to prevent such crashes by making existing null checks in `TrackPlayerBase` resilient to races (e.g. a race between `applyVolumeShaper` calling a method via the `sp\u003c\u003e` and `doDestroy()` dropping the last reference). \n\nThis CL ensures that the underlying `AudioTrack` object still exists, but doesn\u0027t guarantee that it\u0027s in a valid state. For example, the following is possible:\n\n1. Thread 1 calls `getAudioTrack()` and gets a valid reference to the `AudioTrack` object.\n2. Thread 2 calls `destroy()` which calls `stop()` on the same AudioTrack object\n3. Thread 1 now calls some other method on that object, which either races with `stop()` or doesn\u0027t expect the `AudioTrack` to be in the stopped state.\n\n\nGiven there\u0027s locking internally in `AudioTrack` I assumed this is fine, i.e. at worst it\u0027ll result in an error being returned and/or logged, but won\u0027t crash. That said:\n\n\u003e to make the non-nullity of the sp an invariant of an inited trackplayer\n\nThis does seem cleaner. What kind of changes would that require exactly?",
+      "parentUuid": "ac74bcd1_eb765c42",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
