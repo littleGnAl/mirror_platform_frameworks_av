@@ -280,6 +280,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e66a27e_9f5add77",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-01-16T06:45:59Z",
+      "side": 1,
+      "message": "Hi, Google,\nAfter confirmation, we can\u0027t obtain the special VVC MP4 bitstream containing SPS with video usability information (VUI). It is understood that parsing VUI constitutes a special case. The support for VVC has already been included in this commit, enabling basic VVC stream playback. Could following ways should be OK?\n1. The possibility of addressing support for setting HDR metadata and color aspects for VVC at a later time when encountering a special case in the future is being considered.\n2. Alternatively, consideration could be given to submitting this to the MediaTek partner branch rather than submitting it to the Google main branch?",
+      "parentUuid": "2577ab33_676cb1b8",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ce15fb3_76907003",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 5
