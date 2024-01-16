@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a175224_785ea5ea",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-16T23:44:10Z",
+      "side": 1,
+      "message": "Could you comment this is optional and only meaningful for largeFrameAudio tests?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecfa10bd_ee5ef6cc",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-16T23:44:10Z",
+      "side": 1,
+      "message": "Could you comment a little bit here? (Since these are hard to guess what these are doing.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a870875_162dbd97",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-16T23:44:10Z",
+      "side": 1,
+      "message": "Is this intentional? \nIf that\u0027s the case, please remove this line.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 37
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fc41f9_ebc290fe",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-16T23:44:10Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
