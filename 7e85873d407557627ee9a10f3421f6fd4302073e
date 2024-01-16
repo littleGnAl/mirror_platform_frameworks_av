@@ -46,6 +46,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac74bcd1_eb765c42",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2024-01-16T17:38:43Z",
+      "side": 1,
+      "message": "I actually don\u0027t think making this thread-safe is necessary, since if we call destroy while the object is live in a concurrent context, there is no well-formed way to make it safe.\n\nBasically, I think it\u0027s better to make the non-nullity of the sp an invariant of an inited trackplayer. This probably requires a minor change in how we call from SLES, though.",
+      "parentUuid": "0b7f9f77_bce137fe",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
