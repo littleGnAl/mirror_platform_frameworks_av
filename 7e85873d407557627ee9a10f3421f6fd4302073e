@@ -22,6 +22,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7f9f77_bce137fe",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-16T17:30:46Z",
+      "side": 1,
+      "message": "I think, a more practical solution is to replace this `sp` with an `atomic_sp`: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/utils/include/mediautils/Synchronization.h;l\u003d115;drc\u003d24d1a985cba70eca151ab07d6fef76ff1ca4f483",
+      "parentUuid": "78e7f882_dfae6c6c",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
