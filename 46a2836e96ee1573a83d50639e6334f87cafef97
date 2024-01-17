@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e3bec75_3b4ba296",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-17T18:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a175224_785ea5ea",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecfa10bd_ee5ef6cc",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-16T23:44:10Z",
       "side": 1,
       "message": "Could you comment a little bit here? (Since these are hard to guess what these are doing.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f11a708_ae010fac",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-17T18:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecfa10bd_ee5ef6cc",
       "range": {
         "startLine": 222,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c8b3ac_2f2ccb0d",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-17T18:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a870875_162dbd97",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 37
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28fc41f9_ebc290fe",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-16T23:44:10Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "46a2836e96ee1573a83d50639e6334f87cafef97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef181b9d_7a8b06f6",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-17T18:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28fc41f9_ebc290fe",
       "range": {
         "startLine": 108,
         "startChar": 0,
