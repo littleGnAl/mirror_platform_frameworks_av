@@ -189,6 +189,11 @@ status_t EffectHalAidl::process() {
                                        true /* retry */)) {
         ALOGI("%s %s receive dataMQUpdate eventFlag from HAL", __func__, effectName.c_str());
         mConversion->reopen();
+        efGroup = mConversion->getEventFlagGroup();
+        if (!efGroup) {
+            ALOGE("%s invalid efGroup", __func__);
+            return INVALID_OPERATION;
+        }
     }
     auto statusQ = mConversion->getStatusMQ();
     auto inputQ = mConversion->getInputMQ();
