@@ -118,6 +118,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd918ec_ed3df34b",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2024-01-17T01:14:37Z",
+      "side": 1,
+      "message": "\u003e since (if we call the method from sp\u003c\u003e), we can never call the dtor while holding the object to call another method.\n\nWe\u0027re calling methods directly on `mAudioTrack`, for example in `applyVolumeShaper` [here](https://android.googlesource.com/platform/frameworks/av/+/0d238df741687e4205546a0b682e5d69e0514f40/media/libaudioclient/TrackPlayerBase.cpp#146). That just deferences the underlying `m_ptr` (doesn\u0027t increase the refcount), so it can still race with `~sp()` dropping the last reference and destructing the object AFAICT.\n\n\u003e we are deferring handling concurrency on methods a layer up\n\nHm, would you mind clarifying this part? Is there a mechanism in place that prevents `doDestroy` (called via OpenSLES on an application thread) from racing with `applyVolumeShaper` (called by AudioFlinger, running on one of the binder threads)?",
+      "parentUuid": "1403254a_b97cf7de",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
