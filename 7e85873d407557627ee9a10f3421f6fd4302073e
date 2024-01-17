@@ -142,6 +142,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3dfceb_1429ce91",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2024-01-17T01:28:33Z",
+      "side": 1,
+      "message": "\u003e did you look for direct access to this public member that would need to be replaced by getAudioTrack()?\n\nGood point. I see this same pattern in a few places in frameworks/wilhelm:\n\n```\nif (ap-\u003emTrackPlayer-\u003emAudioTrack !\u003d 0) {\n    // do something with mAudioTrack\n}\n```\n\nI can change that to `getAudioTrack()` in a follow-up CL if we decide to go forward with this approach.",
+      "parentUuid": "7bd918ec_ed3df34b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
