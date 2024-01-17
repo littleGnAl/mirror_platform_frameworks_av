@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fff3722b_9aa82d06",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "We need something to notify the encoder to turn on the ROI feature before `encoder.start()` is called, because with ROI feature on the encoder will consume more resource, and it\u0027s not a good idea to always turn on this feature.\n\nShould change this to boolean type `enable_roi_t`, then default to `false`?",
+      "parentUuid": "d85587cb_fcdb5948",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a4f39e_0e6125a3",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 8
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84e15575_cbda2eec",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "Yes we will change.",
+      "parentUuid": "32a4f39e_0e6125a3",
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "748bf130_e2332dfc",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 8
@@ -54,6 +96,30 @@
       "writtenOn": "2024-01-12T23:10:04Z",
       "side": 1,
       "message": "C2 does not recommend pre-selecting a configuration type. In C2\u0027s view a component that supports QP offset should be able to accept a QP offset at any moment (for any frame). Therefore, preselecting this type does not make sense for C2.",
+      "range": {
+        "startLine": 1959,
+        "startChar": 3,
+        "endLine": 1959,
+        "endChar": 6
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf18eff_eed900e4",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "Yes we will change. One related comment above that we will replace the `roi_type_t` parameter with a boolean `enable_roi_t`, and this will only notify the encoder to turn on the ROI feature. Do you think this is good for C2? Thanks!",
+      "parentUuid": "748bf130_e2332dfc",
       "range": {
         "startLine": 1959,
         "startChar": 3,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc139abd_3362f1d4",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "Yes we will fix.",
+      "parentUuid": "b09b4380_2c19d59e",
+      "range": {
+        "startLine": 1986,
+        "startChar": 57,
+        "endLine": 1986,
+        "endChar": 74
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61951e2a_cc0465d5",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 8
@@ -100,6 +190,30 @@
       "writtenOn": "2024-01-12T23:10:04Z",
       "side": 1,
       "message": "C2QpOffsetRectStruct\n\ndrop Config",
+      "range": {
+        "startLine": 1996,
+        "startChar": 7,
+        "endLine": 1996,
+        "endChar": 28
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f304268_8a3f5c1b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "Yes we will fix.",
+      "parentUuid": "61951e2a_cc0465d5",
       "range": {
         "startLine": 1996,
         "startChar": 7,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "901b7747_1429072e",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "Hi Lajos,\n\nThanks for the suggestion, I totally understand your point of view and the advantage that order of rects is the importance of the ROI, but I would say I still prefer the original design where the \"later wins\". Here is my reason:\n\nSuppose the rects overlap only certain area, if we prioritize the former ones, then the configuration of the latter ones will be \"the extended LCU area, minus the LCUs that have been configured by the previous rects, will use the ROI QP offset X\", I think this is hard to understand from users point of view.\n\nWhile if we prioritize the latter ones, then the logic will become \"the latter settings amends the previous ones\", and IMHO this is more preferred by user.\n\nRegarding the # of limitation, as we discussed offline in our meetings, we can use 100.",
+      "parentUuid": "1c9e3863_40eb4c39",
+      "range": {
+        "startLine": 2013,
+        "startChar": 0,
+        "endLine": 2013,
+        "endChar": 7
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c781e0b4_ba358ea3",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 8
@@ -158,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d6894e3_aae31c1b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "Yes we will fix.",
+      "parentUuid": "c781e0b4_ba358ea3",
+      "range": {
+        "startLine": 2014,
+        "startChar": 8,
+        "endLine": 2014,
+        "endChar": 30
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81462ebd_9ce9f8cb",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 8
@@ -169,6 +331,30 @@
       "writtenOn": "2024-01-12T23:10:04Z",
       "side": 1,
       "message": "coding.qp-offset-rects",
+      "range": {
+        "startLine": 2015,
+        "startChar": 49,
+        "endLine": 2015,
+        "endChar": 72
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c24839_b95a053e",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-17T06:31:04Z",
+      "side": 1,
+      "message": "Yes we will fix.",
+      "parentUuid": "81462ebd_9ce9f8cb",
       "range": {
         "startLine": 2015,
         "startChar": 49,
