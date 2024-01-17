@@ -69,6 +69,24 @@
       "parentUuid": "ef13e542_78b3821a",
       "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ed484d_d4623d6d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-17T21:33:34Z",
+      "side": 1,
+      "message": "The setting is attempted by the application by finally decided by the component. Does READ prevents setting from application?",
+      "parentUuid": "30b97c98_c19077df",
+      "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
