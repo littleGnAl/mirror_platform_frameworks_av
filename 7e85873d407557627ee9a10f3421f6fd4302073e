@@ -190,6 +190,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b623eea_4ceeecd9",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2024-01-17T23:24:44Z",
+      "side": 1,
+      "message": "@atneya@google.com: I see what you mean, thanks! Yeah, without that `destroy()` we wouldn\u0027t have the race since the `AudioTrack` would be guaranteed to be valid.\n\nIf we were to skip calling `TrackPlayerBase::destroy()` altogether, I suspect that might introduce another issue in OpenSLES clients that call Destroy _without_ previously changing the playstate to STOPPED. In that case AudioFlinger would prevent the object from being released properly (by holding a reference to it via the `IPlayer` binder proxy), right?\n\nI wonder if simply modifying `doDestroy()` to not call `mAudioTrack.clear()` would be sufficient here -- if so, that would be a much simpler fix. Let me give that a try.",
+      "parentUuid": "573959ea_2770b40a",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
