@@ -2181,225 +2181,203 @@ void MediaCodecInfo::VideoCapabilities::applyLevelLimits() {
     setParentError(errors);
 }
 
-/**
- * A class that supports querying the encoding capabilities of a codec.
- */
-public static final class EncoderCapabilities {
-    /**
-     * Returns the supported range of quality values.
-     *
-     * Quality is implementation-specific. As a general rule, a higher quality
-     * setting results in a better image quality and a lower compression ratio.
-     */
-    public Range<Integer> getQualityRange() {
-        return mQualityRange;
-    }
+// EncoderCapabilities
 
-    /**
-     * Returns the supported range of encoder complexity values.
-     * <p>
-     * Some codecs may support multiple complexity levels, where higher
-     * complexity values use more encoder tools (e.g. perform more
-     * intensive calculations) to improve the quality or the compression
-     * ratio.  Use a lower value to save power and/or time.
-     */
-    public Range<Integer> getComplexityRange() {
-        return mComplexityRange;
-    }
+Range<int> MediaCodecInfo::EncoderCapabilities::getQualityRange() {
+    return mQualityRange;
+}
 
-    /** Constant quality mode */
-    public static final int BITRATE_MODE_CQ = 0;
-    /** Variable bitrate mode */
-    public static final int BITRATE_MODE_VBR = 1;
-    /** Constant bitrate mode */
-    public static final int BITRATE_MODE_CBR = 2;
-    /** Constant bitrate mode with frame drops */
-    public static final int BITRATE_MODE_CBR_FD =  3;
+Range<int> MediaCodecInfo::EncoderCapabilities::getComplexityRange() {
+    return mComplexityRange;
+}
 
-    private static final Feature[] bitrates = new Feature[] {
-        new Feature("VBR", BITRATE_MODE_VBR, true),
-        new Feature("CBR", BITRATE_MODE_CBR, false),
-        new Feature("CQ",  BITRATE_MODE_CQ,  false),
-        new Feature("CBR-FD", BITRATE_MODE_CBR_FD, false)
-    };
-
-    private static int parseBitrateMode(String mode) {
-        for (Feature feat: bitrates) {
-            if (feat.mName.equalsIgnoreCase(mode)) {
-                return feat.mValue;
-            }
-        }
-        return 0;
-    }
-
-    /**
-     * Query whether a bitrate mode is supported.
-     */
-    public boolean isBitrateModeSupported(int mode) {
-        for (Feature feat: bitrates) {
-            if (mode == feat.mValue) {
-                return (mBitControl & (1 << mode)) != 0;
-            }
-        }
-        return false;
-    }
-
-    private Range<Integer> mQualityRange;
-    private Range<Integer> mComplexityRange;
-    private CodecCapabilities mParent;
-
-    /* no public constructor */
-    private EncoderCapabilities() { }
-
-    /** @hide */
-    public static EncoderCapabilities create(
-            MediaFormat info, CodecCapabilities parent) {
-        EncoderCapabilities caps = new EncoderCapabilities();
-        caps.init(info, parent);
-        return caps;
-    }
-
-    private void init(MediaFormat info, CodecCapabilities parent) {
-        // no support for complexity or quality yet
-        mParent = parent;
-        mComplexityRange = Range.create(0, 0);
-        mQualityRange = Range.create(0, 0);
-        mBitControl = (1 << BITRATE_MODE_VBR);
-
-        applyLevelLimits();
-        parseFromInfo(info);
-    }
-
-    private void applyLevelLimits() {
-        String mime = mParent.getMimeType();
-        if (mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_FLAC)) {
-            mComplexityRange = Range.create(0, 8);
-            mBitControl = (1 << BITRATE_MODE_CQ);
-        } else if (mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_AMR_NB)
-                || mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_AMR_WB)
-                || mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_G711_ALAW)
-                || mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_G711_MLAW)
-                || mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_MSGSM)) {
-            mBitControl = (1 << BITRATE_MODE_CBR);
+// static
+int MediaCodecInfo::EncoderCapabilities::ParseBitrateMode(std::string mode) {
+    for (Feature feat: bitrates) {
+        if (strcasecmp(feat.mName.c_str(), mode.c_str()) == 0) {
+            return feat.mValue;
         }
     }
+    return 0;
+}
 
-    private int mBitControl;
-    private Integer mDefaultComplexity;
-    private Integer mDefaultQuality;
-    private String mQualityScale;
-
-    private void parseFromInfo(MediaFormat info) {
-        Map<String, Object> map = info.getMap();
-
-        if (info.containsKey("complexity-range")) {
-            mComplexityRange = Utils
-                    .parseIntRange(info.getString("complexity-range"), mComplexityRange);
-            // TODO should we limit this to level limits?
+bool MediaCodecInfo::EncoderCapabilities::isBitrateModeSupported(int mode) {
+    for (Feature feat: bitrates) {
+        if (mode == feat.mValue) {
+            return (mBitControl & (1 << mode)) != 0;
         }
-        if (info.containsKey("quality-range")) {
-            mQualityRange = Utils
-                    .parseIntRange(info.getString("quality-range"), mQualityRange);
-        }
-        if (info.containsKey("feature-bitrate-modes")) {
-            mBitControl = 0;
-            for (String mode: info.getString("feature-bitrate-modes").split(",")) {
-                mBitControl |= (1 << parseBitrateMode(mode));
-            }
-        }
-
-        try {
-            mDefaultComplexity = Integer.parseInt((String)map.get("complexity-default"));
-        } catch (NumberFormatException e) { }
-
-        try {
-            mDefaultQuality = Integer.parseInt((String)map.get("quality-default"));
-        } catch (NumberFormatException e) { }
-
-        mQualityScale = (String)map.get("quality-scale");
     }
+    return false;
+}
 
-    private boolean supports(
-            Integer complexity, Integer quality, Integer profile) {
-        boolean ok = true;
-        if (ok && complexity != null) {
-            ok = mComplexityRange.contains(complexity);
-        }
-        if (ok && quality != null) {
-            ok = mQualityRange.contains(quality);
-        }
-        if (ok && profile != null) {
-            for (CodecProfileLevel pl: mParent.profileLevels) {
-                if (pl.profile == profile) {
-                    profile = null;
-                    break;
-                }
-            }
-            ok = profile == null;
-        }
-        return ok;
+// static
+std::unique_ptr<MediaCodecInfo::EncoderCapabilities> MediaCodecInfo::EncoderCapabilities::Create(
+        const sp<AMessage> &format, CodecCapabilities &parent) {
+    std::unique_ptr<EncoderCapabilities> caps(new EncoderCapabilities());
+    caps->init(format, parent);
+    return caps;
+}
+
+void MediaCodecInfo::EncoderCapabilities::init(const sp<AMessage> &format,
+        CodecCapabilities &parent) {
+    // no support for complexity or quality yet
+    mParent = std::make_shared<CodecCapabilities>(parent);
+    mComplexityRange = Range(0, 0);
+    mQualityRange = Range(0, 0);
+    mBitControl = (1 << BITRATE_MODE_VBR);
+
+    applyLevelLimits();
+    parseFromInfo(format);
+}
+
+void MediaCodecInfo::EncoderCapabilities::applyLevelLimits() {
+    auto lockParent = mParent.lock();
+    if (!lockParent) {
+        return;
     }
+    const std::string mediaTypeStr = lockParent->getMediaType();
+    const char* mediaType = mediaTypeStr.c_str();
+    if (strcasecmp(mediaType, MIMETYPE_AUDIO_FLAC) == 0) {
+        mComplexityRange = Range(0, 8);
+        mBitControl = (1 << BITRATE_MODE_CQ);
+    } else if (strcasecmp(mediaType, MIMETYPE_AUDIO_AMR_NB) == 0
+            || strcasecmp(mediaType, MIMETYPE_AUDIO_AMR_WB) == 0
+            || strcasecmp(mediaType, MIMETYPE_AUDIO_G711_ALAW) == 0
+            || strcasecmp(mediaType, MIMETYPE_AUDIO_G711_MLAW) == 0
+            || strcasecmp(mediaType, MIMETYPE_AUDIO_MSGSM) == 0) {
+        mBitControl = (1 << BITRATE_MODE_CBR);
+    }
+}
 
-    /** @hide */
-    public void getDefaultFormat(MediaFormat format) {
-        // don't list trivial quality/complexity as default for now
-        if (!mQualityRange.getUpper().equals(mQualityRange.getLower())
-                && mDefaultQuality != null) {
-            format.setInteger(MediaFormat.KEY_QUALITY, mDefaultQuality);
+void MediaCodecInfo::EncoderCapabilities::parseFromInfo(const sp<AMessage> &format) {
+    AString complexityRangeAStr;
+    if (format->findString("complexity-range", &complexityRangeAStr)) {
+        std::optional<Range<int>> complexityRangeOpt
+                = ParseIntRange(std::string(complexityRangeAStr.c_str()));
+        mComplexityRange = complexityRangeOpt.value_or(mComplexityRange);
+        // TODO should we limit this to level limits?
+    }
+    AString qualityRangeAStr;
+    if (format->findString("quality-range", &qualityRangeAStr)) {
+        std::optional<Range<int>> qualityRangeOpt
+                = ParseIntRange(std::string(qualityRangeAStr.c_str()));
+        mQualityRange = qualityRangeOpt.value_or(mQualityRange);
+    }
+    AString bitrateModesAStr;
+    if (format->findString("feature-bitrate-modes", &bitrateModesAStr)) {
+        mBitControl = 0;
+        for (std::string mode: base::Split(std::string(bitrateModesAStr.c_str()), ",")) {
+            mBitControl |= (1 << ParseBitrateMode(mode));
         }
-        if (!mComplexityRange.getUpper().equals(mComplexityRange.getLower())
-                && mDefaultComplexity != null) {
-            format.setInteger(MediaFormat.KEY_COMPLEXITY, mDefaultComplexity);
+    }
+    format->findInt32("complexity-default", &mDefaultComplexity);
+    format->findInt32("quality-default", &mDefaultQuality);
+    AString qualityScaleAStr;
+    if (format->findString("quality-scale", &qualityScaleAStr)) {
+        mQualityScale = std::string(qualityScaleAStr.c_str());
+    }
+}
+
+bool MediaCodecInfo::EncoderCapabilities::supports(
+        std::optional<int> complexity, std::optional<int> quality, std::optional<int> profile) {
+    bool ok = true;
+    if (ok && complexity) {
+        ok = mComplexityRange.contains(complexity.value());
+    }
+    if (ok && quality) {
+        ok = mQualityRange.contains(quality.value());
+    }
+    if (ok && profile) {
+        auto lockParent = mParent.lock();
+        if (!lockParent) {
+            return false;
         }
-        // bitrates are listed in order of preference
-        for (Feature feat: bitrates) {
-            if ((mBitControl & (1 << feat.mValue)) != 0) {
-                format.setInteger(MediaFormat.KEY_BITRATE_MODE, feat.mValue);
+        for (ProfileLevel pl: lockParent->getProfileLevels()) {
+            if (pl.mProfile == profile.value()) {
+                profile = std::nullopt;
                 break;
             }
         }
+        ok = profile == std::nullopt;
+    }
+    return ok;
+}
+
+void MediaCodecInfo::EncoderCapabilities::getDefaultFormat(sp<AMessage> &format) {
+    // don't list trivial quality/complexity as default for now
+    if (mQualityRange.upper() != mQualityRange.lower()
+            && mDefaultQuality != 0) {
+        format->setInt32(KEY_QUALITY, mDefaultQuality);
+    }
+    if (mComplexityRange.upper() != mComplexityRange.lower()
+            && mDefaultComplexity != 0) {
+        format->setInt32(KEY_COMPLEXITY, mDefaultComplexity);
+    }
+    // bitrates are listed in order of preference
+    for (Feature feat: bitrates) {
+        if ((mBitControl & (1 << feat.mValue)) != 0) {
+            format->setInt32(KEY_BITRATE_MODE, feat.mValue);
+            break;
+        }
+    }
+}
+
+bool MediaCodecInfo::EncoderCapabilities::supportsFormat(const sp<AMessage> &format) {
+    auto lockParent = mParent.lock();
+    if (!lockParent) {
+        return false;
+    }
+    const std::string mediaType = lockParent->getMediaType();
+
+    int32_t mode;
+    if (format->findInt32(KEY_BITRATE_MODE, &mode) && !isBitrateModeSupported(mode)) {
+        return false;
     }
 
-    /** @hide */
-    public boolean supportsFormat(MediaFormat format) {
-        final Map<String, Object> map = format.getMap();
-        final String mime = mParent.getMimeType();
-
-        Integer mode = (Integer)map.get(MediaFormat.KEY_BITRATE_MODE);
-        if (mode != null && !isBitrateModeSupported(mode)) {
-            return false;
-        }
-
-        Integer complexity = (Integer)map.get(MediaFormat.KEY_COMPLEXITY);
-        if (MediaFormat.MIMETYPE_AUDIO_FLAC.equalsIgnoreCase(mime)) {
-            Integer flacComplexity =
-                (Integer)map.get(MediaFormat.KEY_FLAC_COMPRESSION_LEVEL);
-            if (complexity == null) {
-                complexity = flacComplexity;
-            } else if (flacComplexity != null && !complexity.equals(flacComplexity)) {
-                throw new IllegalArgumentException(
-                        "conflicting values for complexity and " +
-                        "flac-compression-level");
-            }
-        }
-
-        // other audio parameters
-        Integer profile = (Integer)map.get(MediaFormat.KEY_PROFILE);
-        if (MediaFormat.MIMETYPE_AUDIO_AAC.equalsIgnoreCase(mime)) {
-            Integer aacProfile = (Integer)map.get(MediaFormat.KEY_AAC_PROFILE);
-            if (profile == null) {
-                profile = aacProfile;
-            } else if (aacProfile != null && !aacProfile.equals(profile)) {
-                throw new IllegalArgumentException(
-                        "conflicting values for profile and aac-profile");
-            }
-        }
-
-        Integer quality = (Integer)map.get(MediaFormat.KEY_QUALITY);
-
-        return supports(complexity, quality, profile);
+    std::optional<int> complexityOpt = std::nullopt;
+    int complexity;
+    if (format->findInt32(KEY_COMPLEXITY, &complexity)) {
+        complexityOpt = complexity;
     }
-};
+    if (strcasecmp(mediaType.c_str(), MIMETYPE_AUDIO_FLAC) == 0) {
+        int flacComplexity;
+        if (format->findInt32(KEY_FLAC_COMPRESSION_LEVEL, &flacComplexity)) {
+            if (!complexityOpt) {
+                complexityOpt = flacComplexity;
+            } else if (flacComplexity != complexityOpt.value()) {
+                // CHECK(complexity == flacComplexity);
+                ALOGE("conflicting values for complexity and flac-compression-level");
+                return false;
+            }
+        }
+    }
+
+    // other audio parameters
+    std::optional<int> profileOpt = std::nullopt;
+    int profile;
+    if (format->findInt32(KEY_PROFILE, &profile)) {
+        profileOpt = profile;
+    }
+    if (strcasecmp(mediaType.c_str(), MIMETYPE_AUDIO_AAC)) {
+        int aacProfile;
+        if (format->findInt32(KEY_AAC_PROFILE, &aacProfile)) {
+            if (!profileOpt) {
+                profileOpt = aacProfile;
+            } else if (aacProfile != profileOpt.value()) {
+                ALOGE("conflicting values for profile and aac-profile");
+                return false;
+            }
+        }
+    }
+
+    std::optional<int> qualityOpt = std::nullopt;
+    int quality;
+    if (format->findInt32(KEY_QUALITY, &quality)) {
+        qualityOpt = quality;
+    }
+
+    return supports(complexity, quality, profile);
+}
 
 // CodecCapabilities
 

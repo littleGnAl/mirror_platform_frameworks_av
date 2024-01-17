@@ -56,6 +56,22 @@ struct MediaCodecInfo : public RefBase {
         }
     };
 
+    struct Feature {
+        std::string mName;
+        int mValue;
+        bool mDefault;
+        bool mInternal;
+        Feature(std::string name, int value, bool def, bool internal) {
+            mName = name;
+            mValue = value;
+            mDefault = def;
+            mInternal = internal;
+        }
+        Feature(std::string name, int value, bool def) {
+            Feature(name, value, def, false /* internal */);
+        }
+    };
+
     struct CodecCapabilities;
 
     struct CapabilitiesBase {
@@ -551,6 +567,77 @@ struct MediaCodecInfo : public RefBase {
                 int blockWidth, int blockHeight,
                 int widthAlignment, int heightAlignment);
         void applyLevelLimits();
+    };
+
+    /**
+     * A class that supports querying the encoding capabilities of a codec.
+     */
+    struct EncoderCapabilities : CapabilitiesBase {
+        /**
+        * Returns the supported range of quality values.
+        *
+        * Quality is implementation-specific. As a general rule, a higher quality
+        * setting results in a better image quality and a lower compression ratio.
+        */
+        Range<int> getQualityRange();
+
+        /**
+         * Returns the supported range of encoder complexity values.
+         * <p>
+         * Some codecs may support multiple complexity levels, where higher
+         * complexity values use more encoder tools (e.g. perform more
+         * intensive calculations) to improve the quality or the compression
+         * ratio.  Use a lower value to save power and/or time.
+         */
+        Range<int> getComplexityRange();
+
+        /** Constant quality mode */
+        static const int BITRATE_MODE_CQ = 0;
+        /** Variable bitrate mode */
+        static const int BITRATE_MODE_VBR = 1;
+        /** Constant bitrate mode */
+        static const int BITRATE_MODE_CBR = 2;
+        /** Constant bitrate mode with frame drops */
+        static const int BITRATE_MODE_CBR_FD =  3;
+
+        /**
+         * Query whether a bitrate mode is supported.
+         */
+        bool isBitrateModeSupported(int mode);
+
+        /** @hide */
+        static std::unique_ptr<EncoderCapabilities> Create(
+                const sp<AMessage> &format, CodecCapabilities &parent);
+
+        /** @hide */
+        void getDefaultFormat(sp<AMessage> &format);
+
+        /** @hide */
+        bool supportsFormat(const sp<AMessage> &format);
+
+    private:
+        static inline Feature bitrates[] = {
+            Feature("VBR", BITRATE_MODE_VBR, true),
+            Feature("CBR", BITRATE_MODE_CBR, false),
+            Feature("CQ",  BITRATE_MODE_CQ,  false),
+            Feature("CBR-FD", BITRATE_MODE_CBR_FD, false)
+        };
+        static int ParseBitrateMode(std::string mode);
+
+        Range<int> mQualityRange;
+        Range<int> mComplexityRange;
+        int mBitControl;
+        int mDefaultComplexity;
+        int mDefaultQuality;
+        std::string mQualityScale;
+
+        /* no public constructor */
+        EncoderCapabilities() { }
+        void init(const sp<AMessage> &format, CodecCapabilities &parent);
+        void applyLevelLimits();
+        void parseFromInfo(const sp<AMessage> &format);
+        bool supports(std::optional<int> complexity, std::optional<int> quality,
+                std::optional<int> profile);
     };
 
     struct CodecCapabilities {
