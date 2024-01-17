@@ -166,6 +166,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573959ea_2770b40a",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2024-01-17T04:05:27Z",
+      "side": 1,
+      "message": "\u003e We\u0027re calling methods directly on mAudioTrack, for example in applyVolumeShaper here.\n\nIf a method on a class is called concurrently with the destructor, then all bets are off.\n\nSo, if we only ~sp in the dtor of this class AND we don\u0027t leak the raw ptr of the sp outside the class, then we don\u0027t have a concurrent call.\n\n\u003e Hm, would you mind clarifying this part?\n\nThe guarantee doesn\u0027t exist for the code as-is, because we call destroy explicitly from SLES. If we didn\u0027t it would apply:\n\nThe implicit guarantee is from sp\u003cTrackBase\u003e -\u003e if we are being called from af, then the object is still alive -\u003e the track is still alive. I need to double check on circular refs, though.",
+      "parentUuid": "5a3dfceb_1429ce91",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
