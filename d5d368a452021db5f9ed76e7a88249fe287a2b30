@@ -33,6 +33,24 @@
       "message": "Ned to get gerrit to think this file is text.",
       "revId": "d5d368a452021db5f9ed76e7a88249fe287a2b30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d4c31f_291330a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2024-01-17T19:14:38Z",
+      "side": 1,
+      "message": "Still shows as binary to me.\n\nyou may need to do a seperate CL that just changes it to text first.",
+      "parentUuid": "84d3f102_e456855c",
+      "revId": "d5d368a452021db5f9ed76e7a88249fe287a2b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
