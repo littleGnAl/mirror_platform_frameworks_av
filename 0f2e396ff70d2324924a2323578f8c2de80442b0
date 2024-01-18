@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da251b8_d26da3de",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2313,
+      "author": {
+        "id": 1068291
+      },
+      "writtenOn": "2024-01-18T10:25:44Z",
+      "side": 1,
+      "message": "Should we return an error in the else case? If so, would \n```\nif (section_length \u003c 9) {\n    return;\n}\nsize_t numProgramBytes \u003d (section_length - 5 /* header */ - 4 /* crc */);\n```\nbe better?",
+      "range": {
+        "startLine": 2313,
+        "startChar": 7,
+        "endLine": 2313,
+        "endChar": 74
+      },
+      "revId": "0f2e396ff70d2324924a2323578f8c2de80442b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
