@@ -295,9 +295,15 @@ public:
             ALOGE("Invalid handle for sync fence");
             return nullptr;
         }
+        // suspecting overrun
+        ALOGD("handle: numFd %d, numInt %d", nh->numFds, nh->numInts);
         std::vector<int> fds;
         for (int i = 0; i < nh->numFds-1; i++) {
             fds.push_back(dup(nh->data[i]));
+        }
+        ALOGD("fds num %zu", fds.size());
+        if (fds.size() == 0) {
+            return nullptr;
         }
         std::shared_ptr<SyncFenceImpl> p = (nh->numFds == 1)?
                 (std::make_shared<SyncFenceImpl>(fds.back())):
