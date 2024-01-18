@@ -39,6 +39,30 @@
       },
       "revId": "f13f93bd8e5652323ba49569c2448583aac60c9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f95232_21265361",
+        "filename": "media/codec2/hal/aidl/BufferTypes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-18T00:44:56Z",
+      "side": 1,
+      "message": "\u003e Is this supposed to represent a different connection than foundConnection above? Or are they out of sync?\n\n@taklee@google.com Could you please clarify what is the expected behavior here? From our discussion I assume `mSenderManager` may not be handling the partial failures correctly, leading to an inconsistency. In any case we shouldn\u0027t rely on `isNewConnection` out param to be consistent with the iterator validity.\n\n\u003e This would only be a problem if registerSender() set isNewConnection to false, when it was previously true on line 283, right?\n\nRight.",
+      "parentUuid": "b09c4711_536521f4",
+      "range": {
+        "startLine": 293,
+        "startChar": 48,
+        "endLine": 293,
+        "endChar": 63
+      },
+      "revId": "f13f93bd8e5652323ba49569c2448583aac60c9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
