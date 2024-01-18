@@ -87,6 +87,30 @@
       },
       "revId": "f13f93bd8e5652323ba49569c2448583aac60c9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dda1112_8100683f",
+        "filename": "media/codec2/hal/aidl/BufferTypes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-18T01:33:58Z",
+      "side": 1,
+      "message": "This is a little bit diffrent from the proposed fix though.",
+      "parentUuid": "ebe111e6_2edf0ed4",
+      "range": {
+        "startLine": 293,
+        "startChar": 48,
+        "endLine": 293,
+        "endChar": 63
+      },
+      "revId": "f13f93bd8e5652323ba49569c2448583aac60c9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
