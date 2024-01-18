@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca166bf_6609f7b1",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-18T23:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "017b7224_bc38dd52",
+      "revId": "85bf910f5546bc8ca62968702b81fbc982ed6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4d07a1e_e5e43b25",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-18T23:02:19Z",
       "side": 1,
       "message": "nit: remove blank line",
+      "revId": "85bf910f5546bc8ca62968702b81fbc982ed6d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4282bab_b8dd4e07",
+        "filename": "media/codec2/hal/client/client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2075,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-18T23:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4d07a1e_e5e43b25",
       "revId": "85bf910f5546bc8ca62968702b81fbc982ed6d19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
