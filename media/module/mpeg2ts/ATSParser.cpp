@@ -440,10 +440,16 @@ bool ATSParser::Program::findCADescriptor(
         ATSParser::CADescriptor *caDescriptor) {
     bool found = false;
     while (infoLength > 2) {
-        unsigned descriptor_tag = br->getBits(8);
+        unsigned descriptor_tag;
+        if (!br->getBitsGraceful(8, &descriptor_tag)) {
+            return false;
+        }
         ALOGV("      tag = 0x%02x", descriptor_tag);
 
-        unsigned descriptor_length = br->getBits(8);
+        unsigned descriptor_length;
+        if (!br->getBitsGraceful(8, &descriptor_length)) {
+            return false;
+        }
         ALOGV("      len = %u", descriptor_length);
 
         infoLength -= 2;
@@ -452,8 +458,15 @@ bool ATSParser::Program::findCADescriptor(
         }
         if (descriptor_tag == DESCRIPTOR_CA && descriptor_length >= 4) {
             found = true;
-            caDescriptor->mSystemID = br->getBits(16);
-            caDescriptor->mPID = br->getBits(16) & 0x1fff;
+            unsigned readBitsValue;
+            if (!br->getBitsGraceful(16, &readBitsValue)) {
+                return false;
+            }
+            caDescriptor->mSystemID = readBitsValue;
+            if (!br->getBitsGraceful(16, &caDescriptor->mPID)) {
+                return false;
+            }
+            caDescriptor->mPID &= 0x1fff;
             infoLength -= 4;
             caDescriptor->mPrivateData.assign(
                     br->data(), br->data() + descriptor_length - 4);
@@ -468,13 +481,19 @@ bool ATSParser::Program::findCADescriptor(
 }
 
 status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
-    unsigned table_id = br->getBits(8);
+    unsigned table_id;
+    if (!br->getBitsGraceful(8, &table_id)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("  table_id = %u", table_id);
     if (table_id != 0x02u) {
         ALOGE("PMT data error!");
         return ERROR_MALFORMED;
     }
-    unsigned section_syntax_indicator = br->getBits(1);
+    unsigned section_syntax_indicator;
+    if (!br->getBitsGraceful(1, &section_syntax_indicator)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("  section_syntax_indicator = %u", section_syntax_indicator);
     if (section_syntax_indicator != 1u) {
         ALOGE("PMT data error!");
@@ -482,31 +501,69 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
     }
 
     br->skipBits(1);  // '0'
-    MY_LOGV("  reserved = %u", br->getBits(2));
+    unsigned readBitsValue;
+    if (!br->getBitsGraceful(2, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
 
-    unsigned section_length = br->getBits(12);
+    MY_LOGV("  reserved = %u", readBitsValue);
+
+    unsigned section_length;
+    if (!br->getBitsGraceful(12, &section_length)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("  section_length = %u", section_length);
 
-    MY_LOGV("  program_number = %u", br->getBits(16));
-    MY_LOGV("  reserved = %u", br->getBits(2));
+    if (!br->getBitsGraceful(16, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("  program_number = %u", readBitsValue);
+    if (!br->getBitsGraceful(2, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("  reserved = %u", readBitsValue);
     bool audioPresentationsChanged = false;
-    unsigned pmtVersion = br->getBits(5);
+    unsigned pmtVersion;
+    if (!br->getBitsGraceful(5, &pmtVersion)) {
+        return ERROR_MALFORMED;
+    }
     if (pmtVersion != mPMTVersion) {
         audioPresentationsChanged = true;
         mPMTVersion = pmtVersion;
     }
     MY_LOGV("  version_number = %u", pmtVersion);
-    MY_LOGV("  current_next_indicator = %u", br->getBits(1));
-    MY_LOGV("  section_number = %u", br->getBits(8));
-    MY_LOGV("  last_section_number = %u", br->getBits(8));
-    MY_LOGV("  reserved = %u", br->getBits(3));
+    if (!br->getBitsGraceful(1, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("  current_next_indicator = %u", readBitsValue);
+    if (!br->getBitsGraceful(8, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("  section_number = %u", readBitsValue);
+    if (!br->getBitsGraceful(8, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("  last_section_number = %u", readBitsValue);
+    if (!br->getBitsGraceful(3, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("  reserved = %u", readBitsValue);
 
-    unsigned PCR_PID = br->getBits(13);
+    unsigned PCR_PID;
+    if (!br->getBitsGraceful(13, &PCR_PID)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("  PCR_PID = 0x%04x", PCR_PID);
 
-    MY_LOGV("  reserved = %u", br->getBits(4));
+    if (!br->getBitsGraceful(4, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("  reserved = %u", readBitsValue);
 
-    unsigned program_info_length = br->getBits(12);
+    unsigned program_info_length;
+    if (!br->getBitsGraceful(12, &program_info_length)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("  program_info_length = %u", program_info_length);
 
     // descriptors
@@ -526,16 +583,29 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
 
     while (infoBytesRemaining >= 5) {
         StreamInfo info;
-        info.mType = br->getBits(8);
+        if (!br->getBitsGraceful(8, &info.mType)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("    stream_type = 0x%02x", info.mType);
-        MY_LOGV("    reserved = %u", br->getBits(3));
+        if (!br->getBitsGraceful(3, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("    reserved = %u", readBitsValue);
 
-        info.mPID = br->getBits(13);
+        if (!br->getBitsGraceful(13, &info.mPID)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("    elementary_PID = 0x%04x", info.mPID);
 
-        MY_LOGV("    reserved = %u", br->getBits(4));
+        if (!br->getBitsGraceful(4, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("    reserved = %u", readBitsValue);
 
-        unsigned ES_info_length = br->getBits(12);
+        unsigned ES_info_length;
+        if (!br->getBitsGraceful(12, &ES_info_length)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("    ES_info_length = %u", ES_info_length);
         infoBytesRemaining -= 5 + ES_info_length;
 
@@ -545,10 +615,16 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
         info.mAudioPresentations.clear();
         bool hasStreamCA = false;
         while (ES_info_length > 2 && infoBytesRemaining >= 0) {
-            unsigned descriptor_tag = br->getBits(8);
+            unsigned descriptor_tag;
+            if (!br->getBitsGraceful(8, &descriptor_tag)) {
+                return ERROR_MALFORMED;
+            }
             ALOGV("      tag = 0x%02x", descriptor_tag);
 
-            unsigned descriptor_length = br->getBits(8);
+            unsigned descriptor_length;
+            if (!br->getBitsGraceful(8, &descriptor_length)) {
+                return ERROR_MALFORMED;
+            }
             ALOGV("      len = %u", descriptor_length);
 
             ES_info_length -= 2;
@@ -565,15 +641,25 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
                 br->skipBits(descriptor_length * 8);
             } else if (descriptor_tag == DESCRIPTOR_CA && descriptor_length >= 4) {
                 hasStreamCA = true;
-                streamCA.mSystemID = br->getBits(16);
-                streamCA.mPID = br->getBits(16) & 0x1fff;
+
+                if (!br->getBitsGraceful(16, &readBitsValue)) {
+                    return ERROR_MALFORMED;
+                }
+                streamCA.mSystemID = readBitsValue;
+                if (!br->getBitsGraceful(16, &streamCA.mPID)) {
+                    return ERROR_MALFORMED;
+                }
+                streamCA.mPID &= 0x1fff;
                 ES_info_length -= descriptor_length;
                 descriptor_length -= 4;
                 streamCA.mPrivateData.assign(br->data(), br->data() + descriptor_length);
                 br->skipBits(descriptor_length * 8);
             } else if (info.mType == STREAMTYPE_PES_PRIVATE_DATA &&
                        descriptor_tag == DESCRIPTOR_DVB_EXTENSION && descriptor_length >= 1) {
-                unsigned descTagExt = br->getBits(8);
+                unsigned descTagExt;
+                if (!br->getBitsGraceful(8, &descTagExt)) {
+                    return ERROR_MALFORMED;
+                }
                 ALOGV("      tag_ext = 0x%02x", descTagExt);
                 ES_info_length -= descriptor_length;
                 descriptor_length--;
@@ -595,7 +681,10 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
                 } else if (descTagExt == EXT_DESCRIPTOR_DVB_AUDIO_PRESELECTION &&
                            descriptor_length >= 1) {
                     // DVB BlueBook A038 Table 110
-                    unsigned num_preselections = br->getBits(5);
+                    unsigned num_preselections;
+                    if (!br->getBitsGraceful(5, &num_preselections)) {
+                        return ERROR_MALFORMED;
+                    }
                     br->skipBits(3);  // reserved
                     for (unsigned i = 0; i < num_preselections; ++i) {
                         if (br->numBitsLeft() < 16) {
@@ -603,31 +692,70 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
                             return ERROR_MALFORMED;
                         }
                         AudioPresentationV1 ap;
-                        ap.mPresentationId = br->getBits(5);  // preselection_id
-
+                        if (!br->getBitsGraceful(5, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        // preselection_id
+                        ap.mPresentationId = readBitsValue;
                         // audio_rendering_indication
-                        ap.mMasteringIndication = static_cast<MasteringIndication>(br->getBits(3));
-                        ap.mAudioDescriptionAvailable = (br->getBits(1) == 1);
-                        ap.mSpokenSubtitlesAvailable = (br->getBits(1) == 1);
-                        ap.mDialogueEnhancementAvailable = (br->getBits(1) == 1);
+                        if (!br->getBitsGraceful(3, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        ap.mMasteringIndication = static_cast<MasteringIndication>(readBitsValue);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        ap.mAudioDescriptionAvailable = (readBitsValue == 1);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        ap.mSpokenSubtitlesAvailable = (readBitsValue == 1);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        ap.mDialogueEnhancementAvailable = (readBitsValue == 1);
 
-                        bool interactivity_enabled = (br->getBits(1) == 1);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        bool interactivity_enabled = (readBitsValue == 1);
                         MY_LOGV("      interactivity_enabled = %d", interactivity_enabled);
 
-                        bool language_code_present = (br->getBits(1) == 1);
-                        bool text_label_present = (br->getBits(1) == 1);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        bool language_code_present = (readBitsValue == 1);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        bool text_label_present = (readBitsValue == 1);
 
-                        bool multi_stream_info_present = (br->getBits(1) == 1);
-                        bool future_extension = (br->getBits(1) == 1);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        bool multi_stream_info_present = (readBitsValue == 1);
+                        if (!br->getBitsGraceful(1, &readBitsValue)) {
+                            return ERROR_MALFORMED;
+                        }
+                        bool future_extension = (readBitsValue == 1);
                         if (language_code_present) {
                             if (br->numBitsLeft() < 24) {
                                 ALOGE("Not enough data left in bitreader!");
                                 return ERROR_MALFORMED;
                             }
                             char language[4];
-                            language[0] = br->getBits(8);
-                            language[1] = br->getBits(8);
-                            language[2] = br->getBits(8);
+                            if (!br->getBitsGraceful(8, &readBitsValue)) {
+                                return ERROR_MALFORMED;
+                            }
+                            language[0] = readBitsValue;
+                            if (!br->getBitsGraceful(8, &readBitsValue)) {
+                                return ERROR_MALFORMED;
+                            }
+                            language[1] = readBitsValue;
+                            if (!br->getBitsGraceful(8, &readBitsValue)) {
+                                return ERROR_MALFORMED;
+                            }
+                            language[2] = readBitsValue;
                             language[3] = 0;
                             ap.mLanguage = String8(language);
                         }
@@ -639,7 +767,10 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
                                 ALOGE("Not enough data left in bitreader!");
                                 return ERROR_MALFORMED;
                             }
-                            unsigned message_id = br->getBits(8);
+                            unsigned message_id;
+                            if (!br->getBitsGraceful(8, &message_id)) {
+                                return ERROR_MALFORMED;
+                            }
                             MY_LOGV("      message_id = %u", message_id);
                         }
 
@@ -648,7 +779,10 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
                                 ALOGE("Not enough data left in bitreader!");
                                 return ERROR_MALFORMED;
                             }
-                            unsigned num_aux_components = br->getBits(3);
+                            unsigned num_aux_components;
+                            if (!br->getBitsGraceful(3, &num_aux_components)) {
+                                return ERROR_MALFORMED;
+                            }
                             br->skipBits(5);  // reserved
                             if (br->numBitsLeft() < (num_aux_components * 8)) {
                                 ALOGE("Not enough data left in bitreader!");
@@ -661,7 +795,10 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
                                 return ERROR_MALFORMED;
                             }
                             br->skipBits(3);  // reserved
-                            unsigned future_extension_length = br->getBits(5);
+                            unsigned future_extension_length;
+                            if (!br->getBitsGraceful(5, &future_extension_length)) {
+                                return ERROR_MALFORMED;
+                            }
                             if (br->numBitsLeft() < (future_extension_length * 8)) {
                                 ALOGE("Not enough data left in bitreader!");
                                 return ERROR_MALFORMED;
@@ -694,7 +831,10 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
     if (infoBytesRemaining != 0) {
         ALOGW("Section data remains unconsumed");
     }
-    unsigned crc = br->getBits(32);
+    unsigned crc;
+    if (!br->getBitsGraceful(32, &crc)) {
+        return ERROR_MALFORMED;
+    }
     if (crc != mPMT_CRC) {
         audioPresentationsChanged = true;
         mPMT_CRC = crc;
@@ -1261,7 +1401,10 @@ void ATSParser::Stream::signalEOS(status_t finalResult) {
 status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
     const uint8_t *basePtr = br->data();
 
-    unsigned packet_startcode_prefix = br->getBits(24);
+    unsigned packet_startcode_prefix;
+    if (!br->getBitsGraceful(24, &packet_startcode_prefix)) {
+        return ERROR_MALFORMED;
+    }
 
     ALOGV("packet_startcode_prefix = 0x%08x", packet_startcode_prefix);
 
@@ -1272,12 +1415,19 @@ status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
         return ERROR_MALFORMED;
     }
 
-    unsigned stream_id = br->getBits(8);
+    unsigned stream_id;
+    if (!br->getBitsGraceful(8, &stream_id)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("stream_id = 0x%02x", stream_id);
 
-    unsigned PES_packet_length = br->getBits(16);
+    unsigned PES_packet_length;
+    if (!br->getBitsGraceful(16, &PES_packet_length)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("PES_packet_length = %u", PES_packet_length);
 
+    unsigned readBitsValue;
     if (stream_id != 0xbc  // program_stream_map
             && stream_id != 0xbe  // padding_stream
             && stream_id != 0xbf  // private_stream_2
@@ -1286,37 +1436,80 @@ status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
             && stream_id != 0xff  // program_stream_directory
             && stream_id != 0xf2  // DSMCC
             && stream_id != 0xf8) {  // H.222.1 type E
-        if (br->getBits(2) != 2u) {
+        if (!br->getBitsGraceful(2, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        if (readBitsValue != 2u) {
             return ERROR_MALFORMED;
         }
 
-        unsigned PES_scrambling_control = br->getBits(2);
+        unsigned PES_scrambling_control;
+        if (!br->getBitsGraceful(2, &PES_scrambling_control)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("PES_scrambling_control = %u", PES_scrambling_control);
 
-        MY_LOGV("PES_priority = %u", br->getBits(1));
-        MY_LOGV("data_alignment_indicator = %u", br->getBits(1));
-        MY_LOGV("copyright = %u", br->getBits(1));
-        MY_LOGV("original_or_copy = %u", br->getBits(1));
+        unsigned readBitsValue;
+        if (!br->getBitsGraceful(1, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("PES_priority = %u", readBitsValue);
+        if (!br->getBitsGraceful(1, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("data_alignment_indicator = %u", readBitsValue);
+        if (!br->getBitsGraceful(1, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("copyright = %u", readBitsValue);
+        if (!br->getBitsGraceful(1, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("original_or_copy = %u", readBitsValue);
 
-        unsigned PTS_DTS_flags = br->getBits(2);
+        unsigned PTS_DTS_flags;
+        if (!br->getBitsGraceful(2, &PTS_DTS_flags)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("PTS_DTS_flags = %u", PTS_DTS_flags);
 
-        unsigned ESCR_flag = br->getBits(1);
+        unsigned ESCR_flag;
+        if (!br->getBitsGraceful(1, &ESCR_flag)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("ESCR_flag = %u", ESCR_flag);
 
-        unsigned ES_rate_flag = br->getBits(1);
+        unsigned ES_rate_flag;
+        if (!br->getBitsGraceful(1, &ES_rate_flag)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("ES_rate_flag = %u", ES_rate_flag);
 
-        unsigned DSM_trick_mode_flag = br->getBits(1);
+        unsigned DSM_trick_mode_flag;
+        if (!br->getBitsGraceful(1, &DSM_trick_mode_flag)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("DSM_trick_mode_flag = %u", DSM_trick_mode_flag);
 
-        unsigned additional_copy_info_flag = br->getBits(1);
+        unsigned additional_copy_info_flag;
+        if (!br->getBitsGraceful(1, &additional_copy_info_flag)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("additional_copy_info_flag = %u", additional_copy_info_flag);
 
-        MY_LOGV("PES_CRC_flag = %u", br->getBits(1));
-        MY_LOGV("PES_extension_flag = %u", br->getBits(1));
+        if (!br->getBitsGraceful(1, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("PES_CRC_flag = %u", readBitsValue);
+        if (!br->getBitsGraceful(1, &readBitsValue)) {
+            return ERROR_MALFORMED;
+        }
+        MY_LOGV("PES_extension_flag = %u", readBitsValue);
 
-        unsigned PES_header_data_length = br->getBits(8);
+        unsigned PES_header_data_length;
+        if (!br->getBitsGraceful(8, &PES_header_data_length)) {
+            return ERROR_MALFORMED;
+        }
         ALOGV("PES_header_data_length = %u", PES_header_data_length);
 
         unsigned optional_bytes_remaining = PES_header_data_length;
@@ -1328,19 +1521,40 @@ status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
                 return ERROR_MALFORMED;
             }
 
-            if (br->getBits(4) != PTS_DTS_flags) {
+            if (!br->getBitsGraceful(4, &readBitsValue)) {
                 return ERROR_MALFORMED;
             }
-            PTS = ((uint64_t)br->getBits(3)) << 30;
-            if (br->getBits(1) != 1u) {
+            if (readBitsValue != PTS_DTS_flags) {
                 return ERROR_MALFORMED;
             }
-            PTS |= ((uint64_t)br->getBits(15)) << 15;
-            if (br->getBits(1) != 1u) {
+            if (!br->getBitsGraceful(3, &readBitsValue)) {
                 return ERROR_MALFORMED;
             }
-            PTS |= br->getBits(15);
-            if (br->getBits(1) != 1u) {
+            PTS = ((uint64_t)readBitsValue) << 30;
+            if (!br->getBitsGraceful(1, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            if (readBitsValue != 1u) {
+                return ERROR_MALFORMED;
+            }
+            if (!br->getBitsGraceful(15, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            PTS |= ((uint64_t)readBitsValue) << 15;
+            if (!br->getBitsGraceful(1, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            if (readBitsValue != 1u) {
+                return ERROR_MALFORMED;
+            }
+            if (!br->getBitsGraceful(15, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            PTS |= readBitsValue;
+            if (!br->getBitsGraceful(1, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            if (readBitsValue != 1u) {
                 return ERROR_MALFORMED;
             }
 
@@ -1353,20 +1567,41 @@ status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
                     return ERROR_MALFORMED;
                 }
 
-                if (br->getBits(4) != 1u) {
+                if (!br->getBitsGraceful(4, &readBitsValue)) {
+                    return ERROR_MALFORMED;
+                }
+                if (readBitsValue != 1u) {
                     return ERROR_MALFORMED;
                 }
 
-                DTS = ((uint64_t)br->getBits(3)) << 30;
-                if (br->getBits(1) != 1u) {
+                if (!br->getBitsGraceful(3, &readBitsValue)) {
                     return ERROR_MALFORMED;
                 }
-                DTS |= ((uint64_t)br->getBits(15)) << 15;
-                if (br->getBits(1) != 1u) {
+                DTS = ((uint64_t)readBitsValue) << 30;
+                if (!br->getBitsGraceful(1, &readBitsValue)) {
                     return ERROR_MALFORMED;
                 }
-                DTS |= br->getBits(15);
-                if (br->getBits(1) != 1u) {
+                if (readBitsValue != 1u) {
+                    return ERROR_MALFORMED;
+                }
+                if (!br->getBitsGraceful(15, &readBitsValue)) {
+                    return ERROR_MALFORMED;
+                }
+                DTS |= ((uint64_t)readBitsValue) << 15;
+                if (!br->getBitsGraceful(1, &readBitsValue)) {
+                    return ERROR_MALFORMED;
+                }
+                if (readBitsValue != 1u) {
+                    return ERROR_MALFORMED;
+                }
+                if (!br->getBitsGraceful(15, &readBitsValue)) {
+                    return ERROR_MALFORMED;
+                }
+                DTS |= readBitsValue;
+                if (!br->getBitsGraceful(1, &readBitsValue)) {
+                    return ERROR_MALFORMED;
+                }
+                if (readBitsValue != 1u) {
                     return ERROR_MALFORMED;
                 }
 
@@ -1381,25 +1616,39 @@ status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
                 return ERROR_MALFORMED;
             }
 
-            br->getBits(2);
+            if (!br->getBitsGraceful(2, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
 
-            uint64_t ESCR = ((uint64_t)br->getBits(3)) << 30;
-            if (br->getBits(1) != 1u) {
+            if (!br->getBitsGraceful(3, &readBitsValue)) {
                 return ERROR_MALFORMED;
             }
-            ESCR |= ((uint64_t)br->getBits(15)) << 15;
-            if (br->getBits(1) != 1u) {
+            uint64_t ESCR = ((uint64_t)readBitsValue) << 30;
+            if (!br->getBitsGraceful(1, &readBitsValue) || readBitsValue != 1u) {
                 return ERROR_MALFORMED;
             }
-            ESCR |= br->getBits(15);
-            if (br->getBits(1) != 1u) {
+            if (!br->getBitsGraceful(15, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            ESCR |= ((uint64_t)readBitsValue) << 15;
+            if (!br->getBitsGraceful(1, &readBitsValue) || readBitsValue != 1u) {
+                return ERROR_MALFORMED;
+            }
+            if (!br->getBitsGraceful(15, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            ESCR |= readBitsValue;
+            if (!br->getBitsGraceful(1, &readBitsValue) || readBitsValue != 1u) {
                 return ERROR_MALFORMED;
             }
 
             ALOGV("ESCR = %" PRIu64, ESCR);
-            MY_LOGV("ESCR_extension = %u", br->getBits(9));
+            if (!br->getBitsGraceful(9, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            MY_LOGV("ESCR_extension = %u", readBitsValue);
 
-            if (br->getBits(1) != 1u) {
+            if (!br->getBitsGraceful(1, &readBitsValue) || readBitsValue != 1u) {
                 return ERROR_MALFORMED;
             }
 
@@ -1411,11 +1660,17 @@ status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
                 return ERROR_MALFORMED;
             }
 
-            if (br->getBits(1) != 1u) {
+            if (!br->getBitsGraceful(1, &readBitsValue)) {
                 return ERROR_MALFORMED;
             }
-            MY_LOGV("ES_rate = %u", br->getBits(22));
-            if (br->getBits(1) != 1u) {
+            if (readBitsValue != 1u) {
+                return ERROR_MALFORMED;
+            }
+            if (!br->getBitsGraceful(22, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            MY_LOGV("ES_rate = %u", readBitsValue);
+            if (!br->getBitsGraceful(1, &readBitsValue) || readBitsValue != 1u) {
                 return ERROR_MALFORMED;
             }
 
@@ -1481,7 +1736,10 @@ status_t ATSParser::Stream::parsePES(ABitReader *br, SyncEvent *event) {
 
 uint32_t ATSParser::Stream::getPesScramblingControl(
         ABitReader *br, int32_t *pesOffset) {
-    unsigned packet_startcode_prefix = br->getBits(24);
+    unsigned packet_startcode_prefix;
+    if (!br->getBitsGraceful(24, &packet_startcode_prefix)) {
+        return 0;
+    }
 
     ALOGV("packet_startcode_prefix = 0x%08x", packet_startcode_prefix);
 
@@ -1494,11 +1752,15 @@ uint32_t ATSParser::Stream::getPesScramblingControl(
         return 0;
     }
 
-    unsigned stream_id = br->getBits(8);
+    unsigned stream_id;
+    if (!br->getBitsGraceful(8, &stream_id)) {
+        return 0;
+    }
     ALOGV("stream_id = 0x%02x", stream_id);
 
     br->skipBits(16); // PES_packet_length
 
+    unsigned readBitsValue;
     if (stream_id != 0xbc  // program_stream_map
             && stream_id != 0xbe  // padding_stream
             && stream_id != 0xbf  // private_stream_2
@@ -1507,11 +1769,14 @@ uint32_t ATSParser::Stream::getPesScramblingControl(
             && stream_id != 0xff  // program_stream_directory
             && stream_id != 0xf2  // DSMCC
             && stream_id != 0xf8) {  // H.222.1 type E
-        if (br->getBits(2) != 2u) {
+        if (!br->getBitsGraceful(2, &readBitsValue) || readBitsValue != 2u) {
             return 0;
         }
 
-        unsigned PES_scrambling_control = br->getBits(2);
+        unsigned PES_scrambling_control;
+        if (!br->getBitsGraceful(2, &PES_scrambling_control)) {
+            return 0;
+        }
         ALOGV("PES_scrambling_control = %u", PES_scrambling_control);
 
         if (PES_scrambling_control == 0) {
@@ -1520,7 +1785,10 @@ uint32_t ATSParser::Stream::getPesScramblingControl(
 
         br->skipBits(12); // don't care
 
-        unsigned PES_header_data_length = br->getBits(8);
+        unsigned PES_header_data_length;
+        if (!br->getBitsGraceful(8, &PES_header_data_length)) {
+            return 0;
+        }
         ALOGV("PES_header_data_length = %u", PES_header_data_length);
 
         if (PES_header_data_length * 8 > br->numBitsLeft()) {
@@ -1987,40 +2255,87 @@ void ATSParser::signalEOS(status_t finalResult) {
 }
 
 void ATSParser::parseProgramAssociationTable(ABitReader *br) {
-    unsigned table_id = br->getBits(8);
+    unsigned table_id;
+    if (!br->getBitsGraceful(8, &table_id)) {
+        return ;
+    }
     ALOGV("  table_id = %u", table_id);
     if (table_id != 0x00u) {
         ALOGE("PAT data error!");
         return ;
     }
-    unsigned section_syntax_indictor = br->getBits(1);
+    unsigned section_syntax_indictor;
+    if (!br->getBitsGraceful(1, &section_syntax_indictor)) {
+        return ;
+    }
     ALOGV("  section_syntax_indictor = %u", section_syntax_indictor);
 
     br->skipBits(1);  // '0'
-    MY_LOGV("  reserved = %u", br->getBits(2));
+    unsigned readBitsValue;
+    if (!br->getBitsGraceful(2, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  reserved = %u", readBitsValue);
 
-    unsigned section_length = br->getBits(12);
+    unsigned section_length;
+    if (!br->getBitsGraceful(12, &section_length)) {
+        return ;
+    }
     ALOGV("  section_length = %u", section_length);
 
-    MY_LOGV("  transport_stream_id = %u", br->getBits(16));
-    MY_LOGV("  reserved = %u", br->getBits(2));
-    MY_LOGV("  version_number = %u", br->getBits(5));
-    MY_LOGV("  current_next_indicator = %u", br->getBits(1));
-    MY_LOGV("  section_number = %u", br->getBits(8));
-    MY_LOGV("  last_section_number = %u", br->getBits(8));
+    if (!br->getBitsGraceful(16, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  transport_stream_id = %u", readBitsValue);
+    if (!br->getBitsGraceful(2, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  reserved = %u", readBitsValue);
+    if (!br->getBitsGraceful(5, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  version_number = %u", readBitsValue);
+    if (!br->getBitsGraceful(1, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  current_next_indicator = %u", readBitsValue);
+    if (!br->getBitsGraceful(8, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  section_number = %u", readBitsValue);
+    if (!br->getBitsGraceful(8, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  last_section_number = %u", readBitsValue);
 
+    // check for unsigned integer overflow
+    if (section_length < 9) {
+        return ;
+    }
     size_t numProgramBytes = (section_length - 5 /* header */ - 4 /* crc */);
 
     for (size_t i = 0; i < numProgramBytes / 4; ++i) {
-        unsigned program_number = br->getBits(16);
+        unsigned program_number;
+        if (!br->getBitsGraceful(16, &program_number)) {
+            return ;
+        }
         ALOGV("    program_number = %u", program_number);
 
-        MY_LOGV("    reserved = %u", br->getBits(3));
+        if (!br->getBitsGraceful(3, &readBitsValue)) {
+            return ;
+        }
+        MY_LOGV("    reserved = %u", readBitsValue);
 
         if (program_number == 0) {
-            MY_LOGV("    network_PID = 0x%04x", br->getBits(13));
+            if (!br->getBitsGraceful(13, &readBitsValue)) {
+                return ;
+            }
+            MY_LOGV("    network_PID = 0x%04x", readBitsValue);
         } else {
-            unsigned programMapPID = br->getBits(13);
+            unsigned programMapPID;
+            if (!br->getBitsGraceful(13, &programMapPID)) {
+                return ;
+            }
 
             ALOGV("    program_map_PID = 0x%04x", programMapPID);
 
@@ -2049,7 +2364,10 @@ void ATSParser::parseProgramAssociationTable(ABitReader *br) {
         }
     }
 
-    MY_LOGV("  CRC = 0x%08x", br->getBits(32));
+    if (!br->getBitsGraceful(32, &readBitsValue)) {
+        return ;
+    }
+    MY_LOGV("  CRC = 0x%08x", readBitsValue);
 }
 
 status_t ATSParser::parsePID(
@@ -2070,7 +2388,10 @@ status_t ATSParser::parsePID(
                 section->clear();
             }
 
-            unsigned skip = br->getBits(8);
+            unsigned skip;
+            if (!br->getBitsGraceful(8, &skip)) {
+                return ERROR_MALFORMED;
+            }
             section->setSkipBytes(skip + 1);  // skip filler bytes + pointer field itself
             br->skipBits(skip * 8);
         }
@@ -2157,7 +2478,10 @@ status_t ATSParser::parsePID(
 status_t ATSParser::parseAdaptationField(
         ABitReader *br, unsigned PID, unsigned *random_access_indicator) {
     *random_access_indicator = 0;
-    unsigned adaptation_field_length = br->getBits(8);
+    unsigned adaptation_field_length;
+    if (!br->getBitsGraceful(8, &adaptation_field_length)) {
+        return ERROR_MALFORMED;
+    }
 
     if (adaptation_field_length > 0) {
         if (adaptation_field_length * 8 > br->numBitsLeft()) {
@@ -2165,23 +2489,34 @@ status_t ATSParser::parseAdaptationField(
             return ERROR_MALFORMED;
         }
 
-        unsigned discontinuity_indicator = br->getBits(1);
+        unsigned discontinuity_indicator;
+        if (!br->getBitsGraceful(1, &discontinuity_indicator)) {
+            return ERROR_MALFORMED;
+        }
 
         if (discontinuity_indicator) {
             ALOGV("PID 0x%04x: discontinuity_indicator = 1 (!!!)", PID);
         }
 
-        *random_access_indicator = br->getBits(1);
+        if (!br->getBitsGraceful(1, random_access_indicator)) {
+            return ERROR_MALFORMED;
+        }
         if (*random_access_indicator) {
             ALOGV("PID 0x%04x: random_access_indicator = 1", PID);
         }
 
-        unsigned elementary_stream_priority_indicator = br->getBits(1);
+        unsigned elementary_stream_priority_indicator;
+        if (!br->getBitsGraceful(1, &elementary_stream_priority_indicator)) {
+            return ERROR_MALFORMED;
+        }
         if (elementary_stream_priority_indicator) {
             ALOGV("PID 0x%04x: elementary_stream_priority_indicator = 1", PID);
         }
 
-        unsigned PCR_flag = br->getBits(1);
+        unsigned PCR_flag;
+        if (!br->getBitsGraceful(1, &PCR_flag)) {
+            return ERROR_MALFORMED;
+        }
 
         size_t numBitsRead = 4;
 
@@ -2190,11 +2525,22 @@ status_t ATSParser::parseAdaptationField(
                 return ERROR_MALFORMED;
             }
             br->skipBits(4);
-            uint64_t PCR_base = br->getBits(32);
-            PCR_base = (PCR_base << 1) | br->getBits(1);
+            unsigned readBitsValue;
+            if (!br->getBitsGraceful(32, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            uint64_t PCR_base = readBitsValue;
+
+            if (!br->getBitsGraceful(1, &readBitsValue)) {
+                return ERROR_MALFORMED;
+            }
+            PCR_base = (PCR_base << 1) | readBitsValue;
 
             br->skipBits(6);
-            unsigned PCR_ext = br->getBits(9);
+            unsigned PCR_ext;
+            if (!br->getBitsGraceful(9, &PCR_ext)) {
+                return ERROR_MALFORMED;
+            }
 
             // The number of bytes from the start of the current
             // MPEG2 transport stream packet up and including
@@ -2227,32 +2573,54 @@ status_t ATSParser::parseAdaptationField(
 status_t ATSParser::parseTS(ABitReader *br, SyncEvent *event) {
     ALOGV("---");
 
-    unsigned sync_byte = br->getBits(8);
+    unsigned sync_byte;
+    if (!br->getBitsGraceful(8, &sync_byte)) {
+        return ERROR_MALFORMED;
+    }
     if (sync_byte != 0x47u) {
         ALOGE("[error] parseTS: return error as sync_byte=0x%x", sync_byte);
         return BAD_VALUE;
     }
 
-    if (br->getBits(1)) {  // transport_error_indicator
+    unsigned readBitsValue;
+    if (!br->getBitsGraceful(1, &readBitsValue)) {  // transport_error_indicator
         // silently ignore.
         return OK;
     }
 
-    unsigned payload_unit_start_indicator = br->getBits(1);
+    unsigned payload_unit_start_indicator;
+    if (!br->getBitsGraceful(1, &payload_unit_start_indicator)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("payload_unit_start_indicator = %u", payload_unit_start_indicator);
 
-    MY_LOGV("transport_priority = %u", br->getBits(1));
+    if (!br->getBitsGraceful(1, &readBitsValue)) {
+        return ERROR_MALFORMED;
+    }
+    MY_LOGV("transport_priority = %u", readBitsValue);
 
-    unsigned PID = br->getBits(13);
+    unsigned PID;
+    if (!br->getBitsGraceful(13, &PID)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("PID = 0x%04x", PID);
 
-    unsigned transport_scrambling_control = br->getBits(2);
+    unsigned transport_scrambling_control;
+    if (!br->getBitsGraceful(2, &transport_scrambling_control)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("transport_scrambling_control = %u", transport_scrambling_control);
 
-    unsigned adaptation_field_control = br->getBits(2);
+    unsigned adaptation_field_control;
+    if (!br->getBitsGraceful(2, &adaptation_field_control)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("adaptation_field_control = %u", adaptation_field_control);
 
-    unsigned continuity_counter = br->getBits(4);
+    unsigned continuity_counter;
+    if (!br->getBitsGraceful(4, &continuity_counter)) {
+        return ERROR_MALFORMED;
+    }
     ALOGV("PID = 0x%04x, continuity_counter = %u", PID, continuity_counter);
 
     // ALOGI("PID = 0x%04x, continuity_counter = %u", PID, continuity_counter);
