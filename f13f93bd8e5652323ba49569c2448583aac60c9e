@@ -63,6 +63,30 @@
       },
       "revId": "f13f93bd8e5652323ba49569c2448583aac60c9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe111e6_2edf0ed4",
+        "filename": "media/codec2/hal/aidl/BufferTypes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-18T01:33:31Z",
+      "side": 1,
+      "message": "return value(out param) isNewConnection should be ignored.\n\nThis codes come from pawin before.\nHIDL returns ALREADY_EXISTS error, with valid receiverConnectionId.\n\nIn order to give that information this outparam was added.\nThe orginal code don\u0027t do anything with the value.\n\njust ignoring the outparam value will be the same behavior as with HIDL.",
+      "parentUuid": "f1f95232_21265361",
+      "range": {
+        "startLine": 293,
+        "startChar": 48,
+        "endLine": 293,
+        "endChar": 63
+      },
+      "revId": "f13f93bd8e5652323ba49569c2448583aac60c9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
