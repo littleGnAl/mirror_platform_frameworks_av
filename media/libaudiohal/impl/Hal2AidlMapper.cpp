@@ -515,7 +515,9 @@ Hal2AidlMapper::Ports::iterator Hal2AidlMapper::findPort(
                         std::find(prof.sampleRates.begin(), prof.sampleRates.end(),
                                 config.base.sampleRate) != prof.sampleRates.end());
     };
-    static const std::vector<AudioOutputFlags> kOptionalOutputFlags{AudioOutputFlags::BIT_PERFECT};
+    static const std::vector<AudioOutputFlags> kOptionalOutputFlags{
+        AudioOutputFlags::BIT_PERFECT,
+        AudioOutputFlags::IEC958_NONAUDIO};
     int optionalFlags = 0;
     auto flagMatches = [&flags, &optionalFlags](const AudioIoFlags& portFlags) {
         // Ports should be able to match if the optional flags are not requested.
