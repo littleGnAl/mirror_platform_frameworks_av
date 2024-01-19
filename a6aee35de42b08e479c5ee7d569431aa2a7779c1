@@ -16,6 +16,24 @@
       "message": "Can we get a same treatment for the auto framing?",
       "revId": "a6aee35de42b08e479c5ee7d569431aa2a7779c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c4d45a_3e033e8e",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2024-01-19T17:18:47Z",
+      "side": 1,
+      "message": "Potentially yes, Bharatt, Shuzhen anything against adding autoframing here?",
+      "parentUuid": "c639d044_4ca20805",
+      "revId": "a6aee35de42b08e479c5ee7d569431aa2a7779c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
