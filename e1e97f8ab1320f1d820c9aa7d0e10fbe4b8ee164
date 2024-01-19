@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f632da04_06ab0ac7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-01-19T05:03:25Z",
+      "side": 1,
+      "message": "The status of this patch is it allows for the AAP E-AC3-JOC passthrough case to get closer to working, however there is still a problem where for the output stream, a non direct stream successfully opens for the E-AC3-JOC request on the remote submix HAL *without* needing to go through the SpdifStreamOut encoder, because (it seems) due to https://android.googlesource.com/platform/frameworks/av/+/refs/changes/50/2886950/1/media/libaudiohal/impl/Hal2AidlMapper.cpp#715 introduced in https://android-review.googlesource.com/c/platform/frameworks/av/+/2886950 . When this happens, the pipeline fails because raw E-AC3-JOC data is written to the remote submix HAL without IEC 61937 encapsulation.\n\nI\u0027m going to look into the effect reverting https://android-review.googlesource.com/c/platform/frameworks/av/+/2886950 has on the remote submix E-AC3-JOC enablement.",
+      "revId": "e1e97f8ab1320f1d820c9aa7d0e10fbe4b8ee164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
