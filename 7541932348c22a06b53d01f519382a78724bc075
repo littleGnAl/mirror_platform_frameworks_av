@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a84b0f_e7f73912",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-01-19T16:24:17Z",
+      "side": 1,
+      "message": "it would be better to have these two use the same units.\none saying api and the other saying runs -- is confusing.\n\n\n```suggestion\n    while (fdp2.remaining_bytes() \u0026\u0026 ++apiCount \u003c\u003d kMaxApis) {\n```",
+      "range": {
+        "startLine": 310,
+        "startChar": 37,
+        "endLine": 310,
+        "endChar": 59
+      },
+      "revId": "7541932348c22a06b53d01f519382a78724bc075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
