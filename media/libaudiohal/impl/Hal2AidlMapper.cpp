@@ -515,7 +515,9 @@ Hal2AidlMapper::Ports::iterator Hal2AidlMapper::findPort(
                         std::find(prof.sampleRates.begin(), prof.sampleRates.end(),
                                 config.base.sampleRate) != prof.sampleRates.end());
     };
-    static const std::vector<AudioOutputFlags> kOptionalOutputFlags{AudioOutputFlags::BIT_PERFECT};
+    static const std::vector<AudioOutputFlags> kOptionalOutputFlags{
+        AudioOutputFlags::BIT_PERFECT,
+        AudioOutputFlags::IEC958_NONAUDIO};
     int optionalFlags = 0;
     auto flagMatches = [&flags, &optionalFlags](const AudioIoFlags& portFlags) {
         // Ports should be able to match if the optional flags are not requested.
@@ -742,27 +744,9 @@ status_t Hal2AidlMapper::prepareToOpenStream(
     if (created) {
         cleanups->add(&Hal2AidlMapper::resetPortConfig, devicePortConfig.id);
     }
-    status_t status = prepareToOpenStreamHelper(ioHandle, devicePortConfig.portId,
+    return prepareToOpenStreamHelper(ioHandle, devicePortConfig.portId,
             devicePortConfig.id, flags, source, initialConfig, cleanups, config,
             mixPortConfig, patch);
-    if (status != OK) {
-        // If using the client-provided config did not work out for establishing a mix port config
-        // or patching, try with the device port config. Note that in general device port config and
-        // mix port config are not required to be the same, however they must match if the HAL
-        // module can't perform audio stream conversions.
-        AudioConfig deviceConfig = initialConfig;
-        if (setConfigFromPortConfig(&deviceConfig, devicePortConfig)->base != initialConfig.base) {
-            ALOGD("%s: retrying with device port config: %s", __func__,
-                    devicePortConfig.toString().c_str());
-            status = prepareToOpenStreamHelper(ioHandle, devicePortConfig.portId,
-                    devicePortConfig.id, flags, source, initialConfig, cleanups,
-                    &deviceConfig, mixPortConfig, patch);
-            if (status == OK) {
-                *config = deviceConfig;
-            }
-        }
-    }
-    return status;
 }
 
 status_t Hal2AidlMapper::prepareToOpenStreamHelper(
