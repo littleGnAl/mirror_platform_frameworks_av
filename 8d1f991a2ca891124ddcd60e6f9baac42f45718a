@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c117504_7e98f8e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-19T04:22:04Z",
+      "side": 1,
+      "message": "mpeg2ts: Handle bitstream shortfall errors gracefully",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "8d1f991a2ca891124ddcd60e6f9baac42f45718a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1820c7_162dcaf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-19T04:22:04Z",
+      "side": 1,
+      "message": "as this is the major change, please swap the order of these two and leave an empty line between these two items.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 49
+      },
+      "revId": "8d1f991a2ca891124ddcd60e6f9baac42f45718a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bffc4bc2_937a1cb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-19T04:22:04Z",
+      "side": 1,
+      "message": "Please add the following as well.\n\nBug: 316035064",
+      "revId": "8d1f991a2ca891124ddcd60e6f9baac42f45718a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
