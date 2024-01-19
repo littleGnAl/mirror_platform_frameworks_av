@@ -1495,11 +1495,15 @@ status_t AudioPolicyManager::openDirectOutput(audio_stream_type_t stream,
     status_t status =
             outputDesc->open(config, nullptr /* mixerConfig */, devices, stream, flags, output);
 
-    // only accept an output with the requested parameters
+    // only accept an output with the requested parameters, unless the format can be IEC61937
+    // encapsulated and opened by AudioFlinger as wrapped IEC61937.
+    // TODO: get output stream flags from AudioFlinger and check whether
+    // AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO is used to infer whether SpdifEncoder is active.
     if (status != NO_ERROR ||
-        (config->sample_rate != 0 && config->sample_rate != outputDesc->getSamplingRate()) ||
-        (config->format != AUDIO_FORMAT_DEFAULT && config->format != outputDesc->getFormat()) ||
-        (config->channel_mask != 0 && config->channel_mask != outputDesc->getChannelMask())) {
+        (!audio_is_iec61937_compatible(config->format) &&
+        ((config->sample_rate != 0 && config->sample_rate != outputDesc->getSamplingRate()) ||
+         (config->format != AUDIO_FORMAT_DEFAULT && config->format != outputDesc->getFormat()) ||
+         (config->channel_mask != 0 && config->channel_mask != outputDesc->getChannelMask())))) {
         ALOGV("%s failed opening direct output: output %d sample rate %d %d,"
                 "format %d %d, channel mask %04x %04x", __func__, *output, config->sample_rate,
                 outputDesc->getSamplingRate(), config->format, outputDesc->getFormat(),
