@@ -34,6 +34,24 @@
       "parentUuid": "f632da04_06ab0ac7",
       "revId": "e1e97f8ab1320f1d820c9aa7d0e10fbe4b8ee164",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c871905f_ae89d79c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-01-21T19:51:46Z",
+      "side": 1,
+      "message": "@mnaganov@google.com and @michael.chan@dolby.com : the timestamp failures are resolved by https://android-review.googlesource.com/c/platform/system/media/+/2920866",
+      "parentUuid": "769861cb_7de13dab",
+      "revId": "e1e97f8ab1320f1d820c9aa7d0e10fbe4b8ee164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
