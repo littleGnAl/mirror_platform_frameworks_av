@@ -33,10 +33,9 @@ namespace android {
  * PCM then we need to wrap the data in an SPDIF wrapper.
  */
 SpdifStreamOut::SpdifStreamOut(AudioHwDevice *dev,
-            audio_output_flags_t flags,
             audio_format_t format)
         // Tell the HAL that the data will be compressed audio wrapped in a data burst.
-        : AudioStreamOut(dev, (audio_output_flags_t) (flags | AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO))
+        : AudioStreamOut(dev)
         , mSpdifEncoder(this, format)
 {
 }
@@ -45,6 +44,7 @@ status_t SpdifStreamOut::open(
         audio_io_handle_t handle,
         audio_devices_t devices,
         struct audio_config *config,
+        audio_output_flags_t  *flags,
         const char *address)
 {
     struct audio_config customConfig = *config;
@@ -75,6 +75,7 @@ status_t SpdifStreamOut::open(
             handle,
             devices,
             &customConfig,
+            flags,
             address);
 
     // reset config back to whatever is returned by HAL

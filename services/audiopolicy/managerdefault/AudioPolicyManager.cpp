@@ -1497,11 +1497,12 @@ status_t AudioPolicyManager::openDirectOutput(audio_stream_type_t stream,
 
     // only accept an output with the requested parameters, unless the format can be IEC61937
     // encapsulated and opened by AudioFlinger as wrapped IEC61937.
-    if (status != NO_ERROR ||
-        (!audio_is_iec61937_compatible(config->format) &&
-        ((config->sample_rate != 0 && config->sample_rate != outputDesc->getSamplingRate()) ||
-         (config->format != AUDIO_FORMAT_DEFAULT && config->format != outputDesc->getFormat()) ||
-         (config->channel_mask != 0 && config->channel_mask != outputDesc->getChannelMask())))) {
+    bool configMismatch = (config->sample_rate != 0 && config->sample_rate != outputDesc->getSamplingRate()) ||
+                          (config->format != AUDIO_FORMAT_DEFAULT && config->format != outputDesc->getFormat()) ||
+                          (config->channel_mask != 0 && config->channel_mask != outputDesc->getChannelMask());
+    bool afSpdifConverter = audio_is_iec61937_compatible(config->format) &&
+            (outputDesc->getFlags().output & AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO);
+    if (status != NO_ERROR || (configMismatch && !afSpdifConverter)) {
         ALOGV("%s failed opening direct output: output %d sample rate %d %d,"
                 "format %d %d, channel mask %04x %04x", __func__, *output, config->sample_rate,
                 outputDesc->getSamplingRate(), config->format, outputDesc->getFormat(),
