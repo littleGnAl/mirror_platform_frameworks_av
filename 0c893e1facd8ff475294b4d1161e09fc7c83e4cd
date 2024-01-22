@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e69287d_cd024d53",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T19:25:18Z",
+      "side": 1,
+      "message": "Question: Why not using ALookup here, like how it was used in CCodecBufferChannel.cpp? (probably vector here could be efficient than map considering there are only 3 elelemts)",
+      "range": {
+        "startLine": 154,
+        "startChar": 13,
+        "endLine": 154,
+        "endChar": 21
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2536c5_d8c47b41",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T19:25:18Z",
+      "side": 1,
+      "message": "nit: This (typecast) is named BufferInfosWrapper in MediaCodec.cpp",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 77
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f520ad_8b404e91",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T19:25:18Z",
+      "side": 1,
+      "message": "Question: Should we be doing this check before allocating bufferInfos?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 47
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
