@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d356fe_42c89180",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-22T21:27:55Z",
+      "side": 1,
+      "message": "We cannot remove this .mk as this is used to generate our doxygen files. There is another CL that is better that I am editing: aosp/2877604",
+      "revId": "c8df72e931c608ec9e7e02d9353e7a8ebb240e3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
