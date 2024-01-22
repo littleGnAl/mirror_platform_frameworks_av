@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f036342b_2397213d",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-22T22:31:57Z",
+      "side": 1,
+      "message": "What about the statement \"The status FMQ remains valid and unchanged after opening\": https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/android/hardware/audio/effect/IEffect.aidl;l\u003d60;drc\u003d5b15e005a9f8d457d436ec3a508077c031bd5598 ? I\u0027m adhering to it for now, do we plan to change it?",
+      "parentUuid": "b1d0f272_eb377dbd",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 34
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9097b915_b14330bd",
         "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
         "patchSetId": 1
