@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9418c4aa_4859bf9f",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T18:17:32Z",
+      "side": 1,
+      "message": "Question: Do we have any preference of using empty() instead of size() here?",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "e6a1c1fbceafb6a52f8cbc13798434dad305e367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167e8997_35e00c4e",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T18:17:32Z",
+      "side": 1,
+      "message": "Adding a one liner (or more) about the purpose of this class (and also FillWork) would benefit.",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 29
+      },
+      "revId": "e6a1c1fbceafb6a52f8cbc13798434dad305e367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a261194f_5a7883ee",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T18:17:32Z",
+      "side": 1,
+      "message": "Do we have to check for work-\u003eworklets.empty() and work-\u003eworklets.front() here?",
+      "range": {
+        "startLine": 269,
+        "startChar": 12,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "e6a1c1fbceafb6a52f8cbc13798434dad305e367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad13e611_5c0993fc",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T18:17:32Z",
+      "side": 1,
+      "message": "can be replaced by bufferCount",
+      "range": {
+        "startLine": 326,
+        "startChar": 16,
+        "endLine": 326,
+        "endChar": 42
+      },
+      "revId": "e6a1c1fbceafb6a52f8cbc13798434dad305e367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a546266_c11663e1",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-22T18:17:32Z",
+      "side": 1,
+      "message": "resetting these may not be necessary (as they are local variables that is not used from here and goes out of scope anyway)",
+      "range": {
+        "startLine": 475,
+        "startChar": 4,
+        "endLine": 476,
+        "endChar": 31
+      },
+      "revId": "e6a1c1fbceafb6a52f8cbc13798434dad305e367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
