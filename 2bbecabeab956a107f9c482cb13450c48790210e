@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b103889_c1574bce",
+        "filename": "media/libstagefright/include/media/stagefright/SkipCutBuffer.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-22T18:03:30Z",
+      "side": 0,
+      "message": "I think the `private` here should be retained.\n\nCould we declare C2SkipCutBuffer as a friend here?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "2bbecabeab956a107f9c482cb13450c48790210e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
