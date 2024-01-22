@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb5e478_8fc31364",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-22T17:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa7f15dd_087c7d99",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 13
+      },
+      "revId": "8a51c66ab567117a3837ab4c8fbe7941c8f2d358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "416011e4_1846f75d",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1fdd3c_44e02d23",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-22T17:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "416011e4_1846f75d",
+      "range": {
+        "startLine": 372,
+        "startChar": 8,
+        "endLine": 372,
+        "endChar": 16
+      },
+      "revId": "8a51c66ab567117a3837ab4c8fbe7941c8f2d358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4b77c8_ae562ef8",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-19T20:29:32Z",
       "side": 1,
       "message": "nit: if (!block)",
+      "range": {
+        "startLine": 411,
+        "startChar": 13,
+        "endLine": 411,
+        "endChar": 22
+      },
+      "revId": "8a51c66ab567117a3837ab4c8fbe7941c8f2d358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920b35b4_8de50482",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-22T17:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4b77c8_ae562ef8",
       "range": {
         "startLine": 411,
         "startChar": 13,
