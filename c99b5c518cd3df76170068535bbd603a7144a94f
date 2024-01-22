@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6af6c81_741e4736",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-22T23:34:10Z",
+      "side": 1,
+      "message": "For now let\u0027s add a TODO here:\n\n```suggestion\n                    // We need write access to the buffers, so turn them into array mode.\n                    // TODO: b/XXX - define SkipCutOutputBuffers that takes output from component,\n                    //       runs it through SkipCutBuffer and allocate local buffer to be used by fwk.\n                    //       make initSkipCutBuffer() return OutputBuffers similar to toArrayMode().\n```\n\nWhen fixed it could look like\n\n```\nclass SkipCutOuptutBuffers : LinearOutputBuffers {\n    // Use SkipCutBuffer::read() and write() instead of submit() to read from\n    // C2Buffer and write to local Codec2Buffer.\n    sp\u003cCodec2Buffer\u003e wrap(const std::shared_ptr\u003cC2Buffer\u003e \u0026buffer) override;\n\n}\n\nstd::shared_ptr\u003cOutputBuffers\u003e initSkipCutBuffer(...) {\n    if (has no write access) {\n        return std::make_shared\u003cSkipCutOutputBuffers\u003e(...);\n    } else {\n        // existing SkipCutBuffer init logic goes here\n        return shared_from_this();\n    }\n}\n```",
+      "range": {
+        "startLine": 1640,
+        "startChar": 20,
+        "endLine": 1641,
+        "endChar": 32
+      },
+      "revId": "c99b5c518cd3df76170068535bbd603a7144a94f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
