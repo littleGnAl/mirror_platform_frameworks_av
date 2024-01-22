@@ -87,6 +87,24 @@
       "parentUuid": "30b97c98_c19077df",
       "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39dc7e82_1514d2ba",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-22T19:30:40Z",
+      "side": 1,
+      "message": "READ prevents setting from the apps. So for this use case READ should not be set.",
+      "parentUuid": "d5ed484d_d4623d6d",
+      "revId": "87703e63f115795d5ba911d04a5be72e997c440d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

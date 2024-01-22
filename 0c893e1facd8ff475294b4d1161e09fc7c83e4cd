@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9025b3f5_f2e9721d",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-22T19:30:40Z",
+      "side": 1,
+      "message": "optional: for completeness we could do something like:\n\n```\nconstexpr static std::initializer_list\u003cuint32_t, uint32_t\u003e flagList \u003d {\n        {BUFFER_FLAG_CODEC_CONFIG, C2FrameData::FLAG_CODEC_CONFIG},\n        {BUFFER_FLAG_END_OF_STREAM, C2FrameData::FLAG_END_OF_STREAM},\n        {BUFFER_FLAG_DECODE_ONLY, C2FrameData::FLAG_DROP_FRAME}\n};\n\nstatic uint32_t toC2Flags(uint32_t fwk) {\n    return std::transform_reduce(\n            flagList.begin(), flagList.end(),\n            std::bit_or{},\n            [fwk](const std::pair\u003cuint32_t, uint32_t\u003e \u0026entry) {\n                return (fwk \u0026 entry.first) ? entry.second : 0;\n            });\n}\n```",
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e69287d_cd024d53",
         "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
         "patchSetId": 45
@@ -18,6 +35,29 @@
         "startLine": 154,
         "startChar": 13,
         "endLine": 154,
+        "endChar": 21
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1e6f8a_ec9cbf85",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-22T19:30:40Z",
+      "side": 1,
+      "message": "How about MultiAccessUnitSkipCutBuffer?",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
         "endChar": 21
       },
       "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
@@ -65,6 +105,29 @@
         "startChar": 0,
         "endLine": 185,
         "endChar": 47
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8a7b4c_2c3f3c4a",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-22T19:30:40Z",
+      "side": 1,
+      "message": "can we explicitly take the infos not RefBase? e.g.\n\n```suggestion\n    typedef WrappedObject\u003cstd::vector\u003cAccessUnitInfo\u003e\u003e BufferInfoWrapper;\n\n    status_t queueInputBuffers(\n            size_t index,\n            size_t offset,\n            size_t size,\n            const sp\u003cBufferInfoWrapper\u003e \u0026accessUnitInfo,\n            AString *errorDetailMsg \u003d NULL);\n\n```\n\nor maybe we can even strip the sp \u0026 WrappedObject.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
       },
       "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
