@@ -36,13 +36,13 @@ namespace android {
 class SpdifStreamOut : public AudioStreamOut {
 public:
 
-    SpdifStreamOut(AudioHwDevice *dev, audio_output_flags_t flags,
-            audio_format_t format);
+    SpdifStreamOut(AudioHwDevice *dev, audio_format_t format);
 
     status_t open(
             audio_io_handle_t handle,
             audio_devices_t devices,
             struct audio_config *config,
+            audio_output_flags_t *flags,
             const char *address) override;
 
     /**
@@ -117,7 +117,6 @@ private:
     audio_config_base_t mApplicationConfig = AUDIO_CONFIG_BASE_INITIALIZER;
 
     ssize_t writeDataBurst(const void* data, size_t bytes);
-
 #ifdef TEE_SINK
     NBAIO_Tee mTee;
 #endif
