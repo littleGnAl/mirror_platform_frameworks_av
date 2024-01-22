@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7acc4b72_884c59e2",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-22T15:53:48Z",
+      "side": 1,
+      "message": "Thanks for the reply. I still don\u0027t follow how buffers can be reordered in a way that causes us to enter the newly-added branch here. It looks like the samples are sorted in order of byte offset in the appender. What actually causes us to enter the new branch?",
+      "parentUuid": "8eb3a58d_4ffec66b",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 40
+      },
+      "revId": "aa9761697943f8acfb3eb4c33120edad4f38f97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5392907_c98c5672",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 1
