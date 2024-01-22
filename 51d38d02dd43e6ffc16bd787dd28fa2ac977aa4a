@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8badd9e_4aaac41b",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-22T19:31:11Z",
+      "side": 1,
+      "message": "I think, we should rename this to `updateMqsAndEventFlags` so that it\u0027s easier to see at the call site what gets updated.",
+      "range": {
+        "startLine": 201,
+        "startChar": 33,
+        "endLine": 201,
+        "endChar": 42
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac066d2e_e2202489",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-22T19:31:11Z",
+      "side": 1,
+      "message": "Why do we have to re-create the status FMQ in this case? Since it does not depend on the processing block size, it can stay. And if we don\u0027t have to re-create it, then we don\u0027t have to update the event flags since they are bound to the status FMQ only, right?",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 34
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9097b915_b14330bd",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-22T19:31:11Z",
+      "side": 1,
+      "message": "Since the flag is called `DataMqUpdate` we should not expect the status queue, and thus the event flags to be invalidated. I think, we need to try to be consistent in our logic.",
+      "range": {
+        "startLine": 188,
+        "startChar": 39,
+        "endLine": 188,
+        "endChar": 61
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
