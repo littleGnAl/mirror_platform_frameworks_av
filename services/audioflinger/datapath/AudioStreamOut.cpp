@@ -30,9 +30,9 @@
 namespace android {
 
 // ----------------------------------------------------------------------------
-AudioStreamOut::AudioStreamOut(AudioHwDevice *dev, audio_output_flags_t flags)
+AudioStreamOut::AudioStreamOut(AudioHwDevice *dev)
         : audioHwDev(dev)
-        , flags(flags)
+        , flags(AUDIO_OUTPUT_FLAG_NONE)
 {
 }
 
@@ -118,13 +118,15 @@ status_t AudioStreamOut::open(
         audio_io_handle_t handle,
         audio_devices_t deviceType,
         struct audio_config *config,
+        audio_output_flags_t *requestedFlags,
         const char *address)
 {
     sp<StreamOutHalInterface> outStream;
 
-    const audio_output_flags_t customFlags = (config->format == AUDIO_FORMAT_IEC61937)
-                ? (audio_output_flags_t)(flags | AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO)
-                : flags;
+    audio_output_flags_t customFlags = (config->format == AUDIO_FORMAT_IEC61937)
+                ? (audio_output_flags_t)(*requestedFlags | AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO)
+                : *requestedFlags;
+    *requestedFlags = flags = customFlags;
 
     int status = hwDev()->openOutputStream(
             handle,
@@ -160,7 +162,6 @@ status_t AudioStreamOut::open(
         LOG_ALWAYS_FATAL_IF(status != OK, "Error retrieving frame size from HAL: %d", status);
         LOG_ALWAYS_FATAL_IF(mHalFrameSize == 0, "Error frame size was %zu but must be greater than"
                 " zero", mHalFrameSize);
-
     }
 
     return status;

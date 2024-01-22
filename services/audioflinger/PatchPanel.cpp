@@ -261,7 +261,7 @@ status_t PatchPanel::createAudioPatch_l(const struct audio_patch* patch,
                                                             &mixerConfig,
                                                             outputDevice,
                                                             outputDeviceAddress,
-                                                            flags);
+                                                            &flags);
                     ALOGV("mAfPatchPanelCallback->openOutput_l() returned %p", thread.get());
                     if (thread == 0) {
                         status = NO_MEMORY;
