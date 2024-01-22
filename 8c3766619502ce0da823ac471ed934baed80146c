@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff429dce_bcc22c64",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "edbd6005_1924ebf5",
+      "range": {
+        "startLine": 1969,
+        "startChar": 4,
+        "endLine": 1969,
+        "endChar": 22
+      },
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5917e099_91a16b6f",
@@ -114,6 +138,24 @@
       "side": 1,
       "message": "Related comments above. If we remove `roi_type_t` parameter, this will also need to be changed.",
       "parentUuid": "508163c9_61146d6f",
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a6637c_939b6007",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "22d15c32_2019178d",
       "revId": "8c3766619502ce0da823ac471ed934baed80146c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -274,6 +316,30 @@
       "side": 1,
       "message": "We expect to have both QP_map and rectangle types. We have defined the behaviors of those cases:\n\n1) If coordinates are in the middle of a LCU QP offset will be extended to the nearest LCUs.\n2) When coordinates overlap, the last one wins.",
       "parentUuid": "43fdf4fd_dcbdc333",
+      "range": {
+        "startLine": 1989,
+        "startChar": 3,
+        "endLine": 1989,
+        "endChar": 65
+      },
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0867eb9_c64bd4a0",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "87b80fe1_7a35dfd0",
       "range": {
         "startLine": 1989,
         "startChar": 3,

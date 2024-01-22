@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "268b0fcf_da16c7ba",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff3722b_9aa82d06",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32a4f39e_0e6125a3",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Yes we will change.",
       "parentUuid": "32a4f39e_0e6125a3",
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb9bb7a8_0611263c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84e15575_cbda2eec",
       "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +162,30 @@
       "side": 1,
       "message": "Yes we will change. One related comment above that we will replace the `roi_type_t` parameter with a boolean `enable_roi_t`, and this will only notify the encoder to turn on the ROI feature. Do you think this is good for C2? Thanks!",
       "parentUuid": "748bf130_e2332dfc",
+      "range": {
+        "startLine": 1959,
+        "startChar": 3,
+        "endLine": 1959,
+        "endChar": 6
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8a03cb_d74908d4",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "adf18eff_eed900e4",
       "range": {
         "startLine": 1959,
         "startChar": 3,
@@ -177,6 +243,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9c2676_425dd8c4",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc139abd_3362f1d4",
+      "range": {
+        "startLine": 1986,
+        "startChar": 57,
+        "endLine": 1986,
+        "endChar": 74
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61951e2a_cc0465d5",
@@ -214,6 +304,30 @@
       "side": 1,
       "message": "Yes we will fix.",
       "parentUuid": "61951e2a_cc0465d5",
+      "range": {
+        "startLine": 1996,
+        "startChar": 7,
+        "endLine": 1996,
+        "endChar": 28
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ccb422c_3fc918f1",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f304268_8a3f5c1b",
       "range": {
         "startLine": 1996,
         "startChar": 7,
@@ -271,6 +385,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "070253d2_0f572716",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901b7747_1429072e",
+      "range": {
+        "startLine": 2013,
+        "startChar": 0,
+        "endLine": 2013,
+        "endChar": 7
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c781e0b4_ba358ea3",
@@ -318,6 +456,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9836ab60_4381e6ef",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6894e3_aae31c1b",
+      "range": {
+        "startLine": 2014,
+        "startChar": 8,
+        "endLine": 2014,
+        "endChar": 30
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81462ebd_9ce9f8cb",
@@ -355,6 +517,30 @@
       "side": 1,
       "message": "Yes we will fix.",
       "parentUuid": "81462ebd_9ce9f8cb",
+      "range": {
+        "startLine": 2015,
+        "startChar": 49,
+        "endLine": 2015,
+        "endChar": 72
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb75d3f_0aadb765",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-22T15:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c24839_b95a053e",
       "range": {
         "startLine": 2015,
         "startChar": 49,
