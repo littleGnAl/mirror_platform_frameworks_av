@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d0f272_eb377dbd",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-22T22:24:20Z",
+      "side": 1,
+      "message": "IEffect.reopen use `OpenEffectReturn` for the return, and statusMQ is one member.\nIn the AIDL `reopen` documentation, we didn\u0027t ask to keep the statusMQ to be unchanged, it is true reopen only happens with `kEventFlagDataMqUpdate` flag for now, but I think it\u0027s better to not have this assumption.",
+      "parentUuid": "ac066d2e_e2202489",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 34
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9097b915_b14330bd",
