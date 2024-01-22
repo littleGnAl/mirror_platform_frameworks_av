@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a35c25_4bc149aa",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-22T23:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8badd9e_4aaac41b",
+      "range": {
+        "startLine": 201,
+        "startChar": 33,
+        "endLine": 201,
+        "endChar": 42
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac066d2e_e2202489",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fecc9c7_9dfe0a29",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-22T23:35:55Z",
+      "side": 1,
+      "message": "good point, I actually missed this statement.\nIn this case I think we can rely on this statement for `IEffect.open` and not update the statusMQ after open.\nI should add some more context about status MQ for the reopen to make it clear.",
+      "parentUuid": "f036342b_2397213d",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 34
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9097b915_b14330bd",
@@ -108,6 +156,30 @@
       "writtenOn": "2024-01-22T19:31:11Z",
       "side": 1,
       "message": "Since the flag is called `DataMqUpdate` we should not expect the status queue, and thus the event flags to be invalidated. I think, we need to try to be consistent in our logic.",
+      "range": {
+        "startLine": 188,
+        "startChar": 39,
+        "endLine": 188,
+        "endChar": 61
+      },
+      "revId": "51d38d02dd43e6ffc16bd787dd28fa2ac977aa4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ac00ef_3323c9d1",
+        "filename": "media/libaudiohal/impl/EffectHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-22T23:35:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9097b915_b14330bd",
       "range": {
         "startLine": 188,
         "startChar": 39,
