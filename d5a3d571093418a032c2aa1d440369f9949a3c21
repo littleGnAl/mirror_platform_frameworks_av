@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4d0ee8_42990af0",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 43
+      },
+      "lineNbr": 2314,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-22T17:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a072d0_2989e79c",
+      "range": {
+        "startLine": 2310,
+        "startChar": 28,
+        "endLine": 2314,
+        "endChar": 89
+      },
+      "revId": "d5a3d571093418a032c2aa1d440369f9949a3c21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "283f2a2a_d3e58541",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-19T20:20:29Z",
       "side": 1,
       "message": "The error log doesn\u0027t match the if statement. Was that intentional?",
+      "range": {
+        "startLine": 4817,
+        "startChar": 64,
+        "endLine": 4817,
+        "endChar": 75
+      },
+      "revId": "d5a3d571093418a032c2aa1d440369f9949a3c21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6dc7316_aac3505d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 43
+      },
+      "lineNbr": 4817,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-22T17:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "283f2a2a_d3e58541",
       "range": {
         "startLine": 4817,
         "startChar": 64,
