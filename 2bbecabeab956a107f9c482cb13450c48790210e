@@ -22,6 +22,30 @@
       },
       "revId": "2bbecabeab956a107f9c482cb13450c48790210e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d794409c_0e6f6396",
+        "filename": "media/libstagefright/include/media/stagefright/SkipCutBuffer.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-22T18:27:41Z",
+      "side": 0,
+      "message": "This is used in OMX and other areas too. So I am not sure if introducing a C2 class will compile for all.",
+      "parentUuid": "6b103889_c1574bce",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "2bbecabeab956a107f9c482cb13450c48790210e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
