@@ -329,6 +329,30 @@
       },
       "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a17086_00125dfc",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-23T23:48:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "08fa8e14_98362ada",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
