@@ -16,6 +16,24 @@
       "message": "This makefile is still used to generate the doxygen for the codec2 API. How can we convert this to a .bp?",
       "revId": "0a3153a36ecd3dd6d9c8e1742b7899207409fd5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef00a91f_4360f951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-01-23T03:33:48Z",
+      "side": 1,
+      "message": "Is it still possible to use this Android.mk?\n\nAfter verification, even if I add `Android.mk` in the parent directory and include `$(call all-makefiles-under,$(call my-dir))`, it still fails to build.\n\nThis is because there are no `Codec2-docs` and `codec2` targets.\n\n\nThe logic of `Android.mk` is not complicated, but we need the original build method to verify if the conversion results are correct.",
+      "parentUuid": "934397dc_062db857",
+      "revId": "0a3153a36ecd3dd6d9c8e1742b7899207409fd5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
