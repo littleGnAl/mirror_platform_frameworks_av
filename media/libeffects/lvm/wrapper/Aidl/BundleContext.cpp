@@ -27,6 +27,8 @@
 #include "BundleTypes.h"
 #include "math.h"
 
+constexpr int kBlockSize = 32760;
+
 namespace aidl::android::hardware::audio::effect {
 
 using ::aidl::android::media::audio::common::AudioChannelLayout;
@@ -854,21 +856,30 @@ IEffect::Status BundleContext::lvmProcess(float* in, float* out, int samples) {
             LOG(DEBUG) << "Effect_process() processing last frame";
         }
         mNumberEffectsCalled = 0;
-        float* outTmp = (accumulate ? getWorkBuffer() : out);
-        /* Process the samples */
-        LVM_ReturnStatus_en lvmStatus;
-        {
-            std::lock_guard lg(mMutex);
-
-            lvmStatus = LVM_Process(mInstance, in, outTmp, inputFrameCount, 0);
-            if (lvmStatus != LVM_SUCCESS) {
-                LOG(ERROR) << __func__ << lvmStatus;
-                return {EX_UNSUPPORTED_OPERATION, 0, 0};
-            }
-            if (accumulate) {
-                for (int i = 0; i < samples; i++) {
-                    out[i] += outTmp[i];
+        LVM_UINT16 frames = samples * sizeof(float) / frameSize;
+        int processSize = frames < kBlockSize ? frames : kBlockSize;
+        int frameCounter = frames;
+        int bufferIndex = 0;
+        while (frameCounter > 0) {
+            float* outTmp = (accumulate ? getWorkBuffer() : out);
+            /* Process the samples */
+            LVM_ReturnStatus_en lvmStatus;
+            {
+                std::lock_guard lg(mMutex);
+                lvmStatus = LVM_Process(mInstance, in + bufferIndex, outTmp + bufferIndex,
+                                        processSize, 0);
+                if (lvmStatus != LVM_SUCCESS) {
+                    LOG(ERROR) << __func__ << lvmStatus;
+                    return {EX_UNSUPPORTED_OPERATION, 0, 0};
                 }
+                if (accumulate) {
+                    for (int i = 0; i < samples; i++) {
+                        out[i] += outTmp[i];
+                    }
+                }
+                frameCounter -= processSize;
+                processSize = frameCounter < kBlockSize ? frameCounter : kBlockSize;
+                bufferIndex = bufferIndex + processSize;
             }
         }
     } else {
