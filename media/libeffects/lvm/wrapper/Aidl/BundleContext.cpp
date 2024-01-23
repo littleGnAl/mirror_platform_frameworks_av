@@ -27,6 +27,8 @@
 #include "BundleTypes.h"
 #include "math.h"
 
+constexpr int kBlockSize = 32764;
+
 namespace aidl::android::hardware::audio::effect {
 
 using ::aidl::android::media::audio::common::AudioChannelLayout;
@@ -34,8 +36,8 @@ using ::aidl::android::media::audio::common::AudioDeviceDescription;
 using ::aidl::android::media::audio::common::AudioDeviceType;
 
 BundleContext::BundleContext(int statusDepth, const Parameter::Common& common,
-              const lvm::BundleEffectType& type)
-        : EffectContext(statusDepth, common), mType(type) {
+                             const lvm::BundleEffectType& type)
+    : EffectContext(statusDepth, common), mType(type) {
     LOG(DEBUG) << __func__ << type;
 
     int inputChannelCount = ::aidl::android::hardware::audio::common::getChannelCount(
@@ -618,7 +620,6 @@ RetCode BundleContext::setVirtualizerStrength(int strength) {
     return limitLevel();
 }
 
-
 RetCode BundleContext::setForcedDevice(
         const ::aidl::android::media::audio::common::AudioDeviceDescription& device) {
     RETURN_VALUE_IF(true != isDeviceSupportedVirtualizer({device}), RetCode::ERROR_EFFECT_LIB_ERROR,
@@ -694,14 +695,14 @@ void BundleContext::initHeadroomParameter(LVM_HeadroomParams_t& params) const {
     params.Headroom_OperatingMode = LVM_HEADROOM_OFF;
 }
 
-LVM_EQNB_BandDef_t *BundleContext::getDefaultEqualizerBandDefs() {
+LVM_EQNB_BandDef_t* BundleContext::getDefaultEqualizerBandDefs() {
     static LVM_EQNB_BandDef_t* BandDefs = []() {
         static LVM_EQNB_BandDef_t tempDefs[lvm::MAX_NUM_BANDS];
         /* N-Band Equaliser parameters */
         for (std::size_t i = 0; i < lvm::MAX_NUM_BANDS; i++) {
             tempDefs[i].Frequency = lvm::kPresetsFrequencies[i];
             tempDefs[i].QFactor = lvm::kPresetsQFactors[i];
-            tempDefs[i].Gain = lvm::kSoftPresets[0/* normal */][i];
+            tempDefs[i].Gain = lvm::kSoftPresets[0 /* normal */][i];
         }
         return tempDefs;
     }();
@@ -709,7 +710,7 @@ LVM_EQNB_BandDef_t *BundleContext::getDefaultEqualizerBandDefs() {
     return BandDefs;
 }
 
-LVM_HeadroomBandDef_t *BundleContext::getDefaultEqualizerHeadroomBanDefs() {
+LVM_HeadroomBandDef_t* BundleContext::getDefaultEqualizerHeadroomBanDefs() {
     static LVM_HeadroomBandDef_t HeadroomBandDef[LVM_HEADROOM_MAX_NBANDS] = {
             {
                     .Limit_Low = 20,
@@ -854,21 +855,28 @@ IEffect::Status BundleContext::lvmProcess(float* in, float* out, int samples) {
             LOG(DEBUG) << "Effect_process() processing last frame";
         }
         mNumberEffectsCalled = 0;
-        float* outTmp = (accumulate ? getWorkBuffer() : out);
-        /* Process the samples */
-        LVM_ReturnStatus_en lvmStatus;
-        {
-            std::lock_guard lg(mMutex);
-
-            lvmStatus = LVM_Process(mInstance, in, outTmp, inputFrameCount, 0);
-            if (lvmStatus != LVM_SUCCESS) {
-                LOG(ERROR) << __func__ << lvmStatus;
-                return {EX_UNSUPPORTED_OPERATION, 0, 0};
-            }
-            if (accumulate) {
-                for (int i = 0; i < samples; i++) {
-                    out[i] += outTmp[i];
+        int frames = samples * sizeof(float) / frameSize;
+        int bufferIndex = 0;
+        while (frames > 0) {
+            int processFrames = frames < kBlockSize ? frames : kBlockSize;
+            float* outTmp = (accumulate ? getWorkBuffer() : out);
+            /* Process the samples */
+            LVM_ReturnStatus_en lvmStatus;
+            {
+                std::lock_guard lg(mMutex);
+                lvmStatus = LVM_Process(mInstance, in + bufferIndex, outTmp + bufferIndex,
+                                        processFrames, 0);
+                if (lvmStatus != LVM_SUCCESS) {
+                    LOG(ERROR) << __func__ << lvmStatus;
+                    return {EX_UNSUPPORTED_OPERATION, 0, 0};
                 }
+                if (accumulate) {
+                    for (int i = 0; i < samples; i++) {
+                        out[i] += outTmp[i];
+                    }
+                }
+                frames -= processFrames;
+                bufferIndex = bufferIndex + processFrames * frameSize / sizeof(float);
             }
         }
     } else {
