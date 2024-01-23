@@ -27,6 +27,8 @@
 #include "BundleTypes.h"
 #include "math.h"
 
+constexpr int kBlockFrames = 32764;
+
 namespace aidl::android::hardware::audio::effect {
 
 using ::aidl::android::media::audio::common::AudioChannelLayout;
@@ -854,21 +856,29 @@ IEffect::Status BundleContext::lvmProcess(float* in, float* out, int samples) {
             LOG(DEBUG) << "Effect_process() processing last frame";
         }
         mNumberEffectsCalled = 0;
-        float* outTmp = (accumulate ? getWorkBuffer() : out);
-        /* Process the samples */
-        LVM_ReturnStatus_en lvmStatus;
-        {
-            std::lock_guard lg(mMutex);
-
-            lvmStatus = LVM_Process(mInstance, in, outTmp, inputFrameCount, 0);
-            if (lvmStatus != LVM_SUCCESS) {
-                LOG(ERROR) << __func__ << lvmStatus;
-                return {EX_UNSUPPORTED_OPERATION, 0, 0};
-            }
-            if (accumulate) {
-                for (int i = 0; i < samples; i++) {
-                    out[i] += outTmp[i];
+        int frames = samples * sizeof(float) / frameSize;
+        int bufferIndex = 0;
+        while (frames > 0) {
+            float* outTmp = (accumulate ? getWorkBuffer() : out);
+            /* Process the samples */
+            LVM_ReturnStatus_en lvmStatus;
+            {
+                std::lock_guard lg(mMutex);
+                int processFrames = frames < kBlockFrames ? frames : kBlockFrames;
+                lvmStatus = LVM_Process(mInstance, in + bufferIndex, outTmp + bufferIndex,
+                                        processFrames, 0);
+                if (lvmStatus != LVM_SUCCESS) {
+                    LOG(ERROR) << __func__ << lvmStatus;
+                    return {EX_UNSUPPORTED_OPERATION, 0, 0};
                 }
+                if (accumulate) {
+                    for (int i = 0; i < samples; i++) {
+                        out[i] += outTmp[i];
+                    }
+                }
+                frames -= processFrames;
+                int processedSize= processFrames * frameSize / sizeof(float);
+                bufferIndex = bufferIndex + processedSize;
             }
         }
     } else {
