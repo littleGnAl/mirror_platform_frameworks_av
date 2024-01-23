@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed06ae12_1c7e7c50",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-23T23:02:22Z",
+      "side": 1,
+      "message": "Hi Lajos. Can we conclude here if this key is not needed / ROI feature will be always-on for the encoders? Thanks!",
+      "parentUuid": "268b0fcf_da16c7ba",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a4f39e_0e6125a3",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 8
