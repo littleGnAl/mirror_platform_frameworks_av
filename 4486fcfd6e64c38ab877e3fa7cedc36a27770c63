@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d0ad82_48bd8192",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1975310
+      },
+      "writtenOn": "2024-01-23T13:26:55Z",
+      "side": 1,
+      "message": "int\nWe can add a cast in LVM_Process call",
+      "range": {
+        "startLine": 859,
+        "startChar": 8,
+        "endLine": 859,
+        "endChar": 18
+      },
+      "revId": "4486fcfd6e64c38ab877e3fa7cedc36a27770c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c9fd42_4be35582",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1975310
+      },
+      "writtenOn": "2024-01-23T13:26:55Z",
+      "side": 1,
+      "message": "We can directly use frames here",
+      "range": {
+        "startLine": 863,
+        "startChar": 0,
+        "endLine": 863,
+        "endChar": 34
+      },
+      "revId": "4486fcfd6e64c38ab877e3fa7cedc36a27770c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c109ee4_bc6ad7c7",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1975310
+      },
+      "writtenOn": "2024-01-23T13:26:55Z",
+      "side": 1,
+      "message": "Computation of processSize logic can be right before calling LVM_Process.\nAnd maybe processFrames name will make its usage clear.",
+      "range": {
+        "startLine": 870,
+        "startChar": 40,
+        "endLine": 870,
+        "endChar": 51
+      },
+      "revId": "4486fcfd6e64c38ab877e3fa7cedc36a27770c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0508ea0_b5e8c8cc",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1975310
+      },
+      "writtenOn": "2024-01-23T13:26:55Z",
+      "side": 1,
+      "message": "Computation of processSize seems incorrect.\nShouldn\u0027t it depend on ChannelCount?",
+      "range": {
+        "startLine": 882,
+        "startChar": 0,
+        "endLine": 882,
+        "endChar": 56
+      },
+      "revId": "4486fcfd6e64c38ab877e3fa7cedc36a27770c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
