@@ -420,6 +420,8 @@ void Component::initListener(const std::shared_ptr<Component>& self) {
             mInit = res;
         }
 
+        // b/321902635, mListener should not be null.
+        CHECK(mListener);
         mDeathRecipient = ::ndk::ScopedAIBinder_DeathRecipient(
                 AIBinder_DeathRecipient_new(OnBinderDied));
         mDeathContext = new DeathContext{ref<Component>()};
