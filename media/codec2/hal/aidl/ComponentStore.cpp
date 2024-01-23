@@ -210,6 +210,8 @@ ScopedAStatus ComponentStore::createComponent(
     c2_status_t status =
             mStore->createComponent(name, &c2component);
 
+    ALOGD("createComponent(): listener(%d)", bool(listener));
+
     if (status == C2_OK) {
 #ifndef __ANDROID_APEX__
         c2component = GetFilterWrapper()->maybeWrapComponent(c2component);
