@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9008e13d_395dc0cb",
+        "filename": "media/codec2/components/raw/C2SoftRawDec.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-23T17:55:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "16faf4d0_f1783c53",
+      "range": {
+        "startLine": 269,
+        "startChar": 12,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "e6a1c1fbceafb6a52f8cbc13798434dad305e367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad13e611_5c0993fc",
