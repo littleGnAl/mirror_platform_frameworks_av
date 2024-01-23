@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f0b86d_0e459712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-23T22:33:09Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "02092990ed7abba89f636210c27e46ca05ecc726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b399f4d3_ce499b7b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-23T22:33:09Z",
+      "side": 1,
+      "message": "this changes the existing indices and breaks the ABI. These need to be added at the end of this subsection (after HdrFormat).",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "02092990ed7abba89f636210c27e46ca05ecc726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e41515d_21cd5c8d",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-01-23T22:33:09Z",
+      "side": 1,
+      "message": "this struct needs a separate param index. kParamIndexQpOffsetRect.\n\nSee https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/core/include/C2Param.h;drc\u003d5019e3544fcaab86962e29acca3b3bd5279bc1ae;l\u003d1298\n\nYou can define that before kParamIndexQpOffsetRects.",
+      "range": {
+        "startLine": 1428,
+        "startChar": 33,
+        "endLine": 1428,
+        "endChar": 45
+      },
+      "revId": "02092990ed7abba89f636210c27e46ca05ecc726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
