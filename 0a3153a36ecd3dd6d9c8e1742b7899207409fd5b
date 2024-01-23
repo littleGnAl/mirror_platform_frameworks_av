@@ -34,6 +34,24 @@
       "parentUuid": "934397dc_062db857",
       "revId": "0a3153a36ecd3dd6d9c8e1742b7899207409fd5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd43fda_2134479f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-01-23T03:39:28Z",
+      "side": 1,
+      "message": "This `Android.mk` has the first check at the top.\nI did not find any relevant `Doxygen.app` targets throughout the entire Android source.\n```\nC2_DOXY :\u003d $(or $(shell command -v doxygen),\\\n\t\t$(shell command -v /Applications/Doxygen.app/Contents/Resources/doxygen))\n```\n\nThe same applies to `Codec2-docs` and `codec2`.",
+      "parentUuid": "ef00a91f_4360f951",
+      "revId": "0a3153a36ecd3dd6d9c8e1742b7899207409fd5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
