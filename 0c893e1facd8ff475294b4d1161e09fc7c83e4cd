@@ -153,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e22c98_93c23b97",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-23T14:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2536c5_d8c47b41",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 77
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01f520ad_8b404e91",
@@ -166,6 +190,30 @@
       "writtenOn": "2024-01-22T19:25:18Z",
       "side": 1,
       "message": "Question: Should we be doing this check before allocating bufferInfos?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 47
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcf334d_f4b090a6",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-23T14:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f520ad_8b404e91",
       "range": {
         "startLine": 185,
         "startChar": 0,
