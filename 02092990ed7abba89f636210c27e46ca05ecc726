@@ -110,6 +110,29 @@
       },
       "revId": "02092990ed7abba89f636210c27e46ca05ecc726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c63e7c1_58873530",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-23T23:19:11Z",
+      "side": 1,
+      "message": "Hi Lajos. I think this is what we are doing, `C2QpOffsetRectStruct` is singular, and here we use an array to present multiple rects. `kParamIndexQpOffsetRects` is plural and `C2QpOffsetRectStruct` is singular. Do you think it is OK?",
+      "range": {
+        "startLine": 1444,
+        "startChar": 30,
+        "endLine": 1444,
+        "endChar": 98
+      },
+      "revId": "02092990ed7abba89f636210c27e46ca05ecc726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
