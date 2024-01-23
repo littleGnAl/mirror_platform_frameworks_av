@@ -214,6 +214,30 @@
       },
       "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede90207_c1e74a27",
+        "filename": "media/libaudioclient/include/media/TrackPlayerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2024-01-23T22:19:07Z",
+      "side": 1,
+      "message": "\u003e I wonder if simply modifying doDestroy() to not call mAudioTrack.clear() would be sufficient here\n\nI tried this out, but there\u0027s another subtle issue (not directly related to this code) that probably makes it a non-starter.\n\nJust to clarify a bit further, the original crash we observed is due to a race between the following:\n\n- Application calling Destroy on the OpenSL player object, which ends up invoking TrackPlayerBase::doDestroy\n- PlaybackActivityMonitor (part of AudioService, in system_server) calling applyVolumeShaper[*]\n\nIf we maintained the invariant that mAudioTrack of an init()-ed TrackPlayerBase is non-null (thus deferring the destruction of AudioTrack until ~TrackPlayerBase), we\u0027d potentially be keeping these objects alive for _much longer than needed_.\n\nTrackPlayerBase (which implements the IPlayer interface) is sent to AudioService via [trackPlayer](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudioclient/PlayerBase.cpp;drc\u003d419312541747dc19d37c23f8e65fdf0650f7c83e;l\u003d56), which in turn forwards it to other processes that implement the AudioPlaybackCallback interface, e.g. `com.android.bluetooth` [here](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Bluetooth/android/app/src/com/android/bluetooth/audio_util/MediaPlayerList.java;drc\u003d5b001d8d980f2c64fd748ad7a06fcda0d59f4f47;l\u003d831). Binder proxy objects in other processes keep the TrackPlayerBase refcount non-zero, so we\u0027re effectively at the mercy of the garbage collector. I suspect this may be why `doDestroy()` was originally implemented this way (to clear `mAudioTrack`).\n\nI tested this with an app that uses OpenSLES to create and then destroy multiple audio player objects. Binder debugfs entries showed that the bluetooth process still had references to `IPlayer` binder nodes created by the app, and it was only after I explicitly triggered GC (by sending SIGUSR1 to com.android.bluetooth) that TrackPlayerBase destructors were called.\n\nConsidering the complication with binder proxies, I think we\u0027d still want to explicitly tear down `mAudioTrack` in `TrackPlayerBase::doDestroy` (which makes the race described above possible). This CL is one way of fixing it, but I wonder what you all think? cc @atneya@google.com\n\n[*] IPlayer.applyVolumeShaper() is a one-way binder call, so we could get it even after the OpenSL Destroy call, which unregisters the IPlayer with PlaybackActivityMonitor, returns.",
+      "parentUuid": "0b623eea_4ceeecd9",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7e85873d407557627ee9a10f3421f6fd4302073e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
