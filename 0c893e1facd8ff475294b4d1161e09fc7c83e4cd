@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "793e807f_de088dad",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-23T14:31:59Z",
+      "side": 1,
+      "message": "Wsa not able to get this work.",
+      "parentUuid": "9025b3f5_f2e9721d",
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e69287d_cd024d53",
         "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
         "patchSetId": 45
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fad77428_1c89af9c",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-23T14:31:59Z",
+      "side": 1,
+      "message": "It needs its header to be included here. in CCodecChannel, ALoopup was used for lookup and rlookup. here was dont need that. a simple map would be sufficient as we control what is getting into the metadata flags.",
+      "parentUuid": "4e69287d_cd024d53",
+      "range": {
+        "startLine": 154,
+        "startChar": 13,
+        "endLine": 154,
+        "endChar": 21
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc1e6f8a_ec9cbf85",
         "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
         "patchSetId": 45
@@ -54,6 +96,30 @@
       "writtenOn": "2024-01-22T19:30:40Z",
       "side": 1,
       "message": "How about MultiAccessUnitSkipCutBuffer?",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 21
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc57b3a8_bac6f6d2",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 45
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-23T14:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1e6f8a_ec9cbf85",
       "range": {
         "startLine": 162,
         "startChar": 6,
@@ -123,6 +189,30 @@
       "writtenOn": "2024-01-22T19:30:40Z",
       "side": 1,
       "message": "can we explicitly take the infos not RefBase? e.g.\n\n```suggestion\n    typedef WrappedObject\u003cstd::vector\u003cAccessUnitInfo\u003e\u003e BufferInfoWrapper;\n\n    status_t queueInputBuffers(\n            size_t index,\n            size_t offset,\n            size_t size,\n            const sp\u003cBufferInfoWrapper\u003e \u0026accessUnitInfo,\n            AString *errorDetailMsg \u003d NULL);\n\n```\n\nor maybe we can even strip the sp \u0026 WrappedObject.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0c893e1facd8ff475294b4d1161e09fc7c83e4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08fa8e14_98362ada",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-23T14:31:59Z",
+      "side": 1,
+      "message": "The WrappedObect and sp was required on return path for onOutputBufferAvailable(). So I thought i will use that in the forward path too.",
+      "parentUuid": "ef8a7b4c_2c3f3c4a",
       "range": {
         "startLine": 190,
         "startChar": 0,
