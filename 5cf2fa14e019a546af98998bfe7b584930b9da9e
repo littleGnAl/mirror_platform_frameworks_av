@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc270366_dc621950",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-24T21:51:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "78813159_42a17a37",
+      "range": {
+        "startLine": 585,
+        "startChar": 3,
+        "endLine": 585,
+        "endChar": 10
+      },
+      "revId": "5cf2fa14e019a546af98998bfe7b584930b9da9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75e496e8_4b560513",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-11T17:41:16Z",
       "side": 1,
       "message": "We\u0027ll also need to add keys from MediaCodec here.",
+      "range": {
+        "startLine": 891,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 70
+      },
+      "revId": "5cf2fa14e019a546af98998bfe7b584930b9da9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c28004_07cead79",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-24T21:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e496e8_4b560513",
       "range": {
         "startLine": 891,
         "startChar": 0,
