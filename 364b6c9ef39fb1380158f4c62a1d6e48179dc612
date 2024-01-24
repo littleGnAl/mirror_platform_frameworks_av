@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb69344a_4c5e4597",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:01:15Z",
+      "side": 1,
+      "message": "```suggestion\n        std::shared_ptr\u003cMultiAccessUnitHelper\u003e mHelper;\n```",
+      "range": {
+        "startLine": 185,
+        "startChar": 47,
+        "endLine": 185,
+        "endChar": 55
+      },
+      "revId": "364b6c9ef39fb1380158f4c62a1d6e48179dc612",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

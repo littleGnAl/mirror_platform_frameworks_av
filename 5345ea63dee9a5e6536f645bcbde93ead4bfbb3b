@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969832d5_0da66cb7",
+        "filename": "media/codec2/hal/aidl/include/codec2/aidl/Component.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:01:15Z",
+      "side": 1,
+      "message": "```suggestion\n    std::shared_ptr\u003cMultiAccessUnitHelper\u003e mMultiAccessUnitHelper;\n```",
+      "range": {
+        "startLine": 93,
+        "startChar": 43,
+        "endLine": 93,
+        "endChar": 62
+      },
+      "revId": "5345ea63dee9a5e6536f645bcbde93ead4bfbb3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbe33fd_84a80b37",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:01:15Z",
+      "side": 1,
+      "message": "maybe add TODO to remove this before launch?",
+      "revId": "5345ea63dee9a5e6536f645bcbde93ead4bfbb3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645ddf74_a50c8631",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:01:15Z",
+      "side": 1,
+      "message": "```suggestion\n    LOG(DEBUG) \u003c\u003c \"MultiAccessUnitHelper \" \u003c\u003c (result ? \"enabled\" : \"disabled\");\n```",
+      "revId": "5345ea63dee9a5e6536f645bcbde93ead4bfbb3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95670bd5_13938bfa",
+        "filename": "media/codec2/hal/hidl/1.0/utils/include/codec2/hidl/1.0/Component.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:01:15Z",
+      "side": 1,
+      "message": "```suggestion\n    std::shared_ptr\u003cMultiAccessUnitHelper\u003e mMultiAccessUnitHelper;\n```",
+      "revId": "5345ea63dee9a5e6536f645bcbde93ead4bfbb3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3654c323_9e0de327",
+        "filename": "media/codec2/hal/hidl/1.1/utils/include/codec2/hidl/1.1/Component.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:01:15Z",
+      "side": 1,
+      "message": "```suggestion\n    std::shared_ptr\u003cMultiAccessUnitHelper\u003e mMultiAccessUnitHelper;\n```",
+      "revId": "5345ea63dee9a5e6536f645bcbde93ead4bfbb3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b545c4_bd706bb8",
+        "filename": "media/codec2/hal/hidl/1.2/utils/include/codec2/hidl/1.2/Component.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:01:15Z",
+      "side": 1,
+      "message": "```suggestion\n    std::shared_ptr\u003cMultiAccessUnitHelper\u003e mMultiAccessUnitHelper;\n```",
+      "revId": "5345ea63dee9a5e6536f645bcbde93ead4bfbb3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
