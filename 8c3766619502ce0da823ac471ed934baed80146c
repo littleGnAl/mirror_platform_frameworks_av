@@ -279,6 +279,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6081ba6_afacbd4e",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-24T23:49:24Z",
+      "side": 1,
+      "message": "Conclusion: C2 layer will be sticky and JAVA API layer will be non-sticky. Framework will need to handle this.",
+      "parentUuid": "29f133e8_fdeb4d91",
+      "range": {
+        "startLine": 1984,
+        "startChar": 30,
+        "endLine": 1984,
+        "endChar": 41
+      },
+      "revId": "8c3766619502ce0da823ac471ed934baed80146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43fdf4fd_dcbdc333",

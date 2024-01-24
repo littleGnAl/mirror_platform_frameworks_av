@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78374e86_e03b0b6a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-24T23:49:24Z",
+      "side": 1,
+      "message": "Talked with Lajos offline, C2 layer can\u0027t land this key.",
+      "parentUuid": "ed06ae12_1c7e7c50",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "92f74c6f642f9e058dc8bd7774df1ceb7c30311f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32a4f39e_0e6125a3",
