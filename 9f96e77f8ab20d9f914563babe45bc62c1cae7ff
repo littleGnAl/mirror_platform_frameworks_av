@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9065f93c_4970056b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-24T21:47:41Z",
+      "side": 1,
+      "message": "I think what Lajos meant is that keeping plural here and adding a separate singular  key. Please find example here: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/core/include/C2Config.h;l\u003d248;drc\u003d6694a65d5d08d7e919608d52259227510b80a11a",
+      "range": {
+        "startLine": 1444,
+        "startChar": 73,
+        "endLine": 1444,
+        "endChar": 96
+      },
+      "revId": "9f96e77f8ab20d9f914563babe45bc62c1cae7ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
