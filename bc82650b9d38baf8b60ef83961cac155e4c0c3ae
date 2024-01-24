@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc00858_dcc04b9b",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-24T00:02:33Z",
+      "side": 1,
+      "message": "```suggestion\n            const sp\u003cBufferInfosWrapper\u003e \u0026infos,\n```",
+      "revId": "bc82650b9d38baf8b60ef83961cac155e4c0c3ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
