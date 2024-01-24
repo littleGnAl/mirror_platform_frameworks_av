@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a98c10c_8ab9b38f",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-01-24T16:15:43Z",
+      "side": 1,
+      "message": "can you pass `\u0026caDescriptor-\u003emSystemID` directly here, similar to `\u0026caDescriptor-\u003emPID` below?\n\nIf not then I suggest naming the local `systemId`",
+      "range": {
+        "startLine": 462,
+        "startChar": 42,
+        "endLine": 462,
+        "endChar": 55
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35586830_b5ffb423",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-01-24T16:15:43Z",
+      "side": 1,
+      "message": "I suggest naming this `reserved`, and declaring a new local below for e.g. `program_number`",
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77645aec_94eaee28",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-01-24T16:15:43Z",
+      "side": 1,
+      "message": "this line looks like it means we don\u0027t need to modify the next 10 `br-\u003egetBits` calls - and similar for the check below on L742.\n\nI wonder if this CL would be less invasive if we add more checks like this and leave most of the rest of the `br-\u003egetBits` calls intact?\n\nI certainly think we should consider doing this when we don\u0027t already have a named value we can pass in a pointer too (i.e. all the places you\u0027re currently using `readBitsValue`).",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 53
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b128f3_511beaff",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-01-24T16:15:43Z",
+      "side": 1,
+      "message": "this is a nice pattern, do you want to use it in similar places as well?",
+      "range": {
+        "startLine": 1651,
+        "startChar": 0,
+        "endLine": 1651,
+        "endChar": 81
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d757370e_f8a704c5",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-01-24T16:15:43Z",
+      "side": 1,
+      "message": "How do we get overflow when just reading a value without doing any further arithmetic on it?\n\nWhat\u0027s special about the value `9`?",
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8613b3c_a241b815",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2396,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-01-24T16:15:43Z",
+      "side": 1,
+      "message": "this can presumably also cause problems?",
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2361d8_0f6062c4",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-01-24T16:15:43Z",
+      "side": 1,
+      "message": "why not pass a pointer to `PCR_base`?",
+      "range": {
+        "startLine": 2532,
+        "startChar": 0,
+        "endLine": 2532,
+        "endChar": 46
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
