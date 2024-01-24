@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75dca391_376f74cf",
+        "filename": "media/aconfig/mediacodec_flags.aconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-24T20:35:49Z",
+      "side": 1,
+      "message": "The flag query function name will be aidlHalInputsurface()\nBut if we would like to have it as aidlHalInputSurface(), this needs to be changed as aidl_hal_input_surface",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "6ef403b1d4af27797447656ccda2128b890f5da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
