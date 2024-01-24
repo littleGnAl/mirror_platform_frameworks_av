@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d6a27d_aa3cfe0d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-24T22:06:20Z",
+      "side": 1,
+      "message": "I think those run-time configurations should be defined in MediaCodec.java instead of MediaFormat.java, and should be named as `PARAMETER_KEY_*`",
+      "range": {
+        "startLine": 585,
+        "startChar": 21,
+        "endLine": 585,
+        "endChar": 43
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebcb69e7_4114b661",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-24T22:06:20Z",
+      "side": 1,
+      "message": "I think in the other CL this was no longer a string type.",
+      "range": {
+        "startLine": 1871,
+        "startChar": 20,
+        "endLine": 1871,
+        "endChar": 55
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45de6e1e_8b61fcce",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-24T22:06:20Z",
+      "side": 1,
+      "message": "These keys should be named as `PARAMETER_KEY_*` and in the MediaCodec.java session.",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 74
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
