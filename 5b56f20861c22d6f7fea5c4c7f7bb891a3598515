@@ -16,6 +16,24 @@
       "message": "Hi @mnaganov@google.com, this change is ready for your review.\n\n1. Regarding the revert of \"do not use device port config to open stream fall back\". I needed this for AIDL remote submix to work. I saw the git log of why this fall-back was introduced, but I had problems reproducing / understand the original problem from the git log. I saw that VirtualAudioDeviceTest was run to validate those changes, but when I ran those tests on mainline, some of those tests were failing both on mainline (and when I re-ran the tests with this CL), so I decided to just go ahead with the revert to unblock this remote submix work and get the CL to you and I can better understand the reason for the fallback.\n\n2. The change in AudioPolicyManager in this CL could be improved to better infer whether SpdifEncoder is active. If that improvement is needed for this CL to go through, I\u0027ll work on it, but my initial quick change https://android-review.googlesource.com/c/platform/frameworks/av/+/2923410 for this didn\u0027t work, so I decided to not wait on that before pushing this CL for your review. Please advise your thoughts on this.\n\n3. I\u0027m obviously a bit concerned about changing the legacy behavior in the Spdif path of returning the client config to APM and \"hiding\" the output stream config, but I\u0027m not sure what better way there is for this to work properly because APM patches are operating on mix port / device port configs and thinks they are the HAL configs: having an intermediate transaltion in AudioFlinger to convert those configs to the actual HAL configs for the SpdifEncoder case crossed my mind, but I wasn\u0027t sure this was a good approach, and in any case, would likely lead to a more complex change perhaps. So I\u0027ve gone in this CL with the \"surface the actual HAL config\" approach here. Let me know your thoughts on this.\n\nThanks,",
       "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19fec71_2ffbfbcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-24T00:20:11Z",
+      "side": 1,
+      "message": "Thanks for providing this CL, Dean!\n\nRegarding the \"fallback\" (1.) What I was observing is that while running `android.virtualdevice.cts.VirtualAudioTest#audioCapture_readFloatArray_shouldCaptureAppPlaybackData` the framework was attempting to open the remote submix input using a float format. This is very strange considering that the HAL does not provide a profile for it. I think, it\u0027s a bug in the framework, but I haven\u0027t yet got time to pinpoint where does it happen. I would also be glad to remove this workaround if the tests continue to pass. I can check that on my side.\n\nI noticed, too, that these VD tests were a bit unstable. Sometimes they receive non-empty data from remote submix a bit late than they are expecting. I think, running just one test in isolation helps to avoid that.\n\nA long term solution to all this port matching complexity is to make APM to use HAL port IDs directly, similar how it does that for patches. This will eliminate the need for Hal2AidlMapper.",
+      "parentUuid": "db3a24bf_65a5b5b8",
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
