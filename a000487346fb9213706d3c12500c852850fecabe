@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1456a1f_44e59dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-24T08:11:14Z",
+      "side": 1,
+      "message": "Yes, it is to accommodate the extreme values. I\u0027ve updated the CL, removed the extra collection and moved the checks to one function.",
+      "parentUuid": "04fa4e56_adfa81b0",
+      "revId": "a000487346fb9213706d3c12500c852850fecabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "727d0b0d_666d566e",
@@ -82,6 +100,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d08bcac_1783bbc5",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-24T08:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9e0589_2e893b67",
+      "range": {
+        "startLine": 2292,
+        "startChar": 0,
+        "endLine": 2294,
+        "endChar": 0
+      },
+      "revId": "a000487346fb9213706d3c12500c852850fecabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "326e5eeb_2dc0a1a4",
@@ -95,6 +137,30 @@
       "writtenOn": "2024-01-16T14:31:08Z",
       "side": 1,
       "message": "Please briefly document what the threshold checks are doing so that a reader without context can understand them -- the comment about `lastDurationUs` is not sufficient to understand 5E5 for example.",
+      "range": {
+        "startLine": 2450,
+        "startChar": 0,
+        "endLine": 2460,
+        "endChar": 5
+      },
+      "revId": "a000487346fb9213706d3c12500c852850fecabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b8dcad_a08fc2e6",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-24T08:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326e5eeb_2dc0a1a4",
       "range": {
         "startLine": 2450,
         "startChar": 0,
@@ -128,6 +194,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae773b1_ad0d21b4",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3939,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-24T08:11:14Z",
+      "side": 1,
+      "message": "Removed the check.",
+      "parentUuid": "c88bc99b_371d0f66",
+      "range": {
+        "startLine": 3937,
+        "startChar": 0,
+        "endLine": 3939,
+        "endChar": 13
+      },
+      "revId": "a000487346fb9213706d3c12500c852850fecabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdace301_4e8b90ee",
@@ -141,6 +231,30 @@
       "writtenOn": "2024-01-16T14:31:08Z",
       "side": 1,
       "message": "Hm, I don\u0027t follow how this can be false?",
+      "range": {
+        "startLine": 4914,
+        "startChar": 0,
+        "endLine": 4914,
+        "endChar": 71
+      },
+      "revId": "a000487346fb9213706d3c12500c852850fecabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3215eb4_e65f3f67",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4914,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-24T08:11:14Z",
+      "side": 1,
+      "message": "Removed the check.",
+      "parentUuid": "fdace301_4e8b90ee",
       "range": {
         "startLine": 4914,
         "startChar": 0,
