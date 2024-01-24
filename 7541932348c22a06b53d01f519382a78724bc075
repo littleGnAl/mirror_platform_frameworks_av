@@ -22,6 +22,30 @@
       },
       "revId": "7541932348c22a06b53d01f519382a78724bc075",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ca9a02_a83cbd5b",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-01-24T05:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a84b0f_e7f73912",
+      "range": {
+        "startLine": 310,
+        "startChar": 37,
+        "endLine": 310,
+        "endChar": 59
+      },
+      "revId": "7541932348c22a06b53d01f519382a78724bc075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
