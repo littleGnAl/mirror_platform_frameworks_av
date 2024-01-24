@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d7a2cb_49e9203e",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2435,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-24T09:09:24Z",
+      "side": 1,
+      "message": "Nit: move to just before usage (around L2445) to minimize the local variable\u0027s live range?",
+      "range": {
+        "startLine": 2435,
+        "startChar": 0,
+        "endLine": 2435,
+        "endChar": 49
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3f94a8_0c9bacb3",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2436,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-24T09:09:24Z",
+      "side": 1,
+      "message": "Is this needed? I wonder if we can remove it as I\u0027d expect it would spam logcat.",
+      "range": {
+        "startLine": 2436,
+        "startChar": 4,
+        "endLine": 2436,
+        "endChar": 9
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f03bbe2_3dc027ca",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2438,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-24T09:09:24Z",
+      "side": 1,
+      "message": "Super-nit: put a space after // here and below, for consistency.",
+      "range": {
+        "startLine": 2438,
+        "startChar": 0,
+        "endLine": 2438,
+        "endChar": 78
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b306834_a69523e7",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2441,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-24T09:09:24Z",
+      "side": 1,
+      "message": "Please run a code formatter to fix indentation here.",
+      "range": {
+        "startLine": 2440,
+        "startChar": 0,
+        "endLine": 2441,
+        "endChar": 21
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29457829_73ec4999",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-24T09:09:24Z",
+      "side": 1,
+      "message": "Can this be replaced by `*(it + n)-\u003eisTimestampValid(timeUs)` for some value of n to make the code shorter?",
+      "range": {
+        "startLine": 2444,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 43
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040547c9_77fcb5fe",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4943,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-24T09:09:24Z",
+      "side": 1,
+      "message": "Nit: revert",
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
