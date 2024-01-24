@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575081fa_31765f9d",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-24T17:40:37Z",
+      "side": 1,
+      "message": "This should be a field of the class, or maybe even just a constant inside the function which uses it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "232ab9db5b22c5b16a4a24cfb43ef28d8914d4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c68763_e45f75fa",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-24T17:40:37Z",
+      "side": 1,
+      "message": "Could you please add a comment explaining the choice of this constant?",
+      "range": {
+        "startLine": 30,
+        "startChar": 29,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "232ab9db5b22c5b16a4a24cfb43ef28d8914d4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23a8a64_dae989ec",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-24T17:40:37Z",
+      "side": 1,
+      "message": "Please use `std::min`",
+      "range": {
+        "startLine": 867,
+        "startChar": 36,
+        "endLine": 867,
+        "endChar": 82
+      },
+      "revId": "232ab9db5b22c5b16a4a24cfb43ef28d8914d4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3210676_d8e08ca9",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-24T17:40:37Z",
+      "side": 1,
+      "message": "```suggestion\n                bufferIndex +\u003d processedSize;\n```\n\nAnd then `processedSize` can be just inlined.",
+      "range": {
+        "startLine": 881,
+        "startChar": 28,
+        "endLine": 881,
+        "endChar": 29
+      },
+      "revId": "232ab9db5b22c5b16a4a24cfb43ef28d8914d4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
