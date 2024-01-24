@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a99f0c2c_d684cc64",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-01-24T13:12:03Z",
+      "side": 1,
+      "message": "what happens if the final bytes of fuzzing data were consumed by lines 312/313?\n\ndoes this call on line 314 -- return null, return an empty string, throw an exception of some sort?\n\nthere are also a number of ConsumeXXX() calls downstream in the various\naction functions that make an assumption that their ConsumeXXX() invocations\nwill work where the same question applies.",
+      "range": {
+        "startLine": 314,
+        "startChar": 34,
+        "endLine": 314,
+        "endChar": 65
+      },
+      "revId": "ef7e8b9af8bc5e1c648a2731dfa8359f99089f7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
