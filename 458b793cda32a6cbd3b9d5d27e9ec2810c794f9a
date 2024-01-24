@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b457e0_1c08b0c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-01-24T21:10:20Z",
+      "side": 1,
+      "message": "Since `mediacodec_flags.aconfig` is frozen, moved the flag to `codec_fwk.aconfig`",
+      "revId": "458b793cda32a6cbd3b9d5d27e9ec2810c794f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
