@@ -16,6 +16,23 @@
       "message": "Harish, it would be nice to add a test that creates this condition",
       "revId": "a0c9271626ff29af1f04e16e13c265bd19d9cb49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f19c7dd_6ac430e2",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1939986
+      },
+      "writtenOn": "2024-01-25T17:03:00Z",
+      "side": 1,
+      "message": "I think, if the situation is common for all SW C2 components we\u0027d rather address it in C2SimpleComponent base class? @Wonsik, what do you think?",
+      "revId": "a0c9271626ff29af1f04e16e13c265bd19d9cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
