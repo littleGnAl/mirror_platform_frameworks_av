@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b73be6a6_ecca7ee9",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-01-25T09:23:10Z",
+      "side": 1,
+      "message": "Sorry for the bad suggestion -- I haven\u0027t used iterators much or recently. Is this C++ 11 or later and if so can we do `(*std::advance(mTracks-\u003ebegin(), trackIndex))-\u003eisTimestampValid(timeUs)` (untested - if this is available please check the index in case I\u0027m off by one)?",
+      "parentUuid": "a1007583_ee8f1fc6",
+      "range": {
+        "startLine": 2444,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 43
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "040547c9_77fcb5fe",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 4
