@@ -1258,4 +1258,10 @@ status_t StreamInHalHidl::setPreferredMicrophoneFieldDimension(float zoom) {
 }
 #endif
 
+status_t StreamInHalHidl::setEventCallback(
+        const sp<StreamInHalInterfaceEventCallback>& callback __unused) {
+    // Event callback is supported starting from AIDL audio HAL.
+    return INVALID_OPERATION;
+}
+
 } // namespace android

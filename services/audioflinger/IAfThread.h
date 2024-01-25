@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <android/media/IAudioRecordCallback.h>
 #include <android/media/IAudioTrackCallback.h>
 #include <android/media/IEffectClient.h>
 #include <audiomanager/IAudioManager.h>
@@ -567,6 +568,7 @@ public:
             pid_t tid,
             status_t* status /*non-NULL*/,
             audio_port_handle_t portId,
+            const sp<media::IAudioRecordCallback>& callback,
             int32_t maxSharedAudioHistoryMs)
             REQUIRES(audio_utils::AudioFlinger_Mutex) EXCLUDES_ThreadBase_Mutex = 0;
     virtual void destroyTrack_l(const sp<IAfRecordTrack>& track) REQUIRES(mutex()) = 0;

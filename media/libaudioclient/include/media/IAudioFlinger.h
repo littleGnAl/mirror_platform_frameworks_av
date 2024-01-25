@@ -49,6 +49,7 @@
 #include "android/media/CreateTrackRequest.h"
 #include "android/media/CreateTrackResponse.h"
 #include "android/media/IAudioRecord.h"
+#include "android/media/IAudioRecordCallback.h"
 #include "android/media/IAudioFlingerClient.h"
 #include "android/media/IAudioTrack.h"
 #include "android/media/IAudioTrackCallback.h"
@@ -139,6 +140,7 @@ public:
         AudioClient clientInfo;
         audio_unique_id_t riid;
         int32_t maxSharedAudioHistoryMs;
+        sp<media::IAudioRecordCallback> audioRecordCallback;
 
         /* input/output */
         audio_input_flags_t flags;

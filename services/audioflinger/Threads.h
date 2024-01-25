@@ -1905,7 +1905,8 @@ private:
 };
 
 // record thread
-class RecordThread : public IAfRecordThread, public ThreadBase
+class RecordThread : public IAfRecordThread, public ThreadBase,
+                     public StreamInHalInterfaceEventCallback
 {
     friend class ResamplerBufferProvider;
 public:
@@ -1952,6 +1953,7 @@ public:
                     pid_t tid,
                     status_t *status /*non-NULL*/,
                     audio_port_handle_t portId,
+                    const sp<media::IAudioRecordCallback>& callback,
                     int32_t maxSharedAudioHistoryMs) final
             REQUIRES(audio_utils::AudioFlinger_Mutex) EXCLUDES_ThreadBase_Mutex;
 
@@ -2058,6 +2060,14 @@ public:
                         }
 
 protected:
+    // StreamInHalInterfaceEventCallback implementation
+    void onVolumeChanged(float left, float right) final;
+
+    audio_utils::mutex& audioRecordCbMutex() const { return mAudioRecordCbMutex; }
+    mutable audio_utils::mutex mAudioRecordCbMutex;
+    // Record of IAudioRecordCallback
+    std::map<sp<IAfRecordTrack>, sp<media::IAudioRecordCallback>> mAudioRecordCallbacks;
+
     void dumpInternals_l(int fd, const Vector<String16>& args) override REQUIRES(mutex());
     void dumpTracks_l(int fd, const Vector<String16>& args) override REQUIRES(mutex());
 

@@ -35,6 +35,7 @@
 
 namespace android {
 
+class StreamInHalInterfaceEventCallback;
 class StreamOutHalInterfaceCallback;
 class StreamOutHalInterfaceEventCallback;
 class StreamOutHalInterfaceLatencyModeCallback;
@@ -60,6 +61,8 @@ class CallbackBroker : public virtual RefBase {
             void* cookie) = 0;
     virtual void setStreamOutLatencyModeCallback(
             void* cookie, const sp<StreamOutHalInterfaceLatencyModeCallback>&) = 0;
+    virtual void setStreamInEventCallback(void* cookie, const sp<StreamInHalInterfaceEventCallback>&) = 0;
+    virtual sp<StreamInHalInterfaceEventCallback> getStreamInEventCallback(void* cookie) = 0;
 };
 
 class MicrophoneInfoProvider : public virtual RefBase {
@@ -188,6 +191,7 @@ class DeviceHalAidl : public DeviceHalInterface, public ConversionHelperAidl,
     friend class sp<DeviceHalAidl>;
 
     struct Callbacks {  // No need to use `atomic_wp` because access is serialized.
+        wp<StreamInHalInterfaceEventCallback> inEvent;
         wp<StreamOutHalInterfaceCallback> out;
         wp<StreamOutHalInterfaceEventCallback> event;
         wp<StreamOutHalInterfaceLatencyModeCallback> latency;
@@ -225,6 +229,9 @@ class DeviceHalAidl : public DeviceHalInterface, public ConversionHelperAidl,
             void* cookie) override;
     void setStreamOutLatencyModeCallback(
             void* cookie, const sp<StreamOutHalInterfaceLatencyModeCallback>& cb) override;
+    sp<StreamInHalInterfaceEventCallback> getStreamInEventCallback(void* cookie) override;
+    void setStreamInEventCallback(void* cookie,
+                                   const sp<StreamInHalInterfaceEventCallback>& cb) override;
     // Implementation helpers.
     template<class C> sp<C> getCallbackImpl(void* cookie, wp<C> Callbacks::* field);
     template<class C> void setCallbackImpl(void* cookie, wp<C> Callbacks::* field, const sp<C>& cb);

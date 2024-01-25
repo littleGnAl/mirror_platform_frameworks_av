@@ -1,0 +1,8 @@
+package: "com.android.media.audiorecord.flags"
+
+flag {
+  name: "audiorecord_volume"
+  namespace: "audiorecord_fwk"
+  description: "Feature flag for audio record volume changed callback support"
+  bug: "322260933"
+}
