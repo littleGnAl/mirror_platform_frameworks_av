@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b50b8aa_dcf9a69d",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 34
+      },
+      "lineNbr": 2596,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-25T20:28:26Z",
+      "side": 1,
+      "message": "I think this can be inside `MediaCodec.cpp` if you don\u0027t anticipate a need to use this function from other classes.",
+      "revId": "83e70e73fe49377bd7f2fae9ce311ace04092981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
