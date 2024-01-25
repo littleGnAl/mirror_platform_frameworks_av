@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a723a9a6_c142880b",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2024-01-25T09:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8179a41_22f32300",
+      "range": {
+        "startLine": 198,
+        "startChar": 29,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "9bcfe8adb9bff9dfb5d5db9a82ee43e1e833ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c403ddf3_e527fa51",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-23T21:56:51Z",
       "side": 1,
       "message": "maybe we want it to be inRange(MIN, MAX)?",
+      "range": {
+        "startLine": 201,
+        "startChar": 68,
+        "endLine": 201,
+        "endChar": 73
+      },
+      "revId": "9bcfe8adb9bff9dfb5d5db9a82ee43e1e833ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "672e6515_c21a5edf",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1958927
+      },
+      "writtenOn": "2024-01-25T09:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c403ddf3_e527fa51",
       "range": {
         "startLine": 201,
         "startChar": 68,
