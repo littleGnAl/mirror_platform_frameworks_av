@@ -974,6 +974,10 @@ c2_status_t C2SoftAvcDec::drainInternal(
         uint32_t drainMode,
         const std::shared_ptr<C2BlockPool> &pool,
         const std::unique_ptr<C2Work> &work) {
+    if(!work){
+        ALOGW("drain with NULL work");
+        return C2_BAD_VALUE;
+    }
     if (drainMode == NO_DRAIN) {
         ALOGW("drain with NO_DRAIN: no-op");
         return C2_OK;
