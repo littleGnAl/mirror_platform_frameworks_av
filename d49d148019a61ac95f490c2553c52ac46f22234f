@@ -70,6 +70,30 @@
       },
       "revId": "d49d148019a61ac95f490c2553c52ac46f22234f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3d0c12_fe047e1d",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-25T14:51:54Z",
+      "side": 0,
+      "message": "What is the purpose of this non offloadable effect? \nIf it is needed for music playback on the deep buffer output why isn\u0027t it needed when playing in offload mode? This means that the music will sound differently if played in offload mode from when played in non offload mode and this is not desirable.\nOne requirement for audio effect is that any effect applicable to music must be available for offload when offload is supported. This condition is verified for AOSP mandated effects.",
+      "parentUuid": "18efc85b_988d72c4",
+      "range": {
+        "startLine": 1180,
+        "startChar": 16,
+        "endLine": 1180,
+        "endChar": 49
+      },
+      "revId": "d49d148019a61ac95f490c2553c52ac46f22234f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
