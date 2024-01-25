@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcd4b5d8_d83c2a4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1939986
+      },
+      "writtenOn": "2024-01-25T19:37:08Z",
+      "side": 1,
+      "message": "We did some testing before and in some scenarios running multithreaded may harm performance. We would need to do more testings before submitting something like this.",
+      "revId": "705a77c7848731d1eb97f5d08262757002d97bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "916b582c_1794f24f",
