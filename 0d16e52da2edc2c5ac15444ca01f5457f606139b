@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede013af_e7c7cf92",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-25T19:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "807b8c96_9ec8a662",
+      "range": {
+        "startLine": 2604,
+        "startChar": 17,
+        "endLine": 2604,
+        "endChar": 29
+      },
+      "revId": "0d16e52da2edc2c5ac15444ca01f5457f606139b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79d75697_0c195c8c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-25T19:49:33Z",
       "side": 1,
       "message": "nit: delete extra ;",
+      "range": {
+        "startLine": 2615,
+        "startChar": 65,
+        "endLine": 2615,
+        "endChar": 66
+      },
+      "revId": "0d16e52da2edc2c5ac15444ca01f5457f606139b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15428994_76711591",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2615,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-25T19:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d75697_0c195c8c",
       "range": {
         "startLine": 2615,
         "startChar": 65,
