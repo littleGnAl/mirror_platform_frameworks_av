@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2c6e28_bbc3f2e6",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2435,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-25T03:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63d7a2cb_49e9203e",
+      "range": {
+        "startLine": 2435,
+        "startChar": 0,
+        "endLine": 2435,
+        "endChar": 49
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af3f94a8_0c9bacb3",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-24T09:09:24Z",
       "side": 1,
       "message": "Is this needed? I wonder if we can remove it as I\u0027d expect it would spam logcat.",
+      "range": {
+        "startLine": 2436,
+        "startChar": 4,
+        "endLine": 2436,
+        "endChar": 9
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f96fa7_efa6f1a2",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2436,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-25T03:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3f94a8_0c9bacb3",
       "range": {
         "startLine": 2436,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce40b1d3_90f87f3e",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2438,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-25T03:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f03bbe2_3dc027ca",
+      "range": {
+        "startLine": 2438,
+        "startChar": 0,
+        "endLine": 2438,
+        "endChar": 78
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b306834_a69523e7",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-24T09:09:24Z",
       "side": 1,
       "message": "Please run a code formatter to fix indentation here.",
+      "range": {
+        "startLine": 2440,
+        "startChar": 0,
+        "endLine": 2441,
+        "endChar": 21
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710cfca0_2067ce9e",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2441,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-25T03:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b306834_a69523e7",
       "range": {
         "startLine": 2440,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1007583_ee8f1fc6",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-25T03:27:58Z",
+      "side": 1,
+      "message": "The iterator seems to only support the `++` operator, not the `+` operator.",
+      "parentUuid": "29457829_73ec4999",
+      "range": {
+        "startLine": 2444,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 43
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "040547c9_77fcb5fe",
@@ -129,6 +249,24 @@
       "writtenOn": "2024-01-24T09:09:24Z",
       "side": 1,
       "message": "Nit: revert",
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c109e7_510a6c30",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4943,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-25T03:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040547c9_77fcb5fe",
       "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
