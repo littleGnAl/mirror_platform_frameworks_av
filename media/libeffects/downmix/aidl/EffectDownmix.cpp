@@ -195,7 +195,8 @@ void DownmixImpl::process() {
         const auto availableToWrite = outputMQ->availableToWrite() *
                                       mImplContext->getInputFrameSize() /
                                       mImplContext->getOutputFrameSize();
-        auto processSamples = std::min(availableToRead, availableToWrite);
+        auto processSamples =
+                std::min({availableToRead, availableToWrite, mImplContext->getWorkBufferSize()});
         if (processSamples) {
             inputMQ->read(buffer, processSamples);
             IEffect::Status status = effectProcessImpl(buffer, buffer, processSamples);
