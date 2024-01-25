@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b579e17f_8d1341a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-25T22:26:12Z",
+      "side": 1,
+      "message": "please also validate the change with `atest VtsHalAudioEffectTargetTest`",
+      "revId": "70f15e710fab78a8628a08f2a32f204692029fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3a6fdf_00aa5735",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-25T22:26:12Z",
+      "side": 1,
+      "message": "nit: `kMaxBlockFrames`, also why not 32767 (0x7fff)?\nmaybe just use `std::numeric_limits\u003cint16_t\u003e::max()` instead?",
+      "range": {
+        "startLine": 860,
+        "startChar": 22,
+        "endLine": 860,
+        "endChar": 34
+      },
+      "revId": "70f15e710fab78a8628a08f2a32f204692029fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d9c6be_07c28c58",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-25T22:26:12Z",
+      "side": 1,
+      "message": "please add some more information about this error, so it\u0027s clear that error comes from `LVM_Process`",
+      "range": {
+        "startLine": 871,
+        "startChar": 34,
+        "endLine": 871,
+        "endChar": 55
+      },
+      "revId": "70f15e710fab78a8628a08f2a32f204692029fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
