@@ -37,7 +37,11 @@ public:
             const media::VolumeShaperConfiguration& configuration,
             const media::VolumeShaperOperation& operation);
 
-    //FIXME move to protected field, so far made public to minimize changes to AudioTrack logic
+    sp<AudioTrack> getAudioTrack() { return mAudioTrack; }
+
+    void clearAudioTrack() { mAudioTrack.clear(); }
+
+    // FIXME: make private once all users switch to getAudioTrack()
     sp<AudioTrack> mAudioTrack;
 
             void setPlayerVolume(float vl, float vr);
