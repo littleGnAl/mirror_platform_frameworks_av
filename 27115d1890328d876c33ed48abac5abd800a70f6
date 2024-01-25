@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b174c91f_51882d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-01-25T18:53:09Z",
+      "side": 1,
+      "message": "We need more information about why this is needed. To me, it looks like if PUSH_BLANK_BUFFERS_ON_STOP is not set by the app, then secure surfaces default to true. This goes against the API contract, where the API contract is that the Surface continues showing the last buffer rendered. \n\nI don\u0027t think we can accept this change and violate the API contract. Can the app, instead, change its behavior to use KEY_PUSH_BLANK_BUFFERS_ON_STOP with \u00271\u0027 to achieve the desired affect?",
+      "revId": "27115d1890328d876c33ed48abac5abd800a70f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
