@@ -466,6 +466,24 @@
       "parentUuid": "68f1ce1b_6682da0a",
       "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5039ab63_fe257942",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-25T15:18:39Z",
+      "side": 1,
+      "message": "if these two lines are needed, then reassembleVVCC() is needed to keep this consistent with how HEVC is handled.\nKeeping this comment open for visibility.",
+      "parentUuid": "33e6b19f_35c60694",
+      "revId": "8b6fbc2138909195a1eb892132b5a7f6addaa689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
