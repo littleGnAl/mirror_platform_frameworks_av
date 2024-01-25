@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d3a6126_8b66a020",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-25T11:33:29Z",
+      "side": 1,
+      "message": "mTracks is of the type [List](https://cs.android.com/android/platform/superproject/main/+/main:system/core/libutils/include/utils/List.h;drc\u003d95291dba19aa0a694ce90fa3e5eca16d3a342e56;l\u003d177), which is not STL. There is a comment in this file that says [DO NOT USE: please use std::list\u003cT\u003e](https://cs.android.com/android/platform/superproject/main/+/main:system/core/libutils/include/utils/List.h;drc\u003d95291dba19aa0a694ce90fa3e5eca16d3a342e56;l\u003d41). The iterator of this List type is not compatible with the `std::advance` parameter type.",
+      "parentUuid": "b73be6a6_ecca7ee9",
+      "range": {
+        "startLine": 2444,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 43
+      },
+      "revId": "96ae5f418730cde55acd3eadb5f3e848948d417a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "040547c9_77fcb5fe",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 4
