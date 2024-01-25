@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eac8dee_e1b1f190",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 37
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-25T19:00:58Z",
+      "side": 1,
+      "message": "nit:\n\n```suggestion\n}\n\nvoid MultiAccessUnitInterface::getDecoderSampleRateAndChannelCount(\n```",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "718e682ed2826cffd33eff3ecdf81f209d66c3ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
