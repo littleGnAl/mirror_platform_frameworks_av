@@ -8724,6 +8724,7 @@ sp<IAfRecordTrack> RecordThread::createRecordTrack_l(
         pid_t tid,
         status_t *status,
         audio_port_handle_t portId,
+        const sp<media::IAudioRecordCallback>& callback,
         int32_t maxSharedAudioHistoryMs)
 {
     size_t frameCount = *pFrameCount;
@@ -8887,6 +8888,12 @@ sp<IAfRecordTrack> RecordThread::createRecordTrack_l(
             goto Exit;
         }
         mTracks.add(track);
+        {
+            audio_utils::lock_guard _atCbL(audioRecordCbMutex());
+            if (callback.get() != nullptr) {
+                mAudioRecordCallbacks.emplace(track, callback);
+            }
+        }
 
         if ((*flags & AUDIO_INPUT_FLAG_FAST) && (tid != -1)) {
             pid_t callingPid = IPCThreadState::self()->getCallingPid();
@@ -9196,6 +9203,10 @@ void RecordThread::removeTrack_l(const sp<IAfRecordTrack>& track)
     mLocalLog.log("removeTrack_l (%p) %s", track.get(), result.c_str());
 
     mTracks.remove(track);
+    {
+        audio_utils::lock_guard _atCbL(audioRecordCbMutex());
+        mAudioRecordCallbacks.erase(track);
+    }
     // need anything related to effects here?
     if (track->isFastTrack()) {
         ALOG_ASSERT(!mFastTrackAvail);
@@ -9540,6 +9551,22 @@ void RecordThread::ioConfigChanged_l(audio_io_config_event_t event, pid_t pid,
         break;
     }
     mAfThreadCallback->ioConfigChanged_l(event, desc, pid);
+}
+
+void RecordThread::onVolumeChanged(float left, float right) {
+    const auto weakPointerThis = wp<RecordThread>::fromExisting(this);
+    std::thread([this, left, right, weakPointerThis]() {
+        const sp<RecordThread> recordThread = weakPointerThis.promote();
+        if (recordThread == nullptr) {
+            ALOGW("RecordThread was destroyed, skip volume change event");
+            return;
+        }
+
+        audio_utils::lock_guard _l(audioRecordCbMutex());
+        for (const auto& callbackPair : mAudioRecordCallbacks) {
+            callbackPair.second->onVolumeChanged(left, right);
+        }
+    }).detach();
 }
 
 void RecordThread::readInputParameters_l()

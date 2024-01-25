@@ -30,7 +30,9 @@
 #include <utils/RefBase.h>
 #include <utils/threads.h>
 
+#include "android/media/BnAudioRecordCallback.h"
 #include "android/media/IAudioRecord.h"
+#include "android/media/IAudioRecordCallback.h"
 #include <android/content/AttributionSourceState.h>
 
 namespace android {
@@ -849,6 +851,18 @@ private:
     std::string mCallerName; // for example "aaudio"
 
     void reportError(status_t status, const char *event, const char *message) const;
+
+private:
+    class AudioRecordCallback : public media::BnAudioRecordCallback {
+    public:
+        binder::Status onVolumeChanged(float left, float right) override;
+
+        void setAudioRecordCallback(const sp<media::IAudioRecordCallback>& callback);
+    private:
+        Mutex mAudioRecordCbLock;
+        wp<media::IAudioRecordCallback> mCallback;
+    };
+    sp<AudioRecordCallback> mAudioRecordCallback;
 };
 
 }; // namespace android

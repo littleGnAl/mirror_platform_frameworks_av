@@ -399,6 +399,7 @@ aidl_interface {
         "aidl/android/media/IAudioFlingerService.aidl",
         "aidl/android/media/IAudioFlingerClient.aidl",
         "aidl/android/media/IAudioRecord.aidl",
+        "aidl/android/media/IAudioRecordCallback.aidl",
         "aidl/android/media/IAudioTrack.aidl",
         "aidl/android/media/IAudioTrackCallback.aidl",
 

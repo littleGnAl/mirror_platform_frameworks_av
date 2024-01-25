@@ -164,7 +164,7 @@ class StreamOutHalInterface : public virtual StreamHalInterface {
     // Returns whether pause and resume operations are supported.
     virtual status_t supportsPauseAndResume(bool *supportsPause, bool *supportsResume) = 0;
 
-    // Notifies to the audio driver to resume playback following a pause.
+    // Notifies to the audio driver to pause playback.
     virtual status_t pause() = 0;
 
     // Notifies to the audio driver to resume playback following a pause.
@@ -257,6 +257,15 @@ class StreamOutHalInterface : public virtual StreamHalInterface {
     virtual ~StreamOutHalInterface() {}
 };
 
+class StreamInHalInterfaceEventCallback : public virtual RefBase {
+public:
+    virtual void onVolumeChanged(float left, float right) = 0;
+
+protected:
+    StreamInHalInterfaceEventCallback() = default;
+    virtual ~StreamInHalInterfaceEventCallback() = default;
+};
+
 class StreamInHalInterface : public virtual StreamHalInterface {
   public:
     // Set the input gain for the audio driver.
@@ -290,7 +299,9 @@ class StreamInHalInterface : public virtual StreamHalInterface {
      */
     virtual status_t updateSinkMetadata(const SinkMetadata& sinkMetadata) = 0;
 
-  protected:
+    virtual status_t setEventCallback(const sp<StreamInHalInterfaceEventCallback>& callback) = 0;
+
+protected:
     virtual ~StreamInHalInterface() {}
 };
 

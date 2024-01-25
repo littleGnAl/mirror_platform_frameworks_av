@@ -399,7 +399,9 @@ class StreamInHalAidl : public StreamInHalInterface, public StreamHalAidl {
     // Called when the metadata of the stream's sink has been changed.
     status_t updateSinkMetadata(const SinkMetadata& sinkMetadata) override;
 
-  private:
+    status_t setEventCallback(const sp<StreamInHalInterfaceEventCallback>& callback) override;
+
+private:
     friend class sp<StreamInHalAidl>;
 
     static ConversionResult<::aidl::android::hardware::audio::common::SinkMetadata>
@@ -407,6 +409,7 @@ class StreamInHalAidl : public StreamInHalInterface, public StreamHalAidl {
 
     const std::shared_ptr<::aidl::android::hardware::audio::core::IStreamIn> mStream;
     const wp<MicrophoneInfoProvider> mMicInfoProvider;
+    const wp<CallbackBroker> mCallbackBroker;
 
     // Can not be constructed directly by clients.
     StreamInHalAidl(

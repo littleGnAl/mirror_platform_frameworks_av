@@ -1249,6 +1249,16 @@ void DeviceHalAidl::clearCallbacks(void* cookie) {
     mCallbacks.erase(cookie);
 }
 
+sp<StreamInHalInterfaceEventCallback> DeviceHalAidl::getStreamInEventCallback(
+        void* cookie) {
+    return getCallbackImpl(cookie, &Callbacks::inEvent);
+}
+
+void DeviceHalAidl::setStreamInEventCallback(
+        void* cookie, const sp<StreamInHalInterfaceEventCallback>& cb) {
+    setCallbackImpl(cookie, &Callbacks::inEvent, cb);
+}
+
 sp<StreamOutHalInterfaceCallback> DeviceHalAidl::getStreamOutCallback(void* cookie) {
     return getCallbackImpl(cookie, &Callbacks::out);
 }

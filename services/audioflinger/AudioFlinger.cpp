@@ -2342,7 +2342,8 @@ status_t AudioFlinger::createRecord(const media::CreateRecordRequest& _input,
                                                   &output.notificationFrameCount,
                                                   callingPid, adjAttributionSource, &output.flags,
                                                   input.clientInfo.clientTid,
-                                                  &lStatus, portId, input.maxSharedAudioHistoryMs);
+                                                  &lStatus, portId, input.audioRecordCallback,
+                                                  input.maxSharedAudioHistoryMs);
         LOG_ALWAYS_FATAL_IF((lStatus == NO_ERROR) && (recordTrack == 0));
 
         // lStatus == BAD_TYPE means FAST flag was rejected: request a new input from

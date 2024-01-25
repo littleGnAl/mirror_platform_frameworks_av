@@ -863,6 +863,16 @@ StreamInHalAidl::StreamInHalAidl(
                 std::move(context), getStreamCommon(stream), vext),
           mStream(stream), mMicInfoProvider(micInfoProvider) {}
 
+status_t StreamInHalAidl::setEventCallback(
+        const sp<StreamInHalInterfaceEventCallback>& callback) {
+    TIME_CHECK();
+    if (!mStream) return NO_INIT;
+    if (auto broker = mCallbackBroker.promote(); broker != nullptr) {
+        broker->setStreamInEventCallback(this, callback);
+    }
+    return OK;
+}
+
 status_t StreamInHalAidl::setGain(float gain) {
     TIME_CHECK();
     if (!mStream) return NO_INIT;

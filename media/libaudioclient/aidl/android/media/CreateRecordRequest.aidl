@@ -17,6 +17,7 @@
 package android.media;
 
 import android.media.AudioClient;
+import android.media.IAudioRecordCallback;
 import android.media.audio.common.AudioAttributes;
 import android.media.audio.common.AudioConfigBase;
 
@@ -31,6 +32,7 @@ parcelable CreateRecordRequest {
     AudioAttributes attr;
     AudioConfigBase config;
     AudioClient clientInfo;
+    IAudioRecordCallback audioRecordCallback;
     /** Interpreted as audio_unique_id_t. */
     int riid;
     int maxSharedAudioHistoryMs;

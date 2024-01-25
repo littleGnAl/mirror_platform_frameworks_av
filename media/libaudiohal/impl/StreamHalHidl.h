@@ -265,7 +265,9 @@ class StreamInHalHidl : public StreamInHalInterface, public StreamHalHidl {
     // Called when the metadata of the stream's sink has been changed.
     status_t updateSinkMetadata(const SinkMetadata& sinkMetadata) override;
 
-  private:
+    status_t setEventCallback(const sp<StreamInHalInterfaceEventCallback>& callback) override;
+
+private:
     friend class DeviceHalHidl;
     typedef MessageQueue<ReadParameters, hardware::kSynchronizedReadWrite> CommandMQ;
     typedef MessageQueue<uint8_t, hardware::kSynchronizedReadWrite> DataMQ;
