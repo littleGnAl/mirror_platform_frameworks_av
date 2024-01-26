@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af06d2c_0567fbd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2005646
+      },
+      "writtenOn": "2024-01-26T01:26:42Z",
+      "side": 1,
+      "message": "The latest revision uses `atomic_sp` directly. This doesn\u0027t prevent races between init and destroy, but AFAIK that isn\u0027t actually an issue in practice (unlike destroy racing with IPlayer.applyVolumeShaper), and it makes the code simpler.\n\nI\u0027ve also creates separate patches to get rid the public `mAudioTrack` member: aosp/2929062 adds the getter/setter and aosp/2928911 changes SLES code to use those instead of directly accessing `mAudioTrack`. As long as these are merged in the correct order (2929062 first, then wilhelm, then this) there should be no build breakage, but I\u0027m not sure if it\u0027s possible to specify that order in Gerrit (given that the changes are in two separate repositories)?",
+      "revId": "3868c20a0ed96c64512affaff92c1772b9123ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
