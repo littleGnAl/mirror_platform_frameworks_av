@@ -152,13 +152,9 @@ status_t DevicesFactoryHalAidl::getEngineConfig(
 std::shared_ptr<IHalAdapterVendorExtension> DevicesFactoryHalAidl::getVendorExtension() {
     if (!mVendorExt.has_value()) {
         auto serviceName = std::string(IHalAdapterVendorExtension::descriptor) + "/default";
-        if (AServiceManager_isDeclared(serviceName.c_str())) {
-            mVendorExt = std::shared_ptr<IHalAdapterVendorExtension>(
-                    IHalAdapterVendorExtension::fromBinder(ndk::SpAIBinder(
-                                    AServiceManager_waitForService(serviceName.c_str()))));
-        } else {
-            mVendorExt = nullptr;
-        }
+        mVendorExt = std::shared_ptr<IHalAdapterVendorExtension>(
+                IHalAdapterVendorExtension::fromBinder(ndk::SpAIBinder(
+                                AServiceManager_waitForService(serviceName.c_str()))));
     }
     return mVendorExt.value();
 }
