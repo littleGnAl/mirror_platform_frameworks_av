@@ -19,6 +19,7 @@
 
 #include <media/AudioTrack.h>
 #include <media/PlayerBase.h>
+#include <mediautils/Synchronization.h>
 
 namespace android {
 
@@ -37,16 +38,13 @@ public:
             const media::VolumeShaperConfiguration& configuration,
             const media::VolumeShaperOperation& operation);
 
-    sp<AudioTrack> getAudioTrack() { return mAudioTrack; }
+    sp<AudioTrack> getAudioTrack() { return mAudioTrack.load(); }
 
-    void clearAudioTrack() { mAudioTrack.clear(); }
+    void clearAudioTrack() { mAudioTrack.store(nullptr); }
 
-    // FIXME: make private once all users switch to getAudioTrack()
-    sp<AudioTrack> mAudioTrack;
+    void setPlayerVolume(float vl, float vr);
 
-            void setPlayerVolume(float vl, float vr);
-
-protected:
+  protected:
 
     //PlayerBase virtuals
     virtual status_t playerStart();
@@ -72,6 +70,7 @@ private:
     float mPlayerVolumeL, mPlayerVolumeR;
     sp<AudioTrack::IAudioTrackCallback> mCallbackHandle;
     sp<SelfAudioDeviceCallback> mSelfAudioDeviceCallback;
+    mediautils::atomic_sp<AudioTrack> mAudioTrack;
 };
 
 } // namespace android

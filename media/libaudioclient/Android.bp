@@ -155,6 +155,7 @@ cc_library {
         "framework-permission-aidl-cpp",
         "libbinder",
         "libmediametrics",
+        "libmediautils",
     ],
 
     include_dirs: [
