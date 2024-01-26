@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e1b7f6_9269cb6a",
+        "filename": "media/libeffects/downmix/aidl/EffectDownmix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-26T10:18:47Z",
+      "side": 1,
+      "message": "shouldn\u0027t we do this check in the generic process implementation so that it benefits all effects:\nhttps://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/default/EffectImpl.cpp;l\u003d300?q\u003d%20EffectImpl::process()%20",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 97
+      },
+      "revId": "afa456b8a91ac44bb8c0ef23ebce44a486b3c8ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
