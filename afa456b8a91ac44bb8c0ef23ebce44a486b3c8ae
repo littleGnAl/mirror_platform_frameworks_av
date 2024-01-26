@@ -22,6 +22,30 @@
       },
       "revId": "afa456b8a91ac44bb8c0ef23ebce44a486b3c8ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc1689c_7a903f28",
+        "filename": "media/libeffects/downmix/aidl/EffectDownmix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-01-26T16:51:16Z",
+      "side": 1,
+      "message": "Downmix need to override `EffectImpl::process` because the output size is different with input.\nEffectImpl::process check is in the other cl in same topic: https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/2925168/3/audio/aidl/default/EffectImpl.cpp#327",
+      "parentUuid": "24e1b7f6_9269cb6a",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 97
+      },
+      "revId": "afa456b8a91ac44bb8c0ef23ebce44a486b3c8ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
