@@ -84,6 +84,24 @@
       "message": "We may not want to use all available cores as this may lead to contentions with other on-going processes (e.g. camera or audio processing)",
       "revId": "705a77c7848731d1eb97f5d08262757002d97bf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b49010_f5770e3a",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1733827
+      },
+      "writtenOn": "2024-01-26T15:15:42Z",
+      "side": 1,
+      "message": "i.mx 8qm cpu has 4 A53 cores and 2 A72 cores. Using single thread could not take use of cpu resource and it takes more than 1 second to encode one 1080p frame.\nOther google\u0027s software encoder used more threads to encode and we did not find any issues with camera or audio playback.",
+      "parentUuid": "6abe612f_5aa1b9a7",
+      "revId": "705a77c7848731d1eb97f5d08262757002d97bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
