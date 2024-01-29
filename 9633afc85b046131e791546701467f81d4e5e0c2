@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584a606c_2b21ff82",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-29T10:47:37Z",
+      "side": 1,
+      "message": "Given all this is already done in restoreTtrack_l() Iwould prefer to add an argument to restoreTtrack_l() that would force bypassing the test on if (isOffloadedOrDirect_l() || mDoNotReconnect) that would be false by default and set to true here.",
+      "range": {
+        "startLine": 1715,
+        "startChar": 0,
+        "endLine": 1766,
+        "endChar": 21
+      },
+      "revId": "9633afc85b046131e791546701467f81d4e5e0c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
