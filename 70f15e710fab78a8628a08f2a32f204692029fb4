@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3ed498b_0aa4de2f",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-01-29T09:58:32Z",
+      "side": 1,
+      "message": "```kBlockFrames \u003d 32764``` because of this casting\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libeffects/lvm/lib/Bundle/src/LVM_Buffers.cpp;drc\u003d00ebc752bbdacfb1cc4d2f5b2a0c1d9f335f2c91;l\u003d202\nand \nbecause of this check if the framecounts are multiple of ```BlickSizeMultiple``` (its set to 4).\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libeffects/lvm/lib/Bundle/src/LVM_Process.cpp;drc\u003d00ebc752bbdacfb1cc4d2f5b2a0c1d9f335f2c91;l\u003d88",
+      "parentUuid": "de3a6fdf_00aa5735",
+      "range": {
+        "startLine": 860,
+        "startChar": 22,
+        "endLine": 860,
+        "endChar": 34
+      },
+      "revId": "70f15e710fab78a8628a08f2a32f204692029fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8d9c6be_07c28c58",
         "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-25T22:26:12Z",
       "side": 1,
       "message": "please add some more information about this error, so it\u0027s clear that error comes from `LVM_Process`",
+      "range": {
+        "startLine": 871,
+        "startChar": 34,
+        "endLine": 871,
+        "endChar": 55
+      },
+      "revId": "70f15e710fab78a8628a08f2a32f204692029fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3427e0d_6ea7b941",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-01-29T09:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8d9c6be_07c28c58",
       "range": {
         "startLine": 871,
         "startChar": 34,
