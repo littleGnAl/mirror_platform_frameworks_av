@@ -69,6 +69,30 @@
       },
       "revId": "cd1604e2eb0879618678c175c2dffeea0795e010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cf3e43_b4badc32",
+        "filename": "media/libstagefright/omx/SimpleSoftOMXComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-01-29T09:17:51Z",
+      "side": 1,
+      "message": "Refer to the error handling on line 506 of this file. It seems is OK.",
+      "parentUuid": "a9004168_44eb59ae",
+      "range": {
+        "startLine": 515,
+        "startChar": 16,
+        "endLine": 515,
+        "endChar": 68
+      },
+      "revId": "cd1604e2eb0879618678c175c2dffeea0795e010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
