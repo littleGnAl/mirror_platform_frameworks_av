@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49141e6d_247797a1",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-01-29T21:56:22Z",
+      "side": 1,
+      "message": "In that case, I would suggest expressing that clearly:\n\n```\n (constexpr or const)\n constexpr int kMaxBlockFrames \u003d (std::numeric_limits\u003cint16_t\u003e::max() / BlockSizeMultiple) * BlockSizeMultiple;\n```",
+      "parentUuid": "c3ed498b_0aa4de2f",
+      "range": {
+        "startLine": 860,
+        "startChar": 22,
+        "endLine": 860,
+        "endChar": 34
+      },
+      "revId": "70f15e710fab78a8628a08f2a32f204692029fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8d9c6be_07c28c58",
         "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
         "patchSetId": 6
