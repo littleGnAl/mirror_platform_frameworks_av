@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eff25c24_f9d03ad6",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-29T13:46:19Z",
+      "side": 1,
+      "message": "These are not completely runtime configurations. Just like MediaFormat.KEY_HDR10_PLUS_INFO, these can be configured at init time. Configuring these keys at the start informs the encoder the RoI encoding is enabled. By default RoI encoding is disabled. If this configuration succeeds (in output format these keys will be present) then during run time, we can configure RoI information at desired timestamps.\n\nMediaCodec.java already has PARAMETER_KEY_QP_OFFSET_MAP_INFO \u0026 PARAMETER_KEY_QP_OFFSET_RECTS_INFO. These are assigned with MediaFormat.KEY_QP_OFFSET_MAP_INFO and MediaFormat.KEY_QP_OFFSET_RECTS_INFO.",
+      "parentUuid": "77d6a27d_aa3cfe0d",
+      "range": {
+        "startLine": 585,
+        "startChar": 21,
+        "endLine": 585,
+        "endChar": 43
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebcb69e7_4114b661",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-24T22:06:20Z",
       "side": 1,
       "message": "I think in the other CL this was no longer a string type.",
+      "range": {
+        "startLine": 1871,
+        "startChar": 20,
+        "endLine": 1871,
+        "endChar": 55
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6ec4ae_9e9bebd8",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-29T13:46:19Z",
+      "side": 1,
+      "message": "Currently this is in sync with other declarations.",
+      "parentUuid": "ebcb69e7_4114b661",
       "range": {
         "startLine": 1871,
         "startChar": 20,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-01-24T22:06:20Z",
       "side": 1,
       "message": "These keys should be named as `PARAMETER_KEY_*` and in the MediaCodec.java session.",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 74
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab3e901_95ed3419",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-01-29T13:46:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "45de6e1e_8b61fcce",
       "range": {
         "startLine": 851,
         "startChar": 0,
