@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb9b6d8a_5fd1854a",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-01-29T10:19:46Z",
+      "side": 1,
+      "message": "This condition will be true for all the samples that were appended in the previous iterations. The `offset` values will be from the samples of the previous iteration and `mMaxOffsetAppend` will have the largest of those values.\n\nThis wouldn\u0027t be a problem if the samples were not re-ordered, since the last `mOffset` value would be again equal to the `mOffset` after the previous iteration. Since we do see the samples are re-ordered, at the end of parsing through the previous iteration\u0027s samples, we could have gone back a few bytes (`mOffset`). I think this branch to check the `kKeySampleFileOffset` was to make sure the new samples are written at the correct offset even if the previous iteration had missed some samples or is a new instance of writer with no context of the previous iteration. I believe the new check will not harm this logic since it only skips the branch logic if we are already at a higher (correct) offset.",
+      "parentUuid": "7acc4b72_884c59e2",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 40
+      },
+      "revId": "aa9761697943f8acfb3eb4c33120edad4f38f97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5392907_c98c5672",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 1
