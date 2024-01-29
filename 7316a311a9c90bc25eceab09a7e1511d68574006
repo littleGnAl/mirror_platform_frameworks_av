@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d07637_1d129daf",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-01-29T20:33:27Z",
+      "side": 1,
+      "message": "do we need to check for `pool` as well?",
+      "revId": "7316a311a9c90bc25eceab09a7e1511d68574006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
