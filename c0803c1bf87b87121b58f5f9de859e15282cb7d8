@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b320e858_40ec5800",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-29T23:41:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eff25c24_f9d03ad6",
+      "range": {
+        "startLine": 585,
+        "startChar": 21,
+        "endLine": 585,
+        "endChar": 43
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebcb69e7_4114b661",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Currently this is in sync with other declarations.",
       "parentUuid": "ebcb69e7_4114b661",
+      "range": {
+        "startLine": 1871,
+        "startChar": 20,
+        "endLine": 1871,
+        "endChar": 55
+      },
+      "revId": "c0803c1bf87b87121b58f5f9de859e15282cb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4aea65_c0617fc0",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-01-29T23:41:01Z",
+      "side": 1,
+      "message": "Thanks for the clarification. I think in java layer this is changed to a separate data structure. This is for testing/experimental here, which is OK, but eventually we want to change this to align with the java layer. Should keep this ticket open.",
+      "parentUuid": "1f6ec4ae_9e9bebd8",
       "range": {
         "startLine": 1871,
         "startChar": 20,
