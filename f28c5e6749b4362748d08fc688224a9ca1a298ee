@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9937afb_330b169e",
+        "filename": "media/module/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-01-29T23:48:18Z",
+      "side": 1,
+      "message": "let\u0027s rename L_tmp2 to highlight that it\u0027s no longer the same precision as L_tmp1.\n\n(see my other comments, I think i\u0027ve now landed on not changing the data type\nfor L_tmp2 based on my L_big suggestions below.)",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "f28c5e6749b4362748d08fc688224a9ca1a298ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2ba950_5abdf89a",
+        "filename": "media/module/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-01-29T23:48:18Z",
+      "side": 1,
+      "message": "I worry that this recasting doesn\u0027t handle the saturation properly.\n\nif L_tmp2 \u003e 2147483647, the cast is going to give us the low bits, not\na saturated value.",
+      "range": {
+        "startLine": 186,
+        "startChar": 8,
+        "endLine": 186,
+        "endChar": 36
+      },
+      "revId": "f28c5e6749b4362748d08fc688224a9ca1a298ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043e6cb1_bfa1a7f4",
+        "filename": "media/module/codecs/amrwb/dec/src/highpass_50hz_at_12k8.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-01-29T23:48:18Z",
+      "side": 0,
+      "message": "what if we just replace this line with:\n\nL_tmp1 \u003d  add_int32(l_tmp1\u003e\u003e14, l_tmp2) * 4;\n\nthat gets us away from the overflow that the fuzzer found.\nit still leaves us with the possibility that the result of the add_int32()\nwill be such that 4*add_int32() will overflow.  But I believe we still have this\nproblem in the proposed changes.\n\nthis is how I think I\u0027d replace the original L184:\n\nint64_t L_big \u003d ((int64)L_tmp1\u003e\u003e14 + L_tmp2) * 4;\nif (L_big \u003e MAX_32) L_big \u003d MAX_32;\nelse if (L_big \u003c MIN_32) L_big \u003d MIN_32;\nL_tmp1 \u003d L_big;",
+      "range": {
+        "startLine": 184,
+        "startChar": 7,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "d65b6a2574d05797b6f1bed4383edaf38d1e4db6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
