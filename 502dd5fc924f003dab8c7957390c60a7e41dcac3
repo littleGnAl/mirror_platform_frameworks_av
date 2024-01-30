@@ -22,6 +22,30 @@
       },
       "revId": "502dd5fc924f003dab8c7957390c60a7e41dcac3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3829c4_7236b07a",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-01-30T19:38:30Z",
+      "side": 1,
+      "message": "Will rename vtsFlags to componentFlags. But essentially the mapping converts any flags in the info file meant for C2Component to C2Flags.",
+      "parentUuid": "7b00ce66_1b798e59",
+      "range": {
+        "startLine": 281,
+        "startChar": 27,
+        "endLine": 281,
+        "endChar": 39
+      },
+      "revId": "502dd5fc924f003dab8c7957390c60a7e41dcac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
