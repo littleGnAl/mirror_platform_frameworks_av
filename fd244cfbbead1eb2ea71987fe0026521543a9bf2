@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0474da7_a085e048",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-01-30T19:57:01Z",
+      "side": 1,
+      "message": "VTS_BIT_FLAG_NO_SHOW_FRAME was used for some tests related vpx codecs and isn\u0027t equivalent to C2FrameData::FLAG_DROP_FRAME.",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 226,
+        "endChar": 74
+      },
+      "revId": "fd244cfbbead1eb2ea71987fe0026521543a9bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
