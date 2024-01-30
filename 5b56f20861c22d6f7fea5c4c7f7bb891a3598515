@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6addfd66_be04fdf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-30T09:44:52Z",
+      "side": 1,
+      "message": "Do you have a buganizer ID that we can use to track this issue?\nIf not can you create one?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "db3a24bf_65a5b5b8",
@@ -32,6 +55,29 @@
       "side": 1,
       "message": "Thanks for providing this CL, Dean!\n\nRegarding the \"fallback\" (1.) What I was observing is that while running `android.virtualdevice.cts.VirtualAudioTest#audioCapture_readFloatArray_shouldCaptureAppPlaybackData` the framework was attempting to open the remote submix input using a float format. This is very strange considering that the HAL does not provide a profile for it. I think, it\u0027s a bug in the framework, but I haven\u0027t yet got time to pinpoint where does it happen. I would also be glad to remove this workaround if the tests continue to pass. I can check that on my side.\n\nI noticed, too, that these VD tests were a bit unstable. Sometimes they receive non-empty data from remote submix a bit late than they are expecting. I think, running just one test in isolation helps to avoid that.\n\nA long term solution to all this port matching complexity is to make APM to use HAL port IDs directly, similar how it does that for patches. This will eliminate the need for Hal2AidlMapper.",
       "parentUuid": "db3a24bf_65a5b5b8",
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6296297_d813067b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-30T09:44:52Z",
+      "side": 1,
+      "message": "That\u0027s an important TODO. What prevents us from doing it now?\nWhat is the risk if we  merge without it?",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 89
+      },
       "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
