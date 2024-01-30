@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5562f2a_acc5214a",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 3278839
+      },
+      "writtenOn": "2024-01-30T18:15:49Z",
+      "side": 1,
+      "message": "\u003e Done\n\n\n```suggestion\n        LVM_UINT16 frames \u003d samples * sizeof(float) / frameSize;\n```",
+      "parentUuid": "c46f4987_9055948d",
+      "range": {
+        "startLine": 859,
+        "startChar": 8,
+        "endLine": 859,
+        "endChar": 18
+      },
+      "revId": "4486fcfd6e64c38ab877e3fa7cedc36a27770c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6c9fd42_4be35582",
