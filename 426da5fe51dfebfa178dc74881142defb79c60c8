@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03599dce_49fa9e34",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2024-01-30T11:51:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a98c10c_8ab9b38f",
+      "range": {
+        "startLine": 462,
+        "startChar": 42,
+        "endLine": 462,
+        "endChar": 55
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35586830_b5ffb423",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "474c31fa_2afc97bf",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2024-01-30T11:51:12Z",
+      "side": 1,
+      "message": "Removed all the local variables and added a check (br-\u003enumBitsLeft()) before calling getBits() it.",
+      "parentUuid": "35586830_b5ffb423",
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77645aec_94eaee28",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-01-24T16:15:43Z",
       "side": 1,
       "message": "this line looks like it means we don\u0027t need to modify the next 10 `br-\u003egetBits` calls - and similar for the check below on L742.\n\nI wonder if this CL would be less invasive if we add more checks like this and leave most of the rest of the `br-\u003egetBits` calls intact?\n\nI certainly think we should consider doing this when we don\u0027t already have a named value we can pass in a pointer too (i.e. all the places you\u0027re currently using `readBitsValue`).",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 53
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e382d380_b4aafe85",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2024-01-30T11:51:12Z",
+      "side": 1,
+      "message": "Reverted getBits and added a check (br-\u003enumBitsLeft()) before calling it.",
+      "parentUuid": "77645aec_94eaee28",
       "range": {
         "startLine": 690,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50f51ad_06ace278",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2024-01-30T11:51:12Z",
+      "side": 1,
+      "message": "Thanks, implemented similar checks.",
+      "parentUuid": "06b128f3_511beaff",
+      "range": {
+        "startLine": 1651,
+        "startChar": 0,
+        "endLine": 1651,
+        "endChar": 81
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d757370e_f8a704c5",
@@ -100,6 +190,24 @@
       "writtenOn": "2024-01-24T16:15:43Z",
       "side": 1,
       "message": "How do we get overflow when just reading a value without doing any further arithmetic on it?\n\nWhat\u0027s special about the value `9`?",
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccb24e2_d792b835",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2024-01-30T11:51:12Z",
+      "side": 1,
+      "message": "We are performing arithmetic operation before assigning it to numProgramBytes.\nsize_t numProgramBytes \u003d (section_length - 5 /* header */ - 4 /* crc */);",
+      "parentUuid": "d757370e_f8a704c5",
       "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -121,6 +229,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a9148a_b419eb18",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2396,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2024-01-30T11:51:12Z",
+      "side": 1,
+      "message": "Added a check as a preventive measure, Thanks for pointing out.",
+      "parentUuid": "e8613b3c_a241b815",
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b2361d8_0f6062c4",
@@ -134,6 +260,30 @@
       "writtenOn": "2024-01-24T16:15:43Z",
       "side": 1,
       "message": "why not pass a pointer to `PCR_base`?",
+      "range": {
+        "startLine": 2532,
+        "startChar": 0,
+        "endLine": 2532,
+        "endChar": 46
+      },
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc5f961_a92a9e63",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 1958021
+      },
+      "writtenOn": "2024-01-30T11:51:12Z",
+      "side": 1,
+      "message": "Reverted getBits and added a check (br-\u003enumBitsLeft()) before calling it.",
+      "parentUuid": "7b2361d8_0f6062c4",
       "range": {
         "startLine": 2532,
         "startChar": 0,
