@@ -168,6 +168,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c0f93e_37d0d04d",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2024-01-30T07:14:35Z",
+      "side": 0,
+      "message": "\u003e Actually, I like the change for another reason - it permits the restore/reetry only once.  I was thinking of suggesting something similar.",
+      "parentUuid": "e6fb85c3_9ed67ad5",
+      "range": {
+        "startLine": 2830,
+        "startChar": 0,
+        "endLine": 2830,
+        "endChar": 53
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b923ab1a_8e8dd170",
@@ -277,6 +301,30 @@
       "side": 0,
       "message": "Eric, Andy, do we need another solution for this problem?",
       "parentUuid": "bf8fb02e_94351b1e",
+      "range": {
+        "startLine": 1690,
+        "startChar": 0,
+        "endLine": 1694,
+        "endChar": 74
+      },
+      "revId": "b96354fc6714e0c845bfc358431ff914e984aa2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e33e8878_ca10b0da",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2024-01-30T07:14:35Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "d21858e3_941ae62b",
       "range": {
         "startLine": 1690,
         "startChar": 0,
