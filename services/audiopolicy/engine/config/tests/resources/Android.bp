@@ -10,8 +10,11 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
->>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
-cc_library_headers {
-    name: "libaudiopolicycommon",
-    export_include_dirs: ["include"],
+filegroup {
+    name: "audiopolicy_engineconfig_files",
+    srcs: [
+        "test_apm_volume_tables.xml",
+        "test_invalid_apm_volume_tables.xml",
+    ],
 }
+>>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)

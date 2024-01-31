@@ -1,4 +1,18 @@
+<<<<<<< HEAD   (ecd683 Merge "BufferPool: limit number of idle buffers in caches" i)
 cc_library_static {
+=======
+package {
+    default_team: "trendy_team_android_media_audio_framework",
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_av_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_av_license"],
+}
+
+cc_library {
+>>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
     name: "libaudiopolicyengine_config",
     export_include_dirs: ["include"],
     include_dirs: [
