@@ -918,10 +918,10 @@ bool ResourceManagerService::getAllClients_l(
                 if (!isCallingPriorityHigher_l(resourceRequestInfo.mCallingPid, pid)) {
                     // some higher/equal priority process owns the resource,
                     // this request can't be fulfilled.
-                    ALOGE("%s: can't reclaim resource %s from pid %d",
+                    ALOGE("%s: skip reclaiming resource %s from pid %d",
                           __func__, asString(type), pid);
                     clientsInfo.clear();
-                    return false;
+                    continue;
                 }
                 clientsInfo.emplace_back(pid, info.uid, info.clientId);
             }
