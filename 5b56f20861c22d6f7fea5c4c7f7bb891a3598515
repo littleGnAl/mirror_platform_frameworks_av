@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3525a4e6_1cc4d1db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-01-31T04:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6addfd66_be04fdf4",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "db3a24bf_65a5b5b8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -72,6 +96,30 @@
       "writtenOn": "2024-01-30T09:44:52Z",
       "side": 1,
       "message": "That\u0027s an important TODO. What prevents us from doing it now?\nWhat is the risk if we  merge without it?",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 89
+      },
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55da1fa_926fb2cd",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-01-31T04:50:42Z",
+      "side": 1,
+      "message": "There is a risk of APM output request failures if the audio HAL flags are returned to APM that differ from the requested (like in this case, where the requested is DIRECT only but the returned is both DIRECT and IEC958_NONAUDIO) and the open output flag match (must match vs. optional) logic does not handle differences correctly. I see there\u0027s special output flag handling across APM, libaudiohal for AIDL, and AudioFlinger, so I think this needs care to minimize risk of regressions.\n\nThe risk of leaving the TODO in place is that for any IEC61937 compatible output format request, it will open if the returned config is PCM and no SpdifEncoder is in place (i.e. the audio HAL is erroneously opening as PCM for raw compressed audio / i.e the audio HAL is buggy). It\u0027s not clear to me the extent to which these bugs would be in the deployed device audio HALs.\n\nTechnically, this change could be made in a relatively straightforward way, I think.",
+      "parentUuid": "d6296297_d813067b",
       "range": {
         "startLine": 1500,
         "startChar": 0,
