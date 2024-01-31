@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9705854_d688421c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3263990
+      },
+      "writtenOn": "2024-01-31T11:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fda2165a_629e2f46",
+      "revId": "c534fb0c2991ef8bfbe8bb53bf108cbd15e31fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fda89d3e_3a367fb3",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d038f2_84e6eecb",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 3263990
+      },
+      "writtenOn": "2024-01-31T11:47:31Z",
+      "side": 1,
+      "message": "Modified the skip to skip*8. \n\nSkipBits internally validating the numBitsLeft.",
+      "parentUuid": "fda89d3e_3a367fb3",
+      "range": {
+        "startLine": 2163,
+        "startChar": 0,
+        "endLine": 2166,
+        "endChar": 13
+      },
+      "revId": "c534fb0c2991ef8bfbe8bb53bf108cbd15e31fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c54903fd_cdd18437",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-01-30T15:35:57Z",
       "side": 1,
       "message": "should this be 48?\nas there is skipBits(6) between getBits() calls",
+      "range": {
+        "startLine": 2294,
+        "startChar": 36,
+        "endLine": 2294,
+        "endChar": 38
+      },
+      "revId": "c534fb0c2991ef8bfbe8bb53bf108cbd15e31fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e3971c_a19f0f2d",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 3263990
+      },
+      "writtenOn": "2024-01-31T11:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54903fd_cdd18437",
       "range": {
         "startLine": 2294,
         "startChar": 36,
