@@ -75,7 +75,7 @@ using hardware::media::omx::V1_0::Status;
 using server_configurable_flags::GetServerConfigurableFlag;
 
 enum {
-    kMaxIndicesToCheck = 32, // used when enumerating supported formats and profiles
+    kMaxIndicesToCheck = 160, // used when enumerating supported formats and profiles
 };
 
 namespace {
