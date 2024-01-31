@@ -128,6 +128,30 @@
       },
       "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc51ebc6_39f072e2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-01-31T09:33:10Z",
+      "side": 1,
+      "message": "We can get the flags back from audio flinger but we do not have to use them for anything else than this test here. At this point in the opening process we already have picked a profile based on the flag matching so there is no risk in using the returned to qualify this decision. I agree that SwAudioOutputDescriptor::open() and methods along the path of openOutput() down to audio flinger must be modified to carry the flag back and given the risk you described this might be overkill for this CL.\nHowever, Can you prepare a dependent CL with this change returning the flags from audioflinger?",
+      "parentUuid": "e55da1fa_926fb2cd",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 89
+      },
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
