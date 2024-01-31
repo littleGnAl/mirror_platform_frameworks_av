@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6062c98_8f11ff7d",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-01-31T16:09:42Z",
+      "side": 1,
+      "message": "We should explicitly set it to IVE_RC_STORAGE (which i understand is the\nsetting that most correctly matches variable).\n\nI don\u0027t want it to fall through to the default, because that becomes an error\nif we were ever to change the default.",
+      "range": {
+        "startLine": 1354,
+        "startChar": 13,
+        "endLine": 1354,
+        "endChar": 32
+      },
+      "revId": "2354a3a279e9d35a1179fda770a9c789bb8214a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
