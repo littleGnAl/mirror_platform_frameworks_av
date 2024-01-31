@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c55396b_2d3b7e12",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-01-31T08:48:33Z",
+      "side": 1,
+      "message": "Using int because frames counts can exceed max value of LVM_UINT16.",
+      "parentUuid": "e5562f2a_acc5214a",
+      "range": {
+        "startLine": 859,
+        "startChar": 8,
+        "endLine": 859,
+        "endChar": 18
+      },
+      "revId": "4486fcfd6e64c38ab877e3fa7cedc36a27770c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6c9fd42_4be35582",
