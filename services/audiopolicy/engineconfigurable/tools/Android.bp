@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+<<<<<<< HEAD   (ecd683 Merge "BufferPool: limit number of idle buffers in caches" i)
 python_defaults {
     name: "tools_default",
     version: {
@@ -22,6 +23,16 @@ python_defaults {
             enabled: false,
         },
     },
+=======
+package {
+    default_team: "trendy_team_android_media_audio_framework",
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_av_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_av_license"],
+>>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
 }
 
 python_binary_host {
@@ -33,6 +44,35 @@ python_binary_host {
     defaults: ["tools_default"],
 }
 
+<<<<<<< HEAD   (ecd683 Merge "BufferPool: limit number of idle buffers in caches" i)
+=======
+genrule_defaults {
+    name: "buildpolicycriteriontypesrule",
+    tools: ["buildPolicyCriterionTypes"],
+    cmd: "cp $(locations :audio_policy_configuration_files) $(genDir)/. && " +
+        "cp $(location :audio_policy_configuration_top_file) $(genDir)/audio_policy_configuration.xml && " +
+        "$(location buildPolicyCriterionTypes) " +
+        " --androidaudiobaseheader $(location :libaudio_system_audio_base) " +
+        " --androidaudiocommonbaseheader $(location :libaudio_system_audio_common_base) " +
+        "--audiopolicyconfigurationfile $(genDir)/audio_policy_configuration.xml " +
+        "--criteriontypes $(location :audio_policy_engine_criterion_types_template) " +
+        "--outputfile $(out)",
+    srcs: [
+        // The commented inputs must be provided to use this genrule_defaults
+        // @todo uncomment if 1428659 is merged":android_audio_base_header_file",
+        ":audio_policy_engine_criterion_types_template",
+        ":libaudio_system_audio_base",
+        ":libaudio_system_audio_common_base",
+        // ":audio_policy_configuration_top_file",
+        // ":audio_policy_configuration_files",
+    ],
+    out: ["audio_policy_engine_criterion_types.xml"],
+}
+
+//##################################################################################################
+// Tools for audio policy engine parameter framework configurable domains
+//
+>>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
 python_binary_host {
     name: "domainGeneratorPolicy.py",
     main: "domainGeneratorPolicy.py",
@@ -50,11 +90,90 @@ python_binary_host {
     ],
 }
 
+<<<<<<< HEAD   (ecd683 Merge "BufferPool: limit number of idle buffers in caches" i)
+=======
+genrule_defaults {
+    name: "domaingeneratorpolicyrule",
+    tools: [
+        "domainGeneratorPolicy",
+        "domainGeneratorConnector",
+    ],
+    cmd: "mkdir -p $(genDir)/Structure/Policy && " +
+        "cp $(locations :audio_policy_pfw_structure_files) $(genDir)/Structure/Policy && " +
+        "cp $(location :audio_policy_pfw_toplevel) $(genDir)/top_level && " +
+        "$(location domainGeneratorPolicy) " +
+        "--validate " +
+        "--domain-generator-tool $(location domainGeneratorConnector) " +
+        "--toplevel-config $(genDir)/top_level " +
+        "--criteria $(location :audio_policy_engine_criteria) " +
+        "--criteriontypes $(location :audio_policy_engine_criterion_types) " +
+        "--add-edds $(locations :edd_files) " +
+        "--schemas-dir external/parameter-framework/upstream/schemas " +
+        " > $(out)",
+    srcs: [
+        // The commented inputs must be provided to use this genrule_defaults
+        // ":audio_policy_pfw_toplevel",
+        // ":audio_policy_pfw_structure_files",
+        ":audio_policy_engine_criteria",
+        // ":audio_policy_engine_criterion_types",
+        // ":edd_files",
+    ],
+    out: ["PolicyConfigurableDomains.xml"],
+}
+
+//##################################################################################################
+// Tools for policy parameter-framework product strategies structure file generation
+//
+>>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
 python_binary_host {
     name: "buildStrategiesStructureFile.py",
     main: "buildStrategiesStructureFile.py",
     srcs: [
         "buildStrategiesStructureFile.py",
     ],
+<<<<<<< HEAD   (ecd683 Merge "BufferPool: limit number of idle buffers in caches" i)
     defaults: ["tools_default"],
+=======
+}
+
+genrule_defaults {
+    name: "buildstrategiesstructurerule",
+    tools: ["buildStrategiesStructureFile"],
+    cmd: "cp $(locations :audio_policy_engine_configuration_files) $(genDir) && ls -l $(genDir) &&" +
+        "$(location buildStrategiesStructureFile) " +
+        "--audiopolicyengineconfigurationfile $(genDir)/audio_policy_engine_configuration.xml " +
+        "--productstrategiesstructurefile $(location :product_strategies_structure_template) " +
+        "--outputfile $(out)",
+    srcs: [
+        // The commented inputs must be provided to use this genrule_defaults
+        // ":audio_policy_engine_configuration_files",
+        ":product_strategies_structure_template",
+    ],
+    out: ["ProductStrategies.xml"],
+}
+
+//##################################################################################################
+// Tools for policy parameter-framework common type structure file generation
+//
+python_binary_host {
+    name: "buildCommonTypesStructureFile",
+    main: "buildCommonTypesStructureFile.py",
+    srcs: [
+        "buildCommonTypesStructureFile.py",
+    ],
+}
+
+genrule_defaults {
+    name: "buildcommontypesstructurerule",
+    tools: ["buildCommonTypesStructureFile"],
+    cmd: "$(location buildCommonTypesStructureFile) " +
+        "--androidaudiobaseheader $(location :libaudio_system_audio_base) " +
+        "--commontypesstructure $(location :common_types_structure_template) " +
+        "--outputfile $(out)",
+    srcs: [
+        ":common_types_structure_template",
+        ":libaudio_system_audio_base",
+    ],
+    out: ["PolicySubsystem-CommonTypes.xml"],
+>>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
 }

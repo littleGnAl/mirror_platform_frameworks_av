@@ -10,25 +10,30 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
->>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
-cc_library {
-    name: "libaudiopolicyengineconfigurable_pfwwrapper",
-    export_include_dirs: ["include"],
-    srcs: ["ParameterManagerWrapper.cpp"],
-    cflags: [
-        "-Wall",
-        "-Werror",
-        "-Wextra",
-    ],
-    header_libs: [
-        "libbase_headers",
-        "libaudiopolicycommon",
-    ],
-    static_libs: ["libaudiopolicycomponents"],
+cc_test {
+    name: "audiopolicy_engineconfig_tests",
+
     shared_libs: [
+        "libaudiopolicycomponents",
+        "libbase",
         "liblog",
-        "libutils",
         "libmedia_helper",
-        "libparameter",
+        "libutils",
+        "libxml2",
     ],
+    static_libs: [
+        "libaudiopolicyengine_config",
+    ],
+
+    srcs: ["engineconfig_tests.cpp"],
+
+    data: [":audiopolicy_engineconfig_files"],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+    ],
+
+    test_suites: ["device-tests"],
 }
+>>>>>>> CHANGE (0395de [DON'T BLOCK] Test ownership migration rules)
