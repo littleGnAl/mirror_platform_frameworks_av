@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040a253e_820c4043",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-01-31T22:22:17Z",
+      "side": 1,
+      "message": "Thank you Saurabh for bringing this up.\n\nThe suggested change breaks the expectation for devices that doesn\u0027t support multiple secure codecs. (If a process with same or higher priority holds a codec already, then we shouldn\u0027t be allowed to create another secure codec)\n\nHaving said that, this also doesn\u0027t let user create a codec even when a lower priority process has a codec at the moment. So, there is a bug.\n\nI am proposing a fix that I will share with you soon.",
+      "range": {
+        "startLine": 924,
+        "startChar": 20,
+        "endLine": 924,
+        "endChar": 28
+      },
+      "revId": "22fbc4097297a839a9f22221cc93a035ec10df7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
