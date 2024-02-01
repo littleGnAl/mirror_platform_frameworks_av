@@ -17,6 +17,7 @@
 #include <cstddef>
 #define LOG_TAG "PreProcessingContext"
 #include <Utils.h>
+#include <audio_utils/primitives.h>
 
 #include "PreProcessingContext.h"
 
@@ -286,10 +287,15 @@ IEffect::Status PreProcessingContext::lvmProcess(float* in, float* out, int samp
     // webrtc implementation clear out was_stream_delay_set every time after ProcessStream() call
     mAudioProcessingModule->set_stream_delay_ms(mEchoDelayUs / 1000);
 
+    std::vector<int16_t> in16(samples);
+    std::vector<int16_t> out16(samples);
+    memcpy_to_i16_from_float(in16.data(), in, samples);
+
     if ((mProcessedMsk & mEnabledMsk) == mEnabledMsk) {
         mProcessedMsk = 0;
-        int processStatus = mAudioProcessingModule->ProcessStream(
-                (const int16_t* const)in, mInputConfig, mOutputConfig, (int16_t* const)out);
+        int processStatus = mAudioProcessingModule->ProcessStream((const int16_t* const)in16.data(),
+                                                                  mInputConfig, mOutputConfig,
+                                                                  (int16_t* const)out16.data());
         if (processStatus != 0) {
             LOG(ERROR) << "Process stream failed with error " << processStatus;
             return status;
@@ -298,15 +304,20 @@ IEffect::Status PreProcessingContext::lvmProcess(float* in, float* out, int samp
 
     mRevProcessedMsk |= (1 << int(mType));
 
-    if ((mRevProcessedMsk & mRevEnabledMsk) == mRevEnabledMsk) {
-        mRevProcessedMsk = 0;
-        int revProcessStatus = mAudioProcessingModule->ProcessReverseStream(
-                (const int16_t* const)in, mInputConfig, mInputConfig, (int16_t* const)out);
-        if (revProcessStatus != 0) {
-            LOG(ERROR) << "Process reverse stream failed with error " << revProcessStatus;
-            return status;
+    if (mType == PreProcessingEffectType::ACOUSTIC_ECHO_CANCELLATION) {
+        if ((mRevProcessedMsk & mRevEnabledMsk) == mRevEnabledMsk) {
+            mRevProcessedMsk = 0;
+            int revProcessStatus = mAudioProcessingModule->ProcessReverseStream(
+                    (const int16_t* const)in16.data(), mInputConfig, mInputConfig,
+                    (int16_t* const)out16.data());
+            if (revProcessStatus != 0) {
+                LOG(ERROR) << "Process reverse stream failed with error " << revProcessStatus;
+                return status;
+            }
         }
     }
+
+    memcpy_to_float_from_i16(out, out16.data(), samples);
 
     return {STATUS_OK, samples, samples};
 }
