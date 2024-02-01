@@ -16,6 +16,29 @@
       "message": "Pratima,\nPlease split this to two CLs, one for encoder and one for decoder.",
       "revId": "cd8ed8df986b1493e6e2dc784441dbfa4cc6882b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ee7668_91d4251c",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-01T19:32:15Z",
+      "side": 1,
+      "message": "this intermediate structure is not needed. \nyou can use C2StreamHdrStaticMetadataInfo::output itself.\n\nRefer to other av1/vpx software plugins on how this is handled for reference.\nThanks.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 21
+      },
+      "revId": "cd8ed8df986b1493e6e2dc784441dbfa4cc6882b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
