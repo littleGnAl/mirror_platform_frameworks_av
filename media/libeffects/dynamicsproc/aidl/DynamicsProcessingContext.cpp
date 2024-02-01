@@ -63,7 +63,8 @@ void DynamicsProcessingContext::reset() {
 }
 
 RetCode DynamicsProcessingContext::setCommon(const Parameter::Common& common) {
-    if(auto ret = updateIOFrameSize(common); ret != RetCode::SUCCESS) {
+    if (auto ret = updateIOFrameSize(common);
+        ret != RetCode::SUCCESS && ret != RetCode::WARNING_LOW_HAL_VERSION) {
         return ret;
     }
     mCommon = common;
