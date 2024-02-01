@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "957c3f8f_ffa23f11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3280678
+      },
+      "writtenOn": "2024-02-01T07:23:17Z",
+      "side": 1,
+      "message": "Hi Girish, thanks for the prompt response. New change (2940313) correctly ensures the calling/requesting client is compared with other clients only. However, I see that we are still stopping comparision after first client with higher priority is found. Do we not want to check all the available clients before we stop the comparision since there can be more than secure 2 clients present in cases like three secure playbacks (2 in Split screen and 1 in PiP window)?",
+      "parentUuid": "b98c2d51_5f1e6080",
+      "revId": "22fbc4097297a839a9f22221cc93a035ec10df7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "040a253e_820c4043",
         "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
         "patchSetId": 1
