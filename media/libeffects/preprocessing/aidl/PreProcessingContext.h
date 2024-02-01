@@ -76,7 +76,7 @@ class PreProcessingContext final : public EffectContext {
     RetCode setNoiseSuppressionLevel(NoiseSuppression::Level level);
     NoiseSuppression::Level getNoiseSuppressionLevel() const;
 
-    IEffect::Status lvmProcess(float* in, float* out, int samples);
+    IEffect::Status preProcessingProcess(float* in, float* out, int samples);
 
   private:
     static constexpr inline int kAgcDefaultTargetLevel = 3;
