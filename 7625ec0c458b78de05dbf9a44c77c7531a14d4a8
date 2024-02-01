@@ -39,6 +39,30 @@
       },
       "revId": "7625ec0c458b78de05dbf9a44c77c7531a14d4a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4d1be9_aa7efaa7",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1967241
+      },
+      "writtenOn": "2024-02-01T20:41:32Z",
+      "side": 1,
+      "message": "Ray, i have followed the steps @https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2805654/2/media/codec2/components/vpx/C2SoftVpxEnc.cpp#895",
+      "parentUuid": "59d35e83_ab2f4cc4",
+      "range": {
+        "startLine": 430,
+        "startChar": 4,
+        "endLine": 431,
+        "endChar": 38
+      },
+      "revId": "7625ec0c458b78de05dbf9a44c77c7531a14d4a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
