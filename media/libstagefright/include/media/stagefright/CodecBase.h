@@ -71,6 +71,21 @@ struct AccessUnitInfo {
     ~AccessUnitInfo() {}
 };
 
+struct CodecCryptoInfo {
+    size_t mNumSubSamples{0};
+    CryptoPlugin::SubSample *mSubSamples{nullptr};
+    uint8_t *mIv{nullptr};
+    uint8_t *mKey{nullptr};
+    enum CryptoPlugin::Mode mMode;
+    CryptoPlugin::Pattern mPattern;
+
+    virtual ~CodecCryptoInfo() {}
+protected:
+    CodecCryptoInfo():mMode{CryptoPlugin::kMode_Unencrypted},
+            mPattern{0, 0} {
+    }
+};
+
 struct CodecParameterDescriptor {
     std::string name;
     AMessage::Type type;
@@ -372,6 +387,26 @@ public:
             const CryptoPlugin::SubSample *subSamples,
             size_t numSubSamples,
             AString *errorDetailMsg) = 0;
+
+    /**
+     * Queue multiple secure access units into the buffer channel
+     *
+     * @return OK if successful;
+     *         -ENOENT of the buffer is not known
+     *         -ENOSYS if mCrypto is not set so that decryption is not
+     *         possible;
+     *         other errors if decryption failed.
+     */
+     virtual status_t queueSecureInputBuffers(
+            const sp<MediaCodecBuffer> &buffer,
+            bool secure,
+            AString *errorDetailMsg) {
+        (void)buffer;
+        (void)secure;
+        (void)errorDetailMsg;
+        return -ENOSYS;
+     }
+
     /**
      * Attach a Codec 2.0 buffer to MediaCodecBuffer.
      *
@@ -415,6 +450,27 @@ public:
         (void)subSamples;
         (void)numSubSamples;
         (void)buffer;
+        (void)errorDetailMsg;
+        return -ENOSYS;
+    }
+
+    /**
+     * Attach an encrypted HidlMemory buffer containing multipl access units to an index
+     *
+     * @return    OK if successful;
+     *            -ENOENT if index is not recognized
+     *            -ENOSYS if attaching buffer is not possible or not supported
+     */
+    virtual status_t attachEncryptedBuffers(
+            const sp<hardware::HidlMemory> &memory,
+            size_t offset,
+            const sp<MediaCodecBuffer> &buffer,
+            bool secure,
+            AString* errorDetailMsg) {
+        (void)memory;
+        (void)offset;
+        (void)buffer;
+        (void)secure;
         (void)errorDetailMsg;
         return -ENOSYS;
     }
