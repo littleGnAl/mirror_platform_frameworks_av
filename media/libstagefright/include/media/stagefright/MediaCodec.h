@@ -59,6 +59,7 @@ struct BatteryChecker;
 class BufferChannelBase;
 struct AccessUnitInfo;
 struct CodecBase;
+struct CodecCryptoInfo;
 struct CodecParameterDescriptor;
 class IBatteryStats;
 struct ICrypto;
@@ -81,6 +82,7 @@ using aidl::android::media::MediaResourceParcel;
 using aidl::android::media::ClientConfigParcel;
 
 typedef WrapperObject<std::vector<AccessUnitInfo>> BufferInfosWrapper;
+typedef WrapperObject<std::vector<std::unique_ptr<CodecCryptoInfo>>> CryptoInfosWrapper;
 
 struct MediaCodec : public AHandler {
     enum Domain {
@@ -208,6 +210,14 @@ struct MediaCodec : public AHandler {
             const CryptoPlugin::Pattern &pattern,
             int64_t presentationTimeUs,
             uint32_t flags,
+            AString *errorDetailMsg = NULL);
+
+    status_t queueSecureInputBuffers(
+            size_t index,
+            size_t offset,
+            size_t size,
+            const sp<BufferInfosWrapper> &accessUnitInfo,
+            const sp<CryptoInfosWrapper> &cryptoInfos,
             AString *errorDetailMsg = NULL);
 
     status_t queueBuffer(
