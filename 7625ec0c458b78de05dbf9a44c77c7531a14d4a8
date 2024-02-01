@@ -16,6 +16,29 @@
       "message": "Fyodor I think this is the same change as aosp/2806316.",
       "revId": "7625ec0c458b78de05dbf9a44c77c7531a14d4a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d35e83_ab2f4cc4",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-01T19:33:41Z",
+      "side": 1,
+      "message": "don\u0027t we need to hold the lock until we\u0027re done playing with the value\nin requestSync?\n\ni\u0027d be less worried if requestSync wsn\u0027t a pointer to a shared data structure, which seems to be the one that is being protected by the lock.",
+      "range": {
+        "startLine": 430,
+        "startChar": 4,
+        "endLine": 431,
+        "endChar": 38
+      },
+      "revId": "7625ec0c458b78de05dbf9a44c77c7531a14d4a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
