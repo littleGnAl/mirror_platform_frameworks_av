@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ed6cbc4_f2eee560",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-02-01T07:51:28Z",
+      "side": 1,
+      "message": "This is the case of configuration where in device doesn\u0027t support multiple secure codecs.\nSo, if there exists an instance of a secure codec owned by a higher (or same) priority, th RM considers it as a conflict and doesn\u0027t reclaim that (or any codec) and the secure codec configuration (in this case) is expected to fail.\n\nBut the device supports multiple secure codecs, then this function doesn\u0027t come in picture.\nDoes this answer your question?",
+      "parentUuid": "957c3f8f_ffa23f11",
+      "revId": "22fbc4097297a839a9f22221cc93a035ec10df7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "040a253e_820c4043",
         "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
         "patchSetId": 1
