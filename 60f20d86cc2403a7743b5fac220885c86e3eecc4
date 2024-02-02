@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8222dcff_f748c70d",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-02T16:56:18Z",
+      "side": 1,
+      "message": "I would suggest moving this immediately before the `if` statement on the line 294.",
+      "range": {
+        "startLine": 285,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 39
+      },
+      "revId": "60f20d86cc2403a7743b5fac220885c86e3eecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacec82f_9c8e3260",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-02T16:56:18Z",
+      "side": 1,
+      "message": "I don\u0027t think that this type coercion and the one for `out16` is actually needed because the type returned by `data()` in this case is `int16_t*` already. Same for the call into `ProcessReverseStream` below.",
+      "range": {
+        "startLine": 296,
+        "startChar": 66,
+        "endLine": 296,
+        "endChar": 88
+      },
+      "revId": "60f20d86cc2403a7743b5fac220885c86e3eecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f26aecc_5f1d15ed",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-02T16:56:18Z",
+      "side": 1,
+      "message": "Why reverse processing can only be applied to the echo canceller? Was it this way in the HIDL implementation?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 71
+      },
+      "revId": "60f20d86cc2403a7743b5fac220885c86e3eecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
