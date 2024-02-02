@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c53c10_f5c154ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-02T16:59:12Z",
+      "side": 1,
+      "message": "What is the purpose of this? The `lvmProcess` method is scoped to the context class of each particular effect, there is no ambiguity.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "ba4782257b52c967eb9a0c8e9df4663c18b14838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
