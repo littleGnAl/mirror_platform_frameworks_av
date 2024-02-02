@@ -22,6 +22,30 @@
       },
       "revId": "ba4782257b52c967eb9a0c8e9df4663c18b14838",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3402db00_d5ee9875",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-02T17:18:36Z",
+      "side": 1,
+      "message": "Mikhail,\nmedia/libeffects/lvm/ has some effects and the rest are outside lvm folder.\nI thought LVM was specific to these effects and hence using \"lvm\" in other effects is not consistent.\nIf this is not needed, we will abandon this.\nThanks.",
+      "parentUuid": "07c53c10_f5c154ac",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "ba4782257b52c967eb9a0c8e9df4663c18b14838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
