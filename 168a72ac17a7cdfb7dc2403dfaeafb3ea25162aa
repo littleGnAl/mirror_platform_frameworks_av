@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e154e8f7_6f07cf5a",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1939986
+      },
+      "writtenOn": "2024-02-02T15:37:25Z",
+      "side": 1,
+      "message": "What is BITRATE_IGNORE and do we need it here?",
+      "revId": "168a72ac17a7cdfb7dc2403dfaeafb3ea25162aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
