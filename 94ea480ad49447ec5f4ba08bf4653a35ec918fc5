@@ -22,6 +22,30 @@
       },
       "revId": "94ea480ad49447ec5f4ba08bf4653a35ec918fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5c5bae_04136668",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2429,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-02-03T01:29:02Z",
+      "side": 1,
+      "message": "Before using nextMetricsHandle, we check whether nextMetricsHandle is a valid handle and the current implementation (of MediaCodec) isn\u0027t categorizing failure to create a valid mediametrics_handle_t as an error/failure case to return (from configuration).\n\nSo,with that, not checking for the handle keeps that behavior as is.",
+      "parentUuid": "db1c0468_9d57f28d",
+      "range": {
+        "startLine": 2429,
+        "startChar": 7,
+        "endLine": 2429,
+        "endChar": 20
+      },
+      "revId": "94ea480ad49447ec5f4ba08bf4653a35ec918fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
