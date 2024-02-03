@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d2d5984_3099e78e",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-02-03T00:06:24Z",
+      "side": 1,
+      "message": "transform_reduce requies this header",
+      "parentUuid": "85720756_77e9eb4f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "7aae52d37e8522e9fae8f10068b4af6c8e22d91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f348c294_aa0736f1",
         "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-02T22:28:13Z",
       "side": 1,
       "message": "nit: Is this infoFlags or vtsFlags?",
+      "range": {
+        "startLine": 229,
+        "startChar": 38,
+        "endLine": 229,
+        "endChar": 43
+      },
+      "revId": "7aae52d37e8522e9fae8f10068b4af6c8e22d91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70974b29_f01caf6b",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-02-03T00:06:24Z",
+      "side": 1,
+      "message": "this can be any VTS or C2(info) flags,\ntoC2 \u003d true will convert \"flags\" from VTS to C2 flags\ntoC2 \u003d false will convert flags from C2 to VTS flags",
+      "parentUuid": "f348c294_aa0736f1",
       "range": {
         "startLine": 229,
         "startChar": 38,
