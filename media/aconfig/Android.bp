@@ -2,6 +2,7 @@
 aconfig_declarations {
     name: "aconfig_mediacodec_flags",
     package: "com.android.media.codec.flags",
+    container: "system",
     srcs: ["mediacodec_flags.aconfig"],
 }
 
