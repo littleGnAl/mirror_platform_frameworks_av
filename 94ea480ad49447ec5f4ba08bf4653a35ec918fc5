@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1c0468_9d57f28d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2429,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-03T00:31:08Z",
+      "side": 1,
+      "message": "i think you should be checking nextMetricsHandle\n(e.g. the function didn\u0027t return a valid handle).\n\nand then worry about what value is stored within the \u0027err\u0027 variable.",
+      "range": {
+        "startLine": 2429,
+        "startChar": 7,
+        "endLine": 2429,
+        "endChar": 20
+      },
+      "revId": "94ea480ad49447ec5f4ba08bf4653a35ec918fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
