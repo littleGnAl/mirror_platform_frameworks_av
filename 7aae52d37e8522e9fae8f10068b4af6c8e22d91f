@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddcc3149_fdd4d55b",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-02-04T03:18:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8d2d5984_3099e78e",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "7aae52d37e8522e9fae8f10068b4af6c8e22d91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f348c294_aa0736f1",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "this can be any VTS or C2(info) flags,\ntoC2 \u003d true will convert \"flags\" from VTS to C2 flags\ntoC2 \u003d false will convert flags from C2 to VTS flags",
       "parentUuid": "f348c294_aa0736f1",
+      "range": {
+        "startLine": 229,
+        "startChar": 38,
+        "endLine": 229,
+        "endChar": 43
+      },
+      "revId": "7aae52d37e8522e9fae8f10068b4af6c8e22d91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e59036_d53efe1c",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-02-04T03:18:32Z",
+      "side": 1,
+      "message": "Could you add comment regarding toC2 param?",
+      "parentUuid": "70974b29_f01caf6b",
       "range": {
         "startLine": 229,
         "startChar": 38,
