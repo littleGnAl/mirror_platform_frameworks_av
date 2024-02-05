@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ce489ca_051d6505",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-02-05T21:13:27Z",
+      "side": 1,
+      "message": "Added to commit message to clarify.",
+      "parentUuid": "1a0b9fa7_bd51175a",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "04e21a1b5301bf786d0391d631eecaa73c87aeed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c38bc64_a9b93fc8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcdc5122_06479809",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-02-05T21:13:27Z",
+      "side": 1,
+      "message": "This is a no-op for `trunk_staging`, not very interesting for `trunk*` on CF, but different behavior on `next` that should be tested just in case.\nThe `next` configuration on CF is actually very similar to `trunk_staging` Pixel devices since they are set up similar to CF `next` (only HIDL C2 available), but it\u0027s still worth testing.\n\nLocally, `CtsMediaCodecTestCases`, passes on `next` with this change.\n\nUsing ABTD for a few different tests: https://android-build.corp.google.com/builds/abtd/run/L98700030001788461",
+      "parentUuid": "1c38bc64_a9b93fc8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "04e21a1b5301bf786d0391d631eecaa73c87aeed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55945046_2472d23e",
         "filename": "media/codec2/hal/common/HalSelection.cpp",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-05T19:29:41Z",
       "side": 1,
       "message": "nit: consider separate if\n\n```\nif (vendorVersion \u003e\u003d kAndroidApi202404) {\n    return true\n}\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 83
+      },
+      "revId": "04e21a1b5301bf786d0391d631eecaa73c87aeed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21eb4fe_55641008",
+        "filename": "media/codec2/hal/common/HalSelection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-02-05T21:13:27Z",
+      "side": 1,
+      "message": "There is additional flagging under this used for testing and selecting which type of HAL. I think it\u0027s likely fine skipping that because CF is the only device right now, but might as well not override that logic as well in this CL.",
+      "parentUuid": "55945046_2472d23e",
       "range": {
         "startLine": 34,
         "startChar": 0,
