@@ -496,6 +496,7 @@ ClientManager::~ClientManager() {
 ResultStatus ClientManager::create(
         const std::shared_ptr<BufferPoolAllocator> &allocator,
         ConnectionId *pConnectionId) {
+    std::lock_guard<std::mutex> lock(sInstanceLock);
     if (mImpl) {
         return mImpl->create(allocator, pConnectionId);
     }
