@@ -1,5 +1,6 @@
 // audio preprocessing wrapper
 package {
+    default_team: "trendy_team_android_media_audio_framework",
     default_applicable_licenses: [
         "frameworks_av_media_libeffects_preprocessing_license",
     ],
