@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f02884a_8e452676",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-02-05T10:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8222dcff_f748c70d",
+      "range": {
+        "startLine": 285,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 39
+      },
+      "revId": "60f20d86cc2403a7743b5fac220885c86e3eecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bacec82f_9c8e3260",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54107b3b_05ad537c",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-02-05T10:44:17Z",
+      "side": 1,
+      "message": "Removed them.",
+      "parentUuid": "bacec82f_9c8e3260",
+      "range": {
+        "startLine": 296,
+        "startChar": 66,
+        "endLine": 296,
+        "endChar": 88
+      },
+      "revId": "60f20d86cc2403a7743b5fac220885c86e3eecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f26aecc_5f1d15ed",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-02T16:56:18Z",
       "side": 1,
       "message": "Why reverse processing can only be applied to the echo canceller? Was it this way in the HIDL implementation?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 71
+      },
+      "revId": "60f20d86cc2403a7743b5fac220885c86e3eecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af50768a_3fb3b75a",
+        "filename": "media/libeffects/preprocessing/aidl/PreProcessingContext.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-02-05T10:44:17Z",
+      "side": 1,
+      "message": "Yes, the reverse process is triggered only for AEC effect. \n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libeffects/preprocessing/PreProcessing.cpp;l\u003d245\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libeffects/preprocessing/PreProcessing.cpp;l\u003d794",
+      "parentUuid": "9f26aecc_5f1d15ed",
       "range": {
         "startLine": 305,
         "startChar": 0,
