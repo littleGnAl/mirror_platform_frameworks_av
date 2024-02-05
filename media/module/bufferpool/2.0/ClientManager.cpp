@@ -506,6 +506,7 @@ ResultStatus ClientManager::registerSender(
         const sp<IClientManager> &receiver,
         ConnectionId senderId,
         ConnectionId *receiverId) {
+    std::lock_guard<std::mutex> lock(sInstanceLock);
     if (mImpl) {
         return mImpl->registerSender(receiver, senderId, receiverId);
     }
