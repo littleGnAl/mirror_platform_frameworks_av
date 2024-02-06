@@ -162,6 +162,7 @@ public:
     // Might block while callbacks are being invoked.
     static void removeErrorCallback(uintptr_t cb);
 
+    static void setCanCreateThreadPool(bool canStartThreadPool);
     static void setDynPolicyCallback(dynamic_policy_callback cb);
     static void setRecordConfigCallback(record_config_callback);
     static void setRoutingCallback(routing_callback cb);
@@ -877,7 +878,6 @@ private:
     static audio_io_handle_t getOutput(audio_stream_type_t stream);
     static const sp<AudioFlingerClient> getAudioFlingerClient();
     static sp<AudioIoDescriptor> getIoDescriptor(audio_io_handle_t ioHandle);
-    static const sp<IAudioFlinger> getAudioFlingerImpl(bool canStartThreadPool);
 
     // Invokes all registered error callbacks with the given error code.
     static void reportError(status_t err);
@@ -904,6 +904,7 @@ private:
     static audio_channel_mask_t gPrevInChannelMask;
 
     static sp<media::IAudioPolicyService> gAudioPolicyService;
+    static bool gCanStartThreadPool;
 };
 
 };  // namespace android

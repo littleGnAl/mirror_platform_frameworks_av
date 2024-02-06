@@ -72,6 +72,7 @@ dynamic_policy_callback AudioSystem::gDynPolicyCallback = NULL;
 record_config_callback AudioSystem::gRecordConfigCallback = NULL;
 routing_callback AudioSystem::gRoutingCallback = NULL;
 vol_range_init_req_callback AudioSystem::gVolRangeInitReqCallback = NULL;
+bool AudioSystem::gCanStartThreadPool = true;
 
 // Required to be held while calling into gSoundTriggerCaptureStateListener.
 class CaptureStateListenerImpl;
@@ -83,6 +84,10 @@ sp<CaptureStateListenerImpl> gSoundTriggerCaptureStateListener = nullptr;
 // This allows specific isolated processes to access the audio system. Currently used only for the
 // HotwordDetectionService.
 static sp<IBinder> gAudioFlingerBinder = nullptr;
+
+void AudioSystem::setCanCreateThreadPool(bool canStartThreadPool) {
+    gCanStartThreadPool = canStartThreadPool;
+}
 
 void AudioSystem::setAudioFlingerBinder(const sp<IBinder>& audioFlinger) {
     if (audioFlinger->getInterfaceDescriptor() != media::IAudioFlingerService::descriptor) {
@@ -108,7 +113,7 @@ status_t AudioSystem::setLocalAudioFlinger(const sp<IAudioFlinger>& af) {
 }
 
 // establish binder interface to AudioFlinger service
-const sp<IAudioFlinger> AudioSystem::getAudioFlingerImpl(bool canStartThreadPool = true) {
+const sp<IAudioFlinger> AudioSystem::get_audio_flinger() {
     sp<IAudioFlinger> af;
     sp<AudioFlingerClient> afc;
     bool reportNoError = false;
@@ -147,7 +152,7 @@ const sp<IAudioFlinger> AudioSystem::getAudioFlingerImpl(bool canStartThreadPool
         afc = gAudioFlingerClient;
         af = gAudioFlinger;
         // Make sure callbacks can be received by gAudioFlingerClient
-        if(canStartThreadPool) {
+        if (gCanStartThreadPool) {
             ProcessState::self()->startThreadPool();
         }
     }
@@ -156,14 +161,6 @@ const sp<IAudioFlinger> AudioSystem::getAudioFlingerImpl(bool canStartThreadPool
     IPCThreadState::self()->restoreCallingIdentity(token);
     if (reportNoError) reportError(NO_ERROR);
     return af;
-}
-
-const sp<IAudioFlinger> AudioSystem:: get_audio_flinger() {
-    return getAudioFlingerImpl();
-}
-
-const sp<IAudioFlinger> AudioSystem:: get_audio_flinger_for_fuzzer() {
-    return getAudioFlingerImpl(false);
 }
 
 const sp<AudioSystem::AudioFlingerClient> AudioSystem::getAudioFlingerClient() {
@@ -896,7 +893,9 @@ const sp<IAudioPolicyService> AudioSystem::get_audio_policy_service() {
             LOG_ALWAYS_FATAL_IF(gAudioPolicyService == 0);
             apc = gAudioPolicyServiceClient;
             // Make sure callbacks can be received by gAudioPolicyServiceClient
-            ProcessState::self()->startThreadPool();
+            if (gCanStartThreadPool) {
+                ProcessState::self()->startThreadPool();
+            }
         }
         ap = gAudioPolicyService;
     }
