@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6270591e_b49477d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-02-06T00:07:28Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "5ce489ca_051d6505",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "04e21a1b5301bf786d0391d631eecaa73c87aeed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c38bc64_a9b93fc8",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "This is a no-op for `trunk_staging`, not very interesting for `trunk*` on CF, but different behavior on `next` that should be tested just in case.\nThe `next` configuration on CF is actually very similar to `trunk_staging` Pixel devices since they are set up similar to CF `next` (only HIDL C2 available), but it\u0027s still worth testing.\n\nLocally, `CtsMediaCodecTestCases`, passes on `next` with this change.\n\nUsing ABTD for a few different tests: https://android-build.corp.google.com/builds/abtd/run/L98700030001788461",
       "parentUuid": "1c38bc64_a9b93fc8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "04e21a1b5301bf786d0391d631eecaa73c87aeed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "724ac5ee_f95178fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-02-06T00:07:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bcdc5122_06479809",
       "range": {
         "startLine": 14,
         "startChar": 0,
