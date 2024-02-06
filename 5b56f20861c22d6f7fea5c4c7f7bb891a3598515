@@ -152,6 +152,30 @@
       },
       "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35dd035_604425ec",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-06T10:40:11Z",
+      "side": 1,
+      "message": "I have prepared https://android-review.googlesource.com/c/platform/frameworks/av/+/2923410 as the dependent CL. I will work on rebasing the current AIDL CL on that and verify AIDL works with that change (the dependent CL has been verified for HIDL only so far).",
+      "parentUuid": "bc51ebc6_39f072e2",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 89
+      },
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
