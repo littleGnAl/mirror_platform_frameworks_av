@@ -16,6 +16,29 @@
       "message": "This review is for resolving CL requested in https://android-review.googlesource.com/c/platform/frameworks/av/+/2909978/comment/d6296297_d813067b/",
       "revId": "5ce574f934d175fa3c245268d610715823ce1f47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2396edf7_efe2c192",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T21:46:47Z",
+      "side": 1,
+      "message": "It seems inconsistent that we only assign `flags` on success, but we modify `requestedFlags` in any case. I think, we can leave the old code with `customFlags` (maybe drop the `const`) and assign to `*requestedFlags \u003d flags \u003d customFlags` in the case of success.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 34
+      },
+      "revId": "5ce574f934d175fa3c245268d610715823ce1f47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
