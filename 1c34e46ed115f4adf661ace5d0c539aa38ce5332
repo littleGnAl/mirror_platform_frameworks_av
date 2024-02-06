@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ee9a4c_eae59c93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2024-02-06T19:27:36Z",
+      "side": 1,
+      "message": "ownership lgtm; ditto on formatting",
+      "revId": "1c34e46ed115f4adf661ace5d0c539aa38ce5332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "293677e5_f0cba077",
@@ -14,6 +31,23 @@
       "writtenOn": "2024-02-05T18:30:54Z",
       "side": 1,
       "message": "please don\u0027t reformat this file as part of a large-scale change.",
+      "revId": "1c34e46ed115f4adf661ace5d0c539aa38ce5332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44366f7_347285f1",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2024-02-06T19:27:36Z",
+      "side": 1,
+      "message": "Why is this needed in each bp submodule? Do these properties not inherit downwards from libeffects?",
       "revId": "1c34e46ed115f4adf661ace5d0c539aa38ce5332",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
