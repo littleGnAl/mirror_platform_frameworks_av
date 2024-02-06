@@ -18,6 +18,7 @@
 
 #define A_DEBUG_H_
 
+#include <chrono>
 #include <string.h>
 
 #include <media/stagefright/foundation/ABase.h>
@@ -113,6 +114,26 @@ inline static const char *asString(status_t i, const char *def = "??") {
 #define CHECK_GT_DBG(x,y)
 #define TRESPASS_DBG(...)
 #endif
+
+#define ALOG_EVERY_INTERNAL(log, duration, ...)                     \
+    do {                                                            \
+        using Clock = ::std::chrono::system_clock;                  \
+        thread_local Clock::time_point sLastLogTime =               \
+            Clock::now() - (duration);                              \
+        thread_local size_t sSkipped = 0;                           \
+        if (Clock::now() - sLastLogTime >= (duration)) {            \
+            if (sSkipped > 0) {                                     \
+                log(".. skipped %zu log messages ..", sSkipped);    \
+            }                                                       \
+            log(__VA_ARGS__);                                       \
+        }                                                           \
+    } while (false)
+
+#define ALOGV_EVERY(duration, ...)    ALOG_EVERY_INTERNAL(ALOGV, duration, __VA_ARGS__)
+#define ALOGD_EVERY(duration, ...)    ALOG_EVERY_INTERNAL(ALOGD, duration, __VA_ARGS__)
+#define ALOGI_EVERY(duration, ...)    ALOG_EVERY_INTERNAL(ALOGI, duration, __VA_ARGS__)
+#define ALOGW_EVERY(duration, ...)    ALOG_EVERY_INTERNAL(ALOGW, duration, __VA_ARGS__)
+#define ALOGE_EVERY(duration, ...)    ALOG_EVERY_INTERNAL(ALOGE, duration, __VA_ARGS__)
 
 struct ADebug {
     enum Level {

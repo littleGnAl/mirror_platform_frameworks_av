@@ -18,6 +18,7 @@
 #define LOG_TAG "CCodecBuffers"
 #include <utils/Log.h>
 
+#include <chrono>
 #include <numeric>
 
 #include <C2AllocatorGralloc.h>
@@ -523,7 +524,9 @@ OutputBuffers::BufferAction OutputBuffers::popFromStashAndRegister(
         mLastImageData.clear();
         ALOGV("[%s] popFromStashAndRegister: output format reference changed: %p -> %p",
                 mName, mFormat.get(), outputFormat.get());
-        ALOGD("[%s] popFromStashAndRegister: at %lldus, output format changed to %s",
+        ALOGD_EVERY(
+                std::chrono::seconds(10),
+                "[%s] popFromStashAndRegister: at %lldus, output format changed to %s",
                 mName, (long long)entry.timestamp, outputFormat->debugString().c_str());
         setFormat(outputFormat);
     }
