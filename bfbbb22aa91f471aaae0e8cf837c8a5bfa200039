@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2978a93_e793c501",
+        "filename": "services/audiopolicy/fuzzer/aidl/audiopolicy_aidl_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:36:53Z",
+      "side": 1,
+      "message": "No need for the `::` prefix because we are at the outermost namespace here.",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "bfbbb22aa91f471aaae0e8cf837c8a5bfa200039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8a6640_6dbebb87",
+        "filename": "services/audiopolicy/fuzzer/aidl/audiopolicy_aidl_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:36:53Z",
+      "side": 1,
+      "message": "Same comment applies to class usages, too.",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "bfbbb22aa91f471aaae0e8cf837c8a5bfa200039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02c17e5_37bd97d3",
+        "filename": "services/audiopolicy/fuzzer/aidl/audiopolicy_aidl_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:36:53Z",
+      "side": 1,
+      "message": "Please remove the namespace qualifier for the namespaces imported with `using`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "bfbbb22aa91f471aaae0e8cf837c8a5bfa200039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f8e501_fb104ee1",
+        "filename": "services/audiopolicy/fuzzer/aidl/audiopolicy_aidl_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:36:53Z",
+      "side": 1,
+      "message": "I think, we need to be careful with returning `ok` in methods like this because the client will assume that an effect instance was created successfully. This will likely lead to a crash because the effect pointer on the client side will be null. We should either return a mock of an effect, or return an error.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "bfbbb22aa91f471aaae0e8cf837c8a5bfa200039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6e7955_843ef314",
+        "filename": "services/audiopolicy/fuzzer/aidl/audiopolicy_aidl_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:36:53Z",
+      "side": 1,
+      "message": "This method and methods below have the same issue with crashing the client.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "bfbbb22aa91f471aaae0e8cf837c8a5bfa200039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fd89f4_fea97b82",
+        "filename": "services/audiopolicy/fuzzer/aidl/audiopolicy_aidl_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:36:53Z",
+      "side": 1,
+      "message": "I really doubt enabling creation is needed.",
+      "range": {
+        "startLine": 312,
+        "startChar": 31,
+        "endLine": 312,
+        "endChar": 80
+      },
+      "revId": "bfbbb22aa91f471aaae0e8cf837c8a5bfa200039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
