@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd3310f_0f8d75bc",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:29:24Z",
+      "side": 1,
+      "message": "I\u0027m questioning the need for multiple updates of this flag during the process lifetime. It seems to me that for fuzzers the value must be always `false`, and for all other code it must always be `true`. Thus, the method that we only need is the one that sets the flag to `false` (call it something like `disableThreadPool`), this method will be called by fuzzers.",
+      "range": {
+        "startLine": 88,
+        "startChar": 18,
+        "endLine": 88,
+        "endChar": 40
+      },
+      "revId": "7840f5e585b4f6e346121d9949766d7f56e97c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21d1eb2_8a0c5d55",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:29:24Z",
+      "side": 1,
+      "message": "`setCanStartThreadPool` for consistency",
+      "range": {
+        "startLine": 88,
+        "startChar": 18,
+        "endLine": 88,
+        "endChar": 40
+      },
+      "revId": "7840f5e585b4f6e346121d9949766d7f56e97c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e5dbc9_adc75a22",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T20:29:24Z",
+      "side": 1,
+      "message": "Since we check this flag in the code which can be called from multiple threads, setting it must also be guarded with `gLock`.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "7840f5e585b4f6e346121d9949766d7f56e97c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
