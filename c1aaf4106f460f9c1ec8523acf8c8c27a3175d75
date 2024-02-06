@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c9d7bf_ce7bf69d",
+        "filename": "media/libaudioclient/aidl/fuzzer/audioflinger_aidl_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-06T21:36:00Z",
+      "side": 1,
+      "message": "Please extract all mocks that can be shared between the APM and AF fuzzers into some static library. We really don\u0027t want to have this code duplicated.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 76
+      },
+      "revId": "c1aaf4106f460f9c1ec8523acf8c8c27a3175d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
