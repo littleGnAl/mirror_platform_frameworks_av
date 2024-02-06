@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ea54f5_2c57c766",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-02-06T11:04:45Z",
+      "side": 1,
+      "message": "Please fix line length",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1503,
+        "endChar": 0
+      },
+      "revId": "7b4330beba5ee4db6addd17a3a9fbfa95ae87926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c6f8cc5_f122ab56",
+        "filename": "services/audiopolicy/service/AudioPolicyClientImpl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-02-06T11:04:45Z",
+      "side": 1,
+      "message": "line length",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 103
+      },
+      "revId": "7b4330beba5ee4db6addd17a3a9fbfa95ae87926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
