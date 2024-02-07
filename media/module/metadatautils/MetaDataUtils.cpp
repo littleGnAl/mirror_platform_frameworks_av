@@ -81,6 +81,113 @@ bool MakeAVCCodecSpecificData(AMediaFormat *meta, const uint8_t *data, size_t si
     return true;
 }
 
+bool MakeVP9CodecSpecificData(AMediaFormat* meta, const uint8_t* data, size_t size) {
+    if (meta == nullptr || data == nullptr || size == 0) {
+        return false;
+    }
+
+    int32_t csdSize = 6;
+    int32_t profile;
+    int32_t bitDepth;
+    int32_t chromaSubsampling = -1;
+    ABitReader bits(data, size);
+
+    // First 2 bits of uncompressed header should be 0b10 (2 in decimal)
+    if (bits.getBits(2) != 2) {
+        return false;
+    }
+
+    int32_t version = bits.getBits(1);
+    int32_t high = bits.getBits(1);
+    profile = high * 2 + version;
+
+    // One reserved '0' bit if profile is 3.
+    if (profile == 3 && bits.getBits(1) != 0) {
+        return false;
+    }
+
+    // If show_existing_frame is set, we get no more data. Since this is
+    // expected to be the first frame, we can return false which will cascade
+    // into ERROR_MALFORMED.
+    if (bits.getBits(1)) {
+        return false;
+    }
+
+    // This should be the first frame, so expect a KEY_FRAME.
+    // if (frame_type != KEY_FRAME)
+    if (bits.getBits(1) != 0) {
+        return false;
+    }
+
+    // Upto 7 bits could be read till now, which were guaranteed to be available
+    // since size > 0. Check for bits available before reading them from now on.
+    if (bits.numBitsLeft() < 26) {
+        return false;
+    }
+    // Discard show_frame and error_resilient_mode.
+    bits.skipBits(2);
+
+    // Check for sync code.
+    if (bits.getBits(24) != 0x498342) {
+        return false;
+    }
+
+    if (profile >= 2) {
+        if (bits.numBitsLeft() < 1) {
+            return false;
+        }
+        bitDepth = bits.getBits(1) ? 12 : 10;
+    } else {
+        bitDepth = 8;
+    }
+
+    uint32_t colorspace;
+    if (!bits.getBitsGraceful(3, &colorspace)) {
+        return false;
+    }
+    // Check for subsampling only for profiles 1 and 3.
+    if (profile == 1 || profile == 3) {
+        if (colorspace != 7 /*SRGB*/) {
+            // Skip yuv_range_flag
+            if (!bits.skipBits(1)) {
+                return false;
+            }
+            uint32_t ss_x;
+            uint32_t ss_y;
+            if (bits.getBitsGraceful(1, &ss_x) && bits.getBitsGraceful(1, &ss_y)) {
+                chromaSubsampling = ss_x << 1 & ss_y;
+                csdSize += 3;
+            } else {
+                return false;
+            }
+        }
+    } else {
+        chromaSubsampling = 3;
+        csdSize += 3;
+    }
+
+    sp<ABuffer> csd = sp<ABuffer>::make(csdSize);
+    uint8_t* csdData = csd->data();
+
+    *csdData++ = 0x01 /* FEATURE PROFILE */;
+    *csdData++ = 0x01 /* length */;
+    *csdData++ = profile;
+
+    *csdData++ = 0x03 /* FEATURE BITDEPTH */;
+    *csdData++ = 0x01 /* length */;
+    *csdData++ = bitDepth;
+
+    // csdSize more than 6 means chroma subsampling data was found.
+    if (csdSize > 6) {
+        *csdData++ = 0x04 /* FEATURE SUBSAMPLING */;
+        *csdData++ = 0x01 /* length */;
+        *csdData++ = chromaSubsampling;
+    }
+
+    AMediaFormat_setBuffer(meta, AMEDIAFORMAT_KEY_CSD_0, csd->data(), csd->size());
+    return true;
+}
+
 bool MakeAACCodecSpecificData(MetaDataBase &meta, const uint8_t *data, size_t size) {
     if (data == nullptr || size < 7) {
         return false;
