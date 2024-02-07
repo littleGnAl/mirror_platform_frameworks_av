@@ -16,6 +16,57 @@
       "message": "Some APIs are unnecessarily exposted to vendors.\nThat should be TODO (b/324304837)",
       "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "254bca00_25784462",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-07T23:07:56Z",
+      "side": 1,
+      "message": "is this truly deprecated, or just internal?",
+      "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5938fcc7_777ba947",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-07T23:07:56Z",
+      "side": 1,
+      "message": "can we remove this \u0026 fix the dependencies?",
+      "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32ced12_5e324bc1",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-07T23:07:56Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
