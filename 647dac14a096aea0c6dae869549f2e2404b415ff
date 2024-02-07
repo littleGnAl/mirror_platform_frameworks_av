@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1f848c_a5681039",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-07T20:45:46Z",
+      "side": 1,
+      "message": "Pushing blank buffer is required for secure and protected content playback and hence it cannot be disabled by the app developers. There is only enabling option for other content.",
+      "revId": "647dac14a096aea0c6dae869549f2e2404b415ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
