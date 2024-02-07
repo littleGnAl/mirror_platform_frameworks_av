@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e5ab61_554f02e0",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-07T17:01:53Z",
+      "side": 1,
+      "message": "I think (?) this should be 55:\n\n```\n1 + 2 + 12 + 16 + 2 + 5 + 1 + 8 + 8 \u003d 55\n```",
+      "range": {
+        "startLine": 2065,
+        "startChar": 30,
+        "endLine": 2065,
+        "endChar": 31
+      },
+      "revId": "e5d32fd6e3c41c5919f03e97e89c7bf738f43651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9902f6c_b7d29bc9",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-07T17:01:53Z",
+      "side": 1,
+      "message": "I think (?) this is covered by the check above on L2260\n\n`adaptation_field_length \u003e 0`, means that `adaptation_field_length * 8 \u003d\u003e 8`, means that we have at least 8 bits available here - so no need to re-check?",
+      "range": {
+        "startLine": 2264,
+        "startChar": 0,
+        "endLine": 2268,
+        "endChar": 9
+      },
+      "revId": "e5d32fd6e3c41c5919f03e97e89c7bf738f43651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a3eb04_04674931",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-07T17:01:53Z",
+      "side": 1,
+      "message": "similarly, I think this is covered already by the checks on L2260 and L2290.\n\nIf we know that `bitsLeft() \u003e 53` on L2260 then we know `bitsLeft() \u003e 48` here (because we\u0027ve read 4 bits) - so no need to re-check",
+      "range": {
+        "startLine": 2294,
+        "startChar": 0,
+        "endLine": 2294,
+        "endChar": 41
+      },
+      "revId": "e5d32fd6e3c41c5919f03e97e89c7bf738f43651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

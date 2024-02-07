@@ -249,6 +249,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e20e839_67aa86bc",
+        "filename": "media/module/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2396,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-07T17:01:53Z",
+      "side": 1,
+      "message": "Ah I didn\u0027t realise when making this comment that `skipBits` fails gracefully if there aren\u0027t enough bits left - so you can probably ignore my original comment and remove the check?",
+      "parentUuid": "a2a9148a_b419eb18",
+      "revId": "426da5fe51dfebfa178dc74881142defb79c60c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b2361d8_0f6062c4",
         "filename": "media/module/mpeg2ts/ATSParser.cpp",
         "patchSetId": 3
