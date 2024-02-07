@@ -39,6 +39,30 @@
       },
       "revId": "5ce574f934d175fa3c245268d610715823ce1f47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5131cd_24bf5d46",
+        "filename": "services/audioflinger/datapath/AudioStreamOut.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-07T06:37:55Z",
+      "side": 1,
+      "message": "Agree. I\u0027ve reassigned the flags simply to the flags used in the hwDev openOutputStream calls (the reassigned flags don\u0027t depend on success or failure now).",
+      "parentUuid": "2396edf7_efe2c192",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 34
+      },
+      "revId": "5ce574f934d175fa3c245268d610715823ce1f47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
