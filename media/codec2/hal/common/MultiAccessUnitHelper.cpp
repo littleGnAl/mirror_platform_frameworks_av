@@ -177,32 +177,28 @@ c2_status_t MultiAccessUnitHelper::flush(
         std::list<std::unique_ptr<C2Work>>* const c2flushedWorks) {
     c2_status_t c2res = C2_OK;
     std::lock_guard<std::mutex> l(mLock);
-    for (std::unique_ptr<C2Work>& w : *c2flushedWorks) {
+    for (auto w = c2flushedWorks->begin() ; w != c2flushedWorks->end(); ) {
         bool foundFlushedFrame = false;
         std::list<MultiAccessUnitInfo>::iterator frame =
                 mFrameHolder.begin();
         while (frame != mFrameHolder.end() && !foundFlushedFrame) {
             auto it = frame->mComponentFrameIds.find(
-                    w->input.ordinal.frameIndex.peekull());
+                    (*w)->input.ordinal.frameIndex.peekull());
             if (it != frame->mComponentFrameIds.end()) {
-                LOG(DEBUG) << "Multi access-unit flush"
-                        << w->input.ordinal.frameIndex.peekull()
+                LOG(DEBUG) << "Multi access-unit flush "
+                        << (*w)->input.ordinal.frameIndex.peekull()
                         << " with " << frame->inOrdinal.frameIndex.peekull();
-                w->input.ordinal.frameIndex = frame->inOrdinal.frameIndex;
-                bool removeEntry = w->worklets.empty()
-                        || !w->worklets.front()
-                        || (w->worklets.front()->output.flags
-                        & C2FrameData::FLAG_INCOMPLETE) == 0;
-                if (removeEntry) {
-                    frame->mComponentFrameIds.erase(it);
-                }
-                foundFlushedFrame = true;
-            }
-            if (frame->mComponentFrameIds.empty()) {
+                (*w)->input.ordinal.frameIndex = frame->inOrdinal.frameIndex;
                 frame = mFrameHolder.erase(frame);
+                foundFlushedFrame = true;
             } else {
                 ++frame;
             }
+        }
+        if (!foundFlushedFrame) {
+            w = c2flushedWorks->erase(w);
+        } else {
+            ++w;
         }
     }
     return c2res;
