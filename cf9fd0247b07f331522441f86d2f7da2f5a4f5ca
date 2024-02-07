@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883eee06_c06a364d",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-07T15:08:39Z",
+      "side": 1,
+      "message": "in the else block we need the following?\n```\nisSetCsdFrom1stFrame \u003d true;\n```",
+      "range": {
+        "startLine": 2024,
+        "startChar": 0,
+        "endLine": 2029,
+        "endChar": 21
+      },
+      "revId": "cf9fd0247b07f331522441f86d2f7da2f5a4f5ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd872c0_23dffd4c",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-07T15:08:39Z",
+      "side": 1,
+      "message": "need some checks at different stages in this function on \"size\" to ensure there are enough bits left?",
+      "revId": "cf9fd0247b07f331522441f86d2f7da2f5a4f5ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349e1397_2edd944b",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-07T15:08:39Z",
+      "side": 1,
+      "message": "split to two checks?\nmove the frame_type check to line 117 and keep SYNC_CODE check here?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 5
+      },
+      "revId": "cf9fd0247b07f331522441f86d2f7da2f5a4f5ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f58b32_350cc053",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-07T15:08:39Z",
+      "side": 1,
+      "message": "this needs to be outside the if (profile) as per the spec.\n\nalso yuv_range_flag is to be read before ss_x.",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "cf9fd0247b07f331522441f86d2f7da2f5a4f5ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
