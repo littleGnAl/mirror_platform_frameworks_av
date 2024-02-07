@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac9894d_b4c2e6a7",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-07T20:48:59Z",
+      "side": 0,
+      "message": "This is similar to how it was handled in ACodec (https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libstagefright/ACodec.cpp;l\u003d1963)",
+      "revId": "60cbc2b506fdbc98550abdcce55c20e9124c3a60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
