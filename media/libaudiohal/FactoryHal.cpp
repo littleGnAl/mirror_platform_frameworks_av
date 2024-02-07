@@ -56,7 +56,6 @@ static const std::array<AudioHalVersionInfo, 6> sAudioHALVersions = {
     AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 7, 0),
     AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 6, 0),
     AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 5, 0),
-    AudioHalVersionInfo(AudioHalVersionInfo::Type::HIDL, 4, 0),
 };
 
 static const std::map<AudioHalVersionInfo::Type, InterfaceName> sDevicesHALInterfaces = {
