@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dac6d06_d24d8ff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-07T13:34:18Z",
+      "side": 1,
+      "message": "I\u0027ve validated that these patches are working on HIDL and AIDL for eac3-joc loopback test.\n\nHowever the audio routing and virtual device tests are failing on my stale AOSP main tree. I\u0027ll need to resync and test on ToT, retest and I\u0027ll report results.",
+      "revId": "2249e9b4c865898c9270aca08295d658ad199ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

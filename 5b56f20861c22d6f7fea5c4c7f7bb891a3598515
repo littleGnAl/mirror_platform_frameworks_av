@@ -176,6 +176,30 @@
       },
       "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f59ed75_5dd7e7ac",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-07T13:34:18Z",
+      "side": 1,
+      "message": "Done, I\u0027ve made the change in PS5 to depend on the modified flags supported in the dependent patchset.",
+      "parentUuid": "e35dd035_604425ec",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 89
+      },
+      "revId": "5b56f20861c22d6f7fea5c4c7f7bb891a3598515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
