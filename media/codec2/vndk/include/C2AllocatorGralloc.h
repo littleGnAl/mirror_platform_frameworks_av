@@ -65,6 +65,7 @@ bool MigrateNativeCodec2GrallocHandle(
 /**
  * \todo Get this from the buffer
  */
+[[deprecated("If PixelFormat is required, use ExtractFormatFromCodec2GrallocHandle()")]]
 void _UnwrapNativeCodec2GrallocMetadata(
         const C2Handle *const handle,
         uint32_t *width, uint32_t *height, uint32_t *format, uint64_t *usage, uint32_t *stride,
@@ -78,6 +79,7 @@ void _UnwrapNativeCodec2GrallocMetadata(
  *
  * @return a new NON-OWNING native handle that must be deleted using native_handle_delete.
  */
+[[deprecated("Integrated into UnwrapNativeCodec2GrallocHandle")]]
 native_handle_t *UnwrapNativeCodec2AhwbHandle(const C2Handle *const handle);
 
 /**
@@ -95,6 +97,7 @@ C2Handle *WrapNativeCodec2AhwbHandle(
 /**
  * \todo Get this from the buffer
  */
+[[deprecated("Integrated into _UnwrapNativeCodec2GrallocMetadata")]]
 void _UnwrapNativeCodec2AhwbMetadata(
         const C2Handle *const handle,
         uint32_t *width, uint32_t *height, uint32_t *format, uint64_t *usage, uint32_t *stride,

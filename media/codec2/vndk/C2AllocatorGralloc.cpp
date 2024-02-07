@@ -318,6 +318,14 @@ public:
         return reinterpret_cast<C2HandleAhwb *>(res);
     }
 
+    static uint32_t getPixelFormat(const C2Handle *const handle) {
+        if (handle == nullptr) {
+            return 0;
+        }
+        const ExtraData *xd = GetExtraData(handle);
+        return xd->format;
+    }
+
     static C2HandleAhwb* WrapNativeHandle(
             const native_handle_t *const handle,
             uint32_t width, uint32_t height, uint32_t format, uint64_t usage,
@@ -899,7 +907,17 @@ static void HandleInterleavedPlanes(
 
 
 native_handle_t *UnwrapNativeCodec2GrallocHandle(const C2Handle *const handle) {
-    return C2HandleGralloc::UnwrapNativeHandle(handle);
+    if (handle == nullptr) {
+        return nullptr;
+    }
+    if (C2AllocatorGralloc::CheckHandle(handle)) {
+        return C2HandleGralloc::UnwrapNativeHandle(handle);
+    }
+    if (C2AllocatorAhwb::CheckHandle(handle)) {
+        return C2HandleAhwb::UnwrapNativeHandle(handle);
+    }
+    ALOGE("tried to unwrap non c2 compatible handle");
+    return nullptr;
 }
 
 C2Handle *WrapNativeCodec2GrallocHandle(
@@ -911,7 +929,14 @@ C2Handle *WrapNativeCodec2GrallocHandle(
 }
 
 uint32_t ExtractFormatFromCodec2GrallocHandle(const C2Handle *const handle) {
-    return C2HandleGralloc::getPixelFormat(handle);
+    if (C2AllocatorGralloc::CheckHandle(handle)) {
+        return C2HandleGralloc::getPixelFormat(handle);
+    }
+    if (C2AllocatorAhwb::CheckHandle(handle)) {
+        return C2HandleAhwb::getPixelFormat(handle);
+    }
+    ALOGE("tried to extract pixelformat from non c2 compatible handle");
+    return 0;
 }
 
 bool MigrateNativeCodec2GrallocHandle(
@@ -1137,8 +1162,17 @@ void _UnwrapNativeCodec2GrallocMetadata(
         const C2Handle *const handle,
         uint32_t *width, uint32_t *height, uint32_t *format,uint64_t *usage, uint32_t *stride,
         uint32_t *generation, uint64_t *igbp_id, uint32_t *igbp_slot) {
-    (void)C2HandleGralloc::Import(handle, width, height, format, usage, stride,
-                                  generation, igbp_id, igbp_slot);
+    if (C2AllocatorGralloc::CheckHandle(handle)) {
+        (void)C2HandleGralloc::Import(handle, width, height, format, usage, stride,
+                                      generation, igbp_id, igbp_slot);
+        return;
+    }
+    if (C2AllocatorAhwb::CheckHandle(handle)) {
+        uint64_t origId;
+        (void)C2HandleAhwb::Import(handle, width, height, format, usage, stride, &origId);
+        return;
+    }
+    ALOGE("Tried to extract metadata from non c2 compatible handle");
 }
 
 C2AllocatorGralloc::Impl::Impl(id_t id, bool bufferQueue)
