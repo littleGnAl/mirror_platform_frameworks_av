@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40411e59_316e9dc5",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-08T03:17:17Z",
+      "side": 1,
+      "message": "Should this go to the section together with `cstddef`?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d9cf3cc_c5dd979d",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-08T03:17:17Z",
+      "side": 1,
+      "message": "No need to use the `::` prefix in the outermost namespace.",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e824c1_99824e8a",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-08T03:17:17Z",
+      "side": 1,
+      "message": "`explicit`",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4292ef_25091f94",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-08T03:17:17Z",
+      "side": 1,
+      "message": "Just curious, how does `MOCK_METHOD` know what to return? Does it just use a default constructor?",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44964af1_890d8a7c",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-08T03:17:17Z",
+      "side": 1,
+      "message": "I think, `BnFactory` implements them. Did you try inheriting from it instead of `IFactory`?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 64
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f621e8d3_bd232ce4",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-08T03:17:17Z",
+      "side": 1,
+      "message": "Should it be better to create these in `SetUp` and destroy in `TearDown`? Currently this does not make a difference because these mock classes are effectively stateless, but once you introduce state, they should be re-created for each test to avoid influence of one test on another.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 93
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
