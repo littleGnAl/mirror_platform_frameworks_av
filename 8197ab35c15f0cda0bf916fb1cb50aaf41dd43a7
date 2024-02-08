@@ -16,6 +16,24 @@
       "message": "Based on b/295804596 we are not planning to fix this in the current `MediaExtractor` implementation, and it will instead be resolved by replacing the existing implementation with media3\u0027s extractors.",
       "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4def7e2e_e123bfff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-08T15:35:01Z",
+      "side": 1,
+      "message": "Ian,\nI am not sure about the timeline for migration.\nWithout this fix, there are devices with h/w VP9 decoders that do not support 10-bit decoding and on those devices apps have no way of identifying if a 10-bit clip can be decoded using h/w vp9 decoder.\nPlease refer: b/281623161 for details.\n\nPlan is to remove the workarounds in the CTS tests with this merged and ensure apps have a way of correctly identifying the profile for such clips.\n\nSo IMHO, this fix is needed in the interim.",
+      "parentUuid": "4780ee91_6837a7a5",
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
