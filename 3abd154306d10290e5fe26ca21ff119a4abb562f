@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67fc143c_038ab945",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-08T19:14:19Z",
+      "side": 1,
+      "message": "The deprecated warning will also show up for legitimate uses. I\u0027d prefer not to add the annotation here.\n\nA proper way to do would be to split the internal methods out of the current module and limit the visibility of the internal module. This can be done later.",
+      "parentUuid": "2b59b20d_e3672eae",
+      "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5938fcc7_777ba947",
         "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
         "patchSetId": 2
