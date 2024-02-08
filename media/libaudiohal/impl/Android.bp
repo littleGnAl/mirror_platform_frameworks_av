@@ -287,9 +287,30 @@ cc_library_shared {
     ],
     srcs: [
         "DevicesFactoryHalEntry.cpp",
+        "EffectsFactoryHalEntry.cpp",
+        ":audio_effect_hal_aidl_src_files",
+        ":core_audio_hal_aidl_src_files",
+    ],
+}
+
+filegroup {
+    name: "core_audio_hal_aidl_src_files",
+    srcs: [
+        "ConversionHelperAidl.cpp",
+        "DeviceHalAidl.cpp",
+        "DevicesFactoryHalAidl.cpp",
+        "Hal2AidlMapper.cpp",
+        "StreamHalAidl.cpp",
+    ],
+}
+
+filegroup {
+    name: "audio_effect_hal_aidl_src_files",
+    srcs: [
         "EffectConversionHelperAidl.cpp",
         "EffectBufferHalAidl.cpp",
         "EffectHalAidl.cpp",
+        "EffectsFactoryHalAidl.cpp",
         "effectsAidlConversion/AidlConversionAec.cpp",
         "effectsAidlConversion/AidlConversionAgc1.cpp",
         "effectsAidlConversion/AidlConversionAgc2.cpp",
@@ -306,21 +327,7 @@ cc_library_shared {
         "effectsAidlConversion/AidlConversionVendorExtension.cpp",
         "effectsAidlConversion/AidlConversionVirtualizer.cpp",
         "effectsAidlConversion/AidlConversionVisualizer.cpp",
-        "EffectsFactoryHalAidl.cpp",
-        "EffectsFactoryHalEntry.cpp",
         ":audio_effectproxy_src_files",
-        ":core_audio_hal_aidl_src_files",
-    ],
-}
-
-filegroup {
-    name: "core_audio_hal_aidl_src_files",
-    srcs: [
-        "ConversionHelperAidl.cpp",
-        "DeviceHalAidl.cpp",
-        "DevicesFactoryHalAidl.cpp",
-        "Hal2AidlMapper.cpp",
-        "StreamHalAidl.cpp",
     ],
 }
 
