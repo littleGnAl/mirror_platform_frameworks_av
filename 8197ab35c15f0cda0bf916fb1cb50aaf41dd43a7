@@ -52,6 +52,24 @@
       "parentUuid": "4def7e2e_e123bfff",
       "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a57719d_e347e6ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-08T15:58:08Z",
+      "side": 1,
+      "message": "Ian,\nI completely agree this doesn\u0027t apply for apps that use media3.exoplayer.\n\nThis is for cases where apps are using MediaPlayer and/or MediaExtractor.\n\nThe work-around in the test was temporarily done to unblock the partners and isn\u0027t meant to be permanent.\n\nAdding Ray and Lajos as they had some inputs on the workaround.",
+      "parentUuid": "638b1864_dbfd294b",
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
