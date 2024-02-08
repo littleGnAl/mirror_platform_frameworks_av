@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b59b20d_e3672eae",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-02-08T08:30:20Z",
+      "side": 1,
+      "message": "This is internal, but it will be hidden to vendor eventually. So we\u0027d better put some deprecated warning for sometime?",
+      "parentUuid": "254bca00_25784462",
+      "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5938fcc7_777ba947",
         "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2024-02-07T23:07:56Z",
       "side": 1,
       "message": "can we remove this \u0026 fix the dependencies?",
+      "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d45583a_a66a6e0f",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-02-08T08:30:20Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "5938fcc7_777ba947",
       "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2024-02-07T23:07:56Z",
       "side": 1,
       "message": "same here",
+      "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c76e7a6_5fac1499",
+        "filename": "media/codec2/vndk/include/C2AllocatorGralloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-02-08T08:30:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e32ced12_5e324bc1",
       "revId": "3abd154306d10290e5fe26ca21ff119a4abb562f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
