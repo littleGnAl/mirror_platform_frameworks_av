@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f440c1ff_80be8e52",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-08T18:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40411e59_316e9dc5",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d9cf3cc_c5dd979d",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d931b4_6ec1d3c3",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-08T18:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d9cf3cc_c5dd979d",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9e824c1_99824e8a",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-08T03:17:17Z",
       "side": 1,
       "message": "`explicit`",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f0ed85_4bae11cf",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-08T18:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e824c1_99824e8a",
       "range": {
         "startLine": 111,
         "startChar": 4,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca6b744_f4981efb",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-08T18:21:07Z",
+      "side": 1,
+      "message": "I need to override `getInterfaceVersion` which was marked as final in `Bn*`",
+      "parentUuid": "44964af1_890d8a7c",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 64
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f621e8d3_bd232ce4",
@@ -129,6 +225,30 @@
       "writtenOn": "2024-02-08T03:17:17Z",
       "side": 1,
       "message": "Should it be better to create these in `SetUp` and destroy in `TearDown`? Currently this does not make a difference because these mock classes are effectively stateless, but once you introduce state, they should be re-created for each test to avoid influence of one test on another.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 93
+      },
+      "revId": "f9792b0f8e2a1e700284054925e6dec413182889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd9c0e2_f736f4ca",
+        "filename": "media/libaudiohal/tests/EffectHalVersionCompatibility_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-08T18:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f621e8d3_bd232ce4",
       "range": {
         "startLine": 290,
         "startChar": 0,
