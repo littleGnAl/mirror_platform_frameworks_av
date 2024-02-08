@@ -35,6 +35,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "179aed81_e673e1a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-02-08T16:53:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4a8acabe_3bf06fb6",
+      "revId": "faac6a72bd72556c235666ae50643d0faf144822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "774d6280_e2e724d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-02-08T16:53:39Z",
+      "side": 1,
+      "message": "23/23 different test suits with `Media`/`media` in the nae all passed on both `trunk_staging` and `next` targets.",
+      "parentUuid": "4445419b_c9b882f0",
+      "revId": "faac6a72bd72556c235666ae50643d0faf144822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cc7440d_85931f4a",
@@ -48,6 +84,30 @@
       "writtenOn": "2024-02-08T01:00:57Z",
       "side": 1,
       "message": "nit: I would say \"create\" it here, since that\u0027s the biggest cost here.",
+      "range": {
+        "startLine": 839,
+        "startChar": 15,
+        "endLine": 839,
+        "endChar": 18
+      },
+      "revId": "faac6a72bd72556c235666ae50643d0faf144822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229c9810_d42d2039",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-02-08T16:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cc7440d_85931f4a",
       "range": {
         "startLine": 839,
         "startChar": 15,
