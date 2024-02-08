@@ -34,6 +34,24 @@
       "parentUuid": "4780ee91_6837a7a5",
       "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638b1864_dbfd294b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-08T15:40:23Z",
+      "side": 1,
+      "message": "\u003e Without this fix, there are devices with h/w VP9 decoders that do not support 10-bit decoding and on those devices apps have no way of identifying if a 10-bit clip can be decoded using h/w vp9 decoder.\n\nFor this use-case I think apps can use `media3.exoplayer`? In general ExoPlayer provides a lot of functionality and format support that isn\u0027t available via `MediaPlayer` and/or `MediaExtractor`.",
+      "parentUuid": "4def7e2e_e123bfff",
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
