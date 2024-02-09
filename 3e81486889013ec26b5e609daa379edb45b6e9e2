@@ -46,6 +46,30 @@
       },
       "revId": "3e81486889013ec26b5e609daa379edb45b6e9e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce8283b_70c1553b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-09T01:32:01Z",
+      "side": 1,
+      "message": "With ToT + these patches, AudioTrackTest#DefaultRoutingTest and AudioRoutingTest#ConcurrentDynamicRoutingTest are failing on cold boot\n```\n[2/3] AudioTrackTest#DefaultRoutingTest: FAILED (16ms)\n\nSTACKTRACE:\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:121: Failure\nExpected equality of these values:\n  OK\n    Which is: 0\n  status\n    Which is: -22\nCould not find port\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:126: Failure\nExpected equality of these values:\n  port.id\n    Which is: 14\n  playback-\u003egetAudioTrackHandle()-\u003egetRoutedDeviceId()\n    Which is: 2\nPlayback NOT routed on expected port\n[3/3] AudioRoutingTest#ConcurrentDynamicRoutingTest: FAILED (278ms)\n\nSTACKTRACE:\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:227: Failure\nExpected equality of these values:\n  OK\n    Which is: 0\n  status\n    Which is: -22\nunexpected submix out port found\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:249: Failure\nExpected equality of these values:\n  OK\n    Which is: 0\n  status\n    Which is: -22\nport not found\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:262: Failure\nExpected equality of these values:\n  OK\n    Which is: 0\n  cbPlayback-\u003ewaitForAudioDeviceCb(port.id)\n    Which is: -110\nframeworks/av/media/libaudioclient/tests/audiorouting_tests.cpp:263: Failure\nExpected equality of these values:\n  port.id\n    Which is: 14\n  playback-\u003egetAudioTrackHandle()-\u003egetRoutedDeviceId()\n    Which is: 2\nPlayback NOT routed on expected port\n```\n\nhowever just applying the patches and rebooting audioserver, the tests pass.\n\nWith ToT, those tests pass.\n\nWith the hardware/interfaces remote submix change only, the tests pass.\n\nWith additionally https://android-review.googlesource.com/c/platform/frameworks/av/+/2923410/6, the tests pass as well.\n\n\nI\u0027ve tried to look into what\u0027s going on, but it looks to be quite complex and unclear to me what the correct path forward should be to fix this:\n\nWhat I\u0027ve tried:\n\n1. Completely separating the 192khz mixport and device port in the HIDL remote submix audio HAL, and associated routing, and removing 192khz from the non direct mix ports. When I do this, the failed tests start being \"IGNORED\", and registering DD+JOC audio policy in the loopback test fails.\n\n2. Just removing 192khz from the non direct mix ports, having a separate 192kHz only mix port, but leaving the device ports to include 8kHz-192kHz sample rates, and declaring routing allowed between those mixports and device ports. When that is done, there are patch mismatch errors because 192kHz mixports are trying to be patched from 8kHz device ports. Not sure why, but it fails.\n\nThere are other options I\u0027ve tried, but tests all failed because of sample rate failures.\n\nOh, the other thing is, even in the passing result before this CL, there are patch requests to remote submix hal to patch 192kHz device port to 48kHz mix port, and these actually go through without error, and I think this is what later causes mismatches for later open stream requests. That is a clue of what is causing these problems. I suspect there are issues with config matching / device port / mix port handling, but this is masked because requests only ever seem to be made at 48kHz, but what is needed in the E-AC3-JOC case is a new sample rate (192kHz).",
+      "parentUuid": "0bd99ed1_585baa69",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "3e81486889013ec26b5e609daa379edb45b6e9e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
